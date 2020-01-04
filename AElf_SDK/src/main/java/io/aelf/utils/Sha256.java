@@ -11,6 +11,36 @@ import java.security.NoSuchAlgorithmException;
  * @date 2019/12/2322:28
  */
 public class Sha256 {
+
+    public static byte[] getBytesSHA256(byte[] str){
+        MessageDigest messageDigest;
+        byte[] digestBytes = new byte[0];
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(str);
+            digestBytes=messageDigest.digest();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return digestBytes;
+    }
+
+
+    public static byte[] getBytesSHA256(String str){
+        MessageDigest messageDigest;
+        byte[] digestBytes = new byte[0];
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(str.getBytes("UTF-8"));
+            digestBytes=messageDigest.digest();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return digestBytes;
+    }
+
     /**
      * 利用java原生的类实现SHA256加密
      * @param str 加密后的报文
@@ -48,4 +78,19 @@ public class Sha256 {
         }
         return stringBuffer.toString();
     }
+
+    public static String getSHA256ForBytes(byte[] bytes){
+        MessageDigest messageDigest;
+        String encodestr = "";
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(bytes);
+            encodestr = byte2Hex(messageDigest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return encodestr;
+    }
+
+
 }

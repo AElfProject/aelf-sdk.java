@@ -473,7 +473,7 @@ public class BlcokChainSdk {
         transactionResultObj.setTransaction(transactionDtoObj);
 
         TransactionFeeDto transactionFeeDtoObj=new TransactionFeeDto();
-        transactionFeeDtoObj.setValue(new HashMap<>());
+        transactionFeeDtoObj.setValue(new HashMap<String,Long>());
         LinkedHashMap transactionFeeObj=transactionResult.getLinkedHashMap("TransactionFee",new LinkedHashMap());
         MapEntry transactionFeeObjMap=Maps.cloneMapEntry(transactionFeeObj);
         LinkedHashMap<String,Integer> transactionFeeValueObjMap= transactionFeeObjMap.getLinkedHashMap("Value",new LinkedHashMap<String,Integer> ());

@@ -1,4 +1,4 @@
-package io.aelf.utils;
+package io.aelf.utils.secp256k1;
 
 import java.math.*;
 

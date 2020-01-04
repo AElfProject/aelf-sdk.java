@@ -16,4 +16,6 @@ public class ExecuteTransactionDto {
     public void setRawTransaction(String rawTransaction) {
         RawTransaction = rawTransaction;
     }
+
+
 }
