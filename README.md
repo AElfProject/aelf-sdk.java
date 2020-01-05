@@ -14,13 +14,14 @@ You should build the "AElf_SDK" project
 private static final String httpUrl="http://127.0.0.1:8200";
 
 // get client instance
-AelfSdk aelfSdk=new AelfSdk(httpUrl);
+AelfSdk aelfSdk = new AelfSdk(httpUrl);
 long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeightAsync();
 ```
 
 ### Class
 
 #### AelfSdk
+``` JAVA
     public AelfSdk(String url);
     
     public BlockChainSdk getBlockChainSdkObj();
@@ -38,7 +39,7 @@ long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeightAsync();
     public String GetSignatureWithToHex(String privateKey, byte[] txData) throws Exception;
     
     public boolean isConnected();
-    
+ ```   
 ####
 
 #### BlockChainSdk
@@ -48,59 +49,59 @@ long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeightAsync();
  
  public BlockChainSdk getBlockChainSdkObj();
 
- public BlockDto getBlockByHashAsync(String blockHash, boolean includeTransactions) throws Exception
+ public BlockDto getBlockByHashAsync(String blockHash, boolean includeTransactions) throws Exception;
  
- public BlockDto getBlockByHeightAsync(long blockHeight, boolean includeTransactions) throws Exception
+ public BlockDto getBlockByHeightAsync(long blockHeight, boolean includeTransactions) throws Exception;
  
- public BlockStateDto getBlockState(String blockHash) throws  Exception
+ public BlockStateDto getBlockState(String blockHash) throws  Exception;
  
- public ChainstatusDto getChainStatusAsync() throws Exception
+ public ChainstatusDto getChainStatusAsync() throws Exception;
  
- public byte[] getContractFilCeDescriptorSetAsync(String address) throws  Exception
+ public byte[] getContractFilCeDescriptorSetAsync(String address) throws  Exception;
  
- public List<TaskQueueInfoDto> getTaskQueueStatusAsync() throws Exception
+ public List<TaskQueueInfoDto> getTaskQueueStatusAsync() throws Exception;
  
- public TransactionPoolStatusOutput getTransactionPoolStatusAsync() throws Exception
+ public TransactionPoolStatusOutput getTransactionPoolStatusAsync() throws Exception;
  
- public String executeTransactionAsync(ExecuteTransactionDto input) throws Exception
+ public String executeTransactionAsync(ExecuteTransactionDto input) throws Exception;
  
- public CreateRawTransactionOutput createRawTransactionAsync(CreateRawTransactionInput input) throws Exception
+ public CreateRawTransactionOutput createRawTransactionAsync(CreateRawTransactionInput input) throws Exception;
  
- public String  executeRawTransactionAsync(ExecuteRawTransactionDto input) throws Exception
+ public String  executeRawTransactionAsync(ExecuteRawTransactionDto input) throws Exception;
  
- public SendRawTransactionOutput sendRawTransactionAsync(SendRawTransactionInput input) throws Exception
+ public SendRawTransactionOutput sendRawTransactionAsync(SendRawTransactionInput input) throws Exception;
  
- public SendTransactionOutput sendTransactionAsync(SendTransactionInput input) throws Exception
+ public SendTransactionOutput sendTransactionAsync(SendTransactionInput input) throws Exception;
  
- public List<String> sendTransactionsAsync(SendTransactionsInput input) throws Exception
+ public List<String> sendTransactionsAsync(SendTransactionsInput input) throws Exception;
  
- public TransactionResultDto getTransactionResultAsync(String transactionId) throws Exception
+ public TransactionResultDto getTransactionResultAsync(String transactionId) throws Exception;
  
- public List<TransactionResultDto>  getTransactionResultsAsync(String blockHash, int offset,int limit) throws Exception
+ public List<TransactionResultDto>  getTransactionResultsAsync(String blockHash, int offset,int limit) throws Exception;
  
- public MerklePathDto getMerklePathByTransactionIdAsync(String transactionId) throws Exception
+ public MerklePathDto getMerklePathByTransactionIdAsync(String transactionId) throws Exception;
  
- public List<TransactionResultDto>  getTransactionResultsAsync(String blockHash) throws Exception
+ public List<TransactionResultDto>  getTransactionResultsAsync(String blockHash) throws Exception;
  
- public BlockDto getBlockByHeightAsync(long blockHeight) throws Exception
+ public BlockDto getBlockByHeightAsync(long blockHeight) throws Exception;
  
- public BlockDto getBlockByHashAsync(String blockHash) throws Exception
+ public BlockDto getBlockByHashAsync(String blockHash) throws Exception;
  
- public int getChainIdAsync() throws Exception
+ public int getChainIdAsync() throws Exception;
 ```
 
 #### NetSdk
 
 ``` JAVA
-public NetSdk(String url);
+ public NetSdk(String url);
 
-public Boolean addPeerAsync(AddPeerInput input) throws Exception
+ public Boolean addPeerAsync(AddPeerInput input) throws Exception;
 
-public Boolean removePeerAsync(String address) throws Exception
+ public Boolean removePeerAsync(String address) throws Exception;
 
-public List<PeerDto> getPeersAsync(Boolean withMetrics) throws Exception
+ public List<PeerDto> getPeersAsync(Boolean withMetrics) throws Exception;
 
-public NetworkInfoOutput getNetworkInfoAsync() throws Exception
+ public NetworkInfoOutput getNetworkInfoAsync() throws Exception;
 
 ```
 
