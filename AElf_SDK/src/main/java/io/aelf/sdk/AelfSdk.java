@@ -19,7 +19,7 @@ import java.util.Arrays;
  */
 public class AelfSdk {
     private String aelfSdkUrl;
-    private BlcokChainSdk blcokChainSdk;
+    private BlockChainSdk blcokChainSdk;
     private NetSdk netSdk;
     /**
      * Object construction through the url path
@@ -34,9 +34,9 @@ public class AelfSdk {
      * Get the instance object of BlcokChainSdk
      * @return
      */
-    public BlcokChainSdk getBlcokChainSdkObj(){
+    public BlockChainSdk getBlockChainSdkObj(){
         if(blcokChainSdk==null){
-            blcokChainSdk=new BlcokChainSdk(this.aelfSdkUrl);
+            blcokChainSdk=new BlockChainSdk(this.aelfSdkUrl);
         }
         return blcokChainSdk;
     }
@@ -61,7 +61,7 @@ public class AelfSdk {
      * @throws Exception
      */
     public TransactionDto generateTransaction(String from, String to, String methodName, String params) throws Exception {
-        ChainstatusDto chainStatus = this.getBlcokChainSdkObj().getChainStatusAsync();
+        ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatusAsync();
         Base64 base64 = new Base64();
         TransactionDto transaction = new TransactionDto();
         transaction.setFrom(from);
@@ -89,7 +89,7 @@ public class AelfSdk {
      * @throws Exception
      */
     public String getGenesisContractAddressAsync() throws Exception{
-        ChainstatusDto chainstatusDto=this.getBlcokChainSdkObj().getChainStatusAsync();
+        ChainstatusDto chainstatusDto=this.getBlockChainSdkObj().getChainStatusAsync();
         return chainstatusDto.getGenesisContractAddress();
     }
 
@@ -110,6 +110,16 @@ public class AelfSdk {
         }
         signature=signature+"01";
         return signature;
+    }
+
+    public boolean isConnected(){
+        try{
+            ChainstatusDto chainStatusDto=this.getBlockChainSdkObj().getChainStatusAsync();
+            return chainStatusDto!=null;
+        }catch(Exception ex){
+            return false;
+        }
+
     }
 
 

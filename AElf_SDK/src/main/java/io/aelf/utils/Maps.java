@@ -16,7 +16,7 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import org.apache.commons.lang3.StringUtils;
 
-public final class Maps extends CollectionUtil {
+public final class Maps {
     private static MapEntry entry = new MapEntry(20);
     private static LinkedMapEntry linkedMapEntry = new LinkedMapEntry(20);
 

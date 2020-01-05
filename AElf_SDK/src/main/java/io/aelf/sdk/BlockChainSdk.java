@@ -14,7 +14,7 @@ import java.util.*;
  * @description: TODO
  * @date 2019/12/1512:02
  */
-public class BlcokChainSdk {
+public class BlockChainSdk {
 
 
     private String aelfSdkUrl;
@@ -41,10 +41,10 @@ public class BlcokChainSdk {
      * Object construction through the url path
      * @param url
      */
-    public BlcokChainSdk(String url){
+    public BlockChainSdk(String url){
         this.aelfSdkUrl=url;
     }
-    private BlcokChainSdk(){}
+    private BlockChainSdk(){}
 
     /**
      * Get the height of the current chain.
@@ -504,9 +504,28 @@ public class BlcokChainSdk {
             logEventDtoList.add(logEventDtoObj);
         }
         transactionResultObj.setLogs(logEventDtoList);
-
-
-
         return transactionResultObj;
+    }
+
+    /**
+     *  Get id of the chain.
+     * @return
+     * @throws Exception
+     */
+    public int getChainIdAsync() throws Exception{
+        ChainstatusDto chainStatusDto = this.getChainStatusAsync();
+        String base58ChainId = chainStatusDto.getChainId();
+        byte[] bytes=Base58.decode(base58ChainId);
+        if(bytes.length<4){
+            byte[] bs=new byte[4];
+            for(int i=0;i<4;i++){
+                bs[i]=0;
+                if(bytes.length>(i+1)){
+                    bs[i]=bytes[i];
+                }
+            }
+        }
+        int chainId = ByteArrayHelper.byteArrayToInt(bytes);
+        return chainId;
     }
 }

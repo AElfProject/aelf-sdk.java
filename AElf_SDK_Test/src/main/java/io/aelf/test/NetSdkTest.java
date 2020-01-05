@@ -15,8 +15,8 @@ import java.util.List;
  * @date 2019/12/1622:36
  */
 public class NetSdkTest {
-    private static final String httpUrl="http://127.0.0.1:8200";
-    private static final String opreationAddress="127.0.0.1:7003";
+    private final String httpUrl="http://127.0.0.1:8200";
+    private final String opreationAddress="127.0.0.1:7003";
     AelfSdk aelfSdk=null;
     @Before
     public void init(){
