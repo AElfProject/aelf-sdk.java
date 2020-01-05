@@ -3,13 +3,9 @@ import io.aelf.schemas.*;
 import io.aelf.sdk.AelfSdk;
 import io.aelf.utils.*;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.math.BigInteger;
-import java.security.PrivateKey;
 import java.util.List;
 
 /**
@@ -18,7 +14,7 @@ import java.util.List;
  * @description: TODO
  * @date 2019/12/1622:36
  */
-public class BlcokChainSdkTest {
+public class BlockChainSdkTest {
     private static final String httpUrl="http://127.0.0.1:8200";
     AelfSdk aelfSdk=null;
     String privateKey="09da44778f8db2e602fb484334f37df19e221c84c4582ce5b7770ccfbc3ddbef";
@@ -113,7 +109,7 @@ public class BlcokChainSdkTest {
         createRawTransactionInputObj.setParams(param);
         createRawTransactionInputObj.setRefBlockNumber(height);
         createRawTransactionInputObj.setRefBlockHash(blockHash);
-        CreateRawTransactionOutput createRawTransactionOutputObj=aelfSdk.getBlcokChainSdkObj().rawTransactionAsync(createRawTransactionInputObj);
+        CreateRawTransactionOutput createRawTransactionOutputObj=aelfSdk.getBlcokChainSdkObj().createRawTransactionAsync(createRawTransactionInputObj);
 
         byte[] rawTransactionBytes=ByteArrayHelper.hexToByteArray(createRawTransactionOutputObj.getRawTransaction());
         byte[] transactionId=Sha256.getBytesSHA256(rawTransactionBytes);
@@ -147,7 +143,7 @@ public class BlcokChainSdkTest {
         createRawTransactionInputObj.setParams(param);
         createRawTransactionInputObj.setRefBlockNumber(height);
         createRawTransactionInputObj.setRefBlockHash(blockHash);
-         aelfSdk.getBlcokChainSdkObj().rawTransactionAsync(createRawTransactionInputObj);
+         aelfSdk.getBlcokChainSdkObj().createRawTransactionAsync(createRawTransactionInputObj);
     }
 
     @Test
@@ -170,7 +166,7 @@ public class BlcokChainSdkTest {
         createRawTransactionInputObj.setParams(param);
         createRawTransactionInputObj.setRefBlockNumber(height);
         createRawTransactionInputObj.setRefBlockHash(blockHash);
-        CreateRawTransactionOutput createRawTransactionOutputObj=aelfSdk.getBlcokChainSdkObj().rawTransactionAsync(createRawTransactionInputObj);
+        CreateRawTransactionOutput createRawTransactionOutputObj=aelfSdk.getBlcokChainSdkObj().createRawTransactionAsync(createRawTransactionInputObj);
 
         byte[] rawTransactionBytes=ByteArrayHelper.hexToByteArray(createRawTransactionOutputObj.getRawTransaction());
         byte[] transactionId=Sha256.getBytesSHA256(rawTransactionBytes);

@@ -231,7 +231,7 @@ public class BlcokChainSdk {
      * @param input
      * @return
      */
-    public CreateRawTransactionOutput rawTransactionAsync(CreateRawTransactionInput input) throws Exception {
+    public CreateRawTransactionOutput createRawTransactionAsync(CreateRawTransactionInput input) throws Exception {
         String url=this.aelfSdkUrl+WEBAPI_CREATERAWTRANSACTIONASYNC;
         String responseBody=HttpClientUtilExt.sendPostRequest(url,JSONUtil.toJSONString(input));
         MapEntry responseBodyMap=JSONUtil.parseObject(responseBody);
