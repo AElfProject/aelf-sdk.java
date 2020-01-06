@@ -2,12 +2,10 @@ io\aelf\sdk\AelfSdk.class
 io\aelf\schemas\NetworkInfoOutput.class
 io\aelf\schemas\TransactionFeeDto.class
 io\aelf\schemas\AddPeerInput.class
-io\aelf\utils\secp256k1\Math_Modulo.class
 io\aelf\schemas\Timestamp.class
 io\aelf\schemas\TransactionDto.class
 io\aelf\schemas\SendTransactionOutput.class
 io\aelf\utils\StringUtil.class
-io\aelf\utils\secp256k1\Bouncycastle_Secp256k1.class
 io\aelf\schemas\ChainstatusDto.class
 io\aelf\sdk\NetSdk.class
 io\aelf\schemas\CreateRawTransactionOutput.class
@@ -22,7 +20,6 @@ io\aelf\utils\JSONUtil.class
 io\aelf\schemas\SendTransactionInput.class
 io\aelf\schemas\TaskQueueInfoDto.class
 io\aelf\schemas\BlockBodyDto.class
-io\aelf\utils\secp256k1\EXPList.class
 io\aelf\schemas\TransactionResultDto.class
 io\aelf\schemas\MerklePathNodeDto.class
 io\aelf\utils\HttpClientUtil.class
@@ -44,4 +41,3 @@ io\aelf\utils\LinkedMapEntry.class
 io\aelf\schemas\SendRawTransactionOutput.class
 io\aelf\schemas\ExecuteRawTransactionDto.class
 io\aelf\schemas\TransactionPoolStatusOutput.class
-io\aelf\utils\secp256k1\Secp256k1.class

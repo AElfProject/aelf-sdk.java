@@ -7,7 +7,7 @@ D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\Crea
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\TaskQueueInfoDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\SendTransactionsInput.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\BlockDto.java
-D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\secp256k1\EXPList.java
+D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\BitConverter.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\HttpClientUtilExt.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\SendTransactionInput.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\sdk\NetSdk.java
@@ -31,8 +31,6 @@ D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\IMapEn
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\Maps.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\StringUtil.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\sdk\BlockChainSdk.java
-D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\secp256k1\Math_Modulo.java
-D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\secp256k1\Bouncycastle_Secp256k1.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\LogEventDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\BlockHeaderDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\TransactionPoolStatusOutput.java
@@ -40,7 +38,6 @@ D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\Merk
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\ByteArrayHelper.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\MapEntry.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\HttpClientUtil.java
-D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\secp256k1\Secp256k1.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\MinerInRoundDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\SendRawTransactionInput.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\SendTransactionOutput.java

@@ -2,12 +2,12 @@ package io.aelf.sdk;
 import io.aelf.schemas.ChainstatusDto;
 import io.aelf.schemas.TransactionDto;
 import io.aelf.utils.Base58;
-import io.aelf.utils.secp256k1.Bouncycastle_Secp256k1;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.Sha256;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringUtils;
-
+import org.bouncycastle.util.encoders.Hex;
+import org.web3j.crypto.ECKeyPair;
+import org.web3j.crypto.Sign;
 import java.math.BigInteger;
 import java.util.Arrays;
 
@@ -21,6 +21,7 @@ public class AelfSdk {
     private String aelfSdkUrl;
     private BlockChainSdk blcokChainSdk;
     private NetSdk netSdk;
+
     /**
      * Object construction through the url path
      * @param url
@@ -94,21 +95,27 @@ public class AelfSdk {
     }
 
     public String getAddressFromPrivateKey(String privateKey){
-        byte[] pubKey=Bouncycastle_Secp256k1.publicKeyFromPrivate(new BigInteger(privateKey,16)).toByteArray();
-        pubKey=Sha256.getBytesSHA256(Sha256.getBytesSHA256(pubKey));
-        return Base58.encode(pubKey);
+        BigInteger privKey = new BigInteger(
+                privateKey, 16);
+        BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
+        byte[] pubKeyBytes=pubKey.toByteArray();
+        pubKeyBytes=Sha256.getBytesSHA256(Sha256.getBytesSHA256(pubKeyBytes));
+        return Base58.encode(pubKeyBytes);
     }
 
     public String GetSignatureWithPrivateKey(String privateKey, byte[] txData) throws Exception {
-        byte[] recSig = new byte[65];
-        BigInteger[] sig = Bouncycastle_Secp256k1.sig(txData,ByteArrayHelper.hexToByteArray(privateKey),recSig);
-        String signature = sig[0].toString(16)+ sig[1].toString(16);
-        //如果长度不够,则前面补0
-        if (signature.length() != 128) {
-            signature = StringUtils.leftPad(sig[0].toString(16),64,'0') + StringUtils.leftPad(sig[1].toString(16),64,'0');
-        }
-        signature=signature+"01";
-        return signature;
+
+        BigInteger privKey = new BigInteger(
+                privateKey, 16);
+        BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
+        ECKeyPair keyPair = new ECKeyPair(privKey, pubKey);
+        Sign.SignatureData signature =
+                Sign.signMessage(txData, keyPair, false);
+        String signatureStr= Hex.toHexString(signature.getR())+Hex.toHexString(signature.getS());
+        signatureStr=signatureStr+"01";
+        return signatureStr;
+
+
     }
 
     public boolean isConnected(){

@@ -174,6 +174,7 @@ public class BlockChainSdkTest {
         sendRawTransactionInputObj.setSignature(signature);
         sendRawTransactionInputObj.setReturnTransaction(true);
         aelfSdk.getBlockChainSdkObj().sendRawTransactionAsync(sendRawTransactionInputObj);
+
     }
 
     @Test
