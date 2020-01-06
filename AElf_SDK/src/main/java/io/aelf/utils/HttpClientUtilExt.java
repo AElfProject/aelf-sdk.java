@@ -1,6 +1,4 @@
 package io.aelf.utils;
-
-import io.aelf.sdk.BlcokChainSdk;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

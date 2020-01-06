@@ -1,7 +1,5 @@
 package io.aelf.schemas;
 
-import sun.misc.Request;
-
 /**
  * @author linhui linhui@tydic.com
  * @title: RequestMetric
