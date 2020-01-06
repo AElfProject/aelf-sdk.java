@@ -99,9 +99,8 @@ public class AelfSdk {
         return Base58.encode(pubKey);
     }
 
-    public String GetSignatureWithToHex(String privateKey, byte[] txData) throws Exception {
+    public String GetSignatureWithPrivateKey(String privateKey, byte[] txData) throws Exception {
         byte[] recSig = new byte[65];
-
         BigInteger[] sig = Bouncycastle_Secp256k1.sig(txData,ByteArrayHelper.hexToByteArray(privateKey),recSig);
         String signature = sig[0].toString(16)+ sig[1].toString(16);
         //如果长度不够,则前面补0

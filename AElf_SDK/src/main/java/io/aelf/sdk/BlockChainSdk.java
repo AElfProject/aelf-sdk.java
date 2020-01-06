@@ -89,12 +89,15 @@ public class BlockChainSdk {
     }
 
 
+
     /**
+     * 暂时废弃
      * Get the current state about a given block
      * /api/blockChain/blockState
      * @param blockHash
      * @return
      */
+    /**
     public BlockStateDto getBlockState(String blockHash) throws  Exception{
         String url=this.aelfSdkUrl+WEBAPI_GETBLOCKSTATE+"?blockHash="+blockHash;
         String chainContext = HttpClientUtilExt.sendGetRequest(url,"UTF-8");
@@ -119,6 +122,7 @@ public class BlockChainSdk {
         }
         return blockStateDtoObj;
     }
+    */
 
     /**
      * Get the current status of the block chain.
@@ -436,6 +440,9 @@ public class BlockChainSdk {
 
 
         List<String> transactions=(List<String>)block.getLinkedHashMap("Body").get("TransactionIds");
+        if(transactions==null){
+            transactions=new ArrayList<>();
+        }
         List txs = new ArrayList<String>();
         for (String transactionId:transactions)
         {
@@ -520,12 +527,13 @@ public class BlockChainSdk {
             byte[] bs=new byte[4];
             for(int i=0;i<4;i++){
                 bs[i]=0;
-                if(bytes.length>(i+1)){
+                if(bytes.length>(i)){
                     bs[i]=bytes[i];
                 }
             }
+            bytes=bs;
         }
-        int chainId = ByteArrayHelper.byteArrayToInt(bytes);
+        int chainId = BitConverter.toInt(bytes,0);
         return chainId;
     }
 }

@@ -52,12 +52,14 @@ public class BlockChainSdkTest {
     public void getTransactionPoolStatusAsyncTest() throws Exception {
         aelfSdk.getBlockChainSdkObj().getTransactionPoolStatusAsync();
     }
+    /**暂时废弃
     @Test
     public void getBlockStateAsyncTest() throws Exception{
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeightAsync();
         BlockDto blockDto=aelfSdk.getBlockChainSdkObj().getBlockByHeightAsync(blockHeight,false);
         aelfSdk.getBlockChainSdkObj().getBlockState(blockDto.getBlockHash());
     }
+     */
     @Test
     public void getChainStatusAsyncTest() throws Exception{
         aelfSdk.getBlockChainSdkObj().getChainStatusAsync();
@@ -98,10 +100,7 @@ public class BlockChainSdkTest {
         MapEntry mapParamsObj=Maps.newMapEntry();
         Base64 base64 = new Base64();
         mapParamsObj.put("value",base64.encodeToString(paramBytes));
-
         String param=JSONUtil.toJSONString(mapParamsObj);
-
-
         CreateRawTransactionInput createRawTransactionInputObj=new CreateRawTransactionInput();
         createRawTransactionInputObj.setFrom(address);
         createRawTransactionInputObj.setTo(toAddress);
@@ -113,7 +112,7 @@ public class BlockChainSdkTest {
 
         byte[] rawTransactionBytes=ByteArrayHelper.hexToByteArray(createRawTransactionOutputObj.getRawTransaction());
         byte[] transactionId=Sha256.getBytesSHA256(rawTransactionBytes);
-        String signature=aelfSdk.GetSignatureWithToHex(privateKey,transactionId);
+        String signature=aelfSdk.GetSignatureWithPrivateKey(privateKey,transactionId);
 
         ExecuteRawTransactionDto executeRawTransactionDtoObj=new ExecuteRawTransactionDto();
         executeRawTransactionDtoObj.setRawTransaction(createRawTransactionOutputObj.getRawTransaction());
@@ -122,7 +121,7 @@ public class BlockChainSdkTest {
         aelfSdk.getBlockChainSdkObj().executeRawTransactionAsync(executeRawTransactionDtoObj);
     }
     @Test
-    public void rawTransactionAsyncTest() throws Exception{
+    public void createRawTransactionAsyncTest() throws Exception{
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         String methodName = "GetContractAddressByName";
         byte[] paramBytes = Sha256.getBytesSHA256("AElf.ContractNames.Token");
@@ -168,7 +167,7 @@ public class BlockChainSdkTest {
 
         byte[] rawTransactionBytes=ByteArrayHelper.hexToByteArray(createRawTransactionOutputObj.getRawTransaction());
         byte[] transactionId=Sha256.getBytesSHA256(rawTransactionBytes);
-        String signature=aelfSdk.GetSignatureWithToHex(privateKey,transactionId);
+        String signature=aelfSdk.GetSignatureWithPrivateKey(privateKey,transactionId);
 
         SendRawTransactionInput sendRawTransactionInputObj=new SendRawTransactionInput();
         sendRawTransactionInputObj.setTransaction(createRawTransactionOutputObj.getRawTransaction());
@@ -199,7 +198,7 @@ public class BlockChainSdkTest {
         List<String> listString=aelfSdk.getBlockChainSdkObj().sendTransactionsAsync(sendTransactionsInputs);
         Assert.assertTrue(listString.size()>0);
 
-        throw new Exception("存在异常");
+        throw new Exception("存在异常(protobuff相关)");
 
     }
 
