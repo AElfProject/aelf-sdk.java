@@ -231,7 +231,7 @@ public class BlockChainSdkTest {
     @Test
     public void getChainIdAsyncTest() throws Exception {
         int chainId=aelfSdk.getBlockChainSdkObj().getChainIdAsync();
-        Assert.assertTrue(chainId>0);
+        Assert.assertTrue(chainId>9992731);
     }
     @Test
     public void isConnectedTest(){
