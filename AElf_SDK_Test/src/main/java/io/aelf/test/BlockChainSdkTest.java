@@ -23,9 +23,15 @@ public class BlockChainSdkTest {
     public void init() throws Exception {
 
         aelfSdk=new AelfSdk(httpUrl);
-        address="2bWwpsN9WSc4iKJPHYL4EZX3nfxVY7XLadecnNMar1GdSb4hJz";
-        //address=aelfSdk.getAddressFromPrivateKey(privateKey);
+        //"2bWwpsN9WSc4iKJPHYL4EZX3nfxVY7XLadecnNMar1GdSb4hJz"
+        address=aelfSdk.getAddressFromPrivateKey(privateKey);
     }
+
+    @Test
+    public void testGetPublicKeyAsHex() throws Exception {
+        Assert.assertTrue("2bWwpsN9WSc4iKJPHYL4EZX3nfxVY7XLadecnNMar1GdSb4hJz".equals(address));
+    }
+
 
 
     @Test

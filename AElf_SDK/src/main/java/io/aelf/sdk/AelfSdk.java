@@ -3,6 +3,8 @@ import io.aelf.schemas.ChainstatusDto;
 import io.aelf.schemas.TransactionDto;
 import io.aelf.utils.*;
 import org.apache.commons.codec.binary.Base64;
+import org.bitcoinj.core.Sha256Hash;
+import org.bouncycastle.jce.interfaces.ECKey;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
@@ -93,12 +95,11 @@ public class AelfSdk {
     }
 
     public String getAddressFromPrivateKey(String privateKey){
-        BigInteger privKey = new BigInteger(
-                privateKey, 16);
-        BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
-        byte[] pubKeyBytes=pubKey.toByteArray();
-        pubKeyBytes=Sha256.getBytesSHA256(Sha256.getBytesSHA256(pubKeyBytes));
-        return Base58.encode(pubKeyBytes);
+        org.bitcoinj.core.ECKey aelfKey=org.bitcoinj.core.ECKey.fromPrivate(new BigInteger(privateKey,16)).decompress();
+        byte[] publicKey = aelfKey.getPubKey();
+        byte[] hashTwice = Sha256Hash.hashTwice(publicKey);
+        String address = Base58.encodeChecked(hashTwice);
+        return address;
     }
 
     public String GetSignatureWithPrivateKey(String privateKey, byte[] txData) throws Exception {
