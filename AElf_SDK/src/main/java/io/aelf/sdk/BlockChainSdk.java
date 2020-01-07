@@ -64,7 +64,7 @@ public class BlockChainSdk {
      * @return
      */
     public BlockDto getBlockByHashAsync(String blockHash, boolean includeTransactions) throws Exception {
-        String chainContext = HttpClientUtilExt.sendGetRequest(this.aelfSdkUrl+WEBAPI_BLOCK+"?blockHash="+blockHash,"UTF-8");
+        String chainContext = HttpClientUtilExt.sendGetRequest(this.aelfSdkUrl+WEBAPI_BLOCK+"?blockHash="+blockHash+"&includeTransactions="+includeTransactions,"UTF-8");
         MapEntry mapObjJson=JSONUtil.parseObject(chainContext);
         BlockDto blockDto=createBlockDto(mapObjJson,includeTransactions);
         return blockDto;
