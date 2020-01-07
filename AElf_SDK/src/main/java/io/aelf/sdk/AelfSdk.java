@@ -1,9 +1,7 @@
 package io.aelf.sdk;
 import io.aelf.schemas.ChainstatusDto;
 import io.aelf.schemas.TransactionDto;
-import io.aelf.utils.Base58;
-import io.aelf.utils.ByteArrayHelper;
-import io.aelf.utils.Sha256;
+import io.aelf.utils.*;
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
@@ -112,7 +110,11 @@ public class AelfSdk {
         Sign.SignatureData signature =
                 Sign.signMessage(txData, keyPair, false);
         String signatureStr= Hex.toHexString(signature.getR())+Hex.toHexString(signature.getS());
-        signatureStr=signatureStr+"01";
+        String res = StringUtil.toString(signature.getV()-27);
+        if(res.length()==1){
+            res="0"+res;
+        }
+        signatureStr=signatureStr+(res);
         return signatureStr;
 
 
