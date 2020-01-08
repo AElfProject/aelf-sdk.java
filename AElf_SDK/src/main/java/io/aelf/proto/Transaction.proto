@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package = "io.aelf.proto";
+
+message Transaction
+{
+   Address    From=1;
+   Address    To=2;
+   int64     RefBlockNumber=3;
+   bytes 	 RefBlockPrefix=4;
+   string    MethodName=5;
+   bytes    Params=6;
+   bytes    Signature=10000;
+}
+message Address
+{
+    bytes value = 1;
+}

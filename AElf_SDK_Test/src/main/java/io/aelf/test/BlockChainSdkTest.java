@@ -244,6 +244,11 @@ public class BlockChainSdkTest {
         Assert.assertTrue(aelfSdk.isConnected());
     }
 
+    @Test
+    public void potobuffTest(){
+        
+
+    }
 
 
 
