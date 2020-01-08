@@ -246,7 +246,7 @@ public class BlockChainSdkTest {
 
     @Test
     public void potobuffTest(){
-        
+
 
     }
 
