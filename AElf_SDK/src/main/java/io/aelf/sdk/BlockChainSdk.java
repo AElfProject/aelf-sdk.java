@@ -4,6 +4,7 @@ import io.aelf.utils.*;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bitcoinj.core.Base58;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -522,7 +523,7 @@ public class BlockChainSdk {
     public int getChainIdAsync() throws Exception{
         ChainstatusDto chainStatusDto = this.getChainStatusAsync();
         String base58ChainId = chainStatusDto.getChainId();
-        byte[] bytes=Base58.decode(base58ChainId);
+        byte[] bytes= Base58.decode(base58ChainId);
         if(bytes.length<4){
             byte[] bs=new byte[4];
             for(int i=0;i<4;i++){

@@ -1,10 +1,10 @@
 package io.aelf.sdk;
+import io.aelf.proto.TransactionOuterClass;
 import io.aelf.schemas.ChainstatusDto;
 import io.aelf.schemas.TransactionDto;
 import io.aelf.utils.*;
 import org.apache.commons.codec.binary.Base64;
 import org.bitcoinj.core.Sha256Hash;
-import org.bouncycastle.jce.interfaces.ECKey;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
@@ -76,11 +76,10 @@ public class AelfSdk {
         return transaction;
     }
 
-    public TransactionDto signTransaction(String privateKeyHex,TransactionDto transaction){
-        //String sha256= Sha256.getSHA256ForBytes(transaction.toByteArray());
-        //byte[] transactionData=ByteString.copyFrom(sha256.getBytes()).toByteArray();
-        //SignWithPrivateKey
-        return null;
+    public String signTransaction(String privateKeyHex, TransactionOuterClass.Transaction transaction) throws Exception {
+
+        byte[] transactionData=Sha256.getBytesSHA256(transaction.toByteArray());
+        return this.GetSignatureWithPrivateKey(privateKeyHex,transactionData);
     }
 
 
@@ -98,7 +97,7 @@ public class AelfSdk {
         org.bitcoinj.core.ECKey aelfKey=org.bitcoinj.core.ECKey.fromPrivate(new BigInteger(privateKey,16)).decompress();
         byte[] publicKey = aelfKey.getPubKey();
         byte[] hashTwice = Sha256Hash.hashTwice(publicKey);
-        String address = Base58.encodeChecked(hashTwice);
+        String address = Base58Ext.encodeChecked(hashTwice);
         return address;
     }
 

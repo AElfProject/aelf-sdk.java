@@ -1210,6 +1210,7 @@ public final class TransactionOuterClass {
       return DEFAULT_INSTANCE;
     }
 
+    
   }
 
   public interface AddressOrBuilder extends
