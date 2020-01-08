@@ -8,7 +8,7 @@ message Transaction
    int64     RefBlockNumber=3;
    bytes 	 RefBlockPrefix=4;
    string    MethodName=5;
-   bytes    Params=6;
+   string    Params=6;
    bytes    Signature=10000;
 }
 message Address

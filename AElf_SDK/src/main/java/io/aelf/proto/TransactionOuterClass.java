@@ -65,9 +65,14 @@ public final class TransactionOuterClass {
         getMethodNameBytes();
 
     /**
-     * <code>bytes Params = 6;</code>
+     * <code>string Params = 6;</code>
      */
-    com.google.protobuf.ByteString getParams();
+    java.lang.String getParams();
+    /**
+     * <code>string Params = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getParamsBytes();
 
     /**
      * <code>bytes Signature = 10000;</code>
@@ -89,7 +94,7 @@ public final class TransactionOuterClass {
     private Transaction() {
       refBlockPrefix_ = com.google.protobuf.ByteString.EMPTY;
       methodName_ = "";
-      params_ = com.google.protobuf.ByteString.EMPTY;
+      params_ = "";
       signature_ = com.google.protobuf.ByteString.EMPTY;
     }
 
@@ -160,8 +165,9 @@ public final class TransactionOuterClass {
               break;
             }
             case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              params_ = input.readBytes();
+              params_ = s;
               break;
             }
             case 80002: {
@@ -296,12 +302,37 @@ public final class TransactionOuterClass {
     }
 
     public static final int PARAMS_FIELD_NUMBER = 6;
-    private com.google.protobuf.ByteString params_;
+    private volatile java.lang.Object params_;
     /**
-     * <code>bytes Params = 6;</code>
+     * <code>string Params = 6;</code>
      */
-    public com.google.protobuf.ByteString getParams() {
-      return params_;
+    public java.lang.String getParams() {
+      java.lang.Object ref = params_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        params_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Params = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getParamsBytes() {
+      java.lang.Object ref = params_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        params_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int SIGNATURE_FIELD_NUMBER = 10000;
@@ -342,8 +373,8 @@ public final class TransactionOuterClass {
       if (!getMethodNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, methodName_);
       }
-      if (!params_.isEmpty()) {
-        output.writeBytes(6, params_);
+      if (!getParamsBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, params_);
       }
       if (!signature_.isEmpty()) {
         output.writeBytes(10000, signature_);
@@ -376,9 +407,8 @@ public final class TransactionOuterClass {
       if (!getMethodNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, methodName_);
       }
-      if (!params_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, params_);
+      if (!getParamsBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, params_);
       }
       if (!signature_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
@@ -600,7 +630,7 @@ public final class TransactionOuterClass {
 
         methodName_ = "";
 
-        params_ = com.google.protobuf.ByteString.EMPTY;
+        params_ = "";
 
         signature_ = com.google.protobuf.ByteString.EMPTY;
 
@@ -709,8 +739,9 @@ public final class TransactionOuterClass {
           methodName_ = other.methodName_;
           onChanged();
         }
-        if (other.getParams() != com.google.protobuf.ByteString.EMPTY) {
-          setParams(other.getParams());
+        if (!other.getParams().isEmpty()) {
+          params_ = other.params_;
+          onChanged();
         }
         if (other.getSignature() != com.google.protobuf.ByteString.EMPTY) {
           setSignature(other.getSignature());
@@ -1102,17 +1133,43 @@ public final class TransactionOuterClass {
         return this;
       }
 
-      private com.google.protobuf.ByteString params_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object params_ = "";
       /**
-       * <code>bytes Params = 6;</code>
+       * <code>string Params = 6;</code>
        */
-      public com.google.protobuf.ByteString getParams() {
-        return params_;
+      public java.lang.String getParams() {
+        java.lang.Object ref = params_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          params_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes Params = 6;</code>
+       * <code>string Params = 6;</code>
        */
-      public Builder setParams(com.google.protobuf.ByteString value) {
+      public com.google.protobuf.ByteString
+          getParamsBytes() {
+        java.lang.Object ref = params_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          params_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Params = 6;</code>
+       */
+      public Builder setParams(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1122,11 +1179,25 @@ public final class TransactionOuterClass {
         return this;
       }
       /**
-       * <code>bytes Params = 6;</code>
+       * <code>string Params = 6;</code>
        */
       public Builder clearParams() {
         
         params_ = getDefaultInstance().getParams();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Params = 6;</code>
+       */
+      public Builder setParamsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        params_ = value;
         onChanged();
         return this;
       }
@@ -1210,7 +1281,6 @@ public final class TransactionOuterClass {
       return DEFAULT_INSTANCE;
     }
 
-    
   }
 
   public interface AddressOrBuilder extends
@@ -1714,7 +1784,7 @@ public final class TransactionOuterClass {
       "rom\030\001 \001(\0132\010.Address\022\024\n\002To\030\002 \001(\0132\010.Addres" +
       "s\022\026\n\016RefBlockNumber\030\003 \001(\003\022\026\n\016RefBlockPre" +
       "fix\030\004 \001(\014\022\022\n\nMethodName\030\005 \001(\t\022\016\n\006Params\030" +
-      "\006 \001(\014\022\022\n\tSignature\030\220N \001(\014\"\030\n\007Address\022\r\n\005" +
+      "\006 \001(\t\022\022\n\tSignature\030\220N \001(\014\"\030\n\007Address\022\r\n\005" +
       "value\030\001 \001(\014B\017\n\rio.aelf.protob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

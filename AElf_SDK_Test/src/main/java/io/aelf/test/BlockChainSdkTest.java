@@ -269,7 +269,8 @@ public class BlockChainSdkTest {
         transaction.setFrom(addressFormObj);
         transaction.setTo(addressToObj);
         transaction.setMethodName(methodName);
-        transaction.setParams(ByteString.copyFrom(bytes));
+        Base64 base64 = new Base64();
+        transaction.setParams(base64.encodeToString(bytes));
         transaction.setRefBlockNumber(chainStatus.getBestChainHeight());
         byte[] refBlockPrefix= ByteArrayHelper.hexToByteArray(chainStatus.getBestChainHash());
         refBlockPrefix= Arrays.copyOf(refBlockPrefix,4);
