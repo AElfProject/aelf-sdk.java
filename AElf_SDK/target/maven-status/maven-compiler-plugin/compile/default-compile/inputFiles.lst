@@ -1,10 +1,12 @@
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\TransactionDto.java
+D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\proto\Core.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\ExecuteTransactionDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\Timestamp.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\BlockBodyDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\ChainstatusDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\CreateRawTransactionOutput.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\TaskQueueInfoDto.java
+D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\Base58Ext.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\SendTransactionsInput.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\BlockDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\BitConverter.java
@@ -16,7 +18,6 @@ D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\Bloc
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\TransactionFeeDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\sdk\AelfSdk.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\JSONUtil.java
-D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\utils\Base58.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\AddPeerInput.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\RoundDto.java
 D:\PPMS\sourceCode\git\aelf-sdk.java\AElf_SDK\src\main\java\io\aelf\schemas\CreateRawTransactionInput.java

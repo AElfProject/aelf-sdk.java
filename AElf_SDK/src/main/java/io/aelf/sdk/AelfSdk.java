@@ -1,9 +1,9 @@
 package io.aelf.sdk;
-import io.aelf.proto.TransactionOuterClass;
+import com.google.protobuf.ByteString;
+import io.aelf.proto.Core;
 import io.aelf.schemas.ChainstatusDto;
-import io.aelf.schemas.TransactionDto;
 import io.aelf.utils.*;
-import org.apache.commons.codec.binary.Base64;
+import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Sha256Hash;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
@@ -61,22 +61,30 @@ public class AelfSdk {
      * @return
      * @throws Exception
      */
-    public TransactionDto generateTransaction(String from, String to, String methodName, String params) throws Exception {
+    public Core.Transaction.Builder generateTransaction(String from, String to, String methodName, byte [] params) throws Exception {
         ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatusAsync();
-        Base64 base64 = new Base64();
-        TransactionDto transaction = new TransactionDto();
-        transaction.setFrom(from);
-        transaction.setTo(to);
+        Core.Hash.Builder hash=Core.Hash.newBuilder();
+        Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
+        Core.Address.Builder addressForm = Core.Address.newBuilder();
+        Core.Address.Builder addressTo = Core.Address.newBuilder();
+        addressForm.setValue(ByteString.copyFrom(Base58.decodeChecked(from)));
+        addressTo.setValue(ByteString.copyFrom(Base58.decodeChecked(to)));
+        Core.Address addressFormObj=addressForm.build();
+        Core.Address addressToObj=addressTo.build();
+        transaction.setFrom(addressFormObj);
+        transaction.setTo(addressToObj);
         transaction.setMethodName(methodName);
-        transaction.setParams(params);
+        hash.setValue(ByteString.copyFrom(params));
+        Core.Hash hashObj=hash.build();
+        transaction.setParams(hashObj.toByteString());
         transaction.setRefBlockNumber(chainStatus.getBestChainHeight());
         byte[] refBlockPrefix= ByteArrayHelper.hexToByteArray(chainStatus.getBestChainHash());
         refBlockPrefix= Arrays.copyOf(refBlockPrefix,4);
-        transaction.setRefBlockPrefix(base64.encodeAsString(refBlockPrefix));
+        transaction.setRefBlockPrefix(ByteString.copyFrom(refBlockPrefix));
         return transaction;
     }
 
-    public String signTransaction(String privateKeyHex, TransactionOuterClass.Transaction transaction) throws Exception {
+    public String signTransaction(String privateKeyHex, Core.Transaction transaction) throws Exception {
 
         byte[] transactionData=Sha256.getBytesSHA256(transaction.toByteArray());
         return this.GetSignatureWithPrivateKey(privateKeyHex,transactionData);

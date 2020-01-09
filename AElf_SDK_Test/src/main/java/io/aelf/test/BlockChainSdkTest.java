@@ -1,19 +1,16 @@
 package io.aelf.test;
 import com.google.protobuf.ByteString;
-import io.aelf.proto.TransactionOuterClass;
+import io.aelf.proto.Core;
 import io.aelf.schemas.*;
 import io.aelf.sdk.AelfSdk;
 import io.aelf.utils.*;
 import org.apache.commons.codec.binary.Base64;
-import org.bitcoinj.core.Base58;
-import org.bouncycastle.util.BigIntegers;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.math.BigInteger;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -99,10 +96,17 @@ public class BlockChainSdkTest {
 
     @Test
     public void executeTransactionAsyncTest() throws Exception{
+        String toAddress = aelfSdk.getGenesisContractAddressAsync();
+        String methodName = "GetContractAddressByName";
+        byte[] bytes = Sha256.getBytesSHA256("AElf.ContractNames.TokenConverter");
+        Core.Transaction.Builder transaction=aelfSdk.generateTransaction(address,toAddress,methodName,bytes);
+        Core.Transaction transactionObj=transaction.build();
+        String signature=aelfSdk.signTransaction(privateKey,transactionObj);
+        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+        transactionObj=transaction.build();
         ExecuteTransactionDto executeTransactionDtoObj=new ExecuteTransactionDto();
-        executeTransactionDtoObj.setRawTransaction("0a220a20d211cf723f17396f7cf282dc03a26368e82a026d56989303f35665ecb43c708612220a20dd8eea50c31966e06e4a2662bebef7ed81d09a47b2eb1eb3729f2f0cc78129ae1881c70122042ef6caf82a18476574436f6e74726163744164647265737342794e616d6532220a20b7eb587576d2f1b1bfad8046c595d3ec5576c581a21e81a243fe9dad8b44276482f10441e584847422d5379a6ceb9ed286cf8e1ebc68a41e53b202eb05e9160f1f1fecc5562c9fa23ccd9bfd528b51c42c5ba8b20b93beb23033c7acab448b18189f017001");
+        executeTransactionDtoObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
         aelfSdk.getBlockChainSdkObj().executeTransactionAsync(executeTransactionDtoObj);
-        throw new Exception("存在异常(protobuff)");
     }
     @Test
     public void executeRawTransactionAsyncTest() throws Exception{
@@ -194,27 +198,42 @@ public class BlockChainSdkTest {
 
     @Test
     public void sendTransactionAsyncTest() throws Exception{
+
+        String toAddress = aelfSdk.getGenesisContractAddressAsync();
+        String methodName = "GetContractAddressByName";
+        byte[] bytes = Sha256.getBytesSHA256("AElf.ContractNames.Vote");
+        Core.Transaction.Builder transaction=aelfSdk.generateTransaction(address,toAddress,methodName,bytes);
+        Core.Transaction transactionObj=transaction.build();
+        String signature=aelfSdk.signTransaction(privateKey,transactionObj);
+        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+        transactionObj=transaction.build();
         SendTransactionInput sendTransactionInputObj=new SendTransactionInput();
-        sendTransactionInputObj.setRawTransaction("0a220a20d211cf723f17396f7cf282dc03a26368e82a026d56989303f35665ecb43c708612220a20dd8eea50c31966e06e4a2662bebef7ed81d09a47b2eb1eb3729f2f0cc78129ae1881c70122042ef6caf82a18476574436f6e74726163744164647265737342794e616d6532220a20b7eb587576d2f1b1bfad8046c595d3ec5576c581a21e81a243fe9dad8b44276482f10441e584847422d5379a6ceb9ed286cf8e1ebc68a41e53b202eb05e9160f1f1fecc5562c9fa23ccd9bfd528b51c42c5ba8b20b93beb23033c7acab448b18189f017001");
+        sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
         aelfSdk.getBlockChainSdkObj().sendTransactionAsync(sendTransactionInputObj);
-        throw  new Exception("存在异常(protobuff)");
     }
 
     @Test
     public void sendTransactionsAsyncTest() throws Exception{
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
-        String param = Sha256.getSHA256("AElf.ContractNames.Vote");
+        byte[] param1 = Sha256.getBytesSHA256("AElf.ContractNames.Token");
+        byte[] param2 = Sha256.getBytesSHA256("AElf.ContractNames.Vote");
         String methodName = "GetContractAddressByName";
-        TransactionDto transaction=aelfSdk.generateTransaction(address,toAddress,methodName,param);
-        //transaction=aelfSdk.signTransaction(privateKey,transaction);
+        List<byte[]> parameters = new ArrayList<byte[]>();
+        parameters.add(param1);
+        parameters.add(param2);
+        for(byte[] tmp:parameters){
+            Core.Transaction.Builder transaction=aelfSdk.generateTransaction(address,toAddress,methodName,tmp);
+            Core.Transaction transactionObj=transaction.build();
+            String signature=aelfSdk.signTransaction(privateKey,transactionObj);
+            transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+            transactionObj=transaction.build();
+            SendTransactionsInput sendTransactionsInputs=new SendTransactionsInput();
+            String rawTransactions=Hex.toHexString(transactionObj.toByteArray());
+            sendTransactionsInputs.setRawTransactions(rawTransactions);
+            List<String> listString=aelfSdk.getBlockChainSdkObj().sendTransactionsAsync(sendTransactionsInputs);
+            Assert.assertTrue(listString.size()>0);
 
-        SendTransactionsInput sendTransactionsInputs=new SendTransactionsInput();
-        String rawTransactions="0a220a20d211cf723f17396f7cf282dc03a26368e82a026d56989303f35665ecb43c708612220a20dd8eea50c31966e06e4a2662bebef7ed81d09a47b2eb1eb3729f2f0cc78129ae18182204406eae3a2a18476574436f6e74726163744164647265737342794e616d6532220a20a2a00f8583c08daa00b80b0bbac4684396fe966b683ea956a63bd8845eee6ae782f1044137ec1270b9d13edd3492923345e7b2bdef50741b98815c252b10ce379481217c2279927d17ca3051cf4a272e188f01cdaf566c1608a8993246aa3c314165b5c901,0a220a20d211cf723f17396f7cf282dc03a26368e82a026d56989303f35665ecb43c708612220a20dd8eea50c31966e06e4a2662bebef7ed81d09a47b2eb1eb3729f2f0cc78129ae18182204406eae3a2a18476574436f6e74726163744164647265737342794e616d6532220a20d48d76882aad8bf04e747c8e057ad32d13bfdffd95df8171abc6a22e5a75c8ed82f10441293aa41666da5eff03b85a34abf3d735a1015a2dbda94608df94edaa6cb231ac57af680e228902714f38e8528b9443c5d66580f80fa6f50403e7c86c5259aa8600";
-        sendTransactionsInputs.setRawTransactions(rawTransactions);
-        List<String> listString=aelfSdk.getBlockChainSdkObj().sendTransactionsAsync(sendTransactionsInputs);
-        Assert.assertTrue(listString.size()>0);
-
-        throw new Exception("存在异常(protobuff相关)");
+        }
 
     }
 
@@ -255,31 +274,16 @@ public class BlockChainSdkTest {
 
     @Test
     public void potobuffTest() throws Exception{
-        ChainstatusDto chainStatus = aelfSdk.getBlockChainSdkObj().getChainStatusAsync();
+
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         byte[] bytes = Sha256.getBytesSHA256("AElf.ContractNames.Vote");
         String methodName = "GetContractAddressByName";
-        TransactionOuterClass.Transaction.Builder transaction = TransactionOuterClass.Transaction.newBuilder();
-        TransactionOuterClass.Address.Builder addressForm = TransactionOuterClass.Address.newBuilder();
-        TransactionOuterClass.Address.Builder addressTo = TransactionOuterClass.Address.newBuilder();
-        addressForm.setValue(ByteString.copyFrom(Base58.decodeChecked(address)));
-        addressTo.setValue(ByteString.copyFrom(Base58.decodeChecked(toAddress)));
-        TransactionOuterClass.Address addressFormObj=addressForm.build();
-        TransactionOuterClass.Address addressToObj=addressTo.build();
-        transaction.setFrom(addressFormObj);
-        transaction.setTo(addressToObj);
-        transaction.setMethodName(methodName);
-        Base64 base64 = new Base64();
-        transaction.setParams(base64.encodeToString(bytes));
-        transaction.setRefBlockNumber(chainStatus.getBestChainHeight());
-        byte[] refBlockPrefix= ByteArrayHelper.hexToByteArray(chainStatus.getBestChainHash());
-        refBlockPrefix= Arrays.copyOf(refBlockPrefix,4);
-        transaction.setRefBlockPrefix(ByteString.copyFrom(refBlockPrefix));
-        TransactionOuterClass.Transaction transactionObj=transaction.build();
+        Core.Transaction.Builder transaction=aelfSdk.generateTransaction(address,toAddress,methodName,bytes);
+        Core.Transaction transactionObj=transaction.build();
         String signature=aelfSdk.signTransaction(privateKey,transactionObj);
-        BigInteger bigIntegers = new BigInteger(signature,16);
-        transaction.setSignature(ByteString.copyFrom(bigIntegers.toByteArray()));
+        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
         transactionObj=transaction.build();
+
         SendTransactionInput sendTransactionInputObj=new SendTransactionInput();
         sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
         aelfSdk.getBlockChainSdkObj().sendTransactionAsync(sendTransactionInputObj);
