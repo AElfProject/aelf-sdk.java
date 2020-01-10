@@ -1,11 +1,6 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: RequestMetric
- * @description: TODO
- * @date 2019/12/1513:57
- */
+
 public class RequestMetric {
     private  long RoundTripTime;
     private String MethodName;

@@ -1,11 +1,6 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: NetworkInfoOutput
- * @description: TODO
- * @date 2019/12/1514:01
- */
+
 public class NetworkInfoOutput {
     private String Version;
     private int ProtocolVersion;

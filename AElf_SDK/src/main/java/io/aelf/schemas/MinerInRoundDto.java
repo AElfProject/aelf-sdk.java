@@ -1,11 +1,6 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: MinerInRoundDto
- * @description: TODO
- * @date 2019/12/1514:33
- */
+
 public class MinerInRoundDto {
     private int Order;
     private int ProducedTinyBlocks;

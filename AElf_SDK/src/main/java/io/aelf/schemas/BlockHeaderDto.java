@@ -2,12 +2,6 @@ package io.aelf.schemas;
 
 import java.util.Date;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: BlockHeaderDto
- * @description: TODO
- * @date 2019/12/1511:59
- */
 public class BlockHeaderDto {
     private String PreviousBlockHash;
     private String MerkleTreeRootOfTransactions;

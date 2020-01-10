@@ -2,12 +2,7 @@ package io.aelf.schemas;
 
 import java.util.HashMap;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: ChainstatusDto
- * @description: TODO
- * @date 2019/12/1514:19
- */
+
 public class ChainstatusDto {
     private String ChainId;
     private HashMap<String,Long> Branches;

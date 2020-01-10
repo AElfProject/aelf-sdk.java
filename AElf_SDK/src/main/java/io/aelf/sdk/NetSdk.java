@@ -32,7 +32,7 @@ public class NetSdk {
      * @param input
      * @return
      */
-    public Boolean addPeerAsync(AddPeerInput input) throws Exception{
+    public Boolean addPeer(AddPeerInput input) throws Exception{
         String url=this.aelfSdkUrl+WEBAPI_ADDPEERASYNC;
         MapEntry mapParmas=Maps.newMap();
         mapParmas.put("Address",input.getAddress());
@@ -49,7 +49,7 @@ public class NetSdk {
      * @param address
      * @return
      */
-    public Boolean  removePeerAsync(String address) throws Exception{
+    public Boolean  removePeer(String address) throws Exception{
         String url=this.aelfSdkUrl+WEBAPI_REMOVEPEERASYNC+"?address="+address;
         String responseBobyResult=HttpClientUtilExt.sendDeleteRequest(url,"UTF-8");
         if("true".equals(responseBobyResult)){
@@ -64,7 +64,7 @@ public class NetSdk {
      * @param withMetrics
      * @return
      */
-    public List<PeerDto> getPeersAsync(Boolean withMetrics) throws Exception{
+    public List<PeerDto> getPeers(Boolean withMetrics) throws Exception{
         String url=this.aelfSdkUrl+WEBAPI_GETPEERSASYNC+"?withMetrics="+withMetrics;
         String peersChain=HttpClientUtil.sendGetRequest(url,"UTF-8");
         List<PeerDto> listPeerDto=new ArrayList<PeerDto>();
@@ -112,7 +112,7 @@ public class NetSdk {
      * webapi:/api/net/networkInfo
      * @return
      */
-    public NetworkInfoOutput getNetworkInfoAsync() throws Exception{
+    public NetworkInfoOutput getNetworkInfo() throws Exception{
         String networkChain=HttpClientUtil.sendGetRequest(this.aelfSdkUrl+WEBAPI_GETNETWORKINFOASYNC,"UTF-8");
         MapEntry responseBobyMap= JSONUtil.parseObject(networkChain);
         NetworkInfoOutput networkInfoOutput=new NetworkInfoOutput();

@@ -2,12 +2,7 @@ package io.aelf.schemas;
 
 import java.util.List;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: PeerDto
- * @description: TODO
- * @date 2019/12/1513:55
- */
+
 public class PeerDto {
     private String IpAddress;
     private int ProtocolVersion;

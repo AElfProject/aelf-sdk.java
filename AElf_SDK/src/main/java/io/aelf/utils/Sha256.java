@@ -3,13 +3,6 @@ package io.aelf.utils;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-/**
- * @author linhui linhui@tydic.com
- * @title: Sha256
- * @description: TODO
- * @date 2019/12/2322:28
- */
 public class Sha256 {
 
     public static byte[] getBytesSHA256(byte[] str){
@@ -40,30 +33,10 @@ public class Sha256 {
         }
         return digestBytes;
     }
-
     /**
-     * 利用java原生的类实现SHA256加密
-     * @param str 加密后的报文
-     * @return
-     */
-    public static String getSHA256(String str){
-        MessageDigest messageDigest;
-        String encodestr = "";
-        try {
-            messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(str.getBytes("UTF-8"));
-            encodestr = byte2Hex(messageDigest.digest());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return encodestr;
-    }
-    /**
-     * 将byte转为16进制
+     * Converts a byte to hexadecimal
      * @param bytes
-     * @return
+     * @return hex
      */
     private static String byte2Hex(byte[] bytes){
         StringBuffer stringBuffer = new StringBuffer();
@@ -71,7 +44,6 @@ public class Sha256 {
         for (int i=0;i<bytes.length;i++){
             temp = Integer.toHexString(bytes[i] & 0xFF);
             if (temp.length()==1){
-                //1得到一位的进行补0操作
                 stringBuffer.append("0");
             }
             stringBuffer.append(temp);

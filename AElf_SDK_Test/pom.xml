@@ -6,10 +6,10 @@
 
     <groupId>io.aelf</groupId>
     <artifactId>aelf_sdk_test</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <properties>
         <junit.version>4.12</junit.version>
-        <io.aelf.version>1.0-SNAPSHOT</io.aelf.version>
+        <io.aelf.version>0.1.0</io.aelf.version>
         <jdk.version>1.8</jdk.version>
     </properties>
     <dependencies>

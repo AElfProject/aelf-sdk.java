@@ -1,11 +1,6 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: CreateRawTransactionInput
- * @description: TODO
- * @date 2019/12/1514:49
- */
+
 public class CreateRawTransactionInput {
     private String From;
     private String To;

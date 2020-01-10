@@ -1,11 +1,6 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: SendTransactionsInput
- * @description: TODO
- * @date 2019/12/1516:21
- */
+
 public class SendTransactionsInput {
     private String RawTransactions;
 

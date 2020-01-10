@@ -2,12 +2,7 @@ package io.aelf.schemas;
 
 import java.util.List;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: LogEventDto
- * @description: TODO
- * @date 2019/12/1516:27
- */
+
 public class LogEventDto {
     private String Address;
     private String Name;

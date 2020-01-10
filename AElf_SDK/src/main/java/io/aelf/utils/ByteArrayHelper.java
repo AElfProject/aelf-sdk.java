@@ -34,9 +34,9 @@ public class ByteArrayHelper {
         return result;
     }
     /**
-     * 字节数组转16进制
-     * @param bytes 需要转换的byte数组
-     * @return 转换后的Hex字符串
+     * Byte arrays to hexadecimal
+     * @param bytes Byte array to convert
+     * @return Converted Hex string
      */
     public static String bytesToHex(byte[] bytes) {
         StringBuffer sb = new StringBuffer();
@@ -50,9 +50,9 @@ public class ByteArrayHelper {
         return sb.toString();
     }
     /**
-     * Hex字符串转byte
-     * @param inHex 待转换的Hex字符串
-     * @return 转换后的byte
+     * The Hex string turns to byte
+     * @param inHex Hex string to be converted
+     * @return Converted byte
      */
     private static byte hexToByte(String inHex){
         return (byte)Integer.parseInt(inHex,16);

@@ -1,7 +1,9 @@
 package io.aelf.sdk;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.StringValue;
 import io.aelf.proto.Core;
 import io.aelf.schemas.ChainstatusDto;
+import io.aelf.schemas.ExecuteTransactionDto;
 import io.aelf.utils.*;
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Sha256Hash;
@@ -62,7 +64,7 @@ public class AelfSdk {
      * @throws Exception
      */
     public Core.Transaction.Builder generateTransaction(String from, String to, String methodName, byte [] params) throws Exception {
-        ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatusAsync();
+        ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatus();
         Core.Hash.Builder hash=Core.Hash.newBuilder();
         Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
         Core.Address.Builder addressForm = Core.Address.newBuilder();
@@ -84,6 +86,13 @@ public class AelfSdk {
         return transaction;
     }
 
+    /**
+     * Sign a transaction using private key.
+     * @param privateKeyHex
+     * @param transaction
+     * @return
+     * @throws Exception
+     */
     public String signTransaction(String privateKeyHex, Core.Transaction transaction) throws Exception {
 
         byte[] transactionData=Sha256.getBytesSHA256(transaction.toByteArray());
@@ -97,10 +106,76 @@ public class AelfSdk {
      * @throws Exception
      */
     public String getGenesisContractAddressAsync() throws Exception{
-        ChainstatusDto chainstatusDto=this.getBlockChainSdkObj().getChainStatusAsync();
+        ChainstatusDto chainstatusDto=this.getBlockChainSdkObj().getChainStatus();
         return chainstatusDto.getGenesisContractAddress();
     }
 
+    /**
+     * Get the account address through the public key.
+     * @param pubKey
+     * @return
+     */
+    public String getAddressFromPubKey(String pubKey)
+    {
+        byte [] publicKey = ByteArrayHelper.hexToByteArray(pubKey);
+        byte[] hashTwice = Sha256Hash.hashTwice(publicKey);
+        String address = Base58Ext.encodeChecked(hashTwice);
+        return address;
+    }
+
+    /**
+     * Convert the Address to the displayed string：symbol_base58-string_base58-string-chain-id
+     * @param privateKey
+     * @param address
+     * @return
+     * @throws Exception
+     */
+    public String getFormattedAddress(String privateKey,String address) throws Exception {
+        String chainIdString=this.getBlockChainSdkObj().getChainStatus().getChainId();
+        String fromAddress=this.getAddressFromPrivateKey(privateKey);
+        String toAddress = this.getContractAddressByName(privateKey,Sha256.getBytesSHA256("AElf.ContractNames.Token"));
+        String methodName = "GetPrimaryTokenSymbol";
+        byte[] bytes=new byte[0];
+        Core.Transaction.Builder transaction=this.generateTransaction(fromAddress,toAddress,methodName,bytes);
+        String signature=this.signTransaction(privateKey,transaction.build());
+        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+        Core.Transaction transactionObj=transaction.build();
+        ExecuteTransactionDto executeTransactionDto=new ExecuteTransactionDto();
+        executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
+        String response=this.blcokChainSdk.executeTransaction(executeTransactionDto);
+        StringValue symbol = StringValue.parseFrom(ByteArrayHelper.hexToByteArray(response));
+        return symbol.getValue()+"_"+address+"_"+chainIdString;
+    }
+
+    /**
+     * Get address of a contract by given contractNameHash
+     * @param privateKey
+     * @param contractNameHash
+     * @return
+     * @throws Exception
+     */
+    public String getContractAddressByName(String privateKey,byte[] contractNameHash) throws Exception {
+        String from= this.getAddressFromPrivateKey(privateKey);
+        String to=this.getGenesisContractAddressAsync();
+        String methodName = "GetContractAddressByName";
+        Core.Transaction.Builder transaction=this.generateTransaction(from,to,methodName,contractNameHash);
+        String signature=this.signTransaction(privateKey,transaction.build());
+        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+        Core.Transaction transactionObj=transaction.build();
+        ExecuteTransactionDto executeTransactionDto=new ExecuteTransactionDto();
+        executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
+        String response=this.blcokChainSdk.executeTransaction(executeTransactionDto);
+        byte[] byteArray = ByteArrayHelper.hexToByteArray(response);
+        String base58Str=Base58Ext.encodeChecked(Core.Address.getDefaultInstance().parseFrom(byteArray).getValue().toByteArray());
+        return base58Str;
+
+    }
+
+    /**
+     * Get address of a contract by given contractNameHash.
+     * @param privateKey
+     * @return
+     */
     public String getAddressFromPrivateKey(String privateKey){
         org.bitcoinj.core.ECKey aelfKey=org.bitcoinj.core.ECKey.fromPrivate(new BigInteger(privateKey,16)).decompress();
         byte[] publicKey = aelfKey.getPubKey();
@@ -128,9 +203,13 @@ public class AelfSdk {
 
     }
 
+    /**
+     * Verify whether this sdk successfully connects the chain.
+     * @return IsConnected or not
+     */
     public boolean isConnected(){
         try{
-            ChainstatusDto chainStatusDto=this.getBlockChainSdkObj().getChainStatusAsync();
+            ChainstatusDto chainStatusDto=this.getBlockChainSdkObj().getChainStatus();
             return chainStatusDto!=null;
         }catch(Exception ex){
             return false;

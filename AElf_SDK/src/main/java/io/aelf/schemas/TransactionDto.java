@@ -1,11 +1,6 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: TransactionDto
- * @description: TODO
- * @date 2019/12/1516:16
- */
+
 public class TransactionDto {
     private String From;
     private String To;

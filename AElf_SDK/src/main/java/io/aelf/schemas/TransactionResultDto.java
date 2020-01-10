@@ -2,12 +2,7 @@ package io.aelf.schemas;
 
 import java.util.List;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: TransactionResultDto
- * @description: TODO
- * @date 2019/12/1516:25
- */
+
 public class TransactionResultDto {
     private String TransactionId;
     private String Status;

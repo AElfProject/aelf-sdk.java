@@ -3,12 +3,7 @@ package io.aelf.schemas;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: TransactionFeeDto
- * @description: TODO
- * @date 2019/12/1516:23
- */
+
 public class TransactionFeeDto {
     private HashMap<String,Long> value;
 

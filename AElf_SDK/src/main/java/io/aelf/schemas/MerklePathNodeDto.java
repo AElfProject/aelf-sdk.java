@@ -1,11 +1,6 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: MerklePathNodeDto
- * @description: TODO
- * @date 2019/12/1516:40
- */
+
 public class MerklePathNodeDto {
     private String Hash;
     private boolean IsLeftChildNode;

@@ -4,15 +4,15 @@ import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
 /**
- * 数字转字节数组工具类
+ * Digital terabyte array utility class
  */
 public class BitConverter {
 
     /**
-     * 以字节数组的形式返回指定的布尔值
+     * Returns the specified Boolean value as a byte array
      *
-     * @param data 一个布尔值
-     * @return 长度为 1 的字节数组
+     * @param data A Boolean value
+     * @return An array of bytes of length 1
      */
     public static byte[] getBytes(boolean data) {
         byte[] bytes = new byte[1];
@@ -21,10 +21,10 @@ public class BitConverter {
     }
 
     /**
-     * 以字节数组的形式返回指定的 16 位有符号整数值
+     * Returns the specified 16-bit signed integer value as a byte array
      *
-     * @param data 要转换的数字
-     * @return 长度为 2 的字节数组
+     * @param data The number to convert
+     * @return An array of bytes of length 2
      */
     public static byte[] getBytes(short data) {
         byte[] bytes = new byte[2];
@@ -39,10 +39,10 @@ public class BitConverter {
     }
 
     /**
-     * 以字节数组的形式返回指定的 Unicode 字符值
+     * Returns the specified Unicode character value as a byte array
      *
-     * @param data 要转换的字符
-     * @return 长度为 2 的字节数组
+     * @param data The character to convert
+     * @return An array of bytes of length 2
      */
     public static byte[] getBytes(char data) {
         byte[] bytes = new byte[2];
@@ -57,10 +57,10 @@ public class BitConverter {
     }
 
     /**
-     * 以字节数组的形式返回指定的 32 位有符号整数值
+     * Returns the specified 32-bit signed integer value as a byte array
      *
-     * @param data 要转换的数字
-     * @return 长度为 4 的字节数组
+     * @param data The number to convert
+     * @return Byte array of length 4
      */
     public static byte[] getBytes(int data) {
         byte[] bytes = new byte[4];
@@ -79,10 +79,10 @@ public class BitConverter {
     }
 
     /**
-     * 以字节数组的形式返回指定的 64 位有符号整数值
+     * Returns the specified 64-bit signed integer value as a byte array
      *
-     * @param data 要转换的数字
-     * @return 长度为 8 的字节数组
+     * @param data The number to convert
+     * @return A byte array of length 8
      */
     public static byte[] getBytes(long data) {
         byte[] bytes = new byte[8];
@@ -109,72 +109,72 @@ public class BitConverter {
     }
 
     /**
-     * 以字节数组的形式返回指定的单精度浮点值
+     * Returns the specified 64-bit signed integer value as a byte array
      *
-     * @param data 要转换的数字
-     * @return 长度为 4 的字节数组
+     * @param data The number to convert
+     * @return Byte array of length 4
      */
     public static byte[] getBytes(float data) {
         return getBytes(Float.floatToIntBits(data));
     }
 
     /**
-     * 以字节数组的形式返回指定的双精度浮点值
+     * Returns the specified double - precision floating-point value as a byte array
      *
-     * @param data 要转换的数字
-     * @return 长度为 8 的字节数组
+     * @param data The number to convert
+     * @return A byte array of length 8
      */
     public static byte[] getBytes(double data) {
         return getBytes(Double.doubleToLongBits(data));
     }
 
     /**
-     * 将指定字符串中的所有字符编码为一个字节序列
+     * Encodes all characters in the specified string as a sequence of bytes
      *
-     * @param data 包含要编码的字符的字符串
-     * @return 一个字节数组，包含对指定的字符集进行编码的结果
+     * @param data A string containing the characters to be encoded
+     * @return An array of bytes containing the result of encoding the specified character set
      */
     public static byte[] getBytes(String data) {
         return data.getBytes(Charset.forName("UTF-8"));
     }
 
     /**
-     * 将指定字符串中的所有字符编码为一个字节序列
+     * Encodes all characters in the specified string as a sequence of bytes
      *
-     * @param data        包含要编码的字符的字符串
-     * @param charsetName 字符集编码
-     * @return 一个字节数组，包含对指定的字符集进行编码的结果
+     * @param data        A string containing the characters to be encoded
+     * @param charsetName Character set coding
+     * @return An array of bytes containing the result of encoding the specified character set
      */
     public static byte[] getBytes(String data, String charsetName) {
         return data.getBytes(Charset.forName(charsetName));
     }
 
     /**
-     * 返回由字节数组转换来的布尔值
+     * Returns a Boolean value converted from an array of bytes
      *
-     * @param bytes 字节数组
-     * @return 布尔值
+     * @param bytes byte array
+     * @return Boolean value
      */
     public static boolean toBoolean(byte[] bytes) {
         return bytes[0] == 0 ? false : true;
     }
 
     /**
-     * 返回由字节数组中的指定的一个字节转换来的布尔值
+     * Returns a Boolean value converted from a specified byte in the byte array
      *
-     * @param bytes      字节数组
-     * @param startIndex 起始下标
-     * @return 布尔值
+     * @param bytes      byte array
+     * @param startIndex Starting the subscript
+     * @return Boolean value
      */
     public static boolean toBoolean(byte[] bytes, int startIndex) {
         return toBoolean(copyFrom(bytes, startIndex, 1));
     }
 
     /**
-     * 返回由字节数组转换来的 16 位有符号整数
+     * Returns a 16-bit signed integer converted from a byte array
      *
-     * @param bytes 字节数组
-     * @return 由两个字节构成的 16 位有符号整数
+     * @param bytes byte array
+     * @return A 16-bit signed integer consisting of two bytes
      */
     public static short toShort(byte[] bytes) {
         if (isLittleEndian()) {
@@ -185,21 +185,21 @@ public class BitConverter {
     }
 
     /**
-     * 返回由字节数组中的指定的两个字节转换来的 16 位有符号整数
+     * Returns a 16-bit signed integer converted from the specified two bytes in the byte array
      *
-     * @param bytes      字节数组
-     * @param startIndex 起始下标
-     * @return 由两个字节构成的 16 位有符号整数
+     * @param bytes      byte array
+     * @param startIndex Starting the subscript
+     * @return A 16-bit signed integer consisting of two bytes
      */
     public static short toShort(byte[] bytes, int startIndex) {
         return toShort(copyFrom(bytes, startIndex, 2));
     }
 
     /**
-     * 返回由字节数组转换来的 Unicode 字符
+     * Returns a Unicode character converted from a byte array
      *
-     * @param bytes 字节数组
-     * @return 由两个字节构成的字符
+     * @param bytes byte array
+     * @return A character consisting of two bytes
      */
     public static char toChar(byte[] bytes) {
         if (isLittleEndian()) {
@@ -210,21 +210,21 @@ public class BitConverter {
     }
 
     /**
-     * 返回由字节数组中的指定的两个字节转换来的 Unicode 字符
+     * Returns the Unicode character converted from the specified two bytes in the byte array
      *
-     * @param bytes      字节数组
-     * @param startIndex 起始下标
-     * @return 由两个字节构成的字符
+     * @param bytes      byte array
+     * @param startIndex Starting the subscript
+     * @return A character consisting of two bytes
      */
     public static char toChar(byte[] bytes, int startIndex) {
         return toChar(copyFrom(bytes, startIndex, 2));
     }
 
     /**
-     * 返回由字节数组转换来的 32 位有符号整数
+     * Returns a 32-bit signed integer converted from a byte array
      *
-     * @param bytes 字节数组
-     * @return 由四个字节构成的 32 位有符号整数
+     * @param bytes byte array
+     * @return A 32-bit signed integer consisting of four bytes
      */
     public static int toInt(byte[] bytes) {
         if (isLittleEndian()) {
@@ -241,21 +241,21 @@ public class BitConverter {
     }
 
     /**
-     * 返回由字节数组中的指定的四个字节转换来的 32 位有符号整数
+     * Returns a 32-bit signed integer converted from the specified four bytes in the byte array
      *
-     * @param bytes      字节数组
-     * @param startIndex 起始下标
-     * @return 由四个字节构成的 32 位有符号整数
+     * @param bytes      byte array
+     * @param startIndex Starting the subscript
+     * @return A 32-bit signed integer consisting of four bytes
      */
     public static int toInt(byte[] bytes, int startIndex) {
         return toInt(copyFrom(bytes, startIndex, 4));
     }
 
     /**
-     * 返回由字节数组转换来的 64 位有符号整数
+     * Returns a 64-bit signed integer converted from a byte array
      *
-     * @param bytes 字节数组
-     * @return 由八个字节构成的 64 位有符号整数
+     * @param bytes byte array
+     * @return A 64-bit signed integer consisting of eight bytes
      */
     public static long toLong(byte[] bytes) {
         if (isLittleEndian()) {
@@ -280,84 +280,84 @@ public class BitConverter {
     }
 
     /**
-     * 返回由字节数组中的指定的八个字节转换来的 64 位有符号整数
+     * Returns a 64-bit signed integer converted from the specified eight bytes in the byte array
      *
-     * @param bytes      字节数组
-     * @param startIndex 起始下标
-     * @return 由八个字节构成的 64 位有符号整数
+     * @param bytes      byte array
+     * @param startIndex Starting the subscript
+     * @return A 64-bit signed integer consisting of eight bytes
      */
     public static long toLong(byte[] bytes, int startIndex) {
         return toLong(copyFrom(bytes, startIndex, 8));
     }
 
     /**
-     * 返回由字节数组转换来的单精度浮点数
+     * Returns a single-precision floating-point number converted from a byte array
      *
-     * @param bytes 字节数组
-     * @return 由四个字节构成的单精度浮点数
+     * @param bytes byte array
+     * @return A single-precision floating-point number consisting of four bytes
      */
     public static float toFloat(byte[] bytes) {
         return Float.intBitsToFloat(toInt(bytes));
     }
 
     /**
-     * 返回由字节数组中的指定的四个字节转换来的单精度浮点数
+     * Returns a single-precision floating-point number converted from the specified four bytes in the byte array
      *
-     * @param bytes      字节数组
-     * @param startIndex 起始下标
-     * @return 由四个字节构成的单精度浮点数
+     * @param bytes      byte array
+     * @param startIndex Starting the subscript
+     * @return A single-precision floating-point number consisting of four bytes
      */
     public static float toFloat(byte[] bytes, int startIndex) {
         return Float.intBitsToFloat(toInt(copyFrom(bytes, startIndex, 4)));
     }
 
     /**
-     * 返回由字节数组转换来的双精度浮点数
+     * Returns a double - precision floating-point number converted from a byte array
      *
-     * @param bytes 字节数组
-     * @return 由八个字节构成的双精度浮点数
+     * @param bytes byte array
+     * @return A double - precision floating-point number consisting of eight bytes
      */
     public static double toDouble(byte[] bytes) {
         return Double.longBitsToDouble(toLong(bytes));
     }
 
     /**
-     * 返回由字节数组中的指定的八个字节转换来的双精度浮点数
+     * Returns a double - precision floating-point number converted from the specified eight bytes in the byte array
      *
-     * @param bytes      字节数组
-     * @param startIndex 起始下标
-     * @return 由八个字节构成的双精度浮点数
+     * @param bytes      byte array
+     * @param startIndex Starting the subscript
+     * @return A double - precision floating-point number consisting of eight bytes
      */
     public static double toDouble(byte[] bytes, int startIndex) {
         return Double.longBitsToDouble(toLong(copyFrom(bytes, startIndex, 8)));
     }
 
     /**
-     * 返回由字节数组转换来的字符串
+     * Returns a string converted from an array of bytes
      *
-     * @param bytes 字节数组
-     * @return 字符串
+     * @param bytes byte array
+     * @return character string
      */
     public static String toString(byte[] bytes) {
         return new String(bytes, Charset.forName("UTF-8"));
     }
 
     /**
-     * 返回由字节数组转换来的字符串
+     * Returns a string converted from an array of bytes
      *
-     * @param bytes       字节数组
-     * @param charsetName 字符集编码
-     * @return 字符串
+     * @param bytes       byte array
+     * @param charsetName Character set coding
+     * @return character string
      */
     public static String toString(byte[] bytes, String charsetName) {
         return new String(bytes, Charset.forName(charsetName));
     }
 
     /**
-     * 以字符串表示形式返回字节数组的内容
+     * Returns the contents of the byte array as a string representation
      *
-     * @param bytes 字节数组
-     * @return 字符串形式的 <tt>bytes</tt>
+     * @param bytes byte array
+     * @return string-like</tt>
      */
     public static String toHexString(byte[] bytes) {
         if (bytes == null)
@@ -380,12 +380,12 @@ public class BitConverter {
 
 
     /**
-     * 数组拷贝。
+     * Array copy.
      *
-     * @param src 字节数组。
-     * @param off 起始下标。
-     * @param len 拷贝长度。
-     * @return 指定长度的字节数组。
+     * @param src byte array
+     * @param off Starting the subscript。
+     * @param len Copy the length。
+     * @return An array of bytes of specified length。
      */
     private static byte[] copyFrom(byte[] src, int off, int len) {
         // return Arrays.copyOfRange(src, off, off + len);
@@ -397,9 +397,9 @@ public class BitConverter {
     }
 
     /**
-     * 判断 CPU Endian 是否为 Little
+     * Determine if CPU Endian is Little
      *
-     * @return 判断结果
+     * @return result
      */
     private static boolean isLittleEndian() {
         return ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;

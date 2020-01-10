@@ -67,10 +67,10 @@ public class HttpClientUtil {
             if(200!=response.getStatusLine().getStatusCode()){
                 responseContent="@ERROR:@"+responseContent;
             }
-            logger.info("请求地址: " + httpGet.getURI());
-            logger.info("响应状态: " + response.getStatusLine());
-            logger.info("响应长度: " + responseLength);
-            logger.info("响应内容: " + responseContent);
+            logger.info("Request address:" + httpGet.getURI());
+            logger.info("Response status:" + response.getStatusLine());
+            logger.info("Response length:" + responseLength);
+            logger.info("Response content:" + responseContent);
         } catch (Exception ex){
             responseContent="@ERROR:@"+ex.getMessage();
             logger.info("sendGetRequest Exception:",ex);
@@ -99,10 +99,10 @@ public class HttpClientUtil {
                 responseContent="@ERROR:@"+responseContent;
             }
 
-            logger.info("请求地址: " + httpDelete.getURI());
-            logger.info("响应状态: " + response.getStatusLine());
-            logger.info("响应长度: " + responseLength);
-            logger.info("响应内容: " + responseContent);
+            logger.info("Request address:" + httpDelete.getURI());
+            logger.info("Response status:" + response.getStatusLine());
+            logger.info("Response length:" + responseLength);
+            logger.info("Response content:" + responseContent);
         } catch (Exception ex){
             logger.info("sendDeleteRequest Exception:",ex);
             responseContent="@ERROR:@"+ex.getMessage();

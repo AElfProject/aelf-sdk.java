@@ -3,12 +3,7 @@ package io.aelf.schemas;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: BlockStateDto
- * @description: TODO
- * @date 2019/12/2222:57
- */
+
 public class BlockStateDto {
     private String BlockHash;
     private String PreviousHash;

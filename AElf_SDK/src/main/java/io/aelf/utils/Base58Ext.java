@@ -1,17 +1,6 @@
 package io.aelf.utils;
-
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Sha256Hash;
-
-import java.util.Arrays;
-
-/**
- * @author linhui linhui@tydic.com
- * @title: Base58
- * @description: TODO
- * @date 2020/1/42:04
- */
-
 public class Base58Ext {
 
     public static String encodeChecked(byte[] payload) {
