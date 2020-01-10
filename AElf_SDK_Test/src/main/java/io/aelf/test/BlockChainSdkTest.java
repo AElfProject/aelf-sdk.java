@@ -39,7 +39,7 @@ public class BlockChainSdkTest {
         Assert.assertTrue(pubKeyAddress.equals(address));
     }
     @Test
-    public void getFormattedAddress() throws Exception {
+    public void getFormattedAddressTest() throws Exception {
         String addressVal=aelfSdk.getFormattedAddress(privateKey,address);
         Assert.assertTrue(("ELF_"+address+"_AELF").equals(addressVal));
     }
@@ -48,7 +48,7 @@ public class BlockChainSdkTest {
         Assert.assertTrue("SD6BXDrKT2syNd1WehtPyRo3dPBiXqfGUj8UJym7YP9W9RynM".equals(address));
     }
     @Test
-    public void getBlockHeightAsyncTest() throws Exception{
+    public void getBlockHeightTest() throws Exception{
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeight();
         Assert.assertTrue(blockHeight>0);
     }
@@ -57,13 +57,13 @@ public class BlockChainSdkTest {
 
 
     @Test
-    public void getBlockByHeightAsyncTest() throws Exception {
+    public void getBlockByHeightTest() throws Exception {
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeight();
         aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight,false);
     }
 
     @Test
-    public void getBlockByHashAsyncTest() throws Exception {
+    public void getBlockByHashTest() throws Exception {
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeight();
         BlockDto blockDto=aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight,false);
         aelfSdk.getBlockChainSdkObj().getBlockByHash(blockDto.getBlockHash());
@@ -71,16 +71,16 @@ public class BlockChainSdkTest {
     }
 
     @Test
-    public void getTransactionPoolStatusAsyncTest() throws Exception {
+    public void getTransactionPoolStatusTest() throws Exception {
         aelfSdk.getBlockChainSdkObj().getTransactionPoolStatus();
     }
     @Test
-    public void getChainStatusAsyncTest() throws Exception{
+    public void getChainStatusTest() throws Exception{
         aelfSdk.getBlockChainSdkObj().getChainStatus();
     }
 
     @Test
-    public void getContractFilCeDescriptorSetAsyncTest() throws Exception{
+    public void getContractFilCeDescriptorSetTest() throws Exception{
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeight();
         BlockDto blockDto=aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight,false);
         List<TransactionResultDto> transactionResultDtoList=aelfSdk.getBlockChainSdkObj().getTransactionResults(blockDto.getBlockHash(),0,10);
@@ -91,13 +91,13 @@ public class BlockChainSdkTest {
     }
 
     @Test
-    public void getTaskQueueStatusAsyncTest() throws Exception {
+    public void getTaskQueueStatusTest() throws Exception {
         List<TaskQueueInfoDto> listTaskQueue=aelfSdk.getBlockChainSdkObj().getTaskQueueStatus();
         Assert.assertTrue(listTaskQueue.size()>0);
     }
 
     @Test
-    public void executeTransactionAsyncTest() throws Exception{
+    public void executeTransactionTest() throws Exception{
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         String methodName = "GetContractAddressByName";
         byte[] bytes = Sha256.getBytesSHA256("AElf.ContractNames.TokenConverter");
@@ -111,7 +111,7 @@ public class BlockChainSdkTest {
         aelfSdk.getBlockChainSdkObj().executeTransaction(executeTransactionDtoObj);
     }
     @Test
-    public void executeRawTransactionAsyncTest() throws Exception{
+    public void executeRawTransactionTest() throws Exception{
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         String methodName = "GetContractAddressByName";
         byte[] paramBytes = Sha256.getBytesSHA256("AElf.ContractNames.Consensus");
@@ -142,7 +142,7 @@ public class BlockChainSdkTest {
         aelfSdk.getBlockChainSdkObj().executeRawTransaction(executeRawTransactionDtoObj);
     }
     @Test
-    public void createRawTransactionAsyncTest() throws Exception{
+    public void createRawTransactionTest() throws Exception{
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         String methodName = "GetContractAddressByName";
         byte[] paramBytes = Sha256.getBytesSHA256("AElf.ContractNames.Token");
@@ -165,7 +165,7 @@ public class BlockChainSdkTest {
     }
 
     @Test
-    public void sendRawTransactionAsyncTest() throws Exception{
+    public void sendRawTransactionTest() throws Exception{
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         String methodName = "GetContractAddressByName";
         String param="";
@@ -199,7 +199,7 @@ public class BlockChainSdkTest {
     }
 
     @Test
-    public void sendTransactionAsyncTest() throws Exception{
+    public void sendTransactionTest() throws Exception{
 
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         String methodName = "GetContractAddressByName";
@@ -215,7 +215,7 @@ public class BlockChainSdkTest {
     }
 
     @Test
-    public void sendTransactionsAsyncTest() throws Exception{
+    public void sendTransactionsTest() throws Exception{
         String toAddress = aelfSdk.getGenesisContractAddressAsync();
         byte[] param1 = Sha256.getBytesSHA256("AElf.ContractNames.Token");
         byte[] param2 = Sha256.getBytesSHA256("AElf.ContractNames.Vote");
@@ -241,13 +241,13 @@ public class BlockChainSdkTest {
 
 
     @Test
-    public void getTransactionResultsAsyncTest() throws Exception{
+    public void getTransactionResultsTest() throws Exception{
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeight();
         BlockDto blockDto=aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight,false);
         aelfSdk.getBlockChainSdkObj().getTransactionResults(blockDto.getBlockHash(),0,10);
     }
     @Test
-    public void getTransactionResultAsyncTest() throws Exception{
+    public void getTransactionResultTest() throws Exception{
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeight();
         BlockDto blockDto=aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight,false);
         List<TransactionResultDto> transactionResultDtoList=aelfSdk.getBlockChainSdkObj().getTransactionResults(blockDto.getBlockHash(),0,10);
@@ -256,7 +256,7 @@ public class BlockChainSdkTest {
         }
     }
     @Test
-    public void getMerklePathByTransactionIdAsyncTest() throws Exception{
+    public void getMerklePathByTransactionIdTest() throws Exception{
         long blockHeight=aelfSdk.getBlockChainSdkObj().getBlockHeight();
         BlockDto blockDto=aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight,false);
         List<TransactionResultDto> transactionResultDtoList=aelfSdk.getBlockChainSdkObj().getTransactionResults(blockDto.getBlockHash(),0,10);
@@ -265,7 +265,7 @@ public class BlockChainSdkTest {
         }
     }
     @Test
-    public void getChainIdAsyncTest() throws Exception {
+    public void getChainIdTest() throws Exception {
         int chainId=aelfSdk.getBlockChainSdkObj().getChainIdAsync();
         Assert.assertTrue(chainId==9992731);
     }

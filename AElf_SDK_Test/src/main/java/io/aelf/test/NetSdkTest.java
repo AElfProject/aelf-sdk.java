@@ -24,12 +24,12 @@ public class NetSdkTest {
     }
     @Test
     public void getNetworkInfoAsync() throws Exception {
-        aelfSdk.getNetSdkObj().getNetworkInfoAsync();
+        aelfSdk.getNetSdkObj().getNetworkInfo();
     }
 
     @Test
     public void getPeerAsync() throws Exception{
-        List<PeerDto> listPeerDto=aelfSdk.getNetSdkObj().getPeersAsync(true);
+        List<PeerDto> listPeerDto=aelfSdk.getNetSdkObj().getPeers(true);
         Assert.assertTrue(listPeerDto.size()>0);
     }
 
@@ -37,11 +37,11 @@ public class NetSdkTest {
     public void addPeerAsyncTest() throws Exception {
         AddPeerInput addPeerInput=new AddPeerInput();
         addPeerInput.setAddress(opreationAddress);
-        aelfSdk.getNetSdkObj().addPeerAsync(addPeerInput);
+        aelfSdk.getNetSdkObj().addPeer(addPeerInput);
     }
     @Test
     public void removePeerAsyncTest() throws Exception {
-        aelfSdk.getNetSdkObj().removePeerAsync(opreationAddress);
+        aelfSdk.getNetSdkObj().removePeer(opreationAddress);
     }
 
 
