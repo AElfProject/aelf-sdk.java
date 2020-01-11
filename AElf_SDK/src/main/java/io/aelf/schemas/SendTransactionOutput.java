@@ -1,14 +1,14 @@
 package io.aelf.schemas;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SendTransactionOutput {
-    private String TransactionId;
-
-    public String getTransactionId() {
-        return TransactionId;
+  @JsonProperty("TransactionId")
+  private String transactionId;
+  public String getTransactionId() {
+        return transactionId;
     }
-
-    public void setTransactionId(String transactionId) {
-        TransactionId = transactionId;
+  public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
 }

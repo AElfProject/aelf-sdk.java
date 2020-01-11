@@ -1,29 +1,22 @@
 package io.aelf.utils;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: ByteArrayHelper
- * @description: TODO
- * @date 2019/12/2322:35
- */
+
 public class ByteArrayHelper {
 
 
     /**
-     * hex字符串转byte数组
-     * @param inHex 待转换的Hex字符串
-     * @return 转换后的byte数组结果
+     * The hex string turns into a byte array
+     * @param inHex Hex string to be converted
+     * @return The converted byte array results
      */
     public static byte[] hexToByteArray(String inHex){
         int hexlen = inHex.length();
         byte[] result;
-        if (hexlen % 2 == 1){
-            //奇数
+        if (hexlen>=0 && hexlen % 2 == 1){
             hexlen++;
             result = new byte[(hexlen/2)];
             inHex="0"+inHex;
         }else {
-            //偶数
             result = new byte[(hexlen/2)];
         }
         int j=0;

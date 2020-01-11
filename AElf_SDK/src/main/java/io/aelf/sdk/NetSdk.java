@@ -4,12 +4,6 @@ import io.aelf.utils.*;
 
 import java.util.*;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: NetSdk
- * @description: TODO
- * @date 2019/12/1512:02
- */
 public class NetSdk {
     private String aelfSdkUrl;
     private static final String WEBAPI_ADDPEERASYNC="/api/net/peer";

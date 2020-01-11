@@ -9,17 +9,9 @@ import org.bitcoinj.core.Base58;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: BlcokChainSdk
- * @description: TODO
- * @date 2019/12/1512:02
- */
+
 public class BlockChainSdk {
-
-
     private String aelfSdkUrl;
-
     private static final String WEBAPI_BLOCKHEIGHT="/api/blockChain/blockHeight";
     private static final String WEBAPI_BLOCK="/api/blockChain/block";
     private static final String WEBAPI_BLOCKBYHEIGHT="/api/blockChain/blockByHeight";
@@ -99,23 +91,27 @@ public class BlockChainSdk {
         String chainContext=HttpClientUtil.sendGetRequest(url,"UTF-8");
         MapEntry mapObjJson=JSONUtil.parseObject(chainContext);
         LinkedHashMap<String,Integer> branchesMap=mapObjJson.getLinkedHashMap("Branches",new LinkedHashMap());
-        Iterator<String> branchesKeys=branchesMap.keySet().iterator();
+        Iterator<Map.Entry<String, Integer>> branchesMapSet=branchesMap.entrySet().iterator();
         LinkedHashMap<String,String> notLinkedBlocksMap=mapObjJson.getLinkedHashMap("NotLinkedBlocks",new LinkedHashMap());
-        Iterator<String> notLinkedBlocksKeys=notLinkedBlocksMap.keySet().iterator();
+        Iterator<Map.Entry<String, String>> notLinkedBlocksSets=notLinkedBlocksMap.entrySet().iterator();
 
         ChainstatusDto chainstatusDto=new ChainstatusDto();
         chainstatusDto.setChainId(mapObjJson.getString("ChainId",""));
         chainstatusDto.setBranches(new HashMap<String, Long>());
-        while(branchesKeys.hasNext()){
-            String key=branchesKeys.next();
-            Integer valueInteger=branchesMap.get(key);
+        while(branchesMapSet.hasNext()){
+            Map.Entry<String, Integer> tmp=branchesMapSet.next();
+            String key=tmp.getKey();
+            Integer valueInteger=tmp.getValue();
             Long value=valueInteger.longValue();
             chainstatusDto.getBranches().put(key,value);
         }
         chainstatusDto.setNotLinkedBlocks(new HashMap<String, String>());
-        while(notLinkedBlocksKeys.hasNext()){
-            String key=notLinkedBlocksKeys.next();
-            String value=notLinkedBlocksMap.get(key);
+
+
+        while(notLinkedBlocksSets.hasNext()){
+            Map.Entry<String, String> tmp=notLinkedBlocksSets.next();
+            String key=tmp.getKey();
+            String value=tmp.getValue();
             chainstatusDto.getNotLinkedBlocks().put(key,value);
         }
         chainstatusDto.setLongestChainHeight(mapObjJson.getLong("LongestChainHeight",0));
@@ -360,11 +356,22 @@ public class BlockChainSdk {
     }
 
 
-
+    /**
+     *  Get information of a block by specified height. Optional whether to include transaction information.
+     * @param blockHeight
+     * @return
+     * @throws Exception
+     */
     public BlockDto getBlockByHeight(long blockHeight) throws Exception {
         return this.getBlockByHeight(blockHeight,false);
     }
 
+    /**
+     * Get information of a block by given block hash. Optional whether to include transaction information.
+     * @param blockHash
+     * @return
+     * @throws Exception
+     */
     public BlockDto getBlockByHash(String blockHash) throws Exception {
         return this.getBlockByHash(blockHash,false);
     }
@@ -449,10 +456,11 @@ public class BlockChainSdk {
         LinkedHashMap transactionFeeObj=transactionResult.getLinkedHashMap("TransactionFee",new LinkedHashMap());
         MapEntry transactionFeeObjMap=Maps.cloneMapEntry(transactionFeeObj);
         LinkedHashMap<String,Integer> transactionFeeValueObjMap= transactionFeeObjMap.getLinkedHashMap("Value",new LinkedHashMap<String,Integer> ());
-        Iterator<String>  transactionFeeValueObjKyes=transactionFeeValueObjMap.keySet().iterator();
-        while(transactionFeeValueObjKyes.hasNext()){
-            String key=transactionFeeValueObjKyes.next();
-            Integer valueInteger=transactionFeeValueObjMap.get(key);
+        Iterator<Map.Entry<String, Integer>> transactionFeeValueObjSets=transactionFeeValueObjMap.entrySet().iterator();
+        while(transactionFeeValueObjSets.hasNext()){
+            Map.Entry<String, Integer> tmp=transactionFeeValueObjSets.next();
+            String key=tmp.getKey();
+            Integer valueInteger=tmp.getValue();
             Long valueLong=valueInteger.longValue();
             transactionFeeDtoObj.getValue().put(key,valueLong);
         }

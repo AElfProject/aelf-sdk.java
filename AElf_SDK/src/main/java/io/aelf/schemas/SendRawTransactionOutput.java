@@ -1,23 +1,21 @@
 package io.aelf.schemas;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SendRawTransactionOutput {
-    private String TransactionId;
-    private TransactionDto Transaction;
-
-    public String getTransactionId() {
-        return TransactionId;
+  @JsonProperty("TransactionId")
+  private String transactionId;
+  @JsonProperty("Transaction")
+  private TransactionDto transaction;
+  public String getTransactionId() {
+        return transactionId;
     }
-
-    public void setTransactionId(String transactionId) {
-        TransactionId = transactionId;
+  public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
-
-    public TransactionDto getTransaction() {
-        return Transaction;
+  public TransactionDto getTransaction() {
+        return transaction;
     }
-
-    public void setTransaction(TransactionDto transaction) {
-        Transaction = transaction;
+  public void setTransaction(TransactionDto transaction) {
+        this.transaction = transaction;
     }
 }

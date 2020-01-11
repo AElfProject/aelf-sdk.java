@@ -1,14 +1,21 @@
 package io.aelf.schemas;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SendTransactionsInput {
-    private String RawTransactions;
-
-    public String getRawTransactions() {
-        return RawTransactions;
+  @JsonProperty("RawTransactions")
+  private String rawTransactions;
+  /**
+   * raw transactions
+   * @return String
+   */
+  public String getRawTransactions() {
+        return rawTransactions;
     }
-
-    public void setRawTransactions(String rawTransactions) {
-        RawTransactions = rawTransactions;
+  /**
+   * raw transactions
+   * @param rawTransactions
+   */
+  public void setRawTransactions(final String rawTransactions) {
+        this.rawTransactions = rawTransactions;
     }
 }

@@ -5,6 +5,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 public class Sha256 {
 
+    /**
+     * Converts hexadecimal byte to bytes
+     * @param str
+     * @return bytes
+     */
     public static byte[] getBytesSHA256(byte[] str){
         MessageDigest messageDigest;
         byte[] digestBytes = new byte[0];
@@ -18,7 +23,11 @@ public class Sha256 {
         return digestBytes;
     }
 
-
+    /**
+     * Converts hexadecimal to bytes
+     * @param str
+     * @return bytes
+     */
     public static byte[] getBytesSHA256(String str){
         MessageDigest messageDigest;
         byte[] digestBytes = new byte[0];
@@ -34,7 +43,7 @@ public class Sha256 {
         return digestBytes;
     }
     /**
-     * Converts a byte to hexadecimal
+     * Converts  bytes to hexadecimal
      * @param bytes
      * @return hex
      */
@@ -51,6 +60,11 @@ public class Sha256 {
         return stringBuffer.toString();
     }
 
+    /**
+     * Converts bytes to String
+     * @param bytes
+     * @return string
+     */
     public static String getSHA256ForBytes(byte[] bytes){
         MessageDigest messageDigest;
         String encodestr = "";

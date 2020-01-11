@@ -1,87 +1,78 @@
 package io.aelf.schemas;
-
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PeerDto {
-    private String IpAddress;
-    private int ProtocolVersion;
-    private long ConnectionTime;
-    private String ConnectionStatus;
-    private boolean Inbound;
-    private int BufferedTransactionsCount;
-    private int BufferedBlocksCount;
-    private int BufferedAnnouncementsCount;
-    private List<RequestMetric> RequestMetrics;
-    public String getIpAddress() {
-        return IpAddress;
+  @JsonProperty("IpAddress")
+  private String ipAddress;
+  @JsonProperty("ProtocolVersion")
+  private int protocolVersion;
+  @JsonProperty("ConnectionTime")
+  private long connectionTime;
+  @JsonProperty("ConnectionStatus")
+  private String connectionStatus;
+  @JsonProperty("Inbound")
+  private boolean inbound;
+  @JsonProperty("BufferedTransactionsCount")
+  private int bufferedTransactionsCount;
+  @JsonProperty("BufferedBlocksCount")
+  private int bufferedBlocksCount;
+  @JsonProperty("BufferedAnnouncementsCount")
+  private int bufferedAnnouncementsCount;
+  @JsonProperty("RequestMetrics")
+  private List<RequestMetric> requestMetrics;
+  public String getIpAddress() {
+        return ipAddress;
     }
-
-    public void setIpAddress(String ipAddress) {
-        IpAddress = ipAddress;
+  public void setIpAddress(String ipAddress) {
+        ipAddress = ipAddress;
     }
-
-    public int getProtocolVersion() {
-        return ProtocolVersion;
+  public int getProtocolVersion() {
+        return protocolVersion;
     }
-
-    public void setProtocolVersion(int protocolVersion) {
-        ProtocolVersion = protocolVersion;
+  public void setProtocolVersion(int protocolVersion) {
+        this.protocolVersion = protocolVersion;
     }
-
-    public long getConnectionTime() {
-        return ConnectionTime;
+  public long getConnectionTime() {
+        return connectionTime;
     }
-
-    public void setConnectionTime(long connectionTime) {
-        ConnectionTime = connectionTime;
+  public void setConnectionTime(long connectionTime) {
+        this.connectionTime = connectionTime;
     }
-
-    public String getConnectionStatus() {
-        return ConnectionStatus;
+  public String getConnectionStatus() {
+        return this.connectionStatus;
     }
-
-    public void setConnectionStatus(String connectionStatus) {
-        ConnectionStatus = connectionStatus;
+  public void setConnectionStatus(String connectionStatus) {
+        this.connectionStatus = connectionStatus;
     }
-
-    public boolean isInbound() {
-        return Inbound;
+  public boolean isInbound() {
+        return this.inbound;
     }
-
-    public void setInbound(boolean inbound) {
-        Inbound = inbound;
+  public void setInbound(boolean inbound) {
+        this.inbound = inbound;
     }
-
-    public int getBufferedTransactionsCount() {
-        return BufferedTransactionsCount;
+  public int getBufferedTransactionsCount() {
+        return this.bufferedTransactionsCount;
     }
-
-    public void setBufferedTransactionsCount(int bufferedTransactionsCount) {
-        BufferedTransactionsCount = bufferedTransactionsCount;
+  public void setBufferedTransactionsCount(int bufferedTransactionsCount) {
+      this.bufferedTransactionsCount = bufferedTransactionsCount;
+  }
+  public int getBufferedBlocksCount() {
+        return this.bufferedBlocksCount;
     }
-
-    public int getBufferedBlocksCount() {
-        return BufferedBlocksCount;
+  public void setBufferedBlocksCount(int bufferedBlocksCount) {
+        this.bufferedBlocksCount = bufferedBlocksCount;
     }
-
-    public void setBufferedBlocksCount(int bufferedBlocksCount) {
-        BufferedBlocksCount = bufferedBlocksCount;
+  public int getBufferedAnnouncementsCount() {
+        return this.bufferedAnnouncementsCount;
     }
-
-    public int getBufferedAnnouncementsCount() {
-        return BufferedAnnouncementsCount;
-    }
-
-    public void setBufferedAnnouncementsCount(int bufferedAnnouncementsCount) {
-        BufferedAnnouncementsCount = bufferedAnnouncementsCount;
-    }
-
-    public List<RequestMetric> getRequestMetrics() {
-        return RequestMetrics;
-    }
-
-    public void setRequestMetrics(List<RequestMetric> requestMetrics) {
-        RequestMetrics = requestMetrics;
+  public void setBufferedAnnouncementsCount(int bufferedAnnouncementsCount) {
+      this.bufferedAnnouncementsCount = bufferedAnnouncementsCount;
+  }
+  public List<RequestMetric> getRequestMetrics() {
+      return requestMetrics;
+  }
+  public void setRequestMetrics(List<RequestMetric> requestMetrics) {
+        this.requestMetrics = requestMetrics;
     }
 }

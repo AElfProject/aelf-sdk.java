@@ -1,59 +1,112 @@
 package io.aelf.schemas;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CreateRawTransactionInput {
-    private String From;
-    private String To;
-    private long RefBlockNumber;
-    private String RefBlockHash;
-    private String MethodName;
-    private String Params;
+  @JsonProperty("From")
+  private String from;
+  @JsonProperty("To")
+  private String to;
+  @JsonProperty("RefBlockNumber")
+  private long refBlockNumber;
+  @JsonProperty("RefBlockHash")
+  private String refBlockHash;
+  @JsonProperty("MethodName")
+  private String methodName;
+  @JsonProperty("Params")
+  private String params;
 
-    public String getFrom() {
-        return From;
+  /**
+   * from address
+   * @return
+   */
+  public String getFrom() {
+        return from;
+    }
+  /**
+   * from address
+   * @param from
+   */
+  public void setFrom(String from) {
+        this.from = from;
     }
 
-    public void setFrom(String from) {
-        From = from;
+  /**
+   * to address
+   * @return
+   */
+  public String getTo() {
+        return to;
     }
 
-    public String getTo() {
-        return To;
+  /**
+   * to address
+   * @param to
+   */
+  public void setTo(String to) {
+        this.to = to;
+    }
+  /**
+   * refer block height
+   * @return
+   */
+  public long getRefBlockNumber() {
+        return refBlockNumber;
     }
 
-    public void setTo(String to) {
-        To = to;
+  /**
+   * refer block height
+   * @param refBlockNumber
+   */
+  public void setRefBlockNumber(long refBlockNumber) {
+        this.refBlockNumber = refBlockNumber;
     }
 
-    public long getRefBlockNumber() {
-        return RefBlockNumber;
+  /**
+   * refer block height
+   * @return
+   */
+  public String getRefBlockHash() {
+        return this.refBlockHash;
     }
 
-    public void setRefBlockNumber(long refBlockNumber) {
-        RefBlockNumber = refBlockNumber;
+  /**
+   * refer block hash
+   * @param refBlockHash
+   */
+  public void setRefBlockHash(String refBlockHash) {
+        this.refBlockHash = refBlockHash;
     }
 
-    public String getRefBlockHash() {
-        return RefBlockHash;
+  /**
+   * contract method name
+   * @return
+   */
+  public String getMethodName() {
+        return this.methodName;
     }
 
-    public void setRefBlockHash(String refBlockHash) {
-        RefBlockHash = refBlockHash;
+  /**
+   * contract method name
+   * @param methodName
+   */
+  public void setMethodName(String methodName) {
+        this.methodName = methodName;
     }
 
-    public String getMethodName() {
-        return MethodName;
+   /**
+    * contract method parameters
+    * @return
+    */
+  public String getParams() {
+        return params;
     }
-
-    public void setMethodName(String methodName) {
-        MethodName = methodName;
-    }
-
-    public String getParams() {
-        return Params;
-    }
-
-    public void setParams(String params) {
-        Params = params;
-    }
+  /**
+   * contract method parameters
+   * @param params
+   */
+  public void setParams(String params) {
+      this.params = params;
+  }
 }

@@ -1,27 +1,54 @@
 package io.aelf.schemas;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NetworkInfoOutput {
-    private String Version;
-    private int ProtocolVersion;
-    private int Connections;
-    public String getVersion() {
-        return Version;
-    }
-    public void setVersion(String version) {
-        this.Version = version;
-    }
-    public int getProtocolVersion() {
-        return ProtocolVersion;
-    }
-    public void setProtocolVersion(int protocolVersion) {
-        this.ProtocolVersion = protocolVersion;
-    }
-    public int getConnections() {
-        return Connections;
-    }
-    public void setConnections(int connections) {
-        Connections = connections;
-    }
+  @JsonProperty("Version")
+  private String version;
+  @JsonProperty("ProtocolVersion")
+  private int protocolVersion;
+  @JsonProperty("Connections")
+  private int connections;
 
+  /**
+   * node version
+   * @return
+   */
+  public String getVersion() {
+        return version;
+    }
+  /**
+   * node version
+   * @param version
+   */
+  public void setVersion(String version) {
+        this.version = version;
+    }
+  /**
+   * network protocol version
+   * @return
+   */
+  public int getProtocolVersion() {
+        return protocolVersion;
+    }
+  /**
+   * network protocol version
+   * @param protocolVersion
+   */
+  public void setProtocolVersion(int protocolVersion) {
+        this.protocolVersion = protocolVersion;
+    }
+  /**
+   * total number of open connections between this node and other nodes
+   * @return
+   */
+  public int getConnections() {
+        return connections;
+    }
+  /**
+   * total number of open connections between this node and other nodes
+   * @param connections
+   */
+  public void setConnections(int connections) {
+        this.connections = connections;
+    }
 }

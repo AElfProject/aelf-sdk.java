@@ -1,43 +1,39 @@
 package io.aelf.schemas;
-
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LogEventDto {
-    private String Address;
-    private String Name;
-    private List<String> Indexed;
-    private String NonIndexed;
+  @JsonProperty("Address")
+  private String address;
+  @JsonProperty("Name")
+  private String name;
+  @JsonProperty("Indexed")
+  private List<String> indexed;
+  @JsonProperty("NonIndexed")
+  private String nonIndexed;
 
-    public String getAddress() {
-        return Address;
+  public String getAddress() {
+        return address;
     }
-
-    public void setAddress(String address) {
-        Address = address;
+  public void setAddress(String address) {
+        this.address = address;
+  }
+  public String getName() {
+        return name;
     }
-
-    public String getName() {
-        return Name;
+  public void setName(String name) {
+        this.name = name;
     }
-
-    public void setName(String name) {
-        Name = name;
+  public List<String> getIndexed() {
+        return this.indexed;
     }
-
-    public List<String> getIndexed() {
-        return Indexed;
+  public void setIndexed(List<String> indexed) {
+        this.indexed = indexed;
     }
-
-    public void setIndexed(List<String> indexed) {
-        Indexed = indexed;
+  public String getNonIndexed() {
+        return this.nonIndexed;
     }
-
-    public String getNonIndexed() {
-        return NonIndexed;
-    }
-
-    public void setNonIndexed(String nonIndexed) {
-        NonIndexed = nonIndexed;
+  public void setNonIndexed(String nonIndexed) {
+        this.nonIndexed = nonIndexed;
     }
 }

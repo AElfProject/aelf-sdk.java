@@ -1,23 +1,21 @@
 package io.aelf.schemas;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MerklePathNodeDto {
-    private String Hash;
-    private boolean IsLeftChildNode;
-
-    public String getHash() {
-        return Hash;
+  @JsonProperty("Hash")
+  private String hash;
+  @JsonProperty("IsLeftChildNode")
+  private boolean isLeftChildNode;
+  public String getHash() {
+        return hash;
     }
-
-    public void setHash(String hash) {
-        Hash = hash;
+  public void setHash(String hash) {
+        this.hash = hash;
     }
-
-    public boolean isLeftChildNode() {
-        return IsLeftChildNode;
+  public boolean isLeftChildNode() {
+        return isLeftChildNode;
     }
-
-    public void setLeftChildNode(boolean leftChildNode) {
-        IsLeftChildNode = leftChildNode;
+  public void setLeftChildNode(boolean leftChildNode) {
+        isLeftChildNode = leftChildNode;
     }
 }

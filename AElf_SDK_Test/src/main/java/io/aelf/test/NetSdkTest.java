@@ -15,12 +15,12 @@ import java.util.List;
  * @date 2019/12/1622:36
  */
 public class NetSdkTest {
-    private final String httpUrl="http://127.0.0.1:8200";
-    private final String opreationAddress="127.0.0.1:7003";
+    static final String HTTPURL="http://127.0.0.1:8200";
+    static final String OPREATIONADDRESS="127.0.0.1:7003";
     AelfSdk aelfSdk=null;
     @Before
     public void init(){
-        aelfSdk=new AelfSdk(httpUrl);
+        aelfSdk=new AelfSdk(HTTPURL);
     }
     @Test
     public void getNetworkInfoAsync() throws Exception {
@@ -36,12 +36,12 @@ public class NetSdkTest {
     @Test
     public void addPeerAsyncTest() throws Exception {
         AddPeerInput addPeerInput=new AddPeerInput();
-        addPeerInput.setAddress(opreationAddress);
+        addPeerInput.setAddress(OPREATIONADDRESS);
         aelfSdk.getNetSdkObj().addPeer(addPeerInput);
     }
     @Test
     public void removePeerAsyncTest() throws Exception {
-        aelfSdk.getNetSdkObj().removePeer(opreationAddress);
+        aelfSdk.getNetSdkObj().removePeer(OPREATIONADDRESS);
     }
 
 

@@ -3,6 +3,11 @@ import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Sha256Hash;
 public class Base58Ext {
 
+    /**
+     * Base58 encodeChecked custom
+     * @param payload bytes content
+     * @return String
+     */
     public static String encodeChecked(byte[] payload) {
         // A stringified buffer is:
         // 1 byte version + data bytes + 4 bytes check code (a truncated hash)

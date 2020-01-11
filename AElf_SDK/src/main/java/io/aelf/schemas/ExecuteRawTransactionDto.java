@@ -1,23 +1,38 @@
 package io.aelf.schemas;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ExecuteRawTransactionDto {
-    private String RawTransaction;
-    private String Signature;
+  @JsonProperty("RawTransaction")
+  private String rawTransaction;
+  @JsonProperty("Signature")
+  private String signature;
 
-    public String getRawTransaction() {
-        return RawTransaction;
+  /**
+   * raw transaction
+   * @return
+   */
+  public String getRawTransaction() {
+      return rawTransaction;
+  }
+  /**
+   * raw transaction
+   * @param rawTransaction
+   */
+  public void setRawTransaction(String rawTransaction) {
+        this.rawTransaction = rawTransaction;
     }
-
-    public void setRawTransaction(String rawTransaction) {
-        RawTransaction = rawTransaction;
-    }
-
-    public String getSignature() {
-        return Signature;
-    }
-
-    public void setSignature(String signature) {
-        Signature = signature;
-    }
+  /**
+   * signature
+   * @return
+   */
+  public String getSignature() {
+      return signature;
+  }
+  /**
+   * signature
+   * @param signature
+   */
+  public void setSignature(String signature) {
+      this.signature = signature;
+  }
 }

@@ -1,16 +1,14 @@
 package io.aelf.schemas;
-
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MerklePathDto {
-    private List<MerklePathNodeDto> MerklePathNodes;
-
-    public List<MerklePathNodeDto> getMerklePathNodes() {
-        return MerklePathNodes;
-    }
-
-    public void setMerklePathNodes(List<MerklePathNodeDto> merklePathNodes) {
-        MerklePathNodes = merklePathNodes;
+  @JsonProperty("MerklePathNodes")
+  private List<MerklePathNodeDto> merklePathNodes;
+  public List<MerklePathNodeDto> getMerklePathNodes() {
+      return merklePathNodes;
+  }
+  public void setMerklePathNodes(List<MerklePathNodeDto> merklePathNodes) {
+        this.merklePathNodes = merklePathNodes;
     }
 }

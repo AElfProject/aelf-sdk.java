@@ -379,6 +379,11 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements Cloneab
         return this.getNumber(key, num).floatValue();
     }
 
+    @Override
+    public Date getDate(K key) {
+        return this.getDate(key,new Date(System.currentTimeMillis()));
+    }
+
     public Boolean getBoolean(K key) {
         return this.getBoolean(key, Boolean.FALSE);
     }
@@ -402,10 +407,6 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements Cloneab
         } else {
             return b;
         }
-    }
-
-    public Date getDate(K key) {
-        return this.getDate(key);
     }
 
     public Date getDate(K key, Date date) {

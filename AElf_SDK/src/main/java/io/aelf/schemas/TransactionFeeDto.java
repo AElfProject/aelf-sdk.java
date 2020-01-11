@@ -1,17 +1,15 @@
 package io.aelf.schemas;
-
-import java.util.HashMap;
 import java.util.List;
-
+import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TransactionFeeDto {
-    private HashMap<String,Long> value;
-
-    public HashMap<String,Long> getValue() {
+  @JsonProperty("value")
+  private HashMap<String,Long> value;
+  public HashMap<String,Long> getValue() {
         return value;
     }
-
-    public void setValue(HashMap<String,Long> value) {
+  public void setValue(HashMap<String,Long> value) {
         this.value = value;
     }
 }

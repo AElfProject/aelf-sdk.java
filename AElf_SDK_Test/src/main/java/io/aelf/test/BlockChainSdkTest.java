@@ -13,21 +13,15 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: BlcokChainSdkTest
- * @description: TODO
- * @date 2019/12/1622:36
- */
 public class BlockChainSdkTest {
-    private final String httpUrl="http://127.0.0.1:8200";
+    static final String HTTPURL="http://127.0.0.1:8200";
     AelfSdk aelfSdk=null;
     //String privateKey="09da44778f8db2e602fb484334f37df19e221c84c4582ce5b7770ccfbc3ddbef";
     String privateKey="cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
     String address="";
     @Before
     public void init() throws Exception {
-        aelfSdk=new AelfSdk(httpUrl);
+        aelfSdk=new AelfSdk(HTTPURL);
         //"2bWwpsN9WSc4iKJPHYL4EZX3nfxVY7XLadecnNMar1GdSb4hJz"
         address=aelfSdk.getAddressFromPrivateKey(privateKey);
     }
@@ -133,7 +127,7 @@ public class BlockChainSdkTest {
 
         byte[] rawTransactionBytes=ByteArrayHelper.hexToByteArray(createRawTransactionOutputObj.getRawTransaction());
         byte[] transactionId=Sha256.getBytesSHA256(rawTransactionBytes);
-        String signature=aelfSdk.GetSignatureWithPrivateKey(privateKey,transactionId);
+        String signature=aelfSdk.getSignatureWithPrivateKey(privateKey,transactionId);
 
         ExecuteRawTransactionDto executeRawTransactionDtoObj=new ExecuteRawTransactionDto();
         executeRawTransactionDtoObj.setRawTransaction(createRawTransactionOutputObj.getRawTransaction());
@@ -188,7 +182,7 @@ public class BlockChainSdkTest {
 
         byte[] rawTransactionBytes=ByteArrayHelper.hexToByteArray(createRawTransactionOutputObj.getRawTransaction());
         byte[] transactionId=Sha256.getBytesSHA256(rawTransactionBytes);
-        String signature=aelfSdk.GetSignatureWithPrivateKey(privateKey,transactionId);
+        String signature=aelfSdk.getSignatureWithPrivateKey(privateKey,transactionId);
 
         SendRawTransactionInput sendRawTransactionInputObj=new SendRawTransactionInput();
         sendRawTransactionInputObj.setTransaction(createRawTransactionOutputObj.getRawTransaction());

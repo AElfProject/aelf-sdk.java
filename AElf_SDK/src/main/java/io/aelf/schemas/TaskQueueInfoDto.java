@@ -1,20 +1,21 @@
 package io.aelf.schemas;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TaskQueueInfoDto {
-    private String Name;
-    private int Size;
-    public String getName() {
-        return Name;
+  @JsonProperty("Name")
+  private String name;
+  @JsonProperty("Size")
+  private int size;
+  public String getName() {
+        return name;
     }
-    public void setName(String name) {
-        this.Name = name;
+  public void setName(String name) {
+        this.name = name;
     }
-    public int getSize() {
-        return Size;
+  public int getSize() {
+        return size;
     }
-    public void setSize(int size) {
-        this.Size = size;
+  public void setSize(int size) {
+        this.size = size;
     }
-
 }

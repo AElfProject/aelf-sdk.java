@@ -12,10 +12,6 @@ public final class JSONUtil {
     static {
         UNKNOWN_PROPERTIES_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
-
-    public JSONUtil() {
-    }
-
     public static String toJSONString(Object value) {
         if (value == null) {
             return null;
