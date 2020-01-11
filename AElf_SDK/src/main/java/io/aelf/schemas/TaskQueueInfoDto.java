@@ -1,4 +1,5 @@
 package io.aelf.schemas;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TaskQueueInfoDto {
@@ -6,16 +7,20 @@ public class TaskQueueInfoDto {
   private String name;
   @JsonProperty("Size")
   private int size;
+
   public String getName() {
-        return name;
-    }
+    return name;
+  }
+
   public void setName(String name) {
-        this.name = name;
-    }
+    this.name = name;
+  }
+
   public int getSize() {
-        return size;
-    }
+    return size;
+  }
+
   public void setSize(int size) {
-        this.size = size;
-    }
+    this.size = size;
+  }
 }

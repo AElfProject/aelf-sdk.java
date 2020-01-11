@@ -1,4 +1,5 @@
 package io.aelf.schemas;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BlockDto {
@@ -10,22 +11,27 @@ public class BlockDto {
   private BlockBodyDto body;
 
   public String getBlockHash() {
-        return this.blockHash;
-    }
+    return this.blockHash;
+  }
+
   public void setBlockHash(String blockHash) {
-        this.blockHash = blockHash;
-    }
+    this.blockHash = blockHash;
+  }
+
   public BlockHeaderDto getHeader() {
-        return header;
-    }
+    return header;
+  }
+
   public void setHeader(BlockHeaderDto header) {
-        this.header = header;
-    }
+    this.header = header;
+  }
+
   public BlockBodyDto getBody() {
-        return body;
-    }
+    return body;
+  }
+
   public void setBody(BlockBodyDto body) {
-        this.body = body;
-    }
+    this.body = body;
+  }
 
 }

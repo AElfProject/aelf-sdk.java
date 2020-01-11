@@ -1,7 +1,9 @@
 package io.aelf.schemas;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RequestMetric {
+
   @JsonProperty("RoundTripTime")
   private long roundTripTime;
   @JsonProperty("MethodName")
@@ -12,27 +14,34 @@ public class RequestMetric {
   private Timestamp requestTime;
 
   public long getRoundTripTime() {
-        return roundTripTime;
-    }
+    return roundTripTime;
+  }
+
   public void setRoundTripTime(long roundTripTime) {
-        this.roundTripTime = roundTripTime;
-    }
+    this.roundTripTime = roundTripTime;
+  }
+
   public String getMethodName() {
-        return this.methodName;
-    }
+    return this.methodName;
+  }
+
   public void setMethodName(String methodName) {
-        this.methodName = methodName;
-    }
+    this.methodName = methodName;
+  }
+
   public String getInfo() {
-        return this.info;
-    }
+    return this.info;
+  }
+
   public void setInfo(String info) {
-        this.info = info;
-    }
+    this.info = info;
+  }
+
   public Timestamp getRequestTime() {
-        return this.requestTime;
-    }
+    return this.requestTime;
+  }
+
   public void setRequestTime(Timestamp requestTime) {
-        this.requestTime = requestTime;
-    }
+    this.requestTime = requestTime;
+  }
 }

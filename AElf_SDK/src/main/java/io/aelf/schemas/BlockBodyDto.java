@@ -1,6 +1,8 @@
 package io.aelf.schemas;
-import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
+
 
 public class BlockBodyDto {
   @JsonProperty("transactionsCount")
@@ -9,15 +11,18 @@ public class BlockBodyDto {
   private List<String> transactions;
 
   public long getTransactionsCount() {
-        return transactionsCount;
-    }
+    return transactionsCount;
+  }
+
   public void setTransactionsCount(long transactionsCount) {
-        this.transactionsCount = transactionsCount;
-    }
+    this.transactionsCount = transactionsCount;
+  }
+
   public List<String> getTransactions() {
-        return transactions;
-    }
+    return transactions;
+  }
+
   public void setTransactions(List<String> transactions) {
-        this.transactions = transactions;
-    }
+    this.transactions = transactions;
+  }
 }

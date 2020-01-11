@@ -1,6 +1,7 @@
 package io.aelf.schemas;
-import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 public class TransactionResultDto {
   @JsonProperty("TransactionId")
@@ -27,69 +28,90 @@ public class TransactionResultDto {
   private TransactionFeeDto transactionFee;
 
   public String getTransactionId() {
-        return transactionId;
-    }
+    return transactionId;
+  }
+
   public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
+    this.transactionId = transactionId;
+  }
+
   public String getStatus() {
-        return status;
-    }
+    return status;
+  }
+
   public void setStatus(String status) {
-        this.status = status;
-    }
+    this.status = status;
+  }
+
   public List<LogEventDto> getLogs() {
-        return logs;
-    }
+    return logs;
+  }
+
   public void setLogs(List<LogEventDto> logs) {
-        this.logs = logs;
-    }
+    this.logs = logs;
+  }
+
   public String getBloom() {
-        return bloom;
-    }
+    return bloom;
+  }
+
   public void setBloom(String bloom) {
-        this.bloom = bloom;
-    }
+    this.bloom = bloom;
+  }
+
   public long getBlockNumber() {
-        return blockNumber;
-    }
+    return blockNumber;
+  }
+
   public void setBlockNumber(long blockNumber) {
-        this.blockNumber = blockNumber;
-    }
+    this.blockNumber = blockNumber;
+  }
+
   public String getBlockHash() {
-        return blockHash;
-    }
+    return blockHash;
+  }
+
   public void setBlockHash(String blockHash) {
-        this.blockHash = blockHash;
-    }
+    this.blockHash = blockHash;
+  }
+
   public TransactionDto getTransaction() {
-        return transaction;
-    }
+    return transaction;
+  }
+
   public void setTransaction(TransactionDto transaction) {
-        this.transaction = transaction;
-    }
+    this.transaction = transaction;
+  }
+
   public String getReturnValue() {
-        return returnValue;
-    }
+    return returnValue;
+  }
+
   public void setReturnValue(String returnValue) {
-        this.returnValue = returnValue;
-    }
+    this.returnValue = returnValue;
+  }
+
   public String getReadableReturnValue() {
-        return readableReturnValue;
-    }
+    return readableReturnValue;
+  }
+
   public void setReadableReturnValue(String readableReturnValue) {
-        this.readableReturnValue = readableReturnValue;
-    }
+    this.readableReturnValue = readableReturnValue;
+  }
+
   public String getError() {
-        return error;
-    }
+    return error;
+  }
+
   public void setError(String error) {
-        this.error = error;
-    }
+    this.error = error;
+  }
+
   public TransactionFeeDto getTransactionFee() {
-        return transactionFee;
-    }
+    return transactionFee;
+  }
+
   public void setTransactionFee(TransactionFeeDto transactionFee) {
-        this.transactionFee = transactionFee;
-    }
+    this.transactionFee = transactionFee;
+  }
 }

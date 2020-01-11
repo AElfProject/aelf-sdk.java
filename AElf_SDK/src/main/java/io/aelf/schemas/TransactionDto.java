@@ -1,7 +1,9 @@
 package io.aelf.schemas;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TransactionDto {
+
   @JsonProperty("From")
   private String from;
   @JsonProperty("To")
@@ -18,45 +20,58 @@ public class TransactionDto {
   private String signature;
 
   public String getFrom() {
-        return from;
-    }
+    return from;
+  }
+
   public void setFrom(String from) {
-        this.from = from;
-    }
+    this.from = from;
+  }
+
   public String getTo() {
-        return to;
-    }
+    return to;
+  }
+
   public void setTo(String to) {
-        this.to = to;
-    }
+    this.to = to;
+  }
+
   public long getRefBlockNumber() {
-        return refBlockNumber;
-    }
+    return refBlockNumber;
+  }
+
   public void setRefBlockNumber(long refBlockNumber) {
-        this.refBlockNumber = refBlockNumber;
-    }
+    this.refBlockNumber = refBlockNumber;
+  }
+
   public String getRefBlockPrefix() {
-        return refBlockPrefix;
-    }
+    return refBlockPrefix;
+  }
+
   public void setRefBlockPrefix(String refBlockPrefix) {
-        this.refBlockPrefix = refBlockPrefix;
-    }
+    this.refBlockPrefix = refBlockPrefix;
+  }
+
   public String getMethodName() {
-        return methodName;
-    }
+    return methodName;
+  }
+
   public void setMethodName(String methodName) {
-        this.methodName = methodName;
-    }
+    this.methodName = methodName;
+  }
+
   public String getParams() {
-        return params;
-    }
+    return params;
+  }
+
   public void setParams(String params) {
-        this.params = params;
-    }
+    this.params = params;
+  }
+
   public String getSignature() {
-        return signature;
-    }
+    return signature;
+  }
+
   public void setSignature(String signature) {
-        this.signature = signature;
-    }
+    this.signature = signature;
+  }
 }

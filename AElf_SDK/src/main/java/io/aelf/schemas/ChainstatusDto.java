@@ -1,15 +1,16 @@
 package io.aelf.schemas;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.HashMap;
 
 public class ChainstatusDto {
+
   @JsonProperty("ChainId")
   private String chainId;
   @JsonProperty("Branches")
-  private HashMap<String,Long> branches;
+  private HashMap<String, Long> branches;
   @JsonProperty("NotLinkedBlocks")
-  private HashMap<String,String> notLinkedBlocks;
+  private HashMap<String, String> notLinkedBlocks;
   @JsonProperty("LongestChainHeight")
   private long longestChainHeight;
   @JsonProperty("LongestChainHash")
@@ -28,69 +29,90 @@ public class ChainstatusDto {
   private long bestChainHeight;
 
   public String getChainId() {
-        return chainId;
-    }
+    return chainId;
+  }
+
   public void setChainId(String chainId) {
-      this.chainId = chainId;
+    this.chainId = chainId;
   }
+
   public HashMap<String, Long> getBranches() {
-        return branches;
-    }
+    return branches;
+  }
+
   public void setBranches(HashMap<String, Long> branches) {
-        this.branches = branches;
-    }
+    this.branches = branches;
+  }
+
   public HashMap<String, String> getNotLinkedBlocks() {
-        return notLinkedBlocks;
-    }
+    return notLinkedBlocks;
+  }
+
   public void setNotLinkedBlocks(HashMap<String, String> notLinkedBlocks) {
-        this.notLinkedBlocks = notLinkedBlocks;
-    }
+    this.notLinkedBlocks = notLinkedBlocks;
+  }
+
   public long getLongestChainHeight() {
-        return longestChainHeight;
-    }
+    return longestChainHeight;
+  }
+
   public void setLongestChainHeight(long longestChainHeight) {
-        this.longestChainHeight = longestChainHeight;
-    }
+    this.longestChainHeight = longestChainHeight;
+  }
+
   public String getLongestChainHash() {
-        return longestChainHash;
-    }
+    return longestChainHash;
+  }
+
   public void setLongestChainHash(String longestChainHash) {
-      this.longestChainHash = longestChainHash;
+    this.longestChainHash = longestChainHash;
   }
+
   public String getGenesisBlockHash() {
-        return genesisBlockHash;
-    }
+    return genesisBlockHash;
+  }
+
   public void setGenesisBlockHash(String genesisBlockHash) {
-        this.genesisBlockHash = genesisBlockHash;
-    }
+    this.genesisBlockHash = genesisBlockHash;
+  }
+
   public String getGenesisContractAddress() {
-        return genesisContractAddress;
-    }
+    return genesisContractAddress;
+  }
+
   public void setGenesisContractAddress(String genesisContractAddress) {
-      this.genesisContractAddress = genesisContractAddress;
+    this.genesisContractAddress = genesisContractAddress;
   }
+
   public String getLastIrreversibleBlockHash() {
-        return lastIrreversibleBlockHash;
-    }
+    return lastIrreversibleBlockHash;
+  }
+
   public void setLastIrreversibleBlockHash(String lastIrreversibleBlockHash) {
-      this.lastIrreversibleBlockHash = lastIrreversibleBlockHash;
+    this.lastIrreversibleBlockHash = lastIrreversibleBlockHash;
   }
+
   public long getLastIrreversibleBlockHeight() {
-        return lastIrreversibleBlockHeight;
-    }
-  public void setLastIrreversibleBlockHeight(long lastIrreversibleBlockHeight) {
-        this.lastIrreversibleBlockHeight = lastIrreversibleBlockHeight;
+    return lastIrreversibleBlockHeight;
   }
+
+  public void setLastIrreversibleBlockHeight(long lastIrreversibleBlockHeight) {
+    this.lastIrreversibleBlockHeight = lastIrreversibleBlockHeight;
+  }
+
   public String getBestChainHash() {
-        return bestChainHash;
-    }
+    return bestChainHash;
+  }
+
   public void setBestChainHash(String bestChainHash) {
-        this.bestChainHash = bestChainHash;
-    }
+    this.bestChainHash = bestChainHash;
+  }
+
   public long getBestChainHeight() {
-        return bestChainHeight;
-    }
+    return bestChainHeight;
+  }
+
   public void setBestChainHeight(long bestChainHeight) {
-        this.bestChainHeight = bestChainHeight;
-    }
+    this.bestChainHeight = bestChainHeight;
+  }
 }

@@ -1,8 +1,10 @@
 package io.aelf.schemas;
-import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 public class LogEventDto {
+
   @JsonProperty("Address")
   private String address;
   @JsonProperty("Name")
@@ -13,27 +15,34 @@ public class LogEventDto {
   private String nonIndexed;
 
   public String getAddress() {
-        return address;
-    }
-  public void setAddress(String address) {
-        this.address = address;
+    return address;
   }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
   public String getName() {
-        return name;
-    }
+    return name;
+  }
+
   public void setName(String name) {
-        this.name = name;
-    }
+    this.name = name;
+  }
+
   public List<String> getIndexed() {
-        return this.indexed;
-    }
+    return this.indexed;
+  }
+
   public void setIndexed(List<String> indexed) {
-        this.indexed = indexed;
-    }
+    this.indexed = indexed;
+  }
+
   public String getNonIndexed() {
-        return this.nonIndexed;
-    }
+    return this.nonIndexed;
+  }
+
   public void setNonIndexed(String nonIndexed) {
-        this.nonIndexed = nonIndexed;
-    }
+    this.nonIndexed = nonIndexed;
+  }
 }

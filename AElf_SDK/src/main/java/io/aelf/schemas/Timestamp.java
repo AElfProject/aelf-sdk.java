@@ -1,4 +1,5 @@
 package io.aelf.schemas;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Timestamp {
@@ -6,16 +7,20 @@ public class Timestamp {
   private long seconds;
   @JsonProperty("Nanos")
   private int nanos;
+
   public long getSeconds() {
-        return seconds;
-    }
+    return seconds;
+  }
+
   public void setSeconds(long seconds) {
-        this.seconds = seconds;
-    }
+    this.seconds = seconds;
+  }
+
   public int getNanos() {
-        return nanos;
-    }
+    return nanos;
+  }
+
   public void setNanos(int nanos) {
-        this.nanos = nanos;
-    }
+    this.nanos = nanos;
+  }
 }

@@ -16,8 +16,8 @@
 
     </appenders>
     <loggers>
-        <AsyncRoot level="info" includeLocation="true">
+        <Root level="info" includeLocation="true">
             <appender-ref ref="CONSOLE"/>
-        </AsyncRoot>
+        </Root>
     </loggers>
 </configuration>

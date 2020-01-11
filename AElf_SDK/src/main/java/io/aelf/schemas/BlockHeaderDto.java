@@ -1,8 +1,10 @@
 package io.aelf.schemas;
-import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Date;
 
 public class BlockHeaderDto {
+
   @JsonProperty("PreviousBlockHash")
   private String previousBlockHash;
   @JsonProperty("MerkleTreeRootOfTransactions")
@@ -25,63 +27,82 @@ public class BlockHeaderDto {
   private String signerPubkey;
 
   public String getPreviousBlockHash() {
-        return previousBlockHash;
+    return previousBlockHash;
   }
+
   public void setPreviousBlockHash(String previousBlockHash) {
-        this.previousBlockHash = previousBlockHash;
+    this.previousBlockHash = previousBlockHash;
   }
+
   public String getMerkleTreeRootOfTransactions() {
-        return merkleTreeRootOfTransactions;
+    return merkleTreeRootOfTransactions;
   }
+
   public void setMerkleTreeRootOfTransactions(String merkleTreeRootOfTransactions) {
-        this.merkleTreeRootOfTransactions = merkleTreeRootOfTransactions;
+    this.merkleTreeRootOfTransactions = merkleTreeRootOfTransactions;
   }
+
   public String getMerkleTreeRootOfWorldState() {
-        return merkleTreeRootOfWorldState;
+    return merkleTreeRootOfWorldState;
   }
+
   public void setMerkleTreeRootOfWorldState(String merkleTreeRootOfWorldState) {
-        this.merkleTreeRootOfWorldState = merkleTreeRootOfWorldState;
+    this.merkleTreeRootOfWorldState = merkleTreeRootOfWorldState;
   }
+
   public String getMerkleTreeRootOfTransactionState() {
-        return merkleTreeRootOfTransactionState;
+    return merkleTreeRootOfTransactionState;
   }
+
   public void setMerkleTreeRootOfTransactionState(String merkleTreeRootOfTransactionState) {
-        this.merkleTreeRootOfTransactionState = merkleTreeRootOfTransactionState;
+    this.merkleTreeRootOfTransactionState = merkleTreeRootOfTransactionState;
   }
+
   public String getExtra() {
-      return extra;
+    return extra;
   }
+
   public void setExtra(String extra) {
-      this.extra = extra;
+    this.extra = extra;
   }
+
   public long getHeight() {
-      return height;
+    return height;
   }
+
   public void setHeight(long height) {
-      this.height = height;
+    this.height = height;
   }
+
   public Date getTime() {
-      return time;
+    return time;
   }
+
   public void setTime(Date time) {
-      this.time = time;
+    this.time = time;
   }
+
   public String getChainId() {
-      return chainId;
+    return chainId;
   }
+
   public void setChainId(String chainId) {
-      this.chainId = chainId;
+    this.chainId = chainId;
   }
+
   public String getBloom() {
-      return bloom;
+    return bloom;
   }
+
   public void setBloom(String bloom) {
-      this.bloom = bloom;
+    this.bloom = bloom;
   }
+
   public String getSignerPubkey() {
-      return signerPubkey;
+    return signerPubkey;
   }
+
   public void setSignerPubkey(String signerPubkey) {
-      this.signerPubkey = signerPubkey;
+    this.signerPubkey = signerPubkey;
   }
 }
