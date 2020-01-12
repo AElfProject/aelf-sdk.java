@@ -8,7 +8,7 @@ public class HttpClientUtilExt {
   protected static final Logger logger = LogManager.getLogger(HttpClientUtilExt.class);
 
   /**
-   * HTTP GET Request help method
+   * HTTP GET Request help method.
    */
   public static String sendGetRequest(String reqUrl, String decodeCharset) throws Exception {
     logger.info("Request address:" + reqUrl);
@@ -22,7 +22,7 @@ public class HttpClientUtilExt {
   }
 
   /**
-   * HTTP DELETE Request help method
+   * HTTP DELETE Request help method.
    */
   public static String sendDeleteRequest(String reqUrl, String decodeCharset) {
     logger.info("Request address:" + reqUrl);
@@ -32,7 +32,7 @@ public class HttpClientUtilExt {
   }
 
   /**
-   * HTTP POST Request help method
+   * HTTP POST Request help method.
    */
   public static String sendPostRequest(String reqUrl, String params) throws Exception {
     logger.info("Request address:" + reqUrl);

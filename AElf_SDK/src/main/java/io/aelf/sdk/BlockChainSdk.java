@@ -47,7 +47,7 @@ public class BlockChainSdk {
   private static final String WA_BLOCKBYHEIGHT = "/api/blockChain/blockByHeight";
   private static final String WA_GETTRANSACTIONPOOLSTATUS = "/api/blockChain/transactionPoolStatus";
   private static final String WA_GETCHAINSTATUS = "/api/blockChain/chainStatus";
-  private static final String WA_GETCONTRACTFILEDESCRIPTORSET = "/api/blockChain/contractFileDescriptorSet";
+  private static final String WA_GETCFCRIPTORSET = "/api/blockChain/contractFileDescriptorSet";
   private static final String WA_GETTASKQUEUESTATUS = "/api/blockChain/taskQueueStatus";
   private static final String WA_EXECUTETRANSACTION = "/api/blockChain/executeTransaction";
   private static final String WA_EXECUTERAWTRANSACTION = "/api/blockChain/executeRawTransaction";
@@ -57,7 +57,7 @@ public class BlockChainSdk {
   private static final String WA_GETTRANSACTIONRESULT = "/api/blockChain/transactionResult";
   private static final String WA_GETTRANSACTIONRESULTS = "/api/blockChain/transactionResults";
   private static final String WA_SENDTRANSACTIONS = "/api/blockChain/sendTransactions";
-  private static final String WA_GETMERKLEPATHBYTRANSACTIONID = "/api/blockChain/merklePathByTransactionId";
+  private static final String WA_GETMBYTRANSACTIONID = "/api/blockChain/merklePathByTransactionId";
 
   /**
    * Object construction through the url path.
@@ -175,7 +175,7 @@ public class BlockChainSdk {
    * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
    */
   public byte[] getContractFilCeDescriptorSet(String address) throws Exception {
-    String url = this.aelfSdkUrl + WA_GETCONTRACTFILEDESCRIPTORSET + "?address=" + address;
+    String url = this.aelfSdkUrl + WA_GETCFCRIPTORSET + "?address=" + address;
     String chainContext = HttpClientUtilExt.sendGetRequest(url, "UTF-8");
     if (chainContext.startsWith("\"") && chainContext.endsWith("\"")) {
       return chainContext.getBytes();
@@ -243,7 +243,7 @@ public class BlockChainSdk {
   }
 
   /**
-   * Call a method of a contract by given serialized string wa:/api/blockChain/executeRawTransaction.
+   * Call a method of a contract by given serialized str wa:/api/blockChain/executeRawTransaction.
    */
   public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
     String url = this.aelfSdkUrl + WA_EXECUTERAWTRANSACTION;
@@ -351,7 +351,7 @@ public class BlockChainSdk {
    * Get merkle path of a transaction. wa:/api/blockChain/merklePathByTransactionId
    */
   public MerklePathDto getMerklePathByTransactionId(String transactionId) throws Exception {
-    String url = this.aelfSdkUrl + WA_GETMERKLEPATHBYTRANSACTIONID + "?transactionId="
+    String url = this.aelfSdkUrl + WA_GETMBYTRANSACTIONID + "?transactionId="
         + transactionId;
     String responseBody = HttpClientUtil.sendGetRequest(url, "UTF-8");
     MapEntry responseBobyMap = JsonUtil.parseObject(responseBody);

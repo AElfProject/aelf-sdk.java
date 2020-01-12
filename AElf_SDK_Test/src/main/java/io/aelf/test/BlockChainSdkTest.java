@@ -38,7 +38,7 @@ public class BlockChainSdkTest {
 
   /**
    * init junit.
-   * @throws Exception
+   * @throws Exception not blank
    */
   @Before
   public void init() throws Exception {

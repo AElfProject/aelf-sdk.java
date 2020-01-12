@@ -8,14 +8,14 @@ public class SendTransactionInput {
   private String rawTransaction;
 
   /**
-   * raw transaction
+   * raw transaction.
    */
   public String getRawTransaction() {
     return rawTransaction;
   }
 
   /**
-   * raw transaction
+   * raw transaction.
    */
   public void setRawTransaction(String rawTransaction) {
     this.rawTransaction = rawTransaction;

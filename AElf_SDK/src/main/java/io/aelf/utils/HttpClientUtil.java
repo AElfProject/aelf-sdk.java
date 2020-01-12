@@ -52,6 +52,12 @@ public class HttpClientUtil {
     }
   }
 
+  /**
+   * Http Get Request Util.
+   * @param reqUrl not blank
+   * @param decodeCharset not blank
+   * @return str
+   */
   public static String sendGetRequest(String reqUrl, String decodeCharset) {
     long responseLength = 0L;
     String responseContent = null;
@@ -85,6 +91,12 @@ public class HttpClientUtil {
     return responseContent;
   }
 
+  /**
+   * Http Delete Request Util.
+   * @param reqUrl not blank
+   * @param decodeCharset not blank
+   * @return
+   */
   public static String sendDeleteRequest(String reqUrl, String decodeCharset) {
     long responseLength = 0L;
     String responseContent = null;
@@ -119,7 +131,15 @@ public class HttpClientUtil {
     return responseContent;
   }
 
-
+  /**
+   * Http Post Request Util.
+   * @param reqUrl not blank
+   * @param param not blank
+   * @param encodeCharset not blank
+   * @param decodeCharset not blank
+   * @param contentType not blank
+   * @return
+   */
   public static String sendPostRequest(String reqUrl, String param, String encodeCharset,
       String decodeCharset, String contentType) {
     String responseContent = null;

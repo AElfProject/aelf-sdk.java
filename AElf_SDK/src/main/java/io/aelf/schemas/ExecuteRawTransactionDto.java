@@ -10,28 +10,28 @@ public class ExecuteRawTransactionDto {
   private String signature;
 
   /**
-   * raw transaction
+   * raw transaction.
    */
   public String getRawTransaction() {
     return rawTransaction;
   }
 
   /**
-   * raw transaction
+   * raw transaction.
    */
   public void setRawTransaction(String rawTransaction) {
     this.rawTransaction = rawTransaction;
   }
 
   /**
-   * signature
+   * signature.
    */
   public String getSignature() {
     return signature;
   }
 
   /**
-   * signature
+   * signature.
    */
   public void setSignature(String signature) {
     this.signature = signature;

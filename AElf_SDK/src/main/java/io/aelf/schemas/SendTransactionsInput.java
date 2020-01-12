@@ -8,7 +8,7 @@ public class SendTransactionsInput {
   private String rawTransactions;
 
   /**
-   * raw transactions
+   * raw transactions.
    *
    * @return String
    */
@@ -17,7 +17,7 @@ public class SendTransactionsInput {
   }
 
   /**
-   * raw transactions
+   * raw transactions.
    */
   public void setRawTransactions(final String rawTransactions) {
     this.rawTransactions = rawTransactions;

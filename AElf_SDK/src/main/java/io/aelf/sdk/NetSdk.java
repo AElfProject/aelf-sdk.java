@@ -24,7 +24,7 @@ public class NetSdk {
   private static final String WA_GETNETWORKINFO = "/api/net/networkInfo";
 
   /**
-   * Object construction through the url path
+   * Object construction through the url path.
    */
   public NetSdk(String url) {
     this.aelfSdkUrl = url;
@@ -34,7 +34,7 @@ public class NetSdk {
   }
 
   /**
-   * Attempts to add a node to the connected network nodes wa:/api/net/peer
+   * Attempts to add a node to the connected network nodes wa:/api/net/peer.
    */
   public Boolean addPeer(AddPeerInput input) throws Exception {
     String url = this.aelfSdkUrl + WA_ADDPEER;
@@ -49,7 +49,7 @@ public class NetSdk {
   }
 
   /**
-   * Attempts to remove a node from the connected network nodes wa:/api/net/peer
+   * Attempts to remove a node from the connected network nodes wa:/api/net/peer.
    */
   public Boolean removePeer(String address) throws Exception {
     String url = this.aelfSdkUrl + WA_REMOVEPEER + "?address=" + address;

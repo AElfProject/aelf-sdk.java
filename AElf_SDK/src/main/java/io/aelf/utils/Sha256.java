@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 public class Sha256 {
 
   /**
-   * Converts hexadecimal byte to bytes
+   * Converts hexadecimal byte to bytes.
    *
    * @return bytes
    */
@@ -25,7 +25,7 @@ public class Sha256 {
   }
 
   /**
-   * Converts hexadecimal to bytes
+   * Converts hexadecimal to bytes.
    *
    * @return bytes
    */
@@ -45,7 +45,7 @@ public class Sha256 {
   }
 
   /**
-   *     * Converts  bytes to hexadecimal     * @param bytes     * @return hex     
+   * * Converts  bytes to hexadecimal     * @param bytes     * @return hex     .
    */
   private static String byte2Hex(byte[] bytes) {
     StringBuffer stringBuffer = new StringBuffer();
@@ -61,7 +61,7 @@ public class Sha256 {
   }
 
   /**
-   * Converts bytes to String
+   * Converts bytes to String.
    *
    * @return string
    */

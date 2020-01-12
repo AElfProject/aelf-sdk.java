@@ -12,42 +12,42 @@ public class SendRawTransactionInput {
   private boolean returnTransaction;
 
   /**
-   * raw transaction
+   * raw transaction.
    */
   public String getTransaction() {
     return transaction;
   }
 
   /**
-   * raw transaction
+   * raw transaction.
    */
   public void setTransaction(String transaction) {
     this.transaction = transaction;
   }
 
   /**
-   * signature
+   * signature.
    */
   public String getSignature() {
     return this.signature;
   }
 
   /**
-   * signature
+   * signature.
    */
   public void setSignature(String signature) {
     this.signature = signature;
   }
 
   /**
-   * return transaction detail or not
+   * return transaction detail or not.
    */
   public boolean isReturnTransaction() {
     return returnTransaction;
   }
 
   /**
-   * return transaction detail or not
+   * return transaction detail or not.
    */
   public void setReturnTransaction(boolean returnTransaction) {
     this.returnTransaction = returnTransaction;

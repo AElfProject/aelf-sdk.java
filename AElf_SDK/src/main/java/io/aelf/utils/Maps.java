@@ -68,6 +68,13 @@ public final class Maps {
     return new ConcurrentHashMap(20);
   }
 
+  /**
+   * removeKeys.
+   * @param map not blank
+   * @param removeKeys not blank
+   * @param <T> T
+   * @return T extends Map
+   */
   public static <T extends Map> T removeKeys(T map, Object... removeKeys) {
     Object[] var5 = removeKeys;
     int var4 = removeKeys.length;
@@ -80,6 +87,13 @@ public final class Maps {
     return map;
   }
 
+  /**
+   * newMapHasKeys.
+   * @param map not blank
+   * @param keys not blank
+   * @param <T> T
+   * @return T extends Map
+   */
   public static <T extends Map> Map newMapHasKeys(T map, Object... keys) {
     Map newMap = null;
     if (map instanceof HashMap) {
@@ -100,16 +114,34 @@ public final class Maps {
     return newMap;
   }
 
+  /**
+   * isBlankKey.
+   * @param map not blank
+   * @param key not blank
+   * @return boolean
+   */
   public static boolean isBlankKey(Map map, String key) {
     return !map.containsKey(key) || map.get(key) == null || StringUtils
         .isBlank(map.get(key).toString());
   }
 
+  /**
+   * isNotBlankKey.
+   * @param map not blank
+   * @param key not blank
+   * @return boolean
+   */
   public static boolean isNotBlankKey(Map map, String key) {
     return map.containsKey(key) && map.get(key) != null && StringUtils
         .isNotBlank(map.get(key).toString());
   }
 
+  /**
+   * isBlankKeys.
+   * @param map not blank
+   * @param keys not blank
+   * @return boolean
+   */
   public static boolean isBlankKeys(Map map, String... keys) {
     String[] var5 = keys;
     int var4 = keys.length;
@@ -124,6 +156,12 @@ public final class Maps {
     return false;
   }
 
+  /**
+   * isNotBlankKeys.
+   * @param map not blank
+   * @param keys not blank
+   * @return boolean
+   */
   public static boolean isNotBlankKeys(Map map, String... keys) {
     String[] var5 = keys;
     int var4 = keys.length;
@@ -138,10 +176,25 @@ public final class Maps {
     return false;
   }
 
+  /**
+   * cloneMapEntry.
+   * @param map not blank
+   * @param <K> not blank
+   * @param <V> not blank
+   * @return MapEntry
+   */
   public static <K, V> MapEntry<K, V> cloneMapEntry(Map<K, V> map) {
     return cloneMapEntry(map, true);
   }
 
+  /**
+   * cloneMapEntry.
+   * @param map not blank
+   * @param rs not blank
+   * @param <K> not blank
+   * @param <V> not blank
+   * @return MapEntry
+   */
   public static <K, V> MapEntry<K, V> cloneMapEntry(Map<K, V> map, boolean rs) {
     if (!rs && map instanceof MapEntry) {
       return (MapEntry) ((MapEntry) map).clone();
@@ -152,6 +205,13 @@ public final class Maps {
     }
   }
 
+  /**
+   * cloneMap.
+   * @param map not blank
+   * @param <K> not blank
+   * @param <V> not blank
+   * @return Map
+   */
   public static <K, V> Map<K, V> cloneMap(Map<K, V> map) {
     try {
       Class<?> clazz = map.getClass();
@@ -163,6 +223,11 @@ public final class Maps {
     }
   }
 
+  /**
+   * toString.
+   * @param map not blank
+   * @return String
+   */
   public static String toString(Map map) {
     if (map == null) {
       return null;

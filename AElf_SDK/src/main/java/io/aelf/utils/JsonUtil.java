@@ -14,6 +14,11 @@ public final class JsonUtil {
     UNKNOWN_PROPERTIES_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
   }
 
+  /**
+   * Json conversion string.
+   * @param value not blank
+   * @return str
+   */
   public static String toJsonString(Object value) {
     if (value == null) {
       return null;
@@ -30,10 +35,23 @@ public final class JsonUtil {
     }
   }
 
+  /**
+   * string conversion MapEntry class.
+   * @param value not blank
+   * @return MapEntry Obj
+   */
   public static MapEntry parseObject(String value) {
     return StringUtil.isBlank(value) ? null : (MapEntry) parseObject(value, MapEntry.class);
   }
 
+  /**
+   * Generic conversion.
+   * @param value not blank
+   * @param clazz not blank
+   * @param failOnUnknowProperties not blank
+   * @param <T> not blank
+   * @return T
+   */
   public static <T> T parseObject(String value, Class<T> clazz, boolean failOnUnknowProperties) {
     if (StringUtil.isBlank(value)) {
       return null;
@@ -47,6 +65,13 @@ public final class JsonUtil {
     }
   }
 
+  /**
+   * Generic conversion.
+   * @param value not blank
+   * @param clazz not blank
+   * @param <T> not blank
+   * @return T
+   */
   public static <T> T parseObject(String value, Class<T> clazz) {
     return parseObject(value, clazz, true);
   }

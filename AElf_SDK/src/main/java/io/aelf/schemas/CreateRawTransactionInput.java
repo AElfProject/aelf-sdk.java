@@ -18,84 +18,84 @@ public class CreateRawTransactionInput {
   private String params;
 
   /**
-   * from address
+   * from address.
    */
   public String getFrom() {
     return from;
   }
 
   /**
-   * from address
+   * from address.
    */
   public void setFrom(String from) {
     this.from = from;
   }
 
   /**
-   * to address
+   * to address.
    */
   public String getTo() {
     return to;
   }
 
   /**
-   * to address
+   * to address.
    */
   public void setTo(String to) {
     this.to = to;
   }
 
   /**
-   * refer block height
+   * refer block height.
    */
   public long getRefBlockNumber() {
     return refBlockNumber;
   }
 
   /**
-   * refer block height
+   * refer block height.
    */
   public void setRefBlockNumber(long refBlockNumber) {
     this.refBlockNumber = refBlockNumber;
   }
 
   /**
-   * refer block height
+   * refer block height.
    */
   public String getRefBlockHash() {
     return this.refBlockHash;
   }
 
   /**
-   * refer block hash
+   * refer block hash.
    */
   public void setRefBlockHash(String refBlockHash) {
     this.refBlockHash = refBlockHash;
   }
 
   /**
-   * contract method name
+   * contract method name.
    */
   public String getMethodName() {
     return this.methodName;
   }
 
   /**
-   * contract method name
+   * contract method name.
    */
   public void setMethodName(String methodName) {
     this.methodName = methodName;
   }
 
   /**
-   * contract method parameters
+   * contract method parameters.
    */
   public String getParams() {
     return params;
   }
 
   /**
-   * contract method parameters
+   * contract method parameters.
    */
   public void setParams(String params) {
     this.params = params;
