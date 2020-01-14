@@ -75,19 +75,41 @@ public class BlockChainSdkTest {
 
 
   @Test
-  public void getBlockByHeightTest() throws Exception {
+  public void getBlockByHeightForFalseTest() throws Exception {
     long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
     aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
   }
 
   @Test
-  public void getBlockByHashTest() throws Exception {
+  public void getBlockByHeightForTrueTest() throws Exception {
     long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
-    BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
-    aelfSdk.getBlockChainSdkObj().getBlockByHash(blockDto.getBlockHash());
-
+    Assert.assertTrue(blockHeight > 0);
+    aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, true);
   }
 
+
+  @Test
+  public void getBlockByHashTest() throws Exception {
+    long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
+    BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
+    aelfSdk.getBlockChainSdkObj().getBlockByHash(blockDto.getBlockHash());
+  }
+  @Test
+  public void getBlockByHashForFalseTest() throws Exception {
+    long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
+    BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
+    aelfSdk.getBlockChainSdkObj().getBlockByHash(blockDto.getBlockHash());
+  }
+  @Test
+  public void getBlockByHashForFalseTrue() throws Exception {
+    long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
+    BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, true);
+    aelfSdk.getBlockChainSdkObj().getBlockByHash(blockDto.getBlockHash());
+  }
   @Test
   public void getTransactionPoolStatusTest() throws Exception {
     aelfSdk.getBlockChainSdkObj().getTransactionPoolStatus();
@@ -101,6 +123,7 @@ public class BlockChainSdkTest {
   @Test
   public void getContractFilCeDescriptorSetTest() throws Exception {
     long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
     BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
     List<TransactionResultDto> transactionResultDtoList = aelfSdk.getBlockChainSdkObj()
         .getTransactionResults(blockDto.getBlockHash(), 0, 10);
@@ -275,6 +298,7 @@ public class BlockChainSdkTest {
   @Test
   public void getTransactionResultsTest() throws Exception {
     long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
     BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
     aelfSdk.getBlockChainSdkObj().getTransactionResults(blockDto.getBlockHash(), 0, 10);
   }
@@ -282,6 +306,7 @@ public class BlockChainSdkTest {
   @Test
   public void getTransactionResultTest() throws Exception {
     long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
     BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
     List<TransactionResultDto> transactionResultDtoList = aelfSdk.getBlockChainSdkObj()
         .getTransactionResults(blockDto.getBlockHash(), 0, 10);
@@ -294,6 +319,7 @@ public class BlockChainSdkTest {
   @Test
   public void getMerklePathByTransactionIdTest() throws Exception {
     long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
     BlockDto blockDto = aelfSdk.getBlockChainSdkObj().getBlockByHeight(blockHeight, false);
     List<TransactionResultDto> transactionResultDtoList = aelfSdk.getBlockChainSdkObj()
         .getTransactionResults(blockDto.getBlockHash(), 0, 10);

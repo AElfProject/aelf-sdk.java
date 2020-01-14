@@ -34,12 +34,12 @@ public class NetSdkTest {
   public void addPeerTest() throws Exception {
     AddPeerInput addPeerInput = new AddPeerInput();
     addPeerInput.setAddress(OPREATIONADDRESS);
-    aelfSdk.getNetSdkObj().addPeer(addPeerInput);
+    Assert.assertTrue(aelfSdk.getNetSdkObj().addPeer(addPeerInput));
   }
 
   @Test
   public void removePeerTest() throws Exception {
-    aelfSdk.getNetSdkObj().removePeer(OPREATIONADDRESS);
+    Assert.assertTrue(aelfSdk.getNetSdkObj().removePeer(OPREATIONADDRESS));
   }
 
 
