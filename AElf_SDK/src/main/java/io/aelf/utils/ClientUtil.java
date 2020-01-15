@@ -16,11 +16,11 @@ import org.apache.http.util.EntityUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class HttpClientUtil {
+public class ClientUtil {
 
-  protected static final Logger logger = LogManager.getLogger(HttpClientUtil.class);
+  protected static final Logger logger = LogManager.getLogger(ClientUtil.class);
 
-  private HttpClientUtil() {
+  private ClientUtil() {
   }
 
   private static HttpClient setProxy(Integer... connectTimeout) {
@@ -54,11 +54,12 @@ public class HttpClientUtil {
 
   /**
    * Http Get Request Util.
+   *
    * @param reqUrl not blank
    * @param decodeCharset not blank
    * @return str
    */
-  public static String sendGetRequest(String reqUrl, String decodeCharset) {
+  public static String sendGet(String reqUrl, String decodeCharset, String contentType) {
     long responseLength = 0L;
     String responseContent = null;
     HttpClient httpClient = new DefaultHttpClient();
@@ -66,6 +67,12 @@ public class HttpClientUtil {
 
     try {
       setProxy();
+      if (StringUtils.isBlank(contentType)) {
+        httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
+      } else {
+        httpGet.setHeader("Content-Type", contentType);
+      }
+
       HttpResponse response = httpClient.execute(httpGet);
       HttpEntity entity = response.getEntity();
       if (entity != null) {
@@ -83,7 +90,7 @@ public class HttpClientUtil {
       logger.info("Response content:" + responseContent);
     } catch (Exception ex) {
       responseContent = "@ERROR:@" + ex.getMessage();
-      logger.info("sendGetRequest Exception:", ex);
+      logger.info("sendGet Exception:", ex);
     } finally {
       httpClient.getConnectionManager().shutdown();
     }
@@ -93,11 +100,11 @@ public class HttpClientUtil {
 
   /**
    * Http Delete Request Util.
+   *
    * @param reqUrl not blank
    * @param decodeCharset not blank
-   * @return
    */
-  public static String sendDeleteRequest(String reqUrl, String decodeCharset) {
+  public static String sendDelete(String reqUrl, String decodeCharset, String contentType) {
     long responseLength = 0L;
     String responseContent = null;
     HttpClient httpClient = new DefaultHttpClient();
@@ -105,6 +112,11 @@ public class HttpClientUtil {
 
     try {
       setProxy();
+      if (StringUtils.isBlank(contentType)) {
+        httpDelete.setHeader("Content-Type", "application/x-www-form-urlencoded");
+      } else {
+        httpDelete.setHeader("Content-Type", contentType);
+      }
       HttpResponse response = httpClient.execute(httpDelete);
       HttpEntity entity = response.getEntity();
       if (entity != null) {
@@ -122,7 +134,7 @@ public class HttpClientUtil {
       logger.info("Response length:" + responseLength);
       logger.info("Response content:" + responseContent);
     } catch (Exception ex) {
-      logger.info("sendDeleteRequest Exception:", ex);
+      logger.info("sendDelete Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
     } finally {
       httpClient.getConnectionManager().shutdown();
@@ -133,14 +145,14 @@ public class HttpClientUtil {
 
   /**
    * Http Post Request Util.
+   *
    * @param reqUrl not blank
    * @param param not blank
    * @param encodeCharset not blank
    * @param decodeCharset not blank
    * @param contentType not blank
-   * @return
    */
-  public static String sendPostRequest(String reqUrl, String param, String encodeCharset,
+  public static String sendPost(String reqUrl, String param, String encodeCharset,
       String decodeCharset, String contentType) {
     String responseContent = null;
     HttpClient httpClient = setProxy();
@@ -166,7 +178,7 @@ public class HttpClientUtil {
         responseContent = "@ERROR:@" + responseContent;
       }
     } catch (Exception ex) {
-      logger.info("sendPostRequest Exception:", ex);
+      logger.info("sendPost Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
     } finally {
       httpClient.getConnectionManager().shutdown();

@@ -5,8 +5,8 @@ import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;
 import io.aelf.schemas.RequestMetric;
 import io.aelf.schemas.Timestamp;
-import io.aelf.utils.HttpClientUtil;
-import io.aelf.utils.HttpClientUtilExt;
+import io.aelf.utils.ClientUtil;
+import io.aelf.utils.HttpUtilExt;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
@@ -15,9 +15,11 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class NetSdk {
 
   private String aelfSdkUrl;
+  private String version;
   private static final String WA_ADDPEER = "/api/net/peer";
   private static final String WA_REMOVEPEER = "/api/net/peer";
   private static final String WA_GETPEERS = "/api/net/peers";
@@ -25,9 +27,13 @@ public class NetSdk {
 
   /**
    * Object construction through the url path.
+   *
+   * @param url Http Request Url exp:(http://xxxx)
+   * @param version application/json;v={version}
    */
-  public NetSdk(String url) {
+  public NetSdk(String url, String version) {
     this.aelfSdkUrl = url;
+    this.version = version;
   }
 
   private NetSdk() {
@@ -40,8 +46,8 @@ public class NetSdk {
     String url = this.aelfSdkUrl + WA_ADDPEER;
     MapEntry mapParmas = Maps.newMap();
     mapParmas.put("Address", input.getAddress());
-    String responseBobyResult = HttpClientUtilExt
-        .sendPostRequest(url, JsonUtil.toJsonString(mapParmas));
+    String responseBobyResult = HttpUtilExt
+        .sendPost(url, JsonUtil.toJsonString(mapParmas), this.version);
     if ("true".equals(responseBobyResult)) {
       return true;
     }
@@ -53,11 +59,8 @@ public class NetSdk {
    */
   public Boolean removePeer(String address) throws Exception {
     String url = this.aelfSdkUrl + WA_REMOVEPEER + "?address=" + address;
-    String responseBobyResult = HttpClientUtilExt.sendDeleteRequest(url, "UTF-8");
-    if ("true".equals(responseBobyResult)) {
-      return true;
-    }
-    return false;
+    String responseBobyResult = HttpUtilExt.sendDelete(url, "UTF-8", this.version);
+    return "true".equals(responseBobyResult);
   }
 
   /**
@@ -66,7 +69,7 @@ public class NetSdk {
    */
   public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
     String url = this.aelfSdkUrl + WA_GETPEERS + "?withMetrics=" + withMetrics;
-    String peersChain = HttpClientUtil.sendGetRequest(url, "UTF-8");
+    String peersChain = ClientUtil.sendGet(url, "UTF-8", this.version);
     List<PeerDto> listPeerDto = new ArrayList<PeerDto>();
     List<LinkedHashMap> responseBobyList = JsonUtil.parseObject(peersChain, List.class);
     for (LinkedHashMap responseBobyObj : responseBobyList) {
@@ -117,8 +120,8 @@ public class NetSdk {
    * Get information about the node’s connection to the network. wa:/api/net/networkInfo
    */
   public NetworkInfoOutput getNetworkInfo() throws Exception {
-    String networkChain = HttpClientUtil
-        .sendGetRequest(this.aelfSdkUrl + WA_GETNETWORKINFO, "UTF-8");
+    String networkChain = ClientUtil
+        .sendGet(this.aelfSdkUrl + WA_GETNETWORKINFO, "UTF-8", this.version);
     MapEntry responseBobyMap = JsonUtil.parseObject(networkChain);
     NetworkInfoOutput networkInfoOutput = new NetworkInfoOutput();
     networkInfoOutput.setVersion(responseBobyMap.getString("Version"));

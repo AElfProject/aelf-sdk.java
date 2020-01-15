@@ -18,10 +18,10 @@ import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
 
-@SuppressWarnings("checkstyle:SummaryJavadoc")
 public class AelfSdk {
 
   private String aelfSdkUrl;
+  private String version = "1.0";
   private BlockChainSdk blcokChainSdk;
   private NetSdk netSdk;
 
@@ -35,6 +35,16 @@ public class AelfSdk {
     this.aelfSdkUrl = url;
   }
 
+  /**
+   *  Object construction through the url path.
+   * @param url  Http Request Url exp:(http://xxxx)
+   * @param version application/json;v={version}
+   */
+  public AelfSdk(String url, String version) {
+    this.aelfSdkUrl = url;
+    this.version = version;
+  }
+
   private AelfSdk() {
 
   }
@@ -46,7 +56,7 @@ public class AelfSdk {
    */
   public BlockChainSdk getBlockChainSdkObj() {
     if (blcokChainSdk == null) {
-      blcokChainSdk = new BlockChainSdk(this.aelfSdkUrl);
+      blcokChainSdk = new BlockChainSdk(this.aelfSdkUrl,this.version);
     }
     return blcokChainSdk;
   }
@@ -56,7 +66,7 @@ public class AelfSdk {
    */
   public NetSdk getNetSdkObj() {
     if (netSdk == null) {
-      netSdk = new NetSdk(this.aelfSdkUrl);
+      netSdk = new NetSdk(this.aelfSdkUrl,this.version);
     }
     return netSdk;
   }

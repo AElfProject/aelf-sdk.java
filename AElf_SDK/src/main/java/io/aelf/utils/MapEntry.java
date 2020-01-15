@@ -21,6 +21,7 @@ import java.util.TreeSet;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+@SuppressWarnings("unchecked")
 public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntry<K, V> {
 
   /**
@@ -31,6 +32,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * MapEntry constructor.
+   *
    * @param size not blank
    */
   public MapEntry(int size) {
@@ -39,6 +41,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * MapEntry constructor.
+   *
    * @param map not blank
    */
   public MapEntry(Map map) {
@@ -47,8 +50,8 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getFile.
+   *
    * @param key not blank
-   * @return
    */
   public File getFile(K key) {
     return this.getFile(key, (File) null);
@@ -56,6 +59,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getFile.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return File
@@ -71,6 +75,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getInputStream.
+   *
    * @param key not blank
    * @return InputStream
    */
@@ -80,6 +85,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getInputStream.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return InputStream
@@ -95,6 +101,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getOutputStream.
+   *
    * @param key not blank
    * @return OutputStream
    */
@@ -104,6 +111,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getOutputStream.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return OutputStream
@@ -119,6 +127,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getCollection.
+   *
    * @param key not blank
    * @return Collection
    */
@@ -128,6 +137,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getCollection.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return Collection
@@ -143,6 +153,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getMap.
+   *
    * @param key not blank
    * @return Map
    */
@@ -152,6 +163,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getMap.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return Map
@@ -167,6 +179,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getHashMap.
+   *
    * @param key not blank
    * @return HashMap
    */
@@ -176,6 +189,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getHashMap.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return HashMap
@@ -197,6 +211,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getTreeMap.
+   *
    * @param key not blank
    * @return TreeMap
    */
@@ -206,6 +221,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getTreeMap.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return TreeMap
@@ -221,6 +237,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedHashMap.
+   *
    * @param key not blank
    * @return LinkedHashMap.
    */
@@ -230,6 +247,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedHashMap.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return LinkedHashMap
@@ -251,6 +269,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getMapEntry.
+   *
    * @param key not blank
    * @return MapEntry
    */
@@ -260,6 +279,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getMapEntry.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return MapEntry
@@ -281,6 +301,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedMapEntry.
+   *
    * @param key not blank
    * @return LinkedMapEntry
    */
@@ -290,6 +311,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedMapEntry.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return LinkedMapEntry
@@ -311,6 +333,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getList.
+   *
    * @param key not blank
    * @return List
    */
@@ -320,6 +343,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getList.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return List
@@ -335,6 +359,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getArrayList.
+   *
    * @param key not blank
    * @return ArrayList
    */
@@ -344,6 +369,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getArrayList.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return ArrayList
@@ -359,6 +385,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedList.
+   *
    * @param key not blank
    * @return LinkedList
    */
@@ -368,6 +395,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedList.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return LinkedList
@@ -383,6 +411,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getSet.
+   *
    * @param key not blank
    * @return Set
    */
@@ -392,6 +421,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getSet.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return Set
@@ -407,6 +437,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getHashSet.
+   *
    * @param key not blank
    * @return HashSet
    */
@@ -416,6 +447,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getHashSet.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return HashSet
@@ -431,6 +463,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getTreeSet.
+   *
    * @param key not blank
    * @return TreeSet
    */
@@ -440,6 +473,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getTreeSet.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return TreeSet
@@ -455,6 +489,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedHashSet.
+   *
    * @param key not blank
    * @return LinkedHashSet
    */
@@ -464,6 +499,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLinkedHashSet.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return LinkedHashSet
@@ -479,6 +515,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getString.
+   *
    * @param key not blank
    * @return String
    */
@@ -489,6 +526,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getString.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return String
@@ -500,6 +538,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getObject.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return Object
@@ -511,6 +550,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getObject.
+   *
    * @param key not blank
    * @return Object
    */
@@ -520,6 +560,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getNumber.
+   *
    * @param key not blank
    * @return Number
    */
@@ -529,6 +570,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getNumber.
+   *
    * @param key not blank
    * @param num not blank
    * @return Number
@@ -545,6 +587,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getBigDecimal.
+   *
    * @param key not blank
    * @return BigDecimal
    */
@@ -554,6 +597,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getBigDecimal.
+   *
    * @param key not blank
    * @param num not blank
    * @return BigDecimal
@@ -564,6 +608,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getBigInteger.
+   *
    * @param key not blank
    * @return BigInteger
    */
@@ -573,6 +618,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getBigInteger.
+   *
    * @param key not blank
    * @param num not blank
    * @return BigInteger
@@ -583,6 +629,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getByte.
+   *
    * @param key not blank
    * @return byte[]
    */
@@ -592,6 +639,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getByte.
+   *
    * @param key not blank
    * @param num not blank
    * @return byte[]
@@ -607,6 +655,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getShort.
+   *
    * @param key not blank
    * @return Short
    */
@@ -616,6 +665,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getShort.
+   *
    * @param key not blank
    * @param num not blank
    * @return Short
@@ -626,6 +676,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getInteger.
+   *
    * @param key not blank
    * @return Integer
    */
@@ -635,6 +686,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getInteger.
+   *
    * @param key not blank
    * @param num not blank
    * @return Integer
@@ -645,6 +697,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLong.
+   *
    * @param key not blank
    * @return Long
    */
@@ -654,6 +707,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getLong.
+   *
    * @param key not blank
    * @param num not blank
    * @return Long
@@ -664,6 +718,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getDouble.
+   *
    * @param key not blank
    * @return Double
    */
@@ -673,6 +728,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getDouble.
+   *
    * @param key not blank
    * @param num not blank
    * @return Double
@@ -683,6 +739,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getFloat.
+   *
    * @param key not blank
    * @return Float
    */
@@ -692,6 +749,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getFloat.
+   *
    * @param key not blank
    * @param num not blank
    * @return Float
@@ -702,6 +760,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getBoolean.
+   *
    * @param key not blank
    * @return Boolean
    */
@@ -711,6 +770,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getBoolean.
+   *
    * @param key not blank
    * @param b not blank
    * @return Boolean
@@ -741,6 +801,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getDate.
+   *
    * @param key not blank
    * @return Date
    */
@@ -750,6 +811,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getDate.
+   *
    * @param key not blank
    * @param date not blank
    * @return Date
@@ -765,6 +827,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getArray.
+   *
    * @param key not blank
    * @return String[]
    */
@@ -774,6 +837,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
 
   /**
    * getArray.
+   *
    * @param key not blank
    * @param defauleValue not blank
    * @return String[]

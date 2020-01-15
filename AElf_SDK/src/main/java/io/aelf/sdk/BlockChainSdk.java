@@ -22,8 +22,8 @@ import io.aelf.schemas.TransactionFeeDto;
 import io.aelf.schemas.TransactionPoolStatusOutput;
 import io.aelf.schemas.TransactionResultDto;
 import io.aelf.utils.BitConverter;
-import io.aelf.utils.HttpClientUtil;
-import io.aelf.utils.HttpClientUtilExt;
+import io.aelf.utils.ClientUtil;
+import io.aelf.utils.HttpUtilExt;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
@@ -39,9 +39,11 @@ import java.util.TimeZone;
 import org.apache.commons.codec.binary.Base64;
 import org.bitcoinj.core.Base58;
 
+@SuppressWarnings("unchecked")
 public class BlockChainSdk {
 
   private String aelfSdkUrl;
+  private String version;
   private static final String WA_BLOCKHEIGHT = "/api/blockChain/blockHeight";
   private static final String WA_BLOCK = "/api/blockChain/block";
   private static final String WA_BLOCKBYHEIGHT = "/api/blockChain/blockByHeight";
@@ -62,8 +64,9 @@ public class BlockChainSdk {
   /**
    * Object construction through the url path.
    */
-  public BlockChainSdk(String url) {
+  public BlockChainSdk(String url, String version) {
     this.aelfSdkUrl = url;
+    this.version = version;
   }
 
   private BlockChainSdk() {
@@ -73,8 +76,8 @@ public class BlockChainSdk {
    * Get the height of the current chain. wa:/api/blockChain/blockHeight
    */
   public long getBlockHeight() throws Exception {
-    String chainContext = HttpClientUtilExt
-        .sendGetRequest(this.aelfSdkUrl + WA_BLOCKHEIGHT, "UTF-8");
+    String chainContext = HttpUtilExt
+        .sendGet(this.aelfSdkUrl + WA_BLOCKHEIGHT, "UTF-8", this.version);
     return Long.parseLong(chainContext);
   }
 
@@ -92,12 +95,11 @@ public class BlockChainSdk {
    * wa://api/blockChain/block?includeTransactions={includeTransactions}
    */
   public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
-    String chainContext = HttpClientUtilExt.sendGetRequest(
+    String chainContext = HttpUtilExt.sendGet(
         this.aelfSdkUrl + WA_BLOCK + "?blockHash=" + blockHash + "&includeTransactions="
-            + includeTransactions, "UTF-8");
+            + includeTransactions, "UTF-8", this.version);
     MapEntry mapObjJson = JsonUtil.parseObject(chainContext);
-    BlockDto blockDto = createBlockDto(mapObjJson, includeTransactions);
-    return blockDto;
+    return createBlockDto(mapObjJson, includeTransactions);
   }
 
   /**
@@ -118,10 +120,9 @@ public class BlockChainSdk {
     }
     String url = this.aelfSdkUrl + WA_BLOCKBYHEIGHT + "?blockHeight=" + blockHeight
         + "&includeTransactions=" + includeTransactions;
-    String chainContext = HttpClientUtilExt.sendGetRequest(url, "UTF-8");
+    String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     MapEntry mapObjJson = JsonUtil.parseObject(chainContext);
-    BlockDto blockDto = createBlockDto(mapObjJson, includeTransactions);
-    return blockDto;
+    return createBlockDto(mapObjJson, includeTransactions);
   }
 
 
@@ -130,7 +131,7 @@ public class BlockChainSdk {
    */
   public ChainstatusDto getChainStatus() throws Exception {
     String url = this.aelfSdkUrl + WA_GETCHAINSTATUS;
-    String chainContext = HttpClientUtil.sendGetRequest(url, "UTF-8");
+    String chainContext = ClientUtil.sendGet(url, "UTF-8", this.version);
     MapEntry mapObjJson = JsonUtil.parseObject(chainContext);
     LinkedHashMap<String, Integer> branchesMap = mapObjJson
         .getLinkedHashMap("Branches", new LinkedHashMap());
@@ -176,7 +177,7 @@ public class BlockChainSdk {
    */
   public byte[] getContractFilCeDescriptorSet(String address) throws Exception {
     String url = this.aelfSdkUrl + WA_GETCFCRIPTORSET + "?address=" + address;
-    String chainContext = HttpClientUtilExt.sendGetRequest(url, "UTF-8");
+    String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     if (chainContext.startsWith("\"") && chainContext.endsWith("\"")) {
       return chainContext.getBytes();
     } else {
@@ -189,8 +190,8 @@ public class BlockChainSdk {
    * Gets the status information of the task queue wa:/api/blockChain/taskQueueStatus.
    */
   public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception {
-    String responseBody = HttpClientUtilExt
-        .sendGetRequest(this.aelfSdkUrl + WA_GETTASKQUEUESTATUS, "UTF-8");
+    String responseBody = HttpUtilExt
+        .sendGet(this.aelfSdkUrl + WA_GETTASKQUEUESTATUS, "UTF-8", this.version);
     List<LinkedHashMap> responseBodyList = JsonUtil.parseObject(responseBody, List.class);
     List<TaskQueueInfoDto> listTaskQueueInfoDto = new ArrayList<TaskQueueInfoDto>();
     for (LinkedHashMap linkedHashMapObj : responseBodyList) {
@@ -210,7 +211,7 @@ public class BlockChainSdk {
    */
   public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
     String url = this.aelfSdkUrl + WA_GETTRANSACTIONPOOLSTATUS;
-    String responseBody = HttpClientUtilExt.sendGetRequest(url, "UTF-8");
+    String responseBody = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     MapEntry responseBobyMap = JsonUtil.parseObject(responseBody);
     TransactionPoolStatusOutput poolStatusOp = new TransactionPoolStatusOutput();
     poolStatusOp.setQueued(responseBobyMap.getInteger("Queued"));
@@ -224,8 +225,7 @@ public class BlockChainSdk {
    */
   public String executeTransaction(ExecuteTransactionDto input) throws Exception {
     String url = this.aelfSdkUrl + WA_EXECUTETRANSACTION;
-    String responseBody = HttpClientUtilExt.sendPostRequest(url, JsonUtil.toJsonString(input));
-    return responseBody;
+    return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
   }
 
   /**
@@ -234,7 +234,7 @@ public class BlockChainSdk {
   public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input)
       throws Exception {
     String url = this.aelfSdkUrl + WA_CREATERAWTRANSACTION;
-    String responseBody = HttpClientUtilExt.sendPostRequest(url, JsonUtil.toJsonString(input));
+    String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry responseBodyMap = JsonUtil.parseObject(responseBody);
     String rawTransaction = responseBodyMap.getString("RawTransaction", "");
     CreateRawTransactionOutput createRawTransactionOutput = new CreateRawTransactionOutput();
@@ -247,7 +247,7 @@ public class BlockChainSdk {
    */
   public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
     String url = this.aelfSdkUrl + WA_EXECUTERAWTRANSACTION;
-    String responseBody = HttpClientUtilExt.sendPostRequest(url, JsonUtil.toJsonString(input));
+    String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     return responseBody;
   }
 
@@ -258,7 +258,7 @@ public class BlockChainSdk {
   public SendRawTransactionOutput sendRawTransaction(SendRawTransactionInput input)
       throws Exception {
     String url = this.aelfSdkUrl + WA_SENDRAWTRANSACTION;
-    String responseBody = HttpClientUtilExt.sendPostRequest(url, JsonUtil.toJsonString(input));
+    String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry responseBodyMap = JsonUtil.parseObject(responseBody);
     final String transactionId = responseBodyMap.getString("TransactionId", "");
 
@@ -286,7 +286,7 @@ public class BlockChainSdk {
    */
   public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception {
     String url = this.aelfSdkUrl + WA_SENDTRANSACTION;
-    String responseBody = HttpClientUtilExt.sendPostRequest(url, JsonUtil.toJsonString(input));
+    String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry responseBodyMap = JsonUtil.parseObject(responseBody);
     String rawTransaction = responseBodyMap.getString("TransactionId", "");
     SendTransactionOutput sendTransactionOutputObj = new SendTransactionOutput();
@@ -299,7 +299,7 @@ public class BlockChainSdk {
    */
   public List<String> sendTransactions(SendTransactionsInput input) throws Exception {
     String url = this.aelfSdkUrl + WA_SENDTRANSACTIONS;
-    String responseBody = HttpClientUtilExt.sendPostRequest(url, JsonUtil.toJsonString(input));
+    String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     List<String> listString = JsonUtil.parseObject(responseBody, List.class);
     return listString;
   }
@@ -310,7 +310,7 @@ public class BlockChainSdk {
   public TransactionResultDto getTransactionResult(String transactionId) throws Exception {
     String url =
         this.aelfSdkUrl + WA_GETTRANSACTIONRESULT + "?transactionId=" + transactionId;
-    String responseBody = HttpClientUtil.sendGetRequest(url, "UTF-8");
+    String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
     MapEntry responseBobyMap = JsonUtil.parseObject(responseBody);
     return createTransactionResultDto(responseBobyMap);
   }
@@ -337,7 +337,7 @@ public class BlockChainSdk {
     String url =
         this.aelfSdkUrl + WA_GETTRANSACTIONRESULTS + "?blockHash=" + blockHash + "&offset="
             + offset + "&limit=" + limit;
-    String responseBody = HttpClientUtil.sendGetRequest(url, "UTF-8");
+    String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
     List<LinkedHashMap> responseBobyList = JsonUtil.parseObject(responseBody, List.class);
     List<TransactionResultDto> transactionResultDtoList = new ArrayList<TransactionResultDto>();
     for (LinkedHashMap responseBodyObj : responseBobyList) {
@@ -350,10 +350,10 @@ public class BlockChainSdk {
   /**
    * Get merkle path of a transaction. wa:/api/blockChain/merklePathByTransactionId
    */
-  public MerklePathDto getMerklePathByTransactionId(String transactionId) throws Exception {
+  public MerklePathDto getMerklePathByTransactionId(String transactionId){
     String url = this.aelfSdkUrl + WA_GETMBYTRANSACTIONID + "?transactionId="
         + transactionId;
-    String responseBody = HttpClientUtil.sendGetRequest(url, "UTF-8");
+    String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
     MapEntry responseBobyMap = JsonUtil.parseObject(responseBody);
     MerklePathDto merklePathDtoObj = new MerklePathDto();
     merklePathDtoObj.setMerklePathNodes(new ArrayList<MerklePathNodeDto>());
@@ -378,15 +378,11 @@ public class BlockChainSdk {
     }
     String heightStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Height"));
     final long height = heightStr.length() == 0 ? 0 : Long.parseLong(heightStr);
-
     String bloomStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Bloom"));
     bloomStr = bloomStr.length() == 0 ? Base64.encodeBase64String(new byte[256]) : bloomStr;
-
     final String timeStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Time"));
-
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     df.setTimeZone(TimeZone.getTimeZone("UTC"));
-
     BlockDto blockDto = new BlockDto();
     blockDto.setBlockHash(block.getString("BlockHash"));
     blockDto.setHeader(new BlockHeaderDto());
@@ -410,7 +406,6 @@ public class BlockChainSdk {
     if (!includeTransactions) {
       return blockDto;
     }
-
     String transactionsCountStr = StringUtil
         .toString(block.getLinkedHashMap("Body").get("TransactionIds"));
     final long transactionsCount = Long
@@ -430,10 +425,8 @@ public class BlockChainSdk {
     return blockDto;
   }
 
-  private TransactionResultDto createTransactionResultDto(MapEntry transactionResult)
-      throws Exception {
+  private TransactionResultDto createTransactionResultDto(MapEntry transactionResult) {
     TransactionResultDto transactionResultObj = new TransactionResultDto();
-
     transactionResultObj.setTransactionId(transactionResult.getString("TransactionId", ""));
     transactionResultObj.setStatus(transactionResult.getString("Status", ""));
     transactionResultObj.setBloom(transactionResult.getString("Bloom", ""));
@@ -443,7 +436,6 @@ public class BlockChainSdk {
     transactionResultObj
         .setReadableReturnValue(transactionResult.getString("ReadableReturnValue", ""));
     transactionResultObj.setError(transactionResult.getString("Error", ""));
-
     TransactionDto transactionDtoObj = new TransactionDto();
     LinkedHashMap transactionObj = transactionResult
         .getLinkedHashMap("Transaction", new LinkedHashMap());
@@ -456,7 +448,6 @@ public class BlockChainSdk {
     transactionDtoObj.setParams(transactionObjMap.getString("Params", ""));
     transactionDtoObj.setSignature(transactionObjMap.getString("Signature", ""));
     transactionResultObj.setTransaction(transactionDtoObj);
-
     TransactionFeeDto transactionFeeDtoObj = new TransactionFeeDto();
     transactionFeeDtoObj.setValue(new HashMap<String, Long>());
     LinkedHashMap transactionFeeObj = transactionResult
@@ -474,7 +465,6 @@ public class BlockChainSdk {
       transactionFeeDtoObj.getValue().put(key, valueLong);
     }
     transactionResultObj.setTransactionFee(transactionFeeDtoObj);
-
     List<LogEventDto> logEventDtoList = new ArrayList<LogEventDto>();
     List<LinkedHashMap> logsList = transactionResult.getArrayList("Logs", new ArrayList());
     for (LinkedHashMap logsObj : logsList) {
@@ -484,7 +474,6 @@ public class BlockChainSdk {
       logEventDtoObj.setName(logsObjMap.getString("Name", ""));
       logEventDtoObj.setIndexed(new ArrayList<String>());
       logEventDtoObj.setNonIndexed(logsObjMap.getString("NonIndexed", ""));
-
       List<String> ndexedList = logsObjMap.getArrayList("Indexed", new ArrayList<String>());
       for (String ndexedStr : ndexedList) {
         logEventDtoObj.getIndexed().add(ndexedStr);
@@ -512,7 +501,6 @@ public class BlockChainSdk {
       }
       bytes = bs;
     }
-    int chainId = BitConverter.toInt(bytes, 0);
-    return chainId;
+    return BitConverter.toInt(bytes, 0);
   }
 }
