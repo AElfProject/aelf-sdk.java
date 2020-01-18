@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "client.proto";
+option java_package = "io.aelf.protobuf.generated";
+
+//parliament_auth
+message ProposalIdList{
+    repeated Hash proposal_ids = 1;
+}
+
+message Organization {
+    sint32 release_threshold = 1;
+    Address organization_address = 2;
+    Hash organization_hash = 3;
+}
