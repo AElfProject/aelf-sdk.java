@@ -6,7 +6,7 @@ This is a Java client library, used to communicate with the [AElf](https://githu
 
 ### Getting Started
 
-You should build the "AElf_SDK" project 
+You should build the "AElfClient" project 
 
 ### Basic usage
 
