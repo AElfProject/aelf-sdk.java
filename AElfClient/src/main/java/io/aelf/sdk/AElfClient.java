@@ -2,7 +2,8 @@ package io.aelf.sdk;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
-import io.aelf.proto.Core;
+import io.aelf.protobuf.generated.Client;
+import io.aelf.protobuf.generated.Core;
 import io.aelf.schemas.ChainstatusDto;
 import io.aelf.schemas.ExecuteTransactionDto;
 import io.aelf.utils.Base58Ext;
@@ -36,8 +37,9 @@ public class AelfSdk {
   }
 
   /**
-   *  Object construction through the url path.
-   * @param url  Http Request Url exp:(http://xxxx)
+   * Object construction through the url path.
+   *
+   * @param url Http Request Url exp:(http://xxxx)
    * @param version application/json;v={version}
    */
   public AelfSdk(String url, String version) {
@@ -56,7 +58,7 @@ public class AelfSdk {
    */
   public BlockChainSdk getBlockChainSdkObj() {
     if (blcokChainSdk == null) {
-      blcokChainSdk = new BlockChainSdk(this.aelfSdkUrl,this.version);
+      blcokChainSdk = new BlockChainSdk(this.aelfSdkUrl, this.version);
     }
     return blcokChainSdk;
   }
@@ -66,7 +68,7 @@ public class AelfSdk {
    */
   public NetSdk getNetSdkObj() {
     if (netSdk == null) {
-      netSdk = new NetSdk(this.aelfSdkUrl,this.version);
+      netSdk = new NetSdk(this.aelfSdkUrl, this.version);
     }
     return netSdk;
   }
@@ -77,19 +79,19 @@ public class AelfSdk {
   public Core.Transaction.Builder generateTransaction(String from, String to, String methodName,
       byte[] params) throws Exception {
     final ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatus();
-    final Core.Hash.Builder hash = Core.Hash.newBuilder();
+    final Client.Hash.Builder hash = Client.Hash.newBuilder();
     final Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
-    Core.Address.Builder addressForm = Core.Address.newBuilder();
-    Core.Address.Builder addressTo = Core.Address.newBuilder();
+    Client.Address.Builder addressForm = Client.Address.newBuilder();
+    Client.Address.Builder addressTo = Client.Address.newBuilder();
     addressForm.setValue(ByteString.copyFrom(Base58.decodeChecked(from)));
     addressTo.setValue(ByteString.copyFrom(Base58.decodeChecked(to)));
-    Core.Address addressFormObj = addressForm.build();
-    Core.Address addressToObj = addressTo.build();
+    Client.Address addressFormObj = addressForm.build();
+    Client.Address addressToObj = addressTo.build();
     transaction.setFrom(addressFormObj);
     transaction.setTo(addressToObj);
     transaction.setMethodName(methodName);
     hash.setValue(ByteString.copyFrom(params));
-    Core.Hash hashObj = hash.build();
+    Client.Hash hashObj = hash.build();
     transaction.setParams(hashObj.toByteString());
     transaction.setRefBlockNumber(chainStatus.getBestChainHeight());
     byte[] refBlockPrefix = ByteArrayHelper.hexToByteArray(chainStatus.getBestChainHash());
@@ -171,7 +173,7 @@ public class AelfSdk {
     String response = this.blcokChainSdk.executeTransaction(executeTransactionDto);
     byte[] byteArray = ByteArrayHelper.hexToByteArray(response);
     String base58Str = Base58Ext.encodeChecked(
-        Core.Address.getDefaultInstance().parseFrom(byteArray).getValue().toByteArray());
+        Client.Address.getDefaultInstance().parseFrom(byteArray).getValue().toByteArray());
     return base58Str;
   }
 
