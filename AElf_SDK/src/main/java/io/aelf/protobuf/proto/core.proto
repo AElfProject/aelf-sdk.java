@@ -1,5 +1,5 @@
 syntax = "proto3";
-option java_package = "io.aelf.proto";
+option java_package = "io.aelf.protobuff";
 
 message Transaction {
     Address from = 1;
