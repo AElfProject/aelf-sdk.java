@@ -2,7 +2,7 @@
 <configuration status="error" monitorInterval="30000">
     <Properties>
         <Property name="logDir">logs</Property>
-        <Property name="logFileName">aelf_sdk</Property>
+        <Property name="logFileName">AElfClient</Property>
         <Property name="logPath">${logDir}/${logFileName}</Property>
     </Properties>
     <CustomLevels>

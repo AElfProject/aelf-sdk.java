@@ -20,48 +20,59 @@ public final class ElectionContract {
 
     /**
      * <code>string pubkey = 1;</code>
+     * @return The pubkey.
      */
     java.lang.String getPubkey();
     /**
      * <code>string pubkey = 1;</code>
+     * @return The bytes for pubkey.
      */
     com.google.protobuf.ByteString
         getPubkeyBytes();
 
     /**
      * <code>repeated sint64 terms = 2;</code>
+     * @return A list containing the terms.
      */
     java.util.List<java.lang.Long> getTermsList();
     /**
      * <code>repeated sint64 terms = 2;</code>
+     * @return The count of terms.
      */
     int getTermsCount();
     /**
      * <code>repeated sint64 terms = 2;</code>
+     * @param index The index of the element to return.
+     * @return The terms at the given index.
      */
     long getTerms(int index);
 
     /**
      * <code>sint64 produced_blocks = 3;</code>
+     * @return The producedBlocks.
      */
     long getProducedBlocks();
 
     /**
      * <code>sint64 missed_time_slots = 4;</code>
+     * @return The missedTimeSlots.
      */
     long getMissedTimeSlots();
 
     /**
      * <code>sint64 continual_appointment_count = 5;</code>
+     * @return The continualAppointmentCount.
      */
     long getContinualAppointmentCount();
 
     /**
      * <code>.Hash announcement_transaction_id = 6;</code>
+     * @return Whether the announcementTransactionId field is set.
      */
     boolean hasAnnouncementTransactionId();
     /**
      * <code>.Hash announcement_transaction_id = 6;</code>
+     * @return The announcementTransactionId.
      */
     io.aelf.protobuf.generated.Client.Hash getAnnouncementTransactionId();
     /**
@@ -71,6 +82,7 @@ public final class ElectionContract {
 
     /**
      * <code>bool is_current_candidate = 7;</code>
+     * @return The isCurrentCandidate.
      */
     boolean getIsCurrentCandidate();
   }
@@ -93,6 +105,13 @@ public final class ElectionContract {
     private CandidateInformation() {
       pubkey_ = "";
       terms_ = emptyLongList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CandidateInformation();
     }
 
     @java.lang.Override
@@ -126,9 +145,9 @@ public final class ElectionContract {
               break;
             }
             case 16: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 terms_ = newLongList();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               terms_.addLong(input.readSInt64());
               break;
@@ -136,9 +155,9 @@ public final class ElectionContract {
             case 18: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
                 terms_ = newLongList();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
                 terms_.addLong(input.readSInt64());
@@ -194,7 +213,7 @@ public final class ElectionContract {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           terms_.makeImmutable(); // C
         }
         this.unknownFields = unknownFields.build();
@@ -214,11 +233,11 @@ public final class ElectionContract {
               io.aelf.protobuf.generated.ElectionContract.CandidateInformation.class, io.aelf.protobuf.generated.ElectionContract.CandidateInformation.Builder.class);
     }
 
-    private int bitField0_;
     public static final int PUBKEY_FIELD_NUMBER = 1;
     private volatile java.lang.Object pubkey_;
     /**
      * <code>string pubkey = 1;</code>
+     * @return The pubkey.
      */
     public java.lang.String getPubkey() {
       java.lang.Object ref = pubkey_;
@@ -234,6 +253,7 @@ public final class ElectionContract {
     }
     /**
      * <code>string pubkey = 1;</code>
+     * @return The bytes for pubkey.
      */
     public com.google.protobuf.ByteString
         getPubkeyBytes() {
@@ -253,6 +273,7 @@ public final class ElectionContract {
     private com.google.protobuf.Internal.LongList terms_;
     /**
      * <code>repeated sint64 terms = 2;</code>
+     * @return A list containing the terms.
      */
     public java.util.List<java.lang.Long>
         getTermsList() {
@@ -260,12 +281,15 @@ public final class ElectionContract {
     }
     /**
      * <code>repeated sint64 terms = 2;</code>
+     * @return The count of terms.
      */
     public int getTermsCount() {
       return terms_.size();
     }
     /**
      * <code>repeated sint64 terms = 2;</code>
+     * @param index The index of the element to return.
+     * @return The terms at the given index.
      */
     public long getTerms(int index) {
       return terms_.getLong(index);
@@ -276,6 +300,7 @@ public final class ElectionContract {
     private long producedBlocks_;
     /**
      * <code>sint64 produced_blocks = 3;</code>
+     * @return The producedBlocks.
      */
     public long getProducedBlocks() {
       return producedBlocks_;
@@ -285,6 +310,7 @@ public final class ElectionContract {
     private long missedTimeSlots_;
     /**
      * <code>sint64 missed_time_slots = 4;</code>
+     * @return The missedTimeSlots.
      */
     public long getMissedTimeSlots() {
       return missedTimeSlots_;
@@ -294,6 +320,7 @@ public final class ElectionContract {
     private long continualAppointmentCount_;
     /**
      * <code>sint64 continual_appointment_count = 5;</code>
+     * @return The continualAppointmentCount.
      */
     public long getContinualAppointmentCount() {
       return continualAppointmentCount_;
@@ -303,12 +330,14 @@ public final class ElectionContract {
     private io.aelf.protobuf.generated.Client.Hash announcementTransactionId_;
     /**
      * <code>.Hash announcement_transaction_id = 6;</code>
+     * @return Whether the announcementTransactionId field is set.
      */
     public boolean hasAnnouncementTransactionId() {
       return announcementTransactionId_ != null;
     }
     /**
      * <code>.Hash announcement_transaction_id = 6;</code>
+     * @return The announcementTransactionId.
      */
     public io.aelf.protobuf.generated.Client.Hash getAnnouncementTransactionId() {
       return announcementTransactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : announcementTransactionId_;
@@ -324,6 +353,7 @@ public final class ElectionContract {
     private boolean isCurrentCandidate_;
     /**
      * <code>bool is_current_candidate = 7;</code>
+     * @return The isCurrentCandidate.
      */
     public boolean getIsCurrentCandidate() {
       return isCurrentCandidate_;
@@ -620,7 +650,7 @@ public final class ElectionContract {
         pubkey_ = "";
 
         terms_ = emptyLongList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         producedBlocks_ = 0L;
 
         missedTimeSlots_ = 0L;
@@ -662,11 +692,10 @@ public final class ElectionContract {
       public io.aelf.protobuf.generated.ElectionContract.CandidateInformation buildPartial() {
         io.aelf.protobuf.generated.ElectionContract.CandidateInformation result = new io.aelf.protobuf.generated.ElectionContract.CandidateInformation(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.pubkey_ = pubkey_;
-        if (((bitField0_ & 0x00000002) != 0)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           terms_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.terms_ = terms_;
         result.producedBlocks_ = producedBlocks_;
@@ -678,7 +707,6 @@ public final class ElectionContract {
           result.announcementTransactionId_ = announcementTransactionIdBuilder_.build();
         }
         result.isCurrentCandidate_ = isCurrentCandidate_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -734,7 +762,7 @@ public final class ElectionContract {
         if (!other.terms_.isEmpty()) {
           if (terms_.isEmpty()) {
             terms_ = other.terms_;
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureTermsIsMutable();
             terms_.addAll(other.terms_);
@@ -789,6 +817,7 @@ public final class ElectionContract {
       private java.lang.Object pubkey_ = "";
       /**
        * <code>string pubkey = 1;</code>
+       * @return The pubkey.
        */
       public java.lang.String getPubkey() {
         java.lang.Object ref = pubkey_;
@@ -804,6 +833,7 @@ public final class ElectionContract {
       }
       /**
        * <code>string pubkey = 1;</code>
+       * @return The bytes for pubkey.
        */
       public com.google.protobuf.ByteString
           getPubkeyBytes() {
@@ -820,6 +850,8 @@ public final class ElectionContract {
       }
       /**
        * <code>string pubkey = 1;</code>
+       * @param value The pubkey to set.
+       * @return This builder for chaining.
        */
       public Builder setPubkey(
           java.lang.String value) {
@@ -833,6 +865,7 @@ public final class ElectionContract {
       }
       /**
        * <code>string pubkey = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPubkey() {
         
@@ -842,6 +875,8 @@ public final class ElectionContract {
       }
       /**
        * <code>string pubkey = 1;</code>
+       * @param value The bytes for pubkey to set.
+       * @return This builder for chaining.
        */
       public Builder setPubkeyBytes(
           com.google.protobuf.ByteString value) {
@@ -857,33 +892,40 @@ public final class ElectionContract {
 
       private com.google.protobuf.Internal.LongList terms_ = emptyLongList();
       private void ensureTermsIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           terms_ = mutableCopy(terms_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
       /**
        * <code>repeated sint64 terms = 2;</code>
+       * @return A list containing the terms.
        */
       public java.util.List<java.lang.Long>
           getTermsList() {
-        return ((bitField0_ & 0x00000002) != 0) ?
+        return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(terms_) : terms_;
       }
       /**
        * <code>repeated sint64 terms = 2;</code>
+       * @return The count of terms.
        */
       public int getTermsCount() {
         return terms_.size();
       }
       /**
        * <code>repeated sint64 terms = 2;</code>
+       * @param index The index of the element to return.
+       * @return The terms at the given index.
        */
       public long getTerms(int index) {
         return terms_.getLong(index);
       }
       /**
        * <code>repeated sint64 terms = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The terms to set.
+       * @return This builder for chaining.
        */
       public Builder setTerms(
           int index, long value) {
@@ -894,6 +936,8 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 terms = 2;</code>
+       * @param value The terms to add.
+       * @return This builder for chaining.
        */
       public Builder addTerms(long value) {
         ensureTermsIsMutable();
@@ -903,6 +947,8 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 terms = 2;</code>
+       * @param values The terms to add.
+       * @return This builder for chaining.
        */
       public Builder addAllTerms(
           java.lang.Iterable<? extends java.lang.Long> values) {
@@ -914,10 +960,11 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 terms = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTerms() {
         terms_ = emptyLongList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -925,12 +972,15 @@ public final class ElectionContract {
       private long producedBlocks_ ;
       /**
        * <code>sint64 produced_blocks = 3;</code>
+       * @return The producedBlocks.
        */
       public long getProducedBlocks() {
         return producedBlocks_;
       }
       /**
        * <code>sint64 produced_blocks = 3;</code>
+       * @param value The producedBlocks to set.
+       * @return This builder for chaining.
        */
       public Builder setProducedBlocks(long value) {
         
@@ -940,6 +990,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 produced_blocks = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearProducedBlocks() {
         
@@ -951,12 +1002,15 @@ public final class ElectionContract {
       private long missedTimeSlots_ ;
       /**
        * <code>sint64 missed_time_slots = 4;</code>
+       * @return The missedTimeSlots.
        */
       public long getMissedTimeSlots() {
         return missedTimeSlots_;
       }
       /**
        * <code>sint64 missed_time_slots = 4;</code>
+       * @param value The missedTimeSlots to set.
+       * @return This builder for chaining.
        */
       public Builder setMissedTimeSlots(long value) {
         
@@ -966,6 +1020,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 missed_time_slots = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMissedTimeSlots() {
         
@@ -977,12 +1032,15 @@ public final class ElectionContract {
       private long continualAppointmentCount_ ;
       /**
        * <code>sint64 continual_appointment_count = 5;</code>
+       * @return The continualAppointmentCount.
        */
       public long getContinualAppointmentCount() {
         return continualAppointmentCount_;
       }
       /**
        * <code>sint64 continual_appointment_count = 5;</code>
+       * @param value The continualAppointmentCount to set.
+       * @return This builder for chaining.
        */
       public Builder setContinualAppointmentCount(long value) {
         
@@ -992,6 +1050,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 continual_appointment_count = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearContinualAppointmentCount() {
         
@@ -1005,12 +1064,14 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> announcementTransactionIdBuilder_;
       /**
        * <code>.Hash announcement_transaction_id = 6;</code>
+       * @return Whether the announcementTransactionId field is set.
        */
       public boolean hasAnnouncementTransactionId() {
         return announcementTransactionIdBuilder_ != null || announcementTransactionId_ != null;
       }
       /**
        * <code>.Hash announcement_transaction_id = 6;</code>
+       * @return The announcementTransactionId.
        */
       public io.aelf.protobuf.generated.Client.Hash getAnnouncementTransactionId() {
         if (announcementTransactionIdBuilder_ == null) {
@@ -1120,12 +1181,15 @@ public final class ElectionContract {
       private boolean isCurrentCandidate_ ;
       /**
        * <code>bool is_current_candidate = 7;</code>
+       * @return The isCurrentCandidate.
        */
       public boolean getIsCurrentCandidate() {
         return isCurrentCandidate_;
       }
       /**
        * <code>bool is_current_candidate = 7;</code>
+       * @param value The isCurrentCandidate to set.
+       * @return This builder for chaining.
        */
       public Builder setIsCurrentCandidate(boolean value) {
         
@@ -1135,6 +1199,7 @@ public final class ElectionContract {
       }
       /**
        * <code>bool is_current_candidate = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsCurrentCandidate() {
         
@@ -1201,6 +1266,7 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     long getTermNumber();
   }
@@ -1220,6 +1286,13 @@ public final class ElectionContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetTermSnapshotInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1232,7 +1305,6 @@ public final class ElectionContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1284,6 +1356,7 @@ public final class ElectionContract {
     private long termNumber_;
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     public long getTermNumber() {
       return termNumber_;
@@ -1595,12 +1668,15 @@ public final class ElectionContract {
       private long termNumber_ ;
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @param value The termNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setTermNumber(long value) {
         
@@ -1610,6 +1686,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
         
@@ -1676,11 +1753,13 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 end_round_number = 1;</code>
+     * @return The endRoundNumber.
      */
     long getEndRoundNumber();
 
     /**
      * <code>sint64 mined_blocks = 2;</code>
+     * @return The minedBlocks.
      */
     long getMinedBlocks();
 
@@ -1734,6 +1813,13 @@ public final class ElectionContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TermSnapshot();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1768,10 +1854,10 @@ public final class ElectionContract {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 electionResult_ = com.google.protobuf.MapField.newMapField(
                     ElectionResultDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
               electionResult__ = input.readMessage(
@@ -1824,11 +1910,11 @@ public final class ElectionContract {
               io.aelf.protobuf.generated.ElectionContract.TermSnapshot.class, io.aelf.protobuf.generated.ElectionContract.TermSnapshot.Builder.class);
     }
 
-    private int bitField0_;
     public static final int END_ROUND_NUMBER_FIELD_NUMBER = 1;
     private long endRoundNumber_;
     /**
      * <code>sint64 end_round_number = 1;</code>
+     * @return The endRoundNumber.
      */
     public long getEndRoundNumber() {
       return endRoundNumber_;
@@ -1838,6 +1924,7 @@ public final class ElectionContract {
     private long minedBlocks_;
     /**
      * <code>sint64 mined_blocks = 2;</code>
+     * @return The minedBlocks.
      */
     public long getMinedBlocks() {
       return minedBlocks_;
@@ -2201,12 +2288,10 @@ public final class ElectionContract {
       public io.aelf.protobuf.generated.ElectionContract.TermSnapshot buildPartial() {
         io.aelf.protobuf.generated.ElectionContract.TermSnapshot result = new io.aelf.protobuf.generated.ElectionContract.TermSnapshot(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.endRoundNumber_ = endRoundNumber_;
         result.minedBlocks_ = minedBlocks_;
         result.electionResult_ = internalGetElectionResult();
         result.electionResult_.makeImmutable();
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2296,12 +2381,15 @@ public final class ElectionContract {
       private long endRoundNumber_ ;
       /**
        * <code>sint64 end_round_number = 1;</code>
+       * @return The endRoundNumber.
        */
       public long getEndRoundNumber() {
         return endRoundNumber_;
       }
       /**
        * <code>sint64 end_round_number = 1;</code>
+       * @param value The endRoundNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setEndRoundNumber(long value) {
         
@@ -2311,6 +2399,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 end_round_number = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEndRoundNumber() {
         
@@ -2322,12 +2411,15 @@ public final class ElectionContract {
       private long minedBlocks_ ;
       /**
        * <code>sint64 mined_blocks = 2;</code>
+       * @return The minedBlocks.
        */
       public long getMinedBlocks() {
         return minedBlocks_;
       }
       /**
        * <code>sint64 mined_blocks = 2;</code>
+       * @param value The minedBlocks to set.
+       * @return This builder for chaining.
        */
       public Builder setMinedBlocks(long value) {
         
@@ -2337,6 +2429,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 mined_blocks = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMinedBlocks() {
         
@@ -2526,6 +2619,7 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     long getTermNumber();
   }
@@ -2545,6 +2639,13 @@ public final class ElectionContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetElectionResultInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2557,7 +2658,6 @@ public final class ElectionContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2609,6 +2709,7 @@ public final class ElectionContract {
     private long termNumber_;
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     public long getTermNumber() {
       return termNumber_;
@@ -2920,12 +3021,15 @@ public final class ElectionContract {
       private long termNumber_ ;
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @param value The termNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setTermNumber(long value) {
         
@@ -2935,6 +3039,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
         
@@ -3001,6 +3106,7 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     long getTermNumber();
 
@@ -3040,6 +3146,7 @@ public final class ElectionContract {
 
     /**
      * <code>bool is_active = 3;</code>
+     * @return The isActive.
      */
     boolean getIsActive();
   }
@@ -3056,6 +3163,13 @@ public final class ElectionContract {
       super(builder);
     }
     private ElectionResult() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ElectionResult();
     }
 
     @java.lang.Override
@@ -3088,10 +3202,10 @@ public final class ElectionContract {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 results_ = com.google.protobuf.MapField.newMapField(
                     ResultsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
               results__ = input.readMessage(
@@ -3149,11 +3263,11 @@ public final class ElectionContract {
               io.aelf.protobuf.generated.ElectionContract.ElectionResult.class, io.aelf.protobuf.generated.ElectionContract.ElectionResult.Builder.class);
     }
 
-    private int bitField0_;
     public static final int TERM_NUMBER_FIELD_NUMBER = 1;
     private long termNumber_;
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     public long getTermNumber() {
       return termNumber_;
@@ -3239,6 +3353,7 @@ public final class ElectionContract {
     private boolean isActive_;
     /**
      * <code>bool is_active = 3;</code>
+     * @return The isActive.
      */
     public boolean getIsActive() {
       return isActive_;
@@ -3526,12 +3641,10 @@ public final class ElectionContract {
       public io.aelf.protobuf.generated.ElectionContract.ElectionResult buildPartial() {
         io.aelf.protobuf.generated.ElectionContract.ElectionResult result = new io.aelf.protobuf.generated.ElectionContract.ElectionResult(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.termNumber_ = termNumber_;
         result.results_ = internalGetResults();
         result.results_.makeImmutable();
         result.isActive_ = isActive_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3621,12 +3734,15 @@ public final class ElectionContract {
       private long termNumber_ ;
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @param value The termNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setTermNumber(long value) {
         
@@ -3636,6 +3752,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
         
@@ -3770,12 +3887,15 @@ public final class ElectionContract {
       private boolean isActive_ ;
       /**
        * <code>bool is_active = 3;</code>
+       * @return The isActive.
        */
       public boolean getIsActive() {
         return isActive_;
       }
       /**
        * <code>bool is_active = 3;</code>
+       * @param value The isActive to set.
+       * @return This builder for chaining.
        */
       public Builder setIsActive(boolean value) {
         
@@ -3785,6 +3905,7 @@ public final class ElectionContract {
       }
       /**
        * <code>bool is_active = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsActive() {
         
@@ -3919,11 +4040,13 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 active_voted_votes_amount = 3;</code>
+     * @return The activeVotedVotesAmount.
      */
     long getActiveVotedVotesAmount();
 
     /**
      * <code>sint64 all_voted_votes_amount = 4;</code>
+     * @return The allVotedVotesAmount.
      */
     long getAllVotedVotesAmount();
 
@@ -3977,6 +4100,7 @@ public final class ElectionContract {
 
     /**
      * <code>bytes pubkey = 7;</code>
+     * @return The pubkey.
      */
     com.google.protobuf.ByteString getPubkey();
   }
@@ -3998,6 +4122,13 @@ public final class ElectionContract {
       activeVotingRecords_ = java.util.Collections.emptyList();
       withdrawnVotesRecords_ = java.util.Collections.emptyList();
       pubkey_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ElectorVote();
     }
 
     @java.lang.Override
@@ -4053,18 +4184,18 @@ public final class ElectionContract {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 activeVotingRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000004;
               }
               activeVotingRecords_.add(
                   input.readMessage(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.parser(), extensionRegistry));
               break;
             }
             case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                 withdrawnVotesRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000008;
               }
               withdrawnVotesRecords_.add(
                   input.readMessage(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.parser(), extensionRegistry));
@@ -4096,10 +4227,10 @@ public final class ElectionContract {
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
           withdrawnVotingRecordIds_ = java.util.Collections.unmodifiableList(withdrawnVotingRecordIds_);
         }
-        if (((mutable_bitField0_ & 0x00000010) != 0)) {
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
           activeVotingRecords_ = java.util.Collections.unmodifiableList(activeVotingRecords_);
         }
-        if (((mutable_bitField0_ & 0x00000020) != 0)) {
+        if (((mutable_bitField0_ & 0x00000008) != 0)) {
           withdrawnVotesRecords_ = java.util.Collections.unmodifiableList(withdrawnVotesRecords_);
         }
         this.unknownFields = unknownFields.build();
@@ -4119,7 +4250,6 @@ public final class ElectionContract {
               io.aelf.protobuf.generated.ElectionContract.ElectorVote.class, io.aelf.protobuf.generated.ElectionContract.ElectorVote.Builder.class);
     }
 
-    private int bitField0_;
     public static final int ACTIVE_VOTING_RECORD_IDS_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> activeVotingRecordIds_;
     /**
@@ -4214,6 +4344,7 @@ public final class ElectionContract {
     private long activeVotedVotesAmount_;
     /**
      * <code>sint64 active_voted_votes_amount = 3;</code>
+     * @return The activeVotedVotesAmount.
      */
     public long getActiveVotedVotesAmount() {
       return activeVotedVotesAmount_;
@@ -4223,6 +4354,7 @@ public final class ElectionContract {
     private long allVotedVotesAmount_;
     /**
      * <code>sint64 all_voted_votes_amount = 4;</code>
+     * @return The allVotedVotesAmount.
      */
     public long getAllVotedVotesAmount() {
       return allVotedVotesAmount_;
@@ -4302,6 +4434,7 @@ public final class ElectionContract {
     private com.google.protobuf.ByteString pubkey_;
     /**
      * <code>bytes pubkey = 7;</code>
+     * @return The pubkey.
      */
     public com.google.protobuf.ByteString getPubkey() {
       return pubkey_;
@@ -4598,13 +4731,13 @@ public final class ElectionContract {
 
         if (activeVotingRecordsBuilder_ == null) {
           activeVotingRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           activeVotingRecordsBuilder_.clear();
         }
         if (withdrawnVotesRecordsBuilder_ == null) {
           withdrawnVotesRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           withdrawnVotesRecordsBuilder_.clear();
         }
@@ -4637,7 +4770,6 @@ public final class ElectionContract {
       public io.aelf.protobuf.generated.ElectionContract.ElectorVote buildPartial() {
         io.aelf.protobuf.generated.ElectionContract.ElectorVote result = new io.aelf.protobuf.generated.ElectionContract.ElectorVote(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (activeVotingRecordIdsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             activeVotingRecordIds_ = java.util.Collections.unmodifiableList(activeVotingRecordIds_);
@@ -4659,25 +4791,24 @@ public final class ElectionContract {
         result.activeVotedVotesAmount_ = activeVotedVotesAmount_;
         result.allVotedVotesAmount_ = allVotedVotesAmount_;
         if (activeVotingRecordsBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) != 0)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             activeVotingRecords_ = java.util.Collections.unmodifiableList(activeVotingRecords_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.activeVotingRecords_ = activeVotingRecords_;
         } else {
           result.activeVotingRecords_ = activeVotingRecordsBuilder_.build();
         }
         if (withdrawnVotesRecordsBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) != 0)) {
+          if (((bitField0_ & 0x00000008) != 0)) {
             withdrawnVotesRecords_ = java.util.Collections.unmodifiableList(withdrawnVotesRecords_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.withdrawnVotesRecords_ = withdrawnVotesRecords_;
         } else {
           result.withdrawnVotesRecords_ = withdrawnVotesRecordsBuilder_.build();
         }
         result.pubkey_ = pubkey_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -4788,7 +4919,7 @@ public final class ElectionContract {
           if (!other.activeVotingRecords_.isEmpty()) {
             if (activeVotingRecords_.isEmpty()) {
               activeVotingRecords_ = other.activeVotingRecords_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureActiveVotingRecordsIsMutable();
               activeVotingRecords_.addAll(other.activeVotingRecords_);
@@ -4801,7 +4932,7 @@ public final class ElectionContract {
               activeVotingRecordsBuilder_.dispose();
               activeVotingRecordsBuilder_ = null;
               activeVotingRecords_ = other.activeVotingRecords_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000004);
               activeVotingRecordsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getActiveVotingRecordsFieldBuilder() : null;
@@ -4814,7 +4945,7 @@ public final class ElectionContract {
           if (!other.withdrawnVotesRecords_.isEmpty()) {
             if (withdrawnVotesRecords_.isEmpty()) {
               withdrawnVotesRecords_ = other.withdrawnVotesRecords_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureWithdrawnVotesRecordsIsMutable();
               withdrawnVotesRecords_.addAll(other.withdrawnVotesRecords_);
@@ -4827,7 +4958,7 @@ public final class ElectionContract {
               withdrawnVotesRecordsBuilder_.dispose();
               withdrawnVotesRecordsBuilder_ = null;
               withdrawnVotesRecords_ = other.withdrawnVotesRecords_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000008);
               withdrawnVotesRecordsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getWithdrawnVotesRecordsFieldBuilder() : null;
@@ -5424,12 +5555,15 @@ public final class ElectionContract {
       private long activeVotedVotesAmount_ ;
       /**
        * <code>sint64 active_voted_votes_amount = 3;</code>
+       * @return The activeVotedVotesAmount.
        */
       public long getActiveVotedVotesAmount() {
         return activeVotedVotesAmount_;
       }
       /**
        * <code>sint64 active_voted_votes_amount = 3;</code>
+       * @param value The activeVotedVotesAmount to set.
+       * @return This builder for chaining.
        */
       public Builder setActiveVotedVotesAmount(long value) {
         
@@ -5439,6 +5573,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 active_voted_votes_amount = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearActiveVotedVotesAmount() {
         
@@ -5450,12 +5585,15 @@ public final class ElectionContract {
       private long allVotedVotesAmount_ ;
       /**
        * <code>sint64 all_voted_votes_amount = 4;</code>
+       * @return The allVotedVotesAmount.
        */
       public long getAllVotedVotesAmount() {
         return allVotedVotesAmount_;
       }
       /**
        * <code>sint64 all_voted_votes_amount = 4;</code>
+       * @param value The allVotedVotesAmount to set.
+       * @return This builder for chaining.
        */
       public Builder setAllVotedVotesAmount(long value) {
         
@@ -5465,6 +5603,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 all_voted_votes_amount = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAllVotedVotesAmount() {
         
@@ -5476,9 +5615,9 @@ public final class ElectionContract {
       private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> activeVotingRecords_ =
         java.util.Collections.emptyList();
       private void ensureActiveVotingRecordsIsMutable() {
-        if (!((bitField0_ & 0x00000010) != 0)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           activeVotingRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>(activeVotingRecords_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -5628,7 +5767,7 @@ public final class ElectionContract {
       public Builder clearActiveVotingRecords() {
         if (activeVotingRecordsBuilder_ == null) {
           activeVotingRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           activeVotingRecordsBuilder_.clear();
@@ -5705,7 +5844,7 @@ public final class ElectionContract {
           activeVotingRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder>(
                   activeVotingRecords_,
-                  ((bitField0_ & 0x00000010) != 0),
+                  ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
                   isClean());
           activeVotingRecords_ = null;
@@ -5716,9 +5855,9 @@ public final class ElectionContract {
       private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> withdrawnVotesRecords_ =
         java.util.Collections.emptyList();
       private void ensureWithdrawnVotesRecordsIsMutable() {
-        if (!((bitField0_ & 0x00000020) != 0)) {
+        if (!((bitField0_ & 0x00000008) != 0)) {
           withdrawnVotesRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>(withdrawnVotesRecords_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -5868,7 +6007,7 @@ public final class ElectionContract {
       public Builder clearWithdrawnVotesRecords() {
         if (withdrawnVotesRecordsBuilder_ == null) {
           withdrawnVotesRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           withdrawnVotesRecordsBuilder_.clear();
@@ -5945,7 +6084,7 @@ public final class ElectionContract {
           withdrawnVotesRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder>(
                   withdrawnVotesRecords_,
-                  ((bitField0_ & 0x00000020) != 0),
+                  ((bitField0_ & 0x00000008) != 0),
                   getParentForChildren(),
                   isClean());
           withdrawnVotesRecords_ = null;
@@ -5956,12 +6095,15 @@ public final class ElectionContract {
       private com.google.protobuf.ByteString pubkey_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes pubkey = 7;</code>
+       * @return The pubkey.
        */
       public com.google.protobuf.ByteString getPubkey() {
         return pubkey_;
       }
       /**
        * <code>bytes pubkey = 7;</code>
+       * @param value The pubkey to set.
+       * @return This builder for chaining.
        */
       public Builder setPubkey(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -5974,6 +6116,7 @@ public final class ElectionContract {
       }
       /**
        * <code>bytes pubkey = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPubkey() {
         
@@ -6040,10 +6183,12 @@ public final class ElectionContract {
 
     /**
      * <code>.Address voter = 1;</code>
+     * @return Whether the voter field is set.
      */
     boolean hasVoter();
     /**
      * <code>.Address voter = 1;</code>
+     * @return The voter.
      */
     io.aelf.protobuf.generated.Client.Address getVoter();
     /**
@@ -6053,30 +6198,36 @@ public final class ElectionContract {
 
     /**
      * <code>string candidate = 2;</code>
+     * @return The candidate.
      */
     java.lang.String getCandidate();
     /**
      * <code>string candidate = 2;</code>
+     * @return The bytes for candidate.
      */
     com.google.protobuf.ByteString
         getCandidateBytes();
 
     /**
      * <code>sint64 amount = 3;</code>
+     * @return The amount.
      */
     long getAmount();
 
     /**
      * <code>sint64 term_number = 4;</code>
+     * @return The termNumber.
      */
     long getTermNumber();
 
     /**
      * <code>.Hash vote_id = 5;</code>
+     * @return Whether the voteId field is set.
      */
     boolean hasVoteId();
     /**
      * <code>.Hash vote_id = 5;</code>
+     * @return The voteId.
      */
     io.aelf.protobuf.generated.Client.Hash getVoteId();
     /**
@@ -6086,15 +6237,18 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 lock_time = 7;</code>
+     * @return The lockTime.
      */
     long getLockTime();
 
     /**
      * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * @return Whether the unlockTimestamp field is set.
      */
     boolean hasUnlockTimestamp();
     /**
      * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * @return The unlockTimestamp.
      */
     com.google.protobuf.Timestamp getUnlockTimestamp();
     /**
@@ -6104,10 +6258,12 @@ public final class ElectionContract {
 
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * @return Whether the withdrawTimestamp field is set.
      */
     boolean hasWithdrawTimestamp();
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * @return The withdrawTimestamp.
      */
     com.google.protobuf.Timestamp getWithdrawTimestamp();
     /**
@@ -6117,10 +6273,12 @@ public final class ElectionContract {
 
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * @return Whether the voteTimestamp field is set.
      */
     boolean hasVoteTimestamp();
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * @return The voteTimestamp.
      */
     com.google.protobuf.Timestamp getVoteTimestamp();
     /**
@@ -6130,16 +6288,19 @@ public final class ElectionContract {
 
     /**
      * <code>bool is_withdrawn = 13;</code>
+     * @return The isWithdrawn.
      */
     boolean getIsWithdrawn();
 
     /**
      * <code>sint64 weight = 14;</code>
+     * @return The weight.
      */
     long getWeight();
 
     /**
      * <code>bool is_change_target = 15;</code>
+     * @return The isChangeTarget.
      */
     boolean getIsChangeTarget();
   }
@@ -6160,6 +6321,13 @@ public final class ElectionContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ElectionVotingRecord();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -6172,7 +6340,6 @@ public final class ElectionContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6320,12 +6487,14 @@ public final class ElectionContract {
     private io.aelf.protobuf.generated.Client.Address voter_;
     /**
      * <code>.Address voter = 1;</code>
+     * @return Whether the voter field is set.
      */
     public boolean hasVoter() {
       return voter_ != null;
     }
     /**
      * <code>.Address voter = 1;</code>
+     * @return The voter.
      */
     public io.aelf.protobuf.generated.Client.Address getVoter() {
       return voter_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : voter_;
@@ -6341,6 +6510,7 @@ public final class ElectionContract {
     private volatile java.lang.Object candidate_;
     /**
      * <code>string candidate = 2;</code>
+     * @return The candidate.
      */
     public java.lang.String getCandidate() {
       java.lang.Object ref = candidate_;
@@ -6356,6 +6526,7 @@ public final class ElectionContract {
     }
     /**
      * <code>string candidate = 2;</code>
+     * @return The bytes for candidate.
      */
     public com.google.protobuf.ByteString
         getCandidateBytes() {
@@ -6375,6 +6546,7 @@ public final class ElectionContract {
     private long amount_;
     /**
      * <code>sint64 amount = 3;</code>
+     * @return The amount.
      */
     public long getAmount() {
       return amount_;
@@ -6384,6 +6556,7 @@ public final class ElectionContract {
     private long termNumber_;
     /**
      * <code>sint64 term_number = 4;</code>
+     * @return The termNumber.
      */
     public long getTermNumber() {
       return termNumber_;
@@ -6393,12 +6566,14 @@ public final class ElectionContract {
     private io.aelf.protobuf.generated.Client.Hash voteId_;
     /**
      * <code>.Hash vote_id = 5;</code>
+     * @return Whether the voteId field is set.
      */
     public boolean hasVoteId() {
       return voteId_ != null;
     }
     /**
      * <code>.Hash vote_id = 5;</code>
+     * @return The voteId.
      */
     public io.aelf.protobuf.generated.Client.Hash getVoteId() {
       return voteId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : voteId_;
@@ -6414,6 +6589,7 @@ public final class ElectionContract {
     private long lockTime_;
     /**
      * <code>sint64 lock_time = 7;</code>
+     * @return The lockTime.
      */
     public long getLockTime() {
       return lockTime_;
@@ -6423,12 +6599,14 @@ public final class ElectionContract {
     private com.google.protobuf.Timestamp unlockTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * @return Whether the unlockTimestamp field is set.
      */
     public boolean hasUnlockTimestamp() {
       return unlockTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * @return The unlockTimestamp.
      */
     public com.google.protobuf.Timestamp getUnlockTimestamp() {
       return unlockTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : unlockTimestamp_;
@@ -6444,12 +6622,14 @@ public final class ElectionContract {
     private com.google.protobuf.Timestamp withdrawTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * @return Whether the withdrawTimestamp field is set.
      */
     public boolean hasWithdrawTimestamp() {
       return withdrawTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * @return The withdrawTimestamp.
      */
     public com.google.protobuf.Timestamp getWithdrawTimestamp() {
       return withdrawTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : withdrawTimestamp_;
@@ -6465,12 +6645,14 @@ public final class ElectionContract {
     private com.google.protobuf.Timestamp voteTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * @return Whether the voteTimestamp field is set.
      */
     public boolean hasVoteTimestamp() {
       return voteTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * @return The voteTimestamp.
      */
     public com.google.protobuf.Timestamp getVoteTimestamp() {
       return voteTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : voteTimestamp_;
@@ -6486,6 +6668,7 @@ public final class ElectionContract {
     private boolean isWithdrawn_;
     /**
      * <code>bool is_withdrawn = 13;</code>
+     * @return The isWithdrawn.
      */
     public boolean getIsWithdrawn() {
       return isWithdrawn_;
@@ -6495,6 +6678,7 @@ public final class ElectionContract {
     private long weight_;
     /**
      * <code>sint64 weight = 14;</code>
+     * @return The weight.
      */
     public long getWeight() {
       return weight_;
@@ -6504,6 +6688,7 @@ public final class ElectionContract {
     private boolean isChangeTarget_;
     /**
      * <code>bool is_change_target = 15;</code>
+     * @return The isChangeTarget.
      */
     public boolean getIsChangeTarget() {
       return isChangeTarget_;
@@ -7074,12 +7259,14 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> voterBuilder_;
       /**
        * <code>.Address voter = 1;</code>
+       * @return Whether the voter field is set.
        */
       public boolean hasVoter() {
         return voterBuilder_ != null || voter_ != null;
       }
       /**
        * <code>.Address voter = 1;</code>
+       * @return The voter.
        */
       public io.aelf.protobuf.generated.Client.Address getVoter() {
         if (voterBuilder_ == null) {
@@ -7189,6 +7376,7 @@ public final class ElectionContract {
       private java.lang.Object candidate_ = "";
       /**
        * <code>string candidate = 2;</code>
+       * @return The candidate.
        */
       public java.lang.String getCandidate() {
         java.lang.Object ref = candidate_;
@@ -7204,6 +7392,7 @@ public final class ElectionContract {
       }
       /**
        * <code>string candidate = 2;</code>
+       * @return The bytes for candidate.
        */
       public com.google.protobuf.ByteString
           getCandidateBytes() {
@@ -7220,6 +7409,8 @@ public final class ElectionContract {
       }
       /**
        * <code>string candidate = 2;</code>
+       * @param value The candidate to set.
+       * @return This builder for chaining.
        */
       public Builder setCandidate(
           java.lang.String value) {
@@ -7233,6 +7424,7 @@ public final class ElectionContract {
       }
       /**
        * <code>string candidate = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCandidate() {
         
@@ -7242,6 +7434,8 @@ public final class ElectionContract {
       }
       /**
        * <code>string candidate = 2;</code>
+       * @param value The bytes for candidate to set.
+       * @return This builder for chaining.
        */
       public Builder setCandidateBytes(
           com.google.protobuf.ByteString value) {
@@ -7258,12 +7452,15 @@ public final class ElectionContract {
       private long amount_ ;
       /**
        * <code>sint64 amount = 3;</code>
+       * @return The amount.
        */
       public long getAmount() {
         return amount_;
       }
       /**
        * <code>sint64 amount = 3;</code>
+       * @param value The amount to set.
+       * @return This builder for chaining.
        */
       public Builder setAmount(long value) {
         
@@ -7273,6 +7470,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 amount = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAmount() {
         
@@ -7284,12 +7482,15 @@ public final class ElectionContract {
       private long termNumber_ ;
       /**
        * <code>sint64 term_number = 4;</code>
+       * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
        * <code>sint64 term_number = 4;</code>
+       * @param value The termNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setTermNumber(long value) {
         
@@ -7299,6 +7500,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 term_number = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
         
@@ -7312,12 +7514,14 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> voteIdBuilder_;
       /**
        * <code>.Hash vote_id = 5;</code>
+       * @return Whether the voteId field is set.
        */
       public boolean hasVoteId() {
         return voteIdBuilder_ != null || voteId_ != null;
       }
       /**
        * <code>.Hash vote_id = 5;</code>
+       * @return The voteId.
        */
       public io.aelf.protobuf.generated.Client.Hash getVoteId() {
         if (voteIdBuilder_ == null) {
@@ -7427,12 +7631,15 @@ public final class ElectionContract {
       private long lockTime_ ;
       /**
        * <code>sint64 lock_time = 7;</code>
+       * @return The lockTime.
        */
       public long getLockTime() {
         return lockTime_;
       }
       /**
        * <code>sint64 lock_time = 7;</code>
+       * @param value The lockTime to set.
+       * @return This builder for chaining.
        */
       public Builder setLockTime(long value) {
         
@@ -7442,6 +7649,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 lock_time = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLockTime() {
         
@@ -7455,12 +7663,14 @@ public final class ElectionContract {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> unlockTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * @return Whether the unlockTimestamp field is set.
        */
       public boolean hasUnlockTimestamp() {
         return unlockTimestampBuilder_ != null || unlockTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * @return The unlockTimestamp.
        */
       public com.google.protobuf.Timestamp getUnlockTimestamp() {
         if (unlockTimestampBuilder_ == null) {
@@ -7572,12 +7782,14 @@ public final class ElectionContract {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> withdrawTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * @return Whether the withdrawTimestamp field is set.
        */
       public boolean hasWithdrawTimestamp() {
         return withdrawTimestampBuilder_ != null || withdrawTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * @return The withdrawTimestamp.
        */
       public com.google.protobuf.Timestamp getWithdrawTimestamp() {
         if (withdrawTimestampBuilder_ == null) {
@@ -7689,12 +7901,14 @@ public final class ElectionContract {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> voteTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * @return Whether the voteTimestamp field is set.
        */
       public boolean hasVoteTimestamp() {
         return voteTimestampBuilder_ != null || voteTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * @return The voteTimestamp.
        */
       public com.google.protobuf.Timestamp getVoteTimestamp() {
         if (voteTimestampBuilder_ == null) {
@@ -7804,12 +8018,15 @@ public final class ElectionContract {
       private boolean isWithdrawn_ ;
       /**
        * <code>bool is_withdrawn = 13;</code>
+       * @return The isWithdrawn.
        */
       public boolean getIsWithdrawn() {
         return isWithdrawn_;
       }
       /**
        * <code>bool is_withdrawn = 13;</code>
+       * @param value The isWithdrawn to set.
+       * @return This builder for chaining.
        */
       public Builder setIsWithdrawn(boolean value) {
         
@@ -7819,6 +8036,7 @@ public final class ElectionContract {
       }
       /**
        * <code>bool is_withdrawn = 13;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsWithdrawn() {
         
@@ -7830,12 +8048,15 @@ public final class ElectionContract {
       private long weight_ ;
       /**
        * <code>sint64 weight = 14;</code>
+       * @return The weight.
        */
       public long getWeight() {
         return weight_;
       }
       /**
        * <code>sint64 weight = 14;</code>
+       * @param value The weight to set.
+       * @return This builder for chaining.
        */
       public Builder setWeight(long value) {
         
@@ -7845,6 +8066,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 weight = 14;</code>
+       * @return This builder for chaining.
        */
       public Builder clearWeight() {
         
@@ -7856,12 +8078,15 @@ public final class ElectionContract {
       private boolean isChangeTarget_ ;
       /**
        * <code>bool is_change_target = 15;</code>
+       * @return The isChangeTarget.
        */
       public boolean getIsChangeTarget() {
         return isChangeTarget_;
       }
       /**
        * <code>bool is_change_target = 15;</code>
+       * @param value The isChangeTarget to set.
+       * @return This builder for chaining.
        */
       public Builder setIsChangeTarget(boolean value) {
         
@@ -7871,6 +8096,7 @@ public final class ElectionContract {
       }
       /**
        * <code>bool is_change_target = 15;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsChangeTarget() {
         
@@ -7985,11 +8211,13 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+     * @return The obtainedActiveVotedVotesAmount.
      */
     long getObtainedActiveVotedVotesAmount();
 
     /**
      * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+     * @return The allObtainedVotedVotesAmount.
      */
     long getAllObtainedVotedVotesAmount();
 
@@ -8043,6 +8271,7 @@ public final class ElectionContract {
 
     /**
      * <code>bytes pubkey = 7;</code>
+     * @return The pubkey.
      */
     com.google.protobuf.ByteString getPubkey();
   }
@@ -8064,6 +8293,13 @@ public final class ElectionContract {
       obtainedActiveVotingRecords_ = java.util.Collections.emptyList();
       obtainedWithdrawnVotesRecords_ = java.util.Collections.emptyList();
       pubkey_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CandidateVote();
     }
 
     @java.lang.Override
@@ -8119,18 +8355,18 @@ public final class ElectionContract {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 obtainedActiveVotingRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000004;
               }
               obtainedActiveVotingRecords_.add(
                   input.readMessage(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.parser(), extensionRegistry));
               break;
             }
             case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                 obtainedWithdrawnVotesRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000008;
               }
               obtainedWithdrawnVotesRecords_.add(
                   input.readMessage(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.parser(), extensionRegistry));
@@ -8162,10 +8398,10 @@ public final class ElectionContract {
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
           obtainedWithdrawnVotingRecordIds_ = java.util.Collections.unmodifiableList(obtainedWithdrawnVotingRecordIds_);
         }
-        if (((mutable_bitField0_ & 0x00000010) != 0)) {
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
           obtainedActiveVotingRecords_ = java.util.Collections.unmodifiableList(obtainedActiveVotingRecords_);
         }
-        if (((mutable_bitField0_ & 0x00000020) != 0)) {
+        if (((mutable_bitField0_ & 0x00000008) != 0)) {
           obtainedWithdrawnVotesRecords_ = java.util.Collections.unmodifiableList(obtainedWithdrawnVotesRecords_);
         }
         this.unknownFields = unknownFields.build();
@@ -8185,7 +8421,6 @@ public final class ElectionContract {
               io.aelf.protobuf.generated.ElectionContract.CandidateVote.class, io.aelf.protobuf.generated.ElectionContract.CandidateVote.Builder.class);
     }
 
-    private int bitField0_;
     public static final int OBTAINED_ACTIVE_VOTING_RECORD_IDS_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> obtainedActiveVotingRecordIds_;
     /**
@@ -8260,6 +8495,7 @@ public final class ElectionContract {
     private long obtainedActiveVotedVotesAmount_;
     /**
      * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+     * @return The obtainedActiveVotedVotesAmount.
      */
     public long getObtainedActiveVotedVotesAmount() {
       return obtainedActiveVotedVotesAmount_;
@@ -8269,6 +8505,7 @@ public final class ElectionContract {
     private long allObtainedVotedVotesAmount_;
     /**
      * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+     * @return The allObtainedVotedVotesAmount.
      */
     public long getAllObtainedVotedVotesAmount() {
       return allObtainedVotedVotesAmount_;
@@ -8348,6 +8585,7 @@ public final class ElectionContract {
     private com.google.protobuf.ByteString pubkey_;
     /**
      * <code>bytes pubkey = 7;</code>
+     * @return The pubkey.
      */
     public com.google.protobuf.ByteString getPubkey() {
       return pubkey_;
@@ -8644,13 +8882,13 @@ public final class ElectionContract {
 
         if (obtainedActiveVotingRecordsBuilder_ == null) {
           obtainedActiveVotingRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           obtainedActiveVotingRecordsBuilder_.clear();
         }
         if (obtainedWithdrawnVotesRecordsBuilder_ == null) {
           obtainedWithdrawnVotesRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           obtainedWithdrawnVotesRecordsBuilder_.clear();
         }
@@ -8683,7 +8921,6 @@ public final class ElectionContract {
       public io.aelf.protobuf.generated.ElectionContract.CandidateVote buildPartial() {
         io.aelf.protobuf.generated.ElectionContract.CandidateVote result = new io.aelf.protobuf.generated.ElectionContract.CandidateVote(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (obtainedActiveVotingRecordIdsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             obtainedActiveVotingRecordIds_ = java.util.Collections.unmodifiableList(obtainedActiveVotingRecordIds_);
@@ -8705,25 +8942,24 @@ public final class ElectionContract {
         result.obtainedActiveVotedVotesAmount_ = obtainedActiveVotedVotesAmount_;
         result.allObtainedVotedVotesAmount_ = allObtainedVotedVotesAmount_;
         if (obtainedActiveVotingRecordsBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) != 0)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             obtainedActiveVotingRecords_ = java.util.Collections.unmodifiableList(obtainedActiveVotingRecords_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.obtainedActiveVotingRecords_ = obtainedActiveVotingRecords_;
         } else {
           result.obtainedActiveVotingRecords_ = obtainedActiveVotingRecordsBuilder_.build();
         }
         if (obtainedWithdrawnVotesRecordsBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) != 0)) {
+          if (((bitField0_ & 0x00000008) != 0)) {
             obtainedWithdrawnVotesRecords_ = java.util.Collections.unmodifiableList(obtainedWithdrawnVotesRecords_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.obtainedWithdrawnVotesRecords_ = obtainedWithdrawnVotesRecords_;
         } else {
           result.obtainedWithdrawnVotesRecords_ = obtainedWithdrawnVotesRecordsBuilder_.build();
         }
         result.pubkey_ = pubkey_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -8834,7 +9070,7 @@ public final class ElectionContract {
           if (!other.obtainedActiveVotingRecords_.isEmpty()) {
             if (obtainedActiveVotingRecords_.isEmpty()) {
               obtainedActiveVotingRecords_ = other.obtainedActiveVotingRecords_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureObtainedActiveVotingRecordsIsMutable();
               obtainedActiveVotingRecords_.addAll(other.obtainedActiveVotingRecords_);
@@ -8847,7 +9083,7 @@ public final class ElectionContract {
               obtainedActiveVotingRecordsBuilder_.dispose();
               obtainedActiveVotingRecordsBuilder_ = null;
               obtainedActiveVotingRecords_ = other.obtainedActiveVotingRecords_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000004);
               obtainedActiveVotingRecordsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getObtainedActiveVotingRecordsFieldBuilder() : null;
@@ -8860,7 +9096,7 @@ public final class ElectionContract {
           if (!other.obtainedWithdrawnVotesRecords_.isEmpty()) {
             if (obtainedWithdrawnVotesRecords_.isEmpty()) {
               obtainedWithdrawnVotesRecords_ = other.obtainedWithdrawnVotesRecords_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureObtainedWithdrawnVotesRecordsIsMutable();
               obtainedWithdrawnVotesRecords_.addAll(other.obtainedWithdrawnVotesRecords_);
@@ -8873,7 +9109,7 @@ public final class ElectionContract {
               obtainedWithdrawnVotesRecordsBuilder_.dispose();
               obtainedWithdrawnVotesRecordsBuilder_ = null;
               obtainedWithdrawnVotesRecords_ = other.obtainedWithdrawnVotesRecords_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000008);
               obtainedWithdrawnVotesRecordsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getObtainedWithdrawnVotesRecordsFieldBuilder() : null;
@@ -9398,12 +9634,15 @@ public final class ElectionContract {
       private long obtainedActiveVotedVotesAmount_ ;
       /**
        * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+       * @return The obtainedActiveVotedVotesAmount.
        */
       public long getObtainedActiveVotedVotesAmount() {
         return obtainedActiveVotedVotesAmount_;
       }
       /**
        * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+       * @param value The obtainedActiveVotedVotesAmount to set.
+       * @return This builder for chaining.
        */
       public Builder setObtainedActiveVotedVotesAmount(long value) {
         
@@ -9413,6 +9652,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearObtainedActiveVotedVotesAmount() {
         
@@ -9424,12 +9664,15 @@ public final class ElectionContract {
       private long allObtainedVotedVotesAmount_ ;
       /**
        * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+       * @return The allObtainedVotedVotesAmount.
        */
       public long getAllObtainedVotedVotesAmount() {
         return allObtainedVotedVotesAmount_;
       }
       /**
        * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+       * @param value The allObtainedVotedVotesAmount to set.
+       * @return This builder for chaining.
        */
       public Builder setAllObtainedVotedVotesAmount(long value) {
         
@@ -9439,6 +9682,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAllObtainedVotedVotesAmount() {
         
@@ -9450,9 +9694,9 @@ public final class ElectionContract {
       private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> obtainedActiveVotingRecords_ =
         java.util.Collections.emptyList();
       private void ensureObtainedActiveVotingRecordsIsMutable() {
-        if (!((bitField0_ & 0x00000010) != 0)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           obtainedActiveVotingRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>(obtainedActiveVotingRecords_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -9602,7 +9846,7 @@ public final class ElectionContract {
       public Builder clearObtainedActiveVotingRecords() {
         if (obtainedActiveVotingRecordsBuilder_ == null) {
           obtainedActiveVotingRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           obtainedActiveVotingRecordsBuilder_.clear();
@@ -9679,7 +9923,7 @@ public final class ElectionContract {
           obtainedActiveVotingRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder>(
                   obtainedActiveVotingRecords_,
-                  ((bitField0_ & 0x00000010) != 0),
+                  ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
                   isClean());
           obtainedActiveVotingRecords_ = null;
@@ -9690,9 +9934,9 @@ public final class ElectionContract {
       private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> obtainedWithdrawnVotesRecords_ =
         java.util.Collections.emptyList();
       private void ensureObtainedWithdrawnVotesRecordsIsMutable() {
-        if (!((bitField0_ & 0x00000020) != 0)) {
+        if (!((bitField0_ & 0x00000008) != 0)) {
           obtainedWithdrawnVotesRecords_ = new java.util.ArrayList<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord>(obtainedWithdrawnVotesRecords_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -9842,7 +10086,7 @@ public final class ElectionContract {
       public Builder clearObtainedWithdrawnVotesRecords() {
         if (obtainedWithdrawnVotesRecordsBuilder_ == null) {
           obtainedWithdrawnVotesRecords_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           obtainedWithdrawnVotesRecordsBuilder_.clear();
@@ -9919,7 +10163,7 @@ public final class ElectionContract {
           obtainedWithdrawnVotesRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder>(
                   obtainedWithdrawnVotesRecords_,
-                  ((bitField0_ & 0x00000020) != 0),
+                  ((bitField0_ & 0x00000008) != 0),
                   getParentForChildren(),
                   isClean());
           obtainedWithdrawnVotesRecords_ = null;
@@ -9930,12 +10174,15 @@ public final class ElectionContract {
       private com.google.protobuf.ByteString pubkey_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes pubkey = 7;</code>
+       * @return The pubkey.
        */
       public com.google.protobuf.ByteString getPubkey() {
         return pubkey_;
       }
       /**
        * <code>bytes pubkey = 7;</code>
+       * @param value The pubkey to set.
+       * @return This builder for chaining.
        */
       public Builder setPubkey(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -9948,6 +10195,7 @@ public final class ElectionContract {
       }
       /**
        * <code>bytes pubkey = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPubkey() {
         
@@ -10014,14 +10262,18 @@ public final class ElectionContract {
 
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return A list containing the value.
      */
     java.util.List<java.lang.Long> getValueList();
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return The count of value.
      */
     int getValueCount();
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @param index The index of the element to return.
+     * @return The value at the given index.
      */
     long getValue(int index);
   }
@@ -10039,6 +10291,13 @@ public final class ElectionContract {
     }
     private GetWelfareRewardAmountSampleInput() {
       value_ = emptyLongList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetWelfareRewardAmountSampleInput();
     }
 
     @java.lang.Override
@@ -10125,6 +10384,7 @@ public final class ElectionContract {
     private com.google.protobuf.Internal.LongList value_;
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return A list containing the value.
      */
     public java.util.List<java.lang.Long>
         getValueList() {
@@ -10132,12 +10392,15 @@ public final class ElectionContract {
     }
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return The count of value.
      */
     public int getValueCount() {
       return value_.size();
     }
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @param index The index of the element to return.
+     * @return The value at the given index.
      */
     public long getValue(int index) {
       return value_.getLong(index);
@@ -10485,6 +10748,7 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @return A list containing the value.
        */
       public java.util.List<java.lang.Long>
           getValueList() {
@@ -10493,18 +10757,24 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @return The count of value.
        */
       public int getValueCount() {
         return value_.size();
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param index The index of the element to return.
+       * @return The value at the given index.
        */
       public long getValue(int index) {
         return value_.getLong(index);
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(
           int index, long value) {
@@ -10515,6 +10785,8 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param value The value to add.
+       * @return This builder for chaining.
        */
       public Builder addValue(long value) {
         ensureValueIsMutable();
@@ -10524,6 +10796,8 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param values The value to add.
+       * @return This builder for chaining.
        */
       public Builder addAllValue(
           java.lang.Iterable<? extends java.lang.Long> values) {
@@ -10535,6 +10809,7 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         value_ = emptyLongList();
@@ -10601,14 +10876,18 @@ public final class ElectionContract {
 
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return A list containing the value.
      */
     java.util.List<java.lang.Long> getValueList();
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return The count of value.
      */
     int getValueCount();
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @param index The index of the element to return.
+     * @return The value at the given index.
      */
     long getValue(int index);
   }
@@ -10626,6 +10905,13 @@ public final class ElectionContract {
     }
     private GetWelfareRewardAmountSampleOutput() {
       value_ = emptyLongList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetWelfareRewardAmountSampleOutput();
     }
 
     @java.lang.Override
@@ -10712,6 +10998,7 @@ public final class ElectionContract {
     private com.google.protobuf.Internal.LongList value_;
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return A list containing the value.
      */
     public java.util.List<java.lang.Long>
         getValueList() {
@@ -10719,12 +11006,15 @@ public final class ElectionContract {
     }
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @return The count of value.
      */
     public int getValueCount() {
       return value_.size();
     }
     /**
      * <code>repeated sint64 value = 1;</code>
+     * @param index The index of the element to return.
+     * @return The value at the given index.
      */
     public long getValue(int index) {
       return value_.getLong(index);
@@ -11072,6 +11362,7 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @return A list containing the value.
        */
       public java.util.List<java.lang.Long>
           getValueList() {
@@ -11080,18 +11371,24 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @return The count of value.
        */
       public int getValueCount() {
         return value_.size();
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param index The index of the element to return.
+       * @return The value at the given index.
        */
       public long getValue(int index) {
         return value_.getLong(index);
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(
           int index, long value) {
@@ -11102,6 +11399,8 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param value The value to add.
+       * @return This builder for chaining.
        */
       public Builder addValue(long value) {
         ensureValueIsMutable();
@@ -11111,6 +11410,8 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @param values The value to add.
+       * @return This builder for chaining.
        */
       public Builder addAllValue(
           java.lang.Iterable<? extends java.lang.Long> values) {
@@ -11122,6 +11423,7 @@ public final class ElectionContract {
       }
       /**
        * <code>repeated sint64 value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         value_ = emptyLongList();
@@ -11188,11 +11490,13 @@ public final class ElectionContract {
 
     /**
      * <code>sint32 start = 1;</code>
+     * @return The start.
      */
     int getStart();
 
     /**
      * <code>sint32 length = 2;</code>
+     * @return The length.
      */
     int getLength();
   }
@@ -11212,6 +11516,13 @@ public final class ElectionContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PageInformation();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -11224,7 +11535,6 @@ public final class ElectionContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -11281,6 +11591,7 @@ public final class ElectionContract {
     private int start_;
     /**
      * <code>sint32 start = 1;</code>
+     * @return The start.
      */
     public int getStart() {
       return start_;
@@ -11290,6 +11601,7 @@ public final class ElectionContract {
     private int length_;
     /**
      * <code>sint32 length = 2;</code>
+     * @return The length.
      */
     public int getLength() {
       return length_;
@@ -11617,12 +11929,15 @@ public final class ElectionContract {
       private int start_ ;
       /**
        * <code>sint32 start = 1;</code>
+       * @return The start.
        */
       public int getStart() {
         return start_;
       }
       /**
        * <code>sint32 start = 1;</code>
+       * @param value The start to set.
+       * @return This builder for chaining.
        */
       public Builder setStart(int value) {
         
@@ -11632,6 +11947,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint32 start = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearStart() {
         
@@ -11643,12 +11959,15 @@ public final class ElectionContract {
       private int length_ ;
       /**
        * <code>sint32 length = 2;</code>
+       * @return The length.
        */
       public int getLength() {
         return length_;
       }
       /**
        * <code>sint32 length = 2;</code>
+       * @param value The length to set.
+       * @return This builder for chaining.
        */
       public Builder setLength(int value) {
         
@@ -11658,6 +11977,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint32 length = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLength() {
         
@@ -11724,10 +12044,12 @@ public final class ElectionContract {
 
     /**
      * <code>.CandidateInformation candidate_information = 1;</code>
+     * @return Whether the candidateInformation field is set.
      */
     boolean hasCandidateInformation();
     /**
      * <code>.CandidateInformation candidate_information = 1;</code>
+     * @return The candidateInformation.
      */
     io.aelf.protobuf.generated.ElectionContract.CandidateInformation getCandidateInformation();
     /**
@@ -11737,6 +12059,7 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 obtained_votes_amount = 2;</code>
+     * @return The obtainedVotesAmount.
      */
     long getObtainedVotesAmount();
   }
@@ -11756,6 +12079,13 @@ public final class ElectionContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CandidateDetail();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -11768,7 +12098,6 @@ public final class ElectionContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -11833,12 +12162,14 @@ public final class ElectionContract {
     private io.aelf.protobuf.generated.ElectionContract.CandidateInformation candidateInformation_;
     /**
      * <code>.CandidateInformation candidate_information = 1;</code>
+     * @return Whether the candidateInformation field is set.
      */
     public boolean hasCandidateInformation() {
       return candidateInformation_ != null;
     }
     /**
      * <code>.CandidateInformation candidate_information = 1;</code>
+     * @return The candidateInformation.
      */
     public io.aelf.protobuf.generated.ElectionContract.CandidateInformation getCandidateInformation() {
       return candidateInformation_ == null ? io.aelf.protobuf.generated.ElectionContract.CandidateInformation.getDefaultInstance() : candidateInformation_;
@@ -11854,6 +12185,7 @@ public final class ElectionContract {
     private long obtainedVotesAmount_;
     /**
      * <code>sint64 obtained_votes_amount = 2;</code>
+     * @return The obtainedVotesAmount.
      */
     public long getObtainedVotesAmount() {
       return obtainedVotesAmount_;
@@ -12197,12 +12529,14 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.ElectionContract.CandidateInformation, io.aelf.protobuf.generated.ElectionContract.CandidateInformation.Builder, io.aelf.protobuf.generated.ElectionContract.CandidateInformationOrBuilder> candidateInformationBuilder_;
       /**
        * <code>.CandidateInformation candidate_information = 1;</code>
+       * @return Whether the candidateInformation field is set.
        */
       public boolean hasCandidateInformation() {
         return candidateInformationBuilder_ != null || candidateInformation_ != null;
       }
       /**
        * <code>.CandidateInformation candidate_information = 1;</code>
+       * @return The candidateInformation.
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateInformation getCandidateInformation() {
         if (candidateInformationBuilder_ == null) {
@@ -12312,12 +12646,15 @@ public final class ElectionContract {
       private long obtainedVotesAmount_ ;
       /**
        * <code>sint64 obtained_votes_amount = 2;</code>
+       * @return The obtainedVotesAmount.
        */
       public long getObtainedVotesAmount() {
         return obtainedVotesAmount_;
       }
       /**
        * <code>sint64 obtained_votes_amount = 2;</code>
+       * @param value The obtainedVotesAmount to set.
+       * @return This builder for chaining.
        */
       public Builder setObtainedVotesAmount(long value) {
         
@@ -12327,6 +12664,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 obtained_votes_amount = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearObtainedVotesAmount() {
         
@@ -12429,6 +12767,13 @@ public final class ElectionContract {
     }
     private GetPageableCandidateInformationOutput() {
       value_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetPageableCandidateInformationOutput();
     }
 
     @java.lang.Override
@@ -13208,6 +13553,7 @@ public final class ElectionContract {
 
     /**
      * <code>sint64 minimum_votes = 2;</code>
+     * @return The minimumVotes.
      */
     long getMinimumVotes();
   }
@@ -13224,6 +13570,13 @@ public final class ElectionContract {
       super(builder);
     }
     private DataCenterRankingList() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DataCenterRankingList();
     }
 
     @java.lang.Override
@@ -13312,7 +13665,6 @@ public final class ElectionContract {
               io.aelf.protobuf.generated.ElectionContract.DataCenterRankingList.class, io.aelf.protobuf.generated.ElectionContract.DataCenterRankingList.Builder.class);
     }
 
-    private int bitField0_;
     public static final int DATA_CENTERS_FIELD_NUMBER = 1;
     private static final class DataCentersDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
@@ -13393,6 +13745,7 @@ public final class ElectionContract {
     private long minimumVotes_;
     /**
      * <code>sint64 minimum_votes = 2;</code>
+     * @return The minimumVotes.
      */
     public long getMinimumVotes() {
       return minimumVotes_;
@@ -13666,11 +14019,9 @@ public final class ElectionContract {
       public io.aelf.protobuf.generated.ElectionContract.DataCenterRankingList buildPartial() {
         io.aelf.protobuf.generated.ElectionContract.DataCenterRankingList result = new io.aelf.protobuf.generated.ElectionContract.DataCenterRankingList(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.dataCenters_ = internalGetDataCenters();
         result.dataCenters_.makeImmutable();
         result.minimumVotes_ = minimumVotes_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -13880,12 +14231,15 @@ public final class ElectionContract {
       private long minimumVotes_ ;
       /**
        * <code>sint64 minimum_votes = 2;</code>
+       * @return The minimumVotes.
        */
       public long getMinimumVotes() {
         return minimumVotes_;
       }
       /**
        * <code>sint64 minimum_votes = 2;</code>
+       * @param value The minimumVotes to set.
+       * @return This builder for chaining.
        */
       public Builder setMinimumVotes(long value) {
         
@@ -13895,6 +14249,7 @@ public final class ElectionContract {
       }
       /**
        * <code>sint64 minimum_votes = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMinimumVotes() {
         
@@ -14107,20 +14462,12 @@ public final class ElectionContract {
       "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:\0028\001B\034\n\032io." +
       "aelf.protobuf.generatedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
           io.aelf.protobuf.generated.Client.getDescriptor(),
-        }, assigner);
+        });
     internal_static_CandidateInformation_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_CandidateInformation_fieldAccessorTable = new

@@ -63,6 +63,13 @@ public final class ProfitContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CreatedSchemeIds();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -809,10 +816,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Address manager = 1;</code>
+     * @return Whether the manager field is set.
      */
     boolean hasManager();
     /**
      * <code>.Address manager = 1;</code>
+     * @return The manager.
      */
     io.aelf.protobuf.generated.Client.Address getManager();
     /**
@@ -836,6 +845,13 @@ public final class ProfitContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetManagingSchemeIdsInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -848,7 +864,6 @@ public final class ProfitContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -908,12 +923,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Address manager_;
     /**
      * <code>.Address manager = 1;</code>
+     * @return Whether the manager field is set.
      */
     public boolean hasManager() {
       return manager_ != null;
     }
     /**
      * <code>.Address manager = 1;</code>
+     * @return The manager.
      */
     public io.aelf.protobuf.generated.Client.Address getManager() {
       return manager_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : manager_;
@@ -1245,12 +1262,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> managerBuilder_;
       /**
        * <code>.Address manager = 1;</code>
+       * @return Whether the manager field is set.
        */
       public boolean hasManager() {
         return managerBuilder_ != null || manager_ != null;
       }
       /**
        * <code>.Address manager = 1;</code>
+       * @return The manager.
        */
       public io.aelf.protobuf.generated.Client.Address getManager() {
         if (managerBuilder_ == null) {
@@ -1415,10 +1434,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     boolean hasSchemeId();
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     io.aelf.protobuf.generated.Client.Hash getSchemeId();
     /**
@@ -1428,6 +1449,7 @@ public final class ProfitContract {
 
     /**
      * <code>sint64 shares = 2;</code>
+     * @return The shares.
      */
     long getShares();
   }
@@ -1447,6 +1469,13 @@ public final class ProfitContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SchemeBeneficiaryShare();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1459,7 +1488,6 @@ public final class ProfitContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1524,12 +1552,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Hash schemeId_;
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
@@ -1545,6 +1575,7 @@ public final class ProfitContract {
     private long shares_;
     /**
      * <code>sint64 shares = 2;</code>
+     * @return The shares.
      */
     public long getShares() {
       return shares_;
@@ -1888,12 +1919,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> schemeIdBuilder_;
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
         return schemeIdBuilder_ != null || schemeId_ != null;
       }
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return The schemeId.
        */
       public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
         if (schemeIdBuilder_ == null) {
@@ -2003,12 +2036,15 @@ public final class ProfitContract {
       private long shares_ ;
       /**
        * <code>sint64 shares = 2;</code>
+       * @return The shares.
        */
       public long getShares() {
         return shares_;
       }
       /**
        * <code>sint64 shares = 2;</code>
+       * @param value The shares to set.
+       * @return This builder for chaining.
        */
       public Builder setShares(long value) {
         
@@ -2018,6 +2054,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 shares = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearShares() {
         
@@ -2084,10 +2121,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Address virtual_address = 1;</code>
+     * @return Whether the virtualAddress field is set.
      */
     boolean hasVirtualAddress();
     /**
      * <code>.Address virtual_address = 1;</code>
+     * @return The virtualAddress.
      */
     io.aelf.protobuf.generated.Client.Address getVirtualAddress();
     /**
@@ -2097,6 +2136,7 @@ public final class ProfitContract {
 
     /**
      * <code>sint64 total_shares = 2;</code>
+     * @return The totalShares.
      */
     long getTotalShares();
 
@@ -2156,6 +2196,7 @@ public final class ProfitContract {
 
     /**
      * <code>sint64 current_period = 4;</code>
+     * @return The currentPeriod.
      */
     long getCurrentPeriod();
 
@@ -2185,20 +2226,24 @@ public final class ProfitContract {
 
     /**
      * <code>sint64 profit_receiving_due_period_count = 7;</code>
+     * @return The profitReceivingDuePeriodCount.
      */
     long getProfitReceivingDuePeriodCount();
 
     /**
      * <code>bool is_release_all_balance_every_time_by_default = 8;</code>
+     * @return The isReleaseAllBalanceEveryTimeByDefault.
      */
     boolean getIsReleaseAllBalanceEveryTimeByDefault();
 
     /**
      * <code>.Hash scheme_id = 9;</code>
+     * @return Whether the schemeId field is set.
      */
     boolean hasSchemeId();
     /**
      * <code>.Hash scheme_id = 9;</code>
+     * @return The schemeId.
      */
     io.aelf.protobuf.generated.Client.Hash getSchemeId();
     /**
@@ -2208,6 +2253,7 @@ public final class ProfitContract {
 
     /**
      * <code>sint32 delay_distribute_period_count = 10;</code>
+     * @return The delayDistributePeriodCount.
      */
     int getDelayDistributePeriodCount();
 
@@ -2267,10 +2313,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Address manager = 12;</code>
+     * @return Whether the manager field is set.
      */
     boolean hasManager();
     /**
      * <code>.Address manager = 12;</code>
+     * @return The manager.
      */
     io.aelf.protobuf.generated.Client.Address getManager();
     /**
@@ -2292,6 +2340,13 @@ public final class ProfitContract {
     }
     private Scheme() {
       subSchemes_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Scheme();
     }
 
     @java.lang.Override
@@ -2337,10 +2392,10 @@ public final class ProfitContract {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 undistributedProfits_ = com.google.protobuf.MapField.newMapField(
                     UndistributedProfitsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
               undistributedProfits__ = input.readMessage(
@@ -2355,9 +2410,9 @@ public final class ProfitContract {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 subSchemes_ = new java.util.ArrayList<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000002;
               }
               subSchemes_.add(
                   input.readMessage(io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare.parser(), extensionRegistry));
@@ -2392,10 +2447,10 @@ public final class ProfitContract {
               break;
             }
             case 90: {
-              if (!((mutable_bitField0_ & 0x00000200) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 cachedDelayTotalShares_ = com.google.protobuf.MapField.newMapField(
                     CachedDelayTotalSharesDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000200;
+                mutable_bitField0_ |= 0x00000004;
               }
               com.google.protobuf.MapEntry<java.lang.Long, java.lang.Long>
               cachedDelayTotalShares__ = input.readMessage(
@@ -2432,7 +2487,7 @@ public final class ProfitContract {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) != 0)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           subSchemes_ = java.util.Collections.unmodifiableList(subSchemes_);
         }
         this.unknownFields = unknownFields.build();
@@ -2466,17 +2521,18 @@ public final class ProfitContract {
               io.aelf.protobuf.generated.ProfitContract.Scheme.class, io.aelf.protobuf.generated.ProfitContract.Scheme.Builder.class);
     }
 
-    private int bitField0_;
     public static final int VIRTUAL_ADDRESS_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Address virtualAddress_;
     /**
      * <code>.Address virtual_address = 1;</code>
+     * @return Whether the virtualAddress field is set.
      */
     public boolean hasVirtualAddress() {
       return virtualAddress_ != null;
     }
     /**
      * <code>.Address virtual_address = 1;</code>
+     * @return The virtualAddress.
      */
     public io.aelf.protobuf.generated.Client.Address getVirtualAddress() {
       return virtualAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : virtualAddress_;
@@ -2492,6 +2548,7 @@ public final class ProfitContract {
     private long totalShares_;
     /**
      * <code>sint64 total_shares = 2;</code>
+     * @return The totalShares.
      */
     public long getTotalShares() {
       return totalShares_;
@@ -2593,6 +2650,7 @@ public final class ProfitContract {
     private long currentPeriod_;
     /**
      * <code>sint64 current_period = 4;</code>
+     * @return The currentPeriod.
      */
     public long getCurrentPeriod() {
       return currentPeriod_;
@@ -2637,6 +2695,7 @@ public final class ProfitContract {
     private long profitReceivingDuePeriodCount_;
     /**
      * <code>sint64 profit_receiving_due_period_count = 7;</code>
+     * @return The profitReceivingDuePeriodCount.
      */
     public long getProfitReceivingDuePeriodCount() {
       return profitReceivingDuePeriodCount_;
@@ -2646,6 +2705,7 @@ public final class ProfitContract {
     private boolean isReleaseAllBalanceEveryTimeByDefault_;
     /**
      * <code>bool is_release_all_balance_every_time_by_default = 8;</code>
+     * @return The isReleaseAllBalanceEveryTimeByDefault.
      */
     public boolean getIsReleaseAllBalanceEveryTimeByDefault() {
       return isReleaseAllBalanceEveryTimeByDefault_;
@@ -2655,12 +2715,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Hash schemeId_;
     /**
      * <code>.Hash scheme_id = 9;</code>
+     * @return Whether the schemeId field is set.
      */
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
     /**
      * <code>.Hash scheme_id = 9;</code>
+     * @return The schemeId.
      */
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
@@ -2676,6 +2738,7 @@ public final class ProfitContract {
     private int delayDistributePeriodCount_;
     /**
      * <code>sint32 delay_distribute_period_count = 10;</code>
+     * @return The delayDistributePeriodCount.
      */
     public int getDelayDistributePeriodCount() {
       return delayDistributePeriodCount_;
@@ -2777,12 +2840,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Address manager_;
     /**
      * <code>.Address manager = 12;</code>
+     * @return Whether the manager field is set.
      */
     public boolean hasManager() {
       return manager_ != null;
     }
     /**
      * <code>.Address manager = 12;</code>
+     * @return The manager.
      */
     public io.aelf.protobuf.generated.Client.Address getManager() {
       return manager_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : manager_;
@@ -3180,7 +3245,7 @@ public final class ProfitContract {
 
         if (subSchemesBuilder_ == null) {
           subSchemes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           subSchemesBuilder_.clear();
         }
@@ -3230,7 +3295,6 @@ public final class ProfitContract {
       public io.aelf.protobuf.generated.ProfitContract.Scheme buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.Scheme result = new io.aelf.protobuf.generated.ProfitContract.Scheme(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (virtualAddressBuilder_ == null) {
           result.virtualAddress_ = virtualAddress_;
         } else {
@@ -3241,9 +3305,9 @@ public final class ProfitContract {
         result.undistributedProfits_.makeImmutable();
         result.currentPeriod_ = currentPeriod_;
         if (subSchemesBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) != 0)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             subSchemes_ = java.util.Collections.unmodifiableList(subSchemes_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.subSchemes_ = subSchemes_;
         } else {
@@ -3264,7 +3328,6 @@ public final class ProfitContract {
         } else {
           result.manager_ = managerBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3328,7 +3391,7 @@ public final class ProfitContract {
           if (!other.subSchemes_.isEmpty()) {
             if (subSchemes_.isEmpty()) {
               subSchemes_ = other.subSchemes_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureSubSchemesIsMutable();
               subSchemes_.addAll(other.subSchemes_);
@@ -3341,7 +3404,7 @@ public final class ProfitContract {
               subSchemesBuilder_.dispose();
               subSchemesBuilder_ = null;
               subSchemes_ = other.subSchemes_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000002);
               subSchemesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getSubSchemesFieldBuilder() : null;
@@ -3402,12 +3465,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> virtualAddressBuilder_;
       /**
        * <code>.Address virtual_address = 1;</code>
+       * @return Whether the virtualAddress field is set.
        */
       public boolean hasVirtualAddress() {
         return virtualAddressBuilder_ != null || virtualAddress_ != null;
       }
       /**
        * <code>.Address virtual_address = 1;</code>
+       * @return The virtualAddress.
        */
       public io.aelf.protobuf.generated.Client.Address getVirtualAddress() {
         if (virtualAddressBuilder_ == null) {
@@ -3517,12 +3582,15 @@ public final class ProfitContract {
       private long totalShares_ ;
       /**
        * <code>sint64 total_shares = 2;</code>
+       * @return The totalShares.
        */
       public long getTotalShares() {
         return totalShares_;
       }
       /**
        * <code>sint64 total_shares = 2;</code>
+       * @param value The totalShares to set.
+       * @return This builder for chaining.
        */
       public Builder setTotalShares(long value) {
         
@@ -3532,6 +3600,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 total_shares = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTotalShares() {
         
@@ -3694,12 +3763,15 @@ public final class ProfitContract {
       private long currentPeriod_ ;
       /**
        * <code>sint64 current_period = 4;</code>
+       * @return The currentPeriod.
        */
       public long getCurrentPeriod() {
         return currentPeriod_;
       }
       /**
        * <code>sint64 current_period = 4;</code>
+       * @param value The currentPeriod to set.
+       * @return This builder for chaining.
        */
       public Builder setCurrentPeriod(long value) {
         
@@ -3709,6 +3781,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 current_period = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCurrentPeriod() {
         
@@ -3720,9 +3793,9 @@ public final class ProfitContract {
       private java.util.List<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare> subSchemes_ =
         java.util.Collections.emptyList();
       private void ensureSubSchemesIsMutable() {
-        if (!((bitField0_ & 0x00000010) != 0)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           subSchemes_ = new java.util.ArrayList<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare>(subSchemes_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -3872,7 +3945,7 @@ public final class ProfitContract {
       public Builder clearSubSchemes() {
         if (subSchemesBuilder_ == null) {
           subSchemes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           subSchemesBuilder_.clear();
@@ -3949,7 +4022,7 @@ public final class ProfitContract {
           subSchemesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare, io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare.Builder, io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShareOrBuilder>(
                   subSchemes_,
-                  ((bitField0_ & 0x00000010) != 0),
+                  ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
           subSchemes_ = null;
@@ -3960,12 +4033,15 @@ public final class ProfitContract {
       private long profitReceivingDuePeriodCount_ ;
       /**
        * <code>sint64 profit_receiving_due_period_count = 7;</code>
+       * @return The profitReceivingDuePeriodCount.
        */
       public long getProfitReceivingDuePeriodCount() {
         return profitReceivingDuePeriodCount_;
       }
       /**
        * <code>sint64 profit_receiving_due_period_count = 7;</code>
+       * @param value The profitReceivingDuePeriodCount to set.
+       * @return This builder for chaining.
        */
       public Builder setProfitReceivingDuePeriodCount(long value) {
         
@@ -3975,6 +4051,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 profit_receiving_due_period_count = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearProfitReceivingDuePeriodCount() {
         
@@ -3986,12 +4063,15 @@ public final class ProfitContract {
       private boolean isReleaseAllBalanceEveryTimeByDefault_ ;
       /**
        * <code>bool is_release_all_balance_every_time_by_default = 8;</code>
+       * @return The isReleaseAllBalanceEveryTimeByDefault.
        */
       public boolean getIsReleaseAllBalanceEveryTimeByDefault() {
         return isReleaseAllBalanceEveryTimeByDefault_;
       }
       /**
        * <code>bool is_release_all_balance_every_time_by_default = 8;</code>
+       * @param value The isReleaseAllBalanceEveryTimeByDefault to set.
+       * @return This builder for chaining.
        */
       public Builder setIsReleaseAllBalanceEveryTimeByDefault(boolean value) {
         
@@ -4001,6 +4081,7 @@ public final class ProfitContract {
       }
       /**
        * <code>bool is_release_all_balance_every_time_by_default = 8;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsReleaseAllBalanceEveryTimeByDefault() {
         
@@ -4014,12 +4095,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> schemeIdBuilder_;
       /**
        * <code>.Hash scheme_id = 9;</code>
+       * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
         return schemeIdBuilder_ != null || schemeId_ != null;
       }
       /**
        * <code>.Hash scheme_id = 9;</code>
+       * @return The schemeId.
        */
       public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
         if (schemeIdBuilder_ == null) {
@@ -4129,12 +4212,15 @@ public final class ProfitContract {
       private int delayDistributePeriodCount_ ;
       /**
        * <code>sint32 delay_distribute_period_count = 10;</code>
+       * @return The delayDistributePeriodCount.
        */
       public int getDelayDistributePeriodCount() {
         return delayDistributePeriodCount_;
       }
       /**
        * <code>sint32 delay_distribute_period_count = 10;</code>
+       * @param value The delayDistributePeriodCount to set.
+       * @return This builder for chaining.
        */
       public Builder setDelayDistributePeriodCount(int value) {
         
@@ -4144,6 +4230,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint32 delay_distribute_period_count = 10;</code>
+       * @return This builder for chaining.
        */
       public Builder clearDelayDistributePeriodCount() {
         
@@ -4308,12 +4395,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> managerBuilder_;
       /**
        * <code>.Address manager = 12;</code>
+       * @return Whether the manager field is set.
        */
       public boolean hasManager() {
         return managerBuilder_ != null || manager_ != null;
       }
       /**
        * <code>.Address manager = 12;</code>
+       * @return The manager.
        */
       public io.aelf.protobuf.generated.Client.Address getManager() {
         if (managerBuilder_ == null) {
@@ -4478,10 +4567,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     boolean hasSchemeId();
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     io.aelf.protobuf.generated.Client.Hash getSchemeId();
     /**
@@ -4491,6 +4582,7 @@ public final class ProfitContract {
 
     /**
      * <code>sint64 period = 2;</code>
+     * @return The period.
      */
     long getPeriod();
   }
@@ -4510,6 +4602,13 @@ public final class ProfitContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SchemePeriod();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -4522,7 +4621,6 @@ public final class ProfitContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4587,12 +4685,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Hash schemeId_;
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
@@ -4608,6 +4708,7 @@ public final class ProfitContract {
     private long period_;
     /**
      * <code>sint64 period = 2;</code>
+     * @return The period.
      */
     public long getPeriod() {
       return period_;
@@ -4951,12 +5052,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> schemeIdBuilder_;
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
         return schemeIdBuilder_ != null || schemeId_ != null;
       }
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return The schemeId.
        */
       public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
         if (schemeIdBuilder_ == null) {
@@ -5066,12 +5169,15 @@ public final class ProfitContract {
       private long period_ ;
       /**
        * <code>sint64 period = 2;</code>
+       * @return The period.
        */
       public long getPeriod() {
         return period_;
       }
       /**
        * <code>sint64 period = 2;</code>
+       * @param value The period to set.
+       * @return This builder for chaining.
        */
       public Builder setPeriod(long value) {
         
@@ -5081,6 +5187,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 period = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPeriod() {
         
@@ -5147,6 +5254,7 @@ public final class ProfitContract {
 
     /**
      * <code>sint64 total_shares = 1;</code>
+     * @return The totalShares.
      */
     long getTotalShares();
 
@@ -5186,6 +5294,7 @@ public final class ProfitContract {
 
     /**
      * <code>bool is_released = 3;</code>
+     * @return The isReleased.
      */
     boolean getIsReleased();
   }
@@ -5202,6 +5311,13 @@ public final class ProfitContract {
       super(builder);
     }
     private DistributedProfitsInfo() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DistributedProfitsInfo();
     }
 
     @java.lang.Override
@@ -5234,10 +5350,10 @@ public final class ProfitContract {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 profitsAmount_ = com.google.protobuf.MapField.newMapField(
                     ProfitsAmountDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
               profitsAmount__ = input.readMessage(
@@ -5295,11 +5411,11 @@ public final class ProfitContract {
               io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo.class, io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo.Builder.class);
     }
 
-    private int bitField0_;
     public static final int TOTAL_SHARES_FIELD_NUMBER = 1;
     private long totalShares_;
     /**
      * <code>sint64 total_shares = 1;</code>
+     * @return The totalShares.
      */
     public long getTotalShares() {
       return totalShares_;
@@ -5385,6 +5501,7 @@ public final class ProfitContract {
     private boolean isReleased_;
     /**
      * <code>bool is_released = 3;</code>
+     * @return The isReleased.
      */
     public boolean getIsReleased() {
       return isReleased_;
@@ -5672,12 +5789,10 @@ public final class ProfitContract {
       public io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo result = new io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.totalShares_ = totalShares_;
         result.profitsAmount_ = internalGetProfitsAmount();
         result.profitsAmount_.makeImmutable();
         result.isReleased_ = isReleased_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5767,12 +5882,15 @@ public final class ProfitContract {
       private long totalShares_ ;
       /**
        * <code>sint64 total_shares = 1;</code>
+       * @return The totalShares.
        */
       public long getTotalShares() {
         return totalShares_;
       }
       /**
        * <code>sint64 total_shares = 1;</code>
+       * @param value The totalShares to set.
+       * @return This builder for chaining.
        */
       public Builder setTotalShares(long value) {
         
@@ -5782,6 +5900,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 total_shares = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTotalShares() {
         
@@ -5916,12 +6035,15 @@ public final class ProfitContract {
       private boolean isReleased_ ;
       /**
        * <code>bool is_released = 3;</code>
+       * @return The isReleased.
        */
       public boolean getIsReleased() {
         return isReleased_;
       }
       /**
        * <code>bool is_released = 3;</code>
+       * @param value The isReleased to set.
+       * @return This builder for chaining.
        */
       public Builder setIsReleased(boolean value) {
         
@@ -5931,6 +6053,7 @@ public final class ProfitContract {
       }
       /**
        * <code>bool is_released = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsReleased() {
         
@@ -5997,10 +6120,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     boolean hasSchemeId();
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     io.aelf.protobuf.generated.Client.Hash getSchemeId();
     /**
@@ -6010,10 +6135,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Address beneficiary = 2;</code>
+     * @return Whether the beneficiary field is set.
      */
     boolean hasBeneficiary();
     /**
      * <code>.Address beneficiary = 2;</code>
+     * @return The beneficiary.
      */
     io.aelf.protobuf.generated.Client.Address getBeneficiary();
     /**
@@ -6037,6 +6164,13 @@ public final class ProfitContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetProfitDetailsInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -6049,7 +6183,6 @@ public final class ProfitContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6122,12 +6255,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Hash schemeId_;
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
@@ -6143,12 +6278,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Address beneficiary_;
     /**
      * <code>.Address beneficiary = 2;</code>
+     * @return Whether the beneficiary field is set.
      */
     public boolean hasBeneficiary() {
       return beneficiary_ != null;
     }
     /**
      * <code>.Address beneficiary = 2;</code>
+     * @return The beneficiary.
      */
     public io.aelf.protobuf.generated.Client.Address getBeneficiary() {
       return beneficiary_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : beneficiary_;
@@ -6510,12 +6647,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> schemeIdBuilder_;
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
         return schemeIdBuilder_ != null || schemeId_ != null;
       }
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return The schemeId.
        */
       public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
         if (schemeIdBuilder_ == null) {
@@ -6627,12 +6766,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> beneficiaryBuilder_;
       /**
        * <code>.Address beneficiary = 2;</code>
+       * @return Whether the beneficiary field is set.
        */
       public boolean hasBeneficiary() {
         return beneficiaryBuilder_ != null || beneficiary_ != null;
       }
       /**
        * <code>.Address beneficiary = 2;</code>
+       * @return The beneficiary.
        */
       public io.aelf.protobuf.generated.Client.Address getBeneficiary() {
         if (beneficiaryBuilder_ == null) {
@@ -6833,6 +6974,13 @@ public final class ProfitContract {
     }
     private ProfitDetails() {
       details_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProfitDetails();
     }
 
     @java.lang.Override
@@ -7578,26 +7726,31 @@ public final class ProfitContract {
 
     /**
      * <code>sint64 start_period = 1;</code>
+     * @return The startPeriod.
      */
     long getStartPeriod();
 
     /**
      * <code>sint64 end_period = 2;</code>
+     * @return The endPeriod.
      */
     long getEndPeriod();
 
     /**
      * <code>sint64 shares = 3;</code>
+     * @return The shares.
      */
     long getShares();
 
     /**
      * <code>sint64 last_profit_period = 4;</code>
+     * @return The lastProfitPeriod.
      */
     long getLastProfitPeriod();
 
     /**
      * <code>bool is_weight_removed = 5;</code>
+     * @return The isWeightRemoved.
      */
     boolean getIsWeightRemoved();
   }
@@ -7617,6 +7770,13 @@ public final class ProfitContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProfitDetail();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -7629,7 +7789,6 @@ public final class ProfitContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -7701,6 +7860,7 @@ public final class ProfitContract {
     private long startPeriod_;
     /**
      * <code>sint64 start_period = 1;</code>
+     * @return The startPeriod.
      */
     public long getStartPeriod() {
       return startPeriod_;
@@ -7710,6 +7870,7 @@ public final class ProfitContract {
     private long endPeriod_;
     /**
      * <code>sint64 end_period = 2;</code>
+     * @return The endPeriod.
      */
     public long getEndPeriod() {
       return endPeriod_;
@@ -7719,6 +7880,7 @@ public final class ProfitContract {
     private long shares_;
     /**
      * <code>sint64 shares = 3;</code>
+     * @return The shares.
      */
     public long getShares() {
       return shares_;
@@ -7728,6 +7890,7 @@ public final class ProfitContract {
     private long lastProfitPeriod_;
     /**
      * <code>sint64 last_profit_period = 4;</code>
+     * @return The lastProfitPeriod.
      */
     public long getLastProfitPeriod() {
       return lastProfitPeriod_;
@@ -7737,6 +7900,7 @@ public final class ProfitContract {
     private boolean isWeightRemoved_;
     /**
      * <code>bool is_weight_removed = 5;</code>
+     * @return The isWeightRemoved.
      */
     public boolean getIsWeightRemoved() {
       return isWeightRemoved_;
@@ -8120,12 +8284,15 @@ public final class ProfitContract {
       private long startPeriod_ ;
       /**
        * <code>sint64 start_period = 1;</code>
+       * @return The startPeriod.
        */
       public long getStartPeriod() {
         return startPeriod_;
       }
       /**
        * <code>sint64 start_period = 1;</code>
+       * @param value The startPeriod to set.
+       * @return This builder for chaining.
        */
       public Builder setStartPeriod(long value) {
         
@@ -8135,6 +8302,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 start_period = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearStartPeriod() {
         
@@ -8146,12 +8314,15 @@ public final class ProfitContract {
       private long endPeriod_ ;
       /**
        * <code>sint64 end_period = 2;</code>
+       * @return The endPeriod.
        */
       public long getEndPeriod() {
         return endPeriod_;
       }
       /**
        * <code>sint64 end_period = 2;</code>
+       * @param value The endPeriod to set.
+       * @return This builder for chaining.
        */
       public Builder setEndPeriod(long value) {
         
@@ -8161,6 +8332,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 end_period = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEndPeriod() {
         
@@ -8172,12 +8344,15 @@ public final class ProfitContract {
       private long shares_ ;
       /**
        * <code>sint64 shares = 3;</code>
+       * @return The shares.
        */
       public long getShares() {
         return shares_;
       }
       /**
        * <code>sint64 shares = 3;</code>
+       * @param value The shares to set.
+       * @return This builder for chaining.
        */
       public Builder setShares(long value) {
         
@@ -8187,6 +8362,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 shares = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearShares() {
         
@@ -8198,12 +8374,15 @@ public final class ProfitContract {
       private long lastProfitPeriod_ ;
       /**
        * <code>sint64 last_profit_period = 4;</code>
+       * @return The lastProfitPeriod.
        */
       public long getLastProfitPeriod() {
         return lastProfitPeriod_;
       }
       /**
        * <code>sint64 last_profit_period = 4;</code>
+       * @param value The lastProfitPeriod to set.
+       * @return This builder for chaining.
        */
       public Builder setLastProfitPeriod(long value) {
         
@@ -8213,6 +8392,7 @@ public final class ProfitContract {
       }
       /**
        * <code>sint64 last_profit_period = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLastProfitPeriod() {
         
@@ -8224,12 +8404,15 @@ public final class ProfitContract {
       private boolean isWeightRemoved_ ;
       /**
        * <code>bool is_weight_removed = 5;</code>
+       * @return The isWeightRemoved.
        */
       public boolean getIsWeightRemoved() {
         return isWeightRemoved_;
       }
       /**
        * <code>bool is_weight_removed = 5;</code>
+       * @param value The isWeightRemoved to set.
+       * @return This builder for chaining.
        */
       public Builder setIsWeightRemoved(boolean value) {
         
@@ -8239,6 +8422,7 @@ public final class ProfitContract {
       }
       /**
        * <code>bool is_weight_removed = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsWeightRemoved() {
         
@@ -8305,10 +8489,12 @@ public final class ProfitContract {
 
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     boolean hasSchemeId();
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     io.aelf.protobuf.generated.Client.Hash getSchemeId();
     /**
@@ -8318,10 +8504,12 @@ public final class ProfitContract {
 
     /**
      * <code>string symbol = 2;</code>
+     * @return The symbol.
      */
     java.lang.String getSymbol();
     /**
      * <code>string symbol = 2;</code>
+     * @return The bytes for symbol.
      */
     com.google.protobuf.ByteString
         getSymbolBytes();
@@ -8343,6 +8531,13 @@ public final class ProfitContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClaimProfitsInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -8355,7 +8550,6 @@ public final class ProfitContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -8421,12 +8615,14 @@ public final class ProfitContract {
     private io.aelf.protobuf.generated.Client.Hash schemeId_;
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return Whether the schemeId field is set.
      */
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
     /**
      * <code>.Hash scheme_id = 1;</code>
+     * @return The schemeId.
      */
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
@@ -8442,6 +8638,7 @@ public final class ProfitContract {
     private volatile java.lang.Object symbol_;
     /**
      * <code>string symbol = 2;</code>
+     * @return The symbol.
      */
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
@@ -8457,6 +8654,7 @@ public final class ProfitContract {
     }
     /**
      * <code>string symbol = 2;</code>
+     * @return The bytes for symbol.
      */
     public com.google.protobuf.ByteString
         getSymbolBytes() {
@@ -8809,12 +9007,14 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> schemeIdBuilder_;
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
         return schemeIdBuilder_ != null || schemeId_ != null;
       }
       /**
        * <code>.Hash scheme_id = 1;</code>
+       * @return The schemeId.
        */
       public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
         if (schemeIdBuilder_ == null) {
@@ -8924,6 +9124,7 @@ public final class ProfitContract {
       private java.lang.Object symbol_ = "";
       /**
        * <code>string symbol = 2;</code>
+       * @return The symbol.
        */
       public java.lang.String getSymbol() {
         java.lang.Object ref = symbol_;
@@ -8939,6 +9140,7 @@ public final class ProfitContract {
       }
       /**
        * <code>string symbol = 2;</code>
+       * @return The bytes for symbol.
        */
       public com.google.protobuf.ByteString
           getSymbolBytes() {
@@ -8955,6 +9157,8 @@ public final class ProfitContract {
       }
       /**
        * <code>string symbol = 2;</code>
+       * @param value The symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbol(
           java.lang.String value) {
@@ -8968,6 +9172,7 @@ public final class ProfitContract {
       }
       /**
        * <code>string symbol = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSymbol() {
         
@@ -8977,6 +9182,8 @@ public final class ProfitContract {
       }
       /**
        * <code>string symbol = 2;</code>
+       * @param value The bytes for symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
@@ -9153,19 +9360,11 @@ public final class ProfitContract {
       "mbol\030\002 \001(\tB\034\n\032io.aelf.protobuf.generated" +
       "b\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           io.aelf.protobuf.generated.Client.getDescriptor(),
-        }, assigner);
+        });
     internal_static_CreatedSchemeIds_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_CreatedSchemeIds_fieldAccessorTable = new

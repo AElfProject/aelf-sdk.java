@@ -14,15 +14,15 @@ You should build the "AElfClient" project
 private static final String httpUrl="http://127.0.0.1:8200";
 
 // get client instance
-AelfSdk aelfSdk = new AelfSdk(httpUrl);
-long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
+AElfClient AElfClient = new AElfClient(httpUrl);
+long blockHeight = client.getBlockHeight();
 ```
 
 ### Class
 
-#### AelfSdk
+#### AElfClient
 ``` JAVA
-    public AelfSdk(String url);
+    public AElfClient(String url);
     
     public BlockChainSdk getBlockChainSdkObj();
     
@@ -45,7 +45,7 @@ long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
 #### BlockChainSdk
 
 ``` JAVA
- public AelfSdk(String url);
+ public AElfClient(String url);
  
  public BlockChainSdk getBlockChainSdkObj();
 
@@ -108,7 +108,7 @@ long blockHeight = aelfSdk.getBlockChainSdkObj().getBlockHeight();
 
 ### Test
 
-This module contains tests for all services provided by AElfClient. You can see how to properly use services provided by AElf_SDK here.
+This module contains tests for all services provided by client. You can see how to properly use services provided by AElf_SDK here.
 
 You need to firstly set necessary parameters to make sure tests can run successfully.
 

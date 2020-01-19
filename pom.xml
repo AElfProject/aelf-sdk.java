@@ -6,7 +6,7 @@
     <groupId>io.aelf</groupId>
     <artifactId>aelf-sdk-build</artifactId>
     <version>0.1.0</version>
-    <name>aelf_sdk_build</name>
+    <name>AElfClientSDK</name>
     <packaging>pom</packaging>
     <modules>
         <module>AElfClient</module>

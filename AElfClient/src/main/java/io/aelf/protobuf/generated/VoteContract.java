@@ -20,10 +20,12 @@ public final class VoteContract {
 
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
@@ -47,6 +49,13 @@ public final class VoteContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetVotingItemInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -59,7 +68,6 @@ public final class VoteContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -119,12 +127,14 @@ public final class VoteContract {
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
@@ -456,12 +466,14 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return The votingItemId.
        */
       public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
         if (votingItemIdBuilder_ == null) {
@@ -671,6 +683,13 @@ public final class VoteContract {
       super(builder);
     }
     private VotedItems() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VotedItems();
     }
 
     @java.lang.Override
@@ -1408,6 +1427,13 @@ public final class VoteContract {
     private VotedIds() {
       activeVotes_ = java.util.Collections.emptyList();
       withdrawnVotes_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VotedIds();
     }
 
     @java.lang.Override
@@ -2495,10 +2521,12 @@ public final class VoteContract {
 
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
@@ -2508,6 +2536,7 @@ public final class VoteContract {
 
     /**
      * <code>sint64 snapshot_number = 2;</code>
+     * @return The snapshotNumber.
      */
     long getSnapshotNumber();
   }
@@ -2527,6 +2556,13 @@ public final class VoteContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetVotingResultInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2539,7 +2575,6 @@ public final class VoteContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2604,12 +2639,14 @@ public final class VoteContract {
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
@@ -2625,6 +2662,7 @@ public final class VoteContract {
     private long snapshotNumber_;
     /**
      * <code>sint64 snapshot_number = 2;</code>
+     * @return The snapshotNumber.
      */
     public long getSnapshotNumber() {
       return snapshotNumber_;
@@ -2968,12 +3006,14 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return The votingItemId.
        */
       public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
         if (votingItemIdBuilder_ == null) {
@@ -3083,12 +3123,15 @@ public final class VoteContract {
       private long snapshotNumber_ ;
       /**
        * <code>sint64 snapshot_number = 2;</code>
+       * @return The snapshotNumber.
        */
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
       /**
        * <code>sint64 snapshot_number = 2;</code>
+       * @param value The snapshotNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setSnapshotNumber(long value) {
         
@@ -3098,6 +3141,7 @@ public final class VoteContract {
       }
       /**
        * <code>sint64 snapshot_number = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
         
@@ -3164,10 +3208,12 @@ public final class VoteContract {
 
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
@@ -3231,20 +3277,24 @@ public final class VoteContract {
 
     /**
      * <code>sint64 snapshot_number = 3;</code>
+     * @return The snapshotNumber.
      */
     long getSnapshotNumber();
 
     /**
      * <code>sint64 voters_count = 4;</code>
+     * @return The votersCount.
      */
     long getVotersCount();
 
     /**
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
+     * @return Whether the snapshotStartTimestamp field is set.
      */
     boolean hasSnapshotStartTimestamp();
     /**
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
+     * @return The snapshotStartTimestamp.
      */
     com.google.protobuf.Timestamp getSnapshotStartTimestamp();
     /**
@@ -3254,10 +3304,12 @@ public final class VoteContract {
 
     /**
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
+     * @return Whether the snapshotEndTimestamp field is set.
      */
     boolean hasSnapshotEndTimestamp();
     /**
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
+     * @return The snapshotEndTimestamp.
      */
     com.google.protobuf.Timestamp getSnapshotEndTimestamp();
     /**
@@ -3267,6 +3319,7 @@ public final class VoteContract {
 
     /**
      * <code>sint64 votes_amount = 7;</code>
+     * @return The votesAmount.
      */
     long getVotesAmount();
   }
@@ -3283,6 +3336,13 @@ public final class VoteContract {
       super(builder);
     }
     private VotingResult() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VotingResult();
     }
 
     @java.lang.Override
@@ -3323,10 +3383,10 @@ public final class VoteContract {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 results_ = com.google.protobuf.MapField.newMapField(
                     ResultsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
               results__ = input.readMessage(
@@ -3420,17 +3480,18 @@ public final class VoteContract {
               io.aelf.protobuf.generated.VoteContract.VotingResult.class, io.aelf.protobuf.generated.VoteContract.VotingResult.Builder.class);
     }
 
-    private int bitField0_;
     public static final int VOTING_ITEM_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
@@ -3538,6 +3599,7 @@ public final class VoteContract {
     private long snapshotNumber_;
     /**
      * <code>sint64 snapshot_number = 3;</code>
+     * @return The snapshotNumber.
      */
     public long getSnapshotNumber() {
       return snapshotNumber_;
@@ -3547,6 +3609,7 @@ public final class VoteContract {
     private long votersCount_;
     /**
      * <code>sint64 voters_count = 4;</code>
+     * @return The votersCount.
      */
     public long getVotersCount() {
       return votersCount_;
@@ -3556,12 +3619,14 @@ public final class VoteContract {
     private com.google.protobuf.Timestamp snapshotStartTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
+     * @return Whether the snapshotStartTimestamp field is set.
      */
     public boolean hasSnapshotStartTimestamp() {
       return snapshotStartTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
+     * @return The snapshotStartTimestamp.
      */
     public com.google.protobuf.Timestamp getSnapshotStartTimestamp() {
       return snapshotStartTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotStartTimestamp_;
@@ -3577,12 +3642,14 @@ public final class VoteContract {
     private com.google.protobuf.Timestamp snapshotEndTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
+     * @return Whether the snapshotEndTimestamp field is set.
      */
     public boolean hasSnapshotEndTimestamp() {
       return snapshotEndTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
+     * @return The snapshotEndTimestamp.
      */
     public com.google.protobuf.Timestamp getSnapshotEndTimestamp() {
       return snapshotEndTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotEndTimestamp_;
@@ -3598,6 +3665,7 @@ public final class VoteContract {
     private long votesAmount_;
     /**
      * <code>sint64 votes_amount = 7;</code>
+     * @return The votesAmount.
      */
     public long getVotesAmount() {
       return votesAmount_;
@@ -3965,7 +4033,6 @@ public final class VoteContract {
       public io.aelf.protobuf.generated.VoteContract.VotingResult buildPartial() {
         io.aelf.protobuf.generated.VoteContract.VotingResult result = new io.aelf.protobuf.generated.VoteContract.VotingResult(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (votingItemIdBuilder_ == null) {
           result.votingItemId_ = votingItemId_;
         } else {
@@ -3986,7 +4053,6 @@ public final class VoteContract {
           result.snapshotEndTimestamp_ = snapshotEndTimestampBuilder_.build();
         }
         result.votesAmount_ = votesAmount_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -4090,12 +4156,14 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return The votingItemId.
        */
       public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
         if (votingItemIdBuilder_ == null) {
@@ -4356,12 +4424,15 @@ public final class VoteContract {
       private long snapshotNumber_ ;
       /**
        * <code>sint64 snapshot_number = 3;</code>
+       * @return The snapshotNumber.
        */
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
       /**
        * <code>sint64 snapshot_number = 3;</code>
+       * @param value The snapshotNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setSnapshotNumber(long value) {
         
@@ -4371,6 +4442,7 @@ public final class VoteContract {
       }
       /**
        * <code>sint64 snapshot_number = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
         
@@ -4382,12 +4454,15 @@ public final class VoteContract {
       private long votersCount_ ;
       /**
        * <code>sint64 voters_count = 4;</code>
+       * @return The votersCount.
        */
       public long getVotersCount() {
         return votersCount_;
       }
       /**
        * <code>sint64 voters_count = 4;</code>
+       * @param value The votersCount to set.
+       * @return This builder for chaining.
        */
       public Builder setVotersCount(long value) {
         
@@ -4397,6 +4472,7 @@ public final class VoteContract {
       }
       /**
        * <code>sint64 voters_count = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearVotersCount() {
         
@@ -4410,12 +4486,14 @@ public final class VoteContract {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> snapshotStartTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
+       * @return Whether the snapshotStartTimestamp field is set.
        */
       public boolean hasSnapshotStartTimestamp() {
         return snapshotStartTimestampBuilder_ != null || snapshotStartTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
+       * @return The snapshotStartTimestamp.
        */
       public com.google.protobuf.Timestamp getSnapshotStartTimestamp() {
         if (snapshotStartTimestampBuilder_ == null) {
@@ -4527,12 +4605,14 @@ public final class VoteContract {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> snapshotEndTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
+       * @return Whether the snapshotEndTimestamp field is set.
        */
       public boolean hasSnapshotEndTimestamp() {
         return snapshotEndTimestampBuilder_ != null || snapshotEndTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
+       * @return The snapshotEndTimestamp.
        */
       public com.google.protobuf.Timestamp getSnapshotEndTimestamp() {
         if (snapshotEndTimestampBuilder_ == null) {
@@ -4642,12 +4722,15 @@ public final class VoteContract {
       private long votesAmount_ ;
       /**
        * <code>sint64 votes_amount = 7;</code>
+       * @return The votesAmount.
        */
       public long getVotesAmount() {
         return votesAmount_;
       }
       /**
        * <code>sint64 votes_amount = 7;</code>
+       * @param value The votesAmount to set.
+       * @return This builder for chaining.
        */
       public Builder setVotesAmount(long value) {
         
@@ -4657,6 +4740,7 @@ public final class VoteContract {
       }
       /**
        * <code>sint64 votes_amount = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearVotesAmount() {
         
@@ -4723,10 +4807,12 @@ public final class VoteContract {
 
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
@@ -4736,10 +4822,12 @@ public final class VoteContract {
 
     /**
      * <code>.Address voter = 2;</code>
+     * @return Whether the voter field is set.
      */
     boolean hasVoter();
     /**
      * <code>.Address voter = 2;</code>
+     * @return The voter.
      */
     io.aelf.protobuf.generated.Client.Address getVoter();
     /**
@@ -4749,20 +4837,24 @@ public final class VoteContract {
 
     /**
      * <code>sint64 snapshot_number = 3;</code>
+     * @return The snapshotNumber.
      */
     long getSnapshotNumber();
 
     /**
      * <code>sint64 amount = 4;</code>
+     * @return The amount.
      */
     long getAmount();
 
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
+     * @return Whether the withdrawTimestamp field is set.
      */
     boolean hasWithdrawTimestamp();
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
+     * @return The withdrawTimestamp.
      */
     com.google.protobuf.Timestamp getWithdrawTimestamp();
     /**
@@ -4772,10 +4864,12 @@ public final class VoteContract {
 
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
+     * @return Whether the voteTimestamp field is set.
      */
     boolean hasVoteTimestamp();
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
+     * @return The voteTimestamp.
      */
     com.google.protobuf.Timestamp getVoteTimestamp();
     /**
@@ -4785,21 +4879,25 @@ public final class VoteContract {
 
     /**
      * <code>bool is_withdrawn = 7;</code>
+     * @return The isWithdrawn.
      */
     boolean getIsWithdrawn();
 
     /**
      * <code>string option = 8;</code>
+     * @return The option.
      */
     java.lang.String getOption();
     /**
      * <code>string option = 8;</code>
+     * @return The bytes for option.
      */
     com.google.protobuf.ByteString
         getOptionBytes();
 
     /**
      * <code>bool is_change_target = 9;</code>
+     * @return The isChangeTarget.
      */
     boolean getIsChangeTarget();
   }
@@ -4820,6 +4918,13 @@ public final class VoteContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VotingRecord();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -4832,7 +4937,6 @@ public final class VoteContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4957,12 +5061,14 @@ public final class VoteContract {
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return Whether the votingItemId field is set.
      */
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
     /**
      * <code>.Hash voting_item_id = 1;</code>
+     * @return The votingItemId.
      */
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
@@ -4978,12 +5084,14 @@ public final class VoteContract {
     private io.aelf.protobuf.generated.Client.Address voter_;
     /**
      * <code>.Address voter = 2;</code>
+     * @return Whether the voter field is set.
      */
     public boolean hasVoter() {
       return voter_ != null;
     }
     /**
      * <code>.Address voter = 2;</code>
+     * @return The voter.
      */
     public io.aelf.protobuf.generated.Client.Address getVoter() {
       return voter_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : voter_;
@@ -4999,6 +5107,7 @@ public final class VoteContract {
     private long snapshotNumber_;
     /**
      * <code>sint64 snapshot_number = 3;</code>
+     * @return The snapshotNumber.
      */
     public long getSnapshotNumber() {
       return snapshotNumber_;
@@ -5008,6 +5117,7 @@ public final class VoteContract {
     private long amount_;
     /**
      * <code>sint64 amount = 4;</code>
+     * @return The amount.
      */
     public long getAmount() {
       return amount_;
@@ -5017,12 +5127,14 @@ public final class VoteContract {
     private com.google.protobuf.Timestamp withdrawTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
+     * @return Whether the withdrawTimestamp field is set.
      */
     public boolean hasWithdrawTimestamp() {
       return withdrawTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
+     * @return The withdrawTimestamp.
      */
     public com.google.protobuf.Timestamp getWithdrawTimestamp() {
       return withdrawTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : withdrawTimestamp_;
@@ -5038,12 +5150,14 @@ public final class VoteContract {
     private com.google.protobuf.Timestamp voteTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
+     * @return Whether the voteTimestamp field is set.
      */
     public boolean hasVoteTimestamp() {
       return voteTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
+     * @return The voteTimestamp.
      */
     public com.google.protobuf.Timestamp getVoteTimestamp() {
       return voteTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : voteTimestamp_;
@@ -5059,6 +5173,7 @@ public final class VoteContract {
     private boolean isWithdrawn_;
     /**
      * <code>bool is_withdrawn = 7;</code>
+     * @return The isWithdrawn.
      */
     public boolean getIsWithdrawn() {
       return isWithdrawn_;
@@ -5068,6 +5183,7 @@ public final class VoteContract {
     private volatile java.lang.Object option_;
     /**
      * <code>string option = 8;</code>
+     * @return The option.
      */
     public java.lang.String getOption() {
       java.lang.Object ref = option_;
@@ -5083,6 +5199,7 @@ public final class VoteContract {
     }
     /**
      * <code>string option = 8;</code>
+     * @return The bytes for option.
      */
     public com.google.protobuf.ByteString
         getOptionBytes() {
@@ -5102,6 +5219,7 @@ public final class VoteContract {
     private boolean isChangeTarget_;
     /**
      * <code>bool is_change_target = 9;</code>
+     * @return The isChangeTarget.
      */
     public boolean getIsChangeTarget() {
       return isChangeTarget_;
@@ -5606,12 +5724,14 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
        * <code>.Hash voting_item_id = 1;</code>
+       * @return The votingItemId.
        */
       public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
         if (votingItemIdBuilder_ == null) {
@@ -5723,12 +5843,14 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> voterBuilder_;
       /**
        * <code>.Address voter = 2;</code>
+       * @return Whether the voter field is set.
        */
       public boolean hasVoter() {
         return voterBuilder_ != null || voter_ != null;
       }
       /**
        * <code>.Address voter = 2;</code>
+       * @return The voter.
        */
       public io.aelf.protobuf.generated.Client.Address getVoter() {
         if (voterBuilder_ == null) {
@@ -5838,12 +5960,15 @@ public final class VoteContract {
       private long snapshotNumber_ ;
       /**
        * <code>sint64 snapshot_number = 3;</code>
+       * @return The snapshotNumber.
        */
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
       /**
        * <code>sint64 snapshot_number = 3;</code>
+       * @param value The snapshotNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setSnapshotNumber(long value) {
         
@@ -5853,6 +5978,7 @@ public final class VoteContract {
       }
       /**
        * <code>sint64 snapshot_number = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
         
@@ -5864,12 +5990,15 @@ public final class VoteContract {
       private long amount_ ;
       /**
        * <code>sint64 amount = 4;</code>
+       * @return The amount.
        */
       public long getAmount() {
         return amount_;
       }
       /**
        * <code>sint64 amount = 4;</code>
+       * @param value The amount to set.
+       * @return This builder for chaining.
        */
       public Builder setAmount(long value) {
         
@@ -5879,6 +6008,7 @@ public final class VoteContract {
       }
       /**
        * <code>sint64 amount = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAmount() {
         
@@ -5892,12 +6022,14 @@ public final class VoteContract {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> withdrawTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
+       * @return Whether the withdrawTimestamp field is set.
        */
       public boolean hasWithdrawTimestamp() {
         return withdrawTimestampBuilder_ != null || withdrawTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
+       * @return The withdrawTimestamp.
        */
       public com.google.protobuf.Timestamp getWithdrawTimestamp() {
         if (withdrawTimestampBuilder_ == null) {
@@ -6009,12 +6141,14 @@ public final class VoteContract {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> voteTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
+       * @return Whether the voteTimestamp field is set.
        */
       public boolean hasVoteTimestamp() {
         return voteTimestampBuilder_ != null || voteTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
+       * @return The voteTimestamp.
        */
       public com.google.protobuf.Timestamp getVoteTimestamp() {
         if (voteTimestampBuilder_ == null) {
@@ -6124,12 +6258,15 @@ public final class VoteContract {
       private boolean isWithdrawn_ ;
       /**
        * <code>bool is_withdrawn = 7;</code>
+       * @return The isWithdrawn.
        */
       public boolean getIsWithdrawn() {
         return isWithdrawn_;
       }
       /**
        * <code>bool is_withdrawn = 7;</code>
+       * @param value The isWithdrawn to set.
+       * @return This builder for chaining.
        */
       public Builder setIsWithdrawn(boolean value) {
         
@@ -6139,6 +6276,7 @@ public final class VoteContract {
       }
       /**
        * <code>bool is_withdrawn = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsWithdrawn() {
         
@@ -6150,6 +6288,7 @@ public final class VoteContract {
       private java.lang.Object option_ = "";
       /**
        * <code>string option = 8;</code>
+       * @return The option.
        */
       public java.lang.String getOption() {
         java.lang.Object ref = option_;
@@ -6165,6 +6304,7 @@ public final class VoteContract {
       }
       /**
        * <code>string option = 8;</code>
+       * @return The bytes for option.
        */
       public com.google.protobuf.ByteString
           getOptionBytes() {
@@ -6181,6 +6321,8 @@ public final class VoteContract {
       }
       /**
        * <code>string option = 8;</code>
+       * @param value The option to set.
+       * @return This builder for chaining.
        */
       public Builder setOption(
           java.lang.String value) {
@@ -6194,6 +6336,7 @@ public final class VoteContract {
       }
       /**
        * <code>string option = 8;</code>
+       * @return This builder for chaining.
        */
       public Builder clearOption() {
         
@@ -6203,6 +6346,8 @@ public final class VoteContract {
       }
       /**
        * <code>string option = 8;</code>
+       * @param value The bytes for option to set.
+       * @return This builder for chaining.
        */
       public Builder setOptionBytes(
           com.google.protobuf.ByteString value) {
@@ -6219,12 +6364,15 @@ public final class VoteContract {
       private boolean isChangeTarget_ ;
       /**
        * <code>bool is_change_target = 9;</code>
+       * @return The isChangeTarget.
        */
       public boolean getIsChangeTarget() {
         return isChangeTarget_;
       }
       /**
        * <code>bool is_change_target = 9;</code>
+       * @param value The isChangeTarget to set.
+       * @return This builder for chaining.
        */
       public Builder setIsChangeTarget(boolean value) {
         
@@ -6234,6 +6382,7 @@ public final class VoteContract {
       }
       /**
        * <code>bool is_change_target = 9;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsChangeTarget() {
         
@@ -6336,6 +6485,13 @@ public final class VoteContract {
     }
     private GetVotingRecordsInput() {
       ids_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetVotingRecordsInput();
     }
 
     @java.lang.Override
@@ -7117,6 +7273,13 @@ public final class VoteContract {
     }
     private VotingRecords() {
       records_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VotingRecords();
     }
 
     @java.lang.Override
@@ -7946,20 +8109,12 @@ public final class VoteContract {
       ".VotingRecordB\034\n\032io.aelf.protobuf.genera" +
       "tedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           io.aelf.protobuf.generated.Client.getDescriptor(),
           com.google.protobuf.TimestampProto.getDescriptor(),
-        }, assigner);
+        });
     internal_static_GetVotingItemInput_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_GetVotingItemInput_fieldAccessorTable = new

@@ -20,10 +20,12 @@ public final class CrossChainContract {
 
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return Whether the transactionId field is set.
      */
     boolean hasTransactionId();
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return The transactionId.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionId();
     /**
@@ -33,10 +35,12 @@ public final class CrossChainContract {
 
     /**
      * <code>.MerklePath path = 2;</code>
+     * @return Whether the path field is set.
      */
     boolean hasPath();
     /**
      * <code>.MerklePath path = 2;</code>
+     * @return The path.
      */
     io.aelf.protobuf.generated.Client.MerklePath getPath();
     /**
@@ -46,11 +50,13 @@ public final class CrossChainContract {
 
     /**
      * <code>sint64 parent_chain_height = 3;</code>
+     * @return The parentChainHeight.
      */
     long getParentChainHeight();
 
     /**
      * <code>int32 verified_chain_id = 4;</code>
+     * @return The verifiedChainId.
      */
     int getVerifiedChainId();
   }
@@ -74,6 +80,13 @@ public final class CrossChainContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VerifyTransactionInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -86,7 +99,6 @@ public final class CrossChainContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -169,12 +181,14 @@ public final class CrossChainContract {
     private io.aelf.protobuf.generated.Client.Hash transactionId_;
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return Whether the transactionId field is set.
      */
     public boolean hasTransactionId() {
       return transactionId_ != null;
     }
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return The transactionId.
      */
     public io.aelf.protobuf.generated.Client.Hash getTransactionId() {
       return transactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionId_;
@@ -190,12 +204,14 @@ public final class CrossChainContract {
     private io.aelf.protobuf.generated.Client.MerklePath path_;
     /**
      * <code>.MerklePath path = 2;</code>
+     * @return Whether the path field is set.
      */
     public boolean hasPath() {
       return path_ != null;
     }
     /**
      * <code>.MerklePath path = 2;</code>
+     * @return The path.
      */
     public io.aelf.protobuf.generated.Client.MerklePath getPath() {
       return path_ == null ? io.aelf.protobuf.generated.Client.MerklePath.getDefaultInstance() : path_;
@@ -211,6 +227,7 @@ public final class CrossChainContract {
     private long parentChainHeight_;
     /**
      * <code>sint64 parent_chain_height = 3;</code>
+     * @return The parentChainHeight.
      */
     public long getParentChainHeight() {
       return parentChainHeight_;
@@ -220,6 +237,7 @@ public final class CrossChainContract {
     private int verifiedChainId_;
     /**
      * <code>int32 verified_chain_id = 4;</code>
+     * @return The verifiedChainId.
      */
     public int getVerifiedChainId() {
       return verifiedChainId_;
@@ -614,12 +632,14 @@ public final class CrossChainContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> transactionIdBuilder_;
       /**
        * <code>.Hash transaction_id = 1;</code>
+       * @return Whether the transactionId field is set.
        */
       public boolean hasTransactionId() {
         return transactionIdBuilder_ != null || transactionId_ != null;
       }
       /**
        * <code>.Hash transaction_id = 1;</code>
+       * @return The transactionId.
        */
       public io.aelf.protobuf.generated.Client.Hash getTransactionId() {
         if (transactionIdBuilder_ == null) {
@@ -731,12 +751,14 @@ public final class CrossChainContract {
           io.aelf.protobuf.generated.Client.MerklePath, io.aelf.protobuf.generated.Client.MerklePath.Builder, io.aelf.protobuf.generated.Client.MerklePathOrBuilder> pathBuilder_;
       /**
        * <code>.MerklePath path = 2;</code>
+       * @return Whether the path field is set.
        */
       public boolean hasPath() {
         return pathBuilder_ != null || path_ != null;
       }
       /**
        * <code>.MerklePath path = 2;</code>
+       * @return The path.
        */
       public io.aelf.protobuf.generated.Client.MerklePath getPath() {
         if (pathBuilder_ == null) {
@@ -846,12 +868,15 @@ public final class CrossChainContract {
       private long parentChainHeight_ ;
       /**
        * <code>sint64 parent_chain_height = 3;</code>
+       * @return The parentChainHeight.
        */
       public long getParentChainHeight() {
         return parentChainHeight_;
       }
       /**
        * <code>sint64 parent_chain_height = 3;</code>
+       * @param value The parentChainHeight to set.
+       * @return This builder for chaining.
        */
       public Builder setParentChainHeight(long value) {
         
@@ -861,6 +886,7 @@ public final class CrossChainContract {
       }
       /**
        * <code>sint64 parent_chain_height = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearParentChainHeight() {
         
@@ -872,12 +898,15 @@ public final class CrossChainContract {
       private int verifiedChainId_ ;
       /**
        * <code>int32 verified_chain_id = 4;</code>
+       * @return The verifiedChainId.
        */
       public int getVerifiedChainId() {
         return verifiedChainId_;
       }
       /**
        * <code>int32 verified_chain_id = 4;</code>
+       * @param value The verifiedChainId to set.
+       * @return This builder for chaining.
        */
       public Builder setVerifiedChainId(int value) {
         
@@ -887,6 +916,7 @@ public final class CrossChainContract {
       }
       /**
        * <code>int32 verified_chain_id = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearVerifiedChainId() {
         
@@ -968,19 +998,11 @@ public final class CrossChainContract {
       "verified_chain_id\030\004 \001(\005B\034\n\032io.aelf.proto" +
       "buf.generatedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           io.aelf.protobuf.generated.Client.getDescriptor(),
-        }, assigner);
+        });
     internal_static_VerifyTransactionInput_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_VerifyTransactionInput_fieldAccessorTable = new

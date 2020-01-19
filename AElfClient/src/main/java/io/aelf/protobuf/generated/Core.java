@@ -81,6 +81,8 @@ public final class Core {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -88,6 +90,10 @@ public final class Core {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static TransactionResultStatus forNumber(int value) {
       switch (value) {
         case 0: return NOT_EXISTED;
@@ -154,10 +160,12 @@ public final class Core {
 
     /**
      * <code>.Address from = 1;</code>
+     * @return Whether the from field is set.
      */
     boolean hasFrom();
     /**
      * <code>.Address from = 1;</code>
+     * @return The from.
      */
     io.aelf.protobuf.generated.Client.Address getFrom();
     /**
@@ -167,10 +175,12 @@ public final class Core {
 
     /**
      * <code>.Address to = 2;</code>
+     * @return Whether the to field is set.
      */
     boolean hasTo();
     /**
      * <code>.Address to = 2;</code>
+     * @return The to.
      */
     io.aelf.protobuf.generated.Client.Address getTo();
     /**
@@ -180,31 +190,37 @@ public final class Core {
 
     /**
      * <code>int64 ref_block_number = 3;</code>
+     * @return The refBlockNumber.
      */
     long getRefBlockNumber();
 
     /**
      * <code>bytes ref_block_prefix = 4;</code>
+     * @return The refBlockPrefix.
      */
     com.google.protobuf.ByteString getRefBlockPrefix();
 
     /**
      * <code>string method_name = 5;</code>
+     * @return The methodName.
      */
     java.lang.String getMethodName();
     /**
      * <code>string method_name = 5;</code>
+     * @return The bytes for methodName.
      */
     com.google.protobuf.ByteString
         getMethodNameBytes();
 
     /**
      * <code>bytes params = 6;</code>
+     * @return The params.
      */
     com.google.protobuf.ByteString getParams();
 
     /**
      * <code>bytes signature = 10000;</code>
+     * @return The signature.
      */
     com.google.protobuf.ByteString getSignature();
   }
@@ -228,6 +244,13 @@ public final class Core {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Transaction();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -240,7 +263,6 @@ public final class Core {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -339,12 +361,14 @@ public final class Core {
     private io.aelf.protobuf.generated.Client.Address from_;
     /**
      * <code>.Address from = 1;</code>
+     * @return Whether the from field is set.
      */
     public boolean hasFrom() {
       return from_ != null;
     }
     /**
      * <code>.Address from = 1;</code>
+     * @return The from.
      */
     public io.aelf.protobuf.generated.Client.Address getFrom() {
       return from_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : from_;
@@ -360,12 +384,14 @@ public final class Core {
     private io.aelf.protobuf.generated.Client.Address to_;
     /**
      * <code>.Address to = 2;</code>
+     * @return Whether the to field is set.
      */
     public boolean hasTo() {
       return to_ != null;
     }
     /**
      * <code>.Address to = 2;</code>
+     * @return The to.
      */
     public io.aelf.protobuf.generated.Client.Address getTo() {
       return to_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
@@ -381,6 +407,7 @@ public final class Core {
     private long refBlockNumber_;
     /**
      * <code>int64 ref_block_number = 3;</code>
+     * @return The refBlockNumber.
      */
     public long getRefBlockNumber() {
       return refBlockNumber_;
@@ -390,6 +417,7 @@ public final class Core {
     private com.google.protobuf.ByteString refBlockPrefix_;
     /**
      * <code>bytes ref_block_prefix = 4;</code>
+     * @return The refBlockPrefix.
      */
     public com.google.protobuf.ByteString getRefBlockPrefix() {
       return refBlockPrefix_;
@@ -399,6 +427,7 @@ public final class Core {
     private volatile java.lang.Object methodName_;
     /**
      * <code>string method_name = 5;</code>
+     * @return The methodName.
      */
     public java.lang.String getMethodName() {
       java.lang.Object ref = methodName_;
@@ -414,6 +443,7 @@ public final class Core {
     }
     /**
      * <code>string method_name = 5;</code>
+     * @return The bytes for methodName.
      */
     public com.google.protobuf.ByteString
         getMethodNameBytes() {
@@ -433,6 +463,7 @@ public final class Core {
     private com.google.protobuf.ByteString params_;
     /**
      * <code>bytes params = 6;</code>
+     * @return The params.
      */
     public com.google.protobuf.ByteString getParams() {
       return params_;
@@ -442,6 +473,7 @@ public final class Core {
     private com.google.protobuf.ByteString signature_;
     /**
      * <code>bytes signature = 10000;</code>
+     * @return The signature.
      */
     public com.google.protobuf.ByteString getSignature() {
       return signature_;
@@ -883,12 +915,14 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> fromBuilder_;
       /**
        * <code>.Address from = 1;</code>
+       * @return Whether the from field is set.
        */
       public boolean hasFrom() {
         return fromBuilder_ != null || from_ != null;
       }
       /**
        * <code>.Address from = 1;</code>
+       * @return The from.
        */
       public io.aelf.protobuf.generated.Client.Address getFrom() {
         if (fromBuilder_ == null) {
@@ -1000,12 +1034,14 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> toBuilder_;
       /**
        * <code>.Address to = 2;</code>
+       * @return Whether the to field is set.
        */
       public boolean hasTo() {
         return toBuilder_ != null || to_ != null;
       }
       /**
        * <code>.Address to = 2;</code>
+       * @return The to.
        */
       public io.aelf.protobuf.generated.Client.Address getTo() {
         if (toBuilder_ == null) {
@@ -1115,12 +1151,15 @@ public final class Core {
       private long refBlockNumber_ ;
       /**
        * <code>int64 ref_block_number = 3;</code>
+       * @return The refBlockNumber.
        */
       public long getRefBlockNumber() {
         return refBlockNumber_;
       }
       /**
        * <code>int64 ref_block_number = 3;</code>
+       * @param value The refBlockNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setRefBlockNumber(long value) {
         
@@ -1130,6 +1169,7 @@ public final class Core {
       }
       /**
        * <code>int64 ref_block_number = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRefBlockNumber() {
         
@@ -1141,12 +1181,15 @@ public final class Core {
       private com.google.protobuf.ByteString refBlockPrefix_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes ref_block_prefix = 4;</code>
+       * @return The refBlockPrefix.
        */
       public com.google.protobuf.ByteString getRefBlockPrefix() {
         return refBlockPrefix_;
       }
       /**
        * <code>bytes ref_block_prefix = 4;</code>
+       * @param value The refBlockPrefix to set.
+       * @return This builder for chaining.
        */
       public Builder setRefBlockPrefix(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1159,6 +1202,7 @@ public final class Core {
       }
       /**
        * <code>bytes ref_block_prefix = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRefBlockPrefix() {
         
@@ -1170,6 +1214,7 @@ public final class Core {
       private java.lang.Object methodName_ = "";
       /**
        * <code>string method_name = 5;</code>
+       * @return The methodName.
        */
       public java.lang.String getMethodName() {
         java.lang.Object ref = methodName_;
@@ -1185,6 +1230,7 @@ public final class Core {
       }
       /**
        * <code>string method_name = 5;</code>
+       * @return The bytes for methodName.
        */
       public com.google.protobuf.ByteString
           getMethodNameBytes() {
@@ -1201,6 +1247,8 @@ public final class Core {
       }
       /**
        * <code>string method_name = 5;</code>
+       * @param value The methodName to set.
+       * @return This builder for chaining.
        */
       public Builder setMethodName(
           java.lang.String value) {
@@ -1214,6 +1262,7 @@ public final class Core {
       }
       /**
        * <code>string method_name = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMethodName() {
         
@@ -1223,6 +1272,8 @@ public final class Core {
       }
       /**
        * <code>string method_name = 5;</code>
+       * @param value The bytes for methodName to set.
+       * @return This builder for chaining.
        */
       public Builder setMethodNameBytes(
           com.google.protobuf.ByteString value) {
@@ -1239,12 +1290,15 @@ public final class Core {
       private com.google.protobuf.ByteString params_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes params = 6;</code>
+       * @return The params.
        */
       public com.google.protobuf.ByteString getParams() {
         return params_;
       }
       /**
        * <code>bytes params = 6;</code>
+       * @param value The params to set.
+       * @return This builder for chaining.
        */
       public Builder setParams(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1257,6 +1311,7 @@ public final class Core {
       }
       /**
        * <code>bytes params = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearParams() {
         
@@ -1268,12 +1323,15 @@ public final class Core {
       private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes signature = 10000;</code>
+       * @return The signature.
        */
       public com.google.protobuf.ByteString getSignature() {
         return signature_;
       }
       /**
        * <code>bytes signature = 10000;</code>
+       * @param value The signature to set.
+       * @return This builder for chaining.
        */
       public Builder setSignature(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1286,6 +1344,7 @@ public final class Core {
       }
       /**
        * <code>bytes signature = 10000;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSignature() {
         
@@ -1352,10 +1411,12 @@ public final class Core {
 
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return Whether the transactionId field is set.
      */
     boolean hasTransactionId();
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return The transactionId.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionId();
     /**
@@ -1365,10 +1426,12 @@ public final class Core {
 
     /**
      * <code>.TransactionResultStatus status = 2;</code>
+     * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
      * <code>.TransactionResultStatus status = 2;</code>
+     * @return The status.
      */
     io.aelf.protobuf.generated.Core.TransactionResultStatus getStatus();
 
@@ -1398,25 +1461,30 @@ public final class Core {
 
     /**
      * <code>bytes bloom = 4;</code>
+     * @return The bloom.
      */
     com.google.protobuf.ByteString getBloom();
 
     /**
      * <code>bytes return_value = 5;</code>
+     * @return The returnValue.
      */
     com.google.protobuf.ByteString getReturnValue();
 
     /**
      * <code>int64 block_number = 6;</code>
+     * @return The blockNumber.
      */
     long getBlockNumber();
 
     /**
      * <code>.Hash block_hash = 7;</code>
+     * @return Whether the blockHash field is set.
      */
     boolean hasBlockHash();
     /**
      * <code>.Hash block_hash = 7;</code>
+     * @return The blockHash.
      */
     io.aelf.protobuf.generated.Client.Hash getBlockHash();
     /**
@@ -1426,15 +1494,18 @@ public final class Core {
 
     /**
      * <code>int32 index = 8;</code>
+     * @return The index.
      */
     int getIndex();
 
     /**
      * <code>.Hash state_hash = 9;</code>
+     * @return Whether the stateHash field is set.
      */
     boolean hasStateHash();
     /**
      * <code>.Hash state_hash = 9;</code>
+     * @return The stateHash.
      */
     io.aelf.protobuf.generated.Client.Hash getStateHash();
     /**
@@ -1448,6 +1519,7 @@ public final class Core {
      * </pre>
      *
      * <code>string error = 10;</code>
+     * @return The error.
      */
     java.lang.String getError();
     /**
@@ -1456,26 +1528,31 @@ public final class Core {
      * </pre>
      *
      * <code>string error = 10;</code>
+     * @return The bytes for error.
      */
     com.google.protobuf.ByteString
         getErrorBytes();
 
     /**
      * <code>string readable_return_value = 11;</code>
+     * @return The readableReturnValue.
      */
     java.lang.String getReadableReturnValue();
     /**
      * <code>string readable_return_value = 11;</code>
+     * @return The bytes for readableReturnValue.
      */
     com.google.protobuf.ByteString
         getReadableReturnValueBytes();
 
     /**
      * <code>.TransactionFee transaction_fee = 12;</code>
+     * @return Whether the transactionFee field is set.
      */
     boolean hasTransactionFee();
     /**
      * <code>.TransactionFee transaction_fee = 12;</code>
+     * @return The transactionFee.
      */
     io.aelf.protobuf.generated.Core.TransactionFee getTransactionFee();
     /**
@@ -1485,10 +1562,12 @@ public final class Core {
 
     /**
      * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
+     * @return Whether the consumedResourceTokens field is set.
      */
     boolean hasConsumedResourceTokens();
     /**
      * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
+     * @return The consumedResourceTokens.
      */
     io.aelf.protobuf.generated.Core.ConsumedResourceTokens getConsumedResourceTokens();
     /**
@@ -1515,6 +1594,13 @@ public final class Core {
       returnValue_ = com.google.protobuf.ByteString.EMPTY;
       error_ = "";
       readableReturnValue_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TransactionResult();
     }
 
     @java.lang.Override
@@ -1561,9 +1647,9 @@ public final class Core {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 logs_ = new java.util.ArrayList<io.aelf.protobuf.generated.Core.LogEvent>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000001;
               }
               logs_.add(
                   input.readMessage(io.aelf.protobuf.generated.Core.LogEvent.parser(), extensionRegistry));
@@ -1668,7 +1754,7 @@ public final class Core {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           logs_ = java.util.Collections.unmodifiableList(logs_);
         }
         this.unknownFields = unknownFields.build();
@@ -1688,17 +1774,18 @@ public final class Core {
               io.aelf.protobuf.generated.Core.TransactionResult.class, io.aelf.protobuf.generated.Core.TransactionResult.Builder.class);
     }
 
-    private int bitField0_;
     public static final int TRANSACTION_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash transactionId_;
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return Whether the transactionId field is set.
      */
     public boolean hasTransactionId() {
       return transactionId_ != null;
     }
     /**
      * <code>.Hash transaction_id = 1;</code>
+     * @return The transactionId.
      */
     public io.aelf.protobuf.generated.Client.Hash getTransactionId() {
       return transactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionId_;
@@ -1714,12 +1801,14 @@ public final class Core {
     private int status_;
     /**
      * <code>.TransactionResultStatus status = 2;</code>
+     * @return The enum numeric value on the wire for status.
      */
     public int getStatusValue() {
       return status_;
     }
     /**
      * <code>.TransactionResultStatus status = 2;</code>
+     * @return The status.
      */
     public io.aelf.protobuf.generated.Core.TransactionResultStatus getStatus() {
       @SuppressWarnings("deprecation")
@@ -1766,6 +1855,7 @@ public final class Core {
     private com.google.protobuf.ByteString bloom_;
     /**
      * <code>bytes bloom = 4;</code>
+     * @return The bloom.
      */
     public com.google.protobuf.ByteString getBloom() {
       return bloom_;
@@ -1775,6 +1865,7 @@ public final class Core {
     private com.google.protobuf.ByteString returnValue_;
     /**
      * <code>bytes return_value = 5;</code>
+     * @return The returnValue.
      */
     public com.google.protobuf.ByteString getReturnValue() {
       return returnValue_;
@@ -1784,6 +1875,7 @@ public final class Core {
     private long blockNumber_;
     /**
      * <code>int64 block_number = 6;</code>
+     * @return The blockNumber.
      */
     public long getBlockNumber() {
       return blockNumber_;
@@ -1793,12 +1885,14 @@ public final class Core {
     private io.aelf.protobuf.generated.Client.Hash blockHash_;
     /**
      * <code>.Hash block_hash = 7;</code>
+     * @return Whether the blockHash field is set.
      */
     public boolean hasBlockHash() {
       return blockHash_ != null;
     }
     /**
      * <code>.Hash block_hash = 7;</code>
+     * @return The blockHash.
      */
     public io.aelf.protobuf.generated.Client.Hash getBlockHash() {
       return blockHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : blockHash_;
@@ -1814,6 +1908,7 @@ public final class Core {
     private int index_;
     /**
      * <code>int32 index = 8;</code>
+     * @return The index.
      */
     public int getIndex() {
       return index_;
@@ -1823,12 +1918,14 @@ public final class Core {
     private io.aelf.protobuf.generated.Client.Hash stateHash_;
     /**
      * <code>.Hash state_hash = 9;</code>
+     * @return Whether the stateHash field is set.
      */
     public boolean hasStateHash() {
       return stateHash_ != null;
     }
     /**
      * <code>.Hash state_hash = 9;</code>
+     * @return The stateHash.
      */
     public io.aelf.protobuf.generated.Client.Hash getStateHash() {
       return stateHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : stateHash_;
@@ -1848,6 +1945,7 @@ public final class Core {
      * </pre>
      *
      * <code>string error = 10;</code>
+     * @return The error.
      */
     public java.lang.String getError() {
       java.lang.Object ref = error_;
@@ -1867,6 +1965,7 @@ public final class Core {
      * </pre>
      *
      * <code>string error = 10;</code>
+     * @return The bytes for error.
      */
     public com.google.protobuf.ByteString
         getErrorBytes() {
@@ -1886,6 +1985,7 @@ public final class Core {
     private volatile java.lang.Object readableReturnValue_;
     /**
      * <code>string readable_return_value = 11;</code>
+     * @return The readableReturnValue.
      */
     public java.lang.String getReadableReturnValue() {
       java.lang.Object ref = readableReturnValue_;
@@ -1901,6 +2001,7 @@ public final class Core {
     }
     /**
      * <code>string readable_return_value = 11;</code>
+     * @return The bytes for readableReturnValue.
      */
     public com.google.protobuf.ByteString
         getReadableReturnValueBytes() {
@@ -1920,12 +2021,14 @@ public final class Core {
     private io.aelf.protobuf.generated.Core.TransactionFee transactionFee_;
     /**
      * <code>.TransactionFee transaction_fee = 12;</code>
+     * @return Whether the transactionFee field is set.
      */
     public boolean hasTransactionFee() {
       return transactionFee_ != null;
     }
     /**
      * <code>.TransactionFee transaction_fee = 12;</code>
+     * @return The transactionFee.
      */
     public io.aelf.protobuf.generated.Core.TransactionFee getTransactionFee() {
       return transactionFee_ == null ? io.aelf.protobuf.generated.Core.TransactionFee.getDefaultInstance() : transactionFee_;
@@ -1941,12 +2044,14 @@ public final class Core {
     private io.aelf.protobuf.generated.Core.ConsumedResourceTokens consumedResourceTokens_;
     /**
      * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
+     * @return Whether the consumedResourceTokens field is set.
      */
     public boolean hasConsumedResourceTokens() {
       return consumedResourceTokens_ != null;
     }
     /**
      * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
+     * @return The consumedResourceTokens.
      */
     public io.aelf.protobuf.generated.Core.ConsumedResourceTokens getConsumedResourceTokens() {
       return consumedResourceTokens_ == null ? io.aelf.protobuf.generated.Core.ConsumedResourceTokens.getDefaultInstance() : consumedResourceTokens_;
@@ -2319,7 +2424,7 @@ public final class Core {
 
         if (logsBuilder_ == null) {
           logs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           logsBuilder_.clear();
         }
@@ -2386,7 +2491,6 @@ public final class Core {
       public io.aelf.protobuf.generated.Core.TransactionResult buildPartial() {
         io.aelf.protobuf.generated.Core.TransactionResult result = new io.aelf.protobuf.generated.Core.TransactionResult(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (transactionIdBuilder_ == null) {
           result.transactionId_ = transactionId_;
         } else {
@@ -2394,9 +2498,9 @@ public final class Core {
         }
         result.status_ = status_;
         if (logsBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             logs_ = java.util.Collections.unmodifiableList(logs_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.logs_ = logs_;
         } else {
@@ -2428,7 +2532,6 @@ public final class Core {
         } else {
           result.consumedResourceTokens_ = consumedResourceTokensBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2487,7 +2590,7 @@ public final class Core {
           if (!other.logs_.isEmpty()) {
             if (logs_.isEmpty()) {
               logs_ = other.logs_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureLogsIsMutable();
               logs_.addAll(other.logs_);
@@ -2500,7 +2603,7 @@ public final class Core {
               logsBuilder_.dispose();
               logsBuilder_ = null;
               logs_ = other.logs_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000001);
               logsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getLogsFieldBuilder() : null;
@@ -2576,12 +2679,14 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> transactionIdBuilder_;
       /**
        * <code>.Hash transaction_id = 1;</code>
+       * @return Whether the transactionId field is set.
        */
       public boolean hasTransactionId() {
         return transactionIdBuilder_ != null || transactionId_ != null;
       }
       /**
        * <code>.Hash transaction_id = 1;</code>
+       * @return The transactionId.
        */
       public io.aelf.protobuf.generated.Client.Hash getTransactionId() {
         if (transactionIdBuilder_ == null) {
@@ -2691,12 +2796,15 @@ public final class Core {
       private int status_ = 0;
       /**
        * <code>.TransactionResultStatus status = 2;</code>
+       * @return The enum numeric value on the wire for status.
        */
       public int getStatusValue() {
         return status_;
       }
       /**
        * <code>.TransactionResultStatus status = 2;</code>
+       * @param value The enum numeric value on the wire for status to set.
+       * @return This builder for chaining.
        */
       public Builder setStatusValue(int value) {
         status_ = value;
@@ -2705,6 +2813,7 @@ public final class Core {
       }
       /**
        * <code>.TransactionResultStatus status = 2;</code>
+       * @return The status.
        */
       public io.aelf.protobuf.generated.Core.TransactionResultStatus getStatus() {
         @SuppressWarnings("deprecation")
@@ -2713,6 +2822,8 @@ public final class Core {
       }
       /**
        * <code>.TransactionResultStatus status = 2;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
        */
       public Builder setStatus(io.aelf.protobuf.generated.Core.TransactionResultStatus value) {
         if (value == null) {
@@ -2725,6 +2836,7 @@ public final class Core {
       }
       /**
        * <code>.TransactionResultStatus status = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearStatus() {
         
@@ -2736,9 +2848,9 @@ public final class Core {
       private java.util.List<io.aelf.protobuf.generated.Core.LogEvent> logs_ =
         java.util.Collections.emptyList();
       private void ensureLogsIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           logs_ = new java.util.ArrayList<io.aelf.protobuf.generated.Core.LogEvent>(logs_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -2888,7 +3000,7 @@ public final class Core {
       public Builder clearLogs() {
         if (logsBuilder_ == null) {
           logs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           logsBuilder_.clear();
@@ -2965,7 +3077,7 @@ public final class Core {
           logsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.Core.LogEvent, io.aelf.protobuf.generated.Core.LogEvent.Builder, io.aelf.protobuf.generated.Core.LogEventOrBuilder>(
                   logs_,
-                  ((bitField0_ & 0x00000004) != 0),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           logs_ = null;
@@ -2976,12 +3088,15 @@ public final class Core {
       private com.google.protobuf.ByteString bloom_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes bloom = 4;</code>
+       * @return The bloom.
        */
       public com.google.protobuf.ByteString getBloom() {
         return bloom_;
       }
       /**
        * <code>bytes bloom = 4;</code>
+       * @param value The bloom to set.
+       * @return This builder for chaining.
        */
       public Builder setBloom(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -2994,6 +3109,7 @@ public final class Core {
       }
       /**
        * <code>bytes bloom = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearBloom() {
         
@@ -3005,12 +3121,15 @@ public final class Core {
       private com.google.protobuf.ByteString returnValue_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes return_value = 5;</code>
+       * @return The returnValue.
        */
       public com.google.protobuf.ByteString getReturnValue() {
         return returnValue_;
       }
       /**
        * <code>bytes return_value = 5;</code>
+       * @param value The returnValue to set.
+       * @return This builder for chaining.
        */
       public Builder setReturnValue(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -3023,6 +3142,7 @@ public final class Core {
       }
       /**
        * <code>bytes return_value = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearReturnValue() {
         
@@ -3034,12 +3154,15 @@ public final class Core {
       private long blockNumber_ ;
       /**
        * <code>int64 block_number = 6;</code>
+       * @return The blockNumber.
        */
       public long getBlockNumber() {
         return blockNumber_;
       }
       /**
        * <code>int64 block_number = 6;</code>
+       * @param value The blockNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setBlockNumber(long value) {
         
@@ -3049,6 +3172,7 @@ public final class Core {
       }
       /**
        * <code>int64 block_number = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearBlockNumber() {
         
@@ -3062,12 +3186,14 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> blockHashBuilder_;
       /**
        * <code>.Hash block_hash = 7;</code>
+       * @return Whether the blockHash field is set.
        */
       public boolean hasBlockHash() {
         return blockHashBuilder_ != null || blockHash_ != null;
       }
       /**
        * <code>.Hash block_hash = 7;</code>
+       * @return The blockHash.
        */
       public io.aelf.protobuf.generated.Client.Hash getBlockHash() {
         if (blockHashBuilder_ == null) {
@@ -3177,12 +3303,15 @@ public final class Core {
       private int index_ ;
       /**
        * <code>int32 index = 8;</code>
+       * @return The index.
        */
       public int getIndex() {
         return index_;
       }
       /**
        * <code>int32 index = 8;</code>
+       * @param value The index to set.
+       * @return This builder for chaining.
        */
       public Builder setIndex(int value) {
         
@@ -3192,6 +3321,7 @@ public final class Core {
       }
       /**
        * <code>int32 index = 8;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIndex() {
         
@@ -3205,12 +3335,14 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> stateHashBuilder_;
       /**
        * <code>.Hash state_hash = 9;</code>
+       * @return Whether the stateHash field is set.
        */
       public boolean hasStateHash() {
         return stateHashBuilder_ != null || stateHash_ != null;
       }
       /**
        * <code>.Hash state_hash = 9;</code>
+       * @return The stateHash.
        */
       public io.aelf.protobuf.generated.Client.Hash getStateHash() {
         if (stateHashBuilder_ == null) {
@@ -3324,6 +3456,7 @@ public final class Core {
        * </pre>
        *
        * <code>string error = 10;</code>
+       * @return The error.
        */
       public java.lang.String getError() {
         java.lang.Object ref = error_;
@@ -3343,6 +3476,7 @@ public final class Core {
        * </pre>
        *
        * <code>string error = 10;</code>
+       * @return The bytes for error.
        */
       public com.google.protobuf.ByteString
           getErrorBytes() {
@@ -3363,6 +3497,8 @@ public final class Core {
        * </pre>
        *
        * <code>string error = 10;</code>
+       * @param value The error to set.
+       * @return This builder for chaining.
        */
       public Builder setError(
           java.lang.String value) {
@@ -3380,6 +3516,7 @@ public final class Core {
        * </pre>
        *
        * <code>string error = 10;</code>
+       * @return This builder for chaining.
        */
       public Builder clearError() {
         
@@ -3393,6 +3530,8 @@ public final class Core {
        * </pre>
        *
        * <code>string error = 10;</code>
+       * @param value The bytes for error to set.
+       * @return This builder for chaining.
        */
       public Builder setErrorBytes(
           com.google.protobuf.ByteString value) {
@@ -3409,6 +3548,7 @@ public final class Core {
       private java.lang.Object readableReturnValue_ = "";
       /**
        * <code>string readable_return_value = 11;</code>
+       * @return The readableReturnValue.
        */
       public java.lang.String getReadableReturnValue() {
         java.lang.Object ref = readableReturnValue_;
@@ -3424,6 +3564,7 @@ public final class Core {
       }
       /**
        * <code>string readable_return_value = 11;</code>
+       * @return The bytes for readableReturnValue.
        */
       public com.google.protobuf.ByteString
           getReadableReturnValueBytes() {
@@ -3440,6 +3581,8 @@ public final class Core {
       }
       /**
        * <code>string readable_return_value = 11;</code>
+       * @param value The readableReturnValue to set.
+       * @return This builder for chaining.
        */
       public Builder setReadableReturnValue(
           java.lang.String value) {
@@ -3453,6 +3596,7 @@ public final class Core {
       }
       /**
        * <code>string readable_return_value = 11;</code>
+       * @return This builder for chaining.
        */
       public Builder clearReadableReturnValue() {
         
@@ -3462,6 +3606,8 @@ public final class Core {
       }
       /**
        * <code>string readable_return_value = 11;</code>
+       * @param value The bytes for readableReturnValue to set.
+       * @return This builder for chaining.
        */
       public Builder setReadableReturnValueBytes(
           com.google.protobuf.ByteString value) {
@@ -3480,12 +3626,14 @@ public final class Core {
           io.aelf.protobuf.generated.Core.TransactionFee, io.aelf.protobuf.generated.Core.TransactionFee.Builder, io.aelf.protobuf.generated.Core.TransactionFeeOrBuilder> transactionFeeBuilder_;
       /**
        * <code>.TransactionFee transaction_fee = 12;</code>
+       * @return Whether the transactionFee field is set.
        */
       public boolean hasTransactionFee() {
         return transactionFeeBuilder_ != null || transactionFee_ != null;
       }
       /**
        * <code>.TransactionFee transaction_fee = 12;</code>
+       * @return The transactionFee.
        */
       public io.aelf.protobuf.generated.Core.TransactionFee getTransactionFee() {
         if (transactionFeeBuilder_ == null) {
@@ -3597,12 +3745,14 @@ public final class Core {
           io.aelf.protobuf.generated.Core.ConsumedResourceTokens, io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder, io.aelf.protobuf.generated.Core.ConsumedResourceTokensOrBuilder> consumedResourceTokensBuilder_;
       /**
        * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
+       * @return Whether the consumedResourceTokens field is set.
        */
       public boolean hasConsumedResourceTokens() {
         return consumedResourceTokensBuilder_ != null || consumedResourceTokens_ != null;
       }
       /**
        * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
+       * @return The consumedResourceTokens.
        */
       public io.aelf.protobuf.generated.Core.ConsumedResourceTokens getConsumedResourceTokens() {
         if (consumedResourceTokensBuilder_ == null) {
@@ -3821,6 +3971,7 @@ public final class Core {
 
     /**
      * <code>bool is_failed_to_charge = 2;</code>
+     * @return The isFailedToCharge.
      */
     boolean getIsFailedToCharge();
   }
@@ -3837,6 +3988,13 @@ public final class Core {
       super(builder);
     }
     private TransactionFee() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TransactionFee();
     }
 
     @java.lang.Override
@@ -3925,7 +4083,6 @@ public final class Core {
               io.aelf.protobuf.generated.Core.TransactionFee.class, io.aelf.protobuf.generated.Core.TransactionFee.Builder.class);
     }
 
-    private int bitField0_;
     public static final int VALUE_FIELD_NUMBER = 1;
     private static final class ValueDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
@@ -4022,6 +4179,7 @@ public final class Core {
     private boolean isFailedToCharge_;
     /**
      * <code>bool is_failed_to_charge = 2;</code>
+     * @return The isFailedToCharge.
      */
     public boolean getIsFailedToCharge() {
       return isFailedToCharge_;
@@ -4295,11 +4453,9 @@ public final class Core {
       public io.aelf.protobuf.generated.Core.TransactionFee buildPartial() {
         io.aelf.protobuf.generated.Core.TransactionFee result = new io.aelf.protobuf.generated.Core.TransactionFee(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.value_ = internalGetValue();
         result.value_.makeImmutable();
         result.isFailedToCharge_ = isFailedToCharge_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -4537,12 +4693,15 @@ public final class Core {
       private boolean isFailedToCharge_ ;
       /**
        * <code>bool is_failed_to_charge = 2;</code>
+       * @return The isFailedToCharge.
        */
       public boolean getIsFailedToCharge() {
         return isFailedToCharge_;
       }
       /**
        * <code>bool is_failed_to_charge = 2;</code>
+       * @param value The isFailedToCharge to set.
+       * @return This builder for chaining.
        */
       public Builder setIsFailedToCharge(boolean value) {
         
@@ -4552,6 +4711,7 @@ public final class Core {
       }
       /**
        * <code>bool is_failed_to_charge = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsFailedToCharge() {
         
@@ -4726,6 +4886,7 @@ public final class Core {
 
     /**
      * <code>bool is_failed_to_charge = 3;</code>
+     * @return The isFailedToCharge.
      */
     boolean getIsFailedToCharge();
   }
@@ -4742,6 +4903,13 @@ public final class Core {
       super(builder);
     }
     private ConsumedResourceTokens() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ConsumedResourceTokens();
     }
 
     @java.lang.Override
@@ -4845,7 +5013,6 @@ public final class Core {
               io.aelf.protobuf.generated.Core.ConsumedResourceTokens.class, io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder.class);
     }
 
-    private int bitField0_;
     public static final int VALUE_FIELD_NUMBER = 1;
     private static final class ValueDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
@@ -5034,6 +5201,7 @@ public final class Core {
     private boolean isFailedToCharge_;
     /**
      * <code>bool is_failed_to_charge = 3;</code>
+     * @return The isFailedToCharge.
      */
     public boolean getIsFailedToCharge() {
       return isFailedToCharge_;
@@ -5334,13 +5502,11 @@ public final class Core {
       public io.aelf.protobuf.generated.Core.ConsumedResourceTokens buildPartial() {
         io.aelf.protobuf.generated.Core.ConsumedResourceTokens result = new io.aelf.protobuf.generated.Core.ConsumedResourceTokens(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.value_ = internalGetValue();
         result.value_.makeImmutable();
         result.owning_ = internalGetOwning();
         result.owning_.makeImmutable();
         result.isFailedToCharge_ = isFailedToCharge_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5731,12 +5897,15 @@ public final class Core {
       private boolean isFailedToCharge_ ;
       /**
        * <code>bool is_failed_to_charge = 3;</code>
+       * @return The isFailedToCharge.
        */
       public boolean getIsFailedToCharge() {
         return isFailedToCharge_;
       }
       /**
        * <code>bool is_failed_to_charge = 3;</code>
+       * @param value The isFailedToCharge to set.
+       * @return This builder for chaining.
        */
       public Builder setIsFailedToCharge(boolean value) {
         
@@ -5746,6 +5915,7 @@ public final class Core {
       }
       /**
        * <code>bool is_failed_to_charge = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsFailedToCharge() {
         
@@ -5812,10 +5982,12 @@ public final class Core {
 
     /**
      * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
      */
     boolean hasAddress();
     /**
      * <code>.Address address = 1;</code>
+     * @return The address.
      */
     io.aelf.protobuf.generated.Client.Address getAddress();
     /**
@@ -5825,29 +5997,36 @@ public final class Core {
 
     /**
      * <code>string name = 2;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
      * <code>string name = 2;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
      * <code>repeated bytes indexed = 3;</code>
+     * @return A list containing the indexed.
      */
     java.util.List<com.google.protobuf.ByteString> getIndexedList();
     /**
      * <code>repeated bytes indexed = 3;</code>
+     * @return The count of indexed.
      */
     int getIndexedCount();
     /**
      * <code>repeated bytes indexed = 3;</code>
+     * @param index The index of the element to return.
+     * @return The indexed at the given index.
      */
     com.google.protobuf.ByteString getIndexed(int index);
 
     /**
      * <code>bytes non_indexed = 4;</code>
+     * @return The nonIndexed.
      */
     com.google.protobuf.ByteString getNonIndexed();
   }
@@ -5867,6 +6046,13 @@ public final class Core {
       name_ = "";
       indexed_ = java.util.Collections.emptyList();
       nonIndexed_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LogEvent();
     }
 
     @java.lang.Override
@@ -5913,9 +6099,9 @@ public final class Core {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 indexed_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000001;
               }
               indexed_.add(input.readBytes());
               break;
@@ -5940,7 +6126,7 @@ public final class Core {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           indexed_ = java.util.Collections.unmodifiableList(indexed_); // C
         }
         this.unknownFields = unknownFields.build();
@@ -5960,17 +6146,18 @@ public final class Core {
               io.aelf.protobuf.generated.Core.LogEvent.class, io.aelf.protobuf.generated.Core.LogEvent.Builder.class);
     }
 
-    private int bitField0_;
     public static final int ADDRESS_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Address address_;
     /**
      * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
      */
     public boolean hasAddress() {
       return address_ != null;
     }
     /**
      * <code>.Address address = 1;</code>
+     * @return The address.
      */
     public io.aelf.protobuf.generated.Client.Address getAddress() {
       return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
@@ -5986,6 +6173,7 @@ public final class Core {
     private volatile java.lang.Object name_;
     /**
      * <code>string name = 2;</code>
+     * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -6001,6 +6189,7 @@ public final class Core {
     }
     /**
      * <code>string name = 2;</code>
+     * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -6020,6 +6209,7 @@ public final class Core {
     private java.util.List<com.google.protobuf.ByteString> indexed_;
     /**
      * <code>repeated bytes indexed = 3;</code>
+     * @return A list containing the indexed.
      */
     public java.util.List<com.google.protobuf.ByteString>
         getIndexedList() {
@@ -6027,12 +6217,15 @@ public final class Core {
     }
     /**
      * <code>repeated bytes indexed = 3;</code>
+     * @return The count of indexed.
      */
     public int getIndexedCount() {
       return indexed_.size();
     }
     /**
      * <code>repeated bytes indexed = 3;</code>
+     * @param index The index of the element to return.
+     * @return The indexed at the given index.
      */
     public com.google.protobuf.ByteString getIndexed(int index) {
       return indexed_.get(index);
@@ -6042,6 +6235,7 @@ public final class Core {
     private com.google.protobuf.ByteString nonIndexed_;
     /**
      * <code>bytes non_indexed = 4;</code>
+     * @return The nonIndexed.
      */
     public com.google.protobuf.ByteString getNonIndexed() {
       return nonIndexed_;
@@ -6293,7 +6487,7 @@ public final class Core {
         name_ = "";
 
         indexed_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000001);
         nonIndexed_ = com.google.protobuf.ByteString.EMPTY;
 
         return this;
@@ -6323,20 +6517,18 @@ public final class Core {
       public io.aelf.protobuf.generated.Core.LogEvent buildPartial() {
         io.aelf.protobuf.generated.Core.LogEvent result = new io.aelf.protobuf.generated.Core.LogEvent(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (addressBuilder_ == null) {
           result.address_ = address_;
         } else {
           result.address_ = addressBuilder_.build();
         }
         result.name_ = name_;
-        if (((bitField0_ & 0x00000004) != 0)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           indexed_ = java.util.Collections.unmodifiableList(indexed_);
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.indexed_ = indexed_;
         result.nonIndexed_ = nonIndexed_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6395,7 +6587,7 @@ public final class Core {
         if (!other.indexed_.isEmpty()) {
           if (indexed_.isEmpty()) {
             indexed_ = other.indexed_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureIndexedIsMutable();
             indexed_.addAll(other.indexed_);
@@ -6440,12 +6632,14 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> addressBuilder_;
       /**
        * <code>.Address address = 1;</code>
+       * @return Whether the address field is set.
        */
       public boolean hasAddress() {
         return addressBuilder_ != null || address_ != null;
       }
       /**
        * <code>.Address address = 1;</code>
+       * @return The address.
        */
       public io.aelf.protobuf.generated.Client.Address getAddress() {
         if (addressBuilder_ == null) {
@@ -6555,6 +6749,7 @@ public final class Core {
       private java.lang.Object name_ = "";
       /**
        * <code>string name = 2;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -6570,6 +6765,7 @@ public final class Core {
       }
       /**
        * <code>string name = 2;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -6586,6 +6782,8 @@ public final class Core {
       }
       /**
        * <code>string name = 2;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
@@ -6599,6 +6797,7 @@ public final class Core {
       }
       /**
        * <code>string name = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
         
@@ -6608,6 +6807,8 @@ public final class Core {
       }
       /**
        * <code>string name = 2;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -6623,33 +6824,40 @@ public final class Core {
 
       private java.util.List<com.google.protobuf.ByteString> indexed_ = java.util.Collections.emptyList();
       private void ensureIndexedIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           indexed_ = new java.util.ArrayList<com.google.protobuf.ByteString>(indexed_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000001;
          }
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
+       * @return A list containing the indexed.
        */
       public java.util.List<com.google.protobuf.ByteString>
           getIndexedList() {
-        return ((bitField0_ & 0x00000004) != 0) ?
+        return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(indexed_) : indexed_;
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
+       * @return The count of indexed.
        */
       public int getIndexedCount() {
         return indexed_.size();
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
+       * @param index The index of the element to return.
+       * @return The indexed at the given index.
        */
       public com.google.protobuf.ByteString getIndexed(int index) {
         return indexed_.get(index);
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The indexed to set.
+       * @return This builder for chaining.
        */
       public Builder setIndexed(
           int index, com.google.protobuf.ByteString value) {
@@ -6663,6 +6871,8 @@ public final class Core {
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
+       * @param value The indexed to add.
+       * @return This builder for chaining.
        */
       public Builder addIndexed(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -6675,6 +6885,8 @@ public final class Core {
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
+       * @param values The indexed to add.
+       * @return This builder for chaining.
        */
       public Builder addAllIndexed(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -6686,10 +6898,11 @@ public final class Core {
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIndexed() {
         indexed_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -6697,12 +6910,15 @@ public final class Core {
       private com.google.protobuf.ByteString nonIndexed_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes non_indexed = 4;</code>
+       * @return The nonIndexed.
        */
       public com.google.protobuf.ByteString getNonIndexed() {
         return nonIndexed_;
       }
       /**
        * <code>bytes non_indexed = 4;</code>
+       * @param value The nonIndexed to set.
+       * @return This builder for chaining.
        */
       public Builder setNonIndexed(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -6715,6 +6931,7 @@ public final class Core {
       }
       /**
        * <code>bytes non_indexed = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearNonIndexed() {
         
@@ -6894,6 +7111,13 @@ public final class Core {
       super(builder);
     }
     private TransactionExecutingStateSet() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TransactionExecutingStateSet();
     }
 
     @java.lang.Override
@@ -8060,6 +8284,7 @@ public final class Core {
 
     /**
      * <code>sint32 value = 1;</code>
+     * @return The value.
      */
     int getValue();
   }
@@ -8079,6 +8304,13 @@ public final class Core {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SInt32Value();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -8091,7 +8323,6 @@ public final class Core {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -8143,6 +8374,7 @@ public final class Core {
     private int value_;
     /**
      * <code>sint32 value = 1;</code>
+     * @return The value.
      */
     public int getValue() {
       return value_;
@@ -8453,12 +8685,15 @@ public final class Core {
       private int value_ ;
       /**
        * <code>sint32 value = 1;</code>
+       * @return The value.
        */
       public int getValue() {
         return value_;
       }
       /**
        * <code>sint32 value = 1;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(int value) {
         
@@ -8468,6 +8703,7 @@ public final class Core {
       }
       /**
        * <code>sint32 value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -8534,6 +8770,7 @@ public final class Core {
 
     /**
      * <code>sint64 value = 1;</code>
+     * @return The value.
      */
     long getValue();
   }
@@ -8553,6 +8790,13 @@ public final class Core {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SInt64Value();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -8565,7 +8809,6 @@ public final class Core {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -8617,6 +8860,7 @@ public final class Core {
     private long value_;
     /**
      * <code>sint64 value = 1;</code>
+     * @return The value.
      */
     public long getValue() {
       return value_;
@@ -8928,12 +9172,15 @@ public final class Core {
       private long value_ ;
       /**
        * <code>sint64 value = 1;</code>
+       * @return The value.
        */
       public long getValue() {
         return value_;
       }
       /**
        * <code>sint64 value = 1;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(long value) {
         
@@ -8943,6 +9190,7 @@ public final class Core {
       }
       /**
        * <code>sint64 value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -9124,19 +9372,11 @@ public final class Core {
       "ED\020\003\022\020\n\014UNEXECUTABLE\020\004\022\014\n\010CONFLICT\020\005B\034\n\032" +
       "io.aelf.protobuf.generatedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           io.aelf.protobuf.generated.Client.getDescriptor(),
-        }, assigner);
+        });
     internal_static_Transaction_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_Transaction_fieldAccessorTable = new

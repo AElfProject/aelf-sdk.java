@@ -4,14 +4,31 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
+import io.aelf.schemas.AddPeerInput;
+import io.aelf.schemas.BlockDto;
 import io.aelf.schemas.ChainstatusDto;
+import io.aelf.schemas.CreateRawTransactionInput;
+import io.aelf.schemas.CreateRawTransactionOutput;
+import io.aelf.schemas.ExecuteRawTransactionDto;
 import io.aelf.schemas.ExecuteTransactionDto;
+import io.aelf.schemas.MerklePathDto;
+import io.aelf.schemas.NetworkInfoOutput;
+import io.aelf.schemas.PeerDto;
+import io.aelf.schemas.SendRawTransactionInput;
+import io.aelf.schemas.SendRawTransactionOutput;
+import io.aelf.schemas.SendTransactionInput;
+import io.aelf.schemas.SendTransactionOutput;
+import io.aelf.schemas.SendTransactionsInput;
+import io.aelf.schemas.TaskQueueInfoDto;
+import io.aelf.schemas.TransactionPoolStatusOutput;
+import io.aelf.schemas.TransactionResultDto;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.Sha256;
 import io.aelf.utils.StringUtil;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.List;
 import javax.annotation.Nullable;
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Sha256Hash;
@@ -19,9 +36,9 @@ import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
 
-public class AelfSdk {
+public class AElfClient {
 
-  private String aelfSdkUrl;
+  private String AElfClientUrl;
   private String version = "1.0";
   private BlockChainSdk blcokChainSdk;
   private NetSdk netSdk;
@@ -32,8 +49,11 @@ public class AelfSdk {
    *
    * @param url Http Request Url exp:(http://xxxx)
    */
-  public AelfSdk(String url) {
-    this.aelfSdkUrl = url;
+  public AElfClient(String url) {
+    this.AElfClientUrl = url;
+    this.getBlockChainSdkObj();
+    this.getNetSdkObj();
+
   }
 
   /**
@@ -42,12 +62,14 @@ public class AelfSdk {
    * @param url Http Request Url exp:(http://xxxx)
    * @param version application/json;v={version}
    */
-  public AelfSdk(String url, String version) {
-    this.aelfSdkUrl = url;
+  public AElfClient(String url, String version) {
+    this.AElfClientUrl = url;
     this.version = version;
+    this.getBlockChainSdkObj();
+    this.getNetSdkObj();
   }
 
-  private AelfSdk() {
+  private AElfClient() {
 
   }
 
@@ -56,9 +78,9 @@ public class AelfSdk {
    *
    * @return BlockChainSdk Object ins
    */
-  public BlockChainSdk getBlockChainSdkObj() {
+  private BlockChainSdk getBlockChainSdkObj() {
     if (blcokChainSdk == null) {
-      blcokChainSdk = new BlockChainSdk(this.aelfSdkUrl, this.version);
+      blcokChainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
     }
     return blcokChainSdk;
   }
@@ -66,11 +88,188 @@ public class AelfSdk {
   /**
    * Get the instance object of getNetSdkObj.
    */
-  public NetSdk getNetSdkObj() {
+  private NetSdk getNetSdkObj() {
     if (netSdk == null) {
-      netSdk = new NetSdk(this.aelfSdkUrl, this.version);
+      netSdk = new NetSdk(this.AElfClientUrl, this.version);
     }
     return netSdk;
+  }
+
+  /**
+   * Get the height of the current chain. wa:/api/blockChain/blockHeight
+   */
+  public long getBlockHeight() throws Exception {
+    return this.getBlockChainSdkObj().getBlockHeight();
+  }
+
+  /**
+   * Get information of a block by given block hash. Optional whether to include transaction
+   * information.
+   */
+  public BlockDto getBlockByHash(String blockHash) throws Exception {
+    return this.getBlockByHash(blockHash, false);
+  }
+
+  /**
+   * Get information about a given block by block hash. Otionally with the list of its transactions.
+   * wa://api/blockChain/block?includeTransactions={includeTransactions}
+   */
+  public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
+    return this.getBlockChainSdkObj().getBlockByHash(blockHash, includeTransactions);
+  }
+
+  /**
+   * Get information of a block by specified height. Optional whether to include transaction
+   * information.
+   */
+  public BlockDto getBlockByHeight(long blockHeight) throws Exception {
+    return this.getBlockByHeight(blockHeight, false);
+  }
+
+  /**
+   * Get information of a block by specified height. Optional whether to include transaction
+   * information. wa://api/blockChain/blockByHeight?includeTransactions={includeTransactions}
+   */
+  public BlockDto getBlockByHeight(long blockHeight, boolean includeTransactions) throws Exception {
+    return this.getBlockChainSdkObj().getBlockByHeight(blockHeight, includeTransactions);
+  }
+
+  /**
+   * Get the current status of the block chain. wa:/api/blockChain/chainStatus
+   */
+  public ChainstatusDto getChainStatus() throws Exception {
+    return this.getBlockChainSdkObj().getChainStatus();
+  }
+
+  /**
+   * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
+   */
+  public byte[] getContractFilCeDescriptorSet(String address) throws Exception {
+    return this.getBlockChainSdkObj().getContractFilCeDescriptorSet(address);
+  }
+
+  /**
+   * Gets the status information of the task queue wa:/api/blockChain/taskQueueStatus.
+   */
+  public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception {
+    return this.getBlockChainSdkObj().getTaskQueueStatus();
+  }
+
+  /**
+   * Gets information about the current transaction pool.wa:/api/blockChain/transactionPoolStatus
+   */
+  public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
+    return this.getBlockChainSdkObj().getTransactionPoolStatus();
+  }
+
+  /**
+   * Call a read-only method of a contract. wa:/api/blockChain/executeTransaction
+   */
+  public String executeTransaction(ExecuteTransactionDto input) throws Exception {
+    return this.getBlockChainSdkObj().executeTransaction(input);
+  }
+
+  /**
+   * Creates an unsigned serialized transaction wa:/api/blockChain/rawTransaction.
+   */
+  public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input)
+      throws Exception {
+    return this.getBlockChainSdkObj().createRawTransaction(input);
+  }
+
+  /**
+   * Call a method of a contract by given serialized str wa:/api/blockChain/executeRawTransaction.
+   */
+  public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
+    return this.getBlockChainSdkObj().executeRawTransaction(input);
+  }
+
+  /**
+   * Broadcast a serialized transaction. wa:/api/blockChain/sendRawTransaction
+   */
+  public SendRawTransactionOutput sendRawTransaction(SendRawTransactionInput input)
+      throws Exception {
+    return this.getBlockChainSdkObj().sendRawTransaction(input);
+  }
+
+  /**
+   * Broadcast a transaction wa:/api/blockChain/sendTransaction.
+   */
+  public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception {
+    return this.getBlockChainSdkObj().sendTransaction(input);
+  }
+
+  /**
+   * Broadcast volume transactions wa:/api/blockChain/sendTransactions.
+   */
+  public List<String> sendTransactions(SendTransactionsInput input) throws Exception {
+    return this.getBlockChainSdkObj().sendTransactions(input);
+  }
+
+  /**
+   * Get the current status of a transaction wa:/api/blockChain/transactionResult.
+   */
+  public TransactionResultDto getTransactionResult(String transactionId) throws Exception {
+    return this.getBlockChainSdkObj().getTransactionResult(transactionId);
+  }
+
+  /**
+   * Get results of multiple transactions by specified blockHash and the offset.
+   * wa:/api/blockChain/transactionResults
+   */
+  public List<TransactionResultDto> getTransactionResults(String blockHash) throws Exception {
+    return this.getTransactionResults(blockHash, 0, 10);
+  }
+
+  /**
+   * Get multiple transaction results. wa:/api/blockChain/transactionResults
+   */
+  public List<TransactionResultDto> getTransactionResults(String blockHash, int offset, int limit)
+      throws Exception {
+    return this.getBlockChainSdkObj().getTransactionResults(blockHash, offset, limit);
+  }
+
+  /**
+   * Get merkle path of a transaction. wa:/api/blockChain/merklePathByTransactionId
+   */
+  public MerklePathDto getMerklePathByTransactionId(String transactionId) {
+    return this.getBlockChainSdkObj().getMerklePathByTransactionId(transactionId);
+  }
+
+  /**
+   * Get id of the chain.
+   */
+  public int getChainId() throws Exception {
+    return this.getBlockChainSdkObj().getChainId();
+  }
+
+  /**
+   * Attempts to add a node to the connected network nodes wa:/api/net/peer.
+   */
+  public Boolean addPeer(AddPeerInput input) throws Exception {
+    return this.getNetSdkObj().addPeer(input);
+  }
+
+  /**
+   * Attempts to remove a node from the connected network nodes wa:/api/net/peer.
+   */
+  public Boolean removePeer(String address) throws Exception {
+    return this.getNetSdkObj().removePeer(address);
+  }
+
+  /**
+   * Gets information about the peer nodes of the current node.Optional whether to include metrics.
+   * wa:/api/net/peers?withMetrics=false
+   */
+  public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
+    return this.getNetSdkObj().getPeers(withMetrics);
+  }
+
+  /**
+   * Get information about the node’s connection to the network. wa:/api/net/networkInfo
+   */
+  public NetworkInfoOutput getNetworkInfo() throws Exception {
+    return this.getNetSdkObj().getNetworkInfo();
   }
 
   /**
@@ -108,7 +307,6 @@ public class AelfSdk {
     byte[] transactionData = Sha256.getBytesSha256(transaction.toByteArray());
     return this.getSignatureWithPrivateKey(privateKeyHex, transactionData);
   }
-
 
   /**
    * Get the address of genesis contract.
@@ -219,6 +417,4 @@ public class AelfSdk {
       return false;
     }
   }
-
-
 }

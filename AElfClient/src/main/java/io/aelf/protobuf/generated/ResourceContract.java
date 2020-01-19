@@ -73,6 +73,8 @@ public final class ResourceContract {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -80,6 +82,10 @@ public final class ResourceContract {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static ResourceType forNumber(int value) {
       switch (value) {
         case 0: return UNDEFINED_RESOURCE_TYPE;
@@ -145,10 +151,12 @@ public final class ResourceContract {
 
     /**
      * <code>.ResourceType type = 1;</code>
+     * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
      * <code>.ResourceType type = 1;</code>
+     * @return The type.
      */
     io.aelf.protobuf.generated.ResourceContract.ResourceType getType();
   }
@@ -169,6 +177,13 @@ public final class ResourceContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ResourceId();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -181,7 +196,6 @@ public final class ResourceContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -234,12 +248,14 @@ public final class ResourceContract {
     private int type_;
     /**
      * <code>.ResourceType type = 1;</code>
+     * @return The enum numeric value on the wire for type.
      */
     public int getTypeValue() {
       return type_;
     }
     /**
      * <code>.ResourceType type = 1;</code>
+     * @return The type.
      */
     public io.aelf.protobuf.generated.ResourceContract.ResourceType getType() {
       @SuppressWarnings("deprecation")
@@ -551,12 +567,15 @@ public final class ResourceContract {
       private int type_ = 0;
       /**
        * <code>.ResourceType type = 1;</code>
+       * @return The enum numeric value on the wire for type.
        */
       public int getTypeValue() {
         return type_;
       }
       /**
        * <code>.ResourceType type = 1;</code>
+       * @param value The enum numeric value on the wire for type to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -565,6 +584,7 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 1;</code>
+       * @return The type.
        */
       public io.aelf.protobuf.generated.ResourceContract.ResourceType getType() {
         @SuppressWarnings("deprecation")
@@ -573,6 +593,8 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 1;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
        */
       public Builder setType(io.aelf.protobuf.generated.ResourceContract.ResourceType value) {
         if (value == null) {
@@ -585,6 +607,7 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearType() {
         
@@ -651,11 +674,13 @@ public final class ResourceContract {
 
     /**
      * <code>sint64 res_balance = 1;</code>
+     * @return The resBalance.
      */
     long getResBalance();
 
     /**
      * <code>sint64 elf_balance = 2;</code>
+     * @return The elfBalance.
      */
     long getElfBalance();
 
@@ -665,6 +690,7 @@ public final class ResourceContract {
      * </pre>
      *
      * <code>sint64 res_weight = 3;</code>
+     * @return The resWeight.
      */
     long getResWeight();
 
@@ -674,15 +700,18 @@ public final class ResourceContract {
      * </pre>
      *
      * <code>sint64 elf_weight = 4;</code>
+     * @return The elfWeight.
      */
     long getElfWeight();
 
     /**
      * <code>.ResourceType type = 5;</code>
+     * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
      * <code>.ResourceType type = 5;</code>
+     * @return The type.
      */
     io.aelf.protobuf.generated.ResourceContract.ResourceType getType();
   }
@@ -703,6 +732,13 @@ public final class ResourceContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Converter();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -715,7 +751,6 @@ public final class ResourceContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -788,6 +823,7 @@ public final class ResourceContract {
     private long resBalance_;
     /**
      * <code>sint64 res_balance = 1;</code>
+     * @return The resBalance.
      */
     public long getResBalance() {
       return resBalance_;
@@ -797,6 +833,7 @@ public final class ResourceContract {
     private long elfBalance_;
     /**
      * <code>sint64 elf_balance = 2;</code>
+     * @return The elfBalance.
      */
     public long getElfBalance() {
       return elfBalance_;
@@ -810,6 +847,7 @@ public final class ResourceContract {
      * </pre>
      *
      * <code>sint64 res_weight = 3;</code>
+     * @return The resWeight.
      */
     public long getResWeight() {
       return resWeight_;
@@ -823,6 +861,7 @@ public final class ResourceContract {
      * </pre>
      *
      * <code>sint64 elf_weight = 4;</code>
+     * @return The elfWeight.
      */
     public long getElfWeight() {
       return elfWeight_;
@@ -832,12 +871,14 @@ public final class ResourceContract {
     private int type_;
     /**
      * <code>.ResourceType type = 5;</code>
+     * @return The enum numeric value on the wire for type.
      */
     public int getTypeValue() {
       return type_;
     }
     /**
      * <code>.ResourceType type = 5;</code>
+     * @return The type.
      */
     public io.aelf.protobuf.generated.ResourceContract.ResourceType getType() {
       @SuppressWarnings("deprecation")
@@ -1221,12 +1262,15 @@ public final class ResourceContract {
       private long resBalance_ ;
       /**
        * <code>sint64 res_balance = 1;</code>
+       * @return The resBalance.
        */
       public long getResBalance() {
         return resBalance_;
       }
       /**
        * <code>sint64 res_balance = 1;</code>
+       * @param value The resBalance to set.
+       * @return This builder for chaining.
        */
       public Builder setResBalance(long value) {
         
@@ -1236,6 +1280,7 @@ public final class ResourceContract {
       }
       /**
        * <code>sint64 res_balance = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResBalance() {
         
@@ -1247,12 +1292,15 @@ public final class ResourceContract {
       private long elfBalance_ ;
       /**
        * <code>sint64 elf_balance = 2;</code>
+       * @return The elfBalance.
        */
       public long getElfBalance() {
         return elfBalance_;
       }
       /**
        * <code>sint64 elf_balance = 2;</code>
+       * @param value The elfBalance to set.
+       * @return This builder for chaining.
        */
       public Builder setElfBalance(long value) {
         
@@ -1262,6 +1310,7 @@ public final class ResourceContract {
       }
       /**
        * <code>sint64 elf_balance = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearElfBalance() {
         
@@ -1277,6 +1326,7 @@ public final class ResourceContract {
        * </pre>
        *
        * <code>sint64 res_weight = 3;</code>
+       * @return The resWeight.
        */
       public long getResWeight() {
         return resWeight_;
@@ -1287,6 +1337,8 @@ public final class ResourceContract {
        * </pre>
        *
        * <code>sint64 res_weight = 3;</code>
+       * @param value The resWeight to set.
+       * @return This builder for chaining.
        */
       public Builder setResWeight(long value) {
         
@@ -1300,6 +1352,7 @@ public final class ResourceContract {
        * </pre>
        *
        * <code>sint64 res_weight = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearResWeight() {
         
@@ -1315,6 +1368,7 @@ public final class ResourceContract {
        * </pre>
        *
        * <code>sint64 elf_weight = 4;</code>
+       * @return The elfWeight.
        */
       public long getElfWeight() {
         return elfWeight_;
@@ -1325,6 +1379,8 @@ public final class ResourceContract {
        * </pre>
        *
        * <code>sint64 elf_weight = 4;</code>
+       * @param value The elfWeight to set.
+       * @return This builder for chaining.
        */
       public Builder setElfWeight(long value) {
         
@@ -1338,6 +1394,7 @@ public final class ResourceContract {
        * </pre>
        *
        * <code>sint64 elf_weight = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearElfWeight() {
         
@@ -1349,12 +1406,15 @@ public final class ResourceContract {
       private int type_ = 0;
       /**
        * <code>.ResourceType type = 5;</code>
+       * @return The enum numeric value on the wire for type.
        */
       public int getTypeValue() {
         return type_;
       }
       /**
        * <code>.ResourceType type = 5;</code>
+       * @param value The enum numeric value on the wire for type to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -1363,6 +1423,7 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 5;</code>
+       * @return The type.
        */
       public io.aelf.protobuf.generated.ResourceContract.ResourceType getType() {
         @SuppressWarnings("deprecation")
@@ -1371,6 +1432,8 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 5;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
        */
       public Builder setType(io.aelf.protobuf.generated.ResourceContract.ResourceType value) {
         if (value == null) {
@@ -1383,6 +1446,7 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearType() {
         
@@ -1449,10 +1513,12 @@ public final class ResourceContract {
 
     /**
      * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
      */
     boolean hasAddress();
     /**
      * <code>.Address address = 1;</code>
+     * @return The address.
      */
     io.aelf.protobuf.generated.Client.Address getAddress();
     /**
@@ -1462,10 +1528,12 @@ public final class ResourceContract {
 
     /**
      * <code>.ResourceType type = 2;</code>
+     * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
      * <code>.ResourceType type = 2;</code>
+     * @return The type.
      */
     io.aelf.protobuf.generated.ResourceContract.ResourceType getType();
   }
@@ -1486,6 +1554,13 @@ public final class ResourceContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new UserResourceId();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1498,7 +1573,6 @@ public final class ResourceContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1564,12 +1638,14 @@ public final class ResourceContract {
     private io.aelf.protobuf.generated.Client.Address address_;
     /**
      * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
      */
     public boolean hasAddress() {
       return address_ != null;
     }
     /**
      * <code>.Address address = 1;</code>
+     * @return The address.
      */
     public io.aelf.protobuf.generated.Client.Address getAddress() {
       return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
@@ -1585,12 +1661,14 @@ public final class ResourceContract {
     private int type_;
     /**
      * <code>.ResourceType type = 2;</code>
+     * @return The enum numeric value on the wire for type.
      */
     public int getTypeValue() {
       return type_;
     }
     /**
      * <code>.ResourceType type = 2;</code>
+     * @return The type.
      */
     public io.aelf.protobuf.generated.ResourceContract.ResourceType getType() {
       @SuppressWarnings("deprecation")
@@ -1934,12 +2012,14 @@ public final class ResourceContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> addressBuilder_;
       /**
        * <code>.Address address = 1;</code>
+       * @return Whether the address field is set.
        */
       public boolean hasAddress() {
         return addressBuilder_ != null || address_ != null;
       }
       /**
        * <code>.Address address = 1;</code>
+       * @return The address.
        */
       public io.aelf.protobuf.generated.Client.Address getAddress() {
         if (addressBuilder_ == null) {
@@ -2049,12 +2129,15 @@ public final class ResourceContract {
       private int type_ = 0;
       /**
        * <code>.ResourceType type = 2;</code>
+       * @return The enum numeric value on the wire for type.
        */
       public int getTypeValue() {
         return type_;
       }
       /**
        * <code>.ResourceType type = 2;</code>
+       * @param value The enum numeric value on the wire for type to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -2063,6 +2146,7 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 2;</code>
+       * @return The type.
        */
       public io.aelf.protobuf.generated.ResourceContract.ResourceType getType() {
         @SuppressWarnings("deprecation")
@@ -2071,6 +2155,8 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 2;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
        */
       public Builder setType(io.aelf.protobuf.generated.ResourceContract.ResourceType value) {
         if (value == null) {
@@ -2083,6 +2169,7 @@ public final class ResourceContract {
       }
       /**
        * <code>.ResourceType type = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearType() {
         
@@ -2178,19 +2265,11 @@ public final class ResourceContract {
       "YPE\020\000\022\007\n\003RAM\020\001\022\007\n\003CPU\020\002\022\007\n\003NET\020\003\022\007\n\003STO\020" +
       "\004B\034\n\032io.aelf.protobuf.generatedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           io.aelf.protobuf.generated.Client.getDescriptor(),
-        }, assigner);
+        });
     internal_static_ResourceId_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_ResourceId_fieldAccessorTable = new

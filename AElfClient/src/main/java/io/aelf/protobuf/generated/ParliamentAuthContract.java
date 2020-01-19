@@ -63,6 +63,13 @@ public final class ParliamentAuthContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProposalIdList();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -809,15 +816,18 @@ public final class ParliamentAuthContract {
 
     /**
      * <code>sint32 release_threshold = 1;</code>
+     * @return The releaseThreshold.
      */
     int getReleaseThreshold();
 
     /**
      * <code>.Address organization_address = 2;</code>
+     * @return Whether the organizationAddress field is set.
      */
     boolean hasOrganizationAddress();
     /**
      * <code>.Address organization_address = 2;</code>
+     * @return The organizationAddress.
      */
     io.aelf.protobuf.generated.Client.Address getOrganizationAddress();
     /**
@@ -827,10 +837,12 @@ public final class ParliamentAuthContract {
 
     /**
      * <code>.Hash organization_hash = 3;</code>
+     * @return Whether the organizationHash field is set.
      */
     boolean hasOrganizationHash();
     /**
      * <code>.Hash organization_hash = 3;</code>
+     * @return The organizationHash.
      */
     io.aelf.protobuf.generated.Client.Hash getOrganizationHash();
     /**
@@ -854,6 +866,13 @@ public final class ParliamentAuthContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Organization();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -866,7 +885,6 @@ public final class ParliamentAuthContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -944,6 +962,7 @@ public final class ParliamentAuthContract {
     private int releaseThreshold_;
     /**
      * <code>sint32 release_threshold = 1;</code>
+     * @return The releaseThreshold.
      */
     public int getReleaseThreshold() {
       return releaseThreshold_;
@@ -953,12 +972,14 @@ public final class ParliamentAuthContract {
     private io.aelf.protobuf.generated.Client.Address organizationAddress_;
     /**
      * <code>.Address organization_address = 2;</code>
+     * @return Whether the organizationAddress field is set.
      */
     public boolean hasOrganizationAddress() {
       return organizationAddress_ != null;
     }
     /**
      * <code>.Address organization_address = 2;</code>
+     * @return The organizationAddress.
      */
     public io.aelf.protobuf.generated.Client.Address getOrganizationAddress() {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
@@ -974,12 +995,14 @@ public final class ParliamentAuthContract {
     private io.aelf.protobuf.generated.Client.Hash organizationHash_;
     /**
      * <code>.Hash organization_hash = 3;</code>
+     * @return Whether the organizationHash field is set.
      */
     public boolean hasOrganizationHash() {
       return organizationHash_ != null;
     }
     /**
      * <code>.Hash organization_hash = 3;</code>
+     * @return The organizationHash.
      */
     public io.aelf.protobuf.generated.Client.Hash getOrganizationHash() {
       return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
@@ -1356,12 +1379,15 @@ public final class ParliamentAuthContract {
       private int releaseThreshold_ ;
       /**
        * <code>sint32 release_threshold = 1;</code>
+       * @return The releaseThreshold.
        */
       public int getReleaseThreshold() {
         return releaseThreshold_;
       }
       /**
        * <code>sint32 release_threshold = 1;</code>
+       * @param value The releaseThreshold to set.
+       * @return This builder for chaining.
        */
       public Builder setReleaseThreshold(int value) {
         
@@ -1371,6 +1397,7 @@ public final class ParliamentAuthContract {
       }
       /**
        * <code>sint32 release_threshold = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearReleaseThreshold() {
         
@@ -1384,12 +1411,14 @@ public final class ParliamentAuthContract {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> organizationAddressBuilder_;
       /**
        * <code>.Address organization_address = 2;</code>
+       * @return Whether the organizationAddress field is set.
        */
       public boolean hasOrganizationAddress() {
         return organizationAddressBuilder_ != null || organizationAddress_ != null;
       }
       /**
        * <code>.Address organization_address = 2;</code>
+       * @return The organizationAddress.
        */
       public io.aelf.protobuf.generated.Client.Address getOrganizationAddress() {
         if (organizationAddressBuilder_ == null) {
@@ -1501,12 +1530,14 @@ public final class ParliamentAuthContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> organizationHashBuilder_;
       /**
        * <code>.Hash organization_hash = 3;</code>
+       * @return Whether the organizationHash field is set.
        */
       public boolean hasOrganizationHash() {
         return organizationHashBuilder_ != null || organizationHash_ != null;
       }
       /**
        * <code>.Hash organization_hash = 3;</code>
+       * @return The organizationHash.
        */
       public io.aelf.protobuf.generated.Client.Hash getOrganizationHash() {
         if (organizationHashBuilder_ == null) {
@@ -1692,19 +1723,11 @@ public final class ParliamentAuthContract {
       "\001(\0132\005.HashB\034\n\032io.aelf.protobuf.generated" +
       "b\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           io.aelf.protobuf.generated.Client.getDescriptor(),
-        }, assigner);
+        });
     internal_static_ProposalIdList_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_ProposalIdList_fieldAccessorTable = new

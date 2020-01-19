@@ -1,1 +1,1 @@
-java -cp aelf_sdk_test-jar-with-dependencies.jar;junit-4.12.jar org.junit.runner.JUnitCore io.aelf.test.BlcokChainSdkTest >>junit_log.txt
+java -cp AElfClientTest-jar-with-dependencies.jar;junit-4.12.jar org.junit.runner.JUnitCore io.aelf.test.BlcokChainSdkTest >>junit_log.txt

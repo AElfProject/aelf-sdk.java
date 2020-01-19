@@ -2,7 +2,7 @@ package io.aelf.test;
 
 import io.aelf.schemas.AddPeerInput;
 import io.aelf.schemas.PeerDto;
-import io.aelf.sdk.AelfSdk;
+import io.aelf.sdk.AElfClient;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,21 +12,21 @@ public class NetSdkTest {
 
   static final String HTTPURL = "http://127.0.0.1:8200";
   static final String OPREATIONADDRESS = "127.0.0.1:7003";
-  AelfSdk aelfSdk = null;
+  AElfClient client = null;
 
   @Before
   public void init() {
-    aelfSdk = new AelfSdk(HTTPURL);
+    client = new AElfClient(HTTPURL);
   }
 
   @Test
   public void getNetworkInfo() throws Exception {
-    aelfSdk.getNetSdkObj().getNetworkInfo();
+    Assert.assertTrue(client.getNetworkInfo()!=null);
   }
 
   @Test
   public void getPeer() throws Exception {
-    List<PeerDto> listPeerDto = aelfSdk.getNetSdkObj().getPeers(true);
+    List<PeerDto> listPeerDto = client.getPeers(true);
     Assert.assertTrue(listPeerDto.size() > 0);
   }
 
@@ -34,12 +34,12 @@ public class NetSdkTest {
   public void addPeerTest() throws Exception {
     AddPeerInput addPeerInput = new AddPeerInput();
     addPeerInput.setAddress(OPREATIONADDRESS);
-    Assert.assertTrue(aelfSdk.getNetSdkObj().addPeer(addPeerInput));
+    Assert.assertTrue(client.addPeer(addPeerInput));
   }
 
   @Test
   public void removePeerTest() throws Exception {
-    Assert.assertTrue(aelfSdk.getNetSdkObj().removePeer(OPREATIONADDRESS));
+    Assert.assertTrue(client.removePeer(OPREATIONADDRESS));
   }
 
 

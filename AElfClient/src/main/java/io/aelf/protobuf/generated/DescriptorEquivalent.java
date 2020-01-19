@@ -20,14 +20,18 @@ public final class DescriptorEquivalent {
 
     /**
      * <code>repeated bytes file = 1;</code>
+     * @return A list containing the file.
      */
     java.util.List<com.google.protobuf.ByteString> getFileList();
     /**
      * <code>repeated bytes file = 1;</code>
+     * @return The count of file.
      */
     int getFileCount();
     /**
      * <code>repeated bytes file = 1;</code>
+     * @param index The index of the element to return.
+     * @return The file at the given index.
      */
     com.google.protobuf.ByteString getFile(int index);
   }
@@ -49,6 +53,13 @@ public final class DescriptorEquivalent {
     }
     private FileDescriptorSet() {
       file_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FileDescriptorSet();
     }
 
     @java.lang.Override
@@ -122,6 +133,7 @@ public final class DescriptorEquivalent {
     private java.util.List<com.google.protobuf.ByteString> file_;
     /**
      * <code>repeated bytes file = 1;</code>
+     * @return A list containing the file.
      */
     public java.util.List<com.google.protobuf.ByteString>
         getFileList() {
@@ -129,12 +141,15 @@ public final class DescriptorEquivalent {
     }
     /**
      * <code>repeated bytes file = 1;</code>
+     * @return The count of file.
      */
     public int getFileCount() {
       return file_.size();
     }
     /**
      * <code>repeated bytes file = 1;</code>
+     * @param index The index of the element to return.
+     * @return The file at the given index.
      */
     public com.google.protobuf.ByteString getFile(int index) {
       return file_.get(index);
@@ -475,6 +490,7 @@ public final class DescriptorEquivalent {
       }
       /**
        * <code>repeated bytes file = 1;</code>
+       * @return A list containing the file.
        */
       public java.util.List<com.google.protobuf.ByteString>
           getFileList() {
@@ -483,18 +499,24 @@ public final class DescriptorEquivalent {
       }
       /**
        * <code>repeated bytes file = 1;</code>
+       * @return The count of file.
        */
       public int getFileCount() {
         return file_.size();
       }
       /**
        * <code>repeated bytes file = 1;</code>
+       * @param index The index of the element to return.
+       * @return The file at the given index.
        */
       public com.google.protobuf.ByteString getFile(int index) {
         return file_.get(index);
       }
       /**
        * <code>repeated bytes file = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The file to set.
+       * @return This builder for chaining.
        */
       public Builder setFile(
           int index, com.google.protobuf.ByteString value) {
@@ -508,6 +530,8 @@ public final class DescriptorEquivalent {
       }
       /**
        * <code>repeated bytes file = 1;</code>
+       * @param value The file to add.
+       * @return This builder for chaining.
        */
       public Builder addFile(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -520,6 +544,8 @@ public final class DescriptorEquivalent {
       }
       /**
        * <code>repeated bytes file = 1;</code>
+       * @param values The file to add.
+       * @return This builder for chaining.
        */
       public Builder addAllFile(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -531,6 +557,7 @@ public final class DescriptorEquivalent {
       }
       /**
        * <code>repeated bytes file = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFile() {
         file_ = java.util.Collections.emptyList();
@@ -609,18 +636,10 @@ public final class DescriptorEquivalent {
       "criptorSet\022\014\n\004file\030\001 \003(\014B\034\n\032io.aelf.prot" +
       "obuf.generatedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_FileDescriptorSet_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_FileDescriptorSet_fieldAccessorTable = new

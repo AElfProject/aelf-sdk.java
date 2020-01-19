@@ -49,6 +49,8 @@ public final class Client {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -56,6 +58,10 @@ public final class Client {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static ThresholdCheckType forNumber(int value) {
       switch (value) {
         case 0: return BALANCE;
@@ -118,6 +124,7 @@ public final class Client {
 
     /**
      * <code>bytes value = 1;</code>
+     * @return The value.
      */
     com.google.protobuf.ByteString getValue();
   }
@@ -138,6 +145,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Address();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -150,7 +164,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -202,6 +215,7 @@ public final class Client {
     private com.google.protobuf.ByteString value_;
     /**
      * <code>bytes value = 1;</code>
+     * @return The value.
      */
     public com.google.protobuf.ByteString getValue() {
       return value_;
@@ -512,12 +526,15 @@ public final class Client {
       private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes value = 1;</code>
+       * @return The value.
        */
       public com.google.protobuf.ByteString getValue() {
         return value_;
       }
       /**
        * <code>bytes value = 1;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -530,6 +547,7 @@ public final class Client {
       }
       /**
        * <code>bytes value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -596,6 +614,7 @@ public final class Client {
 
     /**
      * <code>bytes value = 1;</code>
+     * @return The value.
      */
     com.google.protobuf.ByteString getValue();
   }
@@ -616,6 +635,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Hash();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -628,7 +654,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -680,6 +705,7 @@ public final class Client {
     private com.google.protobuf.ByteString value_;
     /**
      * <code>bytes value = 1;</code>
+     * @return The value.
      */
     public com.google.protobuf.ByteString getValue() {
       return value_;
@@ -990,12 +1016,15 @@ public final class Client {
       private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes value = 1;</code>
+       * @return The value.
        */
       public com.google.protobuf.ByteString getValue() {
         return value_;
       }
       /**
        * <code>bytes value = 1;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1008,6 +1037,7 @@ public final class Client {
       }
       /**
        * <code>bytes value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -1110,6 +1140,13 @@ public final class Client {
     }
     private MerklePath() {
       merklePathNodes_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MerklePath();
     }
 
     @java.lang.Override
@@ -1855,10 +1892,12 @@ public final class Client {
 
     /**
      * <code>.Hash hash = 1;</code>
+     * @return Whether the hash field is set.
      */
     boolean hasHash();
     /**
      * <code>.Hash hash = 1;</code>
+     * @return The hash.
      */
     io.aelf.protobuf.generated.Client.Hash getHash();
     /**
@@ -1868,6 +1907,7 @@ public final class Client {
 
     /**
      * <code>bool is_left_child_node = 2;</code>
+     * @return The isLeftChildNode.
      */
     boolean getIsLeftChildNode();
   }
@@ -1887,6 +1927,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MerklePathNode();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1899,7 +1946,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1964,12 +2010,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash hash_;
     /**
      * <code>.Hash hash = 1;</code>
+     * @return Whether the hash field is set.
      */
     public boolean hasHash() {
       return hash_ != null;
     }
     /**
      * <code>.Hash hash = 1;</code>
+     * @return The hash.
      */
     public io.aelf.protobuf.generated.Client.Hash getHash() {
       return hash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : hash_;
@@ -1985,6 +2033,7 @@ public final class Client {
     private boolean isLeftChildNode_;
     /**
      * <code>bool is_left_child_node = 2;</code>
+     * @return The isLeftChildNode.
      */
     public boolean getIsLeftChildNode() {
       return isLeftChildNode_;
@@ -2328,12 +2377,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> hashBuilder_;
       /**
        * <code>.Hash hash = 1;</code>
+       * @return Whether the hash field is set.
        */
       public boolean hasHash() {
         return hashBuilder_ != null || hash_ != null;
       }
       /**
        * <code>.Hash hash = 1;</code>
+       * @return The hash.
        */
       public io.aelf.protobuf.generated.Client.Hash getHash() {
         if (hashBuilder_ == null) {
@@ -2443,12 +2494,15 @@ public final class Client {
       private boolean isLeftChildNode_ ;
       /**
        * <code>bool is_left_child_node = 2;</code>
+       * @return The isLeftChildNode.
        */
       public boolean getIsLeftChildNode() {
         return isLeftChildNode_;
       }
       /**
        * <code>bool is_left_child_node = 2;</code>
+       * @param value The isLeftChildNode to set.
+       * @return This builder for chaining.
        */
       public Builder setIsLeftChildNode(boolean value) {
         
@@ -2458,6 +2512,7 @@ public final class Client {
       }
       /**
        * <code>bool is_left_child_node = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsLeftChildNode() {
         
@@ -2548,10 +2603,12 @@ public final class Client {
 
     /**
      * <code>.Hash root = 2;</code>
+     * @return Whether the root field is set.
      */
     boolean hasRoot();
     /**
      * <code>.Hash root = 2;</code>
+     * @return The root.
      */
     io.aelf.protobuf.generated.Client.Hash getRoot();
     /**
@@ -2561,6 +2618,7 @@ public final class Client {
 
     /**
      * <code>int32 leaf_count = 3;</code>
+     * @return The leafCount.
      */
     int getLeafCount();
   }
@@ -2578,6 +2636,13 @@ public final class Client {
     }
     private BinaryMerkleTree() {
       nodes_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new BinaryMerkleTree();
     }
 
     @java.lang.Override
@@ -2666,7 +2731,6 @@ public final class Client {
               io.aelf.protobuf.generated.Client.BinaryMerkleTree.class, io.aelf.protobuf.generated.Client.BinaryMerkleTree.Builder.class);
     }
 
-    private int bitField0_;
     public static final int NODES_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> nodes_;
     /**
@@ -2706,12 +2770,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash root_;
     /**
      * <code>.Hash root = 2;</code>
+     * @return Whether the root field is set.
      */
     public boolean hasRoot() {
       return root_ != null;
     }
     /**
      * <code>.Hash root = 2;</code>
+     * @return The root.
      */
     public io.aelf.protobuf.generated.Client.Hash getRoot() {
       return root_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : root_;
@@ -2727,6 +2793,7 @@ public final class Client {
     private int leafCount_;
     /**
      * <code>int32 leaf_count = 3;</code>
+     * @return The leafCount.
      */
     public int getLeafCount() {
       return leafCount_;
@@ -2996,7 +3063,6 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.BinaryMerkleTree buildPartial() {
         io.aelf.protobuf.generated.Client.BinaryMerkleTree result = new io.aelf.protobuf.generated.Client.BinaryMerkleTree(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (nodesBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             nodes_ = java.util.Collections.unmodifiableList(nodes_);
@@ -3012,7 +3078,6 @@ public final class Client {
           result.root_ = rootBuilder_.build();
         }
         result.leafCount_ = leafCount_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3368,12 +3433,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> rootBuilder_;
       /**
        * <code>.Hash root = 2;</code>
+       * @return Whether the root field is set.
        */
       public boolean hasRoot() {
         return rootBuilder_ != null || root_ != null;
       }
       /**
        * <code>.Hash root = 2;</code>
+       * @return The root.
        */
       public io.aelf.protobuf.generated.Client.Hash getRoot() {
         if (rootBuilder_ == null) {
@@ -3483,12 +3550,15 @@ public final class Client {
       private int leafCount_ ;
       /**
        * <code>int32 leaf_count = 3;</code>
+       * @return The leafCount.
        */
       public int getLeafCount() {
         return leafCount_;
       }
       /**
        * <code>int32 leaf_count = 3;</code>
+       * @param value The leafCount to set.
+       * @return This builder for chaining.
        */
       public Builder setLeafCount(int value) {
         
@@ -3498,6 +3568,7 @@ public final class Client {
       }
       /**
        * <code>int32 leaf_count = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLeafCount() {
         
@@ -3564,10 +3635,12 @@ public final class Client {
 
     /**
      * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
      */
     boolean hasAddress();
     /**
      * <code>.Address address = 1;</code>
+     * @return The address.
      */
     io.aelf.protobuf.generated.Client.Address getAddress();
     /**
@@ -3577,10 +3650,12 @@ public final class Client {
 
     /**
      * <code>.StatePath path = 2;</code>
+     * @return Whether the path field is set.
      */
     boolean hasPath();
     /**
      * <code>.StatePath path = 2;</code>
+     * @return The path.
      */
     io.aelf.protobuf.generated.Client.StatePath getPath();
     /**
@@ -3604,6 +3679,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ScopedStatePath();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -3616,7 +3698,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -3689,12 +3770,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Address address_;
     /**
      * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
      */
     public boolean hasAddress() {
       return address_ != null;
     }
     /**
      * <code>.Address address = 1;</code>
+     * @return The address.
      */
     public io.aelf.protobuf.generated.Client.Address getAddress() {
       return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
@@ -3710,12 +3793,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.StatePath path_;
     /**
      * <code>.StatePath path = 2;</code>
+     * @return Whether the path field is set.
      */
     public boolean hasPath() {
       return path_ != null;
     }
     /**
      * <code>.StatePath path = 2;</code>
+     * @return The path.
      */
     public io.aelf.protobuf.generated.Client.StatePath getPath() {
       return path_ == null ? io.aelf.protobuf.generated.Client.StatePath.getDefaultInstance() : path_;
@@ -4077,12 +4162,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> addressBuilder_;
       /**
        * <code>.Address address = 1;</code>
+       * @return Whether the address field is set.
        */
       public boolean hasAddress() {
         return addressBuilder_ != null || address_ != null;
       }
       /**
        * <code>.Address address = 1;</code>
+       * @return The address.
        */
       public io.aelf.protobuf.generated.Client.Address getAddress() {
         if (addressBuilder_ == null) {
@@ -4194,12 +4281,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.StatePath, io.aelf.protobuf.generated.Client.StatePath.Builder, io.aelf.protobuf.generated.Client.StatePathOrBuilder> pathBuilder_;
       /**
        * <code>.StatePath path = 2;</code>
+       * @return Whether the path field is set.
        */
       public boolean hasPath() {
         return pathBuilder_ != null || path_ != null;
       }
       /**
        * <code>.StatePath path = 2;</code>
+       * @return The path.
        */
       public io.aelf.protobuf.generated.Client.StatePath getPath() {
         if (pathBuilder_ == null) {
@@ -4364,19 +4453,25 @@ public final class Client {
 
     /**
      * <code>repeated string parts = 1;</code>
+     * @return A list containing the parts.
      */
     java.util.List<java.lang.String>
         getPartsList();
     /**
      * <code>repeated string parts = 1;</code>
+     * @return The count of parts.
      */
     int getPartsCount();
     /**
      * <code>repeated string parts = 1;</code>
+     * @param index The index of the element to return.
+     * @return The parts at the given index.
      */
     java.lang.String getParts(int index);
     /**
      * <code>repeated string parts = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the parts at the given index.
      */
     com.google.protobuf.ByteString
         getPartsBytes(int index);
@@ -4395,6 +4490,13 @@ public final class Client {
     }
     private StatePath() {
       parts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new StatePath();
     }
 
     @java.lang.Override
@@ -4469,6 +4571,7 @@ public final class Client {
     private com.google.protobuf.LazyStringList parts_;
     /**
      * <code>repeated string parts = 1;</code>
+     * @return A list containing the parts.
      */
     public com.google.protobuf.ProtocolStringList
         getPartsList() {
@@ -4476,18 +4579,23 @@ public final class Client {
     }
     /**
      * <code>repeated string parts = 1;</code>
+     * @return The count of parts.
      */
     public int getPartsCount() {
       return parts_.size();
     }
     /**
      * <code>repeated string parts = 1;</code>
+     * @param index The index of the element to return.
+     * @return The parts at the given index.
      */
     public java.lang.String getParts(int index) {
       return parts_.get(index);
     }
     /**
      * <code>repeated string parts = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the parts at the given index.
      */
     public com.google.protobuf.ByteString
         getPartsBytes(int index) {
@@ -4824,6 +4932,7 @@ public final class Client {
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @return A list containing the parts.
        */
       public com.google.protobuf.ProtocolStringList
           getPartsList() {
@@ -4831,18 +4940,23 @@ public final class Client {
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @return The count of parts.
        */
       public int getPartsCount() {
         return parts_.size();
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @param index The index of the element to return.
+       * @return The parts at the given index.
        */
       public java.lang.String getParts(int index) {
         return parts_.get(index);
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the parts at the given index.
        */
       public com.google.protobuf.ByteString
           getPartsBytes(int index) {
@@ -4850,6 +4964,9 @@ public final class Client {
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The parts to set.
+       * @return This builder for chaining.
        */
       public Builder setParts(
           int index, java.lang.String value) {
@@ -4863,6 +4980,8 @@ public final class Client {
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @param value The parts to add.
+       * @return This builder for chaining.
        */
       public Builder addParts(
           java.lang.String value) {
@@ -4876,6 +4995,8 @@ public final class Client {
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @param values The parts to add.
+       * @return This builder for chaining.
        */
       public Builder addAllParts(
           java.lang.Iterable<java.lang.String> values) {
@@ -4887,6 +5008,7 @@ public final class Client {
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearParts() {
         parts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -4896,6 +5018,8 @@ public final class Client {
       }
       /**
        * <code>repeated string parts = 1;</code>
+       * @param value The bytes of the parts to add.
+       * @return This builder for chaining.
        */
       public Builder addPartsBytes(
           com.google.protobuf.ByteString value) {
@@ -4967,20 +5091,24 @@ public final class Client {
 
     /**
      * <code>int32 category = 1;</code>
+     * @return The category.
      */
     int getCategory();
 
     /**
      * <code>bytes code = 2;</code>
+     * @return The code.
      */
     com.google.protobuf.ByteString getCode();
 
     /**
      * <code>.Hash code_hash = 3;</code>
+     * @return Whether the codeHash field is set.
      */
     boolean hasCodeHash();
     /**
      * <code>.Hash code_hash = 3;</code>
+     * @return The codeHash.
      */
     io.aelf.protobuf.generated.Client.Hash getCodeHash();
     /**
@@ -5005,6 +5133,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SmartContractRegistration();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -5017,7 +5152,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5087,6 +5221,7 @@ public final class Client {
     private int category_;
     /**
      * <code>int32 category = 1;</code>
+     * @return The category.
      */
     public int getCategory() {
       return category_;
@@ -5096,6 +5231,7 @@ public final class Client {
     private com.google.protobuf.ByteString code_;
     /**
      * <code>bytes code = 2;</code>
+     * @return The code.
      */
     public com.google.protobuf.ByteString getCode() {
       return code_;
@@ -5105,12 +5241,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash codeHash_;
     /**
      * <code>.Hash code_hash = 3;</code>
+     * @return Whether the codeHash field is set.
      */
     public boolean hasCodeHash() {
       return codeHash_ != null;
     }
     /**
      * <code>.Hash code_hash = 3;</code>
+     * @return The codeHash.
      */
     public io.aelf.protobuf.generated.Client.Hash getCodeHash() {
       return codeHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : codeHash_;
@@ -5474,12 +5612,15 @@ public final class Client {
       private int category_ ;
       /**
        * <code>int32 category = 1;</code>
+       * @return The category.
        */
       public int getCategory() {
         return category_;
       }
       /**
        * <code>int32 category = 1;</code>
+       * @param value The category to set.
+       * @return This builder for chaining.
        */
       public Builder setCategory(int value) {
         
@@ -5489,6 +5630,7 @@ public final class Client {
       }
       /**
        * <code>int32 category = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCategory() {
         
@@ -5500,12 +5642,15 @@ public final class Client {
       private com.google.protobuf.ByteString code_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes code = 2;</code>
+       * @return The code.
        */
       public com.google.protobuf.ByteString getCode() {
         return code_;
       }
       /**
        * <code>bytes code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
        */
       public Builder setCode(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -5518,6 +5663,7 @@ public final class Client {
       }
       /**
        * <code>bytes code = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCode() {
         
@@ -5531,12 +5677,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> codeHashBuilder_;
       /**
        * <code>.Hash code_hash = 3;</code>
+       * @return Whether the codeHash field is set.
        */
       public boolean hasCodeHash() {
         return codeHashBuilder_ != null || codeHash_ != null;
       }
       /**
        * <code>.Hash code_hash = 3;</code>
+       * @return The codeHash.
        */
       public io.aelf.protobuf.generated.Client.Hash getCodeHash() {
         if (codeHashBuilder_ == null) {
@@ -5701,20 +5849,24 @@ public final class Client {
 
     /**
      * <code>uint64 serial_number = 1;</code>
+     * @return The serialNumber.
      */
     long getSerialNumber();
 
     /**
      * <code>int32 category = 3;</code>
+     * @return The category.
      */
     int getCategory();
 
     /**
      * <code>.Hash code_hash = 4;</code>
+     * @return Whether the codeHash field is set.
      */
     boolean hasCodeHash();
     /**
      * <code>.Hash code_hash = 4;</code>
+     * @return The codeHash.
      */
     io.aelf.protobuf.generated.Client.Hash getCodeHash();
     /**
@@ -5724,6 +5876,7 @@ public final class Client {
 
     /**
      * <code>bool is_system_contract = 5;</code>
+     * @return The isSystemContract.
      */
     boolean getIsSystemContract();
   }
@@ -5747,6 +5900,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ContractInfo();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -5759,7 +5919,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5834,6 +5993,7 @@ public final class Client {
     private long serialNumber_;
     /**
      * <code>uint64 serial_number = 1;</code>
+     * @return The serialNumber.
      */
     public long getSerialNumber() {
       return serialNumber_;
@@ -5843,6 +6003,7 @@ public final class Client {
     private int category_;
     /**
      * <code>int32 category = 3;</code>
+     * @return The category.
      */
     public int getCategory() {
       return category_;
@@ -5852,12 +6013,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash codeHash_;
     /**
      * <code>.Hash code_hash = 4;</code>
+     * @return Whether the codeHash field is set.
      */
     public boolean hasCodeHash() {
       return codeHash_ != null;
     }
     /**
      * <code>.Hash code_hash = 4;</code>
+     * @return The codeHash.
      */
     public io.aelf.protobuf.generated.Client.Hash getCodeHash() {
       return codeHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : codeHash_;
@@ -5873,6 +6036,7 @@ public final class Client {
     private boolean isSystemContract_;
     /**
      * <code>bool is_system_contract = 5;</code>
+     * @return The isSystemContract.
      */
     public boolean getIsSystemContract() {
       return isSystemContract_;
@@ -6253,12 +6417,15 @@ public final class Client {
       private long serialNumber_ ;
       /**
        * <code>uint64 serial_number = 1;</code>
+       * @return The serialNumber.
        */
       public long getSerialNumber() {
         return serialNumber_;
       }
       /**
        * <code>uint64 serial_number = 1;</code>
+       * @param value The serialNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setSerialNumber(long value) {
         
@@ -6268,6 +6435,7 @@ public final class Client {
       }
       /**
        * <code>uint64 serial_number = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSerialNumber() {
         
@@ -6279,12 +6447,15 @@ public final class Client {
       private int category_ ;
       /**
        * <code>int32 category = 3;</code>
+       * @return The category.
        */
       public int getCategory() {
         return category_;
       }
       /**
        * <code>int32 category = 3;</code>
+       * @param value The category to set.
+       * @return This builder for chaining.
        */
       public Builder setCategory(int value) {
         
@@ -6294,6 +6465,7 @@ public final class Client {
       }
       /**
        * <code>int32 category = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCategory() {
         
@@ -6307,12 +6479,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> codeHashBuilder_;
       /**
        * <code>.Hash code_hash = 4;</code>
+       * @return Whether the codeHash field is set.
        */
       public boolean hasCodeHash() {
         return codeHashBuilder_ != null || codeHash_ != null;
       }
       /**
        * <code>.Hash code_hash = 4;</code>
+       * @return The codeHash.
        */
       public io.aelf.protobuf.generated.Client.Hash getCodeHash() {
         if (codeHashBuilder_ == null) {
@@ -6422,12 +6596,15 @@ public final class Client {
       private boolean isSystemContract_ ;
       /**
        * <code>bool is_system_contract = 5;</code>
+       * @return The isSystemContract.
        */
       public boolean getIsSystemContract() {
         return isSystemContract_;
       }
       /**
        * <code>bool is_system_contract = 5;</code>
+       * @param value The isSystemContract to set.
+       * @return This builder for chaining.
        */
       public Builder setIsSystemContract(boolean value) {
         
@@ -6437,6 +6614,7 @@ public final class Client {
       }
       /**
        * <code>bool is_system_contract = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsSystemContract() {
         
@@ -6503,10 +6681,12 @@ public final class Client {
 
     /**
      * <code>string method_name = 1;</code>
+     * @return The methodName.
      */
     java.lang.String getMethodName();
     /**
      * <code>string method_name = 1;</code>
+     * @return The bytes for methodName.
      */
     com.google.protobuf.ByteString
         getMethodNameBytes();
@@ -6557,6 +6737,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MethodFees();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -6587,9 +6774,9 @@ public final class Client {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 fees_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.MethodFee>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               fees_.add(
                   input.readMessage(io.aelf.protobuf.generated.Client.MethodFee.parser(), extensionRegistry));
@@ -6610,7 +6797,7 @@ public final class Client {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           fees_ = java.util.Collections.unmodifiableList(fees_);
         }
         this.unknownFields = unknownFields.build();
@@ -6630,11 +6817,11 @@ public final class Client {
               io.aelf.protobuf.generated.Client.MethodFees.class, io.aelf.protobuf.generated.Client.MethodFees.Builder.class);
     }
 
-    private int bitField0_;
     public static final int METHOD_NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object methodName_;
     /**
      * <code>string method_name = 1;</code>
+     * @return The methodName.
      */
     public java.lang.String getMethodName() {
       java.lang.Object ref = methodName_;
@@ -6650,6 +6837,7 @@ public final class Client {
     }
     /**
      * <code>string method_name = 1;</code>
+     * @return The bytes for methodName.
      */
     public com.google.protobuf.ByteString
         getMethodNameBytes() {
@@ -6914,7 +7102,7 @@ public final class Client {
 
         if (feesBuilder_ == null) {
           fees_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           feesBuilder_.clear();
         }
@@ -6945,18 +7133,16 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.MethodFees buildPartial() {
         io.aelf.protobuf.generated.Client.MethodFees result = new io.aelf.protobuf.generated.Client.MethodFees(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.methodName_ = methodName_;
         if (feesBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             fees_ = java.util.Collections.unmodifiableList(fees_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.fees_ = fees_;
         } else {
           result.fees_ = feesBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -7013,7 +7199,7 @@ public final class Client {
           if (!other.fees_.isEmpty()) {
             if (fees_.isEmpty()) {
               fees_ = other.fees_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureFeesIsMutable();
               fees_.addAll(other.fees_);
@@ -7026,7 +7212,7 @@ public final class Client {
               feesBuilder_.dispose();
               feesBuilder_ = null;
               fees_ = other.fees_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               feesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getFeesFieldBuilder() : null;
@@ -7068,6 +7254,7 @@ public final class Client {
       private java.lang.Object methodName_ = "";
       /**
        * <code>string method_name = 1;</code>
+       * @return The methodName.
        */
       public java.lang.String getMethodName() {
         java.lang.Object ref = methodName_;
@@ -7083,6 +7270,7 @@ public final class Client {
       }
       /**
        * <code>string method_name = 1;</code>
+       * @return The bytes for methodName.
        */
       public com.google.protobuf.ByteString
           getMethodNameBytes() {
@@ -7099,6 +7287,8 @@ public final class Client {
       }
       /**
        * <code>string method_name = 1;</code>
+       * @param value The methodName to set.
+       * @return This builder for chaining.
        */
       public Builder setMethodName(
           java.lang.String value) {
@@ -7112,6 +7302,7 @@ public final class Client {
       }
       /**
        * <code>string method_name = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMethodName() {
         
@@ -7121,6 +7312,8 @@ public final class Client {
       }
       /**
        * <code>string method_name = 1;</code>
+       * @param value The bytes for methodName to set.
+       * @return This builder for chaining.
        */
       public Builder setMethodNameBytes(
           com.google.protobuf.ByteString value) {
@@ -7137,9 +7330,9 @@ public final class Client {
       private java.util.List<io.aelf.protobuf.generated.Client.MethodFee> fees_ =
         java.util.Collections.emptyList();
       private void ensureFeesIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           fees_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.MethodFee>(fees_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -7289,7 +7482,7 @@ public final class Client {
       public Builder clearFees() {
         if (feesBuilder_ == null) {
           fees_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           feesBuilder_.clear();
@@ -7366,7 +7559,7 @@ public final class Client {
           feesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.Client.MethodFee, io.aelf.protobuf.generated.Client.MethodFee.Builder, io.aelf.protobuf.generated.Client.MethodFeeOrBuilder>(
                   fees_,
-                  ((bitField0_ & 0x00000002) != 0),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           fees_ = null;
@@ -7432,16 +7625,19 @@ public final class Client {
 
     /**
      * <code>string symbol = 1;</code>
+     * @return The symbol.
      */
     java.lang.String getSymbol();
     /**
      * <code>string symbol = 1;</code>
+     * @return The bytes for symbol.
      */
     com.google.protobuf.ByteString
         getSymbolBytes();
 
     /**
      * <code>sint64 basic_fee = 2;</code>
+     * @return The basicFee.
      */
     long getBasicFee();
   }
@@ -7462,6 +7658,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MethodFee();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -7474,7 +7677,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -7532,6 +7734,7 @@ public final class Client {
     private volatile java.lang.Object symbol_;
     /**
      * <code>string symbol = 1;</code>
+     * @return The symbol.
      */
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
@@ -7547,6 +7750,7 @@ public final class Client {
     }
     /**
      * <code>string symbol = 1;</code>
+     * @return The bytes for symbol.
      */
     public com.google.protobuf.ByteString
         getSymbolBytes() {
@@ -7566,6 +7770,7 @@ public final class Client {
     private long basicFee_;
     /**
      * <code>sint64 basic_fee = 2;</code>
+     * @return The basicFee.
      */
     public long getBasicFee() {
       return basicFee_;
@@ -7894,6 +8099,7 @@ public final class Client {
       private java.lang.Object symbol_ = "";
       /**
        * <code>string symbol = 1;</code>
+       * @return The symbol.
        */
       public java.lang.String getSymbol() {
         java.lang.Object ref = symbol_;
@@ -7909,6 +8115,7 @@ public final class Client {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @return The bytes for symbol.
        */
       public com.google.protobuf.ByteString
           getSymbolBytes() {
@@ -7925,6 +8132,8 @@ public final class Client {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @param value The symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbol(
           java.lang.String value) {
@@ -7938,6 +8147,7 @@ public final class Client {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSymbol() {
         
@@ -7947,6 +8157,8 @@ public final class Client {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @param value The bytes for symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
@@ -7963,12 +8175,15 @@ public final class Client {
       private long basicFee_ ;
       /**
        * <code>sint64 basic_fee = 2;</code>
+       * @return The basicFee.
        */
       public long getBasicFee() {
         return basicFee_;
       }
       /**
        * <code>sint64 basic_fee = 2;</code>
+       * @param value The basicFee to set.
+       * @return This builder for chaining.
        */
       public Builder setBasicFee(long value) {
         
@@ -7978,6 +8193,7 @@ public final class Client {
       }
       /**
        * <code>sint64 basic_fee = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearBasicFee() {
         
@@ -8068,6 +8284,7 @@ public final class Client {
 
     /**
      * <code>bool non_parallelizable = 2;</code>
+     * @return The nonParallelizable.
      */
     boolean getNonParallelizable();
   }
@@ -8089,6 +8306,13 @@ public final class Client {
     }
     private ResourceInfo() {
       paths_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ResourceInfo();
     }
 
     @java.lang.Override
@@ -8164,7 +8388,6 @@ public final class Client {
               io.aelf.protobuf.generated.Client.ResourceInfo.class, io.aelf.protobuf.generated.Client.ResourceInfo.Builder.class);
     }
 
-    private int bitField0_;
     public static final int PATHS_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> paths_;
     /**
@@ -8204,6 +8427,7 @@ public final class Client {
     private boolean nonParallelizable_;
     /**
      * <code>bool non_parallelizable = 2;</code>
+     * @return The nonParallelizable.
      */
     public boolean getNonParallelizable() {
       return nonParallelizable_;
@@ -8456,7 +8680,6 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.ResourceInfo buildPartial() {
         io.aelf.protobuf.generated.Client.ResourceInfo result = new io.aelf.protobuf.generated.Client.ResourceInfo(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (pathsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             paths_ = java.util.Collections.unmodifiableList(paths_);
@@ -8467,7 +8690,6 @@ public final class Client {
           result.paths_ = pathsBuilder_.build();
         }
         result.nonParallelizable_ = nonParallelizable_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -8818,12 +9040,15 @@ public final class Client {
       private boolean nonParallelizable_ ;
       /**
        * <code>bool non_parallelizable = 2;</code>
+       * @return The nonParallelizable.
        */
       public boolean getNonParallelizable() {
         return nonParallelizable_;
       }
       /**
        * <code>bool non_parallelizable = 2;</code>
+       * @param value The nonParallelizable to set.
+       * @return This builder for chaining.
        */
       public Builder setNonParallelizable(boolean value) {
         
@@ -8833,6 +9058,7 @@ public final class Client {
       }
       /**
        * <code>bool non_parallelizable = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearNonParallelizable() {
         
@@ -8899,10 +9125,12 @@ public final class Client {
 
     /**
      * <code>.Hash proposal_id = 1;</code>
+     * @return Whether the proposalId field is set.
      */
     boolean hasProposalId();
     /**
      * <code>.Hash proposal_id = 1;</code>
+     * @return The proposalId.
      */
     io.aelf.protobuf.generated.Client.Hash getProposalId();
     /**
@@ -8912,20 +9140,24 @@ public final class Client {
 
     /**
      * <code>string contract_method_name = 2;</code>
+     * @return The contractMethodName.
      */
     java.lang.String getContractMethodName();
     /**
      * <code>string contract_method_name = 2;</code>
+     * @return The bytes for contractMethodName.
      */
     com.google.protobuf.ByteString
         getContractMethodNameBytes();
 
     /**
      * <code>.Address to_address = 3;</code>
+     * @return Whether the toAddress field is set.
      */
     boolean hasToAddress();
     /**
      * <code>.Address to_address = 3;</code>
+     * @return The toAddress.
      */
     io.aelf.protobuf.generated.Client.Address getToAddress();
     /**
@@ -8935,15 +9167,18 @@ public final class Client {
 
     /**
      * <code>bytes params = 4;</code>
+     * @return The params.
      */
     com.google.protobuf.ByteString getParams();
 
     /**
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
+     * @return Whether the expiredTime field is set.
      */
     boolean hasExpiredTime();
     /**
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
+     * @return The expiredTime.
      */
     com.google.protobuf.Timestamp getExpiredTime();
     /**
@@ -8953,10 +9188,12 @@ public final class Client {
 
     /**
      * <code>.Address organization_address = 6;</code>
+     * @return Whether the organizationAddress field is set.
      */
     boolean hasOrganizationAddress();
     /**
      * <code>.Address organization_address = 6;</code>
+     * @return The organizationAddress.
      */
     io.aelf.protobuf.generated.Client.Address getOrganizationAddress();
     /**
@@ -8966,10 +9203,12 @@ public final class Client {
 
     /**
      * <code>.Address proposer = 7;</code>
+     * @return Whether the proposer field is set.
      */
     boolean hasProposer();
     /**
      * <code>.Address proposer = 7;</code>
+     * @return The proposer.
      */
     io.aelf.protobuf.generated.Client.Address getProposer();
     /**
@@ -8979,6 +9218,7 @@ public final class Client {
 
     /**
      * <code>bool to_be_released = 8;</code>
+     * @return The toBeReleased.
      */
     boolean getToBeReleased();
   }
@@ -9004,6 +9244,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProposalOutput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -9016,7 +9263,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -9144,12 +9390,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash proposalId_;
     /**
      * <code>.Hash proposal_id = 1;</code>
+     * @return Whether the proposalId field is set.
      */
     public boolean hasProposalId() {
       return proposalId_ != null;
     }
     /**
      * <code>.Hash proposal_id = 1;</code>
+     * @return The proposalId.
      */
     public io.aelf.protobuf.generated.Client.Hash getProposalId() {
       return proposalId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : proposalId_;
@@ -9165,6 +9413,7 @@ public final class Client {
     private volatile java.lang.Object contractMethodName_;
     /**
      * <code>string contract_method_name = 2;</code>
+     * @return The contractMethodName.
      */
     public java.lang.String getContractMethodName() {
       java.lang.Object ref = contractMethodName_;
@@ -9180,6 +9429,7 @@ public final class Client {
     }
     /**
      * <code>string contract_method_name = 2;</code>
+     * @return The bytes for contractMethodName.
      */
     public com.google.protobuf.ByteString
         getContractMethodNameBytes() {
@@ -9199,12 +9449,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Address toAddress_;
     /**
      * <code>.Address to_address = 3;</code>
+     * @return Whether the toAddress field is set.
      */
     public boolean hasToAddress() {
       return toAddress_ != null;
     }
     /**
      * <code>.Address to_address = 3;</code>
+     * @return The toAddress.
      */
     public io.aelf.protobuf.generated.Client.Address getToAddress() {
       return toAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : toAddress_;
@@ -9220,6 +9472,7 @@ public final class Client {
     private com.google.protobuf.ByteString params_;
     /**
      * <code>bytes params = 4;</code>
+     * @return The params.
      */
     public com.google.protobuf.ByteString getParams() {
       return params_;
@@ -9229,12 +9482,14 @@ public final class Client {
     private com.google.protobuf.Timestamp expiredTime_;
     /**
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
+     * @return Whether the expiredTime field is set.
      */
     public boolean hasExpiredTime() {
       return expiredTime_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
+     * @return The expiredTime.
      */
     public com.google.protobuf.Timestamp getExpiredTime() {
       return expiredTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiredTime_;
@@ -9250,12 +9505,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Address organizationAddress_;
     /**
      * <code>.Address organization_address = 6;</code>
+     * @return Whether the organizationAddress field is set.
      */
     public boolean hasOrganizationAddress() {
       return organizationAddress_ != null;
     }
     /**
      * <code>.Address organization_address = 6;</code>
+     * @return The organizationAddress.
      */
     public io.aelf.protobuf.generated.Client.Address getOrganizationAddress() {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
@@ -9271,12 +9528,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Address proposer_;
     /**
      * <code>.Address proposer = 7;</code>
+     * @return Whether the proposer field is set.
      */
     public boolean hasProposer() {
       return proposer_ != null;
     }
     /**
      * <code>.Address proposer = 7;</code>
+     * @return The proposer.
      */
     public io.aelf.protobuf.generated.Client.Address getProposer() {
       return proposer_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : proposer_;
@@ -9292,6 +9551,7 @@ public final class Client {
     private boolean toBeReleased_;
     /**
      * <code>bool to_be_released = 8;</code>
+     * @return The toBeReleased.
      */
     public boolean getToBeReleased() {
       return toBeReleased_;
@@ -9793,12 +10053,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> proposalIdBuilder_;
       /**
        * <code>.Hash proposal_id = 1;</code>
+       * @return Whether the proposalId field is set.
        */
       public boolean hasProposalId() {
         return proposalIdBuilder_ != null || proposalId_ != null;
       }
       /**
        * <code>.Hash proposal_id = 1;</code>
+       * @return The proposalId.
        */
       public io.aelf.protobuf.generated.Client.Hash getProposalId() {
         if (proposalIdBuilder_ == null) {
@@ -9908,6 +10170,7 @@ public final class Client {
       private java.lang.Object contractMethodName_ = "";
       /**
        * <code>string contract_method_name = 2;</code>
+       * @return The contractMethodName.
        */
       public java.lang.String getContractMethodName() {
         java.lang.Object ref = contractMethodName_;
@@ -9923,6 +10186,7 @@ public final class Client {
       }
       /**
        * <code>string contract_method_name = 2;</code>
+       * @return The bytes for contractMethodName.
        */
       public com.google.protobuf.ByteString
           getContractMethodNameBytes() {
@@ -9939,6 +10203,8 @@ public final class Client {
       }
       /**
        * <code>string contract_method_name = 2;</code>
+       * @param value The contractMethodName to set.
+       * @return This builder for chaining.
        */
       public Builder setContractMethodName(
           java.lang.String value) {
@@ -9952,6 +10218,7 @@ public final class Client {
       }
       /**
        * <code>string contract_method_name = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearContractMethodName() {
         
@@ -9961,6 +10228,8 @@ public final class Client {
       }
       /**
        * <code>string contract_method_name = 2;</code>
+       * @param value The bytes for contractMethodName to set.
+       * @return This builder for chaining.
        */
       public Builder setContractMethodNameBytes(
           com.google.protobuf.ByteString value) {
@@ -9979,12 +10248,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> toAddressBuilder_;
       /**
        * <code>.Address to_address = 3;</code>
+       * @return Whether the toAddress field is set.
        */
       public boolean hasToAddress() {
         return toAddressBuilder_ != null || toAddress_ != null;
       }
       /**
        * <code>.Address to_address = 3;</code>
+       * @return The toAddress.
        */
       public io.aelf.protobuf.generated.Client.Address getToAddress() {
         if (toAddressBuilder_ == null) {
@@ -10094,12 +10365,15 @@ public final class Client {
       private com.google.protobuf.ByteString params_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes params = 4;</code>
+       * @return The params.
        */
       public com.google.protobuf.ByteString getParams() {
         return params_;
       }
       /**
        * <code>bytes params = 4;</code>
+       * @param value The params to set.
+       * @return This builder for chaining.
        */
       public Builder setParams(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -10112,6 +10386,7 @@ public final class Client {
       }
       /**
        * <code>bytes params = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearParams() {
         
@@ -10125,12 +10400,14 @@ public final class Client {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expiredTimeBuilder_;
       /**
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
+       * @return Whether the expiredTime field is set.
        */
       public boolean hasExpiredTime() {
         return expiredTimeBuilder_ != null || expiredTime_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
+       * @return The expiredTime.
        */
       public com.google.protobuf.Timestamp getExpiredTime() {
         if (expiredTimeBuilder_ == null) {
@@ -10242,12 +10519,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> organizationAddressBuilder_;
       /**
        * <code>.Address organization_address = 6;</code>
+       * @return Whether the organizationAddress field is set.
        */
       public boolean hasOrganizationAddress() {
         return organizationAddressBuilder_ != null || organizationAddress_ != null;
       }
       /**
        * <code>.Address organization_address = 6;</code>
+       * @return The organizationAddress.
        */
       public io.aelf.protobuf.generated.Client.Address getOrganizationAddress() {
         if (organizationAddressBuilder_ == null) {
@@ -10359,12 +10638,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> proposerBuilder_;
       /**
        * <code>.Address proposer = 7;</code>
+       * @return Whether the proposer field is set.
        */
       public boolean hasProposer() {
         return proposerBuilder_ != null || proposer_ != null;
       }
       /**
        * <code>.Address proposer = 7;</code>
+       * @return The proposer.
        */
       public io.aelf.protobuf.generated.Client.Address getProposer() {
         if (proposerBuilder_ == null) {
@@ -10474,12 +10755,15 @@ public final class Client {
       private boolean toBeReleased_ ;
       /**
        * <code>bool to_be_released = 8;</code>
+       * @return The toBeReleased.
        */
       public boolean getToBeReleased() {
         return toBeReleased_;
       }
       /**
        * <code>bool to_be_released = 8;</code>
+       * @param value The toBeReleased to set.
+       * @return This builder for chaining.
        */
       public Builder setToBeReleased(boolean value) {
         
@@ -10489,6 +10773,7 @@ public final class Client {
       }
       /**
        * <code>bool to_be_released = 8;</code>
+       * @return This builder for chaining.
        */
       public Builder clearToBeReleased() {
         
@@ -10555,15 +10840,18 @@ public final class Client {
 
     /**
      * <code>bool success = 1;</code>
+     * @return The success.
      */
     boolean getSuccess();
 
     /**
      * <code>string message = 2;</code>
+     * @return The message.
      */
     java.lang.String getMessage();
     /**
      * <code>string message = 2;</code>
+     * @return The bytes for message.
      */
     com.google.protobuf.ByteString
         getMessageBytes();
@@ -10585,6 +10873,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ValidationResult();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -10597,7 +10892,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -10655,6 +10949,7 @@ public final class Client {
     private boolean success_;
     /**
      * <code>bool success = 1;</code>
+     * @return The success.
      */
     public boolean getSuccess() {
       return success_;
@@ -10664,6 +10959,7 @@ public final class Client {
     private volatile java.lang.Object message_;
     /**
      * <code>string message = 2;</code>
+     * @return The message.
      */
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
@@ -10679,6 +10975,7 @@ public final class Client {
     }
     /**
      * <code>string message = 2;</code>
+     * @return The bytes for message.
      */
     public com.google.protobuf.ByteString
         getMessageBytes() {
@@ -11017,12 +11314,15 @@ public final class Client {
       private boolean success_ ;
       /**
        * <code>bool success = 1;</code>
+       * @return The success.
        */
       public boolean getSuccess() {
         return success_;
       }
       /**
        * <code>bool success = 1;</code>
+       * @param value The success to set.
+       * @return This builder for chaining.
        */
       public Builder setSuccess(boolean value) {
         
@@ -11032,6 +11332,7 @@ public final class Client {
       }
       /**
        * <code>bool success = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSuccess() {
         
@@ -11043,6 +11344,7 @@ public final class Client {
       private java.lang.Object message_ = "";
       /**
        * <code>string message = 2;</code>
+       * @return The message.
        */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
@@ -11058,6 +11360,7 @@ public final class Client {
       }
       /**
        * <code>string message = 2;</code>
+       * @return The bytes for message.
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
@@ -11074,6 +11377,8 @@ public final class Client {
       }
       /**
        * <code>string message = 2;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
        */
       public Builder setMessage(
           java.lang.String value) {
@@ -11087,6 +11392,7 @@ public final class Client {
       }
       /**
        * <code>string message = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMessage() {
         
@@ -11096,6 +11402,8 @@ public final class Client {
       }
       /**
        * <code>string message = 2;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -11221,10 +11529,12 @@ public final class Client {
 
     /**
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+     * @return The enum numeric value on the wire for thresholdCheckType.
      */
     int getThresholdCheckTypeValue();
     /**
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+     * @return The thresholdCheckType.
      */
     io.aelf.protobuf.generated.Client.ThresholdCheckType getThresholdCheckType();
   }
@@ -11246,6 +11556,13 @@ public final class Client {
     }
     private MethodCallingThreshold() {
       thresholdCheckType_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MethodCallingThreshold();
     }
 
     @java.lang.Override
@@ -11335,7 +11652,6 @@ public final class Client {
               io.aelf.protobuf.generated.Client.MethodCallingThreshold.class, io.aelf.protobuf.generated.Client.MethodCallingThreshold.Builder.class);
     }
 
-    private int bitField0_;
     public static final int SYMBOL_TO_AMOUNT_FIELD_NUMBER = 1;
     private static final class SymbolToAmountDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
@@ -11432,12 +11748,14 @@ public final class Client {
     private int thresholdCheckType_;
     /**
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+     * @return The enum numeric value on the wire for thresholdCheckType.
      */
     public int getThresholdCheckTypeValue() {
       return thresholdCheckType_;
     }
     /**
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+     * @return The thresholdCheckType.
      */
     public io.aelf.protobuf.generated.Client.ThresholdCheckType getThresholdCheckType() {
       @SuppressWarnings("deprecation")
@@ -11715,11 +12033,9 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.MethodCallingThreshold buildPartial() {
         io.aelf.protobuf.generated.Client.MethodCallingThreshold result = new io.aelf.protobuf.generated.Client.MethodCallingThreshold(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.symbolToAmount_ = internalGetSymbolToAmount();
         result.symbolToAmount_.makeImmutable();
         result.thresholdCheckType_ = thresholdCheckType_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -11957,12 +12273,15 @@ public final class Client {
       private int thresholdCheckType_ = 0;
       /**
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+       * @return The enum numeric value on the wire for thresholdCheckType.
        */
       public int getThresholdCheckTypeValue() {
         return thresholdCheckType_;
       }
       /**
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+       * @param value The enum numeric value on the wire for thresholdCheckType to set.
+       * @return This builder for chaining.
        */
       public Builder setThresholdCheckTypeValue(int value) {
         thresholdCheckType_ = value;
@@ -11971,6 +12290,7 @@ public final class Client {
       }
       /**
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+       * @return The thresholdCheckType.
        */
       public io.aelf.protobuf.generated.Client.ThresholdCheckType getThresholdCheckType() {
         @SuppressWarnings("deprecation")
@@ -11979,6 +12299,8 @@ public final class Client {
       }
       /**
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+       * @param value The thresholdCheckType to set.
+       * @return This builder for chaining.
        */
       public Builder setThresholdCheckType(io.aelf.protobuf.generated.Client.ThresholdCheckType value) {
         if (value == null) {
@@ -11991,6 +12313,7 @@ public final class Client {
       }
       /**
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearThresholdCheckType() {
         
@@ -12106,6 +12429,13 @@ public final class Client {
       super(builder);
     }
     private SideChainIdAndHeightDict() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SideChainIdAndHeightDict();
     }
 
     @java.lang.Override
@@ -12822,6 +13152,13 @@ public final class Client {
     }
     private SideChainIndexingInformationList() {
       indexingInformationList_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SideChainIndexingInformationList();
     }
 
     @java.lang.Override
@@ -13567,16 +13904,19 @@ public final class Client {
 
     /**
      * <code>int32 chain_id = 1;</code>
+     * @return The chainId.
      */
     int getChainId();
 
     /**
      * <code>int64 indexed_height = 2;</code>
+     * @return The indexedHeight.
      */
     long getIndexedHeight();
 
     /**
      * <code>int64 to_be_indexed_count = 3;</code>
+     * @return The toBeIndexedCount.
      */
     long getToBeIndexedCount();
   }
@@ -13596,6 +13936,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SideChainIndexingInformation();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -13608,7 +13955,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -13670,6 +14016,7 @@ public final class Client {
     private int chainId_;
     /**
      * <code>int32 chain_id = 1;</code>
+     * @return The chainId.
      */
     public int getChainId() {
       return chainId_;
@@ -13679,6 +14026,7 @@ public final class Client {
     private long indexedHeight_;
     /**
      * <code>int64 indexed_height = 2;</code>
+     * @return The indexedHeight.
      */
     public long getIndexedHeight() {
       return indexedHeight_;
@@ -13688,6 +14036,7 @@ public final class Client {
     private long toBeIndexedCount_;
     /**
      * <code>int64 to_be_indexed_count = 3;</code>
+     * @return The toBeIndexedCount.
      */
     public long getToBeIndexedCount() {
       return toBeIndexedCount_;
@@ -14034,12 +14383,15 @@ public final class Client {
       private int chainId_ ;
       /**
        * <code>int32 chain_id = 1;</code>
+       * @return The chainId.
        */
       public int getChainId() {
         return chainId_;
       }
       /**
        * <code>int32 chain_id = 1;</code>
+       * @param value The chainId to set.
+       * @return This builder for chaining.
        */
       public Builder setChainId(int value) {
         
@@ -14049,6 +14401,7 @@ public final class Client {
       }
       /**
        * <code>int32 chain_id = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearChainId() {
         
@@ -14060,12 +14413,15 @@ public final class Client {
       private long indexedHeight_ ;
       /**
        * <code>int64 indexed_height = 2;</code>
+       * @return The indexedHeight.
        */
       public long getIndexedHeight() {
         return indexedHeight_;
       }
       /**
        * <code>int64 indexed_height = 2;</code>
+       * @param value The indexedHeight to set.
+       * @return This builder for chaining.
        */
       public Builder setIndexedHeight(long value) {
         
@@ -14075,6 +14431,7 @@ public final class Client {
       }
       /**
        * <code>int64 indexed_height = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIndexedHeight() {
         
@@ -14086,12 +14443,15 @@ public final class Client {
       private long toBeIndexedCount_ ;
       /**
        * <code>int64 to_be_indexed_count = 3;</code>
+       * @return The toBeIndexedCount.
        */
       public long getToBeIndexedCount() {
         return toBeIndexedCount_;
       }
       /**
        * <code>int64 to_be_indexed_count = 3;</code>
+       * @param value The toBeIndexedCount to set.
+       * @return This builder for chaining.
        */
       public Builder setToBeIndexedCount(long value) {
         
@@ -14101,6 +14461,7 @@ public final class Client {
       }
       /**
        * <code>int64 to_be_indexed_count = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearToBeIndexedCount() {
         
@@ -14215,6 +14576,7 @@ public final class Client {
 
     /**
      * <code>int64 previous_block_height = 3;</code>
+     * @return The previousBlockHeight.
      */
     long getPreviousBlockHeight();
   }
@@ -14233,6 +14595,13 @@ public final class Client {
     private CrossChainBlockData() {
       sideChainBlockData_ = java.util.Collections.emptyList();
       parentChainBlockData_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CrossChainBlockData();
     }
 
     @java.lang.Override
@@ -14320,7 +14689,6 @@ public final class Client {
               io.aelf.protobuf.generated.Client.CrossChainBlockData.class, io.aelf.protobuf.generated.Client.CrossChainBlockData.Builder.class);
     }
 
-    private int bitField0_;
     public static final int SIDE_CHAIN_BLOCK_DATA_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> sideChainBlockData_;
     /**
@@ -14395,6 +14763,7 @@ public final class Client {
     private long previousBlockHeight_;
     /**
      * <code>int64 previous_block_height = 3;</code>
+     * @return The previousBlockHeight.
      */
     public long getPreviousBlockHeight() {
       return previousBlockHeight_;
@@ -14663,7 +15032,6 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.CrossChainBlockData buildPartial() {
         io.aelf.protobuf.generated.Client.CrossChainBlockData result = new io.aelf.protobuf.generated.Client.CrossChainBlockData(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (sideChainBlockDataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             sideChainBlockData_ = java.util.Collections.unmodifiableList(sideChainBlockData_);
@@ -14683,7 +15051,6 @@ public final class Client {
           result.parentChainBlockData_ = parentChainBlockDataBuilder_.build();
         }
         result.previousBlockHeight_ = previousBlockHeight_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -15300,12 +15667,15 @@ public final class Client {
       private long previousBlockHeight_ ;
       /**
        * <code>int64 previous_block_height = 3;</code>
+       * @return The previousBlockHeight.
        */
       public long getPreviousBlockHeight() {
         return previousBlockHeight_;
       }
       /**
        * <code>int64 previous_block_height = 3;</code>
+       * @param value The previousBlockHeight to set.
+       * @return This builder for chaining.
        */
       public Builder setPreviousBlockHeight(long value) {
         
@@ -15315,6 +15685,7 @@ public final class Client {
       }
       /**
        * <code>int64 previous_block_height = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPreviousBlockHeight() {
         
@@ -15381,15 +15752,18 @@ public final class Client {
 
     /**
      * <code>int64 height = 1;</code>
+     * @return The height.
      */
     long getHeight();
 
     /**
      * <code>.Hash block_header_hash = 2;</code>
+     * @return Whether the blockHeaderHash field is set.
      */
     boolean hasBlockHeaderHash();
     /**
      * <code>.Hash block_header_hash = 2;</code>
+     * @return The blockHeaderHash.
      */
     io.aelf.protobuf.generated.Client.Hash getBlockHeaderHash();
     /**
@@ -15399,10 +15773,12 @@ public final class Client {
 
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
+     * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     boolean hasTransactionStatusMerkleTreeRoot();
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
+     * @return The transactionStatusMerkleTreeRoot.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot();
     /**
@@ -15412,6 +15788,7 @@ public final class Client {
 
     /**
      * <code>int32 chain_id = 4;</code>
+     * @return The chainId.
      */
     int getChainId();
   }
@@ -15431,6 +15808,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SideChainBlockData();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -15443,7 +15827,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -15526,6 +15909,7 @@ public final class Client {
     private long height_;
     /**
      * <code>int64 height = 1;</code>
+     * @return The height.
      */
     public long getHeight() {
       return height_;
@@ -15535,12 +15919,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash blockHeaderHash_;
     /**
      * <code>.Hash block_header_hash = 2;</code>
+     * @return Whether the blockHeaderHash field is set.
      */
     public boolean hasBlockHeaderHash() {
       return blockHeaderHash_ != null;
     }
     /**
      * <code>.Hash block_header_hash = 2;</code>
+     * @return The blockHeaderHash.
      */
     public io.aelf.protobuf.generated.Client.Hash getBlockHeaderHash() {
       return blockHeaderHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : blockHeaderHash_;
@@ -15556,12 +15942,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash transactionStatusMerkleTreeRoot_;
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
+     * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     public boolean hasTransactionStatusMerkleTreeRoot() {
       return transactionStatusMerkleTreeRoot_ != null;
     }
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
+     * @return The transactionStatusMerkleTreeRoot.
      */
     public io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot() {
       return transactionStatusMerkleTreeRoot_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionStatusMerkleTreeRoot_;
@@ -15577,6 +15965,7 @@ public final class Client {
     private int chainId_;
     /**
      * <code>int32 chain_id = 4;</code>
+     * @return The chainId.
      */
     public int getChainId() {
       return chainId_;
@@ -15965,12 +16354,15 @@ public final class Client {
       private long height_ ;
       /**
        * <code>int64 height = 1;</code>
+       * @return The height.
        */
       public long getHeight() {
         return height_;
       }
       /**
        * <code>int64 height = 1;</code>
+       * @param value The height to set.
+       * @return This builder for chaining.
        */
       public Builder setHeight(long value) {
         
@@ -15980,6 +16372,7 @@ public final class Client {
       }
       /**
        * <code>int64 height = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearHeight() {
         
@@ -15993,12 +16386,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> blockHeaderHashBuilder_;
       /**
        * <code>.Hash block_header_hash = 2;</code>
+       * @return Whether the blockHeaderHash field is set.
        */
       public boolean hasBlockHeaderHash() {
         return blockHeaderHashBuilder_ != null || blockHeaderHash_ != null;
       }
       /**
        * <code>.Hash block_header_hash = 2;</code>
+       * @return The blockHeaderHash.
        */
       public io.aelf.protobuf.generated.Client.Hash getBlockHeaderHash() {
         if (blockHeaderHashBuilder_ == null) {
@@ -16110,12 +16505,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> transactionStatusMerkleTreeRootBuilder_;
       /**
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
+       * @return Whether the transactionStatusMerkleTreeRoot field is set.
        */
       public boolean hasTransactionStatusMerkleTreeRoot() {
         return transactionStatusMerkleTreeRootBuilder_ != null || transactionStatusMerkleTreeRoot_ != null;
       }
       /**
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
+       * @return The transactionStatusMerkleTreeRoot.
        */
       public io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot() {
         if (transactionStatusMerkleTreeRootBuilder_ == null) {
@@ -16225,12 +16622,15 @@ public final class Client {
       private int chainId_ ;
       /**
        * <code>int32 chain_id = 4;</code>
+       * @return The chainId.
        */
       public int getChainId() {
         return chainId_;
       }
       /**
        * <code>int32 chain_id = 4;</code>
+       * @param value The chainId to set.
+       * @return This builder for chaining.
        */
       public Builder setChainId(int value) {
         
@@ -16240,6 +16640,7 @@ public final class Client {
       }
       /**
        * <code>int32 chain_id = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearChainId() {
         
@@ -16306,15 +16707,18 @@ public final class Client {
 
     /**
      * <code>int64 height = 1;</code>
+     * @return The height.
      */
     long getHeight();
 
     /**
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
+     * @return Whether the crossChainExtraData field is set.
      */
     boolean hasCrossChainExtraData();
     /**
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
+     * @return The crossChainExtraData.
      */
     io.aelf.protobuf.generated.Client.CrossChainExtraData getCrossChainExtraData();
     /**
@@ -16324,15 +16728,18 @@ public final class Client {
 
     /**
      * <code>int32 chain_id = 3;</code>
+     * @return The chainId.
      */
     int getChainId();
 
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
+     * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     boolean hasTransactionStatusMerkleTreeRoot();
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
+     * @return The transactionStatusMerkleTreeRoot.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot();
     /**
@@ -16444,6 +16851,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ParentChainBlockData();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -16504,10 +16918,10 @@ public final class Client {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 indexedMerklePath_ = com.google.protobuf.MapField.newMapField(
                     IndexedMerklePathDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.Long, io.aelf.protobuf.generated.Client.MerklePath>
               indexedMerklePath__ = input.readMessage(
@@ -16517,10 +16931,10 @@ public final class Client {
               break;
             }
             case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 extraData_ = com.google.protobuf.MapField.newMapField(
                     ExtraDataDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000002;
               }
               com.google.protobuf.MapEntry<java.lang.String, com.google.protobuf.ByteString>
               extraData__ = input.readMessage(
@@ -16575,11 +16989,11 @@ public final class Client {
               io.aelf.protobuf.generated.Client.ParentChainBlockData.class, io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder.class);
     }
 
-    private int bitField0_;
     public static final int HEIGHT_FIELD_NUMBER = 1;
     private long height_;
     /**
      * <code>int64 height = 1;</code>
+     * @return The height.
      */
     public long getHeight() {
       return height_;
@@ -16589,12 +17003,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.CrossChainExtraData crossChainExtraData_;
     /**
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
+     * @return Whether the crossChainExtraData field is set.
      */
     public boolean hasCrossChainExtraData() {
       return crossChainExtraData_ != null;
     }
     /**
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
+     * @return The crossChainExtraData.
      */
     public io.aelf.protobuf.generated.Client.CrossChainExtraData getCrossChainExtraData() {
       return crossChainExtraData_ == null ? io.aelf.protobuf.generated.Client.CrossChainExtraData.getDefaultInstance() : crossChainExtraData_;
@@ -16610,6 +17026,7 @@ public final class Client {
     private int chainId_;
     /**
      * <code>int32 chain_id = 3;</code>
+     * @return The chainId.
      */
     public int getChainId() {
       return chainId_;
@@ -16619,12 +17036,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Hash transactionStatusMerkleTreeRoot_;
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
+     * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     public boolean hasTransactionStatusMerkleTreeRoot() {
       return transactionStatusMerkleTreeRoot_ != null;
     }
     /**
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
+     * @return The transactionStatusMerkleTreeRoot.
      */
     public io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot() {
       return transactionStatusMerkleTreeRoot_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionStatusMerkleTreeRoot_;
@@ -17156,7 +17575,6 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.ParentChainBlockData buildPartial() {
         io.aelf.protobuf.generated.Client.ParentChainBlockData result = new io.aelf.protobuf.generated.Client.ParentChainBlockData(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.height_ = height_;
         if (crossChainExtraDataBuilder_ == null) {
           result.crossChainExtraData_ = crossChainExtraData_;
@@ -17173,7 +17591,6 @@ public final class Client {
         result.indexedMerklePath_.makeImmutable();
         result.extraData_ = internalGetExtraData();
         result.extraData_.makeImmutable();
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -17271,12 +17688,15 @@ public final class Client {
       private long height_ ;
       /**
        * <code>int64 height = 1;</code>
+       * @return The height.
        */
       public long getHeight() {
         return height_;
       }
       /**
        * <code>int64 height = 1;</code>
+       * @param value The height to set.
+       * @return This builder for chaining.
        */
       public Builder setHeight(long value) {
         
@@ -17286,6 +17706,7 @@ public final class Client {
       }
       /**
        * <code>int64 height = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearHeight() {
         
@@ -17299,12 +17720,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.CrossChainExtraData, io.aelf.protobuf.generated.Client.CrossChainExtraData.Builder, io.aelf.protobuf.generated.Client.CrossChainExtraDataOrBuilder> crossChainExtraDataBuilder_;
       /**
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
+       * @return Whether the crossChainExtraData field is set.
        */
       public boolean hasCrossChainExtraData() {
         return crossChainExtraDataBuilder_ != null || crossChainExtraData_ != null;
       }
       /**
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
+       * @return The crossChainExtraData.
        */
       public io.aelf.protobuf.generated.Client.CrossChainExtraData getCrossChainExtraData() {
         if (crossChainExtraDataBuilder_ == null) {
@@ -17414,12 +17837,15 @@ public final class Client {
       private int chainId_ ;
       /**
        * <code>int32 chain_id = 3;</code>
+       * @return The chainId.
        */
       public int getChainId() {
         return chainId_;
       }
       /**
        * <code>int32 chain_id = 3;</code>
+       * @param value The chainId to set.
+       * @return This builder for chaining.
        */
       public Builder setChainId(int value) {
         
@@ -17429,6 +17855,7 @@ public final class Client {
       }
       /**
        * <code>int32 chain_id = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearChainId() {
         
@@ -17442,12 +17869,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> transactionStatusMerkleTreeRootBuilder_;
       /**
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
+       * @return Whether the transactionStatusMerkleTreeRoot field is set.
        */
       public boolean hasTransactionStatusMerkleTreeRoot() {
         return transactionStatusMerkleTreeRootBuilder_ != null || transactionStatusMerkleTreeRoot_ != null;
       }
       /**
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
+       * @return The transactionStatusMerkleTreeRoot.
        */
       public io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot() {
         if (transactionStatusMerkleTreeRootBuilder_ == null) {
@@ -17890,6 +18319,7 @@ public final class Client {
      * </pre>
      *
      * <code>.Hash transaction_status_merkle_tree_root = 1;</code>
+     * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     boolean hasTransactionStatusMerkleTreeRoot();
     /**
@@ -17898,6 +18328,7 @@ public final class Client {
      * </pre>
      *
      * <code>.Hash transaction_status_merkle_tree_root = 1;</code>
+     * @return The transactionStatusMerkleTreeRoot.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot();
     /**
@@ -17925,6 +18356,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CrossChainExtraData();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -17937,7 +18375,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -18001,6 +18438,7 @@ public final class Client {
      * </pre>
      *
      * <code>.Hash transaction_status_merkle_tree_root = 1;</code>
+     * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     public boolean hasTransactionStatusMerkleTreeRoot() {
       return transactionStatusMerkleTreeRoot_ != null;
@@ -18011,6 +18449,7 @@ public final class Client {
      * </pre>
      *
      * <code>.Hash transaction_status_merkle_tree_root = 1;</code>
+     * @return The transactionStatusMerkleTreeRoot.
      */
     public io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot() {
       return transactionStatusMerkleTreeRoot_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionStatusMerkleTreeRoot_;
@@ -18350,6 +18789,7 @@ public final class Client {
        * </pre>
        *
        * <code>.Hash transaction_status_merkle_tree_root = 1;</code>
+       * @return Whether the transactionStatusMerkleTreeRoot field is set.
        */
       public boolean hasTransactionStatusMerkleTreeRoot() {
         return transactionStatusMerkleTreeRootBuilder_ != null || transactionStatusMerkleTreeRoot_ != null;
@@ -18360,6 +18800,7 @@ public final class Client {
        * </pre>
        *
        * <code>.Hash transaction_status_merkle_tree_root = 1;</code>
+       * @return The transactionStatusMerkleTreeRoot.
        */
       public io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot() {
         if (transactionStatusMerkleTreeRootBuilder_ == null) {
@@ -18588,6 +19029,13 @@ public final class Client {
     }
     private IndexedSideChainBlockData() {
       sideChainBlockData_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new IndexedSideChainBlockData();
     }
 
     @java.lang.Override
@@ -19333,15 +19781,18 @@ public final class Client {
 
     /**
      * <code>int64 bound_parent_chain_height = 1;</code>
+     * @return The boundParentChainHeight.
      */
     long getBoundParentChainHeight();
 
     /**
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
+     * @return Whether the merklePathFromParentChain field is set.
      */
     boolean hasMerklePathFromParentChain();
     /**
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
+     * @return The merklePathFromParentChain.
      */
     io.aelf.protobuf.generated.Client.MerklePath getMerklePathFromParentChain();
     /**
@@ -19365,6 +19816,13 @@ public final class Client {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CrossChainMerkleProofContext();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -19377,7 +19835,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -19442,6 +19899,7 @@ public final class Client {
     private long boundParentChainHeight_;
     /**
      * <code>int64 bound_parent_chain_height = 1;</code>
+     * @return The boundParentChainHeight.
      */
     public long getBoundParentChainHeight() {
       return boundParentChainHeight_;
@@ -19451,12 +19909,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.MerklePath merklePathFromParentChain_;
     /**
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
+     * @return Whether the merklePathFromParentChain field is set.
      */
     public boolean hasMerklePathFromParentChain() {
       return merklePathFromParentChain_ != null;
     }
     /**
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
+     * @return The merklePathFromParentChain.
      */
     public io.aelf.protobuf.generated.Client.MerklePath getMerklePathFromParentChain() {
       return merklePathFromParentChain_ == null ? io.aelf.protobuf.generated.Client.MerklePath.getDefaultInstance() : merklePathFromParentChain_;
@@ -19804,12 +20264,15 @@ public final class Client {
       private long boundParentChainHeight_ ;
       /**
        * <code>int64 bound_parent_chain_height = 1;</code>
+       * @return The boundParentChainHeight.
        */
       public long getBoundParentChainHeight() {
         return boundParentChainHeight_;
       }
       /**
        * <code>int64 bound_parent_chain_height = 1;</code>
+       * @param value The boundParentChainHeight to set.
+       * @return This builder for chaining.
        */
       public Builder setBoundParentChainHeight(long value) {
         
@@ -19819,6 +20282,7 @@ public final class Client {
       }
       /**
        * <code>int64 bound_parent_chain_height = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearBoundParentChainHeight() {
         
@@ -19832,12 +20296,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.MerklePath, io.aelf.protobuf.generated.Client.MerklePath.Builder, io.aelf.protobuf.generated.Client.MerklePathOrBuilder> merklePathFromParentChainBuilder_;
       /**
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
+       * @return Whether the merklePathFromParentChain field is set.
        */
       public boolean hasMerklePathFromParentChain() {
         return merklePathFromParentChainBuilder_ != null || merklePathFromParentChain_ != null;
       }
       /**
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
+       * @return The merklePathFromParentChain.
        */
       public io.aelf.protobuf.generated.Client.MerklePath getMerklePathFromParentChain() {
         if (merklePathFromParentChainBuilder_ == null) {
@@ -20002,15 +20468,18 @@ public final class Client {
 
     /**
      * <code>int32 chain_id = 1;</code>
+     * @return The chainId.
      */
     int getChainId();
 
     /**
      * <code>.Address creator = 2;</code>
+     * @return Whether the creator field is set.
      */
     boolean hasCreator();
     /**
      * <code>.Address creator = 2;</code>
+     * @return The creator.
      */
     io.aelf.protobuf.generated.Client.Address getCreator();
     /**
@@ -20020,10 +20489,12 @@ public final class Client {
 
     /**
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
+     * @return Whether the creationTimestamp field is set.
      */
     boolean hasCreationTimestamp();
     /**
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
+     * @return The creationTimestamp.
      */
     com.google.protobuf.Timestamp getCreationTimestamp();
     /**
@@ -20033,33 +20504,41 @@ public final class Client {
 
     /**
      * <code>repeated bytes extra_information = 4;</code>
+     * @return A list containing the extraInformation.
      */
     java.util.List<com.google.protobuf.ByteString> getExtraInformationList();
     /**
      * <code>repeated bytes extra_information = 4;</code>
+     * @return The count of extraInformation.
      */
     int getExtraInformationCount();
     /**
      * <code>repeated bytes extra_information = 4;</code>
+     * @param index The index of the element to return.
+     * @return The extraInformation at the given index.
      */
     com.google.protobuf.ByteString getExtraInformation(int index);
 
     /**
      * <code>int64 creation_height_on_parent_chain = 5;</code>
+     * @return The creationHeightOnParentChain.
      */
     long getCreationHeightOnParentChain();
 
     /**
      * <code>bool chain_creator_privilege_preserved = 6;</code>
+     * @return The chainCreatorPrivilegePreserved.
      */
     boolean getChainCreatorPrivilegePreserved();
 
     /**
      * <code>string side_chain_token_symbol = 7;</code>
+     * @return The sideChainTokenSymbol.
      */
     java.lang.String getSideChainTokenSymbol();
     /**
      * <code>string side_chain_token_symbol = 7;</code>
+     * @return The bytes for sideChainTokenSymbol.
      */
     com.google.protobuf.ByteString
         getSideChainTokenSymbolBytes();
@@ -20079,6 +20558,13 @@ public final class Client {
     private ChainInitializationData() {
       extraInformation_ = java.util.Collections.emptyList();
       sideChainTokenSymbol_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChainInitializationData();
     }
 
     @java.lang.Override
@@ -20137,9 +20623,9 @@ public final class Client {
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 extraInformation_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000001;
               }
               extraInformation_.add(input.readBytes());
               break;
@@ -20175,7 +20661,7 @@ public final class Client {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           extraInformation_ = java.util.Collections.unmodifiableList(extraInformation_); // C
         }
         this.unknownFields = unknownFields.build();
@@ -20195,11 +20681,11 @@ public final class Client {
               io.aelf.protobuf.generated.Client.ChainInitializationData.class, io.aelf.protobuf.generated.Client.ChainInitializationData.Builder.class);
     }
 
-    private int bitField0_;
     public static final int CHAIN_ID_FIELD_NUMBER = 1;
     private int chainId_;
     /**
      * <code>int32 chain_id = 1;</code>
+     * @return The chainId.
      */
     public int getChainId() {
       return chainId_;
@@ -20209,12 +20695,14 @@ public final class Client {
     private io.aelf.protobuf.generated.Client.Address creator_;
     /**
      * <code>.Address creator = 2;</code>
+     * @return Whether the creator field is set.
      */
     public boolean hasCreator() {
       return creator_ != null;
     }
     /**
      * <code>.Address creator = 2;</code>
+     * @return The creator.
      */
     public io.aelf.protobuf.generated.Client.Address getCreator() {
       return creator_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : creator_;
@@ -20230,12 +20718,14 @@ public final class Client {
     private com.google.protobuf.Timestamp creationTimestamp_;
     /**
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
+     * @return Whether the creationTimestamp field is set.
      */
     public boolean hasCreationTimestamp() {
       return creationTimestamp_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
+     * @return The creationTimestamp.
      */
     public com.google.protobuf.Timestamp getCreationTimestamp() {
       return creationTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : creationTimestamp_;
@@ -20251,6 +20741,7 @@ public final class Client {
     private java.util.List<com.google.protobuf.ByteString> extraInformation_;
     /**
      * <code>repeated bytes extra_information = 4;</code>
+     * @return A list containing the extraInformation.
      */
     public java.util.List<com.google.protobuf.ByteString>
         getExtraInformationList() {
@@ -20258,12 +20749,15 @@ public final class Client {
     }
     /**
      * <code>repeated bytes extra_information = 4;</code>
+     * @return The count of extraInformation.
      */
     public int getExtraInformationCount() {
       return extraInformation_.size();
     }
     /**
      * <code>repeated bytes extra_information = 4;</code>
+     * @param index The index of the element to return.
+     * @return The extraInformation at the given index.
      */
     public com.google.protobuf.ByteString getExtraInformation(int index) {
       return extraInformation_.get(index);
@@ -20273,6 +20767,7 @@ public final class Client {
     private long creationHeightOnParentChain_;
     /**
      * <code>int64 creation_height_on_parent_chain = 5;</code>
+     * @return The creationHeightOnParentChain.
      */
     public long getCreationHeightOnParentChain() {
       return creationHeightOnParentChain_;
@@ -20282,6 +20777,7 @@ public final class Client {
     private boolean chainCreatorPrivilegePreserved_;
     /**
      * <code>bool chain_creator_privilege_preserved = 6;</code>
+     * @return The chainCreatorPrivilegePreserved.
      */
     public boolean getChainCreatorPrivilegePreserved() {
       return chainCreatorPrivilegePreserved_;
@@ -20291,6 +20787,7 @@ public final class Client {
     private volatile java.lang.Object sideChainTokenSymbol_;
     /**
      * <code>string side_chain_token_symbol = 7;</code>
+     * @return The sideChainTokenSymbol.
      */
     public java.lang.String getSideChainTokenSymbol() {
       java.lang.Object ref = sideChainTokenSymbol_;
@@ -20306,6 +20803,7 @@ public final class Client {
     }
     /**
      * <code>string side_chain_token_symbol = 7;</code>
+     * @return The bytes for sideChainTokenSymbol.
      */
     public com.google.protobuf.ByteString
         getSideChainTokenSymbolBytes() {
@@ -20613,7 +21111,7 @@ public final class Client {
           creationTimestampBuilder_ = null;
         }
         extraInformation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000001);
         creationHeightOnParentChain_ = 0L;
 
         chainCreatorPrivilegePreserved_ = false;
@@ -20647,7 +21145,6 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.ChainInitializationData buildPartial() {
         io.aelf.protobuf.generated.Client.ChainInitializationData result = new io.aelf.protobuf.generated.Client.ChainInitializationData(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.chainId_ = chainId_;
         if (creatorBuilder_ == null) {
           result.creator_ = creator_;
@@ -20659,15 +21156,14 @@ public final class Client {
         } else {
           result.creationTimestamp_ = creationTimestampBuilder_.build();
         }
-        if (((bitField0_ & 0x00000008) != 0)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           extraInformation_ = java.util.Collections.unmodifiableList(extraInformation_);
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.extraInformation_ = extraInformation_;
         result.creationHeightOnParentChain_ = creationHeightOnParentChain_;
         result.chainCreatorPrivilegePreserved_ = chainCreatorPrivilegePreserved_;
         result.sideChainTokenSymbol_ = sideChainTokenSymbol_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -20728,7 +21224,7 @@ public final class Client {
         if (!other.extraInformation_.isEmpty()) {
           if (extraInformation_.isEmpty()) {
             extraInformation_ = other.extraInformation_;
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureExtraInformationIsMutable();
             extraInformation_.addAll(other.extraInformation_);
@@ -20778,12 +21274,15 @@ public final class Client {
       private int chainId_ ;
       /**
        * <code>int32 chain_id = 1;</code>
+       * @return The chainId.
        */
       public int getChainId() {
         return chainId_;
       }
       /**
        * <code>int32 chain_id = 1;</code>
+       * @param value The chainId to set.
+       * @return This builder for chaining.
        */
       public Builder setChainId(int value) {
         
@@ -20793,6 +21292,7 @@ public final class Client {
       }
       /**
        * <code>int32 chain_id = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearChainId() {
         
@@ -20806,12 +21306,14 @@ public final class Client {
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> creatorBuilder_;
       /**
        * <code>.Address creator = 2;</code>
+       * @return Whether the creator field is set.
        */
       public boolean hasCreator() {
         return creatorBuilder_ != null || creator_ != null;
       }
       /**
        * <code>.Address creator = 2;</code>
+       * @return The creator.
        */
       public io.aelf.protobuf.generated.Client.Address getCreator() {
         if (creatorBuilder_ == null) {
@@ -20923,12 +21425,14 @@ public final class Client {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> creationTimestampBuilder_;
       /**
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
+       * @return Whether the creationTimestamp field is set.
        */
       public boolean hasCreationTimestamp() {
         return creationTimestampBuilder_ != null || creationTimestamp_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
+       * @return The creationTimestamp.
        */
       public com.google.protobuf.Timestamp getCreationTimestamp() {
         if (creationTimestampBuilder_ == null) {
@@ -21037,33 +21541,40 @@ public final class Client {
 
       private java.util.List<com.google.protobuf.ByteString> extraInformation_ = java.util.Collections.emptyList();
       private void ensureExtraInformationIsMutable() {
-        if (!((bitField0_ & 0x00000008) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           extraInformation_ = new java.util.ArrayList<com.google.protobuf.ByteString>(extraInformation_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000001;
          }
       }
       /**
        * <code>repeated bytes extra_information = 4;</code>
+       * @return A list containing the extraInformation.
        */
       public java.util.List<com.google.protobuf.ByteString>
           getExtraInformationList() {
-        return ((bitField0_ & 0x00000008) != 0) ?
+        return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(extraInformation_) : extraInformation_;
       }
       /**
        * <code>repeated bytes extra_information = 4;</code>
+       * @return The count of extraInformation.
        */
       public int getExtraInformationCount() {
         return extraInformation_.size();
       }
       /**
        * <code>repeated bytes extra_information = 4;</code>
+       * @param index The index of the element to return.
+       * @return The extraInformation at the given index.
        */
       public com.google.protobuf.ByteString getExtraInformation(int index) {
         return extraInformation_.get(index);
       }
       /**
        * <code>repeated bytes extra_information = 4;</code>
+       * @param index The index to set the value at.
+       * @param value The extraInformation to set.
+       * @return This builder for chaining.
        */
       public Builder setExtraInformation(
           int index, com.google.protobuf.ByteString value) {
@@ -21077,6 +21588,8 @@ public final class Client {
       }
       /**
        * <code>repeated bytes extra_information = 4;</code>
+       * @param value The extraInformation to add.
+       * @return This builder for chaining.
        */
       public Builder addExtraInformation(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -21089,6 +21602,8 @@ public final class Client {
       }
       /**
        * <code>repeated bytes extra_information = 4;</code>
+       * @param values The extraInformation to add.
+       * @return This builder for chaining.
        */
       public Builder addAllExtraInformation(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -21100,10 +21615,11 @@ public final class Client {
       }
       /**
        * <code>repeated bytes extra_information = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearExtraInformation() {
         extraInformation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -21111,12 +21627,15 @@ public final class Client {
       private long creationHeightOnParentChain_ ;
       /**
        * <code>int64 creation_height_on_parent_chain = 5;</code>
+       * @return The creationHeightOnParentChain.
        */
       public long getCreationHeightOnParentChain() {
         return creationHeightOnParentChain_;
       }
       /**
        * <code>int64 creation_height_on_parent_chain = 5;</code>
+       * @param value The creationHeightOnParentChain to set.
+       * @return This builder for chaining.
        */
       public Builder setCreationHeightOnParentChain(long value) {
         
@@ -21126,6 +21645,7 @@ public final class Client {
       }
       /**
        * <code>int64 creation_height_on_parent_chain = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCreationHeightOnParentChain() {
         
@@ -21137,12 +21657,15 @@ public final class Client {
       private boolean chainCreatorPrivilegePreserved_ ;
       /**
        * <code>bool chain_creator_privilege_preserved = 6;</code>
+       * @return The chainCreatorPrivilegePreserved.
        */
       public boolean getChainCreatorPrivilegePreserved() {
         return chainCreatorPrivilegePreserved_;
       }
       /**
        * <code>bool chain_creator_privilege_preserved = 6;</code>
+       * @param value The chainCreatorPrivilegePreserved to set.
+       * @return This builder for chaining.
        */
       public Builder setChainCreatorPrivilegePreserved(boolean value) {
         
@@ -21152,6 +21675,7 @@ public final class Client {
       }
       /**
        * <code>bool chain_creator_privilege_preserved = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearChainCreatorPrivilegePreserved() {
         
@@ -21163,6 +21687,7 @@ public final class Client {
       private java.lang.Object sideChainTokenSymbol_ = "";
       /**
        * <code>string side_chain_token_symbol = 7;</code>
+       * @return The sideChainTokenSymbol.
        */
       public java.lang.String getSideChainTokenSymbol() {
         java.lang.Object ref = sideChainTokenSymbol_;
@@ -21178,6 +21703,7 @@ public final class Client {
       }
       /**
        * <code>string side_chain_token_symbol = 7;</code>
+       * @return The bytes for sideChainTokenSymbol.
        */
       public com.google.protobuf.ByteString
           getSideChainTokenSymbolBytes() {
@@ -21194,6 +21720,8 @@ public final class Client {
       }
       /**
        * <code>string side_chain_token_symbol = 7;</code>
+       * @param value The sideChainTokenSymbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSideChainTokenSymbol(
           java.lang.String value) {
@@ -21207,6 +21735,7 @@ public final class Client {
       }
       /**
        * <code>string side_chain_token_symbol = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSideChainTokenSymbol() {
         
@@ -21216,6 +21745,8 @@ public final class Client {
       }
       /**
        * <code>string side_chain_token_symbol = 7;</code>
+       * @param value The bytes for sideChainTokenSymbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSideChainTokenSymbolBytes(
           com.google.protobuf.ByteString value) {
@@ -21512,19 +22043,11 @@ public final class Client {
       "pe\022\013\n\007BALANCE\020\000\022\r\n\tALLOWANCE\020\001B\034\n\032io.ael" +
       "f.protobuf.generatedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
-        }, assigner);
+        });
     internal_static_Address_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_Address_fieldAccessorTable = new

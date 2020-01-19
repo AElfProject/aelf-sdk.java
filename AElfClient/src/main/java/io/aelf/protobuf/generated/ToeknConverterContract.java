@@ -20,10 +20,12 @@ public final class ToeknConverterContract {
 
     /**
      * <code>string symbol = 1;</code>
+     * @return The symbol.
      */
     java.lang.String getSymbol();
     /**
      * <code>string symbol = 1;</code>
+     * @return The bytes for symbol.
      */
     com.google.protobuf.ByteString
         getSymbolBytes();
@@ -49,6 +51,13 @@ public final class ToeknConverterContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TokenSymbol();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -61,7 +70,6 @@ public final class ToeknConverterContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -114,6 +122,7 @@ public final class ToeknConverterContract {
     private volatile java.lang.Object symbol_;
     /**
      * <code>string symbol = 1;</code>
+     * @return The symbol.
      */
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
@@ -129,6 +138,7 @@ public final class ToeknConverterContract {
     }
     /**
      * <code>string symbol = 1;</code>
+     * @return The bytes for symbol.
      */
     public com.google.protobuf.ByteString
         getSymbolBytes() {
@@ -453,6 +463,7 @@ public final class ToeknConverterContract {
       private java.lang.Object symbol_ = "";
       /**
        * <code>string symbol = 1;</code>
+       * @return The symbol.
        */
       public java.lang.String getSymbol() {
         java.lang.Object ref = symbol_;
@@ -468,6 +479,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @return The bytes for symbol.
        */
       public com.google.protobuf.ByteString
           getSymbolBytes() {
@@ -484,6 +496,8 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @param value The symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbol(
           java.lang.String value) {
@@ -497,6 +511,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSymbol() {
         
@@ -506,6 +521,8 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @param value The bytes for symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
@@ -577,25 +594,30 @@ public final class ToeknConverterContract {
 
     /**
      * <code>string symbol = 1;</code>
+     * @return The symbol.
      */
     java.lang.String getSymbol();
     /**
      * <code>string symbol = 1;</code>
+     * @return The bytes for symbol.
      */
     com.google.protobuf.ByteString
         getSymbolBytes();
 
     /**
      * <code>sint64 virtual_balance = 2;</code>
+     * @return The virtualBalance.
      */
     long getVirtualBalance();
 
     /**
      * <code>string weight = 3;</code>
+     * @return The weight.
      */
     java.lang.String getWeight();
     /**
      * <code>string weight = 3;</code>
+     * @return The bytes for weight.
      */
     com.google.protobuf.ByteString
         getWeightBytes();
@@ -606,11 +628,13 @@ public final class ToeknConverterContract {
      * </pre>
      *
      * <code>bool is_virtual_balance_enabled = 4;</code>
+     * @return The isVirtualBalanceEnabled.
      */
     boolean getIsVirtualBalanceEnabled();
 
     /**
      * <code>bool is_purchase_enabled = 5;</code>
+     * @return The isPurchaseEnabled.
      */
     boolean getIsPurchaseEnabled();
   }
@@ -632,6 +656,13 @@ public final class ToeknConverterContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Connector();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -644,7 +675,6 @@ public final class ToeknConverterContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -718,6 +748,7 @@ public final class ToeknConverterContract {
     private volatile java.lang.Object symbol_;
     /**
      * <code>string symbol = 1;</code>
+     * @return The symbol.
      */
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
@@ -733,6 +764,7 @@ public final class ToeknConverterContract {
     }
     /**
      * <code>string symbol = 1;</code>
+     * @return The bytes for symbol.
      */
     public com.google.protobuf.ByteString
         getSymbolBytes() {
@@ -752,6 +784,7 @@ public final class ToeknConverterContract {
     private long virtualBalance_;
     /**
      * <code>sint64 virtual_balance = 2;</code>
+     * @return The virtualBalance.
      */
     public long getVirtualBalance() {
       return virtualBalance_;
@@ -761,6 +794,7 @@ public final class ToeknConverterContract {
     private volatile java.lang.Object weight_;
     /**
      * <code>string weight = 3;</code>
+     * @return The weight.
      */
     public java.lang.String getWeight() {
       java.lang.Object ref = weight_;
@@ -776,6 +810,7 @@ public final class ToeknConverterContract {
     }
     /**
      * <code>string weight = 3;</code>
+     * @return The bytes for weight.
      */
     public com.google.protobuf.ByteString
         getWeightBytes() {
@@ -799,6 +834,7 @@ public final class ToeknConverterContract {
      * </pre>
      *
      * <code>bool is_virtual_balance_enabled = 4;</code>
+     * @return The isVirtualBalanceEnabled.
      */
     public boolean getIsVirtualBalanceEnabled() {
       return isVirtualBalanceEnabled_;
@@ -808,6 +844,7 @@ public final class ToeknConverterContract {
     private boolean isPurchaseEnabled_;
     /**
      * <code>bool is_purchase_enabled = 5;</code>
+     * @return The isPurchaseEnabled.
      */
     public boolean getIsPurchaseEnabled() {
       return isPurchaseEnabled_;
@@ -1189,6 +1226,7 @@ public final class ToeknConverterContract {
       private java.lang.Object symbol_ = "";
       /**
        * <code>string symbol = 1;</code>
+       * @return The symbol.
        */
       public java.lang.String getSymbol() {
         java.lang.Object ref = symbol_;
@@ -1204,6 +1242,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @return The bytes for symbol.
        */
       public com.google.protobuf.ByteString
           getSymbolBytes() {
@@ -1220,6 +1259,8 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @param value The symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbol(
           java.lang.String value) {
@@ -1233,6 +1274,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSymbol() {
         
@@ -1242,6 +1284,8 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string symbol = 1;</code>
+       * @param value The bytes for symbol to set.
+       * @return This builder for chaining.
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
@@ -1258,12 +1302,15 @@ public final class ToeknConverterContract {
       private long virtualBalance_ ;
       /**
        * <code>sint64 virtual_balance = 2;</code>
+       * @return The virtualBalance.
        */
       public long getVirtualBalance() {
         return virtualBalance_;
       }
       /**
        * <code>sint64 virtual_balance = 2;</code>
+       * @param value The virtualBalance to set.
+       * @return This builder for chaining.
        */
       public Builder setVirtualBalance(long value) {
         
@@ -1273,6 +1320,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>sint64 virtual_balance = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearVirtualBalance() {
         
@@ -1284,6 +1332,7 @@ public final class ToeknConverterContract {
       private java.lang.Object weight_ = "";
       /**
        * <code>string weight = 3;</code>
+       * @return The weight.
        */
       public java.lang.String getWeight() {
         java.lang.Object ref = weight_;
@@ -1299,6 +1348,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string weight = 3;</code>
+       * @return The bytes for weight.
        */
       public com.google.protobuf.ByteString
           getWeightBytes() {
@@ -1315,6 +1365,8 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string weight = 3;</code>
+       * @param value The weight to set.
+       * @return This builder for chaining.
        */
       public Builder setWeight(
           java.lang.String value) {
@@ -1328,6 +1380,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string weight = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearWeight() {
         
@@ -1337,6 +1390,8 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>string weight = 3;</code>
+       * @param value The bytes for weight to set.
+       * @return This builder for chaining.
        */
       public Builder setWeightBytes(
           com.google.protobuf.ByteString value) {
@@ -1357,6 +1412,7 @@ public final class ToeknConverterContract {
        * </pre>
        *
        * <code>bool is_virtual_balance_enabled = 4;</code>
+       * @return The isVirtualBalanceEnabled.
        */
       public boolean getIsVirtualBalanceEnabled() {
         return isVirtualBalanceEnabled_;
@@ -1367,6 +1423,8 @@ public final class ToeknConverterContract {
        * </pre>
        *
        * <code>bool is_virtual_balance_enabled = 4;</code>
+       * @param value The isVirtualBalanceEnabled to set.
+       * @return This builder for chaining.
        */
       public Builder setIsVirtualBalanceEnabled(boolean value) {
         
@@ -1380,6 +1438,7 @@ public final class ToeknConverterContract {
        * </pre>
        *
        * <code>bool is_virtual_balance_enabled = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsVirtualBalanceEnabled() {
         
@@ -1391,12 +1450,15 @@ public final class ToeknConverterContract {
       private boolean isPurchaseEnabled_ ;
       /**
        * <code>bool is_purchase_enabled = 5;</code>
+       * @return The isPurchaseEnabled.
        */
       public boolean getIsPurchaseEnabled() {
         return isPurchaseEnabled_;
       }
       /**
        * <code>bool is_purchase_enabled = 5;</code>
+       * @param value The isPurchaseEnabled to set.
+       * @return This builder for chaining.
        */
       public Builder setIsPurchaseEnabled(boolean value) {
         
@@ -1406,6 +1468,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <code>bool is_purchase_enabled = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearIsPurchaseEnabled() {
         
@@ -1492,18 +1555,10 @@ public final class ToeknConverterContract {
       "bled\030\004 \001(\010\022\033\n\023is_purchase_enabled\030\005 \001(\010B" +
       "\034\n\032io.aelf.protobuf.generatedb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_TokenSymbol_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_TokenSymbol_fieldAccessorTable = new

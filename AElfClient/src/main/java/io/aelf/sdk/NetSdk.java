@@ -18,7 +18,7 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class NetSdk {
 
-  private String aelfSdkUrl;
+  private String AElfClientUrl;
   private String version;
   private static final String WA_ADDPEER = "/api/net/peer";
   private static final String WA_REMOVEPEER = "/api/net/peer";
@@ -32,7 +32,7 @@ public class NetSdk {
    * @param version application/json;v={version}
    */
   public NetSdk(String url, String version) {
-    this.aelfSdkUrl = url;
+    this.AElfClientUrl = url;
     this.version = version;
   }
 
@@ -43,7 +43,7 @@ public class NetSdk {
    * Attempts to add a node to the connected network nodes wa:/api/net/peer.
    */
   public Boolean addPeer(AddPeerInput input) throws Exception {
-    String url = this.aelfSdkUrl + WA_ADDPEER;
+    String url = this.AElfClientUrl + WA_ADDPEER;
     MapEntry mapParmas = Maps.newMap();
     mapParmas.put("Address", input.getAddress());
     String responseBobyResult = HttpUtilExt
@@ -58,7 +58,7 @@ public class NetSdk {
    * Attempts to remove a node from the connected network nodes wa:/api/net/peer.
    */
   public Boolean removePeer(String address) throws Exception {
-    String url = this.aelfSdkUrl + WA_REMOVEPEER + "?address=" + address;
+    String url = this.AElfClientUrl + WA_REMOVEPEER + "?address=" + address;
     String responseBobyResult = HttpUtilExt.sendDelete(url, "UTF-8", this.version);
     return "true".equals(responseBobyResult);
   }
@@ -68,7 +68,7 @@ public class NetSdk {
    * wa:/api/net/peers?withMetrics=false
    */
   public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
-    String url = this.aelfSdkUrl + WA_GETPEERS + "?withMetrics=" + withMetrics;
+    String url = this.AElfClientUrl + WA_GETPEERS + "?withMetrics=" + withMetrics;
     String peersChain = ClientUtil.sendGet(url, "UTF-8", this.version);
     List<PeerDto> listPeerDto = new ArrayList<PeerDto>();
     List<LinkedHashMap> responseBobyList = JsonUtil.parseObject(peersChain, List.class);
@@ -121,7 +121,7 @@ public class NetSdk {
    */
   public NetworkInfoOutput getNetworkInfo() throws Exception {
     String networkChain = ClientUtil
-        .sendGet(this.aelfSdkUrl + WA_GETNETWORKINFO, "UTF-8", this.version);
+        .sendGet(this.AElfClientUrl + WA_GETNETWORKINFO, "UTF-8", this.version);
     MapEntry responseBobyMap = JsonUtil.parseObject(networkChain);
     NetworkInfoOutput networkInfoOutput = new NetworkInfoOutput();
     networkInfoOutput.setVersion(responseBobyMap.getString("Version"));
@@ -129,6 +129,4 @@ public class NetSdk {
     networkInfoOutput.setProtocolVersion(responseBobyMap.getInteger("ProtocolVersion", 0));
     return networkInfoOutput;
   }
-
-
 }

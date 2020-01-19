@@ -20,14 +20,18 @@ public final class AedposContract {
 
     /**
      * <code>repeated bytes pubkeys = 1;</code>
+     * @return A list containing the pubkeys.
      */
     java.util.List<com.google.protobuf.ByteString> getPubkeysList();
     /**
      * <code>repeated bytes pubkeys = 1;</code>
+     * @return The count of pubkeys.
      */
     int getPubkeysCount();
     /**
      * <code>repeated bytes pubkeys = 1;</code>
+     * @param index The index of the element to return.
+     * @return The pubkeys at the given index.
      */
     com.google.protobuf.ByteString getPubkeys(int index);
   }
@@ -49,6 +53,13 @@ public final class AedposContract {
     }
     private MinerList() {
       pubkeys_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MinerList();
     }
 
     @java.lang.Override
@@ -122,6 +133,7 @@ public final class AedposContract {
     private java.util.List<com.google.protobuf.ByteString> pubkeys_;
     /**
      * <code>repeated bytes pubkeys = 1;</code>
+     * @return A list containing the pubkeys.
      */
     public java.util.List<com.google.protobuf.ByteString>
         getPubkeysList() {
@@ -129,12 +141,15 @@ public final class AedposContract {
     }
     /**
      * <code>repeated bytes pubkeys = 1;</code>
+     * @return The count of pubkeys.
      */
     public int getPubkeysCount() {
       return pubkeys_.size();
     }
     /**
      * <code>repeated bytes pubkeys = 1;</code>
+     * @param index The index of the element to return.
+     * @return The pubkeys at the given index.
      */
     public com.google.protobuf.ByteString getPubkeys(int index) {
       return pubkeys_.get(index);
@@ -475,6 +490,7 @@ public final class AedposContract {
       }
       /**
        * <code>repeated bytes pubkeys = 1;</code>
+       * @return A list containing the pubkeys.
        */
       public java.util.List<com.google.protobuf.ByteString>
           getPubkeysList() {
@@ -483,18 +499,24 @@ public final class AedposContract {
       }
       /**
        * <code>repeated bytes pubkeys = 1;</code>
+       * @return The count of pubkeys.
        */
       public int getPubkeysCount() {
         return pubkeys_.size();
       }
       /**
        * <code>repeated bytes pubkeys = 1;</code>
+       * @param index The index of the element to return.
+       * @return The pubkeys at the given index.
        */
       public com.google.protobuf.ByteString getPubkeys(int index) {
         return pubkeys_.get(index);
       }
       /**
        * <code>repeated bytes pubkeys = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The pubkeys to set.
+       * @return This builder for chaining.
        */
       public Builder setPubkeys(
           int index, com.google.protobuf.ByteString value) {
@@ -508,6 +530,8 @@ public final class AedposContract {
       }
       /**
        * <code>repeated bytes pubkeys = 1;</code>
+       * @param value The pubkeys to add.
+       * @return This builder for chaining.
        */
       public Builder addPubkeys(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -520,6 +544,8 @@ public final class AedposContract {
       }
       /**
        * <code>repeated bytes pubkeys = 1;</code>
+       * @param values The pubkeys to add.
+       * @return This builder for chaining.
        */
       public Builder addAllPubkeys(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -531,6 +557,7 @@ public final class AedposContract {
       }
       /**
        * <code>repeated bytes pubkeys = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPubkeys() {
         pubkeys_ = java.util.Collections.emptyList();
@@ -597,19 +624,25 @@ public final class AedposContract {
 
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @return A list containing the pubkeys.
      */
     java.util.List<java.lang.String>
         getPubkeysList();
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @return The count of pubkeys.
      */
     int getPubkeysCount();
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @param index The index of the element to return.
+     * @return The pubkeys at the given index.
      */
     java.lang.String getPubkeys(int index);
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the pubkeys at the given index.
      */
     com.google.protobuf.ByteString
         getPubkeysBytes(int index);
@@ -628,6 +661,13 @@ public final class AedposContract {
     }
     private PubkeyList() {
       pubkeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PubkeyList();
     }
 
     @java.lang.Override
@@ -702,6 +742,7 @@ public final class AedposContract {
     private com.google.protobuf.LazyStringList pubkeys_;
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @return A list containing the pubkeys.
      */
     public com.google.protobuf.ProtocolStringList
         getPubkeysList() {
@@ -709,18 +750,23 @@ public final class AedposContract {
     }
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @return The count of pubkeys.
      */
     public int getPubkeysCount() {
       return pubkeys_.size();
     }
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @param index The index of the element to return.
+     * @return The pubkeys at the given index.
      */
     public java.lang.String getPubkeys(int index) {
       return pubkeys_.get(index);
     }
     /**
      * <code>repeated string pubkeys = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the pubkeys at the given index.
      */
     public com.google.protobuf.ByteString
         getPubkeysBytes(int index) {
@@ -1057,6 +1103,7 @@ public final class AedposContract {
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @return A list containing the pubkeys.
        */
       public com.google.protobuf.ProtocolStringList
           getPubkeysList() {
@@ -1064,18 +1111,23 @@ public final class AedposContract {
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @return The count of pubkeys.
        */
       public int getPubkeysCount() {
         return pubkeys_.size();
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @param index The index of the element to return.
+       * @return The pubkeys at the given index.
        */
       public java.lang.String getPubkeys(int index) {
         return pubkeys_.get(index);
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the pubkeys at the given index.
        */
       public com.google.protobuf.ByteString
           getPubkeysBytes(int index) {
@@ -1083,6 +1135,9 @@ public final class AedposContract {
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The pubkeys to set.
+       * @return This builder for chaining.
        */
       public Builder setPubkeys(
           int index, java.lang.String value) {
@@ -1096,6 +1151,8 @@ public final class AedposContract {
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @param value The pubkeys to add.
+       * @return This builder for chaining.
        */
       public Builder addPubkeys(
           java.lang.String value) {
@@ -1109,6 +1166,8 @@ public final class AedposContract {
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @param values The pubkeys to add.
+       * @return This builder for chaining.
        */
       public Builder addAllPubkeys(
           java.lang.Iterable<java.lang.String> values) {
@@ -1120,6 +1179,7 @@ public final class AedposContract {
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPubkeys() {
         pubkeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -1129,6 +1189,8 @@ public final class AedposContract {
       }
       /**
        * <code>repeated string pubkeys = 1;</code>
+       * @param value The bytes of the pubkeys to add.
+       * @return This builder for chaining.
        */
       public Builder addPubkeysBytes(
           com.google.protobuf.ByteString value) {
@@ -1200,10 +1262,12 @@ public final class AedposContract {
 
     /**
      * <code>.MinerList miner_list = 1;</code>
+     * @return Whether the minerList field is set.
      */
     boolean hasMinerList();
     /**
      * <code>.MinerList miner_list = 1;</code>
+     * @return The minerList.
      */
     io.aelf.protobuf.generated.AedposContract.MinerList getMinerList();
     /**
@@ -1213,6 +1277,7 @@ public final class AedposContract {
 
     /**
      * <code>sint64 round_number = 2;</code>
+     * @return The roundNumber.
      */
     long getRoundNumber();
   }
@@ -1232,6 +1297,13 @@ public final class AedposContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MinerListWithRoundNumber();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1244,7 +1316,6 @@ public final class AedposContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1309,12 +1380,14 @@ public final class AedposContract {
     private io.aelf.protobuf.generated.AedposContract.MinerList minerList_;
     /**
      * <code>.MinerList miner_list = 1;</code>
+     * @return Whether the minerList field is set.
      */
     public boolean hasMinerList() {
       return minerList_ != null;
     }
     /**
      * <code>.MinerList miner_list = 1;</code>
+     * @return The minerList.
      */
     public io.aelf.protobuf.generated.AedposContract.MinerList getMinerList() {
       return minerList_ == null ? io.aelf.protobuf.generated.AedposContract.MinerList.getDefaultInstance() : minerList_;
@@ -1330,6 +1403,7 @@ public final class AedposContract {
     private long roundNumber_;
     /**
      * <code>sint64 round_number = 2;</code>
+     * @return The roundNumber.
      */
     public long getRoundNumber() {
       return roundNumber_;
@@ -1673,12 +1747,14 @@ public final class AedposContract {
           io.aelf.protobuf.generated.AedposContract.MinerList, io.aelf.protobuf.generated.AedposContract.MinerList.Builder, io.aelf.protobuf.generated.AedposContract.MinerListOrBuilder> minerListBuilder_;
       /**
        * <code>.MinerList miner_list = 1;</code>
+       * @return Whether the minerList field is set.
        */
       public boolean hasMinerList() {
         return minerListBuilder_ != null || minerList_ != null;
       }
       /**
        * <code>.MinerList miner_list = 1;</code>
+       * @return The minerList.
        */
       public io.aelf.protobuf.generated.AedposContract.MinerList getMinerList() {
         if (minerListBuilder_ == null) {
@@ -1788,12 +1864,15 @@ public final class AedposContract {
       private long roundNumber_ ;
       /**
        * <code>sint64 round_number = 2;</code>
+       * @return The roundNumber.
        */
       public long getRoundNumber() {
         return roundNumber_;
       }
       /**
        * <code>sint64 round_number = 2;</code>
+       * @param value The roundNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setRoundNumber(long value) {
         
@@ -1803,6 +1882,7 @@ public final class AedposContract {
       }
       /**
        * <code>sint64 round_number = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRoundNumber() {
         
@@ -1869,6 +1949,7 @@ public final class AedposContract {
 
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     long getTermNumber();
   }
@@ -1888,6 +1969,13 @@ public final class AedposContract {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GetMinerListInput();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1900,7 +1988,6 @@ public final class AedposContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1952,6 +2039,7 @@ public final class AedposContract {
     private long termNumber_;
     /**
      * <code>sint64 term_number = 1;</code>
+     * @return The termNumber.
      */
     public long getTermNumber() {
       return termNumber_;
@@ -2263,12 +2351,15 @@ public final class AedposContract {
       private long termNumber_ ;
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @param value The termNumber to set.
+       * @return This builder for chaining.
        */
       public Builder setTermNumber(long value) {
         
@@ -2278,6 +2369,7 @@ public final class AedposContract {
       }
       /**
        * <code>sint64 term_number = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
         
@@ -2375,18 +2467,10 @@ public final class AedposContract {
       "er\030\001 \001(\022B\034\n\032io.aelf.protobuf.generatedb\006" +
       "proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_MinerList_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_MinerList_fieldAccessorTable = new
