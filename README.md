@@ -24,10 +24,8 @@ long blockHeight = client.getBlockHeight();
 ``` JAVA
     public AElfClient(String url);
     
-    public BlockChainSdk getBlockChainSdkObj();
-    
-    public NetSdk getNetSdkObj();
-    
+    public AElfClient(String url,String version);
+   
     public TransactionDto generateTransaction(String from, String to, String methodName, String params) throws Exception;
     
     public TransactionDto signTransaction(String privateKeyHex,TransactionDto transaction);
@@ -39,72 +37,57 @@ long blockHeight = client.getBlockHeight();
     public String GetSignatureWithToHex(String privateKey, byte[] txData) throws Exception;
     
     public boolean isConnected();
+    
+    public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception;
+     
+    public BlockDto getBlockByHeight(long blockHeight, boolean includeTransactions) throws Exception;
+     
+    public BlockStateDto getBlockState(String blockHash) throws  Exception;
+     
+    public ChainstatusDto getChainStatus() throws Exception;
+     
+    public byte[] getContractFilCeDescriptorSet(String address) throws  Exception;
+     
+    public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception;
+     
+    public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception;
+     
+    public String executeTransaction(ExecuteTransactionDto input) throws Exception;
+     
+    public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input) throws Exception;
+     
+    public String  executeRawTransaction(ExecuteRawTransactionDto input) throws Exception;
+     
+    public SendRawTransactionOutput sendRawTransaction(SendRawTransactionInput input) throws Exception;
+     
+    public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception;
+     
+    public List<String> sendTransactions(SendTransactionsInput input) throws Exception;
+     
+    public TransactionResultDto getTransactionResult(String transactionId) throws Exception;
+     
+    public List<TransactionResultDto>  getTransactionResults(String blockHash, int offset,int limit) throws Exception;
+     
+    public MerklePathDto getMerklePathByTransactionId(String transactionId) throws Exception;
+     
+    public List<TransactionResultDto>  getTransactionResults(String blockHash) throws Exception;
+     
+    public BlockDto getBlockByHeight(long blockHeight) throws Exception;
+     
+    public BlockDto getBlockByHash(String blockHash) throws Exception;
+     
+    public int getChainId() throws Exception;
+    
+    public Boolean addPeer(AddPeerInput input) throws Exception;
+    
+    public Boolean removePeer(String address) throws Exception;
+    
+    public List<PeerDto> getPeers(Boolean withMetrics) throws Exception;
+    
+    public NetworkInfoOutput getNetworkInfo() throws Exception;
+    
  ```   
 ####
-
-#### BlockChainSdk
-
-``` JAVA
- public AElfClient(String url);
- 
- public BlockChainSdk getBlockChainSdkObj();
-
- public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception;
- 
- public BlockDto getBlockByHeight(long blockHeight, boolean includeTransactions) throws Exception;
- 
- public BlockStateDto getBlockState(String blockHash) throws  Exception;
- 
- public ChainstatusDto getChainStatus() throws Exception;
- 
- public byte[] getContractFilCeDescriptorSet(String address) throws  Exception;
- 
- public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception;
- 
- public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception;
- 
- public String executeTransaction(ExecuteTransactionDto input) throws Exception;
- 
- public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input) throws Exception;
- 
- public String  executeRawTransaction(ExecuteRawTransactionDto input) throws Exception;
- 
- public SendRawTransactionOutput sendRawTransaction(SendRawTransactionInput input) throws Exception;
- 
- public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception;
- 
- public List<String> sendTransactions(SendTransactionsInput input) throws Exception;
- 
- public TransactionResultDto getTransactionResult(String transactionId) throws Exception;
- 
- public List<TransactionResultDto>  getTransactionResults(String blockHash, int offset,int limit) throws Exception;
- 
- public MerklePathDto getMerklePathByTransactionId(String transactionId) throws Exception;
- 
- public List<TransactionResultDto>  getTransactionResults(String blockHash) throws Exception;
- 
- public BlockDto getBlockByHeight(long blockHeight) throws Exception;
- 
- public BlockDto getBlockByHash(String blockHash) throws Exception;
- 
- public int getChainId() throws Exception;
-```
-
-#### NetSdk
-
-``` JAVA
- public NetSdk(String url);
-
- public Boolean addPeer(AddPeerInput input) throws Exception;
-
- public Boolean removePeer(String address) throws Exception;
-
- public List<PeerDto> getPeers(Boolean withMetrics) throws Exception;
-
- public NetworkInfoOutput getNetworkInfo() throws Exception;
-
-```
-
 
 ### Test
 
