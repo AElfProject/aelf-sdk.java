@@ -89,6 +89,19 @@ long blockHeight = client.getBlockHeight();
  ```   
 ####
 
+### ProtoBuff Build
+
+Compile protobuff before secondary development.
+
+You need to go to the resource directory.
+
+Windows
+./protobuff.bat
+
+Linxu Or Mac
+./protobuff.sh
+
+
 ### Test
 
 This module contains tests for all services provided by client. You can see how to properly use services provided by AElf_SDK here.
