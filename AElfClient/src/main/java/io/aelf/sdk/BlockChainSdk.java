@@ -36,7 +36,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
-import javax.annotation.Nullable;
 import org.apache.commons.codec.binary.Base64;
 import org.bitcoinj.core.Base58;
 
