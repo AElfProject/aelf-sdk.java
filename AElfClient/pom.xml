@@ -20,6 +20,7 @@
         <web3j.version>3.3.1</web3j.version>
         <jdk15on.version>1.60</jdk15on.version>
         <bitcoinj-core.version>0.14.3</bitcoinj-core.version>
+        <protobuf-java.version>3.11.1</protobuf-java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -70,7 +71,7 @@
       <dependency>
         <groupId>com.google.protobuf</groupId>
         <artifactId>protobuf-java</artifactId>
-        <version>3.11.1</version>
+        <version>${protobuf-java.version}</version>
       </dependency>
     </dependencies>
     <developers>

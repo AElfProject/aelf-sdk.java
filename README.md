@@ -122,4 +122,4 @@ You need to firstly set necessary parameters to make sure tests can run successf
 
 ### Note
 
-You need to run a local or remote AElf node to run the unit test successfully. If you're not familiar with how to run a node or multiple nodes, please see Running a node / Running multiple nodes for more information.
+You need to run a local or remote AElf node to run the unit test successfully. If you're not familiar with how to run a node or multiple nodes, please see [Running a node](https://docs.aelf.io/v/dev/main/main/run-node) / [Running multiple nodes](https://docs.aelf.io/v/dev/main/main/multi-nodes) for more information.
