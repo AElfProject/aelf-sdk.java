@@ -1,11 +1,5 @@
 package io.aelf.schemas;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: KeyPairInfo
- * @description: TODO
- * @date 2020/2/1020:37
- */
 public class KeyPairInfo {
   private String privateKey;
   private String publicKey;

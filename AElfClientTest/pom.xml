@@ -7,10 +7,10 @@
     <groupId>io.aelf</groupId>
     <artifactId>aelf-sdk-test</artifactId>
     <name>AElfClientTest</name>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <properties>
         <junit.version>4.12</junit.version>
-        <io.aelf.version>0.1.0</io.aelf.version>
+        <io.aelf.version>0.1.1</io.aelf.version>
         <jdk.version>1.8</jdk.version>
     </properties>
     <dependencies>
