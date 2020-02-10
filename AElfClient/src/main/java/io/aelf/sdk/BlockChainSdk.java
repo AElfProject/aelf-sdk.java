@@ -350,7 +350,7 @@ public class BlockChainSdk {
   /**
    * Get merkle path of a transaction. wa:/api/blockChain/merklePathByTransactionId
    */
-  public MerklePathDto getMerklePathByTransactionId(String transactionId){
+  public MerklePathDto getMerklePathByTransactionId(String transactionId) {
     String url = this.AElfClientUrl + WA_GETMBYTRANSACTIONID + "?transactionId="
         + transactionId;
     String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);

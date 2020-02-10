@@ -8,6 +8,10 @@ This is a Java client library, used to communicate with the [AElf](https://githu
 
 You should build the "AElfClient" project 
 
+### System Requirement
+JDK1.8+
+Log4j2.6.2
+
 ### Basic usage
 
 ``` JAVA
@@ -51,7 +55,9 @@ long blockHeight = client.getBlockHeight();
     public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception;
      
     public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception;
-     
+    
+    public KeyPairInfo generateKeyPairInfo() throws Exception;
+    
     public String executeTransaction(ExecuteTransactionDto input) throws Exception;
      
     public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input) throws Exception;

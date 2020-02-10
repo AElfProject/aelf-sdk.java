@@ -8,6 +8,7 @@ import io.aelf.schemas.CreateRawTransactionInput;
 import io.aelf.schemas.CreateRawTransactionOutput;
 import io.aelf.schemas.ExecuteRawTransactionDto;
 import io.aelf.schemas.ExecuteTransactionDto;
+import io.aelf.schemas.KeyPairInfo;
 import io.aelf.schemas.SendRawTransactionInput;
 import io.aelf.schemas.SendTransactionInput;
 import io.aelf.schemas.SendTransactionsInput;
@@ -59,6 +60,12 @@ public class BlockChainSdkTest {
   public void getFormattedAddressTest() throws Exception {
     String addressVal = client.getFormattedAddress(privateKey, address);
     Assert.assertTrue(("ELF_" + address + "_AELF").equals(addressVal));
+  }
+
+  @Test
+  public void getNewKeyPairInfoTest() throws Exception {
+    KeyPairInfo keyPairInfo=client.generateKeyPairInfo();
+    Assert.assertEquals(client.getAddressFromPrivateKey(keyPairInfo.getPrivateKey()),keyPairInfo.getAddress());
   }
 
   @Test

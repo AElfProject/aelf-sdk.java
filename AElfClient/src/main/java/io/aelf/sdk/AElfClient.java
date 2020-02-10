@@ -11,6 +11,7 @@ import io.aelf.schemas.CreateRawTransactionInput;
 import io.aelf.schemas.CreateRawTransactionOutput;
 import io.aelf.schemas.ExecuteRawTransactionDto;
 import io.aelf.schemas.ExecuteTransactionDto;
+import io.aelf.schemas.KeyPairInfo;
 import io.aelf.schemas.MerklePathDto;
 import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;
@@ -24,6 +25,7 @@ import io.aelf.schemas.TransactionPoolStatusOutput;
 import io.aelf.schemas.TransactionResultDto;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
+import io.aelf.utils.JsonUtil;
 import io.aelf.utils.Sha256;
 import io.aelf.utils.StringUtil;
 import java.math.BigInteger;
@@ -34,6 +36,7 @@ import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Sha256Hash;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
+import org.web3j.crypto.Keys;
 import org.web3j.crypto.Sign;
 
 public class AElfClient {
@@ -351,6 +354,23 @@ public class AElfClient {
     String response = this.blcokChainSdk.executeTransaction(executeTransactionDto);
     StringValue symbol = StringValue.parseFrom(ByteArrayHelper.hexToByteArray(response));
     return symbol.getValue() + "_" + address + "_" + chainIdString;
+  }
+
+  /**
+   * new generateKeyPairInfo;
+   */
+  public KeyPairInfo generateKeyPairInfo()
+      throws Exception {
+    ECKeyPair keyPair = Keys.createEcKeyPair();
+    String privateKey = keyPair.getPrivateKey().toString(16);
+    String publicKey = keyPair.getPublicKey().toString(16);
+    String address = getAddressFromPrivateKey(privateKey);
+    KeyPairInfo keyPairInfo = new KeyPairInfo();
+    keyPairInfo.setPrivateKey(privateKey);
+    keyPairInfo.setPublicKey(publicKey);
+    keyPairInfo.setAddress(address);
+    System.out.println(JsonUtil.toJsonString(keyPairInfo));
+    return keyPairInfo;
   }
 
   /**
