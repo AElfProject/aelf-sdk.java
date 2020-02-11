@@ -33,6 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nullable;
 import org.bitcoinj.core.Base58;
+import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
@@ -361,9 +362,9 @@ public class AElfClient {
    */
   public KeyPairInfo generateKeyPairInfo()
       throws Exception {
-    ECKeyPair keyPair = Keys.createEcKeyPair();
-    String privateKey = keyPair.getPrivateKey().toString(16);
-    String publicKey = keyPair.getPublicKey().toString(16);
+    ECKey keyPair = new ECKey();
+    String privateKey = keyPair.getPrivateKeyAsHex();
+    String publicKey = keyPair.getPublicKeyAsHex();
     String address = getAddressFromPrivateKey(privateKey);
     KeyPairInfo keyPairInfo = new KeyPairInfo();
     keyPairInfo.setPrivateKey(privateKey);

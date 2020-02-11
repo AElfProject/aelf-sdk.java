@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.aelf</groupId>
     <artifactId>aelf-sdk-build</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <name>AElfClientSDK</name>
     <packaging>pom</packaging>
     <modules>
