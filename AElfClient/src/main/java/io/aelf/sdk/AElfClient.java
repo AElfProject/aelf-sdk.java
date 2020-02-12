@@ -37,7 +37,6 @@ import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
-import org.web3j.crypto.Keys;
 import org.web3j.crypto.Sign;
 
 public class AElfClient {

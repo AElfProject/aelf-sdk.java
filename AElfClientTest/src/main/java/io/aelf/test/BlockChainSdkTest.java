@@ -64,8 +64,9 @@ public class BlockChainSdkTest {
 
   @Test
   public void getNewKeyPairInfoTest() throws Exception {
-    KeyPairInfo keyPairInfo=client.generateKeyPairInfo();
-    Assert.assertEquals(client.getAddressFromPrivateKey(keyPairInfo.getPrivateKey()),keyPairInfo.getAddress());
+    KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
+    Assert.assertEquals(client.getAddressFromPrivateKey(keyPairInfo.getPrivateKey()),
+        keyPairInfo.getAddress());
   }
 
   @Test
