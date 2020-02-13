@@ -369,7 +369,6 @@ public class AElfClient {
     keyPairInfo.setPrivateKey(privateKey);
     keyPairInfo.setPublicKey(publicKey);
     keyPairInfo.setAddress(address);
-    System.out.println(JsonUtil.toJsonString(keyPairInfo));
     return keyPairInfo;
   }
 
