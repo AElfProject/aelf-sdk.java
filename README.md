@@ -131,7 +131,7 @@ mvn clean pakage.
 
 mvn clean install.
 
-mvn clean pakage delopy(https://github.com/AElfProject/aelf-sdk.java/blob/dev/delopy.docx).
+mvn clean pakage delopy(https://github.com/linhuic99/aelf-sdk.java/blob/master/delopy.docx).
 
 
 
