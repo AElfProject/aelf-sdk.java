@@ -125,15 +125,13 @@ You need to firstly set necessary parameters to make sure tests can run successf
    ``` JAVA
    String privateKey="09da44778f8db2e602fb484334f37df19e221c84c4582ce5b7770ccfbc3ddbef";
    ```
-### 常用Maven命令
+### Common Maven commands
 
-mvn clean.
+mvn clean pakage.
 
-mvn pakage.
+mvn clean install.
 
-mvn install.
-
-mvn delopy(https://github.com/AElfProject/aelf-sdk.java/blob/dev/delopy.docx).
+mvn clean pakage delopy(https://github.com/AElfProject/aelf-sdk.java/blob/dev/delopy.docx).
 
 
 
