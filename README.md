@@ -125,6 +125,16 @@ You need to firstly set necessary parameters to make sure tests can run successf
    ``` JAVA
    String privateKey="09da44778f8db2e602fb484334f37df19e221c84c4582ce5b7770ccfbc3ddbef";
    ```
+### 常用Maven命令
+
+mvn compile 
+mvn test 
+mvn clean 
+mvn pakage  
+mvn install 
+mvn delopy(https://github.com/AElfProject/aelf-sdk.java/blob/dev/delopy.docx)
+
+
 
 ### Note
 
