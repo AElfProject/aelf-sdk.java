@@ -127,9 +127,12 @@ You need to firstly set necessary parameters to make sure tests can run successf
    ```
 ### 常用Maven命令
 
-mvn clean. 
-mvn pakage.  
-mvn install. 
+mvn clean.
+
+mvn pakage.
+
+mvn install.
+
 mvn delopy(https://github.com/AElfProject/aelf-sdk.java/blob/dev/delopy.docx).
 
 
