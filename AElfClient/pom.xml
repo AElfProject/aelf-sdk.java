@@ -81,9 +81,7 @@
             <url>https://github.com/AElfProject/AElf</url>
         </developer>
     </developers>
-    <!-- 许可证信息 -->
     <licenses>
-        <!-- Apache许可证 -->
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>https://github.com/AElfProject/aelf-sdk.java/blob/dev/LICENSE-2.0.txt</url>
@@ -106,11 +104,9 @@
                 <configuration>
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <!-- 如果希望发布后自动执行close和release操作，此处可以调整为true -->
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
-            <!-- 生成java doc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -124,7 +120,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 生成java source.jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -138,7 +133,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 生成asc 校验文件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -156,13 +150,13 @@
         </plugins>
     </build>
     <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+     </distributionManagement>
 </project>

@@ -52,7 +52,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.2</version>
                 <configuration>
-                    <!-- JDK版本 -->
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
                 </configuration>
