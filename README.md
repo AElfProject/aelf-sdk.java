@@ -125,18 +125,6 @@ You need to firstly set necessary parameters to make sure tests can run successf
    ``` JAVA
    String privateKey="09da44778f8db2e602fb484334f37df19e221c84c4582ce5b7770ccfbc3ddbef";
    ```
-### Common Maven commands
-
-mvn clean pakage.
-
-mvn clean install.
-
-mvn clean pakage delopy.
-
-more information about deployment，see the doc(https://github.com/linhuic99/aelf-sdk.java/blob/master/delopy.docx?raw=true).
-
-
-
 ### Note
 
 You need to run a local or remote AElf node to run the unit test successfully. If you're not familiar with how to run a node or multiple nodes, please see [Running a node](https://docs.aelf.io/v/dev/main/main/run-node) / [Running multiple nodes](https://docs.aelf.io/v/dev/main/main/multi-nodes) for more information.

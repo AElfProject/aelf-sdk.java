@@ -83,7 +83,7 @@
     </developers>
     <licenses>
         <license>
-            <name>The Apache Software License, Version 2.0</name>
+            <name>MIT License</name>
             <url>https://github.com/AElfProject/aelf-sdk.java/blob/dev/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
