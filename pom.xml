@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.aelf</groupId>
-    <artifactId>aelf_sdk_build</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>aelf_sdk_build</name>
+    <artifactId>aelf-sdk-build</artifactId>
+    <version>0.1.2</version>
+    <name>AElfClientSDK</name>
     <packaging>pom</packaging>
     <modules>
-        <module>AElf_SDK</module>
-        <module>AElf_SDK_Test</module>
+        <module>AElfClient</module>
+        <module>AElfClientTest</module>
     </modules>
 
 </project>
