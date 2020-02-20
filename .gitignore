@@ -11,7 +11,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -30,3 +29,8 @@ AElf_SDK_Test/target/
 AElf_SDK/target/maven-archiver/pom.properties
 *.iml
 AElf_SDK/target/
+AElfClient/target/
+AElfClientTest/target/
+.txt
+AElfClientTest/junit_log.txt
+AElfClientTest/src/main/resources/junit_log.txt
