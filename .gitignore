@@ -24,13 +24,6 @@ hs_err_pid*
 .idea/workspace.xml
 .idea/vcs.xml
 .idea/
-AElf_SDK_Test/aelf_sdk_test.iml
-AElf_SDK_Test/target/
-AElf_SDK/target/maven-archiver/pom.properties
 *.iml
-AElf_SDK/target/
-AElfClient/target/
-AElfClientTest/target/
+target
 .txt
-AElfClientTest/junit_log.txt
-AElfClientTest/src/main/resources/junit_log.txt
