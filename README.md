@@ -104,7 +104,7 @@ Default classes defined in the "protobuf/protos" are available in the directory 
 You can add new types in protos and generate them by using the scripts in "resources" folder.
 
 - Windows : `./protobuff.bat `
-- Linxu Or Mac: `./protobuff.sh `
+- Linux Or Mac: `./protobuff.sh `
 
 
 ### Test
