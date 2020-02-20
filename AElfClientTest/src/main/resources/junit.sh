@@ -1,1 +1,2 @@
-java -cp AElfClientTest-jar-with-dependencies.jar;junit-4.12.jar org.junit.runner.JUnitCore io.aelf.test.BlockChainSdkTest >junit_log.txt
+java -cp AElfClientTest-jar-with-dependencies.jar:junit-4.12.jar org.junit.runner.JUnitCore io.aelf.test.BlockChainSdkTest >junit_log.txt
+java -cp AElfClientTest-jar-with-dependencies.jar:junit-4.12.jar org.junit.runner.JUnitCore io.aelf.test.NetSdkTest >junit_log.txt
