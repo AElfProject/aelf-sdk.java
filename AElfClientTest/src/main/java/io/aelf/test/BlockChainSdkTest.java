@@ -20,6 +20,7 @@ import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.Sha256;
+import io.aelf.utils.TransactionResultDtoExtension;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ import org.junit.Test;
 
 public class BlockChainSdkTest {
 
-  static final String HTTPURL = "http://127.0.0.1:8200";
+  static final String HTTPURL = "http://52.90.147.175:8000";
   AElfClient client = null;
   String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
   String address = "";
@@ -281,6 +282,18 @@ public class BlockChainSdkTest {
     Assert.assertTrue(blockHeight > 0);
     BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
     client.getTransactionResults(blockDto.getBlockHash(), 0, 10);
+  }
+
+  @Test
+  public void GetTransactionFeesTest() throws Exception {
+    long blockHeight = client.getBlockHeight();
+    Assert.assertTrue(blockHeight > 0);
+    BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
+    List<TransactionResultDto> transactionResultDtoList = client
+        .getTransactionResults(blockDto.getBlockHash(), 0, 10);
+    for (TransactionResultDto transactionResultDtoObj : transactionResultDtoList) {
+      TransactionResultDtoExtension.GetTransactionFees(transactionResultDtoObj);
+    }
   }
 
   @Test

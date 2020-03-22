@@ -1,18 +1,10 @@
 syntax = "proto3";
-
-package client;
-
-import "options.proto";
-
-option csharp_namespace = "AElf.Client.MultiToken";
-
-// Messages
-
+option java_package = "io.aelf.protobuf.generated";
+import "client.proto";
 message TransactionSizeFeeSymbols
 {
     repeated TransactionSizeFeeSymbol transaction_size_fee_symbol_list = 1;
 }
-
 message TransactionSizeFeeSymbol
 {
     string token_symbol = 1;
@@ -23,19 +15,16 @@ message TransactionSizeFeeSymbol
 // Events
 
 message TransactionFeeCharged {
-    option (client.is_event) = true;
     string symbol = 1;
     sint64 amount = 2;
 }
 
 message ResourceTokenCharged {
-    option (client.is_event) = true;
     string symbol = 1;
     sint64 amount = 2;
 }
 
 message ResourceTokenOwned {
-    option (client.is_event) = true;
     string symbol = 1;
     sint64 amount = 2;
 }
