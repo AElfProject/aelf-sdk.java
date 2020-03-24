@@ -2,6 +2,10 @@ package io.aelf.test;
 
 import com.google.protobuf.ByteString;
 import io.aelf.protobuf.generated.Core;
+import io.aelf.protobuf.generated.Core.TransactionResultStatus;
+import io.aelf.protobuf.generated.TokenContract.GetBalanceOutput;
+import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
+import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged.Builder;
 import io.aelf.schemas.BlockDto;
 import io.aelf.schemas.ChainstatusDto;
 import io.aelf.schemas.CreateRawTransactionInput;
@@ -9,8 +13,10 @@ import io.aelf.schemas.CreateRawTransactionOutput;
 import io.aelf.schemas.ExecuteRawTransactionDto;
 import io.aelf.schemas.ExecuteTransactionDto;
 import io.aelf.schemas.KeyPairInfo;
+import io.aelf.schemas.LogEventDto;
 import io.aelf.schemas.SendRawTransactionInput;
 import io.aelf.schemas.SendTransactionInput;
+import io.aelf.schemas.SendTransactionOutput;
 import io.aelf.schemas.SendTransactionsInput;
 import io.aelf.schemas.TaskQueueInfoDto;
 import io.aelf.schemas.TransactionResultDto;
@@ -20,18 +26,22 @@ import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.Sha256;
+import io.aelf.utils.StringUtil;
+import io.aelf.utils.TransactionResultDtoExtension;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
 
 public class BlockChainSdkTest {
 
-  static final String HTTPURL = "http://127.0.0.1:8200";
+  static final String HTTPURL = "http://52.90.147.175:8000";
   AElfClient client = null;
   String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
   String address = "";
@@ -46,6 +56,62 @@ public class BlockChainSdkTest {
     client = new AElfClient(HTTPURL);
     address = client.getAddressFromPrivateKey(privateKey);
   }
+
+  @Test
+  public void getTransactionFeeTest() throws Exception {
+    TransactionResultDto transactionResultDto = new TransactionResultDto();
+    transactionResultDto.setLogs(new ArrayList<>());
+
+    LogEventDto logEventDto=new LogEventDto();
+    logEventDto.setName("TransactionFeeCharged");
+    Base64 base64 = new Base64();
+    Builder tfeeCharged=TransactionFeeCharged.newBuilder();
+    tfeeCharged.setSymbol("ELF");
+    tfeeCharged.setAmount(1000);
+    String nonIndexed=base64.encodeToString(tfeeCharged.build().toByteArray());
+    logEventDto.setNonIndexed(nonIndexed);
+    transactionResultDto.getLogs().add(logEventDto);
+
+    logEventDto=new LogEventDto();
+    logEventDto.setName("ResourceTokenCharged");
+    tfeeCharged=TransactionFeeCharged.newBuilder();
+    tfeeCharged.setSymbol("READ");
+    tfeeCharged.setAmount(800);
+    nonIndexed=base64.encodeToString(tfeeCharged.build().toByteArray());
+    logEventDto.setNonIndexed(nonIndexed);
+    transactionResultDto.getLogs().add(logEventDto);
+
+    logEventDto=new LogEventDto();
+    logEventDto.setName("ResourceTokenCharged");
+    tfeeCharged=TransactionFeeCharged.newBuilder();
+    tfeeCharged.setSymbol("WRITE");
+    tfeeCharged.setAmount(600);
+    nonIndexed=base64.encodeToString(tfeeCharged.build().toByteArray());
+    logEventDto.setNonIndexed(nonIndexed);
+    transactionResultDto.getLogs().add(logEventDto);
+
+    logEventDto=new LogEventDto();
+    logEventDto.setName("ResourceTokenOwned");
+    tfeeCharged=TransactionFeeCharged.newBuilder();
+    tfeeCharged.setSymbol("READ");
+    tfeeCharged.setAmount(200);
+    nonIndexed=base64.encodeToString(tfeeCharged.build().toByteArray());
+    logEventDto.setNonIndexed(nonIndexed);
+    transactionResultDto.getLogs().add(logEventDto);
+
+    HashMap<String,Long> transactionFees = TransactionResultDtoExtension.getTransactionFees(transactionResultDto);
+    Assert.assertTrue(transactionFees.keySet().size()==3);
+    Assert.assertTrue(transactionFees.get("ELF")==1000);
+    Assert.assertTrue(transactionFees.get("READ")==800);
+    Assert.assertTrue(transactionFees.get("WRITE")==600);
+
+    transactionResultDto = new TransactionResultDto();
+    transactionResultDto.setLogs(new ArrayList<>());
+    transactionFees = TransactionResultDtoExtension.getTransactionFees(transactionResultDto);
+    Assert.assertTrue(transactionFees.size()==0);
+
+  }
+
 
   @Test
   public void getAddressFromPubKeyTest() {
@@ -283,6 +349,10 @@ public class BlockChainSdkTest {
     client.getTransactionResults(blockDto.getBlockHash(), 0, 10);
   }
 
+
+
+
+
   @Test
   public void getTransactionResultTest() throws Exception {
     long blockHeight = client.getBlockHeight();
@@ -331,6 +401,8 @@ public class BlockChainSdkTest {
     client.sendTransaction(sendTransactionInputObj);
   }
 
+
+
   private Core.Transaction buildTransaction(String toAddress, String methodName, byte[] tmp)
       throws Exception {
     Core.Transaction.Builder transaction = client
@@ -353,6 +425,4 @@ public class BlockChainSdkTest {
     createRawTransactionInputObj.setRefBlockHash(blockHash);
     return createRawTransactionInputObj;
   }
-
-
 }

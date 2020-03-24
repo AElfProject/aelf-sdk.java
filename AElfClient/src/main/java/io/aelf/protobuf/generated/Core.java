@@ -1532,48 +1532,6 @@ public final class Core {
      */
     com.google.protobuf.ByteString
         getErrorBytes();
-
-    /**
-     * <code>string readable_return_value = 11;</code>
-     * @return The readableReturnValue.
-     */
-    java.lang.String getReadableReturnValue();
-    /**
-     * <code>string readable_return_value = 11;</code>
-     * @return The bytes for readableReturnValue.
-     */
-    com.google.protobuf.ByteString
-        getReadableReturnValueBytes();
-
-    /**
-     * <code>.TransactionFee transaction_fee = 12;</code>
-     * @return Whether the transactionFee field is set.
-     */
-    boolean hasTransactionFee();
-    /**
-     * <code>.TransactionFee transaction_fee = 12;</code>
-     * @return The transactionFee.
-     */
-    io.aelf.protobuf.generated.Core.TransactionFee getTransactionFee();
-    /**
-     * <code>.TransactionFee transaction_fee = 12;</code>
-     */
-    io.aelf.protobuf.generated.Core.TransactionFeeOrBuilder getTransactionFeeOrBuilder();
-
-    /**
-     * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-     * @return Whether the consumedResourceTokens field is set.
-     */
-    boolean hasConsumedResourceTokens();
-    /**
-     * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-     * @return The consumedResourceTokens.
-     */
-    io.aelf.protobuf.generated.Core.ConsumedResourceTokens getConsumedResourceTokens();
-    /**
-     * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-     */
-    io.aelf.protobuf.generated.Core.ConsumedResourceTokensOrBuilder getConsumedResourceTokensOrBuilder();
   }
   /**
    * Protobuf type {@code TransactionResult}
@@ -1593,7 +1551,6 @@ public final class Core {
       bloom_ = com.google.protobuf.ByteString.EMPTY;
       returnValue_ = com.google.protobuf.ByteString.EMPTY;
       error_ = "";
-      readableReturnValue_ = "";
     }
 
     @java.lang.Override
@@ -1705,38 +1662,6 @@ public final class Core {
               java.lang.String s = input.readStringRequireUtf8();
 
               error_ = s;
-              break;
-            }
-            case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              readableReturnValue_ = s;
-              break;
-            }
-            case 98: {
-              io.aelf.protobuf.generated.Core.TransactionFee.Builder subBuilder = null;
-              if (transactionFee_ != null) {
-                subBuilder = transactionFee_.toBuilder();
-              }
-              transactionFee_ = input.readMessage(io.aelf.protobuf.generated.Core.TransactionFee.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(transactionFee_);
-                transactionFee_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 106: {
-              io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder subBuilder = null;
-              if (consumedResourceTokens_ != null) {
-                subBuilder = consumedResourceTokens_.toBuilder();
-              }
-              consumedResourceTokens_ = input.readMessage(io.aelf.protobuf.generated.Core.ConsumedResourceTokens.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(consumedResourceTokens_);
-                consumedResourceTokens_ = subBuilder.buildPartial();
-              }
-
               break;
             }
             default: {
@@ -1981,88 +1906,6 @@ public final class Core {
       }
     }
 
-    public static final int READABLE_RETURN_VALUE_FIELD_NUMBER = 11;
-    private volatile java.lang.Object readableReturnValue_;
-    /**
-     * <code>string readable_return_value = 11;</code>
-     * @return The readableReturnValue.
-     */
-    public java.lang.String getReadableReturnValue() {
-      java.lang.Object ref = readableReturnValue_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        readableReturnValue_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string readable_return_value = 11;</code>
-     * @return The bytes for readableReturnValue.
-     */
-    public com.google.protobuf.ByteString
-        getReadableReturnValueBytes() {
-      java.lang.Object ref = readableReturnValue_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        readableReturnValue_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int TRANSACTION_FEE_FIELD_NUMBER = 12;
-    private io.aelf.protobuf.generated.Core.TransactionFee transactionFee_;
-    /**
-     * <code>.TransactionFee transaction_fee = 12;</code>
-     * @return Whether the transactionFee field is set.
-     */
-    public boolean hasTransactionFee() {
-      return transactionFee_ != null;
-    }
-    /**
-     * <code>.TransactionFee transaction_fee = 12;</code>
-     * @return The transactionFee.
-     */
-    public io.aelf.protobuf.generated.Core.TransactionFee getTransactionFee() {
-      return transactionFee_ == null ? io.aelf.protobuf.generated.Core.TransactionFee.getDefaultInstance() : transactionFee_;
-    }
-    /**
-     * <code>.TransactionFee transaction_fee = 12;</code>
-     */
-    public io.aelf.protobuf.generated.Core.TransactionFeeOrBuilder getTransactionFeeOrBuilder() {
-      return getTransactionFee();
-    }
-
-    public static final int CONSUMED_RESOURCE_TOKENS_FIELD_NUMBER = 13;
-    private io.aelf.protobuf.generated.Core.ConsumedResourceTokens consumedResourceTokens_;
-    /**
-     * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-     * @return Whether the consumedResourceTokens field is set.
-     */
-    public boolean hasConsumedResourceTokens() {
-      return consumedResourceTokens_ != null;
-    }
-    /**
-     * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-     * @return The consumedResourceTokens.
-     */
-    public io.aelf.protobuf.generated.Core.ConsumedResourceTokens getConsumedResourceTokens() {
-      return consumedResourceTokens_ == null ? io.aelf.protobuf.generated.Core.ConsumedResourceTokens.getDefaultInstance() : consumedResourceTokens_;
-    }
-    /**
-     * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-     */
-    public io.aelf.protobuf.generated.Core.ConsumedResourceTokensOrBuilder getConsumedResourceTokensOrBuilder() {
-      return getConsumedResourceTokens();
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2106,15 +1949,6 @@ public final class Core {
       }
       if (!getErrorBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, error_);
-      }
-      if (!getReadableReturnValueBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, readableReturnValue_);
-      }
-      if (transactionFee_ != null) {
-        output.writeMessage(12, getTransactionFee());
-      }
-      if (consumedResourceTokens_ != null) {
-        output.writeMessage(13, getConsumedResourceTokens());
       }
       unknownFields.writeTo(output);
     }
@@ -2164,17 +1998,6 @@ public final class Core {
       if (!getErrorBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, error_);
       }
-      if (!getReadableReturnValueBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, readableReturnValue_);
-      }
-      if (transactionFee_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, getTransactionFee());
-      }
-      if (consumedResourceTokens_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(13, getConsumedResourceTokens());
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2218,18 +2041,6 @@ public final class Core {
       }
       if (!getError()
           .equals(other.getError())) return false;
-      if (!getReadableReturnValue()
-          .equals(other.getReadableReturnValue())) return false;
-      if (hasTransactionFee() != other.hasTransactionFee()) return false;
-      if (hasTransactionFee()) {
-        if (!getTransactionFee()
-            .equals(other.getTransactionFee())) return false;
-      }
-      if (hasConsumedResourceTokens() != other.hasConsumedResourceTokens()) return false;
-      if (hasConsumedResourceTokens()) {
-        if (!getConsumedResourceTokens()
-            .equals(other.getConsumedResourceTokens())) return false;
-      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2270,16 +2081,6 @@ public final class Core {
       }
       hash = (37 * hash) + ERROR_FIELD_NUMBER;
       hash = (53 * hash) + getError().hashCode();
-      hash = (37 * hash) + READABLE_RETURN_VALUE_FIELD_NUMBER;
-      hash = (53 * hash) + getReadableReturnValue().hashCode();
-      if (hasTransactionFee()) {
-        hash = (37 * hash) + TRANSACTION_FEE_FIELD_NUMBER;
-        hash = (53 * hash) + getTransactionFee().hashCode();
-      }
-      if (hasConsumedResourceTokens()) {
-        hash = (37 * hash) + CONSUMED_RESOURCE_TOKENS_FIELD_NUMBER;
-        hash = (53 * hash) + getConsumedResourceTokens().hashCode();
-      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2450,20 +2251,6 @@ public final class Core {
         }
         error_ = "";
 
-        readableReturnValue_ = "";
-
-        if (transactionFeeBuilder_ == null) {
-          transactionFee_ = null;
-        } else {
-          transactionFee_ = null;
-          transactionFeeBuilder_ = null;
-        }
-        if (consumedResourceTokensBuilder_ == null) {
-          consumedResourceTokens_ = null;
-        } else {
-          consumedResourceTokens_ = null;
-          consumedResourceTokensBuilder_ = null;
-        }
         return this;
       }
 
@@ -2521,17 +2308,6 @@ public final class Core {
           result.stateHash_ = stateHashBuilder_.build();
         }
         result.error_ = error_;
-        result.readableReturnValue_ = readableReturnValue_;
-        if (transactionFeeBuilder_ == null) {
-          result.transactionFee_ = transactionFee_;
-        } else {
-          result.transactionFee_ = transactionFeeBuilder_.build();
-        }
-        if (consumedResourceTokensBuilder_ == null) {
-          result.consumedResourceTokens_ = consumedResourceTokens_;
-        } else {
-          result.consumedResourceTokens_ = consumedResourceTokensBuilder_.build();
-        }
         onBuilt();
         return result;
       }
@@ -2633,16 +2409,6 @@ public final class Core {
         if (!other.getError().isEmpty()) {
           error_ = other.error_;
           onChanged();
-        }
-        if (!other.getReadableReturnValue().isEmpty()) {
-          readableReturnValue_ = other.readableReturnValue_;
-          onChanged();
-        }
-        if (other.hasTransactionFee()) {
-          mergeTransactionFee(other.getTransactionFee());
-        }
-        if (other.hasConsumedResourceTokens()) {
-          mergeConsumedResourceTokens(other.getConsumedResourceTokens());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3543,320 +3309,6 @@ public final class Core {
         error_ = value;
         onChanged();
         return this;
-      }
-
-      private java.lang.Object readableReturnValue_ = "";
-      /**
-       * <code>string readable_return_value = 11;</code>
-       * @return The readableReturnValue.
-       */
-      public java.lang.String getReadableReturnValue() {
-        java.lang.Object ref = readableReturnValue_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          readableReturnValue_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string readable_return_value = 11;</code>
-       * @return The bytes for readableReturnValue.
-       */
-      public com.google.protobuf.ByteString
-          getReadableReturnValueBytes() {
-        java.lang.Object ref = readableReturnValue_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          readableReturnValue_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string readable_return_value = 11;</code>
-       * @param value The readableReturnValue to set.
-       * @return This builder for chaining.
-       */
-      public Builder setReadableReturnValue(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        readableReturnValue_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string readable_return_value = 11;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearReadableReturnValue() {
-        
-        readableReturnValue_ = getDefaultInstance().getReadableReturnValue();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string readable_return_value = 11;</code>
-       * @param value The bytes for readableReturnValue to set.
-       * @return This builder for chaining.
-       */
-      public Builder setReadableReturnValueBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        readableReturnValue_ = value;
-        onChanged();
-        return this;
-      }
-
-      private io.aelf.protobuf.generated.Core.TransactionFee transactionFee_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          io.aelf.protobuf.generated.Core.TransactionFee, io.aelf.protobuf.generated.Core.TransactionFee.Builder, io.aelf.protobuf.generated.Core.TransactionFeeOrBuilder> transactionFeeBuilder_;
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       * @return Whether the transactionFee field is set.
-       */
-      public boolean hasTransactionFee() {
-        return transactionFeeBuilder_ != null || transactionFee_ != null;
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       * @return The transactionFee.
-       */
-      public io.aelf.protobuf.generated.Core.TransactionFee getTransactionFee() {
-        if (transactionFeeBuilder_ == null) {
-          return transactionFee_ == null ? io.aelf.protobuf.generated.Core.TransactionFee.getDefaultInstance() : transactionFee_;
-        } else {
-          return transactionFeeBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       */
-      public Builder setTransactionFee(io.aelf.protobuf.generated.Core.TransactionFee value) {
-        if (transactionFeeBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          transactionFee_ = value;
-          onChanged();
-        } else {
-          transactionFeeBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       */
-      public Builder setTransactionFee(
-          io.aelf.protobuf.generated.Core.TransactionFee.Builder builderForValue) {
-        if (transactionFeeBuilder_ == null) {
-          transactionFee_ = builderForValue.build();
-          onChanged();
-        } else {
-          transactionFeeBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       */
-      public Builder mergeTransactionFee(io.aelf.protobuf.generated.Core.TransactionFee value) {
-        if (transactionFeeBuilder_ == null) {
-          if (transactionFee_ != null) {
-            transactionFee_ =
-              io.aelf.protobuf.generated.Core.TransactionFee.newBuilder(transactionFee_).mergeFrom(value).buildPartial();
-          } else {
-            transactionFee_ = value;
-          }
-          onChanged();
-        } else {
-          transactionFeeBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       */
-      public Builder clearTransactionFee() {
-        if (transactionFeeBuilder_ == null) {
-          transactionFee_ = null;
-          onChanged();
-        } else {
-          transactionFee_ = null;
-          transactionFeeBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       */
-      public io.aelf.protobuf.generated.Core.TransactionFee.Builder getTransactionFeeBuilder() {
-        
-        onChanged();
-        return getTransactionFeeFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       */
-      public io.aelf.protobuf.generated.Core.TransactionFeeOrBuilder getTransactionFeeOrBuilder() {
-        if (transactionFeeBuilder_ != null) {
-          return transactionFeeBuilder_.getMessageOrBuilder();
-        } else {
-          return transactionFee_ == null ?
-              io.aelf.protobuf.generated.Core.TransactionFee.getDefaultInstance() : transactionFee_;
-        }
-      }
-      /**
-       * <code>.TransactionFee transaction_fee = 12;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          io.aelf.protobuf.generated.Core.TransactionFee, io.aelf.protobuf.generated.Core.TransactionFee.Builder, io.aelf.protobuf.generated.Core.TransactionFeeOrBuilder> 
-          getTransactionFeeFieldBuilder() {
-        if (transactionFeeBuilder_ == null) {
-          transactionFeeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              io.aelf.protobuf.generated.Core.TransactionFee, io.aelf.protobuf.generated.Core.TransactionFee.Builder, io.aelf.protobuf.generated.Core.TransactionFeeOrBuilder>(
-                  getTransactionFee(),
-                  getParentForChildren(),
-                  isClean());
-          transactionFee_ = null;
-        }
-        return transactionFeeBuilder_;
-      }
-
-      private io.aelf.protobuf.generated.Core.ConsumedResourceTokens consumedResourceTokens_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          io.aelf.protobuf.generated.Core.ConsumedResourceTokens, io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder, io.aelf.protobuf.generated.Core.ConsumedResourceTokensOrBuilder> consumedResourceTokensBuilder_;
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       * @return Whether the consumedResourceTokens field is set.
-       */
-      public boolean hasConsumedResourceTokens() {
-        return consumedResourceTokensBuilder_ != null || consumedResourceTokens_ != null;
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       * @return The consumedResourceTokens.
-       */
-      public io.aelf.protobuf.generated.Core.ConsumedResourceTokens getConsumedResourceTokens() {
-        if (consumedResourceTokensBuilder_ == null) {
-          return consumedResourceTokens_ == null ? io.aelf.protobuf.generated.Core.ConsumedResourceTokens.getDefaultInstance() : consumedResourceTokens_;
-        } else {
-          return consumedResourceTokensBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       */
-      public Builder setConsumedResourceTokens(io.aelf.protobuf.generated.Core.ConsumedResourceTokens value) {
-        if (consumedResourceTokensBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          consumedResourceTokens_ = value;
-          onChanged();
-        } else {
-          consumedResourceTokensBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       */
-      public Builder setConsumedResourceTokens(
-          io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder builderForValue) {
-        if (consumedResourceTokensBuilder_ == null) {
-          consumedResourceTokens_ = builderForValue.build();
-          onChanged();
-        } else {
-          consumedResourceTokensBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       */
-      public Builder mergeConsumedResourceTokens(io.aelf.protobuf.generated.Core.ConsumedResourceTokens value) {
-        if (consumedResourceTokensBuilder_ == null) {
-          if (consumedResourceTokens_ != null) {
-            consumedResourceTokens_ =
-              io.aelf.protobuf.generated.Core.ConsumedResourceTokens.newBuilder(consumedResourceTokens_).mergeFrom(value).buildPartial();
-          } else {
-            consumedResourceTokens_ = value;
-          }
-          onChanged();
-        } else {
-          consumedResourceTokensBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       */
-      public Builder clearConsumedResourceTokens() {
-        if (consumedResourceTokensBuilder_ == null) {
-          consumedResourceTokens_ = null;
-          onChanged();
-        } else {
-          consumedResourceTokens_ = null;
-          consumedResourceTokensBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       */
-      public io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder getConsumedResourceTokensBuilder() {
-        
-        onChanged();
-        return getConsumedResourceTokensFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       */
-      public io.aelf.protobuf.generated.Core.ConsumedResourceTokensOrBuilder getConsumedResourceTokensOrBuilder() {
-        if (consumedResourceTokensBuilder_ != null) {
-          return consumedResourceTokensBuilder_.getMessageOrBuilder();
-        } else {
-          return consumedResourceTokens_ == null ?
-              io.aelf.protobuf.generated.Core.ConsumedResourceTokens.getDefaultInstance() : consumedResourceTokens_;
-        }
-      }
-      /**
-       * <code>.ConsumedResourceTokens consumed_resource_tokens = 13;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          io.aelf.protobuf.generated.Core.ConsumedResourceTokens, io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder, io.aelf.protobuf.generated.Core.ConsumedResourceTokensOrBuilder> 
-          getConsumedResourceTokensFieldBuilder() {
-        if (consumedResourceTokensBuilder_ == null) {
-          consumedResourceTokensBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              io.aelf.protobuf.generated.Core.ConsumedResourceTokens, io.aelf.protobuf.generated.Core.ConsumedResourceTokens.Builder, io.aelf.protobuf.generated.Core.ConsumedResourceTokensOrBuilder>(
-                  getConsumedResourceTokens(),
-                  getParentForChildren(),
-                  isClean());
-          consumedResourceTokens_ = null;
-        }
-        return consumedResourceTokensBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9334,43 +8786,40 @@ public final class Core {
       "on\022\026\n\004from\030\001 \001(\0132\010.Address\022\024\n\002to\030\002 \001(\0132\010" +
       ".Address\022\030\n\020ref_block_number\030\003 \001(\003\022\030\n\020re" +
       "f_block_prefix\030\004 \001(\014\022\023\n\013method_name\030\005 \001(" +
-      "\t\022\016\n\006params\030\006 \001(\014\022\022\n\tsignature\030\220N \001(\014\"\210\003" +
+      "\t\022\016\n\006params\030\006 \001(\014\022\022\n\tsignature\030\220N \001(\014\"\204\002" +
       "\n\021TransactionResult\022\035\n\016transaction_id\030\001 " +
       "\001(\0132\005.Hash\022(\n\006status\030\002 \001(\0162\030.Transaction" +
       "ResultStatus\022\027\n\004logs\030\003 \003(\0132\t.LogEvent\022\r\n" +
       "\005bloom\030\004 \001(\014\022\024\n\014return_value\030\005 \001(\014\022\024\n\014bl" +
       "ock_number\030\006 \001(\003\022\031\n\nblock_hash\030\007 \001(\0132\005.H" +
       "ash\022\r\n\005index\030\010 \001(\005\022\031\n\nstate_hash\030\t \001(\0132\005" +
-      ".Hash\022\r\n\005error\030\n \001(\t\022\035\n\025readable_return_" +
-      "value\030\013 \001(\t\022(\n\017transaction_fee\030\014 \001(\0132\017.T" +
-      "ransactionFee\0229\n\030consumed_resource_token" +
-      "s\030\r \001(\0132\027.ConsumedResourceTokens\"\206\001\n\016Tra" +
-      "nsactionFee\022)\n\005value\030\001 \003(\0132\032.Transaction" +
-      "Fee.ValueEntry\022\033\n\023is_failed_to_charge\030\002 " +
-      "\001(\010\032,\n\nValueEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
-      "\002 \001(\022:\0028\001\"\372\001\n\026ConsumedResourceTokens\0221\n\005" +
-      "value\030\001 \003(\0132\".ConsumedResourceTokens.Val" +
-      "ueEntry\0223\n\006owning\030\002 \003(\0132#.ConsumedResour" +
-      "ceTokens.OwningEntry\022\033\n\023is_failed_to_cha" +
-      "rge\030\003 \001(\010\032,\n\nValueEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
-      "value\030\002 \001(\022:\0028\001\032-\n\013OwningEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022\r\n\005value\030\002 \001(\022:\0028\001\"Y\n\010LogEvent\022\031\n\007ad" +
-      "dress\030\001 \001(\0132\010.Address\022\014\n\004name\030\002 \001(\t\022\017\n\007i" +
-      "ndexed\030\003 \003(\014\022\023\n\013non_indexed\030\004 \001(\014\"\334\002\n\034Tr" +
-      "ansactionExecutingStateSet\0229\n\006writes\030\001 \003" +
-      "(\0132).TransactionExecutingStateSet.Writes" +
-      "Entry\0227\n\005reads\030\002 \003(\0132(.TransactionExecut" +
-      "ingStateSet.ReadsEntry\022;\n\007deletes\030\003 \003(\0132" +
-      "*.TransactionExecutingStateSet.DeletesEn" +
-      "try\032-\n\013WritesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\014:\0028\001\032,\n\nReadsEntry\022\013\n\003key\030\001 \001(\t\022\r\n" +
-      "\005value\030\002 \001(\010:\0028\001\032.\n\014DeletesEntry\022\013\n\003key\030" +
-      "\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\034\n\013SInt32Value\022" +
-      "\r\n\005value\030\001 \001(\021\"\034\n\013SInt64Value\022\r\n\005value\030\001" +
-      " \001(\022*n\n\027TransactionResultStatus\022\017\n\013NOT_E" +
-      "XISTED\020\000\022\013\n\007PENDING\020\001\022\n\n\006FAILED\020\002\022\t\n\005MIN" +
-      "ED\020\003\022\020\n\014UNEXECUTABLE\020\004\022\014\n\010CONFLICT\020\005B\034\n\032" +
-      "io.aelf.protobuf.generatedb\006proto3"
+      ".Hash\022\r\n\005error\030\n \001(\t\"\206\001\n\016TransactionFee\022" +
+      ")\n\005value\030\001 \003(\0132\032.TransactionFee.ValueEnt" +
+      "ry\022\033\n\023is_failed_to_charge\030\002 \001(\010\032,\n\nValue" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:\0028\001\"\372\001" +
+      "\n\026ConsumedResourceTokens\0221\n\005value\030\001 \003(\0132" +
+      "\".ConsumedResourceTokens.ValueEntry\0223\n\006o" +
+      "wning\030\002 \003(\0132#.ConsumedResourceTokens.Own" +
+      "ingEntry\022\033\n\023is_failed_to_charge\030\003 \001(\010\032,\n" +
+      "\nValueEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:" +
+      "\0028\001\032-\n\013OwningEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
+      "\030\002 \001(\022:\0028\001\"Y\n\010LogEvent\022\031\n\007address\030\001 \001(\0132" +
+      "\010.Address\022\014\n\004name\030\002 \001(\t\022\017\n\007indexed\030\003 \003(\014" +
+      "\022\023\n\013non_indexed\030\004 \001(\014\"\334\002\n\034TransactionExe" +
+      "cutingStateSet\0229\n\006writes\030\001 \003(\0132).Transac" +
+      "tionExecutingStateSet.WritesEntry\0227\n\005rea" +
+      "ds\030\002 \003(\0132(.TransactionExecutingStateSet." +
+      "ReadsEntry\022;\n\007deletes\030\003 \003(\0132*.Transactio" +
+      "nExecutingStateSet.DeletesEntry\032-\n\013Write" +
+      "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\032," +
+      "\n\nReadsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010" +
+      ":\0028\001\032.\n\014DeletesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
+      "ue\030\002 \001(\010:\0028\001\"\034\n\013SInt32Value\022\r\n\005value\030\001 \001" +
+      "(\021\"\034\n\013SInt64Value\022\r\n\005value\030\001 \001(\022*n\n\027Tran" +
+      "sactionResultStatus\022\017\n\013NOT_EXISTED\020\000\022\013\n\007" +
+      "PENDING\020\001\022\n\n\006FAILED\020\002\022\t\n\005MINED\020\003\022\020\n\014UNEX" +
+      "ECUTABLE\020\004\022\014\n\010CONFLICT\020\005B\034\n\032io.aelf.prot" +
+      "obuf.generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9388,7 +8837,7 @@ public final class Core {
     internal_static_TransactionResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TransactionResult_descriptor,
-        new java.lang.String[] { "TransactionId", "Status", "Logs", "Bloom", "ReturnValue", "BlockNumber", "BlockHash", "Index", "StateHash", "Error", "ReadableReturnValue", "TransactionFee", "ConsumedResourceTokens", });
+        new java.lang.String[] { "TransactionId", "Status", "Logs", "Bloom", "ReturnValue", "BlockNumber", "BlockHash", "Index", "StateHash", "Error", });
     internal_static_TransactionFee_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_TransactionFee_fieldAccessorTable = new
