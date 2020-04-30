@@ -6,4 +6,5 @@ sudo docker pull aelf/node:testnet-v0.9.2
 sudo docker run -itd --name aelf-node-test -v $dir:/opt/node -v $dir/keys:/root/.local/share/aelf/keys -p 8200:8000 -p 6801:6800 -w /opt/node aelf/node:testnet-v0.9.2 dotnet /app/AElf.Launcher.dll
 sleep 30
 height=`curl -s http://$ip:8200/api/blockChain/blockHeight`
+echo "ip: $ip"
 echo "height is $height"
