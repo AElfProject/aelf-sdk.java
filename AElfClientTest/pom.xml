@@ -47,6 +47,7 @@
     </dependencies>
     <build>
         <finalName>AElfClientTest</finalName>
+        <testSourceDirectory>${basedir}/src/main/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
