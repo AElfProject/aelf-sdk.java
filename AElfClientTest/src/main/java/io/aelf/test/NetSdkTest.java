@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class NetSdkTest {
 
-  static final String HTTPURL = "http://127.0.0.1:8200";
+  static final String HTTPURL = "http://127.0.0.1:8000";
   static final String OPREATIONADDRESS = "127.0.0.1:7003";
   AElfClient client = null;
 

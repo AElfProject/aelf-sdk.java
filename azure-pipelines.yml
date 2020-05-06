@@ -1,4 +1,16 @@
 jobs:
+# All tasks on window
+- job: build_all_window
+  pool:
+    vmImage: 'windows-2019'
+  variables:
+    phpVersion: 7.2
+  steps: 
+  - task: DotNetCoreInstaller@0
+    inputs:
+      version: '3.1.101'
+  - powershell: ./scripts/aelf-node/start-window.ps1
+    displayName: 'deploy and test'
 # All tasks on Linux
 - job: build_all_linux
   displayName: Build all tasks (Linux)
@@ -17,4 +29,18 @@ jobs:
     displayName: 'Deploy a full node'
   - script: bash build.sh
     displayName: 'build and test'
-
+- job: build_all_macos
+# All tasks on macOS
+  displayName: Build all tasks (macos)
+  pool:
+    vmImage: macos-latest
+  variables:
+    phpVersion: 7.2
+  steps:
+  - task: DotNetCoreInstaller@0
+    inputs:
+      version: '3.1.101'
+  - script: cd scripts/aelf-node && bash start-mac.sh
+    displayName: 'Deploy a full node'
+  - script: bash build.sh
+    displayName: 'build and test'
