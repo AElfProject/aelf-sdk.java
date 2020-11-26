@@ -10,7 +10,7 @@
     <version>0.1.2</version>
     <properties>
         <junit.version>4.12</junit.version>
-        <io.aelf.version>0.1.2</io.aelf.version>
+        <io.aelf.version>0.1.4</io.aelf.version>
         <jdk.version>1.8</jdk.version>
     </properties>
     <dependencies>
@@ -47,6 +47,7 @@
     </dependencies>
     <build>
         <finalName>AElfClientTest</finalName>
+        <testSourceDirectory>${basedir}/src/main/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

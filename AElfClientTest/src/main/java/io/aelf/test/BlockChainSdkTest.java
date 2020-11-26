@@ -41,7 +41,7 @@ import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
 
 public class BlockChainSdkTest {
 
-  static final String HTTPURL = "http://52.90.147.175:8000";
+  static final String HTTPURL = "http://127.0.0.1:8000";
   AElfClient client = null;
   String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
   String address = "";
