@@ -819,13 +819,13 @@ public final class TransactionFee {
         getTokenSymbolBytes();
 
     /**
-     * <code>sint32 base_token_weight = 2;</code>
+     * <code>int32 base_token_weight = 2;</code>
      * @return The baseTokenWeight.
      */
     int getBaseTokenWeight();
 
     /**
-     * <code>sint32 added_token_weight = 3;</code>
+     * <code>int32 added_token_weight = 3;</code>
      * @return The addedTokenWeight.
      */
     int getAddedTokenWeight();
@@ -884,12 +884,12 @@ public final class TransactionFee {
             }
             case 16: {
 
-              baseTokenWeight_ = input.readSInt32();
+              baseTokenWeight_ = input.readInt32();
               break;
             }
             case 24: {
 
-              addedTokenWeight_ = input.readSInt32();
+              addedTokenWeight_ = input.readInt32();
               break;
             }
             default: {
@@ -963,7 +963,7 @@ public final class TransactionFee {
     public static final int BASE_TOKEN_WEIGHT_FIELD_NUMBER = 2;
     private int baseTokenWeight_;
     /**
-     * <code>sint32 base_token_weight = 2;</code>
+     * <code>int32 base_token_weight = 2;</code>
      * @return The baseTokenWeight.
      */
     public int getBaseTokenWeight() {
@@ -973,7 +973,7 @@ public final class TransactionFee {
     public static final int ADDED_TOKEN_WEIGHT_FIELD_NUMBER = 3;
     private int addedTokenWeight_;
     /**
-     * <code>sint32 added_token_weight = 3;</code>
+     * <code>int32 added_token_weight = 3;</code>
      * @return The addedTokenWeight.
      */
     public int getAddedTokenWeight() {
@@ -998,10 +998,10 @@ public final class TransactionFee {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tokenSymbol_);
       }
       if (baseTokenWeight_ != 0) {
-        output.writeSInt32(2, baseTokenWeight_);
+        output.writeInt32(2, baseTokenWeight_);
       }
       if (addedTokenWeight_ != 0) {
-        output.writeSInt32(3, addedTokenWeight_);
+        output.writeInt32(3, addedTokenWeight_);
       }
       unknownFields.writeTo(output);
     }
@@ -1017,11 +1017,11 @@ public final class TransactionFee {
       }
       if (baseTokenWeight_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(2, baseTokenWeight_);
+          .computeInt32Size(2, baseTokenWeight_);
       }
       if (addedTokenWeight_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(3, addedTokenWeight_);
+          .computeInt32Size(3, addedTokenWeight_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1394,14 +1394,14 @@ public final class TransactionFee {
 
       private int baseTokenWeight_ ;
       /**
-       * <code>sint32 base_token_weight = 2;</code>
+       * <code>int32 base_token_weight = 2;</code>
        * @return The baseTokenWeight.
        */
       public int getBaseTokenWeight() {
         return baseTokenWeight_;
       }
       /**
-       * <code>sint32 base_token_weight = 2;</code>
+       * <code>int32 base_token_weight = 2;</code>
        * @param value The baseTokenWeight to set.
        * @return This builder for chaining.
        */
@@ -1412,7 +1412,7 @@ public final class TransactionFee {
         return this;
       }
       /**
-       * <code>sint32 base_token_weight = 2;</code>
+       * <code>int32 base_token_weight = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearBaseTokenWeight() {
@@ -1424,14 +1424,14 @@ public final class TransactionFee {
 
       private int addedTokenWeight_ ;
       /**
-       * <code>sint32 added_token_weight = 3;</code>
+       * <code>int32 added_token_weight = 3;</code>
        * @return The addedTokenWeight.
        */
       public int getAddedTokenWeight() {
         return addedTokenWeight_;
       }
       /**
-       * <code>sint32 added_token_weight = 3;</code>
+       * <code>int32 added_token_weight = 3;</code>
        * @param value The addedTokenWeight to set.
        * @return This builder for chaining.
        */
@@ -1442,7 +1442,7 @@ public final class TransactionFee {
         return this;
       }
       /**
-       * <code>sint32 added_token_weight = 3;</code>
+       * <code>int32 added_token_weight = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearAddedTokenWeight() {
@@ -1521,7 +1521,7 @@ public final class TransactionFee {
         getSymbolBytes();
 
     /**
-     * <code>sint64 amount = 2;</code>
+     * <code>int64 amount = 2;</code>
      * @return The amount.
      */
     long getAmount();
@@ -1580,7 +1580,7 @@ public final class TransactionFee {
             }
             case 16: {
 
-              amount_ = input.readSInt64();
+              amount_ = input.readInt64();
               break;
             }
             default: {
@@ -1654,7 +1654,7 @@ public final class TransactionFee {
     public static final int AMOUNT_FIELD_NUMBER = 2;
     private long amount_;
     /**
-     * <code>sint64 amount = 2;</code>
+     * <code>int64 amount = 2;</code>
      * @return The amount.
      */
     public long getAmount() {
@@ -1679,7 +1679,7 @@ public final class TransactionFee {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (amount_ != 0L) {
-        output.writeSInt64(2, amount_);
+        output.writeInt64(2, amount_);
       }
       unknownFields.writeTo(output);
     }
@@ -1695,7 +1695,7 @@ public final class TransactionFee {
       }
       if (amount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, amount_);
+          .computeInt64Size(2, amount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2059,14 +2059,14 @@ public final class TransactionFee {
 
       private long amount_ ;
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @return The amount.
        */
       public long getAmount() {
         return amount_;
       }
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @param value The amount to set.
        * @return This builder for chaining.
        */
@@ -2077,7 +2077,7 @@ public final class TransactionFee {
         return this;
       }
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
@@ -2156,10 +2156,25 @@ public final class TransactionFee {
         getSymbolBytes();
 
     /**
-     * <code>sint64 amount = 2;</code>
+     * <code>int64 amount = 2;</code>
      * @return The amount.
      */
     long getAmount();
+
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return Whether the contractAddress field is set.
+     */
+    boolean hasContractAddress();
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return The contractAddress.
+     */
+    io.aelf.protobuf.generated.Client.Address getContractAddress();
+    /**
+     * <code>.Address contract_address = 3;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder();
   }
   /**
    * Protobuf type {@code ResourceTokenCharged}
@@ -2215,7 +2230,20 @@ public final class TransactionFee {
             }
             case 16: {
 
-              amount_ = input.readSInt64();
+              amount_ = input.readInt64();
+              break;
+            }
+            case 26: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (contractAddress_ != null) {
+                subBuilder = contractAddress_.toBuilder();
+              }
+              contractAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(contractAddress_);
+                contractAddress_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -2289,11 +2317,34 @@ public final class TransactionFee {
     public static final int AMOUNT_FIELD_NUMBER = 2;
     private long amount_;
     /**
-     * <code>sint64 amount = 2;</code>
+     * <code>int64 amount = 2;</code>
      * @return The amount.
      */
     public long getAmount() {
       return amount_;
+    }
+
+    public static final int CONTRACT_ADDRESS_FIELD_NUMBER = 3;
+    private io.aelf.protobuf.generated.Client.Address contractAddress_;
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return Whether the contractAddress field is set.
+     */
+    public boolean hasContractAddress() {
+      return contractAddress_ != null;
+    }
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return The contractAddress.
+     */
+    public io.aelf.protobuf.generated.Client.Address getContractAddress() {
+      return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
+    }
+    /**
+     * <code>.Address contract_address = 3;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder() {
+      return getContractAddress();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2314,7 +2365,10 @@ public final class TransactionFee {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (amount_ != 0L) {
-        output.writeSInt64(2, amount_);
+        output.writeInt64(2, amount_);
+      }
+      if (contractAddress_ != null) {
+        output.writeMessage(3, getContractAddress());
       }
       unknownFields.writeTo(output);
     }
@@ -2330,7 +2384,11 @@ public final class TransactionFee {
       }
       if (amount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, amount_);
+          .computeInt64Size(2, amount_);
+      }
+      if (contractAddress_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getContractAddress());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2351,6 +2409,11 @@ public final class TransactionFee {
           .equals(other.getSymbol())) return false;
       if (getAmount()
           != other.getAmount()) return false;
+      if (hasContractAddress() != other.hasContractAddress()) return false;
+      if (hasContractAddress()) {
+        if (!getContractAddress()
+            .equals(other.getContractAddress())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2367,6 +2430,10 @@ public final class TransactionFee {
       hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getAmount());
+      if (hasContractAddress()) {
+        hash = (37 * hash) + CONTRACT_ADDRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getContractAddress().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2504,6 +2571,12 @@ public final class TransactionFee {
 
         amount_ = 0L;
 
+        if (contractAddressBuilder_ == null) {
+          contractAddress_ = null;
+        } else {
+          contractAddress_ = null;
+          contractAddressBuilder_ = null;
+        }
         return this;
       }
 
@@ -2532,6 +2605,11 @@ public final class TransactionFee {
         io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged result = new io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged(this);
         result.symbol_ = symbol_;
         result.amount_ = amount_;
+        if (contractAddressBuilder_ == null) {
+          result.contractAddress_ = contractAddress_;
+        } else {
+          result.contractAddress_ = contractAddressBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -2586,6 +2664,9 @@ public final class TransactionFee {
         }
         if (other.getAmount() != 0L) {
           setAmount(other.getAmount());
+        }
+        if (other.hasContractAddress()) {
+          mergeContractAddress(other.getContractAddress());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2694,14 +2775,14 @@ public final class TransactionFee {
 
       private long amount_ ;
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @return The amount.
        */
       public long getAmount() {
         return amount_;
       }
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @param value The amount to set.
        * @return This builder for chaining.
        */
@@ -2712,7 +2793,7 @@ public final class TransactionFee {
         return this;
       }
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
@@ -2720,6 +2801,125 @@ public final class TransactionFee {
         amount_ = 0L;
         onChanged();
         return this;
+      }
+
+      private io.aelf.protobuf.generated.Client.Address contractAddress_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> contractAddressBuilder_;
+      /**
+       * <code>.Address contract_address = 3;</code>
+       * @return Whether the contractAddress field is set.
+       */
+      public boolean hasContractAddress() {
+        return contractAddressBuilder_ != null || contractAddress_ != null;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       * @return The contractAddress.
+       */
+      public io.aelf.protobuf.generated.Client.Address getContractAddress() {
+        if (contractAddressBuilder_ == null) {
+          return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
+        } else {
+          return contractAddressBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder setContractAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (contractAddressBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          contractAddress_ = value;
+          onChanged();
+        } else {
+          contractAddressBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder setContractAddress(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (contractAddressBuilder_ == null) {
+          contractAddress_ = builderForValue.build();
+          onChanged();
+        } else {
+          contractAddressBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder mergeContractAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (contractAddressBuilder_ == null) {
+          if (contractAddress_ != null) {
+            contractAddress_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(contractAddress_).mergeFrom(value).buildPartial();
+          } else {
+            contractAddress_ = value;
+          }
+          onChanged();
+        } else {
+          contractAddressBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder clearContractAddress() {
+        if (contractAddressBuilder_ == null) {
+          contractAddress_ = null;
+          onChanged();
+        } else {
+          contractAddress_ = null;
+          contractAddressBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getContractAddressBuilder() {
+        
+        onChanged();
+        return getContractAddressFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder() {
+        if (contractAddressBuilder_ != null) {
+          return contractAddressBuilder_.getMessageOrBuilder();
+        } else {
+          return contractAddress_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
+        }
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getContractAddressFieldBuilder() {
+        if (contractAddressBuilder_ == null) {
+          contractAddressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getContractAddress(),
+                  getParentForChildren(),
+                  isClean());
+          contractAddress_ = null;
+        }
+        return contractAddressBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2791,10 +2991,25 @@ public final class TransactionFee {
         getSymbolBytes();
 
     /**
-     * <code>sint64 amount = 2;</code>
+     * <code>int64 amount = 2;</code>
      * @return The amount.
      */
     long getAmount();
+
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return Whether the contractAddress field is set.
+     */
+    boolean hasContractAddress();
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return The contractAddress.
+     */
+    io.aelf.protobuf.generated.Client.Address getContractAddress();
+    /**
+     * <code>.Address contract_address = 3;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder();
   }
   /**
    * Protobuf type {@code ResourceTokenOwned}
@@ -2850,7 +3065,20 @@ public final class TransactionFee {
             }
             case 16: {
 
-              amount_ = input.readSInt64();
+              amount_ = input.readInt64();
+              break;
+            }
+            case 26: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (contractAddress_ != null) {
+                subBuilder = contractAddress_.toBuilder();
+              }
+              contractAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(contractAddress_);
+                contractAddress_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -2924,11 +3152,34 @@ public final class TransactionFee {
     public static final int AMOUNT_FIELD_NUMBER = 2;
     private long amount_;
     /**
-     * <code>sint64 amount = 2;</code>
+     * <code>int64 amount = 2;</code>
      * @return The amount.
      */
     public long getAmount() {
       return amount_;
+    }
+
+    public static final int CONTRACT_ADDRESS_FIELD_NUMBER = 3;
+    private io.aelf.protobuf.generated.Client.Address contractAddress_;
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return Whether the contractAddress field is set.
+     */
+    public boolean hasContractAddress() {
+      return contractAddress_ != null;
+    }
+    /**
+     * <code>.Address contract_address = 3;</code>
+     * @return The contractAddress.
+     */
+    public io.aelf.protobuf.generated.Client.Address getContractAddress() {
+      return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
+    }
+    /**
+     * <code>.Address contract_address = 3;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder() {
+      return getContractAddress();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2949,7 +3200,10 @@ public final class TransactionFee {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (amount_ != 0L) {
-        output.writeSInt64(2, amount_);
+        output.writeInt64(2, amount_);
+      }
+      if (contractAddress_ != null) {
+        output.writeMessage(3, getContractAddress());
       }
       unknownFields.writeTo(output);
     }
@@ -2965,7 +3219,11 @@ public final class TransactionFee {
       }
       if (amount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, amount_);
+          .computeInt64Size(2, amount_);
+      }
+      if (contractAddress_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getContractAddress());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2986,6 +3244,11 @@ public final class TransactionFee {
           .equals(other.getSymbol())) return false;
       if (getAmount()
           != other.getAmount()) return false;
+      if (hasContractAddress() != other.hasContractAddress()) return false;
+      if (hasContractAddress()) {
+        if (!getContractAddress()
+            .equals(other.getContractAddress())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3002,6 +3265,10 @@ public final class TransactionFee {
       hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getAmount());
+      if (hasContractAddress()) {
+        hash = (37 * hash) + CONTRACT_ADDRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getContractAddress().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3139,6 +3406,12 @@ public final class TransactionFee {
 
         amount_ = 0L;
 
+        if (contractAddressBuilder_ == null) {
+          contractAddress_ = null;
+        } else {
+          contractAddress_ = null;
+          contractAddressBuilder_ = null;
+        }
         return this;
       }
 
@@ -3167,6 +3440,11 @@ public final class TransactionFee {
         io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned result = new io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned(this);
         result.symbol_ = symbol_;
         result.amount_ = amount_;
+        if (contractAddressBuilder_ == null) {
+          result.contractAddress_ = contractAddress_;
+        } else {
+          result.contractAddress_ = contractAddressBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -3221,6 +3499,9 @@ public final class TransactionFee {
         }
         if (other.getAmount() != 0L) {
           setAmount(other.getAmount());
+        }
+        if (other.hasContractAddress()) {
+          mergeContractAddress(other.getContractAddress());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3329,14 +3610,14 @@ public final class TransactionFee {
 
       private long amount_ ;
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @return The amount.
        */
       public long getAmount() {
         return amount_;
       }
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @param value The amount to set.
        * @return This builder for chaining.
        */
@@ -3347,7 +3628,7 @@ public final class TransactionFee {
         return this;
       }
       /**
-       * <code>sint64 amount = 2;</code>
+       * <code>int64 amount = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
@@ -3355,6 +3636,125 @@ public final class TransactionFee {
         amount_ = 0L;
         onChanged();
         return this;
+      }
+
+      private io.aelf.protobuf.generated.Client.Address contractAddress_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> contractAddressBuilder_;
+      /**
+       * <code>.Address contract_address = 3;</code>
+       * @return Whether the contractAddress field is set.
+       */
+      public boolean hasContractAddress() {
+        return contractAddressBuilder_ != null || contractAddress_ != null;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       * @return The contractAddress.
+       */
+      public io.aelf.protobuf.generated.Client.Address getContractAddress() {
+        if (contractAddressBuilder_ == null) {
+          return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
+        } else {
+          return contractAddressBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder setContractAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (contractAddressBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          contractAddress_ = value;
+          onChanged();
+        } else {
+          contractAddressBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder setContractAddress(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (contractAddressBuilder_ == null) {
+          contractAddress_ = builderForValue.build();
+          onChanged();
+        } else {
+          contractAddressBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder mergeContractAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (contractAddressBuilder_ == null) {
+          if (contractAddress_ != null) {
+            contractAddress_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(contractAddress_).mergeFrom(value).buildPartial();
+          } else {
+            contractAddress_ = value;
+          }
+          onChanged();
+        } else {
+          contractAddressBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public Builder clearContractAddress() {
+        if (contractAddressBuilder_ == null) {
+          contractAddress_ = null;
+          onChanged();
+        } else {
+          contractAddress_ = null;
+          contractAddressBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getContractAddressBuilder() {
+        
+        onChanged();
+        return getContractAddressFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder() {
+        if (contractAddressBuilder_ != null) {
+          return contractAddressBuilder_.getMessageOrBuilder();
+        } else {
+          return contractAddress_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
+        }
+      }
+      /**
+       * <code>.Address contract_address = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getContractAddressFieldBuilder() {
+        if (contractAddressBuilder_ == null) {
+          contractAddressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getContractAddress(),
+                  getParentForChildren(),
+                  isClean());
+          contractAddress_ = null;
+        }
+        return contractAddressBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -3448,13 +3848,14 @@ public final class TransactionFee {
       "n_size_fee_symbol_list\030\001 \003(\0132\031.Transacti" +
       "onSizeFeeSymbol\"g\n\030TransactionSizeFeeSym" +
       "bol\022\024\n\014token_symbol\030\001 \001(\t\022\031\n\021base_token_" +
-      "weight\030\002 \001(\021\022\032\n\022added_token_weight\030\003 \001(\021" +
+      "weight\030\002 \001(\005\022\032\n\022added_token_weight\030\003 \001(\005" +
       "\"7\n\025TransactionFeeCharged\022\016\n\006symbol\030\001 \001(" +
-      "\t\022\016\n\006amount\030\002 \001(\022\"6\n\024ResourceTokenCharge" +
-      "d\022\016\n\006symbol\030\001 \001(\t\022\016\n\006amount\030\002 \001(\022\"4\n\022Res" +
-      "ourceTokenOwned\022\016\n\006symbol\030\001 \001(\t\022\016\n\006amoun" +
-      "t\030\002 \001(\022B\034\n\032io.aelf.protobuf.generatedb\006p" +
-      "roto3"
+      "\t\022\016\n\006amount\030\002 \001(\003\"Z\n\024ResourceTokenCharge" +
+      "d\022\016\n\006symbol\030\001 \001(\t\022\016\n\006amount\030\002 \001(\003\022\"\n\020con" +
+      "tract_address\030\003 \001(\0132\010.Address\"X\n\022Resourc" +
+      "eTokenOwned\022\016\n\006symbol\030\001 \001(\t\022\016\n\006amount\030\002 " +
+      "\001(\003\022\"\n\020contract_address\030\003 \001(\0132\010.AddressB" +
+      "\034\n\032io.aelf.protobuf.generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3484,13 +3885,13 @@ public final class TransactionFee {
     internal_static_ResourceTokenCharged_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResourceTokenCharged_descriptor,
-        new java.lang.String[] { "Symbol", "Amount", });
+        new java.lang.String[] { "Symbol", "Amount", "ContractAddress", });
     internal_static_ResourceTokenOwned_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_ResourceTokenOwned_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResourceTokenOwned_descriptor,
-        new java.lang.String[] { "Symbol", "Amount", });
+        new java.lang.String[] { "Symbol", "Amount", "ContractAddress", });
     io.aelf.protobuf.generated.Client.getDescriptor();
   }
 

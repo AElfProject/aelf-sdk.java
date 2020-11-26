@@ -19,42 +19,74 @@ public final class CrossChainContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The cross chain transaction id to verify.
+     * </pre>
+     *
      * <code>.Hash transaction_id = 1;</code>
      * @return Whether the transactionId field is set.
      */
     boolean hasTransactionId();
     /**
+     * <pre>
+     * The cross chain transaction id to verify.
+     * </pre>
+     *
      * <code>.Hash transaction_id = 1;</code>
      * @return The transactionId.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionId();
     /**
+     * <pre>
+     * The cross chain transaction id to verify.
+     * </pre>
+     *
      * <code>.Hash transaction_id = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionIdOrBuilder();
 
     /**
+     * <pre>
+     * The merkle path of the transaction.
+     * </pre>
+     *
      * <code>.MerklePath path = 2;</code>
      * @return Whether the path field is set.
      */
     boolean hasPath();
     /**
+     * <pre>
+     * The merkle path of the transaction.
+     * </pre>
+     *
      * <code>.MerklePath path = 2;</code>
      * @return The path.
      */
     io.aelf.protobuf.generated.Client.MerklePath getPath();
     /**
+     * <pre>
+     * The merkle path of the transaction.
+     * </pre>
+     *
      * <code>.MerklePath path = 2;</code>
      */
     io.aelf.protobuf.generated.Client.MerklePathOrBuilder getPathOrBuilder();
 
     /**
-     * <code>sint64 parent_chain_height = 3;</code>
+     * <pre>
+     * The height of parent chain that indexing this transaction.
+     * </pre>
+     *
+     * <code>int64 parent_chain_height = 3;</code>
      * @return The parentChainHeight.
      */
     long getParentChainHeight();
 
     /**
+     * <pre>
+     * The chain if to verify.
+     * </pre>
+     *
      * <code>int32 verified_chain_id = 4;</code>
      * @return The verifiedChainId.
      */
@@ -137,7 +169,7 @@ public final class CrossChainContract {
             }
             case 24: {
 
-              parentChainHeight_ = input.readSInt64();
+              parentChainHeight_ = input.readInt64();
               break;
             }
             case 32: {
@@ -180,6 +212,10 @@ public final class CrossChainContract {
     public static final int TRANSACTION_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash transactionId_;
     /**
+     * <pre>
+     * The cross chain transaction id to verify.
+     * </pre>
+     *
      * <code>.Hash transaction_id = 1;</code>
      * @return Whether the transactionId field is set.
      */
@@ -187,6 +223,10 @@ public final class CrossChainContract {
       return transactionId_ != null;
     }
     /**
+     * <pre>
+     * The cross chain transaction id to verify.
+     * </pre>
+     *
      * <code>.Hash transaction_id = 1;</code>
      * @return The transactionId.
      */
@@ -194,6 +234,10 @@ public final class CrossChainContract {
       return transactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionId_;
     }
     /**
+     * <pre>
+     * The cross chain transaction id to verify.
+     * </pre>
+     *
      * <code>.Hash transaction_id = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionIdOrBuilder() {
@@ -203,6 +247,10 @@ public final class CrossChainContract {
     public static final int PATH_FIELD_NUMBER = 2;
     private io.aelf.protobuf.generated.Client.MerklePath path_;
     /**
+     * <pre>
+     * The merkle path of the transaction.
+     * </pre>
+     *
      * <code>.MerklePath path = 2;</code>
      * @return Whether the path field is set.
      */
@@ -210,6 +258,10 @@ public final class CrossChainContract {
       return path_ != null;
     }
     /**
+     * <pre>
+     * The merkle path of the transaction.
+     * </pre>
+     *
      * <code>.MerklePath path = 2;</code>
      * @return The path.
      */
@@ -217,6 +269,10 @@ public final class CrossChainContract {
       return path_ == null ? io.aelf.protobuf.generated.Client.MerklePath.getDefaultInstance() : path_;
     }
     /**
+     * <pre>
+     * The merkle path of the transaction.
+     * </pre>
+     *
      * <code>.MerklePath path = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.MerklePathOrBuilder getPathOrBuilder() {
@@ -226,7 +282,11 @@ public final class CrossChainContract {
     public static final int PARENT_CHAIN_HEIGHT_FIELD_NUMBER = 3;
     private long parentChainHeight_;
     /**
-     * <code>sint64 parent_chain_height = 3;</code>
+     * <pre>
+     * The height of parent chain that indexing this transaction.
+     * </pre>
+     *
+     * <code>int64 parent_chain_height = 3;</code>
      * @return The parentChainHeight.
      */
     public long getParentChainHeight() {
@@ -236,6 +296,10 @@ public final class CrossChainContract {
     public static final int VERIFIED_CHAIN_ID_FIELD_NUMBER = 4;
     private int verifiedChainId_;
     /**
+     * <pre>
+     * The chain if to verify.
+     * </pre>
+     *
      * <code>int32 verified_chain_id = 4;</code>
      * @return The verifiedChainId.
      */
@@ -264,7 +328,7 @@ public final class CrossChainContract {
         output.writeMessage(2, getPath());
       }
       if (parentChainHeight_ != 0L) {
-        output.writeSInt64(3, parentChainHeight_);
+        output.writeInt64(3, parentChainHeight_);
       }
       if (verifiedChainId_ != 0) {
         output.writeInt32(4, verifiedChainId_);
@@ -288,7 +352,7 @@ public final class CrossChainContract {
       }
       if (parentChainHeight_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, parentChainHeight_);
+          .computeInt64Size(3, parentChainHeight_);
       }
       if (verifiedChainId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -631,6 +695,10 @@ public final class CrossChainContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> transactionIdBuilder_;
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        * @return Whether the transactionId field is set.
        */
@@ -638,6 +706,10 @@ public final class CrossChainContract {
         return transactionIdBuilder_ != null || transactionId_ != null;
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        * @return The transactionId.
        */
@@ -649,6 +721,10 @@ public final class CrossChainContract {
         }
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        */
       public Builder setTransactionId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -665,6 +741,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        */
       public Builder setTransactionId(
@@ -679,6 +759,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        */
       public Builder mergeTransactionId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -697,6 +781,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        */
       public Builder clearTransactionId() {
@@ -711,6 +799,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getTransactionIdBuilder() {
@@ -719,6 +811,10 @@ public final class CrossChainContract {
         return getTransactionIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionIdOrBuilder() {
@@ -730,6 +826,10 @@ public final class CrossChainContract {
         }
       }
       /**
+       * <pre>
+       * The cross chain transaction id to verify.
+       * </pre>
+       *
        * <code>.Hash transaction_id = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -750,6 +850,10 @@ public final class CrossChainContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.MerklePath, io.aelf.protobuf.generated.Client.MerklePath.Builder, io.aelf.protobuf.generated.Client.MerklePathOrBuilder> pathBuilder_;
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        * @return Whether the path field is set.
        */
@@ -757,6 +861,10 @@ public final class CrossChainContract {
         return pathBuilder_ != null || path_ != null;
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        * @return The path.
        */
@@ -768,6 +876,10 @@ public final class CrossChainContract {
         }
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        */
       public Builder setPath(io.aelf.protobuf.generated.Client.MerklePath value) {
@@ -784,6 +896,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        */
       public Builder setPath(
@@ -798,6 +914,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        */
       public Builder mergePath(io.aelf.protobuf.generated.Client.MerklePath value) {
@@ -816,6 +936,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        */
       public Builder clearPath() {
@@ -830,6 +954,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MerklePath.Builder getPathBuilder() {
@@ -838,6 +966,10 @@ public final class CrossChainContract {
         return getPathFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MerklePathOrBuilder getPathOrBuilder() {
@@ -849,6 +981,10 @@ public final class CrossChainContract {
         }
       }
       /**
+       * <pre>
+       * The merkle path of the transaction.
+       * </pre>
+       *
        * <code>.MerklePath path = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -867,14 +1003,22 @@ public final class CrossChainContract {
 
       private long parentChainHeight_ ;
       /**
-       * <code>sint64 parent_chain_height = 3;</code>
+       * <pre>
+       * The height of parent chain that indexing this transaction.
+       * </pre>
+       *
+       * <code>int64 parent_chain_height = 3;</code>
        * @return The parentChainHeight.
        */
       public long getParentChainHeight() {
         return parentChainHeight_;
       }
       /**
-       * <code>sint64 parent_chain_height = 3;</code>
+       * <pre>
+       * The height of parent chain that indexing this transaction.
+       * </pre>
+       *
+       * <code>int64 parent_chain_height = 3;</code>
        * @param value The parentChainHeight to set.
        * @return This builder for chaining.
        */
@@ -885,7 +1029,11 @@ public final class CrossChainContract {
         return this;
       }
       /**
-       * <code>sint64 parent_chain_height = 3;</code>
+       * <pre>
+       * The height of parent chain that indexing this transaction.
+       * </pre>
+       *
+       * <code>int64 parent_chain_height = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearParentChainHeight() {
@@ -897,6 +1045,10 @@ public final class CrossChainContract {
 
       private int verifiedChainId_ ;
       /**
+       * <pre>
+       * The chain if to verify.
+       * </pre>
+       *
        * <code>int32 verified_chain_id = 4;</code>
        * @return The verifiedChainId.
        */
@@ -904,6 +1056,10 @@ public final class CrossChainContract {
         return verifiedChainId_;
       }
       /**
+       * <pre>
+       * The chain if to verify.
+       * </pre>
+       *
        * <code>int32 verified_chain_id = 4;</code>
        * @param value The verifiedChainId to set.
        * @return This builder for chaining.
@@ -915,6 +1071,10 @@ public final class CrossChainContract {
         return this;
       }
       /**
+       * <pre>
+       * The chain if to verify.
+       * </pre>
+       *
        * <code>int32 verified_chain_id = 4;</code>
        * @return This builder for chaining.
        */
@@ -994,7 +1154,7 @@ public final class CrossChainContract {
       "\n\032cross_chain_contract.proto\032\014client.pro" +
       "to\"\212\001\n\026VerifyTransactionInput\022\035\n\016transac" +
       "tion_id\030\001 \001(\0132\005.Hash\022\031\n\004path\030\002 \001(\0132\013.Mer" +
-      "klePath\022\033\n\023parent_chain_height\030\003 \001(\022\022\031\n\021" +
+      "klePath\022\033\n\023parent_chain_height\030\003 \001(\003\022\031\n\021" +
       "verified_chain_id\030\004 \001(\005B\034\n\032io.aelf.proto" +
       "buf.generatedb\006proto3"
     };

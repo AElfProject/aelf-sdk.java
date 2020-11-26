@@ -5,7 +5,7 @@ sudo sed -i "s/127.0.0.1/$ip/g" appsettings.json
 sudo apt update && apt install unzip
 sudo mkdir -p /home/ubuntu/.ssh/aelf/keys && sudo mkdir -p /root/.ssh/aelf/keys
 cd ../../
-wget https://github.com/AElfProject/AElf/releases/download/v1.0.0-preview1/aelf.zip
+wget https://github.com/AElfProject/AElf/releases/download/v1.0.0-rc1/aelf.zip
 sudo unzip aelf.zip
 sudo mkdir -p aelf/aelf/keys
 sudo cp scripts/aelf-node/keys/*.json aelf/aelf/keys/

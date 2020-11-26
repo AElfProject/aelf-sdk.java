@@ -20,10 +20,18 @@ public final class Client {
   public enum ThresholdCheckType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <pre>
+     * Check balance only.
+     * </pre>
+     *
      * <code>BALANCE = 0;</code>
      */
     BALANCE(0),
     /**
+     * <pre>
+     * Check balance and allowance at the same time.
+     * </pre>
+     *
      * <code>ALLOWANCE = 1;</code>
      */
     ALLOWANCE(1),
@@ -31,10 +39,18 @@ public final class Client {
     ;
 
     /**
+     * <pre>
+     * Check balance only.
+     * </pre>
+     *
      * <code>BALANCE = 0;</code>
      */
     public static final int BALANCE_VALUE = 0;
     /**
+     * <pre>
+     * Check balance and allowance at the same time.
+     * </pre>
+     *
      * <code>ALLOWANCE = 1;</code>
      */
     public static final int ALLOWANCE_VALUE = 1;
@@ -5090,7 +5106,7 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 category = 1;</code>
+     * <code>sint32 category = 1;</code>
      * @return The category.
      */
     int getCategory();
@@ -5115,6 +5131,18 @@ public final class Client {
      * <code>.Hash code_hash = 3;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getCodeHashOrBuilder();
+
+    /**
+     * <code>bool is_system_contract = 4;</code>
+     * @return The isSystemContract.
+     */
+    boolean getIsSystemContract();
+
+    /**
+     * <code>int32 version = 5;</code>
+     * @return The version.
+     */
+    int getVersion();
   }
   /**
    * Protobuf type {@code SmartContractRegistration}
@@ -5164,7 +5192,7 @@ public final class Client {
               break;
             case 8: {
 
-              category_ = input.readInt32();
+              category_ = input.readSInt32();
               break;
             }
             case 18: {
@@ -5183,6 +5211,16 @@ public final class Client {
                 codeHash_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 32: {
+
+              isSystemContract_ = input.readBool();
+              break;
+            }
+            case 40: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -5220,7 +5258,7 @@ public final class Client {
     public static final int CATEGORY_FIELD_NUMBER = 1;
     private int category_;
     /**
-     * <code>int32 category = 1;</code>
+     * <code>sint32 category = 1;</code>
      * @return The category.
      */
     public int getCategory() {
@@ -5260,6 +5298,26 @@ public final class Client {
       return getCodeHash();
     }
 
+    public static final int IS_SYSTEM_CONTRACT_FIELD_NUMBER = 4;
+    private boolean isSystemContract_;
+    /**
+     * <code>bool is_system_contract = 4;</code>
+     * @return The isSystemContract.
+     */
+    public boolean getIsSystemContract() {
+      return isSystemContract_;
+    }
+
+    public static final int VERSION_FIELD_NUMBER = 5;
+    private int version_;
+    /**
+     * <code>int32 version = 5;</code>
+     * @return The version.
+     */
+    public int getVersion() {
+      return version_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5275,13 +5333,19 @@ public final class Client {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (category_ != 0) {
-        output.writeInt32(1, category_);
+        output.writeSInt32(1, category_);
       }
       if (!code_.isEmpty()) {
         output.writeBytes(2, code_);
       }
       if (codeHash_ != null) {
         output.writeMessage(3, getCodeHash());
+      }
+      if (isSystemContract_ != false) {
+        output.writeBool(4, isSystemContract_);
+      }
+      if (version_ != 0) {
+        output.writeInt32(5, version_);
       }
       unknownFields.writeTo(output);
     }
@@ -5294,7 +5358,7 @@ public final class Client {
       size = 0;
       if (category_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, category_);
+          .computeSInt32Size(1, category_);
       }
       if (!code_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
@@ -5303,6 +5367,14 @@ public final class Client {
       if (codeHash_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getCodeHash());
+      }
+      if (isSystemContract_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isSystemContract_);
+      }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, version_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5328,6 +5400,10 @@ public final class Client {
         if (!getCodeHash()
             .equals(other.getCodeHash())) return false;
       }
+      if (getIsSystemContract()
+          != other.getIsSystemContract()) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5347,6 +5423,11 @@ public final class Client {
         hash = (37 * hash) + CODE_HASH_FIELD_NUMBER;
         hash = (53 * hash) + getCodeHash().hashCode();
       }
+      hash = (37 * hash) + IS_SYSTEM_CONTRACT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsSystemContract());
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5490,6 +5571,10 @@ public final class Client {
           codeHash_ = null;
           codeHashBuilder_ = null;
         }
+        isSystemContract_ = false;
+
+        version_ = 0;
+
         return this;
       }
 
@@ -5523,6 +5608,8 @@ public final class Client {
         } else {
           result.codeHash_ = codeHashBuilder_.build();
         }
+        result.isSystemContract_ = isSystemContract_;
+        result.version_ = version_;
         onBuilt();
         return result;
       }
@@ -5580,6 +5667,12 @@ public final class Client {
         if (other.hasCodeHash()) {
           mergeCodeHash(other.getCodeHash());
         }
+        if (other.getIsSystemContract() != false) {
+          setIsSystemContract(other.getIsSystemContract());
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -5611,14 +5704,14 @@ public final class Client {
 
       private int category_ ;
       /**
-       * <code>int32 category = 1;</code>
+       * <code>sint32 category = 1;</code>
        * @return The category.
        */
       public int getCategory() {
         return category_;
       }
       /**
-       * <code>int32 category = 1;</code>
+       * <code>sint32 category = 1;</code>
        * @param value The category to set.
        * @return This builder for chaining.
        */
@@ -5629,7 +5722,7 @@ public final class Client {
         return this;
       }
       /**
-       * <code>int32 category = 1;</code>
+       * <code>sint32 category = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearCategory() {
@@ -5790,6 +5883,66 @@ public final class Client {
         }
         return codeHashBuilder_;
       }
+
+      private boolean isSystemContract_ ;
+      /**
+       * <code>bool is_system_contract = 4;</code>
+       * @return The isSystemContract.
+       */
+      public boolean getIsSystemContract() {
+        return isSystemContract_;
+      }
+      /**
+       * <code>bool is_system_contract = 4;</code>
+       * @param value The isSystemContract to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsSystemContract(boolean value) {
+        
+        isSystemContract_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_system_contract = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsSystemContract() {
+        
+        isSystemContract_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int version_ ;
+      /**
+       * <code>int32 version = 5;</code>
+       * @return The version.
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>int32 version = 5;</code>
+       * @param value The version to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 version = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5848,37 +6001,98 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint64 serial_number = 1;</code>
+     * <pre>
+     * The serial number of the contract.
+     * </pre>
+     *
+     * <code>int64 serial_number = 1;</code>
      * @return The serialNumber.
      */
     long getSerialNumber();
 
     /**
-     * <code>int32 category = 3;</code>
+     * <pre>
+     * The author of the contract, this is the person who deployed the contract.
+     * </pre>
+     *
+     * <code>.Address author = 2;</code>
+     * @return Whether the author field is set.
+     */
+    boolean hasAuthor();
+    /**
+     * <pre>
+     * The author of the contract, this is the person who deployed the contract.
+     * </pre>
+     *
+     * <code>.Address author = 2;</code>
+     * @return The author.
+     */
+    io.aelf.protobuf.generated.Client.Address getAuthor();
+    /**
+     * <pre>
+     * The author of the contract, this is the person who deployed the contract.
+     * </pre>
+     *
+     * <code>.Address author = 2;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getAuthorOrBuilder();
+
+    /**
+     * <pre>
+     * The category of contract code(0: C#).
+     * </pre>
+     *
+     * <code>sint32 category = 3;</code>
      * @return The category.
      */
     int getCategory();
 
     /**
+     * <pre>
+     * The hash of the contract code.
+     * </pre>
+     *
      * <code>.Hash code_hash = 4;</code>
      * @return Whether the codeHash field is set.
      */
     boolean hasCodeHash();
     /**
+     * <pre>
+     * The hash of the contract code.
+     * </pre>
+     *
      * <code>.Hash code_hash = 4;</code>
      * @return The codeHash.
      */
     io.aelf.protobuf.generated.Client.Hash getCodeHash();
     /**
+     * <pre>
+     * The hash of the contract code.
+     * </pre>
+     *
      * <code>.Hash code_hash = 4;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getCodeHashOrBuilder();
 
     /**
+     * <pre>
+     * Whether it is a system contract.
+     * </pre>
+     *
      * <code>bool is_system_contract = 5;</code>
      * @return The isSystemContract.
      */
     boolean getIsSystemContract();
+
+    /**
+     * <pre>
+     * The version of the current contract.
+     * </pre>
+     *
+     * <code>int32 version = 6;</code>
+     * @return The version.
+     */
+    int getVersion();
   }
   /**
    * <pre>
@@ -5931,12 +6145,25 @@ public final class Client {
               break;
             case 8: {
 
-              serialNumber_ = input.readUInt64();
+              serialNumber_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (author_ != null) {
+                subBuilder = author_.toBuilder();
+              }
+              author_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(author_);
+                author_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             case 24: {
 
-              category_ = input.readInt32();
+              category_ = input.readSInt32();
               break;
             }
             case 34: {
@@ -5955,6 +6182,11 @@ public final class Client {
             case 40: {
 
               isSystemContract_ = input.readBool();
+              break;
+            }
+            case 48: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -5992,17 +6224,60 @@ public final class Client {
     public static final int SERIAL_NUMBER_FIELD_NUMBER = 1;
     private long serialNumber_;
     /**
-     * <code>uint64 serial_number = 1;</code>
+     * <pre>
+     * The serial number of the contract.
+     * </pre>
+     *
+     * <code>int64 serial_number = 1;</code>
      * @return The serialNumber.
      */
     public long getSerialNumber() {
       return serialNumber_;
     }
 
+    public static final int AUTHOR_FIELD_NUMBER = 2;
+    private io.aelf.protobuf.generated.Client.Address author_;
+    /**
+     * <pre>
+     * The author of the contract, this is the person who deployed the contract.
+     * </pre>
+     *
+     * <code>.Address author = 2;</code>
+     * @return Whether the author field is set.
+     */
+    public boolean hasAuthor() {
+      return author_ != null;
+    }
+    /**
+     * <pre>
+     * The author of the contract, this is the person who deployed the contract.
+     * </pre>
+     *
+     * <code>.Address author = 2;</code>
+     * @return The author.
+     */
+    public io.aelf.protobuf.generated.Client.Address getAuthor() {
+      return author_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : author_;
+    }
+    /**
+     * <pre>
+     * The author of the contract, this is the person who deployed the contract.
+     * </pre>
+     *
+     * <code>.Address author = 2;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getAuthorOrBuilder() {
+      return getAuthor();
+    }
+
     public static final int CATEGORY_FIELD_NUMBER = 3;
     private int category_;
     /**
-     * <code>int32 category = 3;</code>
+     * <pre>
+     * The category of contract code(0: C#).
+     * </pre>
+     *
+     * <code>sint32 category = 3;</code>
      * @return The category.
      */
     public int getCategory() {
@@ -6012,6 +6287,10 @@ public final class Client {
     public static final int CODE_HASH_FIELD_NUMBER = 4;
     private io.aelf.protobuf.generated.Client.Hash codeHash_;
     /**
+     * <pre>
+     * The hash of the contract code.
+     * </pre>
+     *
      * <code>.Hash code_hash = 4;</code>
      * @return Whether the codeHash field is set.
      */
@@ -6019,6 +6298,10 @@ public final class Client {
       return codeHash_ != null;
     }
     /**
+     * <pre>
+     * The hash of the contract code.
+     * </pre>
+     *
      * <code>.Hash code_hash = 4;</code>
      * @return The codeHash.
      */
@@ -6026,6 +6309,10 @@ public final class Client {
       return codeHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : codeHash_;
     }
     /**
+     * <pre>
+     * The hash of the contract code.
+     * </pre>
+     *
      * <code>.Hash code_hash = 4;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getCodeHashOrBuilder() {
@@ -6035,11 +6322,29 @@ public final class Client {
     public static final int IS_SYSTEM_CONTRACT_FIELD_NUMBER = 5;
     private boolean isSystemContract_;
     /**
+     * <pre>
+     * Whether it is a system contract.
+     * </pre>
+     *
      * <code>bool is_system_contract = 5;</code>
      * @return The isSystemContract.
      */
     public boolean getIsSystemContract() {
       return isSystemContract_;
+    }
+
+    public static final int VERSION_FIELD_NUMBER = 6;
+    private int version_;
+    /**
+     * <pre>
+     * The version of the current contract.
+     * </pre>
+     *
+     * <code>int32 version = 6;</code>
+     * @return The version.
+     */
+    public int getVersion() {
+      return version_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6057,16 +6362,22 @@ public final class Client {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (serialNumber_ != 0L) {
-        output.writeUInt64(1, serialNumber_);
+        output.writeInt64(1, serialNumber_);
+      }
+      if (author_ != null) {
+        output.writeMessage(2, getAuthor());
       }
       if (category_ != 0) {
-        output.writeInt32(3, category_);
+        output.writeSInt32(3, category_);
       }
       if (codeHash_ != null) {
         output.writeMessage(4, getCodeHash());
       }
       if (isSystemContract_ != false) {
         output.writeBool(5, isSystemContract_);
+      }
+      if (version_ != 0) {
+        output.writeInt32(6, version_);
       }
       unknownFields.writeTo(output);
     }
@@ -6079,11 +6390,15 @@ public final class Client {
       size = 0;
       if (serialNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, serialNumber_);
+          .computeInt64Size(1, serialNumber_);
+      }
+      if (author_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getAuthor());
       }
       if (category_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, category_);
+          .computeSInt32Size(3, category_);
       }
       if (codeHash_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -6092,6 +6407,10 @@ public final class Client {
       if (isSystemContract_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, isSystemContract_);
+      }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, version_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6110,6 +6429,11 @@ public final class Client {
 
       if (getSerialNumber()
           != other.getSerialNumber()) return false;
+      if (hasAuthor() != other.hasAuthor()) return false;
+      if (hasAuthor()) {
+        if (!getAuthor()
+            .equals(other.getAuthor())) return false;
+      }
       if (getCategory()
           != other.getCategory()) return false;
       if (hasCodeHash() != other.hasCodeHash()) return false;
@@ -6119,6 +6443,8 @@ public final class Client {
       }
       if (getIsSystemContract()
           != other.getIsSystemContract()) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6133,6 +6459,10 @@ public final class Client {
       hash = (37 * hash) + SERIAL_NUMBER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getSerialNumber());
+      if (hasAuthor()) {
+        hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
+        hash = (53 * hash) + getAuthor().hashCode();
+      }
       hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
       hash = (53 * hash) + getCategory();
       if (hasCodeHash()) {
@@ -6142,6 +6472,8 @@ public final class Client {
       hash = (37 * hash) + IS_SYSTEM_CONTRACT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsSystemContract());
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6281,6 +6613,12 @@ public final class Client {
         super.clear();
         serialNumber_ = 0L;
 
+        if (authorBuilder_ == null) {
+          author_ = null;
+        } else {
+          author_ = null;
+          authorBuilder_ = null;
+        }
         category_ = 0;
 
         if (codeHashBuilder_ == null) {
@@ -6290,6 +6628,8 @@ public final class Client {
           codeHashBuilder_ = null;
         }
         isSystemContract_ = false;
+
+        version_ = 0;
 
         return this;
       }
@@ -6318,6 +6658,11 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.ContractInfo buildPartial() {
         io.aelf.protobuf.generated.Client.ContractInfo result = new io.aelf.protobuf.generated.Client.ContractInfo(this);
         result.serialNumber_ = serialNumber_;
+        if (authorBuilder_ == null) {
+          result.author_ = author_;
+        } else {
+          result.author_ = authorBuilder_.build();
+        }
         result.category_ = category_;
         if (codeHashBuilder_ == null) {
           result.codeHash_ = codeHash_;
@@ -6325,6 +6670,7 @@ public final class Client {
           result.codeHash_ = codeHashBuilder_.build();
         }
         result.isSystemContract_ = isSystemContract_;
+        result.version_ = version_;
         onBuilt();
         return result;
       }
@@ -6376,6 +6722,9 @@ public final class Client {
         if (other.getSerialNumber() != 0L) {
           setSerialNumber(other.getSerialNumber());
         }
+        if (other.hasAuthor()) {
+          mergeAuthor(other.getAuthor());
+        }
         if (other.getCategory() != 0) {
           setCategory(other.getCategory());
         }
@@ -6384,6 +6733,9 @@ public final class Client {
         }
         if (other.getIsSystemContract() != false) {
           setIsSystemContract(other.getIsSystemContract());
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6416,14 +6768,22 @@ public final class Client {
 
       private long serialNumber_ ;
       /**
-       * <code>uint64 serial_number = 1;</code>
+       * <pre>
+       * The serial number of the contract.
+       * </pre>
+       *
+       * <code>int64 serial_number = 1;</code>
        * @return The serialNumber.
        */
       public long getSerialNumber() {
         return serialNumber_;
       }
       /**
-       * <code>uint64 serial_number = 1;</code>
+       * <pre>
+       * The serial number of the contract.
+       * </pre>
+       *
+       * <code>int64 serial_number = 1;</code>
        * @param value The serialNumber to set.
        * @return This builder for chaining.
        */
@@ -6434,7 +6794,11 @@ public final class Client {
         return this;
       }
       /**
-       * <code>uint64 serial_number = 1;</code>
+       * <pre>
+       * The serial number of the contract.
+       * </pre>
+       *
+       * <code>int64 serial_number = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearSerialNumber() {
@@ -6444,16 +6808,179 @@ public final class Client {
         return this;
       }
 
+      private io.aelf.protobuf.generated.Client.Address author_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> authorBuilder_;
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       * @return Whether the author field is set.
+       */
+      public boolean hasAuthor() {
+        return authorBuilder_ != null || author_ != null;
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       * @return The author.
+       */
+      public io.aelf.protobuf.generated.Client.Address getAuthor() {
+        if (authorBuilder_ == null) {
+          return author_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : author_;
+        } else {
+          return authorBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       */
+      public Builder setAuthor(io.aelf.protobuf.generated.Client.Address value) {
+        if (authorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          author_ = value;
+          onChanged();
+        } else {
+          authorBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       */
+      public Builder setAuthor(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (authorBuilder_ == null) {
+          author_ = builderForValue.build();
+          onChanged();
+        } else {
+          authorBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       */
+      public Builder mergeAuthor(io.aelf.protobuf.generated.Client.Address value) {
+        if (authorBuilder_ == null) {
+          if (author_ != null) {
+            author_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(author_).mergeFrom(value).buildPartial();
+          } else {
+            author_ = value;
+          }
+          onChanged();
+        } else {
+          authorBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       */
+      public Builder clearAuthor() {
+        if (authorBuilder_ == null) {
+          author_ = null;
+          onChanged();
+        } else {
+          author_ = null;
+          authorBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getAuthorBuilder() {
+        
+        onChanged();
+        return getAuthorFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getAuthorOrBuilder() {
+        if (authorBuilder_ != null) {
+          return authorBuilder_.getMessageOrBuilder();
+        } else {
+          return author_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : author_;
+        }
+      }
+      /**
+       * <pre>
+       * The author of the contract, this is the person who deployed the contract.
+       * </pre>
+       *
+       * <code>.Address author = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getAuthorFieldBuilder() {
+        if (authorBuilder_ == null) {
+          authorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getAuthor(),
+                  getParentForChildren(),
+                  isClean());
+          author_ = null;
+        }
+        return authorBuilder_;
+      }
+
       private int category_ ;
       /**
-       * <code>int32 category = 3;</code>
+       * <pre>
+       * The category of contract code(0: C#).
+       * </pre>
+       *
+       * <code>sint32 category = 3;</code>
        * @return The category.
        */
       public int getCategory() {
         return category_;
       }
       /**
-       * <code>int32 category = 3;</code>
+       * <pre>
+       * The category of contract code(0: C#).
+       * </pre>
+       *
+       * <code>sint32 category = 3;</code>
        * @param value The category to set.
        * @return This builder for chaining.
        */
@@ -6464,7 +6991,11 @@ public final class Client {
         return this;
       }
       /**
-       * <code>int32 category = 3;</code>
+       * <pre>
+       * The category of contract code(0: C#).
+       * </pre>
+       *
+       * <code>sint32 category = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearCategory() {
@@ -6478,6 +7009,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> codeHashBuilder_;
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        * @return Whether the codeHash field is set.
        */
@@ -6485,6 +7020,10 @@ public final class Client {
         return codeHashBuilder_ != null || codeHash_ != null;
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        * @return The codeHash.
        */
@@ -6496,6 +7035,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        */
       public Builder setCodeHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -6512,6 +7055,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        */
       public Builder setCodeHash(
@@ -6526,6 +7073,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        */
       public Builder mergeCodeHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -6544,6 +7095,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        */
       public Builder clearCodeHash() {
@@ -6558,6 +7113,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getCodeHashBuilder() {
@@ -6566,6 +7125,10 @@ public final class Client {
         return getCodeHashFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getCodeHashOrBuilder() {
@@ -6577,6 +7140,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The hash of the contract code.
+       * </pre>
+       *
        * <code>.Hash code_hash = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -6595,6 +7162,10 @@ public final class Client {
 
       private boolean isSystemContract_ ;
       /**
+       * <pre>
+       * Whether it is a system contract.
+       * </pre>
+       *
        * <code>bool is_system_contract = 5;</code>
        * @return The isSystemContract.
        */
@@ -6602,6 +7173,10 @@ public final class Client {
         return isSystemContract_;
       }
       /**
+       * <pre>
+       * Whether it is a system contract.
+       * </pre>
+       *
        * <code>bool is_system_contract = 5;</code>
        * @param value The isSystemContract to set.
        * @return This builder for chaining.
@@ -6613,12 +7188,58 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * Whether it is a system contract.
+       * </pre>
+       *
        * <code>bool is_system_contract = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearIsSystemContract() {
         
         isSystemContract_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int version_ ;
+      /**
+       * <pre>
+       * The version of the current contract.
+       * </pre>
+       *
+       * <code>int32 version = 6;</code>
+       * @return The version.
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <pre>
+       * The version of the current contract.
+       * </pre>
+       *
+       * <code>int32 version = 6;</code>
+       * @param value The version to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The version of the current contract.
+       * </pre>
+       *
+       * <code>int32 version = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
         onChanged();
         return this;
       }
@@ -6680,11 +7301,19 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The name of the method to be charged.
+     * </pre>
+     *
      * <code>string method_name = 1;</code>
      * @return The methodName.
      */
     java.lang.String getMethodName();
     /**
+     * <pre>
+     * The name of the method to be charged.
+     * </pre>
+     *
      * <code>string method_name = 1;</code>
      * @return The bytes for methodName.
      */
@@ -6692,28 +7321,58 @@ public final class Client {
         getMethodNameBytes();
 
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.MethodFee> 
         getFeesList();
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     io.aelf.protobuf.generated.Client.MethodFee getFees(int index);
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     int getFeesCount();
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.MethodFeeOrBuilder> 
         getFeesOrBuilderList();
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     io.aelf.protobuf.generated.Client.MethodFeeOrBuilder getFeesOrBuilder(
         int index);
+
+    /**
+     * <pre>
+     * Optional based on the implementation of SetMethodFee method.
+     * </pre>
+     *
+     * <code>bool is_size_fee_free = 3;</code>
+     * @return The isSizeFeeFree.
+     */
+    boolean getIsSizeFeeFree();
   }
   /**
    * <pre>
@@ -6782,6 +7441,11 @@ public final class Client {
                   input.readMessage(io.aelf.protobuf.generated.Client.MethodFee.parser(), extensionRegistry));
               break;
             }
+            case 24: {
+
+              isSizeFeeFree_ = input.readBool();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -6820,6 +7484,10 @@ public final class Client {
     public static final int METHOD_NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object methodName_;
     /**
+     * <pre>
+     * The name of the method to be charged.
+     * </pre>
+     *
      * <code>string method_name = 1;</code>
      * @return The methodName.
      */
@@ -6836,6 +7504,10 @@ public final class Client {
       }
     }
     /**
+     * <pre>
+     * The name of the method to be charged.
+     * </pre>
+     *
      * <code>string method_name = 1;</code>
      * @return The bytes for methodName.
      */
@@ -6856,12 +7528,20 @@ public final class Client {
     public static final int FEES_FIELD_NUMBER = 2;
     private java.util.List<io.aelf.protobuf.generated.Client.MethodFee> fees_;
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.MethodFee> getFeesList() {
       return fees_;
     }
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.MethodFeeOrBuilder> 
@@ -6869,23 +7549,49 @@ public final class Client {
       return fees_;
     }
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     public int getFeesCount() {
       return fees_.size();
     }
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.MethodFee getFees(int index) {
       return fees_.get(index);
     }
     /**
+     * <pre>
+     * List of fees to be charged.
+     * </pre>
+     *
      * <code>repeated .MethodFee fees = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.MethodFeeOrBuilder getFeesOrBuilder(
         int index) {
       return fees_.get(index);
+    }
+
+    public static final int IS_SIZE_FEE_FREE_FIELD_NUMBER = 3;
+    private boolean isSizeFeeFree_;
+    /**
+     * <pre>
+     * Optional based on the implementation of SetMethodFee method.
+     * </pre>
+     *
+     * <code>bool is_size_fee_free = 3;</code>
+     * @return The isSizeFeeFree.
+     */
+    public boolean getIsSizeFeeFree() {
+      return isSizeFeeFree_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6908,6 +7614,9 @@ public final class Client {
       for (int i = 0; i < fees_.size(); i++) {
         output.writeMessage(2, fees_.get(i));
       }
+      if (isSizeFeeFree_ != false) {
+        output.writeBool(3, isSizeFeeFree_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -6923,6 +7632,10 @@ public final class Client {
       for (int i = 0; i < fees_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, fees_.get(i));
+      }
+      if (isSizeFeeFree_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, isSizeFeeFree_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6943,6 +7656,8 @@ public final class Client {
           .equals(other.getMethodName())) return false;
       if (!getFeesList()
           .equals(other.getFeesList())) return false;
+      if (getIsSizeFeeFree()
+          != other.getIsSizeFeeFree()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6960,6 +7675,9 @@ public final class Client {
         hash = (37 * hash) + FEES_FIELD_NUMBER;
         hash = (53 * hash) + getFeesList().hashCode();
       }
+      hash = (37 * hash) + IS_SIZE_FEE_FREE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsSizeFeeFree());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7106,6 +7824,8 @@ public final class Client {
         } else {
           feesBuilder_.clear();
         }
+        isSizeFeeFree_ = false;
+
         return this;
       }
 
@@ -7143,6 +7863,7 @@ public final class Client {
         } else {
           result.fees_ = feesBuilder_.build();
         }
+        result.isSizeFeeFree_ = isSizeFeeFree_;
         onBuilt();
         return result;
       }
@@ -7221,6 +7942,9 @@ public final class Client {
             }
           }
         }
+        if (other.getIsSizeFeeFree() != false) {
+          setIsSizeFeeFree(other.getIsSizeFeeFree());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -7253,6 +7977,10 @@ public final class Client {
 
       private java.lang.Object methodName_ = "";
       /**
+       * <pre>
+       * The name of the method to be charged.
+       * </pre>
+       *
        * <code>string method_name = 1;</code>
        * @return The methodName.
        */
@@ -7269,6 +7997,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The name of the method to be charged.
+       * </pre>
+       *
        * <code>string method_name = 1;</code>
        * @return The bytes for methodName.
        */
@@ -7286,6 +8018,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The name of the method to be charged.
+       * </pre>
+       *
        * <code>string method_name = 1;</code>
        * @param value The methodName to set.
        * @return This builder for chaining.
@@ -7301,6 +8037,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The name of the method to be charged.
+       * </pre>
+       *
        * <code>string method_name = 1;</code>
        * @return This builder for chaining.
        */
@@ -7311,6 +8051,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The name of the method to be charged.
+       * </pre>
+       *
        * <code>string method_name = 1;</code>
        * @param value The bytes for methodName to set.
        * @return This builder for chaining.
@@ -7340,6 +8084,10 @@ public final class Client {
           io.aelf.protobuf.generated.Client.MethodFee, io.aelf.protobuf.generated.Client.MethodFee.Builder, io.aelf.protobuf.generated.Client.MethodFeeOrBuilder> feesBuilder_;
 
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.MethodFee> getFeesList() {
@@ -7350,6 +8098,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public int getFeesCount() {
@@ -7360,6 +8112,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MethodFee getFees(int index) {
@@ -7370,6 +8126,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder setFees(
@@ -7387,6 +8147,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder setFees(
@@ -7401,6 +8165,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder addFees(io.aelf.protobuf.generated.Client.MethodFee value) {
@@ -7417,6 +8185,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder addFees(
@@ -7434,6 +8206,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder addFees(
@@ -7448,6 +8224,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder addFees(
@@ -7462,6 +8242,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder addAllFees(
@@ -7477,6 +8261,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder clearFees() {
@@ -7490,6 +8278,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public Builder removeFees(int index) {
@@ -7503,6 +8295,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MethodFee.Builder getFeesBuilder(
@@ -7510,6 +8306,10 @@ public final class Client {
         return getFeesFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MethodFeeOrBuilder getFeesOrBuilder(
@@ -7520,6 +8320,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.MethodFeeOrBuilder> 
@@ -7531,6 +8335,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MethodFee.Builder addFeesBuilder() {
@@ -7538,6 +8346,10 @@ public final class Client {
             io.aelf.protobuf.generated.Client.MethodFee.getDefaultInstance());
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MethodFee.Builder addFeesBuilder(
@@ -7546,6 +8358,10 @@ public final class Client {
             index, io.aelf.protobuf.generated.Client.MethodFee.getDefaultInstance());
       }
       /**
+       * <pre>
+       * List of fees to be charged.
+       * </pre>
+       *
        * <code>repeated .MethodFee fees = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.MethodFee.Builder> 
@@ -7565,6 +8381,48 @@ public final class Client {
           fees_ = null;
         }
         return feesBuilder_;
+      }
+
+      private boolean isSizeFeeFree_ ;
+      /**
+       * <pre>
+       * Optional based on the implementation of SetMethodFee method.
+       * </pre>
+       *
+       * <code>bool is_size_fee_free = 3;</code>
+       * @return The isSizeFeeFree.
+       */
+      public boolean getIsSizeFeeFree() {
+        return isSizeFeeFree_;
+      }
+      /**
+       * <pre>
+       * Optional based on the implementation of SetMethodFee method.
+       * </pre>
+       *
+       * <code>bool is_size_fee_free = 3;</code>
+       * @param value The isSizeFeeFree to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsSizeFeeFree(boolean value) {
+        
+        isSizeFeeFree_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional based on the implementation of SetMethodFee method.
+       * </pre>
+       *
+       * <code>bool is_size_fee_free = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsSizeFeeFree() {
+        
+        isSizeFeeFree_ = false;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7624,11 +8482,19 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The token symbol of the method fee.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
     java.lang.String getSymbol();
     /**
+     * <pre>
+     * The token symbol of the method fee.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
@@ -7636,7 +8502,11 @@ public final class Client {
         getSymbolBytes();
 
     /**
-     * <code>sint64 basic_fee = 2;</code>
+     * <pre>
+     * The amount of fees to be charged.
+     * </pre>
+     *
+     * <code>int64 basic_fee = 2;</code>
      * @return The basicFee.
      */
     long getBasicFee();
@@ -7695,7 +8565,7 @@ public final class Client {
             }
             case 16: {
 
-              basicFee_ = input.readSInt64();
+              basicFee_ = input.readInt64();
               break;
             }
             default: {
@@ -7733,6 +8603,10 @@ public final class Client {
     public static final int SYMBOL_FIELD_NUMBER = 1;
     private volatile java.lang.Object symbol_;
     /**
+     * <pre>
+     * The token symbol of the method fee.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
@@ -7749,6 +8623,10 @@ public final class Client {
       }
     }
     /**
+     * <pre>
+     * The token symbol of the method fee.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
@@ -7769,7 +8647,11 @@ public final class Client {
     public static final int BASIC_FEE_FIELD_NUMBER = 2;
     private long basicFee_;
     /**
-     * <code>sint64 basic_fee = 2;</code>
+     * <pre>
+     * The amount of fees to be charged.
+     * </pre>
+     *
+     * <code>int64 basic_fee = 2;</code>
      * @return The basicFee.
      */
     public long getBasicFee() {
@@ -7794,7 +8676,7 @@ public final class Client {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (basicFee_ != 0L) {
-        output.writeSInt64(2, basicFee_);
+        output.writeInt64(2, basicFee_);
       }
       unknownFields.writeTo(output);
     }
@@ -7810,7 +8692,7 @@ public final class Client {
       }
       if (basicFee_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, basicFee_);
+          .computeInt64Size(2, basicFee_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8098,6 +8980,10 @@ public final class Client {
 
       private java.lang.Object symbol_ = "";
       /**
+       * <pre>
+       * The token symbol of the method fee.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return The symbol.
        */
@@ -8114,6 +9000,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The token symbol of the method fee.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return The bytes for symbol.
        */
@@ -8131,6 +9021,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The token symbol of the method fee.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @param value The symbol to set.
        * @return This builder for chaining.
@@ -8146,6 +9040,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The token symbol of the method fee.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return This builder for chaining.
        */
@@ -8156,6 +9054,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The token symbol of the method fee.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @param value The bytes for symbol to set.
        * @return This builder for chaining.
@@ -8174,14 +9076,22 @@ public final class Client {
 
       private long basicFee_ ;
       /**
-       * <code>sint64 basic_fee = 2;</code>
+       * <pre>
+       * The amount of fees to be charged.
+       * </pre>
+       *
+       * <code>int64 basic_fee = 2;</code>
        * @return The basicFee.
        */
       public long getBasicFee() {
         return basicFee_;
       }
       /**
-       * <code>sint64 basic_fee = 2;</code>
+       * <pre>
+       * The amount of fees to be charged.
+       * </pre>
+       *
+       * <code>int64 basic_fee = 2;</code>
        * @param value The basicFee to set.
        * @return This builder for chaining.
        */
@@ -8192,7 +9102,11 @@ public final class Client {
         return this;
       }
       /**
-       * <code>sint64 basic_fee = 2;</code>
+       * <pre>
+       * The amount of fees to be charged.
+       * </pre>
+       *
+       * <code>int64 basic_fee = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearBasicFee() {
@@ -8259,31 +9173,99 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> 
-        getPathsList();
+        getWritePathsList();
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
-    io.aelf.protobuf.generated.Client.ScopedStatePath getPaths(int index);
+    io.aelf.protobuf.generated.Client.ScopedStatePath getWritePaths(int index);
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
-    int getPathsCount();
+    int getWritePathsCount();
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
-        getPathsOrBuilderList();
+        getWritePathsOrBuilderList();
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
-    io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getPathsOrBuilder(
+    io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getWritePathsOrBuilder(
         int index);
 
     /**
-     * <code>bool non_parallelizable = 2;</code>
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> 
+        getReadPathsList();
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    io.aelf.protobuf.generated.Client.ScopedStatePath getReadPaths(int index);
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    int getReadPathsCount();
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    java.util.List<? extends io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
+        getReadPathsOrBuilderList();
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getReadPathsOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     * Whether the transaction is not executed in parallel.
+     * </pre>
+     *
+     * <code>bool non_parallelizable = 3;</code>
      * @return The nonParallelizable.
      */
     boolean getNonParallelizable();
@@ -8305,7 +9287,8 @@ public final class Client {
       super(builder);
     }
     private ResourceInfo() {
-      paths_ = java.util.Collections.emptyList();
+      writePaths_ = java.util.Collections.emptyList();
+      readPaths_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -8341,14 +9324,23 @@ public final class Client {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                paths_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ScopedStatePath>();
+                writePaths_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ScopedStatePath>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              paths_.add(
+              writePaths_.add(
                   input.readMessage(io.aelf.protobuf.generated.Client.ScopedStatePath.parser(), extensionRegistry));
               break;
             }
-            case 16: {
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                readPaths_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ScopedStatePath>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              readPaths_.add(
+                  input.readMessage(io.aelf.protobuf.generated.Client.ScopedStatePath.parser(), extensionRegistry));
+              break;
+            }
+            case 24: {
 
               nonParallelizable_ = input.readBool();
               break;
@@ -8369,7 +9361,10 @@ public final class Client {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          paths_ = java.util.Collections.unmodifiableList(paths_);
+          writePaths_ = java.util.Collections.unmodifiableList(writePaths_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          readPaths_ = java.util.Collections.unmodifiableList(readPaths_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -8388,45 +9383,124 @@ public final class Client {
               io.aelf.protobuf.generated.Client.ResourceInfo.class, io.aelf.protobuf.generated.Client.ResourceInfo.Builder.class);
     }
 
-    public static final int PATHS_FIELD_NUMBER = 1;
-    private java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> paths_;
+    public static final int WRITE_PATHS_FIELD_NUMBER = 1;
+    private java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> writePaths_;
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
-    public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> getPathsList() {
-      return paths_;
+    public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> getWritePathsList() {
+      return writePaths_;
     }
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
-        getPathsOrBuilderList() {
-      return paths_;
+        getWritePathsOrBuilderList() {
+      return writePaths_;
     }
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
-    public int getPathsCount() {
-      return paths_.size();
+    public int getWritePathsCount() {
+      return writePaths_.size();
     }
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
-    public io.aelf.protobuf.generated.Client.ScopedStatePath getPaths(int index) {
-      return paths_.get(index);
+    public io.aelf.protobuf.generated.Client.ScopedStatePath getWritePaths(int index) {
+      return writePaths_.get(index);
     }
     /**
-     * <code>repeated .ScopedStatePath paths = 1;</code>
+     * <pre>
+     * The state path that depends on when writing.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath write_paths = 1;</code>
      */
-    public io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getPathsOrBuilder(
+    public io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getWritePathsOrBuilder(
         int index) {
-      return paths_.get(index);
+      return writePaths_.get(index);
     }
 
-    public static final int NON_PARALLELIZABLE_FIELD_NUMBER = 2;
+    public static final int READ_PATHS_FIELD_NUMBER = 2;
+    private java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> readPaths_;
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> getReadPathsList() {
+      return readPaths_;
+    }
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    public java.util.List<? extends io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
+        getReadPathsOrBuilderList() {
+      return readPaths_;
+    }
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    public int getReadPathsCount() {
+      return readPaths_.size();
+    }
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ScopedStatePath getReadPaths(int index) {
+      return readPaths_.get(index);
+    }
+    /**
+     * <pre>
+     * The state path that depends on when reading.
+     * </pre>
+     *
+     * <code>repeated .ScopedStatePath read_paths = 2;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getReadPathsOrBuilder(
+        int index) {
+      return readPaths_.get(index);
+    }
+
+    public static final int NON_PARALLELIZABLE_FIELD_NUMBER = 3;
     private boolean nonParallelizable_;
     /**
-     * <code>bool non_parallelizable = 2;</code>
+     * <pre>
+     * Whether the transaction is not executed in parallel.
+     * </pre>
+     *
+     * <code>bool non_parallelizable = 3;</code>
      * @return The nonParallelizable.
      */
     public boolean getNonParallelizable() {
@@ -8447,11 +9521,14 @@ public final class Client {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < paths_.size(); i++) {
-        output.writeMessage(1, paths_.get(i));
+      for (int i = 0; i < writePaths_.size(); i++) {
+        output.writeMessage(1, writePaths_.get(i));
+      }
+      for (int i = 0; i < readPaths_.size(); i++) {
+        output.writeMessage(2, readPaths_.get(i));
       }
       if (nonParallelizable_ != false) {
-        output.writeBool(2, nonParallelizable_);
+        output.writeBool(3, nonParallelizable_);
       }
       unknownFields.writeTo(output);
     }
@@ -8462,13 +9539,17 @@ public final class Client {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < paths_.size(); i++) {
+      for (int i = 0; i < writePaths_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, paths_.get(i));
+          .computeMessageSize(1, writePaths_.get(i));
+      }
+      for (int i = 0; i < readPaths_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, readPaths_.get(i));
       }
       if (nonParallelizable_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, nonParallelizable_);
+          .computeBoolSize(3, nonParallelizable_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8485,8 +9566,10 @@ public final class Client {
       }
       io.aelf.protobuf.generated.Client.ResourceInfo other = (io.aelf.protobuf.generated.Client.ResourceInfo) obj;
 
-      if (!getPathsList()
-          .equals(other.getPathsList())) return false;
+      if (!getWritePathsList()
+          .equals(other.getWritePathsList())) return false;
+      if (!getReadPathsList()
+          .equals(other.getReadPathsList())) return false;
       if (getNonParallelizable()
           != other.getNonParallelizable()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -8500,9 +9583,13 @@ public final class Client {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getPathsCount() > 0) {
-        hash = (37 * hash) + PATHS_FIELD_NUMBER;
-        hash = (53 * hash) + getPathsList().hashCode();
+      if (getWritePathsCount() > 0) {
+        hash = (37 * hash) + WRITE_PATHS_FIELD_NUMBER;
+        hash = (53 * hash) + getWritePathsList().hashCode();
+      }
+      if (getReadPathsCount() > 0) {
+        hash = (37 * hash) + READ_PATHS_FIELD_NUMBER;
+        hash = (53 * hash) + getReadPathsList().hashCode();
       }
       hash = (37 * hash) + NON_PARALLELIZABLE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
@@ -8639,17 +9726,24 @@ public final class Client {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getPathsFieldBuilder();
+          getWritePathsFieldBuilder();
+          getReadPathsFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (pathsBuilder_ == null) {
-          paths_ = java.util.Collections.emptyList();
+        if (writePathsBuilder_ == null) {
+          writePaths_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          pathsBuilder_.clear();
+          writePathsBuilder_.clear();
+        }
+        if (readPathsBuilder_ == null) {
+          readPaths_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          readPathsBuilder_.clear();
         }
         nonParallelizable_ = false;
 
@@ -8680,14 +9774,23 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.ResourceInfo buildPartial() {
         io.aelf.protobuf.generated.Client.ResourceInfo result = new io.aelf.protobuf.generated.Client.ResourceInfo(this);
         int from_bitField0_ = bitField0_;
-        if (pathsBuilder_ == null) {
+        if (writePathsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
-            paths_ = java.util.Collections.unmodifiableList(paths_);
+            writePaths_ = java.util.Collections.unmodifiableList(writePaths_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.paths_ = paths_;
+          result.writePaths_ = writePaths_;
         } else {
-          result.paths_ = pathsBuilder_.build();
+          result.writePaths_ = writePathsBuilder_.build();
+        }
+        if (readPathsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            readPaths_ = java.util.Collections.unmodifiableList(readPaths_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.readPaths_ = readPaths_;
+        } else {
+          result.readPaths_ = readPathsBuilder_.build();
         }
         result.nonParallelizable_ = nonParallelizable_;
         onBuilt();
@@ -8738,29 +9841,55 @@ public final class Client {
 
       public Builder mergeFrom(io.aelf.protobuf.generated.Client.ResourceInfo other) {
         if (other == io.aelf.protobuf.generated.Client.ResourceInfo.getDefaultInstance()) return this;
-        if (pathsBuilder_ == null) {
-          if (!other.paths_.isEmpty()) {
-            if (paths_.isEmpty()) {
-              paths_ = other.paths_;
+        if (writePathsBuilder_ == null) {
+          if (!other.writePaths_.isEmpty()) {
+            if (writePaths_.isEmpty()) {
+              writePaths_ = other.writePaths_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensurePathsIsMutable();
-              paths_.addAll(other.paths_);
+              ensureWritePathsIsMutable();
+              writePaths_.addAll(other.writePaths_);
             }
             onChanged();
           }
         } else {
-          if (!other.paths_.isEmpty()) {
-            if (pathsBuilder_.isEmpty()) {
-              pathsBuilder_.dispose();
-              pathsBuilder_ = null;
-              paths_ = other.paths_;
+          if (!other.writePaths_.isEmpty()) {
+            if (writePathsBuilder_.isEmpty()) {
+              writePathsBuilder_.dispose();
+              writePathsBuilder_ = null;
+              writePaths_ = other.writePaths_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              pathsBuilder_ = 
+              writePathsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPathsFieldBuilder() : null;
+                   getWritePathsFieldBuilder() : null;
             } else {
-              pathsBuilder_.addAllMessages(other.paths_);
+              writePathsBuilder_.addAllMessages(other.writePaths_);
+            }
+          }
+        }
+        if (readPathsBuilder_ == null) {
+          if (!other.readPaths_.isEmpty()) {
+            if (readPaths_.isEmpty()) {
+              readPaths_ = other.readPaths_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureReadPathsIsMutable();
+              readPaths_.addAll(other.readPaths_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.readPaths_.isEmpty()) {
+            if (readPathsBuilder_.isEmpty()) {
+              readPathsBuilder_.dispose();
+              readPathsBuilder_ = null;
+              readPaths_ = other.readPaths_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              readPathsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getReadPathsFieldBuilder() : null;
+            } else {
+              readPathsBuilder_.addAllMessages(other.readPaths_);
             }
           }
         }
@@ -8797,256 +9926,648 @@ public final class Client {
       }
       private int bitField0_;
 
-      private java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> paths_ =
+      private java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> writePaths_ =
         java.util.Collections.emptyList();
-      private void ensurePathsIsMutable() {
+      private void ensureWritePathsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          paths_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ScopedStatePath>(paths_);
+          writePaths_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ScopedStatePath>(writePaths_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          io.aelf.protobuf.generated.Client.ScopedStatePath, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder, io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> pathsBuilder_;
+          io.aelf.protobuf.generated.Client.ScopedStatePath, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder, io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> writePathsBuilder_;
 
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> getPathsList() {
-        if (pathsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(paths_);
+      public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> getWritePathsList() {
+        if (writePathsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(writePaths_);
         } else {
-          return pathsBuilder_.getMessageList();
+          return writePathsBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public int getPathsCount() {
-        if (pathsBuilder_ == null) {
-          return paths_.size();
+      public int getWritePathsCount() {
+        if (writePathsBuilder_ == null) {
+          return writePaths_.size();
         } else {
-          return pathsBuilder_.getCount();
+          return writePathsBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.ScopedStatePath getPaths(int index) {
-        if (pathsBuilder_ == null) {
-          return paths_.get(index);
+      public io.aelf.protobuf.generated.Client.ScopedStatePath getWritePaths(int index) {
+        if (writePathsBuilder_ == null) {
+          return writePaths_.get(index);
         } else {
-          return pathsBuilder_.getMessage(index);
+          return writePathsBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder setPaths(
+      public Builder setWritePaths(
           int index, io.aelf.protobuf.generated.Client.ScopedStatePath value) {
-        if (pathsBuilder_ == null) {
+        if (writePathsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensurePathsIsMutable();
-          paths_.set(index, value);
+          ensureWritePathsIsMutable();
+          writePaths_.set(index, value);
           onChanged();
         } else {
-          pathsBuilder_.setMessage(index, value);
+          writePathsBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder setPaths(
+      public Builder setWritePaths(
           int index, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder builderForValue) {
-        if (pathsBuilder_ == null) {
-          ensurePathsIsMutable();
-          paths_.set(index, builderForValue.build());
+        if (writePathsBuilder_ == null) {
+          ensureWritePathsIsMutable();
+          writePaths_.set(index, builderForValue.build());
           onChanged();
         } else {
-          pathsBuilder_.setMessage(index, builderForValue.build());
+          writePathsBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder addPaths(io.aelf.protobuf.generated.Client.ScopedStatePath value) {
-        if (pathsBuilder_ == null) {
+      public Builder addWritePaths(io.aelf.protobuf.generated.Client.ScopedStatePath value) {
+        if (writePathsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensurePathsIsMutable();
-          paths_.add(value);
+          ensureWritePathsIsMutable();
+          writePaths_.add(value);
           onChanged();
         } else {
-          pathsBuilder_.addMessage(value);
+          writePathsBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder addPaths(
+      public Builder addWritePaths(
           int index, io.aelf.protobuf.generated.Client.ScopedStatePath value) {
-        if (pathsBuilder_ == null) {
+        if (writePathsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensurePathsIsMutable();
-          paths_.add(index, value);
+          ensureWritePathsIsMutable();
+          writePaths_.add(index, value);
           onChanged();
         } else {
-          pathsBuilder_.addMessage(index, value);
+          writePathsBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder addPaths(
+      public Builder addWritePaths(
           io.aelf.protobuf.generated.Client.ScopedStatePath.Builder builderForValue) {
-        if (pathsBuilder_ == null) {
-          ensurePathsIsMutable();
-          paths_.add(builderForValue.build());
+        if (writePathsBuilder_ == null) {
+          ensureWritePathsIsMutable();
+          writePaths_.add(builderForValue.build());
           onChanged();
         } else {
-          pathsBuilder_.addMessage(builderForValue.build());
+          writePathsBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder addPaths(
+      public Builder addWritePaths(
           int index, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder builderForValue) {
-        if (pathsBuilder_ == null) {
-          ensurePathsIsMutable();
-          paths_.add(index, builderForValue.build());
+        if (writePathsBuilder_ == null) {
+          ensureWritePathsIsMutable();
+          writePaths_.add(index, builderForValue.build());
           onChanged();
         } else {
-          pathsBuilder_.addMessage(index, builderForValue.build());
+          writePathsBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder addAllPaths(
+      public Builder addAllWritePaths(
           java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.ScopedStatePath> values) {
-        if (pathsBuilder_ == null) {
-          ensurePathsIsMutable();
+        if (writePathsBuilder_ == null) {
+          ensureWritePathsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, paths_);
+              values, writePaths_);
           onChanged();
         } else {
-          pathsBuilder_.addAllMessages(values);
+          writePathsBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder clearPaths() {
-        if (pathsBuilder_ == null) {
-          paths_ = java.util.Collections.emptyList();
+      public Builder clearWritePaths() {
+        if (writePathsBuilder_ == null) {
+          writePaths_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          pathsBuilder_.clear();
+          writePathsBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public Builder removePaths(int index) {
-        if (pathsBuilder_ == null) {
-          ensurePathsIsMutable();
-          paths_.remove(index);
+      public Builder removeWritePaths(int index) {
+        if (writePathsBuilder_ == null) {
+          ensureWritePathsIsMutable();
+          writePaths_.remove(index);
           onChanged();
         } else {
-          pathsBuilder_.remove(index);
+          writePathsBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder getPathsBuilder(
+      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder getWritePathsBuilder(
           int index) {
-        return getPathsFieldBuilder().getBuilder(index);
+        return getWritePathsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getPathsOrBuilder(
+      public io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getWritePathsOrBuilder(
           int index) {
-        if (pathsBuilder_ == null) {
-          return paths_.get(index);  } else {
-          return pathsBuilder_.getMessageOrBuilder(index);
+        if (writePathsBuilder_ == null) {
+          return writePaths_.get(index);  } else {
+          return writePathsBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
-           getPathsOrBuilderList() {
-        if (pathsBuilder_ != null) {
-          return pathsBuilder_.getMessageOrBuilderList();
+           getWritePathsOrBuilderList() {
+        if (writePathsBuilder_ != null) {
+          return writePathsBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(paths_);
+          return java.util.Collections.unmodifiableList(writePaths_);
         }
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder addPathsBuilder() {
-        return getPathsFieldBuilder().addBuilder(
+      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder addWritePathsBuilder() {
+        return getWritePathsFieldBuilder().addBuilder(
             io.aelf.protobuf.generated.Client.ScopedStatePath.getDefaultInstance());
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder addPathsBuilder(
+      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder addWritePathsBuilder(
           int index) {
-        return getPathsFieldBuilder().addBuilder(
+        return getWritePathsFieldBuilder().addBuilder(
             index, io.aelf.protobuf.generated.Client.ScopedStatePath.getDefaultInstance());
       }
       /**
-       * <code>repeated .ScopedStatePath paths = 1;</code>
+       * <pre>
+       * The state path that depends on when writing.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath write_paths = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath.Builder> 
-           getPathsBuilderList() {
-        return getPathsFieldBuilder().getBuilderList();
+           getWritePathsBuilderList() {
+        return getWritePathsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
           io.aelf.protobuf.generated.Client.ScopedStatePath, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder, io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
-          getPathsFieldBuilder() {
-        if (pathsBuilder_ == null) {
-          pathsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          getWritePathsFieldBuilder() {
+        if (writePathsBuilder_ == null) {
+          writePathsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.Client.ScopedStatePath, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder, io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder>(
-                  paths_,
+                  writePaths_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
-          paths_ = null;
+          writePaths_ = null;
         }
-        return pathsBuilder_;
+        return writePathsBuilder_;
+      }
+
+      private java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> readPaths_ =
+        java.util.Collections.emptyList();
+      private void ensureReadPathsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          readPaths_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ScopedStatePath>(readPaths_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ScopedStatePath, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder, io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> readPathsBuilder_;
+
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath> getReadPathsList() {
+        if (readPathsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(readPaths_);
+        } else {
+          return readPathsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public int getReadPathsCount() {
+        if (readPathsBuilder_ == null) {
+          return readPaths_.size();
+        } else {
+          return readPathsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ScopedStatePath getReadPaths(int index) {
+        if (readPathsBuilder_ == null) {
+          return readPaths_.get(index);
+        } else {
+          return readPathsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder setReadPaths(
+          int index, io.aelf.protobuf.generated.Client.ScopedStatePath value) {
+        if (readPathsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadPathsIsMutable();
+          readPaths_.set(index, value);
+          onChanged();
+        } else {
+          readPathsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder setReadPaths(
+          int index, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder builderForValue) {
+        if (readPathsBuilder_ == null) {
+          ensureReadPathsIsMutable();
+          readPaths_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          readPathsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder addReadPaths(io.aelf.protobuf.generated.Client.ScopedStatePath value) {
+        if (readPathsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadPathsIsMutable();
+          readPaths_.add(value);
+          onChanged();
+        } else {
+          readPathsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder addReadPaths(
+          int index, io.aelf.protobuf.generated.Client.ScopedStatePath value) {
+        if (readPathsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReadPathsIsMutable();
+          readPaths_.add(index, value);
+          onChanged();
+        } else {
+          readPathsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder addReadPaths(
+          io.aelf.protobuf.generated.Client.ScopedStatePath.Builder builderForValue) {
+        if (readPathsBuilder_ == null) {
+          ensureReadPathsIsMutable();
+          readPaths_.add(builderForValue.build());
+          onChanged();
+        } else {
+          readPathsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder addReadPaths(
+          int index, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder builderForValue) {
+        if (readPathsBuilder_ == null) {
+          ensureReadPathsIsMutable();
+          readPaths_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          readPathsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder addAllReadPaths(
+          java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.ScopedStatePath> values) {
+        if (readPathsBuilder_ == null) {
+          ensureReadPathsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, readPaths_);
+          onChanged();
+        } else {
+          readPathsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder clearReadPaths() {
+        if (readPathsBuilder_ == null) {
+          readPaths_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          readPathsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public Builder removeReadPaths(int index) {
+        if (readPathsBuilder_ == null) {
+          ensureReadPathsIsMutable();
+          readPaths_.remove(index);
+          onChanged();
+        } else {
+          readPathsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder getReadPathsBuilder(
+          int index) {
+        return getReadPathsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder getReadPathsOrBuilder(
+          int index) {
+        if (readPathsBuilder_ == null) {
+          return readPaths_.get(index);  } else {
+          return readPathsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public java.util.List<? extends io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
+           getReadPathsOrBuilderList() {
+        if (readPathsBuilder_ != null) {
+          return readPathsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(readPaths_);
+        }
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder addReadPathsBuilder() {
+        return getReadPathsFieldBuilder().addBuilder(
+            io.aelf.protobuf.generated.Client.ScopedStatePath.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ScopedStatePath.Builder addReadPathsBuilder(
+          int index) {
+        return getReadPathsFieldBuilder().addBuilder(
+            index, io.aelf.protobuf.generated.Client.ScopedStatePath.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The state path that depends on when reading.
+       * </pre>
+       *
+       * <code>repeated .ScopedStatePath read_paths = 2;</code>
+       */
+      public java.util.List<io.aelf.protobuf.generated.Client.ScopedStatePath.Builder> 
+           getReadPathsBuilderList() {
+        return getReadPathsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ScopedStatePath, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder, io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder> 
+          getReadPathsFieldBuilder() {
+        if (readPathsBuilder_ == null) {
+          readPathsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ScopedStatePath, io.aelf.protobuf.generated.Client.ScopedStatePath.Builder, io.aelf.protobuf.generated.Client.ScopedStatePathOrBuilder>(
+                  readPaths_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          readPaths_ = null;
+        }
+        return readPathsBuilder_;
       }
 
       private boolean nonParallelizable_ ;
       /**
-       * <code>bool non_parallelizable = 2;</code>
+       * <pre>
+       * Whether the transaction is not executed in parallel.
+       * </pre>
+       *
+       * <code>bool non_parallelizable = 3;</code>
        * @return The nonParallelizable.
        */
       public boolean getNonParallelizable() {
         return nonParallelizable_;
       }
       /**
-       * <code>bool non_parallelizable = 2;</code>
+       * <pre>
+       * Whether the transaction is not executed in parallel.
+       * </pre>
+       *
+       * <code>bool non_parallelizable = 3;</code>
        * @param value The nonParallelizable to set.
        * @return This builder for chaining.
        */
@@ -9057,7 +10578,11 @@ public final class Client {
         return this;
       }
       /**
-       * <code>bool non_parallelizable = 2;</code>
+       * <pre>
+       * Whether the transaction is not executed in parallel.
+       * </pre>
+       *
+       * <code>bool non_parallelizable = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearNonParallelizable() {
@@ -9124,26 +10649,46 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The id of the proposal.
+     * </pre>
+     *
      * <code>.Hash proposal_id = 1;</code>
      * @return Whether the proposalId field is set.
      */
     boolean hasProposalId();
     /**
+     * <pre>
+     * The id of the proposal.
+     * </pre>
+     *
      * <code>.Hash proposal_id = 1;</code>
      * @return The proposalId.
      */
     io.aelf.protobuf.generated.Client.Hash getProposalId();
     /**
+     * <pre>
+     * The id of the proposal.
+     * </pre>
+     *
      * <code>.Hash proposal_id = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getProposalIdOrBuilder();
 
     /**
+     * <pre>
+     * The method that this proposal will call when being released.
+     * </pre>
+     *
      * <code>string contract_method_name = 2;</code>
      * @return The contractMethodName.
      */
     java.lang.String getContractMethodName();
     /**
+     * <pre>
+     * The method that this proposal will call when being released.
+     * </pre>
+     *
      * <code>string contract_method_name = 2;</code>
      * @return The bytes for contractMethodName.
      */
@@ -9151,76 +10696,162 @@ public final class Client {
         getContractMethodNameBytes();
 
     /**
+     * <pre>
+     * The address of the target contract.
+     * </pre>
+     *
      * <code>.Address to_address = 3;</code>
      * @return Whether the toAddress field is set.
      */
     boolean hasToAddress();
     /**
+     * <pre>
+     * The address of the target contract.
+     * </pre>
+     *
      * <code>.Address to_address = 3;</code>
      * @return The toAddress.
      */
     io.aelf.protobuf.generated.Client.Address getToAddress();
     /**
+     * <pre>
+     * The address of the target contract.
+     * </pre>
+     *
      * <code>.Address to_address = 3;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getToAddressOrBuilder();
 
     /**
+     * <pre>
+     * The parameters of the release transaction.
+     * </pre>
+     *
      * <code>bytes params = 4;</code>
      * @return The params.
      */
     com.google.protobuf.ByteString getParams();
 
     /**
+     * <pre>
+     * The date at which this proposal will expire.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
      * @return Whether the expiredTime field is set.
      */
     boolean hasExpiredTime();
     /**
+     * <pre>
+     * The date at which this proposal will expire.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
      * @return The expiredTime.
      */
     com.google.protobuf.Timestamp getExpiredTime();
     /**
+     * <pre>
+     * The date at which this proposal will expire.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
      */
     com.google.protobuf.TimestampOrBuilder getExpiredTimeOrBuilder();
 
     /**
+     * <pre>
+     * The address of this proposals organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 6;</code>
      * @return Whether the organizationAddress field is set.
      */
     boolean hasOrganizationAddress();
     /**
+     * <pre>
+     * The address of this proposals organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 6;</code>
      * @return The organizationAddress.
      */
     io.aelf.protobuf.generated.Client.Address getOrganizationAddress();
     /**
+     * <pre>
+     * The address of this proposals organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 6;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder();
 
     /**
+     * <pre>
+     * The address of the proposer of this proposal.
+     * </pre>
+     *
      * <code>.Address proposer = 7;</code>
      * @return Whether the proposer field is set.
      */
     boolean hasProposer();
     /**
+     * <pre>
+     * The address of the proposer of this proposal.
+     * </pre>
+     *
      * <code>.Address proposer = 7;</code>
      * @return The proposer.
      */
     io.aelf.protobuf.generated.Client.Address getProposer();
     /**
+     * <pre>
+     * The address of the proposer of this proposal.
+     * </pre>
+     *
      * <code>.Address proposer = 7;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getProposerOrBuilder();
 
     /**
+     * <pre>
+     * Indicates if this proposal is releasable.
+     * </pre>
+     *
      * <code>bool to_be_released = 8;</code>
      * @return The toBeReleased.
      */
     boolean getToBeReleased();
+
+    /**
+     * <pre>
+     * Approval count for this proposal.
+     * </pre>
+     *
+     * <code>int64 approval_count = 9;</code>
+     * @return The approvalCount.
+     */
+    long getApprovalCount();
+
+    /**
+     * <pre>
+     * Rejection count for this proposal.
+     * </pre>
+     *
+     * <code>int64 rejection_count = 10;</code>
+     * @return The rejectionCount.
+     */
+    long getRejectionCount();
+
+    /**
+     * <pre>
+     * Abstention count for this proposal.
+     * </pre>
+     *
+     * <code>int64 abstention_count = 11;</code>
+     * @return The abstentionCount.
+     */
+    long getAbstentionCount();
   }
   /**
    * <pre>
@@ -9354,6 +10985,21 @@ public final class Client {
               toBeReleased_ = input.readBool();
               break;
             }
+            case 72: {
+
+              approvalCount_ = input.readInt64();
+              break;
+            }
+            case 80: {
+
+              rejectionCount_ = input.readInt64();
+              break;
+            }
+            case 88: {
+
+              abstentionCount_ = input.readInt64();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -9389,6 +11035,10 @@ public final class Client {
     public static final int PROPOSAL_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash proposalId_;
     /**
+     * <pre>
+     * The id of the proposal.
+     * </pre>
+     *
      * <code>.Hash proposal_id = 1;</code>
      * @return Whether the proposalId field is set.
      */
@@ -9396,6 +11046,10 @@ public final class Client {
       return proposalId_ != null;
     }
     /**
+     * <pre>
+     * The id of the proposal.
+     * </pre>
+     *
      * <code>.Hash proposal_id = 1;</code>
      * @return The proposalId.
      */
@@ -9403,6 +11057,10 @@ public final class Client {
       return proposalId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : proposalId_;
     }
     /**
+     * <pre>
+     * The id of the proposal.
+     * </pre>
+     *
      * <code>.Hash proposal_id = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getProposalIdOrBuilder() {
@@ -9412,6 +11070,10 @@ public final class Client {
     public static final int CONTRACT_METHOD_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object contractMethodName_;
     /**
+     * <pre>
+     * The method that this proposal will call when being released.
+     * </pre>
+     *
      * <code>string contract_method_name = 2;</code>
      * @return The contractMethodName.
      */
@@ -9428,6 +11090,10 @@ public final class Client {
       }
     }
     /**
+     * <pre>
+     * The method that this proposal will call when being released.
+     * </pre>
+     *
      * <code>string contract_method_name = 2;</code>
      * @return The bytes for contractMethodName.
      */
@@ -9448,6 +11114,10 @@ public final class Client {
     public static final int TO_ADDRESS_FIELD_NUMBER = 3;
     private io.aelf.protobuf.generated.Client.Address toAddress_;
     /**
+     * <pre>
+     * The address of the target contract.
+     * </pre>
+     *
      * <code>.Address to_address = 3;</code>
      * @return Whether the toAddress field is set.
      */
@@ -9455,6 +11125,10 @@ public final class Client {
       return toAddress_ != null;
     }
     /**
+     * <pre>
+     * The address of the target contract.
+     * </pre>
+     *
      * <code>.Address to_address = 3;</code>
      * @return The toAddress.
      */
@@ -9462,6 +11136,10 @@ public final class Client {
       return toAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : toAddress_;
     }
     /**
+     * <pre>
+     * The address of the target contract.
+     * </pre>
+     *
      * <code>.Address to_address = 3;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getToAddressOrBuilder() {
@@ -9471,6 +11149,10 @@ public final class Client {
     public static final int PARAMS_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString params_;
     /**
+     * <pre>
+     * The parameters of the release transaction.
+     * </pre>
+     *
      * <code>bytes params = 4;</code>
      * @return The params.
      */
@@ -9481,6 +11163,10 @@ public final class Client {
     public static final int EXPIRED_TIME_FIELD_NUMBER = 5;
     private com.google.protobuf.Timestamp expiredTime_;
     /**
+     * <pre>
+     * The date at which this proposal will expire.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
      * @return Whether the expiredTime field is set.
      */
@@ -9488,6 +11174,10 @@ public final class Client {
       return expiredTime_ != null;
     }
     /**
+     * <pre>
+     * The date at which this proposal will expire.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
      * @return The expiredTime.
      */
@@ -9495,6 +11185,10 @@ public final class Client {
       return expiredTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiredTime_;
     }
     /**
+     * <pre>
+     * The date at which this proposal will expire.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expired_time = 5;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getExpiredTimeOrBuilder() {
@@ -9504,6 +11198,10 @@ public final class Client {
     public static final int ORGANIZATION_ADDRESS_FIELD_NUMBER = 6;
     private io.aelf.protobuf.generated.Client.Address organizationAddress_;
     /**
+     * <pre>
+     * The address of this proposals organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 6;</code>
      * @return Whether the organizationAddress field is set.
      */
@@ -9511,6 +11209,10 @@ public final class Client {
       return organizationAddress_ != null;
     }
     /**
+     * <pre>
+     * The address of this proposals organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 6;</code>
      * @return The organizationAddress.
      */
@@ -9518,6 +11220,10 @@ public final class Client {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
     /**
+     * <pre>
+     * The address of this proposals organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 6;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -9527,6 +11233,10 @@ public final class Client {
     public static final int PROPOSER_FIELD_NUMBER = 7;
     private io.aelf.protobuf.generated.Client.Address proposer_;
     /**
+     * <pre>
+     * The address of the proposer of this proposal.
+     * </pre>
+     *
      * <code>.Address proposer = 7;</code>
      * @return Whether the proposer field is set.
      */
@@ -9534,6 +11244,10 @@ public final class Client {
       return proposer_ != null;
     }
     /**
+     * <pre>
+     * The address of the proposer of this proposal.
+     * </pre>
+     *
      * <code>.Address proposer = 7;</code>
      * @return The proposer.
      */
@@ -9541,6 +11255,10 @@ public final class Client {
       return proposer_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : proposer_;
     }
     /**
+     * <pre>
+     * The address of the proposer of this proposal.
+     * </pre>
+     *
      * <code>.Address proposer = 7;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getProposerOrBuilder() {
@@ -9550,11 +11268,57 @@ public final class Client {
     public static final int TO_BE_RELEASED_FIELD_NUMBER = 8;
     private boolean toBeReleased_;
     /**
+     * <pre>
+     * Indicates if this proposal is releasable.
+     * </pre>
+     *
      * <code>bool to_be_released = 8;</code>
      * @return The toBeReleased.
      */
     public boolean getToBeReleased() {
       return toBeReleased_;
+    }
+
+    public static final int APPROVAL_COUNT_FIELD_NUMBER = 9;
+    private long approvalCount_;
+    /**
+     * <pre>
+     * Approval count for this proposal.
+     * </pre>
+     *
+     * <code>int64 approval_count = 9;</code>
+     * @return The approvalCount.
+     */
+    public long getApprovalCount() {
+      return approvalCount_;
+    }
+
+    public static final int REJECTION_COUNT_FIELD_NUMBER = 10;
+    private long rejectionCount_;
+    /**
+     * <pre>
+     * Rejection count for this proposal.
+     * </pre>
+     *
+     * <code>int64 rejection_count = 10;</code>
+     * @return The rejectionCount.
+     */
+    public long getRejectionCount() {
+      return rejectionCount_;
+    }
+
+    public static final int ABSTENTION_COUNT_FIELD_NUMBER = 11;
+    private long abstentionCount_;
+    /**
+     * <pre>
+     * Abstention count for this proposal.
+     * </pre>
+     *
+     * <code>int64 abstention_count = 11;</code>
+     * @return The abstentionCount.
+     */
+    public long getAbstentionCount() {
+      return abstentionCount_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9595,6 +11359,15 @@ public final class Client {
       if (toBeReleased_ != false) {
         output.writeBool(8, toBeReleased_);
       }
+      if (approvalCount_ != 0L) {
+        output.writeInt64(9, approvalCount_);
+      }
+      if (rejectionCount_ != 0L) {
+        output.writeInt64(10, rejectionCount_);
+      }
+      if (abstentionCount_ != 0L) {
+        output.writeInt64(11, abstentionCount_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -9634,6 +11407,18 @@ public final class Client {
       if (toBeReleased_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(8, toBeReleased_);
+      }
+      if (approvalCount_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(9, approvalCount_);
+      }
+      if (rejectionCount_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(10, rejectionCount_);
+      }
+      if (abstentionCount_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(11, abstentionCount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9681,6 +11466,12 @@ public final class Client {
       }
       if (getToBeReleased()
           != other.getToBeReleased()) return false;
+      if (getApprovalCount()
+          != other.getApprovalCount()) return false;
+      if (getRejectionCount()
+          != other.getRejectionCount()) return false;
+      if (getAbstentionCount()
+          != other.getAbstentionCount()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9719,6 +11510,15 @@ public final class Client {
       hash = (37 * hash) + TO_BE_RELEASED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getToBeReleased());
+      hash = (37 * hash) + APPROVAL_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getApprovalCount());
+      hash = (37 * hash) + REJECTION_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRejectionCount());
+      hash = (37 * hash) + ABSTENTION_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getAbstentionCount());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9892,6 +11692,12 @@ public final class Client {
         }
         toBeReleased_ = false;
 
+        approvalCount_ = 0L;
+
+        rejectionCount_ = 0L;
+
+        abstentionCount_ = 0L;
+
         return this;
       }
 
@@ -9946,6 +11752,9 @@ public final class Client {
           result.proposer_ = proposerBuilder_.build();
         }
         result.toBeReleased_ = toBeReleased_;
+        result.approvalCount_ = approvalCount_;
+        result.rejectionCount_ = rejectionCount_;
+        result.abstentionCount_ = abstentionCount_;
         onBuilt();
         return result;
       }
@@ -10019,6 +11828,15 @@ public final class Client {
         if (other.getToBeReleased() != false) {
           setToBeReleased(other.getToBeReleased());
         }
+        if (other.getApprovalCount() != 0L) {
+          setApprovalCount(other.getApprovalCount());
+        }
+        if (other.getRejectionCount() != 0L) {
+          setRejectionCount(other.getRejectionCount());
+        }
+        if (other.getAbstentionCount() != 0L) {
+          setAbstentionCount(other.getAbstentionCount());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -10052,6 +11870,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> proposalIdBuilder_;
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        * @return Whether the proposalId field is set.
        */
@@ -10059,6 +11881,10 @@ public final class Client {
         return proposalIdBuilder_ != null || proposalId_ != null;
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        * @return The proposalId.
        */
@@ -10070,6 +11896,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        */
       public Builder setProposalId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -10086,6 +11916,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        */
       public Builder setProposalId(
@@ -10100,6 +11934,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        */
       public Builder mergeProposalId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -10118,6 +11956,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        */
       public Builder clearProposalId() {
@@ -10132,6 +11974,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getProposalIdBuilder() {
@@ -10140,6 +11986,10 @@ public final class Client {
         return getProposalIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getProposalIdOrBuilder() {
@@ -10151,6 +12001,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The id of the proposal.
+       * </pre>
+       *
        * <code>.Hash proposal_id = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -10169,6 +12023,10 @@ public final class Client {
 
       private java.lang.Object contractMethodName_ = "";
       /**
+       * <pre>
+       * The method that this proposal will call when being released.
+       * </pre>
+       *
        * <code>string contract_method_name = 2;</code>
        * @return The contractMethodName.
        */
@@ -10185,6 +12043,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The method that this proposal will call when being released.
+       * </pre>
+       *
        * <code>string contract_method_name = 2;</code>
        * @return The bytes for contractMethodName.
        */
@@ -10202,6 +12064,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The method that this proposal will call when being released.
+       * </pre>
+       *
        * <code>string contract_method_name = 2;</code>
        * @param value The contractMethodName to set.
        * @return This builder for chaining.
@@ -10217,6 +12083,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The method that this proposal will call when being released.
+       * </pre>
+       *
        * <code>string contract_method_name = 2;</code>
        * @return This builder for chaining.
        */
@@ -10227,6 +12097,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The method that this proposal will call when being released.
+       * </pre>
+       *
        * <code>string contract_method_name = 2;</code>
        * @param value The bytes for contractMethodName to set.
        * @return This builder for chaining.
@@ -10247,6 +12121,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> toAddressBuilder_;
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        * @return Whether the toAddress field is set.
        */
@@ -10254,6 +12132,10 @@ public final class Client {
         return toAddressBuilder_ != null || toAddress_ != null;
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        * @return The toAddress.
        */
@@ -10265,6 +12147,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        */
       public Builder setToAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -10281,6 +12167,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        */
       public Builder setToAddress(
@@ -10295,6 +12185,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        */
       public Builder mergeToAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -10313,6 +12207,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        */
       public Builder clearToAddress() {
@@ -10327,6 +12225,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getToAddressBuilder() {
@@ -10335,6 +12237,10 @@ public final class Client {
         return getToAddressFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getToAddressOrBuilder() {
@@ -10346,6 +12252,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The address of the target contract.
+       * </pre>
+       *
        * <code>.Address to_address = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -10364,6 +12274,10 @@ public final class Client {
 
       private com.google.protobuf.ByteString params_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       * The parameters of the release transaction.
+       * </pre>
+       *
        * <code>bytes params = 4;</code>
        * @return The params.
        */
@@ -10371,6 +12285,10 @@ public final class Client {
         return params_;
       }
       /**
+       * <pre>
+       * The parameters of the release transaction.
+       * </pre>
+       *
        * <code>bytes params = 4;</code>
        * @param value The params to set.
        * @return This builder for chaining.
@@ -10385,6 +12303,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The parameters of the release transaction.
+       * </pre>
+       *
        * <code>bytes params = 4;</code>
        * @return This builder for chaining.
        */
@@ -10399,6 +12321,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expiredTimeBuilder_;
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        * @return Whether the expiredTime field is set.
        */
@@ -10406,6 +12332,10 @@ public final class Client {
         return expiredTimeBuilder_ != null || expiredTime_ != null;
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        * @return The expiredTime.
        */
@@ -10417,6 +12347,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        */
       public Builder setExpiredTime(com.google.protobuf.Timestamp value) {
@@ -10433,6 +12367,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        */
       public Builder setExpiredTime(
@@ -10447,6 +12385,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        */
       public Builder mergeExpiredTime(com.google.protobuf.Timestamp value) {
@@ -10465,6 +12407,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        */
       public Builder clearExpiredTime() {
@@ -10479,6 +12425,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getExpiredTimeBuilder() {
@@ -10487,6 +12437,10 @@ public final class Client {
         return getExpiredTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getExpiredTimeOrBuilder() {
@@ -10498,6 +12452,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The date at which this proposal will expire.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expired_time = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -10518,6 +12476,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> organizationAddressBuilder_;
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        * @return Whether the organizationAddress field is set.
        */
@@ -10525,6 +12487,10 @@ public final class Client {
         return organizationAddressBuilder_ != null || organizationAddress_ != null;
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        * @return The organizationAddress.
        */
@@ -10536,6 +12502,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        */
       public Builder setOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -10552,6 +12522,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        */
       public Builder setOrganizationAddress(
@@ -10566,6 +12540,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        */
       public Builder mergeOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -10584,6 +12562,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        */
       public Builder clearOrganizationAddress() {
@@ -10598,6 +12580,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getOrganizationAddressBuilder() {
@@ -10606,6 +12592,10 @@ public final class Client {
         return getOrganizationAddressFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -10617,6 +12607,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The address of this proposals organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -10637,6 +12631,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> proposerBuilder_;
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        * @return Whether the proposer field is set.
        */
@@ -10644,6 +12642,10 @@ public final class Client {
         return proposerBuilder_ != null || proposer_ != null;
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        * @return The proposer.
        */
@@ -10655,6 +12657,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        */
       public Builder setProposer(io.aelf.protobuf.generated.Client.Address value) {
@@ -10671,6 +12677,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        */
       public Builder setProposer(
@@ -10685,6 +12695,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        */
       public Builder mergeProposer(io.aelf.protobuf.generated.Client.Address value) {
@@ -10703,6 +12717,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        */
       public Builder clearProposer() {
@@ -10717,6 +12735,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getProposerBuilder() {
@@ -10725,6 +12747,10 @@ public final class Client {
         return getProposerFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getProposerOrBuilder() {
@@ -10736,6 +12762,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The address of the proposer of this proposal.
+       * </pre>
+       *
        * <code>.Address proposer = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -10754,6 +12784,10 @@ public final class Client {
 
       private boolean toBeReleased_ ;
       /**
+       * <pre>
+       * Indicates if this proposal is releasable.
+       * </pre>
+       *
        * <code>bool to_be_released = 8;</code>
        * @return The toBeReleased.
        */
@@ -10761,6 +12795,10 @@ public final class Client {
         return toBeReleased_;
       }
       /**
+       * <pre>
+       * Indicates if this proposal is releasable.
+       * </pre>
+       *
        * <code>bool to_be_released = 8;</code>
        * @param value The toBeReleased to set.
        * @return This builder for chaining.
@@ -10772,12 +12810,142 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * Indicates if this proposal is releasable.
+       * </pre>
+       *
        * <code>bool to_be_released = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearToBeReleased() {
         
         toBeReleased_ = false;
+        onChanged();
+        return this;
+      }
+
+      private long approvalCount_ ;
+      /**
+       * <pre>
+       * Approval count for this proposal.
+       * </pre>
+       *
+       * <code>int64 approval_count = 9;</code>
+       * @return The approvalCount.
+       */
+      public long getApprovalCount() {
+        return approvalCount_;
+      }
+      /**
+       * <pre>
+       * Approval count for this proposal.
+       * </pre>
+       *
+       * <code>int64 approval_count = 9;</code>
+       * @param value The approvalCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setApprovalCount(long value) {
+        
+        approvalCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Approval count for this proposal.
+       * </pre>
+       *
+       * <code>int64 approval_count = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearApprovalCount() {
+        
+        approvalCount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long rejectionCount_ ;
+      /**
+       * <pre>
+       * Rejection count for this proposal.
+       * </pre>
+       *
+       * <code>int64 rejection_count = 10;</code>
+       * @return The rejectionCount.
+       */
+      public long getRejectionCount() {
+        return rejectionCount_;
+      }
+      /**
+       * <pre>
+       * Rejection count for this proposal.
+       * </pre>
+       *
+       * <code>int64 rejection_count = 10;</code>
+       * @param value The rejectionCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRejectionCount(long value) {
+        
+        rejectionCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Rejection count for this proposal.
+       * </pre>
+       *
+       * <code>int64 rejection_count = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRejectionCount() {
+        
+        rejectionCount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long abstentionCount_ ;
+      /**
+       * <pre>
+       * Abstention count for this proposal.
+       * </pre>
+       *
+       * <code>int64 abstention_count = 11;</code>
+       * @return The abstentionCount.
+       */
+      public long getAbstentionCount() {
+        return abstentionCount_;
+      }
+      /**
+       * <pre>
+       * Abstention count for this proposal.
+       * </pre>
+       *
+       * <code>int64 abstention_count = 11;</code>
+       * @param value The abstentionCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAbstentionCount(long value) {
+        
+        abstentionCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Abstention count for this proposal.
+       * </pre>
+       *
+       * <code>int64 abstention_count = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAbstentionCount() {
+        
+        abstentionCount_ = 0L;
         onChanged();
         return this;
       }
@@ -10834,27 +13002,1723 @@ public final class Client {
 
   }
 
+  public interface ProposalReleaseThresholdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ProposalReleaseThreshold)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The value for the minimum approval threshold.
+     * </pre>
+     *
+     * <code>int64 minimal_approval_threshold = 1;</code>
+     * @return The minimalApprovalThreshold.
+     */
+    long getMinimalApprovalThreshold();
+
+    /**
+     * <pre>
+     * The value for the maximal rejection threshold.
+     * </pre>
+     *
+     * <code>int64 maximal_rejection_threshold = 2;</code>
+     * @return The maximalRejectionThreshold.
+     */
+    long getMaximalRejectionThreshold();
+
+    /**
+     * <pre>
+     * The value for the maximal abstention threshold.
+     * </pre>
+     *
+     * <code>int64 maximal_abstention_threshold = 3;</code>
+     * @return The maximalAbstentionThreshold.
+     */
+    long getMaximalAbstentionThreshold();
+
+    /**
+     * <pre>
+     * The value for the minimal vote threshold.
+     * </pre>
+     *
+     * <code>int64 minimal_vote_threshold = 4;</code>
+     * @return The minimalVoteThreshold.
+     */
+    long getMinimalVoteThreshold();
+  }
+  /**
+   * Protobuf type {@code ProposalReleaseThreshold}
+   */
+  public  static final class ProposalReleaseThreshold extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ProposalReleaseThreshold)
+      ProposalReleaseThresholdOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ProposalReleaseThreshold.newBuilder() to construct.
+    private ProposalReleaseThreshold(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ProposalReleaseThreshold() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProposalReleaseThreshold();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ProposalReleaseThreshold(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              minimalApprovalThreshold_ = input.readInt64();
+              break;
+            }
+            case 16: {
+
+              maximalRejectionThreshold_ = input.readInt64();
+              break;
+            }
+            case 24: {
+
+              maximalAbstentionThreshold_ = input.readInt64();
+              break;
+            }
+            case 32: {
+
+              minimalVoteThreshold_ = input.readInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.Client.internal_static_ProposalReleaseThreshold_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.Client.internal_static_ProposalReleaseThreshold_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.class, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder.class);
+    }
+
+    public static final int MINIMAL_APPROVAL_THRESHOLD_FIELD_NUMBER = 1;
+    private long minimalApprovalThreshold_;
+    /**
+     * <pre>
+     * The value for the minimum approval threshold.
+     * </pre>
+     *
+     * <code>int64 minimal_approval_threshold = 1;</code>
+     * @return The minimalApprovalThreshold.
+     */
+    public long getMinimalApprovalThreshold() {
+      return minimalApprovalThreshold_;
+    }
+
+    public static final int MAXIMAL_REJECTION_THRESHOLD_FIELD_NUMBER = 2;
+    private long maximalRejectionThreshold_;
+    /**
+     * <pre>
+     * The value for the maximal rejection threshold.
+     * </pre>
+     *
+     * <code>int64 maximal_rejection_threshold = 2;</code>
+     * @return The maximalRejectionThreshold.
+     */
+    public long getMaximalRejectionThreshold() {
+      return maximalRejectionThreshold_;
+    }
+
+    public static final int MAXIMAL_ABSTENTION_THRESHOLD_FIELD_NUMBER = 3;
+    private long maximalAbstentionThreshold_;
+    /**
+     * <pre>
+     * The value for the maximal abstention threshold.
+     * </pre>
+     *
+     * <code>int64 maximal_abstention_threshold = 3;</code>
+     * @return The maximalAbstentionThreshold.
+     */
+    public long getMaximalAbstentionThreshold() {
+      return maximalAbstentionThreshold_;
+    }
+
+    public static final int MINIMAL_VOTE_THRESHOLD_FIELD_NUMBER = 4;
+    private long minimalVoteThreshold_;
+    /**
+     * <pre>
+     * The value for the minimal vote threshold.
+     * </pre>
+     *
+     * <code>int64 minimal_vote_threshold = 4;</code>
+     * @return The minimalVoteThreshold.
+     */
+    public long getMinimalVoteThreshold() {
+      return minimalVoteThreshold_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (minimalApprovalThreshold_ != 0L) {
+        output.writeInt64(1, minimalApprovalThreshold_);
+      }
+      if (maximalRejectionThreshold_ != 0L) {
+        output.writeInt64(2, maximalRejectionThreshold_);
+      }
+      if (maximalAbstentionThreshold_ != 0L) {
+        output.writeInt64(3, maximalAbstentionThreshold_);
+      }
+      if (minimalVoteThreshold_ != 0L) {
+        output.writeInt64(4, minimalVoteThreshold_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (minimalApprovalThreshold_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, minimalApprovalThreshold_);
+      }
+      if (maximalRejectionThreshold_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, maximalRejectionThreshold_);
+      }
+      if (maximalAbstentionThreshold_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, maximalAbstentionThreshold_);
+      }
+      if (minimalVoteThreshold_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, minimalVoteThreshold_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.Client.ProposalReleaseThreshold)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.Client.ProposalReleaseThreshold other = (io.aelf.protobuf.generated.Client.ProposalReleaseThreshold) obj;
+
+      if (getMinimalApprovalThreshold()
+          != other.getMinimalApprovalThreshold()) return false;
+      if (getMaximalRejectionThreshold()
+          != other.getMaximalRejectionThreshold()) return false;
+      if (getMaximalAbstentionThreshold()
+          != other.getMaximalAbstentionThreshold()) return false;
+      if (getMinimalVoteThreshold()
+          != other.getMinimalVoteThreshold()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MINIMAL_APPROVAL_THRESHOLD_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMinimalApprovalThreshold());
+      hash = (37 * hash) + MAXIMAL_REJECTION_THRESHOLD_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaximalRejectionThreshold());
+      hash = (37 * hash) + MAXIMAL_ABSTENTION_THRESHOLD_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaximalAbstentionThreshold());
+      hash = (37 * hash) + MINIMAL_VOTE_THRESHOLD_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMinimalVoteThreshold());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ProposalReleaseThreshold}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ProposalReleaseThreshold)
+        io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.Client.internal_static_ProposalReleaseThreshold_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.Client.internal_static_ProposalReleaseThreshold_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.class, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        minimalApprovalThreshold_ = 0L;
+
+        maximalRejectionThreshold_ = 0L;
+
+        maximalAbstentionThreshold_ = 0L;
+
+        minimalVoteThreshold_ = 0L;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.Client.internal_static_ProposalReleaseThreshold_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold build() {
+        io.aelf.protobuf.generated.Client.ProposalReleaseThreshold result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold buildPartial() {
+        io.aelf.protobuf.generated.Client.ProposalReleaseThreshold result = new io.aelf.protobuf.generated.Client.ProposalReleaseThreshold(this);
+        result.minimalApprovalThreshold_ = minimalApprovalThreshold_;
+        result.maximalRejectionThreshold_ = maximalRejectionThreshold_;
+        result.maximalAbstentionThreshold_ = maximalAbstentionThreshold_;
+        result.minimalVoteThreshold_ = minimalVoteThreshold_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.Client.ProposalReleaseThreshold) {
+          return mergeFrom((io.aelf.protobuf.generated.Client.ProposalReleaseThreshold)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold other) {
+        if (other == io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance()) return this;
+        if (other.getMinimalApprovalThreshold() != 0L) {
+          setMinimalApprovalThreshold(other.getMinimalApprovalThreshold());
+        }
+        if (other.getMaximalRejectionThreshold() != 0L) {
+          setMaximalRejectionThreshold(other.getMaximalRejectionThreshold());
+        }
+        if (other.getMaximalAbstentionThreshold() != 0L) {
+          setMaximalAbstentionThreshold(other.getMaximalAbstentionThreshold());
+        }
+        if (other.getMinimalVoteThreshold() != 0L) {
+          setMinimalVoteThreshold(other.getMinimalVoteThreshold());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.Client.ProposalReleaseThreshold parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.Client.ProposalReleaseThreshold) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long minimalApprovalThreshold_ ;
+      /**
+       * <pre>
+       * The value for the minimum approval threshold.
+       * </pre>
+       *
+       * <code>int64 minimal_approval_threshold = 1;</code>
+       * @return The minimalApprovalThreshold.
+       */
+      public long getMinimalApprovalThreshold() {
+        return minimalApprovalThreshold_;
+      }
+      /**
+       * <pre>
+       * The value for the minimum approval threshold.
+       * </pre>
+       *
+       * <code>int64 minimal_approval_threshold = 1;</code>
+       * @param value The minimalApprovalThreshold to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinimalApprovalThreshold(long value) {
+        
+        minimalApprovalThreshold_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The value for the minimum approval threshold.
+       * </pre>
+       *
+       * <code>int64 minimal_approval_threshold = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinimalApprovalThreshold() {
+        
+        minimalApprovalThreshold_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long maximalRejectionThreshold_ ;
+      /**
+       * <pre>
+       * The value for the maximal rejection threshold.
+       * </pre>
+       *
+       * <code>int64 maximal_rejection_threshold = 2;</code>
+       * @return The maximalRejectionThreshold.
+       */
+      public long getMaximalRejectionThreshold() {
+        return maximalRejectionThreshold_;
+      }
+      /**
+       * <pre>
+       * The value for the maximal rejection threshold.
+       * </pre>
+       *
+       * <code>int64 maximal_rejection_threshold = 2;</code>
+       * @param value The maximalRejectionThreshold to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaximalRejectionThreshold(long value) {
+        
+        maximalRejectionThreshold_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The value for the maximal rejection threshold.
+       * </pre>
+       *
+       * <code>int64 maximal_rejection_threshold = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaximalRejectionThreshold() {
+        
+        maximalRejectionThreshold_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long maximalAbstentionThreshold_ ;
+      /**
+       * <pre>
+       * The value for the maximal abstention threshold.
+       * </pre>
+       *
+       * <code>int64 maximal_abstention_threshold = 3;</code>
+       * @return The maximalAbstentionThreshold.
+       */
+      public long getMaximalAbstentionThreshold() {
+        return maximalAbstentionThreshold_;
+      }
+      /**
+       * <pre>
+       * The value for the maximal abstention threshold.
+       * </pre>
+       *
+       * <code>int64 maximal_abstention_threshold = 3;</code>
+       * @param value The maximalAbstentionThreshold to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaximalAbstentionThreshold(long value) {
+        
+        maximalAbstentionThreshold_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The value for the maximal abstention threshold.
+       * </pre>
+       *
+       * <code>int64 maximal_abstention_threshold = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaximalAbstentionThreshold() {
+        
+        maximalAbstentionThreshold_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long minimalVoteThreshold_ ;
+      /**
+       * <pre>
+       * The value for the minimal vote threshold.
+       * </pre>
+       *
+       * <code>int64 minimal_vote_threshold = 4;</code>
+       * @return The minimalVoteThreshold.
+       */
+      public long getMinimalVoteThreshold() {
+        return minimalVoteThreshold_;
+      }
+      /**
+       * <pre>
+       * The value for the minimal vote threshold.
+       * </pre>
+       *
+       * <code>int64 minimal_vote_threshold = 4;</code>
+       * @param value The minimalVoteThreshold to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinimalVoteThreshold(long value) {
+        
+        minimalVoteThreshold_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The value for the minimal vote threshold.
+       * </pre>
+       *
+       * <code>int64 minimal_vote_threshold = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinimalVoteThreshold() {
+        
+        minimalVoteThreshold_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ProposalReleaseThreshold)
+    }
+
+    // @@protoc_insertion_point(class_scope:ProposalReleaseThreshold)
+    private static final io.aelf.protobuf.generated.Client.ProposalReleaseThreshold DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.ProposalReleaseThreshold();
+    }
+
+    public static io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ProposalReleaseThreshold>
+        PARSER = new com.google.protobuf.AbstractParser<ProposalReleaseThreshold>() {
+      @java.lang.Override
+      public ProposalReleaseThreshold parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ProposalReleaseThreshold(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ProposalReleaseThreshold> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ProposalReleaseThreshold> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ProposerWhiteListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ProposerWhiteList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    java.util.List<io.aelf.protobuf.generated.Client.Address> 
+        getProposersList();
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    io.aelf.protobuf.generated.Client.Address getProposers(int index);
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    int getProposersCount();
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    java.util.List<? extends io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+        getProposersOrBuilderList();
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getProposersOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code ProposerWhiteList}
+   */
+  public  static final class ProposerWhiteList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ProposerWhiteList)
+      ProposerWhiteListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ProposerWhiteList.newBuilder() to construct.
+    private ProposerWhiteList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ProposerWhiteList() {
+      proposers_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProposerWhiteList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ProposerWhiteList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                proposers_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Address>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              proposers_.add(
+                  input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          proposers_ = java.util.Collections.unmodifiableList(proposers_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.Client.internal_static_ProposerWhiteList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.Client.internal_static_ProposerWhiteList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.Client.ProposerWhiteList.class, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder.class);
+    }
+
+    public static final int PROPOSERS_FIELD_NUMBER = 1;
+    private java.util.List<io.aelf.protobuf.generated.Client.Address> proposers_;
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    public java.util.List<io.aelf.protobuf.generated.Client.Address> getProposersList() {
+      return proposers_;
+    }
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    public java.util.List<? extends io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+        getProposersOrBuilderList() {
+      return proposers_;
+    }
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    public int getProposersCount() {
+      return proposers_.size();
+    }
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    public io.aelf.protobuf.generated.Client.Address getProposers(int index) {
+      return proposers_.get(index);
+    }
+    /**
+     * <pre>
+     * The address of the proposers
+     * </pre>
+     *
+     * <code>repeated .Address proposers = 1;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getProposersOrBuilder(
+        int index) {
+      return proposers_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < proposers_.size(); i++) {
+        output.writeMessage(1, proposers_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < proposers_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, proposers_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.Client.ProposerWhiteList)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.Client.ProposerWhiteList other = (io.aelf.protobuf.generated.Client.ProposerWhiteList) obj;
+
+      if (!getProposersList()
+          .equals(other.getProposersList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getProposersCount() > 0) {
+        hash = (37 * hash) + PROPOSERS_FIELD_NUMBER;
+        hash = (53 * hash) + getProposersList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.Client.ProposerWhiteList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ProposerWhiteList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ProposerWhiteList)
+        io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.Client.internal_static_ProposerWhiteList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.Client.internal_static_ProposerWhiteList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.Client.ProposerWhiteList.class, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.Client.ProposerWhiteList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getProposersFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (proposersBuilder_ == null) {
+          proposers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          proposersBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.Client.internal_static_ProposerWhiteList_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ProposerWhiteList getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ProposerWhiteList build() {
+        io.aelf.protobuf.generated.Client.ProposerWhiteList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ProposerWhiteList buildPartial() {
+        io.aelf.protobuf.generated.Client.ProposerWhiteList result = new io.aelf.protobuf.generated.Client.ProposerWhiteList(this);
+        int from_bitField0_ = bitField0_;
+        if (proposersBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            proposers_ = java.util.Collections.unmodifiableList(proposers_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.proposers_ = proposers_;
+        } else {
+          result.proposers_ = proposersBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.Client.ProposerWhiteList) {
+          return mergeFrom((io.aelf.protobuf.generated.Client.ProposerWhiteList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.Client.ProposerWhiteList other) {
+        if (other == io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance()) return this;
+        if (proposersBuilder_ == null) {
+          if (!other.proposers_.isEmpty()) {
+            if (proposers_.isEmpty()) {
+              proposers_ = other.proposers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureProposersIsMutable();
+              proposers_.addAll(other.proposers_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.proposers_.isEmpty()) {
+            if (proposersBuilder_.isEmpty()) {
+              proposersBuilder_.dispose();
+              proposersBuilder_ = null;
+              proposers_ = other.proposers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              proposersBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getProposersFieldBuilder() : null;
+            } else {
+              proposersBuilder_.addAllMessages(other.proposers_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.Client.ProposerWhiteList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.Client.ProposerWhiteList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<io.aelf.protobuf.generated.Client.Address> proposers_ =
+        java.util.Collections.emptyList();
+      private void ensureProposersIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          proposers_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Address>(proposers_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> proposersBuilder_;
+
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public java.util.List<io.aelf.protobuf.generated.Client.Address> getProposersList() {
+        if (proposersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(proposers_);
+        } else {
+          return proposersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public int getProposersCount() {
+        if (proposersBuilder_ == null) {
+          return proposers_.size();
+        } else {
+          return proposersBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address getProposers(int index) {
+        if (proposersBuilder_ == null) {
+          return proposers_.get(index);
+        } else {
+          return proposersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder setProposers(
+          int index, io.aelf.protobuf.generated.Client.Address value) {
+        if (proposersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProposersIsMutable();
+          proposers_.set(index, value);
+          onChanged();
+        } else {
+          proposersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder setProposers(
+          int index, io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (proposersBuilder_ == null) {
+          ensureProposersIsMutable();
+          proposers_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          proposersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder addProposers(io.aelf.protobuf.generated.Client.Address value) {
+        if (proposersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProposersIsMutable();
+          proposers_.add(value);
+          onChanged();
+        } else {
+          proposersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder addProposers(
+          int index, io.aelf.protobuf.generated.Client.Address value) {
+        if (proposersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProposersIsMutable();
+          proposers_.add(index, value);
+          onChanged();
+        } else {
+          proposersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder addProposers(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (proposersBuilder_ == null) {
+          ensureProposersIsMutable();
+          proposers_.add(builderForValue.build());
+          onChanged();
+        } else {
+          proposersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder addProposers(
+          int index, io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (proposersBuilder_ == null) {
+          ensureProposersIsMutable();
+          proposers_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          proposersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder addAllProposers(
+          java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.Address> values) {
+        if (proposersBuilder_ == null) {
+          ensureProposersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, proposers_);
+          onChanged();
+        } else {
+          proposersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder clearProposers() {
+        if (proposersBuilder_ == null) {
+          proposers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          proposersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public Builder removeProposers(int index) {
+        if (proposersBuilder_ == null) {
+          ensureProposersIsMutable();
+          proposers_.remove(index);
+          onChanged();
+        } else {
+          proposersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getProposersBuilder(
+          int index) {
+        return getProposersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getProposersOrBuilder(
+          int index) {
+        if (proposersBuilder_ == null) {
+          return proposers_.get(index);  } else {
+          return proposersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public java.util.List<? extends io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+           getProposersOrBuilderList() {
+        if (proposersBuilder_ != null) {
+          return proposersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(proposers_);
+        }
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder addProposersBuilder() {
+        return getProposersFieldBuilder().addBuilder(
+            io.aelf.protobuf.generated.Client.Address.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder addProposersBuilder(
+          int index) {
+        return getProposersFieldBuilder().addBuilder(
+            index, io.aelf.protobuf.generated.Client.Address.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The address of the proposers
+       * </pre>
+       *
+       * <code>repeated .Address proposers = 1;</code>
+       */
+      public java.util.List<io.aelf.protobuf.generated.Client.Address.Builder> 
+           getProposersBuilderList() {
+        return getProposersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getProposersFieldBuilder() {
+        if (proposersBuilder_ == null) {
+          proposersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  proposers_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          proposers_ = null;
+        }
+        return proposersBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ProposerWhiteList)
+    }
+
+    // @@protoc_insertion_point(class_scope:ProposerWhiteList)
+    private static final io.aelf.protobuf.generated.Client.ProposerWhiteList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.ProposerWhiteList();
+    }
+
+    public static io.aelf.protobuf.generated.Client.ProposerWhiteList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ProposerWhiteList>
+        PARSER = new com.google.protobuf.AbstractParser<ProposerWhiteList>() {
+      @java.lang.Override
+      public ProposerWhiteList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ProposerWhiteList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ProposerWhiteList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ProposerWhiteList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.Client.ProposerWhiteList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ValidationResultOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ValidationResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Is successful.
+     * </pre>
+     *
      * <code>bool success = 1;</code>
      * @return The success.
      */
     boolean getSuccess();
 
     /**
+     * <pre>
+     * The error message.
+     * </pre>
+     *
      * <code>string message = 2;</code>
      * @return The message.
      */
     java.lang.String getMessage();
     /**
+     * <pre>
+     * The error message.
+     * </pre>
+     *
      * <code>string message = 2;</code>
      * @return The bytes for message.
      */
     com.google.protobuf.ByteString
         getMessageBytes();
+
+    /**
+     * <pre>
+     * Whether to trigger mining again.
+     * </pre>
+     *
+     * <code>bool is_re_trigger = 3;</code>
+     * @return The isReTrigger.
+     */
+    boolean getIsReTrigger();
   }
   /**
    * Protobuf type {@code ValidationResult}
@@ -10913,6 +14777,11 @@ public final class Client {
               message_ = s;
               break;
             }
+            case 24: {
+
+              isReTrigger_ = input.readBool();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -10948,6 +14817,10 @@ public final class Client {
     public static final int SUCCESS_FIELD_NUMBER = 1;
     private boolean success_;
     /**
+     * <pre>
+     * Is successful.
+     * </pre>
+     *
      * <code>bool success = 1;</code>
      * @return The success.
      */
@@ -10958,6 +14831,10 @@ public final class Client {
     public static final int MESSAGE_FIELD_NUMBER = 2;
     private volatile java.lang.Object message_;
     /**
+     * <pre>
+     * The error message.
+     * </pre>
+     *
      * <code>string message = 2;</code>
      * @return The message.
      */
@@ -10974,6 +14851,10 @@ public final class Client {
       }
     }
     /**
+     * <pre>
+     * The error message.
+     * </pre>
+     *
      * <code>string message = 2;</code>
      * @return The bytes for message.
      */
@@ -10989,6 +14870,20 @@ public final class Client {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int IS_RE_TRIGGER_FIELD_NUMBER = 3;
+    private boolean isReTrigger_;
+    /**
+     * <pre>
+     * Whether to trigger mining again.
+     * </pre>
+     *
+     * <code>bool is_re_trigger = 3;</code>
+     * @return The isReTrigger.
+     */
+    public boolean getIsReTrigger() {
+      return isReTrigger_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -11011,6 +14906,9 @@ public final class Client {
       if (!getMessageBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
       }
+      if (isReTrigger_ != false) {
+        output.writeBool(3, isReTrigger_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -11026,6 +14924,10 @@ public final class Client {
       }
       if (!getMessageBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+      }
+      if (isReTrigger_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, isReTrigger_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11046,6 +14948,8 @@ public final class Client {
           != other.getSuccess()) return false;
       if (!getMessage()
           .equals(other.getMessage())) return false;
+      if (getIsReTrigger()
+          != other.getIsReTrigger()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -11062,6 +14966,9 @@ public final class Client {
           getSuccess());
       hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
       hash = (53 * hash) + getMessage().hashCode();
+      hash = (37 * hash) + IS_RE_TRIGGER_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsReTrigger());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -11199,6 +15106,8 @@ public final class Client {
 
         message_ = "";
 
+        isReTrigger_ = false;
+
         return this;
       }
 
@@ -11227,6 +15136,7 @@ public final class Client {
         io.aelf.protobuf.generated.Client.ValidationResult result = new io.aelf.protobuf.generated.Client.ValidationResult(this);
         result.success_ = success_;
         result.message_ = message_;
+        result.isReTrigger_ = isReTrigger_;
         onBuilt();
         return result;
       }
@@ -11282,6 +15192,9 @@ public final class Client {
           message_ = other.message_;
           onChanged();
         }
+        if (other.getIsReTrigger() != false) {
+          setIsReTrigger(other.getIsReTrigger());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -11313,6 +15226,10 @@ public final class Client {
 
       private boolean success_ ;
       /**
+       * <pre>
+       * Is successful.
+       * </pre>
+       *
        * <code>bool success = 1;</code>
        * @return The success.
        */
@@ -11320,6 +15237,10 @@ public final class Client {
         return success_;
       }
       /**
+       * <pre>
+       * Is successful.
+       * </pre>
+       *
        * <code>bool success = 1;</code>
        * @param value The success to set.
        * @return This builder for chaining.
@@ -11331,6 +15252,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * Is successful.
+       * </pre>
+       *
        * <code>bool success = 1;</code>
        * @return This builder for chaining.
        */
@@ -11343,6 +15268,10 @@ public final class Client {
 
       private java.lang.Object message_ = "";
       /**
+       * <pre>
+       * The error message.
+       * </pre>
+       *
        * <code>string message = 2;</code>
        * @return The message.
        */
@@ -11359,6 +15288,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The error message.
+       * </pre>
+       *
        * <code>string message = 2;</code>
        * @return The bytes for message.
        */
@@ -11376,6 +15309,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The error message.
+       * </pre>
+       *
        * <code>string message = 2;</code>
        * @param value The message to set.
        * @return This builder for chaining.
@@ -11391,6 +15328,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The error message.
+       * </pre>
+       *
        * <code>string message = 2;</code>
        * @return This builder for chaining.
        */
@@ -11401,6 +15342,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The error message.
+       * </pre>
+       *
        * <code>string message = 2;</code>
        * @param value The bytes for message to set.
        * @return This builder for chaining.
@@ -11413,6 +15358,48 @@ public final class Client {
   checkByteStringIsUtf8(value);
         
         message_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean isReTrigger_ ;
+      /**
+       * <pre>
+       * Whether to trigger mining again.
+       * </pre>
+       *
+       * <code>bool is_re_trigger = 3;</code>
+       * @return The isReTrigger.
+       */
+      public boolean getIsReTrigger() {
+        return isReTrigger_;
+      }
+      /**
+       * <pre>
+       * Whether to trigger mining again.
+       * </pre>
+       *
+       * <code>bool is_re_trigger = 3;</code>
+       * @param value The isReTrigger to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsReTrigger(boolean value) {
+        
+        isReTrigger_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether to trigger mining again.
+       * </pre>
+       *
+       * <code>bool is_re_trigger = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsReTrigger() {
+        
+        isReTrigger_ = false;
         onChanged();
         return this;
       }
@@ -11475,18 +15462,18 @@ public final class Client {
 
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
     int getSymbolToAmountCount();
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
     boolean containsSymbolToAmount(
         java.lang.String key);
@@ -11498,19 +15485,19 @@ public final class Client {
     getSymbolToAmount();
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
     java.util.Map<java.lang.String, java.lang.Long>
     getSymbolToAmountMap();
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
 
     long getSymbolToAmountOrDefault(
@@ -11518,21 +15505,29 @@ public final class Client {
         long defaultValue);
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
 
     long getSymbolToAmountOrThrow(
         java.lang.String key);
 
     /**
+     * <pre>
+     * The type of threshold check.
+     * </pre>
+     *
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
      * @return The enum numeric value on the wire for thresholdCheckType.
      */
     int getThresholdCheckTypeValue();
     /**
+     * <pre>
+     * The type of threshold check.
+     * </pre>
+     *
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
      * @return The thresholdCheckType.
      */
@@ -11661,7 +15656,7 @@ public final class Client {
                   io.aelf.protobuf.generated.Client.internal_static_MethodCallingThreshold_SymbolToAmountEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.SINT64,
+                  com.google.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
     private com.google.protobuf.MapField<
@@ -11680,10 +15675,10 @@ public final class Client {
     }
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
 
     public boolean containsSymbolToAmount(
@@ -11700,10 +15695,10 @@ public final class Client {
     }
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
 
     public java.util.Map<java.lang.String, java.lang.Long> getSymbolToAmountMap() {
@@ -11711,10 +15706,10 @@ public final class Client {
     }
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
 
     public long getSymbolToAmountOrDefault(
@@ -11727,10 +15722,10 @@ public final class Client {
     }
     /**
      * <pre>
-     * The order matters.
+     * The threshold for method calling, token symbol -&gt; amount. 
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+     * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
      */
 
     public long getSymbolToAmountOrThrow(
@@ -11747,6 +15742,10 @@ public final class Client {
     public static final int THRESHOLD_CHECK_TYPE_FIELD_NUMBER = 2;
     private int thresholdCheckType_;
     /**
+     * <pre>
+     * The type of threshold check.
+     * </pre>
+     *
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
      * @return The enum numeric value on the wire for thresholdCheckType.
      */
@@ -11754,6 +15753,10 @@ public final class Client {
       return thresholdCheckType_;
     }
     /**
+     * <pre>
+     * The type of threshold check.
+     * </pre>
+     *
      * <code>.ThresholdCheckType threshold_check_type = 2;</code>
      * @return The thresholdCheckType.
      */
@@ -12147,10 +16150,10 @@ public final class Client {
       }
       /**
        * <pre>
-       * The order matters.
+       * The threshold for method calling, token symbol -&gt; amount. 
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+       * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
        */
 
       public boolean containsSymbolToAmount(
@@ -12167,10 +16170,10 @@ public final class Client {
       }
       /**
        * <pre>
-       * The order matters.
+       * The threshold for method calling, token symbol -&gt; amount. 
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+       * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
        */
 
       public java.util.Map<java.lang.String, java.lang.Long> getSymbolToAmountMap() {
@@ -12178,10 +16181,10 @@ public final class Client {
       }
       /**
        * <pre>
-       * The order matters.
+       * The threshold for method calling, token symbol -&gt; amount. 
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+       * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
        */
 
       public long getSymbolToAmountOrDefault(
@@ -12194,10 +16197,10 @@ public final class Client {
       }
       /**
        * <pre>
-       * The order matters.
+       * The threshold for method calling, token symbol -&gt; amount. 
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+       * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
        */
 
       public long getSymbolToAmountOrThrow(
@@ -12218,10 +16221,10 @@ public final class Client {
       }
       /**
        * <pre>
-       * The order matters.
+       * The threshold for method calling, token symbol -&gt; amount. 
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+       * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
        */
 
       public Builder removeSymbolToAmount(
@@ -12241,10 +16244,10 @@ public final class Client {
       }
       /**
        * <pre>
-       * The order matters.
+       * The threshold for method calling, token symbol -&gt; amount. 
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+       * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
        */
       public Builder putSymbolToAmount(
           java.lang.String key,
@@ -12257,10 +16260,10 @@ public final class Client {
       }
       /**
        * <pre>
-       * The order matters.
+       * The threshold for method calling, token symbol -&gt; amount. 
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; symbol_to_amount = 1;</code>
+       * <code>map&lt;string, int64&gt; symbol_to_amount = 1;</code>
        */
 
       public Builder putAllSymbolToAmount(
@@ -12272,6 +16275,10 @@ public final class Client {
 
       private int thresholdCheckType_ = 0;
       /**
+       * <pre>
+       * The type of threshold check.
+       * </pre>
+       *
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
        * @return The enum numeric value on the wire for thresholdCheckType.
        */
@@ -12279,6 +16286,10 @@ public final class Client {
         return thresholdCheckType_;
       }
       /**
+       * <pre>
+       * The type of threshold check.
+       * </pre>
+       *
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
        * @param value The enum numeric value on the wire for thresholdCheckType to set.
        * @return This builder for chaining.
@@ -12289,6 +16300,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The type of threshold check.
+       * </pre>
+       *
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
        * @return The thresholdCheckType.
        */
@@ -12298,6 +16313,10 @@ public final class Client {
         return result == null ? io.aelf.protobuf.generated.Client.ThresholdCheckType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * The type of threshold check.
+       * </pre>
+       *
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
        * @param value The thresholdCheckType to set.
        * @return This builder for chaining.
@@ -12312,6 +16331,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The type of threshold check.
+       * </pre>
+       *
        * <code>.ThresholdCheckType threshold_check_type = 2;</code>
        * @return This builder for chaining.
        */
@@ -12374,771 +16397,59 @@ public final class Client {
 
   }
 
-  public interface SideChainIdAndHeightDictOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SideChainIdAndHeightDict)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-    int getIdHeightDictCount();
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-    boolean containsIdHeightDict(
-        int key);
-    /**
-     * Use {@link #getIdHeightDictMap()} instead.
-     */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.Integer, java.lang.Long>
-    getIdHeightDict();
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-    java.util.Map<java.lang.Integer, java.lang.Long>
-    getIdHeightDictMap();
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-
-    long getIdHeightDictOrDefault(
-        int key,
-        long defaultValue);
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-
-    long getIdHeightDictOrThrow(
-        int key);
-  }
-  /**
-   * <pre>
-   *acs7
-   * </pre>
-   *
-   * Protobuf type {@code SideChainIdAndHeightDict}
-   */
-  public  static final class SideChainIdAndHeightDict extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SideChainIdAndHeightDict)
-      SideChainIdAndHeightDictOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use SideChainIdAndHeightDict.newBuilder() to construct.
-    private SideChainIdAndHeightDict(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private SideChainIdAndHeightDict() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new SideChainIdAndHeightDict();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private SideChainIdAndHeightDict(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                idHeightDict_ = com.google.protobuf.MapField.newMapField(
-                    IdHeightDictDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
-              }
-              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Long>
-              idHeightDict__ = input.readMessage(
-                  IdHeightDictDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              idHeightDict_.getMutableMap().put(
-                  idHeightDict__.getKey(), idHeightDict__.getValue());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return io.aelf.protobuf.generated.Client.internal_static_SideChainIdAndHeightDict_descriptor;
-    }
-
-    @SuppressWarnings({"rawtypes"})
-    @java.lang.Override
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 1:
-          return internalGetIdHeightDict();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return io.aelf.protobuf.generated.Client.internal_static_SideChainIdAndHeightDict_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict.class, io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict.Builder.class);
-    }
-
-    public static final int ID_HEIGHT_DICT_FIELD_NUMBER = 1;
-    private static final class IdHeightDictDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.Integer, java.lang.Long> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.Integer, java.lang.Long>newDefaultInstance(
-                  io.aelf.protobuf.generated.Client.internal_static_SideChainIdAndHeightDict_IdHeightDictEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0,
-                  com.google.protobuf.WireFormat.FieldType.INT64,
-                  0L);
-    }
-    private com.google.protobuf.MapField<
-        java.lang.Integer, java.lang.Long> idHeightDict_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Long>
-    internalGetIdHeightDict() {
-      if (idHeightDict_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            IdHeightDictDefaultEntryHolder.defaultEntry);
-      }
-      return idHeightDict_;
-    }
-
-    public int getIdHeightDictCount() {
-      return internalGetIdHeightDict().getMap().size();
-    }
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-
-    public boolean containsIdHeightDict(
-        int key) {
-      
-      return internalGetIdHeightDict().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getIdHeightDictMap()} instead.
-     */
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.Long> getIdHeightDict() {
-      return getIdHeightDictMap();
-    }
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-
-    public java.util.Map<java.lang.Integer, java.lang.Long> getIdHeightDictMap() {
-      return internalGetIdHeightDict().getMap();
-    }
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-
-    public long getIdHeightDictOrDefault(
-        int key,
-        long defaultValue) {
-      
-      java.util.Map<java.lang.Integer, java.lang.Long> map =
-          internalGetIdHeightDict().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-     */
-
-    public long getIdHeightDictOrThrow(
-        int key) {
-      
-      java.util.Map<java.lang.Integer, java.lang.Long> map =
-          internalGetIdHeightDict().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
-        .serializeIntegerMapTo(
-          output,
-          internalGetIdHeightDict(),
-          IdHeightDictDefaultEntryHolder.defaultEntry,
-          1);
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (java.util.Map.Entry<java.lang.Integer, java.lang.Long> entry
-           : internalGetIdHeightDict().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Long>
-        idHeightDict__ = IdHeightDictDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, idHeightDict__);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict)) {
-        return super.equals(obj);
-      }
-      io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict other = (io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict) obj;
-
-      if (!internalGetIdHeightDict().equals(
-          other.internalGetIdHeightDict())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (!internalGetIdHeightDict().getMap().isEmpty()) {
-        hash = (37 * hash) + ID_HEIGHT_DICT_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetIdHeightDict().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     *acs7
-     * </pre>
-     *
-     * Protobuf type {@code SideChainIdAndHeightDict}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SideChainIdAndHeightDict)
-        io.aelf.protobuf.generated.Client.SideChainIdAndHeightDictOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return io.aelf.protobuf.generated.Client.internal_static_SideChainIdAndHeightDict_descriptor;
-      }
-
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetIdHeightDict();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetMutableIdHeightDict();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return io.aelf.protobuf.generated.Client.internal_static_SideChainIdAndHeightDict_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict.class, io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict.Builder.class);
-      }
-
-      // Construct using io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        internalGetMutableIdHeightDict().clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return io.aelf.protobuf.generated.Client.internal_static_SideChainIdAndHeightDict_descriptor;
-      }
-
-      @java.lang.Override
-      public io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict getDefaultInstanceForType() {
-        return io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict build() {
-        io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict buildPartial() {
-        io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict result = new io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict(this);
-        int from_bitField0_ = bitField0_;
-        result.idHeightDict_ = internalGetIdHeightDict();
-        result.idHeightDict_.makeImmutable();
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict) {
-          return mergeFrom((io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict other) {
-        if (other == io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict.getDefaultInstance()) return this;
-        internalGetMutableIdHeightDict().mergeFrom(
-            other.internalGetIdHeightDict());
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private com.google.protobuf.MapField<
-          java.lang.Integer, java.lang.Long> idHeightDict_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Long>
-      internalGetIdHeightDict() {
-        if (idHeightDict_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              IdHeightDictDefaultEntryHolder.defaultEntry);
-        }
-        return idHeightDict_;
-      }
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Long>
-      internalGetMutableIdHeightDict() {
-        onChanged();;
-        if (idHeightDict_ == null) {
-          idHeightDict_ = com.google.protobuf.MapField.newMapField(
-              IdHeightDictDefaultEntryHolder.defaultEntry);
-        }
-        if (!idHeightDict_.isMutable()) {
-          idHeightDict_ = idHeightDict_.copy();
-        }
-        return idHeightDict_;
-      }
-
-      public int getIdHeightDictCount() {
-        return internalGetIdHeightDict().getMap().size();
-      }
-      /**
-       * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-       */
-
-      public boolean containsIdHeightDict(
-          int key) {
-        
-        return internalGetIdHeightDict().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getIdHeightDictMap()} instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Integer, java.lang.Long> getIdHeightDict() {
-        return getIdHeightDictMap();
-      }
-      /**
-       * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-       */
-
-      public java.util.Map<java.lang.Integer, java.lang.Long> getIdHeightDictMap() {
-        return internalGetIdHeightDict().getMap();
-      }
-      /**
-       * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-       */
-
-      public long getIdHeightDictOrDefault(
-          int key,
-          long defaultValue) {
-        
-        java.util.Map<java.lang.Integer, java.lang.Long> map =
-            internalGetIdHeightDict().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-       */
-
-      public long getIdHeightDictOrThrow(
-          int key) {
-        
-        java.util.Map<java.lang.Integer, java.lang.Long> map =
-            internalGetIdHeightDict().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
-        }
-        return map.get(key);
-      }
-
-      public Builder clearIdHeightDict() {
-        internalGetMutableIdHeightDict().getMutableMap()
-            .clear();
-        return this;
-      }
-      /**
-       * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-       */
-
-      public Builder removeIdHeightDict(
-          int key) {
-        
-        internalGetMutableIdHeightDict().getMutableMap()
-            .remove(key);
-        return this;
-      }
-      /**
-       * Use alternate mutation accessors instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Integer, java.lang.Long>
-      getMutableIdHeightDict() {
-        return internalGetMutableIdHeightDict().getMutableMap();
-      }
-      /**
-       * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-       */
-      public Builder putIdHeightDict(
-          int key,
-          long value) {
-        
-        
-        internalGetMutableIdHeightDict().getMutableMap()
-            .put(key, value);
-        return this;
-      }
-      /**
-       * <code>map&lt;int32, int64&gt; id_height_dict = 1;</code>
-       */
-
-      public Builder putAllIdHeightDict(
-          java.util.Map<java.lang.Integer, java.lang.Long> values) {
-        internalGetMutableIdHeightDict().getMutableMap()
-            .putAll(values);
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:SideChainIdAndHeightDict)
-    }
-
-    // @@protoc_insertion_point(class_scope:SideChainIdAndHeightDict)
-    private static final io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict();
-    }
-
-    public static io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SideChainIdAndHeightDict>
-        PARSER = new com.google.protobuf.AbstractParser<SideChainIdAndHeightDict>() {
-      @java.lang.Override
-      public SideChainIdAndHeightDict parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SideChainIdAndHeightDict(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<SideChainIdAndHeightDict> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SideChainIdAndHeightDict> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public io.aelf.protobuf.generated.Client.SideChainIdAndHeightDict getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface SideChainIndexingInformationListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:SideChainIndexingInformationList)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.SideChainIndexingInformation> 
         getIndexingInformationListList();
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     io.aelf.protobuf.generated.Client.SideChainIndexingInformation getIndexingInformationList(int index);
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     int getIndexingInformationListCount();
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainIndexingInformationOrBuilder> 
         getIndexingInformationListOrBuilderList();
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     io.aelf.protobuf.generated.Client.SideChainIndexingInformationOrBuilder getIndexingInformationListOrBuilder(
         int index);
   }
   /**
+   * <pre>
+   *acs7
+   * </pre>
+   *
    * Protobuf type {@code SideChainIndexingInformationList}
    */
   public  static final class SideChainIndexingInformationList extends
@@ -13232,12 +16543,20 @@ public final class Client {
     public static final int INDEXING_INFORMATION_LIST_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.SideChainIndexingInformation> indexingInformationList_;
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.SideChainIndexingInformation> getIndexingInformationListList() {
       return indexingInformationList_;
     }
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainIndexingInformationOrBuilder> 
@@ -13245,18 +16564,30 @@ public final class Client {
       return indexingInformationList_;
     }
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     public int getIndexingInformationListCount() {
       return indexingInformationList_.size();
     }
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.SideChainIndexingInformation getIndexingInformationList(int index) {
       return indexingInformationList_.get(index);
     }
     /**
+     * <pre>
+     * A list contains indexing information of side chains.
+     * </pre>
+     *
      * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.SideChainIndexingInformationOrBuilder getIndexingInformationListOrBuilder(
@@ -13422,6 +16753,10 @@ public final class Client {
       return builder;
     }
     /**
+     * <pre>
+     *acs7
+     * </pre>
+     *
      * Protobuf type {@code SideChainIndexingInformationList}
      */
     public static final class Builder extends
@@ -13619,6 +16954,10 @@ public final class Client {
           io.aelf.protobuf.generated.Client.SideChainIndexingInformation, io.aelf.protobuf.generated.Client.SideChainIndexingInformation.Builder, io.aelf.protobuf.generated.Client.SideChainIndexingInformationOrBuilder> indexingInformationListBuilder_;
 
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.SideChainIndexingInformation> getIndexingInformationListList() {
@@ -13629,6 +16968,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public int getIndexingInformationListCount() {
@@ -13639,6 +16982,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.SideChainIndexingInformation getIndexingInformationList(int index) {
@@ -13649,6 +16996,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder setIndexingInformationList(
@@ -13666,6 +17017,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder setIndexingInformationList(
@@ -13680,6 +17035,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder addIndexingInformationList(io.aelf.protobuf.generated.Client.SideChainIndexingInformation value) {
@@ -13696,6 +17055,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder addIndexingInformationList(
@@ -13713,6 +17076,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder addIndexingInformationList(
@@ -13727,6 +17094,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder addIndexingInformationList(
@@ -13741,6 +17112,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder addAllIndexingInformationList(
@@ -13756,6 +17131,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder clearIndexingInformationList() {
@@ -13769,6 +17148,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public Builder removeIndexingInformationList(int index) {
@@ -13782,6 +17165,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.SideChainIndexingInformation.Builder getIndexingInformationListBuilder(
@@ -13789,6 +17176,10 @@ public final class Client {
         return getIndexingInformationListFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.SideChainIndexingInformationOrBuilder getIndexingInformationListOrBuilder(
@@ -13799,6 +17190,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainIndexingInformationOrBuilder> 
@@ -13810,6 +17205,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.SideChainIndexingInformation.Builder addIndexingInformationListBuilder() {
@@ -13817,6 +17216,10 @@ public final class Client {
             io.aelf.protobuf.generated.Client.SideChainIndexingInformation.getDefaultInstance());
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.SideChainIndexingInformation.Builder addIndexingInformationListBuilder(
@@ -13825,6 +17228,10 @@ public final class Client {
             index, io.aelf.protobuf.generated.Client.SideChainIndexingInformation.getDefaultInstance());
       }
       /**
+       * <pre>
+       * A list contains indexing information of side chains.
+       * </pre>
+       *
        * <code>repeated .SideChainIndexingInformation indexing_information_list = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.SideChainIndexingInformation.Builder> 
@@ -13903,22 +17310,24 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The side chain id.
+     * </pre>
+     *
      * <code>int32 chain_id = 1;</code>
      * @return The chainId.
      */
     int getChainId();
 
     /**
+     * <pre>
+     * The indexed height.
+     * </pre>
+     *
      * <code>int64 indexed_height = 2;</code>
      * @return The indexedHeight.
      */
     long getIndexedHeight();
-
-    /**
-     * <code>int64 to_be_indexed_count = 3;</code>
-     * @return The toBeIndexedCount.
-     */
-    long getToBeIndexedCount();
   }
   /**
    * Protobuf type {@code SideChainIndexingInformation}
@@ -13975,11 +17384,6 @@ public final class Client {
               indexedHeight_ = input.readInt64();
               break;
             }
-            case 24: {
-
-              toBeIndexedCount_ = input.readInt64();
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -14015,6 +17419,10 @@ public final class Client {
     public static final int CHAIN_ID_FIELD_NUMBER = 1;
     private int chainId_;
     /**
+     * <pre>
+     * The side chain id.
+     * </pre>
+     *
      * <code>int32 chain_id = 1;</code>
      * @return The chainId.
      */
@@ -14025,21 +17433,15 @@ public final class Client {
     public static final int INDEXED_HEIGHT_FIELD_NUMBER = 2;
     private long indexedHeight_;
     /**
+     * <pre>
+     * The indexed height.
+     * </pre>
+     *
      * <code>int64 indexed_height = 2;</code>
      * @return The indexedHeight.
      */
     public long getIndexedHeight() {
       return indexedHeight_;
-    }
-
-    public static final int TO_BE_INDEXED_COUNT_FIELD_NUMBER = 3;
-    private long toBeIndexedCount_;
-    /**
-     * <code>int64 to_be_indexed_count = 3;</code>
-     * @return The toBeIndexedCount.
-     */
-    public long getToBeIndexedCount() {
-      return toBeIndexedCount_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -14062,9 +17464,6 @@ public final class Client {
       if (indexedHeight_ != 0L) {
         output.writeInt64(2, indexedHeight_);
       }
-      if (toBeIndexedCount_ != 0L) {
-        output.writeInt64(3, toBeIndexedCount_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -14081,10 +17480,6 @@ public final class Client {
       if (indexedHeight_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, indexedHeight_);
-      }
-      if (toBeIndexedCount_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, toBeIndexedCount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -14105,8 +17500,6 @@ public final class Client {
           != other.getChainId()) return false;
       if (getIndexedHeight()
           != other.getIndexedHeight()) return false;
-      if (getToBeIndexedCount()
-          != other.getToBeIndexedCount()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -14123,9 +17516,6 @@ public final class Client {
       hash = (37 * hash) + INDEXED_HEIGHT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getIndexedHeight());
-      hash = (37 * hash) + TO_BE_INDEXED_COUNT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getToBeIndexedCount());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -14263,8 +17653,6 @@ public final class Client {
 
         indexedHeight_ = 0L;
 
-        toBeIndexedCount_ = 0L;
-
         return this;
       }
 
@@ -14293,7 +17681,6 @@ public final class Client {
         io.aelf.protobuf.generated.Client.SideChainIndexingInformation result = new io.aelf.protobuf.generated.Client.SideChainIndexingInformation(this);
         result.chainId_ = chainId_;
         result.indexedHeight_ = indexedHeight_;
-        result.toBeIndexedCount_ = toBeIndexedCount_;
         onBuilt();
         return result;
       }
@@ -14348,9 +17735,6 @@ public final class Client {
         if (other.getIndexedHeight() != 0L) {
           setIndexedHeight(other.getIndexedHeight());
         }
-        if (other.getToBeIndexedCount() != 0L) {
-          setToBeIndexedCount(other.getToBeIndexedCount());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -14382,6 +17766,10 @@ public final class Client {
 
       private int chainId_ ;
       /**
+       * <pre>
+       * The side chain id.
+       * </pre>
+       *
        * <code>int32 chain_id = 1;</code>
        * @return The chainId.
        */
@@ -14389,6 +17777,10 @@ public final class Client {
         return chainId_;
       }
       /**
+       * <pre>
+       * The side chain id.
+       * </pre>
+       *
        * <code>int32 chain_id = 1;</code>
        * @param value The chainId to set.
        * @return This builder for chaining.
@@ -14400,6 +17792,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The side chain id.
+       * </pre>
+       *
        * <code>int32 chain_id = 1;</code>
        * @return This builder for chaining.
        */
@@ -14412,6 +17808,10 @@ public final class Client {
 
       private long indexedHeight_ ;
       /**
+       * <pre>
+       * The indexed height.
+       * </pre>
+       *
        * <code>int64 indexed_height = 2;</code>
        * @return The indexedHeight.
        */
@@ -14419,6 +17819,10 @@ public final class Client {
         return indexedHeight_;
       }
       /**
+       * <pre>
+       * The indexed height.
+       * </pre>
+       *
        * <code>int64 indexed_height = 2;</code>
        * @param value The indexedHeight to set.
        * @return This builder for chaining.
@@ -14430,42 +17834,16 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The indexed height.
+       * </pre>
+       *
        * <code>int64 indexed_height = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearIndexedHeight() {
         
         indexedHeight_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long toBeIndexedCount_ ;
-      /**
-       * <code>int64 to_be_indexed_count = 3;</code>
-       * @return The toBeIndexedCount.
-       */
-      public long getToBeIndexedCount() {
-        return toBeIndexedCount_;
-      }
-      /**
-       * <code>int64 to_be_indexed_count = 3;</code>
-       * @param value The toBeIndexedCount to set.
-       * @return This builder for chaining.
-       */
-      public Builder setToBeIndexedCount(long value) {
-        
-        toBeIndexedCount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 to_be_indexed_count = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearToBeIndexedCount() {
-        
-        toBeIndexedCount_ = 0L;
         onChanged();
         return this;
       }
@@ -14527,58 +17905,92 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> 
-        getSideChainBlockDataList();
+        getSideChainBlockDataListList();
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
-    io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockData(int index);
+    io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockDataList(int index);
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
-    int getSideChainBlockDataCount();
+    int getSideChainBlockDataListCount();
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-        getSideChainBlockDataOrBuilderList();
+        getSideChainBlockDataListOrBuilderList();
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
-    io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataOrBuilder(
+    io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataListOrBuilder(
         int index);
 
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> 
-        getParentChainBlockDataList();
+        getParentChainBlockDataListList();
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
-    io.aelf.protobuf.generated.Client.ParentChainBlockData getParentChainBlockData(int index);
+    io.aelf.protobuf.generated.Client.ParentChainBlockData getParentChainBlockDataList(int index);
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
-    int getParentChainBlockDataCount();
+    int getParentChainBlockDataListCount();
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder> 
-        getParentChainBlockDataOrBuilderList();
+        getParentChainBlockDataListOrBuilderList();
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
-    io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder getParentChainBlockDataOrBuilder(
+    io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder getParentChainBlockDataListOrBuilder(
         int index);
-
-    /**
-     * <code>int64 previous_block_height = 3;</code>
-     * @return The previousBlockHeight.
-     */
-    long getPreviousBlockHeight();
   }
   /**
    * Protobuf type {@code CrossChainBlockData}
@@ -14593,8 +18005,8 @@ public final class Client {
       super(builder);
     }
     private CrossChainBlockData() {
-      sideChainBlockData_ = java.util.Collections.emptyList();
-      parentChainBlockData_ = java.util.Collections.emptyList();
+      sideChainBlockDataList_ = java.util.Collections.emptyList();
+      parentChainBlockDataList_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -14630,25 +18042,20 @@ public final class Client {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                sideChainBlockData_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainBlockData>();
+                sideChainBlockDataList_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainBlockData>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              sideChainBlockData_.add(
+              sideChainBlockDataList_.add(
                   input.readMessage(io.aelf.protobuf.generated.Client.SideChainBlockData.parser(), extensionRegistry));
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                parentChainBlockData_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ParentChainBlockData>();
+                parentChainBlockDataList_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ParentChainBlockData>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              parentChainBlockData_.add(
+              parentChainBlockDataList_.add(
                   input.readMessage(io.aelf.protobuf.generated.Client.ParentChainBlockData.parser(), extensionRegistry));
-              break;
-            }
-            case 24: {
-
-              previousBlockHeight_ = input.readInt64();
               break;
             }
             default: {
@@ -14667,10 +18074,10 @@ public final class Client {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          sideChainBlockData_ = java.util.Collections.unmodifiableList(sideChainBlockData_);
+          sideChainBlockDataList_ = java.util.Collections.unmodifiableList(sideChainBlockDataList_);
         }
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          parentChainBlockData_ = java.util.Collections.unmodifiableList(parentChainBlockData_);
+          parentChainBlockDataList_ = java.util.Collections.unmodifiableList(parentChainBlockDataList_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -14689,84 +18096,114 @@ public final class Client {
               io.aelf.protobuf.generated.Client.CrossChainBlockData.class, io.aelf.protobuf.generated.Client.CrossChainBlockData.Builder.class);
     }
 
-    public static final int SIDE_CHAIN_BLOCK_DATA_FIELD_NUMBER = 1;
-    private java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> sideChainBlockData_;
+    public static final int SIDE_CHAIN_BLOCK_DATA_LIST_FIELD_NUMBER = 1;
+    private java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> sideChainBlockDataList_;
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
-    public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> getSideChainBlockDataList() {
-      return sideChainBlockData_;
+    public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> getSideChainBlockDataListList() {
+      return sideChainBlockDataList_;
     }
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-        getSideChainBlockDataOrBuilderList() {
-      return sideChainBlockData_;
+        getSideChainBlockDataListOrBuilderList() {
+      return sideChainBlockDataList_;
     }
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
-    public int getSideChainBlockDataCount() {
-      return sideChainBlockData_.size();
+    public int getSideChainBlockDataListCount() {
+      return sideChainBlockDataList_.size();
     }
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
-    public io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockData(int index) {
-      return sideChainBlockData_.get(index);
+    public io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockDataList(int index) {
+      return sideChainBlockDataList_.get(index);
     }
     /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+     * <pre>
+     * The side chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
      */
-    public io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataOrBuilder(
+    public io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataListOrBuilder(
         int index) {
-      return sideChainBlockData_.get(index);
+      return sideChainBlockDataList_.get(index);
     }
 
-    public static final int PARENT_CHAIN_BLOCK_DATA_FIELD_NUMBER = 2;
-    private java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> parentChainBlockData_;
+    public static final int PARENT_CHAIN_BLOCK_DATA_LIST_FIELD_NUMBER = 2;
+    private java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> parentChainBlockDataList_;
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
-    public java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> getParentChainBlockDataList() {
-      return parentChainBlockData_;
+    public java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> getParentChainBlockDataListList() {
+      return parentChainBlockDataList_;
     }
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder> 
-        getParentChainBlockDataOrBuilderList() {
-      return parentChainBlockData_;
+        getParentChainBlockDataListOrBuilderList() {
+      return parentChainBlockDataList_;
     }
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
-    public int getParentChainBlockDataCount() {
-      return parentChainBlockData_.size();
+    public int getParentChainBlockDataListCount() {
+      return parentChainBlockDataList_.size();
     }
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
-    public io.aelf.protobuf.generated.Client.ParentChainBlockData getParentChainBlockData(int index) {
-      return parentChainBlockData_.get(index);
+    public io.aelf.protobuf.generated.Client.ParentChainBlockData getParentChainBlockDataList(int index) {
+      return parentChainBlockDataList_.get(index);
     }
     /**
-     * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+     * <pre>
+     * The parent chain block data list to index.
+     * </pre>
+     *
+     * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
      */
-    public io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder getParentChainBlockDataOrBuilder(
+    public io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder getParentChainBlockDataListOrBuilder(
         int index) {
-      return parentChainBlockData_.get(index);
-    }
-
-    public static final int PREVIOUS_BLOCK_HEIGHT_FIELD_NUMBER = 3;
-    private long previousBlockHeight_;
-    /**
-     * <code>int64 previous_block_height = 3;</code>
-     * @return The previousBlockHeight.
-     */
-    public long getPreviousBlockHeight() {
-      return previousBlockHeight_;
+      return parentChainBlockDataList_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -14783,14 +18220,11 @@ public final class Client {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < sideChainBlockData_.size(); i++) {
-        output.writeMessage(1, sideChainBlockData_.get(i));
+      for (int i = 0; i < sideChainBlockDataList_.size(); i++) {
+        output.writeMessage(1, sideChainBlockDataList_.get(i));
       }
-      for (int i = 0; i < parentChainBlockData_.size(); i++) {
-        output.writeMessage(2, parentChainBlockData_.get(i));
-      }
-      if (previousBlockHeight_ != 0L) {
-        output.writeInt64(3, previousBlockHeight_);
+      for (int i = 0; i < parentChainBlockDataList_.size(); i++) {
+        output.writeMessage(2, parentChainBlockDataList_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -14801,17 +18235,13 @@ public final class Client {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < sideChainBlockData_.size(); i++) {
+      for (int i = 0; i < sideChainBlockDataList_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, sideChainBlockData_.get(i));
+          .computeMessageSize(1, sideChainBlockDataList_.get(i));
       }
-      for (int i = 0; i < parentChainBlockData_.size(); i++) {
+      for (int i = 0; i < parentChainBlockDataList_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, parentChainBlockData_.get(i));
-      }
-      if (previousBlockHeight_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, previousBlockHeight_);
+          .computeMessageSize(2, parentChainBlockDataList_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -14828,12 +18258,10 @@ public final class Client {
       }
       io.aelf.protobuf.generated.Client.CrossChainBlockData other = (io.aelf.protobuf.generated.Client.CrossChainBlockData) obj;
 
-      if (!getSideChainBlockDataList()
-          .equals(other.getSideChainBlockDataList())) return false;
-      if (!getParentChainBlockDataList()
-          .equals(other.getParentChainBlockDataList())) return false;
-      if (getPreviousBlockHeight()
-          != other.getPreviousBlockHeight()) return false;
+      if (!getSideChainBlockDataListList()
+          .equals(other.getSideChainBlockDataListList())) return false;
+      if (!getParentChainBlockDataListList()
+          .equals(other.getParentChainBlockDataListList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -14845,17 +18273,14 @@ public final class Client {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getSideChainBlockDataCount() > 0) {
-        hash = (37 * hash) + SIDE_CHAIN_BLOCK_DATA_FIELD_NUMBER;
-        hash = (53 * hash) + getSideChainBlockDataList().hashCode();
+      if (getSideChainBlockDataListCount() > 0) {
+        hash = (37 * hash) + SIDE_CHAIN_BLOCK_DATA_LIST_FIELD_NUMBER;
+        hash = (53 * hash) + getSideChainBlockDataListList().hashCode();
       }
-      if (getParentChainBlockDataCount() > 0) {
-        hash = (37 * hash) + PARENT_CHAIN_BLOCK_DATA_FIELD_NUMBER;
-        hash = (53 * hash) + getParentChainBlockDataList().hashCode();
+      if (getParentChainBlockDataListCount() > 0) {
+        hash = (37 * hash) + PARENT_CHAIN_BLOCK_DATA_LIST_FIELD_NUMBER;
+        hash = (53 * hash) + getParentChainBlockDataListList().hashCode();
       }
-      hash = (37 * hash) + PREVIOUS_BLOCK_HEIGHT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getPreviousBlockHeight());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -14984,27 +18409,25 @@ public final class Client {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getSideChainBlockDataFieldBuilder();
-          getParentChainBlockDataFieldBuilder();
+          getSideChainBlockDataListFieldBuilder();
+          getParentChainBlockDataListFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (sideChainBlockDataBuilder_ == null) {
-          sideChainBlockData_ = java.util.Collections.emptyList();
+        if (sideChainBlockDataListBuilder_ == null) {
+          sideChainBlockDataList_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          sideChainBlockDataBuilder_.clear();
+          sideChainBlockDataListBuilder_.clear();
         }
-        if (parentChainBlockDataBuilder_ == null) {
-          parentChainBlockData_ = java.util.Collections.emptyList();
+        if (parentChainBlockDataListBuilder_ == null) {
+          parentChainBlockDataList_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          parentChainBlockDataBuilder_.clear();
+          parentChainBlockDataListBuilder_.clear();
         }
-        previousBlockHeight_ = 0L;
-
         return this;
       }
 
@@ -15032,25 +18455,24 @@ public final class Client {
       public io.aelf.protobuf.generated.Client.CrossChainBlockData buildPartial() {
         io.aelf.protobuf.generated.Client.CrossChainBlockData result = new io.aelf.protobuf.generated.Client.CrossChainBlockData(this);
         int from_bitField0_ = bitField0_;
-        if (sideChainBlockDataBuilder_ == null) {
+        if (sideChainBlockDataListBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
-            sideChainBlockData_ = java.util.Collections.unmodifiableList(sideChainBlockData_);
+            sideChainBlockDataList_ = java.util.Collections.unmodifiableList(sideChainBlockDataList_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.sideChainBlockData_ = sideChainBlockData_;
+          result.sideChainBlockDataList_ = sideChainBlockDataList_;
         } else {
-          result.sideChainBlockData_ = sideChainBlockDataBuilder_.build();
+          result.sideChainBlockDataList_ = sideChainBlockDataListBuilder_.build();
         }
-        if (parentChainBlockDataBuilder_ == null) {
+        if (parentChainBlockDataListBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0)) {
-            parentChainBlockData_ = java.util.Collections.unmodifiableList(parentChainBlockData_);
+            parentChainBlockDataList_ = java.util.Collections.unmodifiableList(parentChainBlockDataList_);
             bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.parentChainBlockData_ = parentChainBlockData_;
+          result.parentChainBlockDataList_ = parentChainBlockDataList_;
         } else {
-          result.parentChainBlockData_ = parentChainBlockDataBuilder_.build();
+          result.parentChainBlockDataList_ = parentChainBlockDataListBuilder_.build();
         }
-        result.previousBlockHeight_ = previousBlockHeight_;
         onBuilt();
         return result;
       }
@@ -15099,60 +18521,57 @@ public final class Client {
 
       public Builder mergeFrom(io.aelf.protobuf.generated.Client.CrossChainBlockData other) {
         if (other == io.aelf.protobuf.generated.Client.CrossChainBlockData.getDefaultInstance()) return this;
-        if (sideChainBlockDataBuilder_ == null) {
-          if (!other.sideChainBlockData_.isEmpty()) {
-            if (sideChainBlockData_.isEmpty()) {
-              sideChainBlockData_ = other.sideChainBlockData_;
+        if (sideChainBlockDataListBuilder_ == null) {
+          if (!other.sideChainBlockDataList_.isEmpty()) {
+            if (sideChainBlockDataList_.isEmpty()) {
+              sideChainBlockDataList_ = other.sideChainBlockDataList_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureSideChainBlockDataIsMutable();
-              sideChainBlockData_.addAll(other.sideChainBlockData_);
+              ensureSideChainBlockDataListIsMutable();
+              sideChainBlockDataList_.addAll(other.sideChainBlockDataList_);
             }
             onChanged();
           }
         } else {
-          if (!other.sideChainBlockData_.isEmpty()) {
-            if (sideChainBlockDataBuilder_.isEmpty()) {
-              sideChainBlockDataBuilder_.dispose();
-              sideChainBlockDataBuilder_ = null;
-              sideChainBlockData_ = other.sideChainBlockData_;
+          if (!other.sideChainBlockDataList_.isEmpty()) {
+            if (sideChainBlockDataListBuilder_.isEmpty()) {
+              sideChainBlockDataListBuilder_.dispose();
+              sideChainBlockDataListBuilder_ = null;
+              sideChainBlockDataList_ = other.sideChainBlockDataList_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              sideChainBlockDataBuilder_ = 
+              sideChainBlockDataListBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getSideChainBlockDataFieldBuilder() : null;
+                   getSideChainBlockDataListFieldBuilder() : null;
             } else {
-              sideChainBlockDataBuilder_.addAllMessages(other.sideChainBlockData_);
+              sideChainBlockDataListBuilder_.addAllMessages(other.sideChainBlockDataList_);
             }
           }
         }
-        if (parentChainBlockDataBuilder_ == null) {
-          if (!other.parentChainBlockData_.isEmpty()) {
-            if (parentChainBlockData_.isEmpty()) {
-              parentChainBlockData_ = other.parentChainBlockData_;
+        if (parentChainBlockDataListBuilder_ == null) {
+          if (!other.parentChainBlockDataList_.isEmpty()) {
+            if (parentChainBlockDataList_.isEmpty()) {
+              parentChainBlockDataList_ = other.parentChainBlockDataList_;
               bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureParentChainBlockDataIsMutable();
-              parentChainBlockData_.addAll(other.parentChainBlockData_);
+              ensureParentChainBlockDataListIsMutable();
+              parentChainBlockDataList_.addAll(other.parentChainBlockDataList_);
             }
             onChanged();
           }
         } else {
-          if (!other.parentChainBlockData_.isEmpty()) {
-            if (parentChainBlockDataBuilder_.isEmpty()) {
-              parentChainBlockDataBuilder_.dispose();
-              parentChainBlockDataBuilder_ = null;
-              parentChainBlockData_ = other.parentChainBlockData_;
+          if (!other.parentChainBlockDataList_.isEmpty()) {
+            if (parentChainBlockDataListBuilder_.isEmpty()) {
+              parentChainBlockDataListBuilder_.dispose();
+              parentChainBlockDataListBuilder_ = null;
+              parentChainBlockDataList_ = other.parentChainBlockDataList_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              parentChainBlockDataBuilder_ = 
+              parentChainBlockDataListBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getParentChainBlockDataFieldBuilder() : null;
+                   getParentChainBlockDataListFieldBuilder() : null;
             } else {
-              parentChainBlockDataBuilder_.addAllMessages(other.parentChainBlockData_);
+              parentChainBlockDataListBuilder_.addAllMessages(other.parentChainBlockDataList_);
             }
           }
-        }
-        if (other.getPreviousBlockHeight() != 0L) {
-          setPreviousBlockHeight(other.getPreviousBlockHeight());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -15184,514 +18603,628 @@ public final class Client {
       }
       private int bitField0_;
 
-      private java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> sideChainBlockData_ =
+      private java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> sideChainBlockDataList_ =
         java.util.Collections.emptyList();
-      private void ensureSideChainBlockDataIsMutable() {
+      private void ensureSideChainBlockDataListIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          sideChainBlockData_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainBlockData>(sideChainBlockData_);
+          sideChainBlockDataList_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainBlockData>(sideChainBlockDataList_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          io.aelf.protobuf.generated.Client.SideChainBlockData, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder, io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> sideChainBlockDataBuilder_;
+          io.aelf.protobuf.generated.Client.SideChainBlockData, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder, io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> sideChainBlockDataListBuilder_;
 
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> getSideChainBlockDataList() {
-        if (sideChainBlockDataBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(sideChainBlockData_);
+      public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> getSideChainBlockDataListList() {
+        if (sideChainBlockDataListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sideChainBlockDataList_);
         } else {
-          return sideChainBlockDataBuilder_.getMessageList();
+          return sideChainBlockDataListBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public int getSideChainBlockDataCount() {
-        if (sideChainBlockDataBuilder_ == null) {
-          return sideChainBlockData_.size();
+      public int getSideChainBlockDataListCount() {
+        if (sideChainBlockDataListBuilder_ == null) {
+          return sideChainBlockDataList_.size();
         } else {
-          return sideChainBlockDataBuilder_.getCount();
+          return sideChainBlockDataListBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockData(int index) {
-        if (sideChainBlockDataBuilder_ == null) {
-          return sideChainBlockData_.get(index);
+      public io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockDataList(int index) {
+        if (sideChainBlockDataListBuilder_ == null) {
+          return sideChainBlockDataList_.get(index);
         } else {
-          return sideChainBlockDataBuilder_.getMessage(index);
+          return sideChainBlockDataListBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder setSideChainBlockData(
+      public Builder setSideChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.SideChainBlockData value) {
-        if (sideChainBlockDataBuilder_ == null) {
+        if (sideChainBlockDataListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.set(index, value);
+          ensureSideChainBlockDataListIsMutable();
+          sideChainBlockDataList_.set(index, value);
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.setMessage(index, value);
+          sideChainBlockDataListBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder setSideChainBlockData(
+      public Builder setSideChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder builderForValue) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.set(index, builderForValue.build());
+        if (sideChainBlockDataListBuilder_ == null) {
+          ensureSideChainBlockDataListIsMutable();
+          sideChainBlockDataList_.set(index, builderForValue.build());
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.setMessage(index, builderForValue.build());
+          sideChainBlockDataListBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder addSideChainBlockData(io.aelf.protobuf.generated.Client.SideChainBlockData value) {
-        if (sideChainBlockDataBuilder_ == null) {
+      public Builder addSideChainBlockDataList(io.aelf.protobuf.generated.Client.SideChainBlockData value) {
+        if (sideChainBlockDataListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(value);
+          ensureSideChainBlockDataListIsMutable();
+          sideChainBlockDataList_.add(value);
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.addMessage(value);
+          sideChainBlockDataListBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder addSideChainBlockData(
+      public Builder addSideChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.SideChainBlockData value) {
-        if (sideChainBlockDataBuilder_ == null) {
+        if (sideChainBlockDataListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(index, value);
+          ensureSideChainBlockDataListIsMutable();
+          sideChainBlockDataList_.add(index, value);
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.addMessage(index, value);
+          sideChainBlockDataListBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder addSideChainBlockData(
+      public Builder addSideChainBlockDataList(
           io.aelf.protobuf.generated.Client.SideChainBlockData.Builder builderForValue) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(builderForValue.build());
+        if (sideChainBlockDataListBuilder_ == null) {
+          ensureSideChainBlockDataListIsMutable();
+          sideChainBlockDataList_.add(builderForValue.build());
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.addMessage(builderForValue.build());
+          sideChainBlockDataListBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder addSideChainBlockData(
+      public Builder addSideChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder builderForValue) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(index, builderForValue.build());
+        if (sideChainBlockDataListBuilder_ == null) {
+          ensureSideChainBlockDataListIsMutable();
+          sideChainBlockDataList_.add(index, builderForValue.build());
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.addMessage(index, builderForValue.build());
+          sideChainBlockDataListBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder addAllSideChainBlockData(
+      public Builder addAllSideChainBlockDataList(
           java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.SideChainBlockData> values) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
+        if (sideChainBlockDataListBuilder_ == null) {
+          ensureSideChainBlockDataListIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, sideChainBlockData_);
+              values, sideChainBlockDataList_);
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.addAllMessages(values);
+          sideChainBlockDataListBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder clearSideChainBlockData() {
-        if (sideChainBlockDataBuilder_ == null) {
-          sideChainBlockData_ = java.util.Collections.emptyList();
+      public Builder clearSideChainBlockDataList() {
+        if (sideChainBlockDataListBuilder_ == null) {
+          sideChainBlockDataList_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.clear();
+          sideChainBlockDataListBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public Builder removeSideChainBlockData(int index) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.remove(index);
+      public Builder removeSideChainBlockDataList(int index) {
+        if (sideChainBlockDataListBuilder_ == null) {
+          ensureSideChainBlockDataListIsMutable();
+          sideChainBlockDataList_.remove(index);
           onChanged();
         } else {
-          sideChainBlockDataBuilder_.remove(index);
+          sideChainBlockDataListBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder getSideChainBlockDataBuilder(
+      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder getSideChainBlockDataListBuilder(
           int index) {
-        return getSideChainBlockDataFieldBuilder().getBuilder(index);
+        return getSideChainBlockDataListFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataOrBuilder(
+      public io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataListOrBuilder(
           int index) {
-        if (sideChainBlockDataBuilder_ == null) {
-          return sideChainBlockData_.get(index);  } else {
-          return sideChainBlockDataBuilder_.getMessageOrBuilder(index);
+        if (sideChainBlockDataListBuilder_ == null) {
+          return sideChainBlockDataList_.get(index);  } else {
+          return sideChainBlockDataListBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-           getSideChainBlockDataOrBuilderList() {
-        if (sideChainBlockDataBuilder_ != null) {
-          return sideChainBlockDataBuilder_.getMessageOrBuilderList();
+           getSideChainBlockDataListOrBuilderList() {
+        if (sideChainBlockDataListBuilder_ != null) {
+          return sideChainBlockDataListBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(sideChainBlockData_);
+          return java.util.Collections.unmodifiableList(sideChainBlockDataList_);
         }
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder addSideChainBlockDataBuilder() {
-        return getSideChainBlockDataFieldBuilder().addBuilder(
+      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder addSideChainBlockDataListBuilder() {
+        return getSideChainBlockDataListFieldBuilder().addBuilder(
             io.aelf.protobuf.generated.Client.SideChainBlockData.getDefaultInstance());
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder addSideChainBlockDataBuilder(
+      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder addSideChainBlockDataListBuilder(
           int index) {
-        return getSideChainBlockDataFieldBuilder().addBuilder(
+        return getSideChainBlockDataListFieldBuilder().addBuilder(
             index, io.aelf.protobuf.generated.Client.SideChainBlockData.getDefaultInstance());
       }
       /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
+       * <pre>
+       * The side chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .SideChainBlockData side_chain_block_data_list = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData.Builder> 
-           getSideChainBlockDataBuilderList() {
-        return getSideChainBlockDataFieldBuilder().getBuilderList();
+           getSideChainBlockDataListBuilderList() {
+        return getSideChainBlockDataListFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
           io.aelf.protobuf.generated.Client.SideChainBlockData, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder, io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-          getSideChainBlockDataFieldBuilder() {
-        if (sideChainBlockDataBuilder_ == null) {
-          sideChainBlockDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          getSideChainBlockDataListFieldBuilder() {
+        if (sideChainBlockDataListBuilder_ == null) {
+          sideChainBlockDataListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.Client.SideChainBlockData, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder, io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder>(
-                  sideChainBlockData_,
+                  sideChainBlockDataList_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
-          sideChainBlockData_ = null;
+          sideChainBlockDataList_ = null;
         }
-        return sideChainBlockDataBuilder_;
+        return sideChainBlockDataListBuilder_;
       }
 
-      private java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> parentChainBlockData_ =
+      private java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> parentChainBlockDataList_ =
         java.util.Collections.emptyList();
-      private void ensureParentChainBlockDataIsMutable() {
+      private void ensureParentChainBlockDataListIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
-          parentChainBlockData_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ParentChainBlockData>(parentChainBlockData_);
+          parentChainBlockDataList_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.ParentChainBlockData>(parentChainBlockDataList_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          io.aelf.protobuf.generated.Client.ParentChainBlockData, io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder, io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder> parentChainBlockDataBuilder_;
+          io.aelf.protobuf.generated.Client.ParentChainBlockData, io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder, io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder> parentChainBlockDataListBuilder_;
 
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> getParentChainBlockDataList() {
-        if (parentChainBlockDataBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(parentChainBlockData_);
+      public java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData> getParentChainBlockDataListList() {
+        if (parentChainBlockDataListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(parentChainBlockDataList_);
         } else {
-          return parentChainBlockDataBuilder_.getMessageList();
+          return parentChainBlockDataListBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public int getParentChainBlockDataCount() {
-        if (parentChainBlockDataBuilder_ == null) {
-          return parentChainBlockData_.size();
+      public int getParentChainBlockDataListCount() {
+        if (parentChainBlockDataListBuilder_ == null) {
+          return parentChainBlockDataList_.size();
         } else {
-          return parentChainBlockDataBuilder_.getCount();
+          return parentChainBlockDataListBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public io.aelf.protobuf.generated.Client.ParentChainBlockData getParentChainBlockData(int index) {
-        if (parentChainBlockDataBuilder_ == null) {
-          return parentChainBlockData_.get(index);
+      public io.aelf.protobuf.generated.Client.ParentChainBlockData getParentChainBlockDataList(int index) {
+        if (parentChainBlockDataListBuilder_ == null) {
+          return parentChainBlockDataList_.get(index);
         } else {
-          return parentChainBlockDataBuilder_.getMessage(index);
+          return parentChainBlockDataListBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder setParentChainBlockData(
+      public Builder setParentChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.ParentChainBlockData value) {
-        if (parentChainBlockDataBuilder_ == null) {
+        if (parentChainBlockDataListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureParentChainBlockDataIsMutable();
-          parentChainBlockData_.set(index, value);
+          ensureParentChainBlockDataListIsMutable();
+          parentChainBlockDataList_.set(index, value);
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.setMessage(index, value);
+          parentChainBlockDataListBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder setParentChainBlockData(
+      public Builder setParentChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder builderForValue) {
-        if (parentChainBlockDataBuilder_ == null) {
-          ensureParentChainBlockDataIsMutable();
-          parentChainBlockData_.set(index, builderForValue.build());
+        if (parentChainBlockDataListBuilder_ == null) {
+          ensureParentChainBlockDataListIsMutable();
+          parentChainBlockDataList_.set(index, builderForValue.build());
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.setMessage(index, builderForValue.build());
+          parentChainBlockDataListBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder addParentChainBlockData(io.aelf.protobuf.generated.Client.ParentChainBlockData value) {
-        if (parentChainBlockDataBuilder_ == null) {
+      public Builder addParentChainBlockDataList(io.aelf.protobuf.generated.Client.ParentChainBlockData value) {
+        if (parentChainBlockDataListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureParentChainBlockDataIsMutable();
-          parentChainBlockData_.add(value);
+          ensureParentChainBlockDataListIsMutable();
+          parentChainBlockDataList_.add(value);
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.addMessage(value);
+          parentChainBlockDataListBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder addParentChainBlockData(
+      public Builder addParentChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.ParentChainBlockData value) {
-        if (parentChainBlockDataBuilder_ == null) {
+        if (parentChainBlockDataListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureParentChainBlockDataIsMutable();
-          parentChainBlockData_.add(index, value);
+          ensureParentChainBlockDataListIsMutable();
+          parentChainBlockDataList_.add(index, value);
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.addMessage(index, value);
+          parentChainBlockDataListBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder addParentChainBlockData(
+      public Builder addParentChainBlockDataList(
           io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder builderForValue) {
-        if (parentChainBlockDataBuilder_ == null) {
-          ensureParentChainBlockDataIsMutable();
-          parentChainBlockData_.add(builderForValue.build());
+        if (parentChainBlockDataListBuilder_ == null) {
+          ensureParentChainBlockDataListIsMutable();
+          parentChainBlockDataList_.add(builderForValue.build());
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.addMessage(builderForValue.build());
+          parentChainBlockDataListBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder addParentChainBlockData(
+      public Builder addParentChainBlockDataList(
           int index, io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder builderForValue) {
-        if (parentChainBlockDataBuilder_ == null) {
-          ensureParentChainBlockDataIsMutable();
-          parentChainBlockData_.add(index, builderForValue.build());
+        if (parentChainBlockDataListBuilder_ == null) {
+          ensureParentChainBlockDataListIsMutable();
+          parentChainBlockDataList_.add(index, builderForValue.build());
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.addMessage(index, builderForValue.build());
+          parentChainBlockDataListBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder addAllParentChainBlockData(
+      public Builder addAllParentChainBlockDataList(
           java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.ParentChainBlockData> values) {
-        if (parentChainBlockDataBuilder_ == null) {
-          ensureParentChainBlockDataIsMutable();
+        if (parentChainBlockDataListBuilder_ == null) {
+          ensureParentChainBlockDataListIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, parentChainBlockData_);
+              values, parentChainBlockDataList_);
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.addAllMessages(values);
+          parentChainBlockDataListBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder clearParentChainBlockData() {
-        if (parentChainBlockDataBuilder_ == null) {
-          parentChainBlockData_ = java.util.Collections.emptyList();
+      public Builder clearParentChainBlockDataList() {
+        if (parentChainBlockDataListBuilder_ == null) {
+          parentChainBlockDataList_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.clear();
+          parentChainBlockDataListBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public Builder removeParentChainBlockData(int index) {
-        if (parentChainBlockDataBuilder_ == null) {
-          ensureParentChainBlockDataIsMutable();
-          parentChainBlockData_.remove(index);
+      public Builder removeParentChainBlockDataList(int index) {
+        if (parentChainBlockDataListBuilder_ == null) {
+          ensureParentChainBlockDataListIsMutable();
+          parentChainBlockDataList_.remove(index);
           onChanged();
         } else {
-          parentChainBlockDataBuilder_.remove(index);
+          parentChainBlockDataListBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder getParentChainBlockDataBuilder(
+      public io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder getParentChainBlockDataListBuilder(
           int index) {
-        return getParentChainBlockDataFieldBuilder().getBuilder(index);
+        return getParentChainBlockDataListFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder getParentChainBlockDataOrBuilder(
+      public io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder getParentChainBlockDataListOrBuilder(
           int index) {
-        if (parentChainBlockDataBuilder_ == null) {
-          return parentChainBlockData_.get(index);  } else {
-          return parentChainBlockDataBuilder_.getMessageOrBuilder(index);
+        if (parentChainBlockDataListBuilder_ == null) {
+          return parentChainBlockDataList_.get(index);  } else {
+          return parentChainBlockDataListBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder> 
-           getParentChainBlockDataOrBuilderList() {
-        if (parentChainBlockDataBuilder_ != null) {
-          return parentChainBlockDataBuilder_.getMessageOrBuilderList();
+           getParentChainBlockDataListOrBuilderList() {
+        if (parentChainBlockDataListBuilder_ != null) {
+          return parentChainBlockDataListBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(parentChainBlockData_);
+          return java.util.Collections.unmodifiableList(parentChainBlockDataList_);
         }
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder addParentChainBlockDataBuilder() {
-        return getParentChainBlockDataFieldBuilder().addBuilder(
+      public io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder addParentChainBlockDataListBuilder() {
+        return getParentChainBlockDataListFieldBuilder().addBuilder(
             io.aelf.protobuf.generated.Client.ParentChainBlockData.getDefaultInstance());
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
-      public io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder addParentChainBlockDataBuilder(
+      public io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder addParentChainBlockDataListBuilder(
           int index) {
-        return getParentChainBlockDataFieldBuilder().addBuilder(
+        return getParentChainBlockDataListFieldBuilder().addBuilder(
             index, io.aelf.protobuf.generated.Client.ParentChainBlockData.getDefaultInstance());
       }
       /**
-       * <code>repeated .ParentChainBlockData parent_chain_block_data = 2;</code>
+       * <pre>
+       * The parent chain block data list to index.
+       * </pre>
+       *
+       * <code>repeated .ParentChainBlockData parent_chain_block_data_list = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder> 
-           getParentChainBlockDataBuilderList() {
-        return getParentChainBlockDataFieldBuilder().getBuilderList();
+           getParentChainBlockDataListBuilderList() {
+        return getParentChainBlockDataListFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
           io.aelf.protobuf.generated.Client.ParentChainBlockData, io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder, io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder> 
-          getParentChainBlockDataFieldBuilder() {
-        if (parentChainBlockDataBuilder_ == null) {
-          parentChainBlockDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          getParentChainBlockDataListFieldBuilder() {
+        if (parentChainBlockDataListBuilder_ == null) {
+          parentChainBlockDataListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.Client.ParentChainBlockData, io.aelf.protobuf.generated.Client.ParentChainBlockData.Builder, io.aelf.protobuf.generated.Client.ParentChainBlockDataOrBuilder>(
-                  parentChainBlockData_,
+                  parentChainBlockDataList_,
                   ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
-          parentChainBlockData_ = null;
+          parentChainBlockDataList_ = null;
         }
-        return parentChainBlockDataBuilder_;
-      }
-
-      private long previousBlockHeight_ ;
-      /**
-       * <code>int64 previous_block_height = 3;</code>
-       * @return The previousBlockHeight.
-       */
-      public long getPreviousBlockHeight() {
-        return previousBlockHeight_;
-      }
-      /**
-       * <code>int64 previous_block_height = 3;</code>
-       * @param value The previousBlockHeight to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPreviousBlockHeight(long value) {
-        
-        previousBlockHeight_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 previous_block_height = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPreviousBlockHeight() {
-        
-        previousBlockHeight_ = 0L;
-        onChanged();
-        return this;
+        return parentChainBlockDataListBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -15751,42 +19284,74 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The height of side chain block.
+     * </pre>
+     *
      * <code>int64 height = 1;</code>
      * @return The height.
      */
     long getHeight();
 
     /**
+     * <pre>
+     * The hash of side chain block.
+     * </pre>
+     *
      * <code>.Hash block_header_hash = 2;</code>
      * @return Whether the blockHeaderHash field is set.
      */
     boolean hasBlockHeaderHash();
     /**
+     * <pre>
+     * The hash of side chain block.
+     * </pre>
+     *
      * <code>.Hash block_header_hash = 2;</code>
      * @return The blockHeaderHash.
      */
     io.aelf.protobuf.generated.Client.Hash getBlockHeaderHash();
     /**
+     * <pre>
+     * The hash of side chain block.
+     * </pre>
+     *
      * <code>.Hash block_header_hash = 2;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getBlockHeaderHashOrBuilder();
 
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in side chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
      * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     boolean hasTransactionStatusMerkleTreeRoot();
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in side chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
      * @return The transactionStatusMerkleTreeRoot.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot();
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in side chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionStatusMerkleTreeRootOrBuilder();
 
     /**
+     * <pre>
+     * The id of side chain.
+     * </pre>
+     *
      * <code>int32 chain_id = 4;</code>
      * @return The chainId.
      */
@@ -15908,6 +19473,10 @@ public final class Client {
     public static final int HEIGHT_FIELD_NUMBER = 1;
     private long height_;
     /**
+     * <pre>
+     * The height of side chain block.
+     * </pre>
+     *
      * <code>int64 height = 1;</code>
      * @return The height.
      */
@@ -15918,6 +19487,10 @@ public final class Client {
     public static final int BLOCK_HEADER_HASH_FIELD_NUMBER = 2;
     private io.aelf.protobuf.generated.Client.Hash blockHeaderHash_;
     /**
+     * <pre>
+     * The hash of side chain block.
+     * </pre>
+     *
      * <code>.Hash block_header_hash = 2;</code>
      * @return Whether the blockHeaderHash field is set.
      */
@@ -15925,6 +19498,10 @@ public final class Client {
       return blockHeaderHash_ != null;
     }
     /**
+     * <pre>
+     * The hash of side chain block.
+     * </pre>
+     *
      * <code>.Hash block_header_hash = 2;</code>
      * @return The blockHeaderHash.
      */
@@ -15932,6 +19509,10 @@ public final class Client {
       return blockHeaderHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : blockHeaderHash_;
     }
     /**
+     * <pre>
+     * The hash of side chain block.
+     * </pre>
+     *
      * <code>.Hash block_header_hash = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getBlockHeaderHashOrBuilder() {
@@ -15941,6 +19522,10 @@ public final class Client {
     public static final int TRANSACTION_STATUS_MERKLE_TREE_ROOT_FIELD_NUMBER = 3;
     private io.aelf.protobuf.generated.Client.Hash transactionStatusMerkleTreeRoot_;
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in side chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
      * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
@@ -15948,6 +19533,10 @@ public final class Client {
       return transactionStatusMerkleTreeRoot_ != null;
     }
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in side chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
      * @return The transactionStatusMerkleTreeRoot.
      */
@@ -15955,6 +19544,10 @@ public final class Client {
       return transactionStatusMerkleTreeRoot_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionStatusMerkleTreeRoot_;
     }
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in side chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionStatusMerkleTreeRootOrBuilder() {
@@ -15964,6 +19557,10 @@ public final class Client {
     public static final int CHAIN_ID_FIELD_NUMBER = 4;
     private int chainId_;
     /**
+     * <pre>
+     * The id of side chain.
+     * </pre>
+     *
      * <code>int32 chain_id = 4;</code>
      * @return The chainId.
      */
@@ -16353,6 +19950,10 @@ public final class Client {
 
       private long height_ ;
       /**
+       * <pre>
+       * The height of side chain block.
+       * </pre>
+       *
        * <code>int64 height = 1;</code>
        * @return The height.
        */
@@ -16360,6 +19961,10 @@ public final class Client {
         return height_;
       }
       /**
+       * <pre>
+       * The height of side chain block.
+       * </pre>
+       *
        * <code>int64 height = 1;</code>
        * @param value The height to set.
        * @return This builder for chaining.
@@ -16371,6 +19976,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The height of side chain block.
+       * </pre>
+       *
        * <code>int64 height = 1;</code>
        * @return This builder for chaining.
        */
@@ -16385,6 +19994,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> blockHeaderHashBuilder_;
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        * @return Whether the blockHeaderHash field is set.
        */
@@ -16392,6 +20005,10 @@ public final class Client {
         return blockHeaderHashBuilder_ != null || blockHeaderHash_ != null;
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        * @return The blockHeaderHash.
        */
@@ -16403,6 +20020,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        */
       public Builder setBlockHeaderHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -16419,6 +20040,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        */
       public Builder setBlockHeaderHash(
@@ -16433,6 +20058,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        */
       public Builder mergeBlockHeaderHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -16451,6 +20080,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        */
       public Builder clearBlockHeaderHash() {
@@ -16465,6 +20098,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getBlockHeaderHashBuilder() {
@@ -16473,6 +20110,10 @@ public final class Client {
         return getBlockHeaderHashFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getBlockHeaderHashOrBuilder() {
@@ -16484,6 +20125,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The hash of side chain block.
+       * </pre>
+       *
        * <code>.Hash block_header_hash = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -16504,6 +20149,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> transactionStatusMerkleTreeRootBuilder_;
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        * @return Whether the transactionStatusMerkleTreeRoot field is set.
        */
@@ -16511,6 +20160,10 @@ public final class Client {
         return transactionStatusMerkleTreeRootBuilder_ != null || transactionStatusMerkleTreeRoot_ != null;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        * @return The transactionStatusMerkleTreeRoot.
        */
@@ -16522,6 +20175,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        */
       public Builder setTransactionStatusMerkleTreeRoot(io.aelf.protobuf.generated.Client.Hash value) {
@@ -16538,6 +20195,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        */
       public Builder setTransactionStatusMerkleTreeRoot(
@@ -16552,6 +20213,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        */
       public Builder mergeTransactionStatusMerkleTreeRoot(io.aelf.protobuf.generated.Client.Hash value) {
@@ -16570,6 +20235,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        */
       public Builder clearTransactionStatusMerkleTreeRoot() {
@@ -16584,6 +20253,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getTransactionStatusMerkleTreeRootBuilder() {
@@ -16592,6 +20265,10 @@ public final class Client {
         return getTransactionStatusMerkleTreeRootFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionStatusMerkleTreeRootOrBuilder() {
@@ -16603,6 +20280,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in side chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -16621,6 +20302,10 @@ public final class Client {
 
       private int chainId_ ;
       /**
+       * <pre>
+       * The id of side chain.
+       * </pre>
+       *
        * <code>int32 chain_id = 4;</code>
        * @return The chainId.
        */
@@ -16628,6 +20313,10 @@ public final class Client {
         return chainId_;
       }
       /**
+       * <pre>
+       * The id of side chain.
+       * </pre>
+       *
        * <code>int32 chain_id = 4;</code>
        * @param value The chainId to set.
        * @return This builder for chaining.
@@ -16639,6 +20328,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The id of side chain.
+       * </pre>
+       *
        * <code>int32 chain_id = 4;</code>
        * @return This builder for chaining.
        */
@@ -16706,43 +20399,75 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The height of parent chain.
+     * </pre>
+     *
      * <code>int64 height = 1;</code>
      * @return The height.
      */
     long getHeight();
 
     /**
+     * <pre>
+     * The merkle tree root computing from side chain roots.
+     * </pre>
+     *
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
      * @return Whether the crossChainExtraData field is set.
      */
     boolean hasCrossChainExtraData();
     /**
+     * <pre>
+     * The merkle tree root computing from side chain roots.
+     * </pre>
+     *
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
      * @return The crossChainExtraData.
      */
     io.aelf.protobuf.generated.Client.CrossChainExtraData getCrossChainExtraData();
     /**
+     * <pre>
+     * The merkle tree root computing from side chain roots.
+     * </pre>
+     *
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
      */
     io.aelf.protobuf.generated.Client.CrossChainExtraDataOrBuilder getCrossChainExtraDataOrBuilder();
 
     /**
+     * <pre>
+     * The parent chain id.
+     * </pre>
+     *
      * <code>int32 chain_id = 3;</code>
      * @return The chainId.
      */
     int getChainId();
 
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in parent chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
      * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
     boolean hasTransactionStatusMerkleTreeRoot();
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in parent chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
      * @return The transactionStatusMerkleTreeRoot.
      */
     io.aelf.protobuf.generated.Client.Hash getTransactionStatusMerkleTreeRoot();
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in parent chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionStatusMerkleTreeRootOrBuilder();
@@ -16802,10 +20527,18 @@ public final class Client {
         long key);
 
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
     int getExtraDataCount();
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
     boolean containsExtraData(
@@ -16817,11 +20550,19 @@ public final class Client {
     java.util.Map<java.lang.String, com.google.protobuf.ByteString>
     getExtraData();
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
     java.util.Map<java.lang.String, com.google.protobuf.ByteString>
     getExtraDataMap();
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
 
@@ -16829,6 +20570,10 @@ public final class Client {
         java.lang.String key,
         com.google.protobuf.ByteString defaultValue);
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
 
@@ -16992,6 +20737,10 @@ public final class Client {
     public static final int HEIGHT_FIELD_NUMBER = 1;
     private long height_;
     /**
+     * <pre>
+     * The height of parent chain.
+     * </pre>
+     *
      * <code>int64 height = 1;</code>
      * @return The height.
      */
@@ -17002,6 +20751,10 @@ public final class Client {
     public static final int CROSS_CHAIN_EXTRA_DATA_FIELD_NUMBER = 2;
     private io.aelf.protobuf.generated.Client.CrossChainExtraData crossChainExtraData_;
     /**
+     * <pre>
+     * The merkle tree root computing from side chain roots.
+     * </pre>
+     *
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
      * @return Whether the crossChainExtraData field is set.
      */
@@ -17009,6 +20762,10 @@ public final class Client {
       return crossChainExtraData_ != null;
     }
     /**
+     * <pre>
+     * The merkle tree root computing from side chain roots.
+     * </pre>
+     *
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
      * @return The crossChainExtraData.
      */
@@ -17016,6 +20773,10 @@ public final class Client {
       return crossChainExtraData_ == null ? io.aelf.protobuf.generated.Client.CrossChainExtraData.getDefaultInstance() : crossChainExtraData_;
     }
     /**
+     * <pre>
+     * The merkle tree root computing from side chain roots.
+     * </pre>
+     *
      * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.CrossChainExtraDataOrBuilder getCrossChainExtraDataOrBuilder() {
@@ -17025,6 +20786,10 @@ public final class Client {
     public static final int CHAIN_ID_FIELD_NUMBER = 3;
     private int chainId_;
     /**
+     * <pre>
+     * The parent chain id.
+     * </pre>
+     *
      * <code>int32 chain_id = 3;</code>
      * @return The chainId.
      */
@@ -17035,6 +20800,10 @@ public final class Client {
     public static final int TRANSACTION_STATUS_MERKLE_TREE_ROOT_FIELD_NUMBER = 4;
     private io.aelf.protobuf.generated.Client.Hash transactionStatusMerkleTreeRoot_;
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in parent chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
      * @return Whether the transactionStatusMerkleTreeRoot field is set.
      */
@@ -17042,6 +20811,10 @@ public final class Client {
       return transactionStatusMerkleTreeRoot_ != null;
     }
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in parent chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
      * @return The transactionStatusMerkleTreeRoot.
      */
@@ -17049,6 +20822,10 @@ public final class Client {
       return transactionStatusMerkleTreeRoot_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionStatusMerkleTreeRoot_;
     }
     /**
+     * <pre>
+     * The merkle tree root computing from transactions status in parent chain block.
+     * </pre>
+     *
      * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionStatusMerkleTreeRootOrBuilder() {
@@ -17174,6 +20951,10 @@ public final class Client {
       return internalGetExtraData().getMap().size();
     }
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
 
@@ -17190,6 +20971,10 @@ public final class Client {
       return getExtraDataMap();
     }
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
 
@@ -17197,6 +20982,10 @@ public final class Client {
       return internalGetExtraData().getMap();
     }
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
 
@@ -17209,6 +20998,10 @@ public final class Client {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
+     * <pre>
+     * Extra data map.
+     * </pre>
+     *
      * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
      */
 
@@ -17687,6 +21480,10 @@ public final class Client {
 
       private long height_ ;
       /**
+       * <pre>
+       * The height of parent chain.
+       * </pre>
+       *
        * <code>int64 height = 1;</code>
        * @return The height.
        */
@@ -17694,6 +21491,10 @@ public final class Client {
         return height_;
       }
       /**
+       * <pre>
+       * The height of parent chain.
+       * </pre>
+       *
        * <code>int64 height = 1;</code>
        * @param value The height to set.
        * @return This builder for chaining.
@@ -17705,6 +21506,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The height of parent chain.
+       * </pre>
+       *
        * <code>int64 height = 1;</code>
        * @return This builder for chaining.
        */
@@ -17719,6 +21524,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.CrossChainExtraData, io.aelf.protobuf.generated.Client.CrossChainExtraData.Builder, io.aelf.protobuf.generated.Client.CrossChainExtraDataOrBuilder> crossChainExtraDataBuilder_;
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        * @return Whether the crossChainExtraData field is set.
        */
@@ -17726,6 +21535,10 @@ public final class Client {
         return crossChainExtraDataBuilder_ != null || crossChainExtraData_ != null;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        * @return The crossChainExtraData.
        */
@@ -17737,6 +21550,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        */
       public Builder setCrossChainExtraData(io.aelf.protobuf.generated.Client.CrossChainExtraData value) {
@@ -17753,6 +21570,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        */
       public Builder setCrossChainExtraData(
@@ -17767,6 +21588,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        */
       public Builder mergeCrossChainExtraData(io.aelf.protobuf.generated.Client.CrossChainExtraData value) {
@@ -17785,6 +21610,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        */
       public Builder clearCrossChainExtraData() {
@@ -17799,6 +21628,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.CrossChainExtraData.Builder getCrossChainExtraDataBuilder() {
@@ -17807,6 +21640,10 @@ public final class Client {
         return getCrossChainExtraDataFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.CrossChainExtraDataOrBuilder getCrossChainExtraDataOrBuilder() {
@@ -17818,6 +21655,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle tree root computing from side chain roots.
+       * </pre>
+       *
        * <code>.CrossChainExtraData cross_chain_extra_data = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -17836,6 +21677,10 @@ public final class Client {
 
       private int chainId_ ;
       /**
+       * <pre>
+       * The parent chain id.
+       * </pre>
+       *
        * <code>int32 chain_id = 3;</code>
        * @return The chainId.
        */
@@ -17843,6 +21688,10 @@ public final class Client {
         return chainId_;
       }
       /**
+       * <pre>
+       * The parent chain id.
+       * </pre>
+       *
        * <code>int32 chain_id = 3;</code>
        * @param value The chainId to set.
        * @return This builder for chaining.
@@ -17854,6 +21703,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The parent chain id.
+       * </pre>
+       *
        * <code>int32 chain_id = 3;</code>
        * @return This builder for chaining.
        */
@@ -17868,6 +21721,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> transactionStatusMerkleTreeRootBuilder_;
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        * @return Whether the transactionStatusMerkleTreeRoot field is set.
        */
@@ -17875,6 +21732,10 @@ public final class Client {
         return transactionStatusMerkleTreeRootBuilder_ != null || transactionStatusMerkleTreeRoot_ != null;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        * @return The transactionStatusMerkleTreeRoot.
        */
@@ -17886,6 +21747,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        */
       public Builder setTransactionStatusMerkleTreeRoot(io.aelf.protobuf.generated.Client.Hash value) {
@@ -17902,6 +21767,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        */
       public Builder setTransactionStatusMerkleTreeRoot(
@@ -17916,6 +21785,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        */
       public Builder mergeTransactionStatusMerkleTreeRoot(io.aelf.protobuf.generated.Client.Hash value) {
@@ -17934,6 +21807,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        */
       public Builder clearTransactionStatusMerkleTreeRoot() {
@@ -17948,6 +21825,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getTransactionStatusMerkleTreeRootBuilder() {
@@ -17956,6 +21837,10 @@ public final class Client {
         return getTransactionStatusMerkleTreeRootFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionStatusMerkleTreeRootOrBuilder() {
@@ -17967,6 +21852,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle tree root computing from transactions status in parent chain block.
+       * </pre>
+       *
        * <code>.Hash transaction_status_merkle_tree_root = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -18161,6 +22050,10 @@ public final class Client {
         return internalGetExtraData().getMap().size();
       }
       /**
+       * <pre>
+       * Extra data map.
+       * </pre>
+       *
        * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
        */
 
@@ -18177,6 +22070,10 @@ public final class Client {
         return getExtraDataMap();
       }
       /**
+       * <pre>
+       * Extra data map.
+       * </pre>
+       *
        * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
        */
 
@@ -18184,6 +22081,10 @@ public final class Client {
         return internalGetExtraData().getMap();
       }
       /**
+       * <pre>
+       * Extra data map.
+       * </pre>
+       *
        * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
        */
 
@@ -18196,6 +22097,10 @@ public final class Client {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
+       * <pre>
+       * Extra data map.
+       * </pre>
+       *
        * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
        */
 
@@ -18216,6 +22121,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * Extra data map.
+       * </pre>
+       *
        * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
        */
 
@@ -18235,6 +22144,10 @@ public final class Client {
         return internalGetMutableExtraData().getMutableMap();
       }
       /**
+       * <pre>
+       * Extra data map.
+       * </pre>
+       *
        * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
        */
       public Builder putExtraData(
@@ -18247,6 +22160,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * Extra data map.
+       * </pre>
+       *
        * <code>map&lt;string, bytes&gt; extra_data = 6;</code>
        */
 
@@ -18987,815 +22904,43 @@ public final class Client {
 
   }
 
-  public interface IndexedSideChainBlockDataOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:IndexedSideChainBlockData)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> 
-        getSideChainBlockDataList();
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockData(int index);
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    int getSideChainBlockDataCount();
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-        getSideChainBlockDataOrBuilderList();
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code IndexedSideChainBlockData}
-   */
-  public  static final class IndexedSideChainBlockData extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:IndexedSideChainBlockData)
-      IndexedSideChainBlockDataOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use IndexedSideChainBlockData.newBuilder() to construct.
-    private IndexedSideChainBlockData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private IndexedSideChainBlockData() {
-      sideChainBlockData_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new IndexedSideChainBlockData();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private IndexedSideChainBlockData(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                sideChainBlockData_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainBlockData>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              sideChainBlockData_.add(
-                  input.readMessage(io.aelf.protobuf.generated.Client.SideChainBlockData.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          sideChainBlockData_ = java.util.Collections.unmodifiableList(sideChainBlockData_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return io.aelf.protobuf.generated.Client.internal_static_IndexedSideChainBlockData_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return io.aelf.protobuf.generated.Client.internal_static_IndexedSideChainBlockData_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              io.aelf.protobuf.generated.Client.IndexedSideChainBlockData.class, io.aelf.protobuf.generated.Client.IndexedSideChainBlockData.Builder.class);
-    }
-
-    public static final int SIDE_CHAIN_BLOCK_DATA_FIELD_NUMBER = 1;
-    private java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> sideChainBlockData_;
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> getSideChainBlockDataList() {
-      return sideChainBlockData_;
-    }
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-        getSideChainBlockDataOrBuilderList() {
-      return sideChainBlockData_;
-    }
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    public int getSideChainBlockDataCount() {
-      return sideChainBlockData_.size();
-    }
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    public io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockData(int index) {
-      return sideChainBlockData_.get(index);
-    }
-    /**
-     * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-     */
-    public io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataOrBuilder(
-        int index) {
-      return sideChainBlockData_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      for (int i = 0; i < sideChainBlockData_.size(); i++) {
-        output.writeMessage(1, sideChainBlockData_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < sideChainBlockData_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, sideChainBlockData_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof io.aelf.protobuf.generated.Client.IndexedSideChainBlockData)) {
-        return super.equals(obj);
-      }
-      io.aelf.protobuf.generated.Client.IndexedSideChainBlockData other = (io.aelf.protobuf.generated.Client.IndexedSideChainBlockData) obj;
-
-      if (!getSideChainBlockDataList()
-          .equals(other.getSideChainBlockDataList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getSideChainBlockDataCount() > 0) {
-        hash = (37 * hash) + SIDE_CHAIN_BLOCK_DATA_FIELD_NUMBER;
-        hash = (53 * hash) + getSideChainBlockDataList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(io.aelf.protobuf.generated.Client.IndexedSideChainBlockData prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code IndexedSideChainBlockData}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:IndexedSideChainBlockData)
-        io.aelf.protobuf.generated.Client.IndexedSideChainBlockDataOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return io.aelf.protobuf.generated.Client.internal_static_IndexedSideChainBlockData_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return io.aelf.protobuf.generated.Client.internal_static_IndexedSideChainBlockData_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                io.aelf.protobuf.generated.Client.IndexedSideChainBlockData.class, io.aelf.protobuf.generated.Client.IndexedSideChainBlockData.Builder.class);
-      }
-
-      // Construct using io.aelf.protobuf.generated.Client.IndexedSideChainBlockData.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getSideChainBlockDataFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (sideChainBlockDataBuilder_ == null) {
-          sideChainBlockData_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          sideChainBlockDataBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return io.aelf.protobuf.generated.Client.internal_static_IndexedSideChainBlockData_descriptor;
-      }
-
-      @java.lang.Override
-      public io.aelf.protobuf.generated.Client.IndexedSideChainBlockData getDefaultInstanceForType() {
-        return io.aelf.protobuf.generated.Client.IndexedSideChainBlockData.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public io.aelf.protobuf.generated.Client.IndexedSideChainBlockData build() {
-        io.aelf.protobuf.generated.Client.IndexedSideChainBlockData result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public io.aelf.protobuf.generated.Client.IndexedSideChainBlockData buildPartial() {
-        io.aelf.protobuf.generated.Client.IndexedSideChainBlockData result = new io.aelf.protobuf.generated.Client.IndexedSideChainBlockData(this);
-        int from_bitField0_ = bitField0_;
-        if (sideChainBlockDataBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            sideChainBlockData_ = java.util.Collections.unmodifiableList(sideChainBlockData_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.sideChainBlockData_ = sideChainBlockData_;
-        } else {
-          result.sideChainBlockData_ = sideChainBlockDataBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.aelf.protobuf.generated.Client.IndexedSideChainBlockData) {
-          return mergeFrom((io.aelf.protobuf.generated.Client.IndexedSideChainBlockData)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(io.aelf.protobuf.generated.Client.IndexedSideChainBlockData other) {
-        if (other == io.aelf.protobuf.generated.Client.IndexedSideChainBlockData.getDefaultInstance()) return this;
-        if (sideChainBlockDataBuilder_ == null) {
-          if (!other.sideChainBlockData_.isEmpty()) {
-            if (sideChainBlockData_.isEmpty()) {
-              sideChainBlockData_ = other.sideChainBlockData_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureSideChainBlockDataIsMutable();
-              sideChainBlockData_.addAll(other.sideChainBlockData_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.sideChainBlockData_.isEmpty()) {
-            if (sideChainBlockDataBuilder_.isEmpty()) {
-              sideChainBlockDataBuilder_.dispose();
-              sideChainBlockDataBuilder_ = null;
-              sideChainBlockData_ = other.sideChainBlockData_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              sideChainBlockDataBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getSideChainBlockDataFieldBuilder() : null;
-            } else {
-              sideChainBlockDataBuilder_.addAllMessages(other.sideChainBlockData_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        io.aelf.protobuf.generated.Client.IndexedSideChainBlockData parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Client.IndexedSideChainBlockData) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> sideChainBlockData_ =
-        java.util.Collections.emptyList();
-      private void ensureSideChainBlockDataIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          sideChainBlockData_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainBlockData>(sideChainBlockData_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          io.aelf.protobuf.generated.Client.SideChainBlockData, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder, io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> sideChainBlockDataBuilder_;
-
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData> getSideChainBlockDataList() {
-        if (sideChainBlockDataBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(sideChainBlockData_);
-        } else {
-          return sideChainBlockDataBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public int getSideChainBlockDataCount() {
-        if (sideChainBlockDataBuilder_ == null) {
-          return sideChainBlockData_.size();
-        } else {
-          return sideChainBlockDataBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData getSideChainBlockData(int index) {
-        if (sideChainBlockDataBuilder_ == null) {
-          return sideChainBlockData_.get(index);
-        } else {
-          return sideChainBlockDataBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder setSideChainBlockData(
-          int index, io.aelf.protobuf.generated.Client.SideChainBlockData value) {
-        if (sideChainBlockDataBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.set(index, value);
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder setSideChainBlockData(
-          int index, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder builderForValue) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder addSideChainBlockData(io.aelf.protobuf.generated.Client.SideChainBlockData value) {
-        if (sideChainBlockDataBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(value);
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder addSideChainBlockData(
-          int index, io.aelf.protobuf.generated.Client.SideChainBlockData value) {
-        if (sideChainBlockDataBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(index, value);
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder addSideChainBlockData(
-          io.aelf.protobuf.generated.Client.SideChainBlockData.Builder builderForValue) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(builderForValue.build());
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder addSideChainBlockData(
-          int index, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder builderForValue) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder addAllSideChainBlockData(
-          java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.SideChainBlockData> values) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, sideChainBlockData_);
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder clearSideChainBlockData() {
-        if (sideChainBlockDataBuilder_ == null) {
-          sideChainBlockData_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public Builder removeSideChainBlockData(int index) {
-        if (sideChainBlockDataBuilder_ == null) {
-          ensureSideChainBlockDataIsMutable();
-          sideChainBlockData_.remove(index);
-          onChanged();
-        } else {
-          sideChainBlockDataBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder getSideChainBlockDataBuilder(
-          int index) {
-        return getSideChainBlockDataFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder getSideChainBlockDataOrBuilder(
-          int index) {
-        if (sideChainBlockDataBuilder_ == null) {
-          return sideChainBlockData_.get(index);  } else {
-          return sideChainBlockDataBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-           getSideChainBlockDataOrBuilderList() {
-        if (sideChainBlockDataBuilder_ != null) {
-          return sideChainBlockDataBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(sideChainBlockData_);
-        }
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder addSideChainBlockDataBuilder() {
-        return getSideChainBlockDataFieldBuilder().addBuilder(
-            io.aelf.protobuf.generated.Client.SideChainBlockData.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public io.aelf.protobuf.generated.Client.SideChainBlockData.Builder addSideChainBlockDataBuilder(
-          int index) {
-        return getSideChainBlockDataFieldBuilder().addBuilder(
-            index, io.aelf.protobuf.generated.Client.SideChainBlockData.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .SideChainBlockData side_chain_block_data = 1;</code>
-       */
-      public java.util.List<io.aelf.protobuf.generated.Client.SideChainBlockData.Builder> 
-           getSideChainBlockDataBuilderList() {
-        return getSideChainBlockDataFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          io.aelf.protobuf.generated.Client.SideChainBlockData, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder, io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder> 
-          getSideChainBlockDataFieldBuilder() {
-        if (sideChainBlockDataBuilder_ == null) {
-          sideChainBlockDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              io.aelf.protobuf.generated.Client.SideChainBlockData, io.aelf.protobuf.generated.Client.SideChainBlockData.Builder, io.aelf.protobuf.generated.Client.SideChainBlockDataOrBuilder>(
-                  sideChainBlockData_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          sideChainBlockData_ = null;
-        }
-        return sideChainBlockDataBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:IndexedSideChainBlockData)
-    }
-
-    // @@protoc_insertion_point(class_scope:IndexedSideChainBlockData)
-    private static final io.aelf.protobuf.generated.Client.IndexedSideChainBlockData DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.IndexedSideChainBlockData();
-    }
-
-    public static io.aelf.protobuf.generated.Client.IndexedSideChainBlockData getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<IndexedSideChainBlockData>
-        PARSER = new com.google.protobuf.AbstractParser<IndexedSideChainBlockData>() {
-      @java.lang.Override
-      public IndexedSideChainBlockData parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new IndexedSideChainBlockData(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<IndexedSideChainBlockData> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<IndexedSideChainBlockData> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public io.aelf.protobuf.generated.Client.IndexedSideChainBlockData getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface CrossChainMerkleProofContextOrBuilder extends
       // @@protoc_insertion_point(interface_extends:CrossChainMerkleProofContext)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The height of parent chain bound up with side chain.
+     * </pre>
+     *
      * <code>int64 bound_parent_chain_height = 1;</code>
      * @return The boundParentChainHeight.
      */
     long getBoundParentChainHeight();
 
     /**
+     * <pre>
+     * The merkle path generated from parent chain.
+     * </pre>
+     *
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
      * @return Whether the merklePathFromParentChain field is set.
      */
     boolean hasMerklePathFromParentChain();
     /**
+     * <pre>
+     * The merkle path generated from parent chain.
+     * </pre>
+     *
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
      * @return The merklePathFromParentChain.
      */
     io.aelf.protobuf.generated.Client.MerklePath getMerklePathFromParentChain();
     /**
+     * <pre>
+     * The merkle path generated from parent chain.
+     * </pre>
+     *
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
      */
     io.aelf.protobuf.generated.Client.MerklePathOrBuilder getMerklePathFromParentChainOrBuilder();
@@ -19898,6 +23043,10 @@ public final class Client {
     public static final int BOUND_PARENT_CHAIN_HEIGHT_FIELD_NUMBER = 1;
     private long boundParentChainHeight_;
     /**
+     * <pre>
+     * The height of parent chain bound up with side chain.
+     * </pre>
+     *
      * <code>int64 bound_parent_chain_height = 1;</code>
      * @return The boundParentChainHeight.
      */
@@ -19908,6 +23057,10 @@ public final class Client {
     public static final int MERKLE_PATH_FROM_PARENT_CHAIN_FIELD_NUMBER = 2;
     private io.aelf.protobuf.generated.Client.MerklePath merklePathFromParentChain_;
     /**
+     * <pre>
+     * The merkle path generated from parent chain.
+     * </pre>
+     *
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
      * @return Whether the merklePathFromParentChain field is set.
      */
@@ -19915,6 +23068,10 @@ public final class Client {
       return merklePathFromParentChain_ != null;
     }
     /**
+     * <pre>
+     * The merkle path generated from parent chain.
+     * </pre>
+     *
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
      * @return The merklePathFromParentChain.
      */
@@ -19922,6 +23079,10 @@ public final class Client {
       return merklePathFromParentChain_ == null ? io.aelf.protobuf.generated.Client.MerklePath.getDefaultInstance() : merklePathFromParentChain_;
     }
     /**
+     * <pre>
+     * The merkle path generated from parent chain.
+     * </pre>
+     *
      * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.MerklePathOrBuilder getMerklePathFromParentChainOrBuilder() {
@@ -20263,6 +23424,10 @@ public final class Client {
 
       private long boundParentChainHeight_ ;
       /**
+       * <pre>
+       * The height of parent chain bound up with side chain.
+       * </pre>
+       *
        * <code>int64 bound_parent_chain_height = 1;</code>
        * @return The boundParentChainHeight.
        */
@@ -20270,6 +23435,10 @@ public final class Client {
         return boundParentChainHeight_;
       }
       /**
+       * <pre>
+       * The height of parent chain bound up with side chain.
+       * </pre>
+       *
        * <code>int64 bound_parent_chain_height = 1;</code>
        * @param value The boundParentChainHeight to set.
        * @return This builder for chaining.
@@ -20281,6 +23450,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The height of parent chain bound up with side chain.
+       * </pre>
+       *
        * <code>int64 bound_parent_chain_height = 1;</code>
        * @return This builder for chaining.
        */
@@ -20295,6 +23468,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.MerklePath, io.aelf.protobuf.generated.Client.MerklePath.Builder, io.aelf.protobuf.generated.Client.MerklePathOrBuilder> merklePathFromParentChainBuilder_;
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        * @return Whether the merklePathFromParentChain field is set.
        */
@@ -20302,6 +23479,10 @@ public final class Client {
         return merklePathFromParentChainBuilder_ != null || merklePathFromParentChain_ != null;
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        * @return The merklePathFromParentChain.
        */
@@ -20313,6 +23494,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        */
       public Builder setMerklePathFromParentChain(io.aelf.protobuf.generated.Client.MerklePath value) {
@@ -20329,6 +23514,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        */
       public Builder setMerklePathFromParentChain(
@@ -20343,6 +23532,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        */
       public Builder mergeMerklePathFromParentChain(io.aelf.protobuf.generated.Client.MerklePath value) {
@@ -20361,6 +23554,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        */
       public Builder clearMerklePathFromParentChain() {
@@ -20375,6 +23572,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MerklePath.Builder getMerklePathFromParentChainBuilder() {
@@ -20383,6 +23584,10 @@ public final class Client {
         return getMerklePathFromParentChainFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MerklePathOrBuilder getMerklePathFromParentChainOrBuilder() {
@@ -20394,6 +23599,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The merkle path generated from parent chain.
+       * </pre>
+       *
        * <code>.MerklePath merkle_path_from_parent_chain = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -20467,81 +23676,206 @@ public final class Client {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The id of side chain.
+     * </pre>
+     *
      * <code>int32 chain_id = 1;</code>
      * @return The chainId.
      */
     int getChainId();
 
     /**
+     * <pre>
+     * The side chain creator.
+     * </pre>
+     *
      * <code>.Address creator = 2;</code>
      * @return Whether the creator field is set.
      */
     boolean hasCreator();
     /**
+     * <pre>
+     * The side chain creator.
+     * </pre>
+     *
      * <code>.Address creator = 2;</code>
      * @return The creator.
      */
     io.aelf.protobuf.generated.Client.Address getCreator();
     /**
+     * <pre>
+     * The side chain creator.
+     * </pre>
+     *
      * <code>.Address creator = 2;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getCreatorOrBuilder();
 
     /**
+     * <pre>
+     * The timestamp for side chain creation.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
      * @return Whether the creationTimestamp field is set.
      */
     boolean hasCreationTimestamp();
     /**
+     * <pre>
+     * The timestamp for side chain creation.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
      * @return The creationTimestamp.
      */
     com.google.protobuf.Timestamp getCreationTimestamp();
     /**
+     * <pre>
+     * The timestamp for side chain creation.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getCreationTimestampOrBuilder();
 
     /**
-     * <code>repeated bytes extra_information = 4;</code>
-     * @return A list containing the extraInformation.
-     */
-    java.util.List<com.google.protobuf.ByteString> getExtraInformationList();
-    /**
-     * <code>repeated bytes extra_information = 4;</code>
-     * @return The count of extraInformation.
-     */
-    int getExtraInformationCount();
-    /**
-     * <code>repeated bytes extra_information = 4;</code>
-     * @param index The index of the element to return.
-     * @return The extraInformation at the given index.
-     */
-    com.google.protobuf.ByteString getExtraInformation(int index);
-
-    /**
-     * <code>int64 creation_height_on_parent_chain = 5;</code>
+     * <pre>
+     * The height of side chain creation on parent chain.
+     * </pre>
+     *
+     * <code>int64 creation_height_on_parent_chain = 4;</code>
      * @return The creationHeightOnParentChain.
      */
     long getCreationHeightOnParentChain();
 
     /**
-     * <code>bool chain_creator_privilege_preserved = 6;</code>
+     * <pre>
+     * Creator privilege boolean flag: True if chain creator privilege preserved, otherwise false.
+     * </pre>
+     *
+     * <code>bool chain_creator_privilege_preserved = 5;</code>
      * @return The chainCreatorPrivilegePreserved.
      */
     boolean getChainCreatorPrivilegePreserved();
 
     /**
-     * <code>string side_chain_token_symbol = 7;</code>
-     * @return The sideChainTokenSymbol.
+     * <pre>
+     * Parent chain token contract address.
+     * </pre>
+     *
+     * <code>.Address parent_chain_token_contract_address = 6;</code>
+     * @return Whether the parentChainTokenContractAddress field is set.
      */
-    java.lang.String getSideChainTokenSymbol();
+    boolean hasParentChainTokenContractAddress();
     /**
-     * <code>string side_chain_token_symbol = 7;</code>
-     * @return The bytes for sideChainTokenSymbol.
+     * <pre>
+     * Parent chain token contract address.
+     * </pre>
+     *
+     * <code>.Address parent_chain_token_contract_address = 6;</code>
+     * @return The parentChainTokenContractAddress.
      */
-    com.google.protobuf.ByteString
-        getSideChainTokenSymbolBytes();
+    io.aelf.protobuf.generated.Client.Address getParentChainTokenContractAddress();
+    /**
+     * <pre>
+     * Parent chain token contract address.
+     * </pre>
+     *
+     * <code>.Address parent_chain_token_contract_address = 6;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getParentChainTokenContractAddressOrBuilder();
+
+    /**
+     * <pre>
+     * Initial consensus information.
+     * </pre>
+     *
+     * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+     * @return Whether the chainInitializationConsensusInfo field is set.
+     */
+    boolean hasChainInitializationConsensusInfo();
+    /**
+     * <pre>
+     * Initial consensus information.
+     * </pre>
+     *
+     * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+     * @return The chainInitializationConsensusInfo.
+     */
+    io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo getChainInitializationConsensusInfo();
+    /**
+     * <pre>
+     * Initial consensus information.
+     * </pre>
+     *
+     * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+     */
+    io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfoOrBuilder getChainInitializationConsensusInfoOrBuilder();
+
+    /**
+     * <pre>
+     * The native token info.
+     * </pre>
+     *
+     * <code>bytes native_token_info_data = 8;</code>
+     * @return The nativeTokenInfoData.
+     */
+    com.google.protobuf.ByteString getNativeTokenInfoData();
+
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+     * @return Whether the resourceTokenInfo field is set.
+     */
+    boolean hasResourceTokenInfo();
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+     * @return The resourceTokenInfo.
+     */
+    io.aelf.protobuf.generated.Client.ResourceTokenInfo getResourceTokenInfo();
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+     */
+    io.aelf.protobuf.generated.Client.ResourceTokenInfoOrBuilder getResourceTokenInfoOrBuilder();
+
+    /**
+     * <pre>
+     * The chain primary token information.
+     * </pre>
+     *
+     * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+     * @return Whether the chainPrimaryTokenInfo field is set.
+     */
+    boolean hasChainPrimaryTokenInfo();
+    /**
+     * <pre>
+     * The chain primary token information.
+     * </pre>
+     *
+     * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+     * @return The chainPrimaryTokenInfo.
+     */
+    io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo getChainPrimaryTokenInfo();
+    /**
+     * <pre>
+     * The chain primary token information.
+     * </pre>
+     *
+     * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+     */
+    io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfoOrBuilder getChainPrimaryTokenInfoOrBuilder();
   }
   /**
    * Protobuf type {@code ChainInitializationData}
@@ -20556,8 +23890,7 @@ public final class Client {
       super(builder);
     }
     private ChainInitializationData() {
-      extraInformation_ = java.util.Collections.emptyList();
-      sideChainTokenSymbol_ = "";
+      nativeTokenInfoData_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -20580,7 +23913,6 @@ public final class Client {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -20622,28 +23954,71 @@ public final class Client {
 
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                extraInformation_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              extraInformation_.add(input.readBytes());
-              break;
-            }
-            case 40: {
+            case 32: {
 
               creationHeightOnParentChain_ = input.readInt64();
               break;
             }
-            case 48: {
+            case 40: {
 
               chainCreatorPrivilegePreserved_ = input.readBool();
               break;
             }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 50: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (parentChainTokenContractAddress_ != null) {
+                subBuilder = parentChainTokenContractAddress_.toBuilder();
+              }
+              parentChainTokenContractAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(parentChainTokenContractAddress_);
+                parentChainTokenContractAddress_ = subBuilder.buildPartial();
+              }
 
-              sideChainTokenSymbol_ = s;
+              break;
+            }
+            case 58: {
+              io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder subBuilder = null;
+              if (chainInitializationConsensusInfo_ != null) {
+                subBuilder = chainInitializationConsensusInfo_.toBuilder();
+              }
+              chainInitializationConsensusInfo_ = input.readMessage(io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(chainInitializationConsensusInfo_);
+                chainInitializationConsensusInfo_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 66: {
+
+              nativeTokenInfoData_ = input.readBytes();
+              break;
+            }
+            case 74: {
+              io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder subBuilder = null;
+              if (resourceTokenInfo_ != null) {
+                subBuilder = resourceTokenInfo_.toBuilder();
+              }
+              resourceTokenInfo_ = input.readMessage(io.aelf.protobuf.generated.Client.ResourceTokenInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(resourceTokenInfo_);
+                resourceTokenInfo_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 82: {
+              io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder subBuilder = null;
+              if (chainPrimaryTokenInfo_ != null) {
+                subBuilder = chainPrimaryTokenInfo_.toBuilder();
+              }
+              chainPrimaryTokenInfo_ = input.readMessage(io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(chainPrimaryTokenInfo_);
+                chainPrimaryTokenInfo_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -20661,9 +24036,6 @@ public final class Client {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          extraInformation_ = java.util.Collections.unmodifiableList(extraInformation_); // C
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -20684,6 +24056,10 @@ public final class Client {
     public static final int CHAIN_ID_FIELD_NUMBER = 1;
     private int chainId_;
     /**
+     * <pre>
+     * The id of side chain.
+     * </pre>
+     *
      * <code>int32 chain_id = 1;</code>
      * @return The chainId.
      */
@@ -20694,6 +24070,10 @@ public final class Client {
     public static final int CREATOR_FIELD_NUMBER = 2;
     private io.aelf.protobuf.generated.Client.Address creator_;
     /**
+     * <pre>
+     * The side chain creator.
+     * </pre>
+     *
      * <code>.Address creator = 2;</code>
      * @return Whether the creator field is set.
      */
@@ -20701,6 +24081,10 @@ public final class Client {
       return creator_ != null;
     }
     /**
+     * <pre>
+     * The side chain creator.
+     * </pre>
+     *
      * <code>.Address creator = 2;</code>
      * @return The creator.
      */
@@ -20708,6 +24092,10 @@ public final class Client {
       return creator_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : creator_;
     }
     /**
+     * <pre>
+     * The side chain creator.
+     * </pre>
+     *
      * <code>.Address creator = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getCreatorOrBuilder() {
@@ -20717,6 +24105,10 @@ public final class Client {
     public static final int CREATION_TIMESTAMP_FIELD_NUMBER = 3;
     private com.google.protobuf.Timestamp creationTimestamp_;
     /**
+     * <pre>
+     * The timestamp for side chain creation.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
      * @return Whether the creationTimestamp field is set.
      */
@@ -20724,6 +24116,10 @@ public final class Client {
       return creationTimestamp_ != null;
     }
     /**
+     * <pre>
+     * The timestamp for side chain creation.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
      * @return The creationTimestamp.
      */
@@ -20731,92 +24127,196 @@ public final class Client {
       return creationTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : creationTimestamp_;
     }
     /**
+     * <pre>
+     * The timestamp for side chain creation.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getCreationTimestampOrBuilder() {
       return getCreationTimestamp();
     }
 
-    public static final int EXTRA_INFORMATION_FIELD_NUMBER = 4;
-    private java.util.List<com.google.protobuf.ByteString> extraInformation_;
-    /**
-     * <code>repeated bytes extra_information = 4;</code>
-     * @return A list containing the extraInformation.
-     */
-    public java.util.List<com.google.protobuf.ByteString>
-        getExtraInformationList() {
-      return extraInformation_;
-    }
-    /**
-     * <code>repeated bytes extra_information = 4;</code>
-     * @return The count of extraInformation.
-     */
-    public int getExtraInformationCount() {
-      return extraInformation_.size();
-    }
-    /**
-     * <code>repeated bytes extra_information = 4;</code>
-     * @param index The index of the element to return.
-     * @return The extraInformation at the given index.
-     */
-    public com.google.protobuf.ByteString getExtraInformation(int index) {
-      return extraInformation_.get(index);
-    }
-
-    public static final int CREATION_HEIGHT_ON_PARENT_CHAIN_FIELD_NUMBER = 5;
+    public static final int CREATION_HEIGHT_ON_PARENT_CHAIN_FIELD_NUMBER = 4;
     private long creationHeightOnParentChain_;
     /**
-     * <code>int64 creation_height_on_parent_chain = 5;</code>
+     * <pre>
+     * The height of side chain creation on parent chain.
+     * </pre>
+     *
+     * <code>int64 creation_height_on_parent_chain = 4;</code>
      * @return The creationHeightOnParentChain.
      */
     public long getCreationHeightOnParentChain() {
       return creationHeightOnParentChain_;
     }
 
-    public static final int CHAIN_CREATOR_PRIVILEGE_PRESERVED_FIELD_NUMBER = 6;
+    public static final int CHAIN_CREATOR_PRIVILEGE_PRESERVED_FIELD_NUMBER = 5;
     private boolean chainCreatorPrivilegePreserved_;
     /**
-     * <code>bool chain_creator_privilege_preserved = 6;</code>
+     * <pre>
+     * Creator privilege boolean flag: True if chain creator privilege preserved, otherwise false.
+     * </pre>
+     *
+     * <code>bool chain_creator_privilege_preserved = 5;</code>
      * @return The chainCreatorPrivilegePreserved.
      */
     public boolean getChainCreatorPrivilegePreserved() {
       return chainCreatorPrivilegePreserved_;
     }
 
-    public static final int SIDE_CHAIN_TOKEN_SYMBOL_FIELD_NUMBER = 7;
-    private volatile java.lang.Object sideChainTokenSymbol_;
+    public static final int PARENT_CHAIN_TOKEN_CONTRACT_ADDRESS_FIELD_NUMBER = 6;
+    private io.aelf.protobuf.generated.Client.Address parentChainTokenContractAddress_;
     /**
-     * <code>string side_chain_token_symbol = 7;</code>
-     * @return The sideChainTokenSymbol.
+     * <pre>
+     * Parent chain token contract address.
+     * </pre>
+     *
+     * <code>.Address parent_chain_token_contract_address = 6;</code>
+     * @return Whether the parentChainTokenContractAddress field is set.
      */
-    public java.lang.String getSideChainTokenSymbol() {
-      java.lang.Object ref = sideChainTokenSymbol_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sideChainTokenSymbol_ = s;
-        return s;
-      }
+    public boolean hasParentChainTokenContractAddress() {
+      return parentChainTokenContractAddress_ != null;
     }
     /**
-     * <code>string side_chain_token_symbol = 7;</code>
-     * @return The bytes for sideChainTokenSymbol.
+     * <pre>
+     * Parent chain token contract address.
+     * </pre>
+     *
+     * <code>.Address parent_chain_token_contract_address = 6;</code>
+     * @return The parentChainTokenContractAddress.
      */
-    public com.google.protobuf.ByteString
-        getSideChainTokenSymbolBytes() {
-      java.lang.Object ref = sideChainTokenSymbol_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sideChainTokenSymbol_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public io.aelf.protobuf.generated.Client.Address getParentChainTokenContractAddress() {
+      return parentChainTokenContractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : parentChainTokenContractAddress_;
+    }
+    /**
+     * <pre>
+     * Parent chain token contract address.
+     * </pre>
+     *
+     * <code>.Address parent_chain_token_contract_address = 6;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getParentChainTokenContractAddressOrBuilder() {
+      return getParentChainTokenContractAddress();
+    }
+
+    public static final int CHAIN_INITIALIZATION_CONSENSUS_INFO_FIELD_NUMBER = 7;
+    private io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo chainInitializationConsensusInfo_;
+    /**
+     * <pre>
+     * Initial consensus information.
+     * </pre>
+     *
+     * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+     * @return Whether the chainInitializationConsensusInfo field is set.
+     */
+    public boolean hasChainInitializationConsensusInfo() {
+      return chainInitializationConsensusInfo_ != null;
+    }
+    /**
+     * <pre>
+     * Initial consensus information.
+     * </pre>
+     *
+     * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+     * @return The chainInitializationConsensusInfo.
+     */
+    public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo getChainInitializationConsensusInfo() {
+      return chainInitializationConsensusInfo_ == null ? io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.getDefaultInstance() : chainInitializationConsensusInfo_;
+    }
+    /**
+     * <pre>
+     * Initial consensus information.
+     * </pre>
+     *
+     * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfoOrBuilder getChainInitializationConsensusInfoOrBuilder() {
+      return getChainInitializationConsensusInfo();
+    }
+
+    public static final int NATIVE_TOKEN_INFO_DATA_FIELD_NUMBER = 8;
+    private com.google.protobuf.ByteString nativeTokenInfoData_;
+    /**
+     * <pre>
+     * The native token info.
+     * </pre>
+     *
+     * <code>bytes native_token_info_data = 8;</code>
+     * @return The nativeTokenInfoData.
+     */
+    public com.google.protobuf.ByteString getNativeTokenInfoData() {
+      return nativeTokenInfoData_;
+    }
+
+    public static final int RESOURCE_TOKEN_INFO_FIELD_NUMBER = 9;
+    private io.aelf.protobuf.generated.Client.ResourceTokenInfo resourceTokenInfo_;
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+     * @return Whether the resourceTokenInfo field is set.
+     */
+    public boolean hasResourceTokenInfo() {
+      return resourceTokenInfo_ != null;
+    }
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+     * @return The resourceTokenInfo.
+     */
+    public io.aelf.protobuf.generated.Client.ResourceTokenInfo getResourceTokenInfo() {
+      return resourceTokenInfo_ == null ? io.aelf.protobuf.generated.Client.ResourceTokenInfo.getDefaultInstance() : resourceTokenInfo_;
+    }
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ResourceTokenInfoOrBuilder getResourceTokenInfoOrBuilder() {
+      return getResourceTokenInfo();
+    }
+
+    public static final int CHAIN_PRIMARY_TOKEN_INFO_FIELD_NUMBER = 10;
+    private io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo chainPrimaryTokenInfo_;
+    /**
+     * <pre>
+     * The chain primary token information.
+     * </pre>
+     *
+     * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+     * @return Whether the chainPrimaryTokenInfo field is set.
+     */
+    public boolean hasChainPrimaryTokenInfo() {
+      return chainPrimaryTokenInfo_ != null;
+    }
+    /**
+     * <pre>
+     * The chain primary token information.
+     * </pre>
+     *
+     * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+     * @return The chainPrimaryTokenInfo.
+     */
+    public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo getChainPrimaryTokenInfo() {
+      return chainPrimaryTokenInfo_ == null ? io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.getDefaultInstance() : chainPrimaryTokenInfo_;
+    }
+    /**
+     * <pre>
+     * The chain primary token information.
+     * </pre>
+     *
+     * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfoOrBuilder getChainPrimaryTokenInfoOrBuilder() {
+      return getChainPrimaryTokenInfo();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -20842,17 +24342,26 @@ public final class Client {
       if (creationTimestamp_ != null) {
         output.writeMessage(3, getCreationTimestamp());
       }
-      for (int i = 0; i < extraInformation_.size(); i++) {
-        output.writeBytes(4, extraInformation_.get(i));
-      }
       if (creationHeightOnParentChain_ != 0L) {
-        output.writeInt64(5, creationHeightOnParentChain_);
+        output.writeInt64(4, creationHeightOnParentChain_);
       }
       if (chainCreatorPrivilegePreserved_ != false) {
-        output.writeBool(6, chainCreatorPrivilegePreserved_);
+        output.writeBool(5, chainCreatorPrivilegePreserved_);
       }
-      if (!getSideChainTokenSymbolBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, sideChainTokenSymbol_);
+      if (parentChainTokenContractAddress_ != null) {
+        output.writeMessage(6, getParentChainTokenContractAddress());
+      }
+      if (chainInitializationConsensusInfo_ != null) {
+        output.writeMessage(7, getChainInitializationConsensusInfo());
+      }
+      if (!nativeTokenInfoData_.isEmpty()) {
+        output.writeBytes(8, nativeTokenInfoData_);
+      }
+      if (resourceTokenInfo_ != null) {
+        output.writeMessage(9, getResourceTokenInfo());
+      }
+      if (chainPrimaryTokenInfo_ != null) {
+        output.writeMessage(10, getChainPrimaryTokenInfo());
       }
       unknownFields.writeTo(output);
     }
@@ -20875,25 +24384,33 @@ public final class Client {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getCreationTimestamp());
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < extraInformation_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(extraInformation_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getExtraInformationList().size();
-      }
       if (creationHeightOnParentChain_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(5, creationHeightOnParentChain_);
+          .computeInt64Size(4, creationHeightOnParentChain_);
       }
       if (chainCreatorPrivilegePreserved_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(6, chainCreatorPrivilegePreserved_);
+          .computeBoolSize(5, chainCreatorPrivilegePreserved_);
       }
-      if (!getSideChainTokenSymbolBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, sideChainTokenSymbol_);
+      if (parentChainTokenContractAddress_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getParentChainTokenContractAddress());
+      }
+      if (chainInitializationConsensusInfo_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getChainInitializationConsensusInfo());
+      }
+      if (!nativeTokenInfoData_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(8, nativeTokenInfoData_);
+      }
+      if (resourceTokenInfo_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getResourceTokenInfo());
+      }
+      if (chainPrimaryTokenInfo_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getChainPrimaryTokenInfo());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -20922,14 +24439,32 @@ public final class Client {
         if (!getCreationTimestamp()
             .equals(other.getCreationTimestamp())) return false;
       }
-      if (!getExtraInformationList()
-          .equals(other.getExtraInformationList())) return false;
       if (getCreationHeightOnParentChain()
           != other.getCreationHeightOnParentChain()) return false;
       if (getChainCreatorPrivilegePreserved()
           != other.getChainCreatorPrivilegePreserved()) return false;
-      if (!getSideChainTokenSymbol()
-          .equals(other.getSideChainTokenSymbol())) return false;
+      if (hasParentChainTokenContractAddress() != other.hasParentChainTokenContractAddress()) return false;
+      if (hasParentChainTokenContractAddress()) {
+        if (!getParentChainTokenContractAddress()
+            .equals(other.getParentChainTokenContractAddress())) return false;
+      }
+      if (hasChainInitializationConsensusInfo() != other.hasChainInitializationConsensusInfo()) return false;
+      if (hasChainInitializationConsensusInfo()) {
+        if (!getChainInitializationConsensusInfo()
+            .equals(other.getChainInitializationConsensusInfo())) return false;
+      }
+      if (!getNativeTokenInfoData()
+          .equals(other.getNativeTokenInfoData())) return false;
+      if (hasResourceTokenInfo() != other.hasResourceTokenInfo()) return false;
+      if (hasResourceTokenInfo()) {
+        if (!getResourceTokenInfo()
+            .equals(other.getResourceTokenInfo())) return false;
+      }
+      if (hasChainPrimaryTokenInfo() != other.hasChainPrimaryTokenInfo()) return false;
+      if (hasChainPrimaryTokenInfo()) {
+        if (!getChainPrimaryTokenInfo()
+            .equals(other.getChainPrimaryTokenInfo())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -20951,18 +24486,30 @@ public final class Client {
         hash = (37 * hash) + CREATION_TIMESTAMP_FIELD_NUMBER;
         hash = (53 * hash) + getCreationTimestamp().hashCode();
       }
-      if (getExtraInformationCount() > 0) {
-        hash = (37 * hash) + EXTRA_INFORMATION_FIELD_NUMBER;
-        hash = (53 * hash) + getExtraInformationList().hashCode();
-      }
       hash = (37 * hash) + CREATION_HEIGHT_ON_PARENT_CHAIN_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getCreationHeightOnParentChain());
       hash = (37 * hash) + CHAIN_CREATOR_PRIVILEGE_PRESERVED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getChainCreatorPrivilegePreserved());
-      hash = (37 * hash) + SIDE_CHAIN_TOKEN_SYMBOL_FIELD_NUMBER;
-      hash = (53 * hash) + getSideChainTokenSymbol().hashCode();
+      if (hasParentChainTokenContractAddress()) {
+        hash = (37 * hash) + PARENT_CHAIN_TOKEN_CONTRACT_ADDRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getParentChainTokenContractAddress().hashCode();
+      }
+      if (hasChainInitializationConsensusInfo()) {
+        hash = (37 * hash) + CHAIN_INITIALIZATION_CONSENSUS_INFO_FIELD_NUMBER;
+        hash = (53 * hash) + getChainInitializationConsensusInfo().hashCode();
+      }
+      hash = (37 * hash) + NATIVE_TOKEN_INFO_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getNativeTokenInfoData().hashCode();
+      if (hasResourceTokenInfo()) {
+        hash = (37 * hash) + RESOURCE_TOKEN_INFO_FIELD_NUMBER;
+        hash = (53 * hash) + getResourceTokenInfo().hashCode();
+      }
+      if (hasChainPrimaryTokenInfo()) {
+        hash = (37 * hash) + CHAIN_PRIMARY_TOKEN_INFO_FIELD_NUMBER;
+        hash = (53 * hash) + getChainPrimaryTokenInfo().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -21110,14 +24657,36 @@ public final class Client {
           creationTimestamp_ = null;
           creationTimestampBuilder_ = null;
         }
-        extraInformation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
         creationHeightOnParentChain_ = 0L;
 
         chainCreatorPrivilegePreserved_ = false;
 
-        sideChainTokenSymbol_ = "";
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          parentChainTokenContractAddress_ = null;
+        } else {
+          parentChainTokenContractAddress_ = null;
+          parentChainTokenContractAddressBuilder_ = null;
+        }
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          chainInitializationConsensusInfo_ = null;
+        } else {
+          chainInitializationConsensusInfo_ = null;
+          chainInitializationConsensusInfoBuilder_ = null;
+        }
+        nativeTokenInfoData_ = com.google.protobuf.ByteString.EMPTY;
 
+        if (resourceTokenInfoBuilder_ == null) {
+          resourceTokenInfo_ = null;
+        } else {
+          resourceTokenInfo_ = null;
+          resourceTokenInfoBuilder_ = null;
+        }
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          chainPrimaryTokenInfo_ = null;
+        } else {
+          chainPrimaryTokenInfo_ = null;
+          chainPrimaryTokenInfoBuilder_ = null;
+        }
         return this;
       }
 
@@ -21144,7 +24713,6 @@ public final class Client {
       @java.lang.Override
       public io.aelf.protobuf.generated.Client.ChainInitializationData buildPartial() {
         io.aelf.protobuf.generated.Client.ChainInitializationData result = new io.aelf.protobuf.generated.Client.ChainInitializationData(this);
-        int from_bitField0_ = bitField0_;
         result.chainId_ = chainId_;
         if (creatorBuilder_ == null) {
           result.creator_ = creator_;
@@ -21156,14 +24724,29 @@ public final class Client {
         } else {
           result.creationTimestamp_ = creationTimestampBuilder_.build();
         }
-        if (((bitField0_ & 0x00000001) != 0)) {
-          extraInformation_ = java.util.Collections.unmodifiableList(extraInformation_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.extraInformation_ = extraInformation_;
         result.creationHeightOnParentChain_ = creationHeightOnParentChain_;
         result.chainCreatorPrivilegePreserved_ = chainCreatorPrivilegePreserved_;
-        result.sideChainTokenSymbol_ = sideChainTokenSymbol_;
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          result.parentChainTokenContractAddress_ = parentChainTokenContractAddress_;
+        } else {
+          result.parentChainTokenContractAddress_ = parentChainTokenContractAddressBuilder_.build();
+        }
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          result.chainInitializationConsensusInfo_ = chainInitializationConsensusInfo_;
+        } else {
+          result.chainInitializationConsensusInfo_ = chainInitializationConsensusInfoBuilder_.build();
+        }
+        result.nativeTokenInfoData_ = nativeTokenInfoData_;
+        if (resourceTokenInfoBuilder_ == null) {
+          result.resourceTokenInfo_ = resourceTokenInfo_;
+        } else {
+          result.resourceTokenInfo_ = resourceTokenInfoBuilder_.build();
+        }
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          result.chainPrimaryTokenInfo_ = chainPrimaryTokenInfo_;
+        } else {
+          result.chainPrimaryTokenInfo_ = chainPrimaryTokenInfoBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -21221,25 +24804,26 @@ public final class Client {
         if (other.hasCreationTimestamp()) {
           mergeCreationTimestamp(other.getCreationTimestamp());
         }
-        if (!other.extraInformation_.isEmpty()) {
-          if (extraInformation_.isEmpty()) {
-            extraInformation_ = other.extraInformation_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureExtraInformationIsMutable();
-            extraInformation_.addAll(other.extraInformation_);
-          }
-          onChanged();
-        }
         if (other.getCreationHeightOnParentChain() != 0L) {
           setCreationHeightOnParentChain(other.getCreationHeightOnParentChain());
         }
         if (other.getChainCreatorPrivilegePreserved() != false) {
           setChainCreatorPrivilegePreserved(other.getChainCreatorPrivilegePreserved());
         }
-        if (!other.getSideChainTokenSymbol().isEmpty()) {
-          sideChainTokenSymbol_ = other.sideChainTokenSymbol_;
-          onChanged();
+        if (other.hasParentChainTokenContractAddress()) {
+          mergeParentChainTokenContractAddress(other.getParentChainTokenContractAddress());
+        }
+        if (other.hasChainInitializationConsensusInfo()) {
+          mergeChainInitializationConsensusInfo(other.getChainInitializationConsensusInfo());
+        }
+        if (other.getNativeTokenInfoData() != com.google.protobuf.ByteString.EMPTY) {
+          setNativeTokenInfoData(other.getNativeTokenInfoData());
+        }
+        if (other.hasResourceTokenInfo()) {
+          mergeResourceTokenInfo(other.getResourceTokenInfo());
+        }
+        if (other.hasChainPrimaryTokenInfo()) {
+          mergeChainPrimaryTokenInfo(other.getChainPrimaryTokenInfo());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -21269,10 +24853,13 @@ public final class Client {
         }
         return this;
       }
-      private int bitField0_;
 
       private int chainId_ ;
       /**
+       * <pre>
+       * The id of side chain.
+       * </pre>
+       *
        * <code>int32 chain_id = 1;</code>
        * @return The chainId.
        */
@@ -21280,6 +24867,10 @@ public final class Client {
         return chainId_;
       }
       /**
+       * <pre>
+       * The id of side chain.
+       * </pre>
+       *
        * <code>int32 chain_id = 1;</code>
        * @param value The chainId to set.
        * @return This builder for chaining.
@@ -21291,6 +24882,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The id of side chain.
+       * </pre>
+       *
        * <code>int32 chain_id = 1;</code>
        * @return This builder for chaining.
        */
@@ -21305,6 +24900,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> creatorBuilder_;
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        * @return Whether the creator field is set.
        */
@@ -21312,6 +24911,10 @@ public final class Client {
         return creatorBuilder_ != null || creator_ != null;
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        * @return The creator.
        */
@@ -21323,6 +24926,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        */
       public Builder setCreator(io.aelf.protobuf.generated.Client.Address value) {
@@ -21339,6 +24946,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        */
       public Builder setCreator(
@@ -21353,6 +24964,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        */
       public Builder mergeCreator(io.aelf.protobuf.generated.Client.Address value) {
@@ -21371,6 +24986,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        */
       public Builder clearCreator() {
@@ -21385,6 +25004,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getCreatorBuilder() {
@@ -21393,6 +25016,10 @@ public final class Client {
         return getCreatorFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getCreatorOrBuilder() {
@@ -21404,6 +25031,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The side chain creator.
+       * </pre>
+       *
        * <code>.Address creator = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -21424,6 +25055,10 @@ public final class Client {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> creationTimestampBuilder_;
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        * @return Whether the creationTimestamp field is set.
        */
@@ -21431,6 +25066,10 @@ public final class Client {
         return creationTimestampBuilder_ != null || creationTimestamp_ != null;
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        * @return The creationTimestamp.
        */
@@ -21442,6 +25081,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        */
       public Builder setCreationTimestamp(com.google.protobuf.Timestamp value) {
@@ -21458,6 +25101,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        */
       public Builder setCreationTimestamp(
@@ -21472,6 +25119,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        */
       public Builder mergeCreationTimestamp(com.google.protobuf.Timestamp value) {
@@ -21490,6 +25141,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        */
       public Builder clearCreationTimestamp() {
@@ -21504,6 +25159,10 @@ public final class Client {
         return this;
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getCreationTimestampBuilder() {
@@ -21512,6 +25171,10 @@ public final class Client {
         return getCreationTimestampFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getCreationTimestampOrBuilder() {
@@ -21523,6 +25186,10 @@ public final class Client {
         }
       }
       /**
+       * <pre>
+       * The timestamp for side chain creation.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp creation_timestamp = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -21539,101 +25206,24 @@ public final class Client {
         return creationTimestampBuilder_;
       }
 
-      private java.util.List<com.google.protobuf.ByteString> extraInformation_ = java.util.Collections.emptyList();
-      private void ensureExtraInformationIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          extraInformation_ = new java.util.ArrayList<com.google.protobuf.ByteString>(extraInformation_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-      /**
-       * <code>repeated bytes extra_information = 4;</code>
-       * @return A list containing the extraInformation.
-       */
-      public java.util.List<com.google.protobuf.ByteString>
-          getExtraInformationList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(extraInformation_) : extraInformation_;
-      }
-      /**
-       * <code>repeated bytes extra_information = 4;</code>
-       * @return The count of extraInformation.
-       */
-      public int getExtraInformationCount() {
-        return extraInformation_.size();
-      }
-      /**
-       * <code>repeated bytes extra_information = 4;</code>
-       * @param index The index of the element to return.
-       * @return The extraInformation at the given index.
-       */
-      public com.google.protobuf.ByteString getExtraInformation(int index) {
-        return extraInformation_.get(index);
-      }
-      /**
-       * <code>repeated bytes extra_information = 4;</code>
-       * @param index The index to set the value at.
-       * @param value The extraInformation to set.
-       * @return This builder for chaining.
-       */
-      public Builder setExtraInformation(
-          int index, com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureExtraInformationIsMutable();
-        extraInformation_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated bytes extra_information = 4;</code>
-       * @param value The extraInformation to add.
-       * @return This builder for chaining.
-       */
-      public Builder addExtraInformation(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureExtraInformationIsMutable();
-        extraInformation_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated bytes extra_information = 4;</code>
-       * @param values The extraInformation to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllExtraInformation(
-          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-        ensureExtraInformationIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, extraInformation_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated bytes extra_information = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearExtraInformation() {
-        extraInformation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-
       private long creationHeightOnParentChain_ ;
       /**
-       * <code>int64 creation_height_on_parent_chain = 5;</code>
+       * <pre>
+       * The height of side chain creation on parent chain.
+       * </pre>
+       *
+       * <code>int64 creation_height_on_parent_chain = 4;</code>
        * @return The creationHeightOnParentChain.
        */
       public long getCreationHeightOnParentChain() {
         return creationHeightOnParentChain_;
       }
       /**
-       * <code>int64 creation_height_on_parent_chain = 5;</code>
+       * <pre>
+       * The height of side chain creation on parent chain.
+       * </pre>
+       *
+       * <code>int64 creation_height_on_parent_chain = 4;</code>
        * @param value The creationHeightOnParentChain to set.
        * @return This builder for chaining.
        */
@@ -21644,7 +25234,11 @@ public final class Client {
         return this;
       }
       /**
-       * <code>int64 creation_height_on_parent_chain = 5;</code>
+       * <pre>
+       * The height of side chain creation on parent chain.
+       * </pre>
+       *
+       * <code>int64 creation_height_on_parent_chain = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearCreationHeightOnParentChain() {
@@ -21656,14 +25250,22 @@ public final class Client {
 
       private boolean chainCreatorPrivilegePreserved_ ;
       /**
-       * <code>bool chain_creator_privilege_preserved = 6;</code>
+       * <pre>
+       * Creator privilege boolean flag: True if chain creator privilege preserved, otherwise false.
+       * </pre>
+       *
+       * <code>bool chain_creator_privilege_preserved = 5;</code>
        * @return The chainCreatorPrivilegePreserved.
        */
       public boolean getChainCreatorPrivilegePreserved() {
         return chainCreatorPrivilegePreserved_;
       }
       /**
-       * <code>bool chain_creator_privilege_preserved = 6;</code>
+       * <pre>
+       * Creator privilege boolean flag: True if chain creator privilege preserved, otherwise false.
+       * </pre>
+       *
+       * <code>bool chain_creator_privilege_preserved = 5;</code>
        * @param value The chainCreatorPrivilegePreserved to set.
        * @return This builder for chaining.
        */
@@ -21674,7 +25276,11 @@ public final class Client {
         return this;
       }
       /**
-       * <code>bool chain_creator_privilege_preserved = 6;</code>
+       * <pre>
+       * Creator privilege boolean flag: True if chain creator privilege preserved, otherwise false.
+       * </pre>
+       *
+       * <code>bool chain_creator_privilege_preserved = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearChainCreatorPrivilegePreserved() {
@@ -21684,80 +25290,669 @@ public final class Client {
         return this;
       }
 
-      private java.lang.Object sideChainTokenSymbol_ = "";
+      private io.aelf.protobuf.generated.Client.Address parentChainTokenContractAddress_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> parentChainTokenContractAddressBuilder_;
       /**
-       * <code>string side_chain_token_symbol = 7;</code>
-       * @return The sideChainTokenSymbol.
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       * @return Whether the parentChainTokenContractAddress field is set.
        */
-      public java.lang.String getSideChainTokenSymbol() {
-        java.lang.Object ref = sideChainTokenSymbol_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          sideChainTokenSymbol_ = s;
-          return s;
+      public boolean hasParentChainTokenContractAddress() {
+        return parentChainTokenContractAddressBuilder_ != null || parentChainTokenContractAddress_ != null;
+      }
+      /**
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       * @return The parentChainTokenContractAddress.
+       */
+      public io.aelf.protobuf.generated.Client.Address getParentChainTokenContractAddress() {
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          return parentChainTokenContractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : parentChainTokenContractAddress_;
         } else {
-          return (java.lang.String) ref;
+          return parentChainTokenContractAddressBuilder_.getMessage();
         }
       }
       /**
-       * <code>string side_chain_token_symbol = 7;</code>
-       * @return The bytes for sideChainTokenSymbol.
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
        */
-      public com.google.protobuf.ByteString
-          getSideChainTokenSymbolBytes() {
-        java.lang.Object ref = sideChainTokenSymbol_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          sideChainTokenSymbol_ = b;
-          return b;
+      public Builder setParentChainTokenContractAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          parentChainTokenContractAddress_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          parentChainTokenContractAddressBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       */
+      public Builder setParentChainTokenContractAddress(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          parentChainTokenContractAddress_ = builderForValue.build();
+          onChanged();
+        } else {
+          parentChainTokenContractAddressBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       */
+      public Builder mergeParentChainTokenContractAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          if (parentChainTokenContractAddress_ != null) {
+            parentChainTokenContractAddress_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(parentChainTokenContractAddress_).mergeFrom(value).buildPartial();
+          } else {
+            parentChainTokenContractAddress_ = value;
+          }
+          onChanged();
+        } else {
+          parentChainTokenContractAddressBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       */
+      public Builder clearParentChainTokenContractAddress() {
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          parentChainTokenContractAddress_ = null;
+          onChanged();
+        } else {
+          parentChainTokenContractAddress_ = null;
+          parentChainTokenContractAddressBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getParentChainTokenContractAddressBuilder() {
+        
+        onChanged();
+        return getParentChainTokenContractAddressFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getParentChainTokenContractAddressOrBuilder() {
+        if (parentChainTokenContractAddressBuilder_ != null) {
+          return parentChainTokenContractAddressBuilder_.getMessageOrBuilder();
+        } else {
+          return parentChainTokenContractAddress_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : parentChainTokenContractAddress_;
         }
       }
       /**
-       * <code>string side_chain_token_symbol = 7;</code>
-       * @param value The sideChainTokenSymbol to set.
+       * <pre>
+       * Parent chain token contract address.
+       * </pre>
+       *
+       * <code>.Address parent_chain_token_contract_address = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getParentChainTokenContractAddressFieldBuilder() {
+        if (parentChainTokenContractAddressBuilder_ == null) {
+          parentChainTokenContractAddressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getParentChainTokenContractAddress(),
+                  getParentForChildren(),
+                  isClean());
+          parentChainTokenContractAddress_ = null;
+        }
+        return parentChainTokenContractAddressBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo chainInitializationConsensusInfo_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfoOrBuilder> chainInitializationConsensusInfoBuilder_;
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       * @return Whether the chainInitializationConsensusInfo field is set.
+       */
+      public boolean hasChainInitializationConsensusInfo() {
+        return chainInitializationConsensusInfoBuilder_ != null || chainInitializationConsensusInfo_ != null;
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       * @return The chainInitializationConsensusInfo.
+       */
+      public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo getChainInitializationConsensusInfo() {
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          return chainInitializationConsensusInfo_ == null ? io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.getDefaultInstance() : chainInitializationConsensusInfo_;
+        } else {
+          return chainInitializationConsensusInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       */
+      public Builder setChainInitializationConsensusInfo(io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo value) {
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          chainInitializationConsensusInfo_ = value;
+          onChanged();
+        } else {
+          chainInitializationConsensusInfoBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       */
+      public Builder setChainInitializationConsensusInfo(
+          io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder builderForValue) {
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          chainInitializationConsensusInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          chainInitializationConsensusInfoBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       */
+      public Builder mergeChainInitializationConsensusInfo(io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo value) {
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          if (chainInitializationConsensusInfo_ != null) {
+            chainInitializationConsensusInfo_ =
+              io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.newBuilder(chainInitializationConsensusInfo_).mergeFrom(value).buildPartial();
+          } else {
+            chainInitializationConsensusInfo_ = value;
+          }
+          onChanged();
+        } else {
+          chainInitializationConsensusInfoBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       */
+      public Builder clearChainInitializationConsensusInfo() {
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          chainInitializationConsensusInfo_ = null;
+          onChanged();
+        } else {
+          chainInitializationConsensusInfo_ = null;
+          chainInitializationConsensusInfoBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder getChainInitializationConsensusInfoBuilder() {
+        
+        onChanged();
+        return getChainInitializationConsensusInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfoOrBuilder getChainInitializationConsensusInfoOrBuilder() {
+        if (chainInitializationConsensusInfoBuilder_ != null) {
+          return chainInitializationConsensusInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return chainInitializationConsensusInfo_ == null ?
+              io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.getDefaultInstance() : chainInitializationConsensusInfo_;
+        }
+      }
+      /**
+       * <pre>
+       * Initial consensus information.
+       * </pre>
+       *
+       * <code>.ChainInitializationConsensusInfo chain_initialization_consensus_info = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfoOrBuilder> 
+          getChainInitializationConsensusInfoFieldBuilder() {
+        if (chainInitializationConsensusInfoBuilder_ == null) {
+          chainInitializationConsensusInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfoOrBuilder>(
+                  getChainInitializationConsensusInfo(),
+                  getParentForChildren(),
+                  isClean());
+          chainInitializationConsensusInfo_ = null;
+        }
+        return chainInitializationConsensusInfoBuilder_;
+      }
+
+      private com.google.protobuf.ByteString nativeTokenInfoData_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * The native token info.
+       * </pre>
+       *
+       * <code>bytes native_token_info_data = 8;</code>
+       * @return The nativeTokenInfoData.
+       */
+      public com.google.protobuf.ByteString getNativeTokenInfoData() {
+        return nativeTokenInfoData_;
+      }
+      /**
+       * <pre>
+       * The native token info.
+       * </pre>
+       *
+       * <code>bytes native_token_info_data = 8;</code>
+       * @param value The nativeTokenInfoData to set.
        * @return This builder for chaining.
        */
-      public Builder setSideChainTokenSymbol(
-          java.lang.String value) {
+      public Builder setNativeTokenInfoData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        sideChainTokenSymbol_ = value;
+        nativeTokenInfoData_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string side_chain_token_symbol = 7;</code>
+       * <pre>
+       * The native token info.
+       * </pre>
+       *
+       * <code>bytes native_token_info_data = 8;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSideChainTokenSymbol() {
+      public Builder clearNativeTokenInfoData() {
         
-        sideChainTokenSymbol_ = getDefaultInstance().getSideChainTokenSymbol();
+        nativeTokenInfoData_ = getDefaultInstance().getNativeTokenInfoData();
         onChanged();
         return this;
       }
+
+      private io.aelf.protobuf.generated.Client.ResourceTokenInfo resourceTokenInfo_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ResourceTokenInfo, io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder, io.aelf.protobuf.generated.Client.ResourceTokenInfoOrBuilder> resourceTokenInfoBuilder_;
       /**
-       * <code>string side_chain_token_symbol = 7;</code>
-       * @param value The bytes for sideChainTokenSymbol to set.
-       * @return This builder for chaining.
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       * @return Whether the resourceTokenInfo field is set.
        */
-      public Builder setSideChainTokenSymbolBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        sideChainTokenSymbol_ = value;
-        onChanged();
+      public boolean hasResourceTokenInfo() {
+        return resourceTokenInfoBuilder_ != null || resourceTokenInfo_ != null;
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       * @return The resourceTokenInfo.
+       */
+      public io.aelf.protobuf.generated.Client.ResourceTokenInfo getResourceTokenInfo() {
+        if (resourceTokenInfoBuilder_ == null) {
+          return resourceTokenInfo_ == null ? io.aelf.protobuf.generated.Client.ResourceTokenInfo.getDefaultInstance() : resourceTokenInfo_;
+        } else {
+          return resourceTokenInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       */
+      public Builder setResourceTokenInfo(io.aelf.protobuf.generated.Client.ResourceTokenInfo value) {
+        if (resourceTokenInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          resourceTokenInfo_ = value;
+          onChanged();
+        } else {
+          resourceTokenInfoBuilder_.setMessage(value);
+        }
+
         return this;
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       */
+      public Builder setResourceTokenInfo(
+          io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder builderForValue) {
+        if (resourceTokenInfoBuilder_ == null) {
+          resourceTokenInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          resourceTokenInfoBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       */
+      public Builder mergeResourceTokenInfo(io.aelf.protobuf.generated.Client.ResourceTokenInfo value) {
+        if (resourceTokenInfoBuilder_ == null) {
+          if (resourceTokenInfo_ != null) {
+            resourceTokenInfo_ =
+              io.aelf.protobuf.generated.Client.ResourceTokenInfo.newBuilder(resourceTokenInfo_).mergeFrom(value).buildPartial();
+          } else {
+            resourceTokenInfo_ = value;
+          }
+          onChanged();
+        } else {
+          resourceTokenInfoBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       */
+      public Builder clearResourceTokenInfo() {
+        if (resourceTokenInfoBuilder_ == null) {
+          resourceTokenInfo_ = null;
+          onChanged();
+        } else {
+          resourceTokenInfo_ = null;
+          resourceTokenInfoBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder getResourceTokenInfoBuilder() {
+        
+        onChanged();
+        return getResourceTokenInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ResourceTokenInfoOrBuilder getResourceTokenInfoOrBuilder() {
+        if (resourceTokenInfoBuilder_ != null) {
+          return resourceTokenInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return resourceTokenInfo_ == null ?
+              io.aelf.protobuf.generated.Client.ResourceTokenInfo.getDefaultInstance() : resourceTokenInfo_;
+        }
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>.ResourceTokenInfo resource_token_info = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ResourceTokenInfo, io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder, io.aelf.protobuf.generated.Client.ResourceTokenInfoOrBuilder> 
+          getResourceTokenInfoFieldBuilder() {
+        if (resourceTokenInfoBuilder_ == null) {
+          resourceTokenInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ResourceTokenInfo, io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder, io.aelf.protobuf.generated.Client.ResourceTokenInfoOrBuilder>(
+                  getResourceTokenInfo(),
+                  getParentForChildren(),
+                  isClean());
+          resourceTokenInfo_ = null;
+        }
+        return resourceTokenInfoBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo chainPrimaryTokenInfo_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfoOrBuilder> chainPrimaryTokenInfoBuilder_;
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       * @return Whether the chainPrimaryTokenInfo field is set.
+       */
+      public boolean hasChainPrimaryTokenInfo() {
+        return chainPrimaryTokenInfoBuilder_ != null || chainPrimaryTokenInfo_ != null;
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       * @return The chainPrimaryTokenInfo.
+       */
+      public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo getChainPrimaryTokenInfo() {
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          return chainPrimaryTokenInfo_ == null ? io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.getDefaultInstance() : chainPrimaryTokenInfo_;
+        } else {
+          return chainPrimaryTokenInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       */
+      public Builder setChainPrimaryTokenInfo(io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo value) {
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          chainPrimaryTokenInfo_ = value;
+          onChanged();
+        } else {
+          chainPrimaryTokenInfoBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       */
+      public Builder setChainPrimaryTokenInfo(
+          io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder builderForValue) {
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          chainPrimaryTokenInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          chainPrimaryTokenInfoBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       */
+      public Builder mergeChainPrimaryTokenInfo(io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo value) {
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          if (chainPrimaryTokenInfo_ != null) {
+            chainPrimaryTokenInfo_ =
+              io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.newBuilder(chainPrimaryTokenInfo_).mergeFrom(value).buildPartial();
+          } else {
+            chainPrimaryTokenInfo_ = value;
+          }
+          onChanged();
+        } else {
+          chainPrimaryTokenInfoBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       */
+      public Builder clearChainPrimaryTokenInfo() {
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          chainPrimaryTokenInfo_ = null;
+          onChanged();
+        } else {
+          chainPrimaryTokenInfo_ = null;
+          chainPrimaryTokenInfoBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder getChainPrimaryTokenInfoBuilder() {
+        
+        onChanged();
+        return getChainPrimaryTokenInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfoOrBuilder getChainPrimaryTokenInfoOrBuilder() {
+        if (chainPrimaryTokenInfoBuilder_ != null) {
+          return chainPrimaryTokenInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return chainPrimaryTokenInfo_ == null ?
+              io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.getDefaultInstance() : chainPrimaryTokenInfo_;
+        }
+      }
+      /**
+       * <pre>
+       * The chain primary token information.
+       * </pre>
+       *
+       * <code>.ChainPrimaryTokenInfo chain_primary_token_info = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfoOrBuilder> 
+          getChainPrimaryTokenInfoFieldBuilder() {
+        if (chainPrimaryTokenInfoBuilder_ == null) {
+          chainPrimaryTokenInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfoOrBuilder>(
+                  getChainPrimaryTokenInfo(),
+                  getParentForChildren(),
+                  isClean());
+          chainPrimaryTokenInfo_ = null;
+        }
+        return chainPrimaryTokenInfoBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -21807,6 +26002,3159 @@ public final class Client {
 
     @java.lang.Override
     public io.aelf.protobuf.generated.Client.ChainInitializationData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChainInitializationConsensusInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChainInitializationConsensusInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Initial consensus data.
+     * </pre>
+     *
+     * <code>bytes initial_consensus_data = 1;</code>
+     * @return The initialConsensusData.
+     */
+    com.google.protobuf.ByteString getInitialConsensusData();
+  }
+  /**
+   * Protobuf type {@code ChainInitializationConsensusInfo}
+   */
+  public  static final class ChainInitializationConsensusInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ChainInitializationConsensusInfo)
+      ChainInitializationConsensusInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChainInitializationConsensusInfo.newBuilder() to construct.
+    private ChainInitializationConsensusInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChainInitializationConsensusInfo() {
+      initialConsensusData_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChainInitializationConsensusInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChainInitializationConsensusInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+
+              initialConsensusData_ = input.readBytes();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.Client.internal_static_ChainInitializationConsensusInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.Client.internal_static_ChainInitializationConsensusInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.class, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder.class);
+    }
+
+    public static final int INITIAL_CONSENSUS_DATA_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString initialConsensusData_;
+    /**
+     * <pre>
+     * Initial consensus data.
+     * </pre>
+     *
+     * <code>bytes initial_consensus_data = 1;</code>
+     * @return The initialConsensusData.
+     */
+    public com.google.protobuf.ByteString getInitialConsensusData() {
+      return initialConsensusData_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!initialConsensusData_.isEmpty()) {
+        output.writeBytes(1, initialConsensusData_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!initialConsensusData_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, initialConsensusData_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo other = (io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo) obj;
+
+      if (!getInitialConsensusData()
+          .equals(other.getInitialConsensusData())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INITIAL_CONSENSUS_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getInitialConsensusData().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ChainInitializationConsensusInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChainInitializationConsensusInfo)
+        io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.Client.internal_static_ChainInitializationConsensusInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.Client.internal_static_ChainInitializationConsensusInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.class, io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        initialConsensusData_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.Client.internal_static_ChainInitializationConsensusInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo build() {
+        io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo buildPartial() {
+        io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo result = new io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo(this);
+        result.initialConsensusData_ = initialConsensusData_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo) {
+          return mergeFrom((io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo other) {
+        if (other == io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo.getDefaultInstance()) return this;
+        if (other.getInitialConsensusData() != com.google.protobuf.ByteString.EMPTY) {
+          setInitialConsensusData(other.getInitialConsensusData());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.google.protobuf.ByteString initialConsensusData_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Initial consensus data.
+       * </pre>
+       *
+       * <code>bytes initial_consensus_data = 1;</code>
+       * @return The initialConsensusData.
+       */
+      public com.google.protobuf.ByteString getInitialConsensusData() {
+        return initialConsensusData_;
+      }
+      /**
+       * <pre>
+       * Initial consensus data.
+       * </pre>
+       *
+       * <code>bytes initial_consensus_data = 1;</code>
+       * @param value The initialConsensusData to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInitialConsensusData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        initialConsensusData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Initial consensus data.
+       * </pre>
+       *
+       * <code>bytes initial_consensus_data = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInitialConsensusData() {
+        
+        initialConsensusData_ = getDefaultInstance().getInitialConsensusData();
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChainInitializationConsensusInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:ChainInitializationConsensusInfo)
+    private static final io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo();
+    }
+
+    public static io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChainInitializationConsensusInfo>
+        PARSER = new com.google.protobuf.AbstractParser<ChainInitializationConsensusInfo>() {
+      @java.lang.Override
+      public ChainInitializationConsensusInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChainInitializationConsensusInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChainInitializationConsensusInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChainInitializationConsensusInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.Client.ChainInitializationConsensusInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ResourceTokenInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ResourceTokenInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>bytes resource_token_list_data = 1;</code>
+     * @return The resourceTokenListData.
+     */
+    com.google.protobuf.ByteString getResourceTokenListData();
+
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+    int getInitialResourceAmountCount();
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+    boolean containsInitialResourceAmount(
+        java.lang.String key);
+    /**
+     * Use {@link #getInitialResourceAmountMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getInitialResourceAmount();
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getInitialResourceAmountMap();
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+
+    int getInitialResourceAmountOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+
+    int getInitialResourceAmountOrThrow(
+        java.lang.String key);
+  }
+  /**
+   * Protobuf type {@code ResourceTokenInfo}
+   */
+  public  static final class ResourceTokenInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ResourceTokenInfo)
+      ResourceTokenInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ResourceTokenInfo.newBuilder() to construct.
+    private ResourceTokenInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ResourceTokenInfo() {
+      resourceTokenListData_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ResourceTokenInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResourceTokenInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+
+              resourceTokenListData_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                initialResourceAmount_ = com.google.protobuf.MapField.newMapField(
+                    InitialResourceAmountDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000001;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+              initialResourceAmount__ = input.readMessage(
+                  InitialResourceAmountDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              initialResourceAmount_.getMutableMap().put(
+                  initialResourceAmount__.getKey(), initialResourceAmount__.getValue());
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.Client.internal_static_ResourceTokenInfo_descriptor;
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 2:
+          return internalGetInitialResourceAmount();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.Client.internal_static_ResourceTokenInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.Client.ResourceTokenInfo.class, io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder.class);
+    }
+
+    public static final int RESOURCE_TOKEN_LIST_DATA_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString resourceTokenListData_;
+    /**
+     * <pre>
+     * The resource token information.
+     * </pre>
+     *
+     * <code>bytes resource_token_list_data = 1;</code>
+     * @return The resourceTokenListData.
+     */
+    public com.google.protobuf.ByteString getResourceTokenListData() {
+      return resourceTokenListData_;
+    }
+
+    public static final int INITIAL_RESOURCE_AMOUNT_FIELD_NUMBER = 2;
+    private static final class InitialResourceAmountDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  io.aelf.protobuf.generated.Client.internal_static_ResourceTokenInfo_InitialResourceAmountEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> initialResourceAmount_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetInitialResourceAmount() {
+      if (initialResourceAmount_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            InitialResourceAmountDefaultEntryHolder.defaultEntry);
+      }
+      return initialResourceAmount_;
+    }
+
+    public int getInitialResourceAmountCount() {
+      return internalGetInitialResourceAmount().getMap().size();
+    }
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+
+    public boolean containsInitialResourceAmount(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetInitialResourceAmount().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getInitialResourceAmountMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getInitialResourceAmount() {
+      return getInitialResourceAmountMap();
+    }
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+
+    public java.util.Map<java.lang.String, java.lang.Integer> getInitialResourceAmountMap() {
+      return internalGetInitialResourceAmount().getMap();
+    }
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+
+    public int getInitialResourceAmountOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetInitialResourceAmount().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * The initial resource token amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+     */
+
+    public int getInitialResourceAmountOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetInitialResourceAmount().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!resourceTokenListData_.isEmpty()) {
+        output.writeBytes(1, resourceTokenListData_);
+      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetInitialResourceAmount(),
+          InitialResourceAmountDefaultEntryHolder.defaultEntry,
+          2);
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!resourceTokenListData_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, resourceTokenListData_);
+      }
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+           : internalGetInitialResourceAmount().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        initialResourceAmount__ = InitialResourceAmountDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(2, initialResourceAmount__);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.Client.ResourceTokenInfo)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.Client.ResourceTokenInfo other = (io.aelf.protobuf.generated.Client.ResourceTokenInfo) obj;
+
+      if (!getResourceTokenListData()
+          .equals(other.getResourceTokenListData())) return false;
+      if (!internalGetInitialResourceAmount().equals(
+          other.internalGetInitialResourceAmount())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RESOURCE_TOKEN_LIST_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getResourceTokenListData().hashCode();
+      if (!internalGetInitialResourceAmount().getMap().isEmpty()) {
+        hash = (37 * hash) + INITIAL_RESOURCE_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetInitialResourceAmount().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.Client.ResourceTokenInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ResourceTokenInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ResourceTokenInfo)
+        io.aelf.protobuf.generated.Client.ResourceTokenInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.Client.internal_static_ResourceTokenInfo_descriptor;
+      }
+
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 2:
+            return internalGetInitialResourceAmount();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 2:
+            return internalGetMutableInitialResourceAmount();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.Client.internal_static_ResourceTokenInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.Client.ResourceTokenInfo.class, io.aelf.protobuf.generated.Client.ResourceTokenInfo.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.Client.ResourceTokenInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        resourceTokenListData_ = com.google.protobuf.ByteString.EMPTY;
+
+        internalGetMutableInitialResourceAmount().clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.Client.internal_static_ResourceTokenInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ResourceTokenInfo getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.Client.ResourceTokenInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ResourceTokenInfo build() {
+        io.aelf.protobuf.generated.Client.ResourceTokenInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ResourceTokenInfo buildPartial() {
+        io.aelf.protobuf.generated.Client.ResourceTokenInfo result = new io.aelf.protobuf.generated.Client.ResourceTokenInfo(this);
+        int from_bitField0_ = bitField0_;
+        result.resourceTokenListData_ = resourceTokenListData_;
+        result.initialResourceAmount_ = internalGetInitialResourceAmount();
+        result.initialResourceAmount_.makeImmutable();
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.Client.ResourceTokenInfo) {
+          return mergeFrom((io.aelf.protobuf.generated.Client.ResourceTokenInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.Client.ResourceTokenInfo other) {
+        if (other == io.aelf.protobuf.generated.Client.ResourceTokenInfo.getDefaultInstance()) return this;
+        if (other.getResourceTokenListData() != com.google.protobuf.ByteString.EMPTY) {
+          setResourceTokenListData(other.getResourceTokenListData());
+        }
+        internalGetMutableInitialResourceAmount().mergeFrom(
+            other.internalGetInitialResourceAmount());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.Client.ResourceTokenInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.Client.ResourceTokenInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString resourceTokenListData_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>bytes resource_token_list_data = 1;</code>
+       * @return The resourceTokenListData.
+       */
+      public com.google.protobuf.ByteString getResourceTokenListData() {
+        return resourceTokenListData_;
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>bytes resource_token_list_data = 1;</code>
+       * @param value The resourceTokenListData to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResourceTokenListData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        resourceTokenListData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The resource token information.
+       * </pre>
+       *
+       * <code>bytes resource_token_list_data = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResourceTokenListData() {
+        
+        resourceTokenListData_ = getDefaultInstance().getResourceTokenListData();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> initialResourceAmount_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      internalGetInitialResourceAmount() {
+        if (initialResourceAmount_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              InitialResourceAmountDefaultEntryHolder.defaultEntry);
+        }
+        return initialResourceAmount_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      internalGetMutableInitialResourceAmount() {
+        onChanged();;
+        if (initialResourceAmount_ == null) {
+          initialResourceAmount_ = com.google.protobuf.MapField.newMapField(
+              InitialResourceAmountDefaultEntryHolder.defaultEntry);
+        }
+        if (!initialResourceAmount_.isMutable()) {
+          initialResourceAmount_ = initialResourceAmount_.copy();
+        }
+        return initialResourceAmount_;
+      }
+
+      public int getInitialResourceAmountCount() {
+        return internalGetInitialResourceAmount().getMap().size();
+      }
+      /**
+       * <pre>
+       * The initial resource token amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+       */
+
+      public boolean containsInitialResourceAmount(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetInitialResourceAmount().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getInitialResourceAmountMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getInitialResourceAmount() {
+        return getInitialResourceAmountMap();
+      }
+      /**
+       * <pre>
+       * The initial resource token amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+       */
+
+      public java.util.Map<java.lang.String, java.lang.Integer> getInitialResourceAmountMap() {
+        return internalGetInitialResourceAmount().getMap();
+      }
+      /**
+       * <pre>
+       * The initial resource token amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+       */
+
+      public int getInitialResourceAmountOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetInitialResourceAmount().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <pre>
+       * The initial resource token amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+       */
+
+      public int getInitialResourceAmountOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetInitialResourceAmount().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearInitialResourceAmount() {
+        internalGetMutableInitialResourceAmount().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <pre>
+       * The initial resource token amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+       */
+
+      public Builder removeInitialResourceAmount(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableInitialResourceAmount().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getMutableInitialResourceAmount() {
+        return internalGetMutableInitialResourceAmount().getMutableMap();
+      }
+      /**
+       * <pre>
+       * The initial resource token amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+       */
+      public Builder putInitialResourceAmount(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        
+        internalGetMutableInitialResourceAmount().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The initial resource token amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int32&gt; initial_resource_amount = 2;</code>
+       */
+
+      public Builder putAllInitialResourceAmount(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableInitialResourceAmount().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ResourceTokenInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:ResourceTokenInfo)
+    private static final io.aelf.protobuf.generated.Client.ResourceTokenInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.ResourceTokenInfo();
+    }
+
+    public static io.aelf.protobuf.generated.Client.ResourceTokenInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ResourceTokenInfo>
+        PARSER = new com.google.protobuf.AbstractParser<ResourceTokenInfo>() {
+      @java.lang.Override
+      public ResourceTokenInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResourceTokenInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ResourceTokenInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResourceTokenInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.Client.ResourceTokenInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChainPrimaryTokenInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChainPrimaryTokenInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The side chain primary token data.
+     * </pre>
+     *
+     * <code>bytes chain_primary_token_data = 1;</code>
+     * @return The chainPrimaryTokenData.
+     */
+    com.google.protobuf.ByteString getChainPrimaryTokenData();
+
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    java.util.List<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue> 
+        getSideChainTokenInitialIssueListList();
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue getSideChainTokenInitialIssueList(int index);
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    int getSideChainTokenInitialIssueListCount();
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder> 
+        getSideChainTokenInitialIssueListOrBuilderList();
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder getSideChainTokenInitialIssueListOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code ChainPrimaryTokenInfo}
+   */
+  public  static final class ChainPrimaryTokenInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ChainPrimaryTokenInfo)
+      ChainPrimaryTokenInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ChainPrimaryTokenInfo.newBuilder() to construct.
+    private ChainPrimaryTokenInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ChainPrimaryTokenInfo() {
+      chainPrimaryTokenData_ = com.google.protobuf.ByteString.EMPTY;
+      sideChainTokenInitialIssueList_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChainPrimaryTokenInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChainPrimaryTokenInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+
+              chainPrimaryTokenData_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                sideChainTokenInitialIssueList_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              sideChainTokenInitialIssueList_.add(
+                  input.readMessage(io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          sideChainTokenInitialIssueList_ = java.util.Collections.unmodifiableList(sideChainTokenInitialIssueList_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.Client.internal_static_ChainPrimaryTokenInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.Client.internal_static_ChainPrimaryTokenInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.class, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder.class);
+    }
+
+    public static final int CHAIN_PRIMARY_TOKEN_DATA_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString chainPrimaryTokenData_;
+    /**
+     * <pre>
+     * The side chain primary token data.
+     * </pre>
+     *
+     * <code>bytes chain_primary_token_data = 1;</code>
+     * @return The chainPrimaryTokenData.
+     */
+    public com.google.protobuf.ByteString getChainPrimaryTokenData() {
+      return chainPrimaryTokenData_;
+    }
+
+    public static final int SIDE_CHAIN_TOKEN_INITIAL_ISSUE_LIST_FIELD_NUMBER = 2;
+    private java.util.List<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue> sideChainTokenInitialIssueList_;
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    public java.util.List<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue> getSideChainTokenInitialIssueListList() {
+      return sideChainTokenInitialIssueList_;
+    }
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder> 
+        getSideChainTokenInitialIssueListOrBuilderList() {
+      return sideChainTokenInitialIssueList_;
+    }
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    public int getSideChainTokenInitialIssueListCount() {
+      return sideChainTokenInitialIssueList_.size();
+    }
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue getSideChainTokenInitialIssueList(int index) {
+      return sideChainTokenInitialIssueList_.get(index);
+    }
+    /**
+     * <pre>
+     * The side chain primary token initial issue list.
+     * </pre>
+     *
+     * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+     */
+    public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder getSideChainTokenInitialIssueListOrBuilder(
+        int index) {
+      return sideChainTokenInitialIssueList_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!chainPrimaryTokenData_.isEmpty()) {
+        output.writeBytes(1, chainPrimaryTokenData_);
+      }
+      for (int i = 0; i < sideChainTokenInitialIssueList_.size(); i++) {
+        output.writeMessage(2, sideChainTokenInitialIssueList_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!chainPrimaryTokenData_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, chainPrimaryTokenData_);
+      }
+      for (int i = 0; i < sideChainTokenInitialIssueList_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, sideChainTokenInitialIssueList_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo other = (io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo) obj;
+
+      if (!getChainPrimaryTokenData()
+          .equals(other.getChainPrimaryTokenData())) return false;
+      if (!getSideChainTokenInitialIssueListList()
+          .equals(other.getSideChainTokenInitialIssueListList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CHAIN_PRIMARY_TOKEN_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getChainPrimaryTokenData().hashCode();
+      if (getSideChainTokenInitialIssueListCount() > 0) {
+        hash = (37 * hash) + SIDE_CHAIN_TOKEN_INITIAL_ISSUE_LIST_FIELD_NUMBER;
+        hash = (53 * hash) + getSideChainTokenInitialIssueListList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ChainPrimaryTokenInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChainPrimaryTokenInfo)
+        io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.Client.internal_static_ChainPrimaryTokenInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.Client.internal_static_ChainPrimaryTokenInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.class, io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getSideChainTokenInitialIssueListFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        chainPrimaryTokenData_ = com.google.protobuf.ByteString.EMPTY;
+
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          sideChainTokenInitialIssueList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          sideChainTokenInitialIssueListBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.Client.internal_static_ChainPrimaryTokenInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo build() {
+        io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo buildPartial() {
+        io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo result = new io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo(this);
+        int from_bitField0_ = bitField0_;
+        result.chainPrimaryTokenData_ = chainPrimaryTokenData_;
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            sideChainTokenInitialIssueList_ = java.util.Collections.unmodifiableList(sideChainTokenInitialIssueList_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.sideChainTokenInitialIssueList_ = sideChainTokenInitialIssueList_;
+        } else {
+          result.sideChainTokenInitialIssueList_ = sideChainTokenInitialIssueListBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo) {
+          return mergeFrom((io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo other) {
+        if (other == io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo.getDefaultInstance()) return this;
+        if (other.getChainPrimaryTokenData() != com.google.protobuf.ByteString.EMPTY) {
+          setChainPrimaryTokenData(other.getChainPrimaryTokenData());
+        }
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          if (!other.sideChainTokenInitialIssueList_.isEmpty()) {
+            if (sideChainTokenInitialIssueList_.isEmpty()) {
+              sideChainTokenInitialIssueList_ = other.sideChainTokenInitialIssueList_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureSideChainTokenInitialIssueListIsMutable();
+              sideChainTokenInitialIssueList_.addAll(other.sideChainTokenInitialIssueList_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.sideChainTokenInitialIssueList_.isEmpty()) {
+            if (sideChainTokenInitialIssueListBuilder_.isEmpty()) {
+              sideChainTokenInitialIssueListBuilder_.dispose();
+              sideChainTokenInitialIssueListBuilder_ = null;
+              sideChainTokenInitialIssueList_ = other.sideChainTokenInitialIssueList_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              sideChainTokenInitialIssueListBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getSideChainTokenInitialIssueListFieldBuilder() : null;
+            } else {
+              sideChainTokenInitialIssueListBuilder_.addAllMessages(other.sideChainTokenInitialIssueList_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString chainPrimaryTokenData_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * The side chain primary token data.
+       * </pre>
+       *
+       * <code>bytes chain_primary_token_data = 1;</code>
+       * @return The chainPrimaryTokenData.
+       */
+      public com.google.protobuf.ByteString getChainPrimaryTokenData() {
+        return chainPrimaryTokenData_;
+      }
+      /**
+       * <pre>
+       * The side chain primary token data.
+       * </pre>
+       *
+       * <code>bytes chain_primary_token_data = 1;</code>
+       * @param value The chainPrimaryTokenData to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChainPrimaryTokenData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        chainPrimaryTokenData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token data.
+       * </pre>
+       *
+       * <code>bytes chain_primary_token_data = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChainPrimaryTokenData() {
+        
+        chainPrimaryTokenData_ = getDefaultInstance().getChainPrimaryTokenData();
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue> sideChainTokenInitialIssueList_ =
+        java.util.Collections.emptyList();
+      private void ensureSideChainTokenInitialIssueListIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          sideChainTokenInitialIssueList_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue>(sideChainTokenInitialIssueList_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder> sideChainTokenInitialIssueListBuilder_;
+
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public java.util.List<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue> getSideChainTokenInitialIssueListList() {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sideChainTokenInitialIssueList_);
+        } else {
+          return sideChainTokenInitialIssueListBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public int getSideChainTokenInitialIssueListCount() {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          return sideChainTokenInitialIssueList_.size();
+        } else {
+          return sideChainTokenInitialIssueListBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue getSideChainTokenInitialIssueList(int index) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          return sideChainTokenInitialIssueList_.get(index);
+        } else {
+          return sideChainTokenInitialIssueListBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder setSideChainTokenInitialIssueList(
+          int index, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue value) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSideChainTokenInitialIssueListIsMutable();
+          sideChainTokenInitialIssueList_.set(index, value);
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder setSideChainTokenInitialIssueList(
+          int index, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder builderForValue) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          ensureSideChainTokenInitialIssueListIsMutable();
+          sideChainTokenInitialIssueList_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder addSideChainTokenInitialIssueList(io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue value) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSideChainTokenInitialIssueListIsMutable();
+          sideChainTokenInitialIssueList_.add(value);
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder addSideChainTokenInitialIssueList(
+          int index, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue value) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSideChainTokenInitialIssueListIsMutable();
+          sideChainTokenInitialIssueList_.add(index, value);
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder addSideChainTokenInitialIssueList(
+          io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder builderForValue) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          ensureSideChainTokenInitialIssueListIsMutable();
+          sideChainTokenInitialIssueList_.add(builderForValue.build());
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder addSideChainTokenInitialIssueList(
+          int index, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder builderForValue) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          ensureSideChainTokenInitialIssueListIsMutable();
+          sideChainTokenInitialIssueList_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder addAllSideChainTokenInitialIssueList(
+          java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue> values) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          ensureSideChainTokenInitialIssueListIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, sideChainTokenInitialIssueList_);
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder clearSideChainTokenInitialIssueList() {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          sideChainTokenInitialIssueList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public Builder removeSideChainTokenInitialIssueList(int index) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          ensureSideChainTokenInitialIssueListIsMutable();
+          sideChainTokenInitialIssueList_.remove(index);
+          onChanged();
+        } else {
+          sideChainTokenInitialIssueListBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder getSideChainTokenInitialIssueListBuilder(
+          int index) {
+        return getSideChainTokenInitialIssueListFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder getSideChainTokenInitialIssueListOrBuilder(
+          int index) {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          return sideChainTokenInitialIssueList_.get(index);  } else {
+          return sideChainTokenInitialIssueListBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public java.util.List<? extends io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder> 
+           getSideChainTokenInitialIssueListOrBuilderList() {
+        if (sideChainTokenInitialIssueListBuilder_ != null) {
+          return sideChainTokenInitialIssueListBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(sideChainTokenInitialIssueList_);
+        }
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder addSideChainTokenInitialIssueListBuilder() {
+        return getSideChainTokenInitialIssueListFieldBuilder().addBuilder(
+            io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder addSideChainTokenInitialIssueListBuilder(
+          int index) {
+        return getSideChainTokenInitialIssueListFieldBuilder().addBuilder(
+            index, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The side chain primary token initial issue list.
+       * </pre>
+       *
+       * <code>repeated .SideChainTokenInitialIssue side_chain_token_initial_issue_list = 2;</code>
+       */
+      public java.util.List<io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder> 
+           getSideChainTokenInitialIssueListBuilderList() {
+        return getSideChainTokenInitialIssueListFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder> 
+          getSideChainTokenInitialIssueListFieldBuilder() {
+        if (sideChainTokenInitialIssueListBuilder_ == null) {
+          sideChainTokenInitialIssueListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder>(
+                  sideChainTokenInitialIssueList_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          sideChainTokenInitialIssueList_ = null;
+        }
+        return sideChainTokenInitialIssueListBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChainPrimaryTokenInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:ChainPrimaryTokenInfo)
+    private static final io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo();
+    }
+
+    public static io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChainPrimaryTokenInfo>
+        PARSER = new com.google.protobuf.AbstractParser<ChainPrimaryTokenInfo>() {
+      @java.lang.Override
+      public ChainPrimaryTokenInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChainPrimaryTokenInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChainPrimaryTokenInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChainPrimaryTokenInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.Client.ChainPrimaryTokenInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SideChainTokenInitialIssueOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SideChainTokenInitialIssue)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The account that will be issued.
+     * </pre>
+     *
+     * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
+     */
+    boolean hasAddress();
+    /**
+     * <pre>
+     * The account that will be issued.
+     * </pre>
+     *
+     * <code>.Address address = 1;</code>
+     * @return The address.
+     */
+    io.aelf.protobuf.generated.Client.Address getAddress();
+    /**
+     * <pre>
+     * The account that will be issued.
+     * </pre>
+     *
+     * <code>.Address address = 1;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getAddressOrBuilder();
+
+    /**
+     * <pre>
+     * The amount that will be issued.
+     * </pre>
+     *
+     * <code>int64 amount = 2;</code>
+     * @return The amount.
+     */
+    long getAmount();
+  }
+  /**
+   * Protobuf type {@code SideChainTokenInitialIssue}
+   */
+  public  static final class SideChainTokenInitialIssue extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SideChainTokenInitialIssue)
+      SideChainTokenInitialIssueOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SideChainTokenInitialIssue.newBuilder() to construct.
+    private SideChainTokenInitialIssue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SideChainTokenInitialIssue() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SideChainTokenInitialIssue();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SideChainTokenInitialIssue(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (address_ != null) {
+                subBuilder = address_.toBuilder();
+              }
+              address_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(address_);
+                address_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 16: {
+
+              amount_ = input.readInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.Client.internal_static_SideChainTokenInitialIssue_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.Client.internal_static_SideChainTokenInitialIssue_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.class, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder.class);
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 1;
+    private io.aelf.protobuf.generated.Client.Address address_;
+    /**
+     * <pre>
+     * The account that will be issued.
+     * </pre>
+     *
+     * <code>.Address address = 1;</code>
+     * @return Whether the address field is set.
+     */
+    public boolean hasAddress() {
+      return address_ != null;
+    }
+    /**
+     * <pre>
+     * The account that will be issued.
+     * </pre>
+     *
+     * <code>.Address address = 1;</code>
+     * @return The address.
+     */
+    public io.aelf.protobuf.generated.Client.Address getAddress() {
+      return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
+    }
+    /**
+     * <pre>
+     * The account that will be issued.
+     * </pre>
+     *
+     * <code>.Address address = 1;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getAddressOrBuilder() {
+      return getAddress();
+    }
+
+    public static final int AMOUNT_FIELD_NUMBER = 2;
+    private long amount_;
+    /**
+     * <pre>
+     * The amount that will be issued.
+     * </pre>
+     *
+     * <code>int64 amount = 2;</code>
+     * @return The amount.
+     */
+    public long getAmount() {
+      return amount_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (address_ != null) {
+        output.writeMessage(1, getAddress());
+      }
+      if (amount_ != 0L) {
+        output.writeInt64(2, amount_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (address_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getAddress());
+      }
+      if (amount_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, amount_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue other = (io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue) obj;
+
+      if (hasAddress() != other.hasAddress()) return false;
+      if (hasAddress()) {
+        if (!getAddress()
+            .equals(other.getAddress())) return false;
+      }
+      if (getAmount()
+          != other.getAmount()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasAddress()) {
+        hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getAddress().hashCode();
+      }
+      hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getAmount());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SideChainTokenInitialIssue}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SideChainTokenInitialIssue)
+        io.aelf.protobuf.generated.Client.SideChainTokenInitialIssueOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.Client.internal_static_SideChainTokenInitialIssue_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.Client.internal_static_SideChainTokenInitialIssue_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.class, io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (addressBuilder_ == null) {
+          address_ = null;
+        } else {
+          address_ = null;
+          addressBuilder_ = null;
+        }
+        amount_ = 0L;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.Client.internal_static_SideChainTokenInitialIssue_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue build() {
+        io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue buildPartial() {
+        io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue result = new io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue(this);
+        if (addressBuilder_ == null) {
+          result.address_ = address_;
+        } else {
+          result.address_ = addressBuilder_.build();
+        }
+        result.amount_ = amount_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue) {
+          return mergeFrom((io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue other) {
+        if (other == io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue.getDefaultInstance()) return this;
+        if (other.hasAddress()) {
+          mergeAddress(other.getAddress());
+        }
+        if (other.getAmount() != 0L) {
+          setAmount(other.getAmount());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private io.aelf.protobuf.generated.Client.Address address_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> addressBuilder_;
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       * @return Whether the address field is set.
+       */
+      public boolean hasAddress() {
+        return addressBuilder_ != null || address_ != null;
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       * @return The address.
+       */
+      public io.aelf.protobuf.generated.Client.Address getAddress() {
+        if (addressBuilder_ == null) {
+          return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
+        } else {
+          return addressBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       */
+      public Builder setAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (addressBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          address_ = value;
+          onChanged();
+        } else {
+          addressBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       */
+      public Builder setAddress(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (addressBuilder_ == null) {
+          address_ = builderForValue.build();
+          onChanged();
+        } else {
+          addressBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       */
+      public Builder mergeAddress(io.aelf.protobuf.generated.Client.Address value) {
+        if (addressBuilder_ == null) {
+          if (address_ != null) {
+            address_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(address_).mergeFrom(value).buildPartial();
+          } else {
+            address_ = value;
+          }
+          onChanged();
+        } else {
+          addressBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       */
+      public Builder clearAddress() {
+        if (addressBuilder_ == null) {
+          address_ = null;
+          onChanged();
+        } else {
+          address_ = null;
+          addressBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getAddressBuilder() {
+        
+        onChanged();
+        return getAddressFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getAddressOrBuilder() {
+        if (addressBuilder_ != null) {
+          return addressBuilder_.getMessageOrBuilder();
+        } else {
+          return address_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
+        }
+      }
+      /**
+       * <pre>
+       * The account that will be issued.
+       * </pre>
+       *
+       * <code>.Address address = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getAddressFieldBuilder() {
+        if (addressBuilder_ == null) {
+          addressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getAddress(),
+                  getParentForChildren(),
+                  isClean());
+          address_ = null;
+        }
+        return addressBuilder_;
+      }
+
+      private long amount_ ;
+      /**
+       * <pre>
+       * The amount that will be issued.
+       * </pre>
+       *
+       * <code>int64 amount = 2;</code>
+       * @return The amount.
+       */
+      public long getAmount() {
+        return amount_;
+      }
+      /**
+       * <pre>
+       * The amount that will be issued.
+       * </pre>
+       *
+       * <code>int64 amount = 2;</code>
+       * @param value The amount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAmount(long value) {
+        
+        amount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The amount that will be issued.
+       * </pre>
+       *
+       * <code>int64 amount = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAmount() {
+        
+        amount_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SideChainTokenInitialIssue)
+    }
+
+    // @@protoc_insertion_point(class_scope:SideChainTokenInitialIssue)
+    private static final io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue();
+    }
+
+    public static io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SideChainTokenInitialIssue>
+        PARSER = new com.google.protobuf.AbstractParser<SideChainTokenInitialIssue>() {
+      @java.lang.Override
+      public SideChainTokenInitialIssue parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SideChainTokenInitialIssue(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SideChainTokenInitialIssue> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SideChainTokenInitialIssue> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.Client.SideChainTokenInitialIssue getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -21878,6 +29226,16 @@ public final class Client {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ProposalOutput_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ProposalReleaseThreshold_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ProposalReleaseThreshold_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ProposerWhiteList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ProposerWhiteList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ValidationResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -21892,16 +29250,6 @@ public final class Client {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MethodCallingThreshold_SymbolToAmountEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SideChainIdAndHeightDict_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SideChainIdAndHeightDict_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SideChainIdAndHeightDict_IdHeightDictEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SideChainIdAndHeightDict_IdHeightDictEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SideChainIndexingInformationList_descriptor;
   private static final 
@@ -21943,11 +29291,6 @@ public final class Client {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CrossChainExtraData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_IndexedSideChainBlockData_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_IndexedSideChainBlockData_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CrossChainMerkleProofContext_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -21957,6 +29300,31 @@ public final class Client {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ChainInitializationData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ChainInitializationConsensusInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ChainInitializationConsensusInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ResourceTokenInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ResourceTokenInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ResourceTokenInfo_InitialResourceAmountEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ResourceTokenInfo_InitialResourceAmountEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ChainPrimaryTokenInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ChainPrimaryTokenInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SideChainTokenInitialIssue_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SideChainTokenInitialIssue_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -21976,72 +29344,94 @@ public final class Client {
       "Hash\022\022\n\nleaf_count\030\003 \001(\005\"F\n\017ScopedStateP" +
       "ath\022\031\n\007address\030\001 \001(\0132\010.Address\022\030\n\004path\030\002" +
       " \001(\0132\n.StatePath\"\032\n\tStatePath\022\r\n\005parts\030\001" +
-      " \003(\t\"U\n\031SmartContractRegistration\022\020\n\010cat" +
-      "egory\030\001 \001(\005\022\014\n\004code\030\002 \001(\014\022\030\n\tcode_hash\030\003" +
-      " \001(\0132\005.Hash\"m\n\014ContractInfo\022\025\n\rserial_nu" +
-      "mber\030\001 \001(\004\022\020\n\010category\030\003 \001(\005\022\030\n\tcode_has" +
-      "h\030\004 \001(\0132\005.Hash\022\032\n\022is_system_contract\030\005 \001" +
-      "(\010\";\n\nMethodFees\022\023\n\013method_name\030\001 \001(\t\022\030\n" +
-      "\004fees\030\002 \003(\0132\n.MethodFee\".\n\tMethodFee\022\016\n\006" +
-      "symbol\030\001 \001(\t\022\021\n\tbasic_fee\030\002 \001(\022\"K\n\014Resou" +
-      "rceInfo\022\037\n\005paths\030\001 \003(\0132\020.ScopedStatePath" +
-      "\022\032\n\022non_parallelizable\030\002 \001(\010\"\206\002\n\016Proposa" +
+      " \003(\t\"\202\001\n\031SmartContractRegistration\022\020\n\010ca" +
+      "tegory\030\001 \001(\021\022\014\n\004code\030\002 \001(\014\022\030\n\tcode_hash\030" +
+      "\003 \001(\0132\005.Hash\022\032\n\022is_system_contract\030\004 \001(\010" +
+      "\022\017\n\007version\030\005 \001(\005\"\230\001\n\014ContractInfo\022\025\n\rse" +
+      "rial_number\030\001 \001(\003\022\030\n\006author\030\002 \001(\0132\010.Addr" +
+      "ess\022\020\n\010category\030\003 \001(\021\022\030\n\tcode_hash\030\004 \001(\013" +
+      "2\005.Hash\022\032\n\022is_system_contract\030\005 \001(\010\022\017\n\007v" +
+      "ersion\030\006 \001(\005\"U\n\nMethodFees\022\023\n\013method_nam" +
+      "e\030\001 \001(\t\022\030\n\004fees\030\002 \003(\0132\n.MethodFee\022\030\n\020is_" +
+      "size_fee_free\030\003 \001(\010\".\n\tMethodFee\022\016\n\006symb" +
+      "ol\030\001 \001(\t\022\021\n\tbasic_fee\030\002 \001(\003\"w\n\014ResourceI" +
+      "nfo\022%\n\013write_paths\030\001 \003(\0132\020.ScopedStatePa" +
+      "th\022$\n\nread_paths\030\002 \003(\0132\020.ScopedStatePath" +
+      "\022\032\n\022non_parallelizable\030\003 \001(\010\"\321\002\n\016Proposa" +
       "lOutput\022\032\n\013proposal_id\030\001 \001(\0132\005.Hash\022\034\n\024c" +
       "ontract_method_name\030\002 \001(\t\022\034\n\nto_address\030" +
       "\003 \001(\0132\010.Address\022\016\n\006params\030\004 \001(\014\0220\n\014expir" +
       "ed_time\030\005 \001(\0132\032.google.protobuf.Timestam" +
       "p\022&\n\024organization_address\030\006 \001(\0132\010.Addres" +
       "s\022\032\n\010proposer\030\007 \001(\0132\010.Address\022\026\n\016to_be_r" +
-      "eleased\030\010 \001(\010\"4\n\020ValidationResult\022\017\n\007suc" +
-      "cess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\311\001\n\026MethodCa" +
+      "eleased\030\010 \001(\010\022\026\n\016approval_count\030\t \001(\003\022\027\n" +
+      "\017rejection_count\030\n \001(\003\022\030\n\020abstention_cou" +
+      "nt\030\013 \001(\003\"\251\001\n\030ProposalReleaseThreshold\022\"\n" +
+      "\032minimal_approval_threshold\030\001 \001(\003\022#\n\033max" +
+      "imal_rejection_threshold\030\002 \001(\003\022$\n\034maxima" +
+      "l_abstention_threshold\030\003 \001(\003\022\036\n\026minimal_" +
+      "vote_threshold\030\004 \001(\003\"0\n\021ProposerWhiteLis" +
+      "t\022\033\n\tproposers\030\001 \003(\0132\010.Address\"K\n\020Valida" +
+      "tionResult\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002" +
+      " \001(\t\022\025\n\ris_re_trigger\030\003 \001(\010\"\311\001\n\026MethodCa" +
       "llingThreshold\022E\n\020symbol_to_amount\030\001 \003(\013" +
       "2+.MethodCallingThreshold.SymbolToAmount" +
       "Entry\0221\n\024threshold_check_type\030\002 \001(\0162\023.Th" +
       "resholdCheckType\0325\n\023SymbolToAmountEntry\022" +
-      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:\0028\001\"\224\001\n\030Side" +
-      "ChainIdAndHeightDict\022C\n\016id_height_dict\030\001" +
-      " \003(\0132+.SideChainIdAndHeightDict.IdHeight" +
-      "DictEntry\0323\n\021IdHeightDictEntry\022\013\n\003key\030\001 " +
-      "\001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"d\n SideChainIndex" +
-      "ingInformationList\022@\n\031indexing_informati" +
-      "on_list\030\001 \003(\0132\035.SideChainIndexingInforma" +
-      "tion\"e\n\034SideChainIndexingInformation\022\020\n\010" +
-      "chain_id\030\001 \001(\005\022\026\n\016indexed_height\030\002 \001(\003\022\033" +
-      "\n\023to_be_indexed_count\030\003 \001(\003\"\240\001\n\023CrossCha" +
-      "inBlockData\0222\n\025side_chain_block_data\030\001 \003" +
-      "(\0132\023.SideChainBlockData\0226\n\027parent_chain_" +
-      "block_data\030\002 \003(\0132\025.ParentChainBlockData\022" +
-      "\035\n\025previous_block_height\030\003 \001(\003\"\214\001\n\022SideC" +
-      "hainBlockData\022\016\n\006height\030\001 \001(\003\022 \n\021block_h" +
-      "eader_hash\030\002 \001(\0132\005.Hash\0222\n#transaction_s" +
-      "tatus_merkle_tree_root\030\003 \001(\0132\005.Hash\022\020\n\010c" +
-      "hain_id\030\004 \001(\005\"\240\003\n\024ParentChainBlockData\022\016" +
-      "\n\006height\030\001 \001(\003\0224\n\026cross_chain_extra_data" +
-      "\030\002 \001(\0132\024.CrossChainExtraData\022\020\n\010chain_id" +
-      "\030\003 \001(\005\0222\n#transaction_status_merkle_tree" +
-      "_root\030\004 \001(\0132\005.Hash\022I\n\023indexed_merkle_pat" +
-      "h\030\005 \003(\0132,.ParentChainBlockData.IndexedMe" +
-      "rklePathEntry\0228\n\nextra_data\030\006 \003(\0132$.Pare" +
-      "ntChainBlockData.ExtraDataEntry\032E\n\026Index" +
-      "edMerklePathEntry\022\013\n\003key\030\001 \001(\003\022\032\n\005value\030" +
-      "\002 \001(\0132\013.MerklePath:\0028\001\0320\n\016ExtraDataEntry" +
-      "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"I\n\023Cros" +
-      "sChainExtraData\0222\n#transaction_status_me" +
-      "rkle_tree_root\030\001 \001(\0132\005.Hash\"O\n\031IndexedSi" +
-      "deChainBlockData\0222\n\025side_chain_block_dat" +
-      "a\030\001 \003(\0132\023.SideChainBlockData\"u\n\034CrossCha" +
-      "inMerkleProofContext\022!\n\031bound_parent_cha" +
-      "in_height\030\001 \001(\003\0222\n\035merkle_path_from_pare" +
-      "nt_chain\030\002 \001(\0132\013.MerklePath\"\216\002\n\027ChainIni" +
-      "tializationData\022\020\n\010chain_id\030\001 \001(\005\022\031\n\007cre" +
-      "ator\030\002 \001(\0132\010.Address\0226\n\022creation_timesta" +
-      "mp\030\003 \001(\0132\032.google.protobuf.Timestamp\022\031\n\021" +
-      "extra_information\030\004 \003(\014\022\'\n\037creation_heig" +
-      "ht_on_parent_chain\030\005 \001(\003\022)\n!chain_creato" +
-      "r_privilege_preserved\030\006 \001(\010\022\037\n\027side_chai" +
-      "n_token_symbol\030\007 \001(\t*0\n\022ThresholdCheckTy" +
-      "pe\022\013\n\007BALANCE\020\000\022\r\n\tALLOWANCE\020\001B\034\n\032io.ael" +
-      "f.protobuf.generatedb\006proto3"
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\"d\n SideC" +
+      "hainIndexingInformationList\022@\n\031indexing_" +
+      "information_list\030\001 \003(\0132\035.SideChainIndexi" +
+      "ngInformation\"H\n\034SideChainIndexingInform" +
+      "ation\022\020\n\010chain_id\030\001 \001(\005\022\026\n\016indexed_heigh" +
+      "t\030\002 \001(\003\"\213\001\n\023CrossChainBlockData\0227\n\032side_" +
+      "chain_block_data_list\030\001 \003(\0132\023.SideChainB" +
+      "lockData\022;\n\034parent_chain_block_data_list" +
+      "\030\002 \003(\0132\025.ParentChainBlockData\"\214\001\n\022SideCh" +
+      "ainBlockData\022\016\n\006height\030\001 \001(\003\022 \n\021block_he" +
+      "ader_hash\030\002 \001(\0132\005.Hash\0222\n#transaction_st" +
+      "atus_merkle_tree_root\030\003 \001(\0132\005.Hash\022\020\n\010ch" +
+      "ain_id\030\004 \001(\005\"\240\003\n\024ParentChainBlockData\022\016\n" +
+      "\006height\030\001 \001(\003\0224\n\026cross_chain_extra_data\030" +
+      "\002 \001(\0132\024.CrossChainExtraData\022\020\n\010chain_id\030" +
+      "\003 \001(\005\0222\n#transaction_status_merkle_tree_" +
+      "root\030\004 \001(\0132\005.Hash\022I\n\023indexed_merkle_path" +
+      "\030\005 \003(\0132,.ParentChainBlockData.IndexedMer" +
+      "klePathEntry\0228\n\nextra_data\030\006 \003(\0132$.Paren" +
+      "tChainBlockData.ExtraDataEntry\032E\n\026Indexe" +
+      "dMerklePathEntry\022\013\n\003key\030\001 \001(\003\022\032\n\005value\030\002" +
+      " \001(\0132\013.MerklePath:\0028\001\0320\n\016ExtraDataEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"I\n\023Cross" +
+      "ChainExtraData\0222\n#transaction_status_mer" +
+      "kle_tree_root\030\001 \001(\0132\005.Hash\"u\n\034CrossChain" +
+      "MerkleProofContext\022!\n\031bound_parent_chain" +
+      "_height\030\001 \001(\003\0222\n\035merkle_path_from_parent" +
+      "_chain\030\002 \001(\0132\013.MerklePath\"\344\003\n\027ChainIniti" +
+      "alizationData\022\020\n\010chain_id\030\001 \001(\005\022\031\n\007creat" +
+      "or\030\002 \001(\0132\010.Address\0226\n\022creation_timestamp" +
+      "\030\003 \001(\0132\032.google.protobuf.Timestamp\022\'\n\037cr" +
+      "eation_height_on_parent_chain\030\004 \001(\003\022)\n!c" +
+      "hain_creator_privilege_preserved\030\005 \001(\010\0225" +
+      "\n#parent_chain_token_contract_address\030\006 " +
+      "\001(\0132\010.Address\022N\n#chain_initialization_co" +
+      "nsensus_info\030\007 \001(\0132!.ChainInitialization" +
+      "ConsensusInfo\022\036\n\026native_token_info_data\030" +
+      "\010 \001(\014\022/\n\023resource_token_info\030\t \001(\0132\022.Res" +
+      "ourceTokenInfo\0228\n\030chain_primary_token_in" +
+      "fo\030\n \001(\0132\026.ChainPrimaryTokenInfo\"B\n Chai" +
+      "nInitializationConsensusInfo\022\036\n\026initial_" +
+      "consensus_data\030\001 \001(\014\"\303\001\n\021ResourceTokenIn" +
+      "fo\022 \n\030resource_token_list_data\030\001 \001(\014\022N\n\027" +
+      "initial_resource_amount\030\002 \003(\0132-.Resource" +
+      "TokenInfo.InitialResourceAmountEntry\032<\n\032" +
+      "InitialResourceAmountEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\r\n\005value\030\002 \001(\005:\0028\001\"\203\001\n\025ChainPrimaryToken" +
+      "Info\022 \n\030chain_primary_token_data\030\001 \001(\014\022H" +
+      "\n#side_chain_token_initial_issue_list\030\002 " +
+      "\003(\0132\033.SideChainTokenInitialIssue\"G\n\032Side" +
+      "ChainTokenInitialIssue\022\031\n\007address\030\001 \001(\0132" +
+      "\010.Address\022\016\n\006amount\030\002 \001(\003*0\n\022ThresholdCh" +
+      "eckType\022\013\n\007BALANCE\020\000\022\r\n\tALLOWANCE\020\001B\034\n\032i" +
+      "o.aelf.protobuf.generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -22095,19 +29485,19 @@ public final class Client {
     internal_static_SmartContractRegistration_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SmartContractRegistration_descriptor,
-        new java.lang.String[] { "Category", "Code", "CodeHash", });
+        new java.lang.String[] { "Category", "Code", "CodeHash", "IsSystemContract", "Version", });
     internal_static_ContractInfo_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_ContractInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ContractInfo_descriptor,
-        new java.lang.String[] { "SerialNumber", "Category", "CodeHash", "IsSystemContract", });
+        new java.lang.String[] { "SerialNumber", "Author", "Category", "CodeHash", "IsSystemContract", "Version", });
     internal_static_MethodFees_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_MethodFees_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MethodFees_descriptor,
-        new java.lang.String[] { "MethodName", "Fees", });
+        new java.lang.String[] { "MethodName", "Fees", "IsSizeFeeFree", });
     internal_static_MethodFee_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_MethodFee_fieldAccessorTable = new
@@ -22119,21 +29509,33 @@ public final class Client {
     internal_static_ResourceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResourceInfo_descriptor,
-        new java.lang.String[] { "Paths", "NonParallelizable", });
+        new java.lang.String[] { "WritePaths", "ReadPaths", "NonParallelizable", });
     internal_static_ProposalOutput_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_ProposalOutput_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProposalOutput_descriptor,
-        new java.lang.String[] { "ProposalId", "ContractMethodName", "ToAddress", "Params", "ExpiredTime", "OrganizationAddress", "Proposer", "ToBeReleased", });
-    internal_static_ValidationResult_descriptor =
+        new java.lang.String[] { "ProposalId", "ContractMethodName", "ToAddress", "Params", "ExpiredTime", "OrganizationAddress", "Proposer", "ToBeReleased", "ApprovalCount", "RejectionCount", "AbstentionCount", });
+    internal_static_ProposalReleaseThreshold_descriptor =
       getDescriptor().getMessageTypes().get(13);
+    internal_static_ProposalReleaseThreshold_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ProposalReleaseThreshold_descriptor,
+        new java.lang.String[] { "MinimalApprovalThreshold", "MaximalRejectionThreshold", "MaximalAbstentionThreshold", "MinimalVoteThreshold", });
+    internal_static_ProposerWhiteList_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_ProposerWhiteList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ProposerWhiteList_descriptor,
+        new java.lang.String[] { "Proposers", });
+    internal_static_ValidationResult_descriptor =
+      getDescriptor().getMessageTypes().get(15);
     internal_static_ValidationResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ValidationResult_descriptor,
-        new java.lang.String[] { "Success", "Message", });
+        new java.lang.String[] { "Success", "Message", "IsReTrigger", });
     internal_static_MethodCallingThreshold_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_MethodCallingThreshold_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MethodCallingThreshold_descriptor,
@@ -22144,44 +29546,32 @@ public final class Client {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MethodCallingThreshold_SymbolToAmountEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_SideChainIdAndHeightDict_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_SideChainIdAndHeightDict_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SideChainIdAndHeightDict_descriptor,
-        new java.lang.String[] { "IdHeightDict", });
-    internal_static_SideChainIdAndHeightDict_IdHeightDictEntry_descriptor =
-      internal_static_SideChainIdAndHeightDict_descriptor.getNestedTypes().get(0);
-    internal_static_SideChainIdAndHeightDict_IdHeightDictEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SideChainIdAndHeightDict_IdHeightDictEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     internal_static_SideChainIndexingInformationList_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_SideChainIndexingInformationList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SideChainIndexingInformationList_descriptor,
         new java.lang.String[] { "IndexingInformationList", });
     internal_static_SideChainIndexingInformation_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_SideChainIndexingInformation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SideChainIndexingInformation_descriptor,
-        new java.lang.String[] { "ChainId", "IndexedHeight", "ToBeIndexedCount", });
+        new java.lang.String[] { "ChainId", "IndexedHeight", });
     internal_static_CrossChainBlockData_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_CrossChainBlockData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CrossChainBlockData_descriptor,
-        new java.lang.String[] { "SideChainBlockData", "ParentChainBlockData", "PreviousBlockHeight", });
+        new java.lang.String[] { "SideChainBlockDataList", "ParentChainBlockDataList", });
     internal_static_SideChainBlockData_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_SideChainBlockData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SideChainBlockData_descriptor,
         new java.lang.String[] { "Height", "BlockHeaderHash", "TransactionStatusMerkleTreeRoot", "ChainId", });
     internal_static_ParentChainBlockData_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_ParentChainBlockData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParentChainBlockData_descriptor,
@@ -22199,17 +29589,11 @@ public final class Client {
         internal_static_ParentChainBlockData_ExtraDataEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_CrossChainExtraData_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_CrossChainExtraData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CrossChainExtraData_descriptor,
         new java.lang.String[] { "TransactionStatusMerkleTreeRoot", });
-    internal_static_IndexedSideChainBlockData_descriptor =
-      getDescriptor().getMessageTypes().get(22);
-    internal_static_IndexedSideChainBlockData_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_IndexedSideChainBlockData_descriptor,
-        new java.lang.String[] { "SideChainBlockData", });
     internal_static_CrossChainMerkleProofContext_descriptor =
       getDescriptor().getMessageTypes().get(23);
     internal_static_CrossChainMerkleProofContext_fieldAccessorTable = new
@@ -22221,7 +29605,37 @@ public final class Client {
     internal_static_ChainInitializationData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ChainInitializationData_descriptor,
-        new java.lang.String[] { "ChainId", "Creator", "CreationTimestamp", "ExtraInformation", "CreationHeightOnParentChain", "ChainCreatorPrivilegePreserved", "SideChainTokenSymbol", });
+        new java.lang.String[] { "ChainId", "Creator", "CreationTimestamp", "CreationHeightOnParentChain", "ChainCreatorPrivilegePreserved", "ParentChainTokenContractAddress", "ChainInitializationConsensusInfo", "NativeTokenInfoData", "ResourceTokenInfo", "ChainPrimaryTokenInfo", });
+    internal_static_ChainInitializationConsensusInfo_descriptor =
+      getDescriptor().getMessageTypes().get(25);
+    internal_static_ChainInitializationConsensusInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ChainInitializationConsensusInfo_descriptor,
+        new java.lang.String[] { "InitialConsensusData", });
+    internal_static_ResourceTokenInfo_descriptor =
+      getDescriptor().getMessageTypes().get(26);
+    internal_static_ResourceTokenInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ResourceTokenInfo_descriptor,
+        new java.lang.String[] { "ResourceTokenListData", "InitialResourceAmount", });
+    internal_static_ResourceTokenInfo_InitialResourceAmountEntry_descriptor =
+      internal_static_ResourceTokenInfo_descriptor.getNestedTypes().get(0);
+    internal_static_ResourceTokenInfo_InitialResourceAmountEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ResourceTokenInfo_InitialResourceAmountEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ChainPrimaryTokenInfo_descriptor =
+      getDescriptor().getMessageTypes().get(27);
+    internal_static_ChainPrimaryTokenInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ChainPrimaryTokenInfo_descriptor,
+        new java.lang.String[] { "ChainPrimaryTokenData", "SideChainTokenInitialIssueList", });
+    internal_static_SideChainTokenInitialIssue_descriptor =
+      getDescriptor().getMessageTypes().get(28);
+    internal_static_SideChainTokenInitialIssue_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SideChainTokenInitialIssue_descriptor,
+        new java.lang.String[] { "Address", "Amount", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

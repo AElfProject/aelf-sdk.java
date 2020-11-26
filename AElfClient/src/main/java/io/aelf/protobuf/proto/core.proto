@@ -1,6 +1,7 @@
 syntax = "proto3";
 option java_package = "io.aelf.protobuf.generated";
 import "client.proto";
+
 message Transaction {
     Address from = 1;
     Address to = 2;
@@ -18,8 +19,9 @@ enum TransactionResultStatus {
     PENDING = 1;
     FAILED = 2;
     MINED = 3;
-    UNEXECUTABLE = 4;
-    CONFLICT = 5;
+    CONFLICT = 4;
+    PENDING_VALIDATION = 5;
+    NODE_VALIDATION_FAILED = 6;
 }
 
 message TransactionResult {
@@ -30,21 +32,7 @@ message TransactionResult {
     bytes return_value = 5;
     int64 block_number = 6;
     Hash block_hash = 7;
-    int32 index = 8;
-    Hash state_hash = 9;
-    // Merkle proof path for this transaction
     string error = 10;
-}
-
-message TransactionFee {
-    map<string, sint64> value = 1;// symbol -> amount
-    bool is_failed_to_charge = 2;
-}
-
-message ConsumedResourceTokens {
-    map<string, sint64> value = 1;// symbol -> amount
-    map<string, sint64> owning = 2;// symbol -> amount
-    bool is_failed_to_charge = 3;
 }
 
 message LogEvent {
