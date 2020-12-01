@@ -204,7 +204,7 @@ public class BlockChainSdkTest {
   }
 
   @Test
-  public void getContractFilCeDescriptorSetTest() throws Exception {
+  public void getContractFileDescriptorSetTest() throws Exception {
     long blockHeight = client.getBlockHeight();
     Assert.assertTrue(blockHeight > 0);
     BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
@@ -212,7 +212,7 @@ public class BlockChainSdkTest {
         .getTransactionResults(blockDto.getBlockHash(), 0, 10);
     for (TransactionResultDto transactionResultDtoObj : transactionResultDtoList) {
       client
-          .getContractFilCeDescriptorSet(transactionResultDtoObj.getTransaction().getTo());
+          .getContractFileDescriptorSet(transactionResultDtoObj.getTransaction().getTo());
     }
   }
 

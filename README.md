@@ -53,7 +53,7 @@ public BlockStateDto getBlockState(String blockHash) throws  Exception;
      
 public ChainstatusDto getChainStatus() throws Exception;
      
-public byte[] getContractFilCeDescriptorSet(String address) throws  Exception;
+public byte[] getContractFileDescriptorSet(String address) throws  Exception;
      
 public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception;
      

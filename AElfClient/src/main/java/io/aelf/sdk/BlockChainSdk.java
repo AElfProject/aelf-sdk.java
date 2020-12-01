@@ -175,13 +175,13 @@ public class BlockChainSdk {
   /**
    * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
    */
-  public byte[] getContractFilCeDescriptorSet(String address) throws Exception {
+  public byte[] getContractFileDescriptorSet(String address) throws Exception {
     String url = this.AElfClientUrl + WA_GETCFCRIPTORSET + "?address=" + address;
     String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     if (chainContext.startsWith("\"") && chainContext.endsWith("\"")) {
       return chainContext.getBytes();
     } else {
-      throw new RuntimeException("getContractFilCeDescriptorSet body Exception");
+      throw new RuntimeException("getContractFileDescriptorSet body Exception");
     }
 
   }

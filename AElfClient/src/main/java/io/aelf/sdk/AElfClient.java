@@ -147,8 +147,8 @@ public class AElfClient {
   /**
    * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
    */
-  public byte[] getContractFilCeDescriptorSet(String address) throws Exception {
-    return this.getBlockChainSdkObj().getContractFilCeDescriptorSet(address);
+  public byte[] getContractFileDescriptorSet(String address) throws Exception {
+    return this.getBlockChainSdkObj().getContractFileDescriptorSet(address);
   }
 
   /**
