@@ -21,6 +21,7 @@
         <jdk15on.version>1.60</jdk15on.version>
         <bitcoinj-core.version>0.14.3</bitcoinj-core.version>
         <protobuf-java.version>3.11.1</protobuf-java.version>
+        <junit.version>4.12</junit.version>
     </properties>
     <dependencies>
         <dependency>
@@ -73,6 +74,22 @@
         <artifactId>protobuf-java</artifactId>
         <version>${protobuf-java.version}</version>
       </dependency>
+      <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+        </dependency>
     </dependencies>
     <developers>
         <developer>

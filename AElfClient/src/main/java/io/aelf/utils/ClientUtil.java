@@ -84,13 +84,13 @@ public class ClientUtil {
       if (200 != response.getStatusLine().getStatusCode()) {
         responseContent = "@ERROR:@" + responseContent;
       }
-      logger.info("Request address:" + httpGet.getURI());
-      logger.info("Response status:" + response.getStatusLine());
-      logger.info("Response length:" + responseLength);
-      logger.info("Response content:" + responseContent);
+      logger.debug("Request address:" + httpGet.getURI());
+      logger.debug("Response status:" + response.getStatusLine());
+      logger.debug("Response length:" + responseLength);
+      logger.debug("Response content:" + responseContent);
     } catch (Exception ex) {
       responseContent = "@ERROR:@" + ex.getMessage();
-      logger.info("sendGet Exception:", ex);
+      logger.debug("sendGet Exception:", ex);
     } finally {
       httpClient.getConnectionManager().shutdown();
     }
@@ -129,12 +129,12 @@ public class ClientUtil {
         responseContent = "@ERROR:@" + responseContent;
       }
 
-      logger.info("Request address:" + httpDelete.getURI());
-      logger.info("Response status:" + response.getStatusLine());
-      logger.info("Response length:" + responseLength);
-      logger.info("Response content:" + responseContent);
+      logger.debug("Request address:" + httpDelete.getURI());
+      logger.debug("Response status:" + response.getStatusLine());
+      logger.debug("Response length:" + responseLength);
+      logger.debug("Response content:" + responseContent);
     } catch (Exception ex) {
-      logger.info("sendDelete Exception:", ex);
+      logger.error("sendDelete Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
     } finally {
       httpClient.getConnectionManager().shutdown();
@@ -178,7 +178,7 @@ public class ClientUtil {
         responseContent = "@ERROR:@" + responseContent;
       }
     } catch (Exception ex) {
-      logger.info("sendPost Exception:", ex);
+      logger.error("sendPost Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
     } finally {
       httpClient.getConnectionManager().shutdown();

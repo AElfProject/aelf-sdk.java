@@ -1,4 +1,4 @@
-package io.aelf.test;
+package io.aelf.sdk;
 
 import com.google.protobuf.ByteString;
 import io.aelf.protobuf.generated.Core;

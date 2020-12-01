@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>AElfClient</module>
-        <module>AElfClientTest</module>
     </modules>
 
 </project>

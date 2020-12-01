@@ -12,7 +12,7 @@ public class HttpUtilExt {
    */
   public static String sendGet(String reqUrl,
       String decodeCharset, String version) throws Exception {
-    logger.info("Request address:" + reqUrl);
+    logger.debug("Request address:" + reqUrl);
     if (StringUtil.isBlank(version)) {
       version = "";
     } else {
@@ -23,7 +23,7 @@ public class HttpUtilExt {
       chainContext = chainContext.replace("@ERROR:@", "");
       throw new RuntimeException(chainContext);
     }
-    logger.info("Return parameters:" + chainContext);
+    logger.debug("Return parameters:" + chainContext);
     return chainContext;
   }
 
@@ -31,7 +31,7 @@ public class HttpUtilExt {
    * HTTP DELETE Request help method.
    */
   public static String sendDelete(String reqUrl, String decodeCharset, String version) {
-    logger.info("Request address:" + reqUrl);
+    logger.debug("Request address:" + reqUrl);
     if (StringUtil.isBlank(version)) {
       version = "";
     } else {
@@ -39,7 +39,7 @@ public class HttpUtilExt {
     }
     String chainContext = ClientUtil
         .sendDelete(reqUrl, decodeCharset, "application/json" + version);
-    logger.info("Return parameters:" + chainContext);
+    logger.debug("Return parameters:" + chainContext);
     return chainContext;
   }
 
@@ -52,14 +52,14 @@ public class HttpUtilExt {
     } else {
       version = ";v=" + version;
     }
-    logger.info("Request address:" + reqUrl);
+    logger.debug("Request address:" + reqUrl);
     String chainContext = ClientUtil
         .sendPost(reqUrl, params, "UTF-8", "UTF-8", "application/json" + version);
     if (StringUtil.toString(chainContext).length() > 0 && chainContext.contains("@ERROR:@")) {
       chainContext = chainContext.replace("@ERROR:@", "");
       throw new RuntimeException(chainContext);
     }
-    logger.info("Return parameters:" + chainContext);
+    logger.debug("Return parameters:" + chainContext);
     return chainContext;
   }
 }
