@@ -1,6 +1,8 @@
 package io.aelf.sdk;
 
 import com.google.protobuf.ByteString;
+
+import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.protobuf.generated.Core.TransactionResultStatus;
 import io.aelf.protobuf.generated.TokenContract.GetBalanceOutput;
@@ -227,8 +229,11 @@ public class BlockChainSdkTest {
     String toAddress = client.getGenesisContractAddress();
     String methodName = "GetContractAddressByName";
     byte[] bytes = Sha256.getBytesSha256("AElf.ContractNames.TokenConverter");
+    Client.Hash.Builder hash = Client.Hash.newBuilder();
+    hash.setValue(ByteString.copyFrom(bytes));
+    Client.Hash hashObj = hash.build();
     Core.Transaction.Builder transaction = client
-        .generateTransaction(address, toAddress, methodName, bytes);
+        .generateTransaction(address, toAddress, methodName, hashObj.toByteArray());
     Core.Transaction transactionObj = transaction.build();
     String signature = client.signTransaction(privateKey, transactionObj);
     transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
@@ -314,7 +319,10 @@ public class BlockChainSdkTest {
     String toAddress = client.getGenesisContractAddress();
     String methodName = "GetContractAddressByName";
     byte[] bytes = Sha256.getBytesSha256("AElf.ContractNames.Vote");
-    Core.Transaction transactionObj = buildTransaction(toAddress, methodName, bytes);
+    Client.Hash.Builder hash = Client.Hash.newBuilder();
+    hash.setValue(ByteString.copyFrom(bytes));
+    Client.Hash hashObj = hash.build();
+    Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
     SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
     sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
     client.sendTransaction(sendTransactionInputObj);
@@ -330,7 +338,10 @@ public class BlockChainSdkTest {
     parameters.add(param1);
     parameters.add(param2);
     for (byte[] tmp : parameters) {
-      Core.Transaction transactionObj = buildTransaction(toAddress, methodName, tmp);
+      Client.Hash.Builder hash = Client.Hash.newBuilder();
+      hash.setValue(ByteString.copyFrom(tmp));
+      Client.Hash hashObj = hash.build();
+      Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
       SendTransactionsInput sendTransactionsInputs = new SendTransactionsInput();
       String rawTransactions = Hex.toHexString(transactionObj.toByteArray());
       sendTransactionsInputs.setRawTransactions(rawTransactions);
@@ -395,7 +406,10 @@ public class BlockChainSdkTest {
     String toAddress = client.getGenesisContractAddress();
     byte[] bytes = Sha256.getBytesSha256("AElf.ContractNames.Vote");
     String methodName = "GetContractAddressByName";
-    Core.Transaction transactionObj = buildTransaction(toAddress, methodName, bytes);
+    Client.Hash.Builder hash = Client.Hash.newBuilder();
+    hash.setValue(ByteString.copyFrom(bytes));
+    Client.Hash hashObj = hash.build();
+    Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
     SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
     sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
     client.sendTransaction(sendTransactionInputObj);

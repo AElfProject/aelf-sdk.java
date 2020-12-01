@@ -281,7 +281,6 @@ public class AElfClient {
   public Core.Transaction.Builder generateTransaction(String from, String to, String methodName,
       byte[] params) throws Exception {
     final ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatus();
-    final Client.Hash.Builder hash = Client.Hash.newBuilder();
     final Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
     Client.Address.Builder addressForm = Client.Address.newBuilder();
     Client.Address.Builder addressTo = Client.Address.newBuilder();
@@ -292,9 +291,7 @@ public class AElfClient {
     transaction.setFrom(addressFormObj);
     transaction.setTo(addressToObj);
     transaction.setMethodName(methodName);
-    hash.setValue(ByteString.copyFrom(params));
-    Client.Hash hashObj = hash.build();
-    transaction.setParams(hashObj.toByteString());
+    transaction.setParams(ByteString.copyFrom(params));
     transaction.setRefBlockNumber(chainStatus.getBestChainHeight());
     byte[] refBlockPrefix = ByteArrayHelper.hexToByteArray(chainStatus.getBestChainHash());
     refBlockPrefix = Arrays.copyOf(refBlockPrefix, 4);
@@ -380,8 +377,11 @@ public class AElfClient {
     String from = this.getAddressFromPrivateKey(privateKey);
     String to = this.getGenesisContractAddress();
     String methodName = "GetContractAddressByName";
+    Client.Hash.Builder hash = Client.Hash.newBuilder();
+    hash.setValue(ByteString.copyFrom(contractNameHash));
+    Client.Hash hashObj = hash.build();
     Core.Transaction.Builder transaction = this
-        .generateTransaction(from, to, methodName, contractNameHash);
+        .generateTransaction(from, to, methodName, hashObj.toByteArray());
     String signature = this.signTransaction(privateKey, transaction.build());
     transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
     Core.Transaction transactionObj = transaction.build();
