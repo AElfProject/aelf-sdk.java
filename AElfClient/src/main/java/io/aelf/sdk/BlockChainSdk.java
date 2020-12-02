@@ -381,7 +381,12 @@ public class BlockChainSdk {
     String bloomStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Bloom"));
     bloomStr = bloomStr.length() == 0 ? Base64.encodeBase64String(new byte[256]) : bloomStr;
     final String timeStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Time"));
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    SimpleDateFormat df;
+    if(timeStr.length() == 20){
+      df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    }else{
+      df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    }
     df.setTimeZone(TimeZone.getTimeZone("UTC"));
     BlockDto blockDto = new BlockDto();
     blockDto.setBlockHash(block.getString("BlockHash"));
