@@ -1,4 +1,4 @@
-package io.aelf.test;
+package io.aelf.sdk;
 
 import io.aelf.schemas.AddPeerInput;
 import io.aelf.schemas.PeerDto;

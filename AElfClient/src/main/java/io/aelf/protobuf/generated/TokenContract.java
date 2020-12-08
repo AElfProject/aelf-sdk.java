@@ -11887,6 +11887,1141 @@ public final class TokenContract {
 
   }
 
+  public interface TransferInputOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:TransferInput)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The receiver of the token.
+     * </pre>
+     *
+     * <code>.Address to = 1;</code>
+     * @return Whether the to field is set.
+     */
+    boolean hasTo();
+    /**
+     * <pre>
+     * The receiver of the token.
+     * </pre>
+     *
+     * <code>.Address to = 1;</code>
+     * @return The to.
+     */
+    io.aelf.protobuf.generated.Client.Address getTo();
+    /**
+     * <pre>
+     * The receiver of the token.
+     * </pre>
+     *
+     * <code>.Address to = 1;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getToOrBuilder();
+
+    /**
+     * <pre>
+     * The token symbol to transfer.
+     * </pre>
+     *
+     * <code>string symbol = 2;</code>
+     * @return The symbol.
+     */
+    java.lang.String getSymbol();
+    /**
+     * <pre>
+     * The token symbol to transfer.
+     * </pre>
+     *
+     * <code>string symbol = 2;</code>
+     * @return The bytes for symbol.
+     */
+    com.google.protobuf.ByteString
+        getSymbolBytes();
+
+    /**
+     * <pre>
+     * The amount to to transfer.
+     * </pre>
+     *
+     * <code>int64 amount = 3;</code>
+     * @return The amount.
+     */
+    long getAmount();
+
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 4;</code>
+     * @return The memo.
+     */
+    java.lang.String getMemo();
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 4;</code>
+     * @return The bytes for memo.
+     */
+    com.google.protobuf.ByteString
+        getMemoBytes();
+  }
+  /**
+   * Protobuf type {@code TransferInput}
+   */
+  public  static final class TransferInput extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:TransferInput)
+      TransferInputOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TransferInput.newBuilder() to construct.
+    private TransferInput(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TransferInput() {
+      symbol_ = "";
+      memo_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TransferInput();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TransferInput(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (to_ != null) {
+                subBuilder = to_.toBuilder();
+              }
+              to_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(to_);
+                to_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              symbol_ = s;
+              break;
+            }
+            case 24: {
+
+              amount_ = input.readInt64();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              memo_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.TokenContract.internal_static_TransferInput_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.TokenContract.internal_static_TransferInput_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.TokenContract.TransferInput.class, io.aelf.protobuf.generated.TokenContract.TransferInput.Builder.class);
+    }
+
+    public static final int TO_FIELD_NUMBER = 1;
+    private io.aelf.protobuf.generated.Client.Address to_;
+    /**
+     * <pre>
+     * The receiver of the token.
+     * </pre>
+     *
+     * <code>.Address to = 1;</code>
+     * @return Whether the to field is set.
+     */
+    public boolean hasTo() {
+      return to_ != null;
+    }
+    /**
+     * <pre>
+     * The receiver of the token.
+     * </pre>
+     *
+     * <code>.Address to = 1;</code>
+     * @return The to.
+     */
+    public io.aelf.protobuf.generated.Client.Address getTo() {
+      return to_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
+    }
+    /**
+     * <pre>
+     * The receiver of the token.
+     * </pre>
+     *
+     * <code>.Address to = 1;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getToOrBuilder() {
+      return getTo();
+    }
+
+    public static final int SYMBOL_FIELD_NUMBER = 2;
+    private volatile java.lang.Object symbol_;
+    /**
+     * <pre>
+     * The token symbol to transfer.
+     * </pre>
+     *
+     * <code>string symbol = 2;</code>
+     * @return The symbol.
+     */
+    public java.lang.String getSymbol() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        symbol_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The token symbol to transfer.
+     * </pre>
+     *
+     * <code>string symbol = 2;</code>
+     * @return The bytes for symbol.
+     */
+    public com.google.protobuf.ByteString
+        getSymbolBytes() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        symbol_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AMOUNT_FIELD_NUMBER = 3;
+    private long amount_;
+    /**
+     * <pre>
+     * The amount to to transfer.
+     * </pre>
+     *
+     * <code>int64 amount = 3;</code>
+     * @return The amount.
+     */
+    public long getAmount() {
+      return amount_;
+    }
+
+    public static final int MEMO_FIELD_NUMBER = 4;
+    private volatile java.lang.Object memo_;
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 4;</code>
+     * @return The memo.
+     */
+    public java.lang.String getMemo() {
+      java.lang.Object ref = memo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        memo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 4;</code>
+     * @return The bytes for memo.
+     */
+    public com.google.protobuf.ByteString
+        getMemoBytes() {
+      java.lang.Object ref = memo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        memo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (to_ != null) {
+        output.writeMessage(1, getTo());
+      }
+      if (!getSymbolBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, symbol_);
+      }
+      if (amount_ != 0L) {
+        output.writeInt64(3, amount_);
+      }
+      if (!getMemoBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, memo_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (to_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTo());
+      }
+      if (!getSymbolBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, symbol_);
+      }
+      if (amount_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, amount_);
+      }
+      if (!getMemoBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, memo_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.TokenContract.TransferInput)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.TokenContract.TransferInput other = (io.aelf.protobuf.generated.TokenContract.TransferInput) obj;
+
+      if (hasTo() != other.hasTo()) return false;
+      if (hasTo()) {
+        if (!getTo()
+            .equals(other.getTo())) return false;
+      }
+      if (!getSymbol()
+          .equals(other.getSymbol())) return false;
+      if (getAmount()
+          != other.getAmount()) return false;
+      if (!getMemo()
+          .equals(other.getMemo())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTo()) {
+        hash = (37 * hash) + TO_FIELD_NUMBER;
+        hash = (53 * hash) + getTo().hashCode();
+      }
+      hash = (37 * hash) + SYMBOL_FIELD_NUMBER;
+      hash = (53 * hash) + getSymbol().hashCode();
+      hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getAmount());
+      hash = (37 * hash) + MEMO_FIELD_NUMBER;
+      hash = (53 * hash) + getMemo().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.TokenContract.TransferInput prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code TransferInput}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:TransferInput)
+        io.aelf.protobuf.generated.TokenContract.TransferInputOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.TokenContract.internal_static_TransferInput_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.TokenContract.internal_static_TransferInput_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.TokenContract.TransferInput.class, io.aelf.protobuf.generated.TokenContract.TransferInput.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.TokenContract.TransferInput.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (toBuilder_ == null) {
+          to_ = null;
+        } else {
+          to_ = null;
+          toBuilder_ = null;
+        }
+        symbol_ = "";
+
+        amount_ = 0L;
+
+        memo_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.TokenContract.internal_static_TransferInput_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.TokenContract.TransferInput getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.TokenContract.TransferInput.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.TokenContract.TransferInput build() {
+        io.aelf.protobuf.generated.TokenContract.TransferInput result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.TokenContract.TransferInput buildPartial() {
+        io.aelf.protobuf.generated.TokenContract.TransferInput result = new io.aelf.protobuf.generated.TokenContract.TransferInput(this);
+        if (toBuilder_ == null) {
+          result.to_ = to_;
+        } else {
+          result.to_ = toBuilder_.build();
+        }
+        result.symbol_ = symbol_;
+        result.amount_ = amount_;
+        result.memo_ = memo_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.TokenContract.TransferInput) {
+          return mergeFrom((io.aelf.protobuf.generated.TokenContract.TransferInput)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.TokenContract.TransferInput other) {
+        if (other == io.aelf.protobuf.generated.TokenContract.TransferInput.getDefaultInstance()) return this;
+        if (other.hasTo()) {
+          mergeTo(other.getTo());
+        }
+        if (!other.getSymbol().isEmpty()) {
+          symbol_ = other.symbol_;
+          onChanged();
+        }
+        if (other.getAmount() != 0L) {
+          setAmount(other.getAmount());
+        }
+        if (!other.getMemo().isEmpty()) {
+          memo_ = other.memo_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.TokenContract.TransferInput parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.TokenContract.TransferInput) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private io.aelf.protobuf.generated.Client.Address to_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> toBuilder_;
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       * @return Whether the to field is set.
+       */
+      public boolean hasTo() {
+        return toBuilder_ != null || to_ != null;
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       * @return The to.
+       */
+      public io.aelf.protobuf.generated.Client.Address getTo() {
+        if (toBuilder_ == null) {
+          return to_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
+        } else {
+          return toBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       */
+      public Builder setTo(io.aelf.protobuf.generated.Client.Address value) {
+        if (toBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          to_ = value;
+          onChanged();
+        } else {
+          toBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       */
+      public Builder setTo(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (toBuilder_ == null) {
+          to_ = builderForValue.build();
+          onChanged();
+        } else {
+          toBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       */
+      public Builder mergeTo(io.aelf.protobuf.generated.Client.Address value) {
+        if (toBuilder_ == null) {
+          if (to_ != null) {
+            to_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(to_).mergeFrom(value).buildPartial();
+          } else {
+            to_ = value;
+          }
+          onChanged();
+        } else {
+          toBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       */
+      public Builder clearTo() {
+        if (toBuilder_ == null) {
+          to_ = null;
+          onChanged();
+        } else {
+          to_ = null;
+          toBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getToBuilder() {
+        
+        onChanged();
+        return getToFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getToOrBuilder() {
+        if (toBuilder_ != null) {
+          return toBuilder_.getMessageOrBuilder();
+        } else {
+          return to_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
+        }
+      }
+      /**
+       * <pre>
+       * The receiver of the token.
+       * </pre>
+       *
+       * <code>.Address to = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getToFieldBuilder() {
+        if (toBuilder_ == null) {
+          toBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getTo(),
+                  getParentForChildren(),
+                  isClean());
+          to_ = null;
+        }
+        return toBuilder_;
+      }
+
+      private java.lang.Object symbol_ = "";
+      /**
+       * <pre>
+       * The token symbol to transfer.
+       * </pre>
+       *
+       * <code>string symbol = 2;</code>
+       * @return The symbol.
+       */
+      public java.lang.String getSymbol() {
+        java.lang.Object ref = symbol_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          symbol_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The token symbol to transfer.
+       * </pre>
+       *
+       * <code>string symbol = 2;</code>
+       * @return The bytes for symbol.
+       */
+      public com.google.protobuf.ByteString
+          getSymbolBytes() {
+        java.lang.Object ref = symbol_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          symbol_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The token symbol to transfer.
+       * </pre>
+       *
+       * <code>string symbol = 2;</code>
+       * @param value The symbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSymbol(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The token symbol to transfer.
+       * </pre>
+       *
+       * <code>string symbol = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSymbol() {
+        
+        symbol_ = getDefaultInstance().getSymbol();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The token symbol to transfer.
+       * </pre>
+       *
+       * <code>string symbol = 2;</code>
+       * @param value The bytes for symbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSymbolBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long amount_ ;
+      /**
+       * <pre>
+       * The amount to to transfer.
+       * </pre>
+       *
+       * <code>int64 amount = 3;</code>
+       * @return The amount.
+       */
+      public long getAmount() {
+        return amount_;
+      }
+      /**
+       * <pre>
+       * The amount to to transfer.
+       * </pre>
+       *
+       * <code>int64 amount = 3;</code>
+       * @param value The amount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAmount(long value) {
+        
+        amount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The amount to to transfer.
+       * </pre>
+       *
+       * <code>int64 amount = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAmount() {
+        
+        amount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object memo_ = "";
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 4;</code>
+       * @return The memo.
+       */
+      public java.lang.String getMemo() {
+        java.lang.Object ref = memo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          memo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 4;</code>
+       * @return The bytes for memo.
+       */
+      public com.google.protobuf.ByteString
+          getMemoBytes() {
+        java.lang.Object ref = memo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          memo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 4;</code>
+       * @param value The memo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMemo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        memo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMemo() {
+        
+        memo_ = getDefaultInstance().getMemo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 4;</code>
+       * @param value The bytes for memo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMemoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        memo_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:TransferInput)
+    }
+
+    // @@protoc_insertion_point(class_scope:TransferInput)
+    private static final io.aelf.protobuf.generated.TokenContract.TransferInput DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.TokenContract.TransferInput();
+    }
+
+    public static io.aelf.protobuf.generated.TokenContract.TransferInput getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TransferInput>
+        PARSER = new com.google.protobuf.AbstractParser<TransferInput>() {
+      @java.lang.Override
+      public TransferInput parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TransferInput(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TransferInput> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TransferInput> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.TokenContract.TransferInput getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TokenInfo_descriptor;
   private static final 
@@ -11947,6 +13082,11 @@ public final class TokenContract {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetCrossChainTransferTokenContractAddressInput_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TransferInput_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TransferInput_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11982,8 +13122,10 @@ public final class TokenContract {
       "tualAddressForLockingInput\022\031\n\007address\030\001 " +
       "\001(\0132\010.Address\022\026\n\007lock_id\030\002 \001(\0132\005.Hash\"A\n" +
       ".GetCrossChainTransferTokenContractAddre" +
-      "ssInput\022\017\n\007chainId\030\001 \001(\005B\034\n\032io.aelf.prot" +
-      "obuf.generatedb\006proto3"
+      "ssInput\022\017\n\007chainId\030\001 \001(\005\"S\n\rTransferInpu" +
+      "t\022\024\n\002to\030\001 \001(\0132\010.Address\022\016\n\006symbol\030\002 \001(\t\022" +
+      "\016\n\006amount\030\003 \001(\003\022\014\n\004memo\030\004 \001(\tB\034\n\032io.aelf" +
+      ".protobuf.generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12062,6 +13204,12 @@ public final class TokenContract {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetCrossChainTransferTokenContractAddressInput_descriptor,
         new java.lang.String[] { "ChainId", });
+    internal_static_TransferInput_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_TransferInput_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TransferInput_descriptor,
+        new java.lang.String[] { "To", "Symbol", "Amount", "Memo", });
     io.aelf.protobuf.generated.Client.getDescriptor();
   }
 
