@@ -32,6 +32,7 @@ import io.aelf.utils.StringUtil;
 import io.aelf.utils.TransactionResultDtoExtension;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import org.apache.commons.codec.binary.Base64;
@@ -149,50 +150,88 @@ public class BlockChainSdkTest {
   }
 
   @Test
-  public void getBlockByHeightDefaultTest() throws Exception {
+  public void getBlockDefaultTest() throws Exception {
     long blockHeight = client.getBlockHeight();
     Assert.assertTrue(blockHeight > 0);
-    client.getBlockByHeight(blockHeight);
+    BlockDto blockByHeight = client.getBlockByHeight(blockHeight);
+    BlockDto blockByHash = client.getBlockByHash(blockByHeight.getBlockHash());
+    
+    Assert.assertEquals(JsonUtil.toJsonString(blockByHeight), JsonUtil.toJsonString(blockByHash));
+    Assert.assertEquals(blockByHeight.getBlockHash(),blockByHash.getBlockHash());
+    Assert.assertFalse(blockByHeight.getBlockHash().isEmpty());
+    Assert.assertEquals(blockByHeight.getHeader().getHeight(), blockHeight);
+    Assert.assertFalse( blockByHeight.getHeader().getPreviousBlockHash().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactions().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactionState().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getExtra().isEmpty());
+    Assert.assertEquals("AELF", blockByHeight.getHeader().getChainId());
+    Assert.assertFalse(blockByHeight.getHeader().getBloom().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getSignerPubkey().isEmpty());
+    Assert.assertTrue(blockByHeight.getHeader().getTime().after(new Date()));
+	  Assert.assertTrue(blockByHeight.getBody().getTransactionsCount() > 0);
+	  Assert.assertTrue(blockByHeight.getBody().getTransactions().size() == 0);
+
+	  BlockDto previousBlock = client.getBlockByHash(blockByHeight.getHeader().getPreviousBlockHash(), false);
+	  Assert.assertEquals(previousBlock.getBlockHash(), blockByHeight.getHeader().getPreviousBlockHash());
+	  Assert.assertEquals(previousBlock.getHeader().getHeight(), blockByHeight.getHeader().getHeight()-1);
   }
 
 
   @Test
-  public void getBlockByHeightForFalseTest() throws Exception {
+  public void getBlockForFalseTest() throws Exception {
     long blockHeight = client.getBlockHeight();
     Assert.assertTrue(blockHeight > 0);
-    client.getBlockByHeight(blockHeight, false);
+    BlockDto blockByHeight = client.getBlockByHeight(blockHeight,false);
+    BlockDto blockByHash = client.getBlockByHash(blockByHeight.getBlockHash(),false);
+    
+    Assert.assertEquals(JsonUtil.toJsonString(blockByHeight), JsonUtil.toJsonString(blockByHash));
+    Assert.assertEquals(blockByHeight.getBlockHash(),blockByHash.getBlockHash());
+    Assert.assertFalse(blockByHeight.getBlockHash().isEmpty());
+    Assert.assertEquals(blockByHeight.getHeader().getHeight(), blockHeight);
+    Assert.assertFalse( blockByHeight.getHeader().getPreviousBlockHash().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactions().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactionState().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getExtra().isEmpty());
+    Assert.assertEquals("AELF", blockByHeight.getHeader().getChainId());
+    Assert.assertFalse(blockByHeight.getHeader().getBloom().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getSignerPubkey().isEmpty());
+    Assert.assertTrue(blockByHeight.getHeader().getTime().after(new Date()));
+	  Assert.assertTrue(blockByHeight.getBody().getTransactionsCount() > 0);
+	  Assert.assertTrue(blockByHeight.getBody().getTransactions().size() == 0);
+
+	  BlockDto previousBlock = client.getBlockByHash(blockByHeight.getHeader().getPreviousBlockHash(), false);
+	  Assert.assertEquals(previousBlock.getBlockHash(), blockByHeight.getHeader().getPreviousBlockHash());
+	  Assert.assertEquals(previousBlock.getHeader().getHeight(), blockByHeight.getHeader().getHeight()-1);
   }
 
   @Test
-  public void getBlockByHeightForTrueTest() throws Exception {
+  public void getBlockForTrueTest() throws Exception {
     long blockHeight = client.getBlockHeight();
     Assert.assertTrue(blockHeight > 0);
-    client.getBlockByHeight(blockHeight, true);
-  }
+    BlockDto blockByHeight = client.getBlockByHeight(blockHeight,true);
+    BlockDto blockByHash = client.getBlockByHash(blockByHeight.getBlockHash(),true);
+    
+    Assert.assertEquals(JsonUtil.toJsonString(blockByHeight), JsonUtil.toJsonString(blockByHash));
+    Assert.assertEquals(blockByHeight.getBlockHash(),blockByHash.getBlockHash());
+    Assert.assertFalse(blockByHeight.getBlockHash().isEmpty());
+    Assert.assertEquals(blockByHeight.getHeader().getHeight(), blockHeight);
+    Assert.assertFalse( blockByHeight.getHeader().getPreviousBlockHash().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactions().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactionState().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getExtra().isEmpty());
+    Assert.assertEquals("AELF", blockByHeight.getHeader().getChainId());
+    Assert.assertFalse(blockByHeight.getHeader().getBloom().isEmpty());
+    Assert.assertFalse(blockByHeight.getHeader().getSignerPubkey().isEmpty());
+    Assert.assertTrue(blockByHeight.getHeader().getTime().after(new Date()));
+	  Assert.assertTrue(blockByHeight.getBody().getTransactionsCount() > 0);
+	  Assert.assertTrue(blockByHeight.getBody().getTransactions().size() == blockByHeight.getBody().getTransactionsCount());
+    for (String txId : blockByHeight.getBody().getTransactions()) {   
+         Assert.assertFalse(txId.isEmpty());
+     }   
 
-
-  @Test
-  public void getBlockByHashDefaultTest() throws Exception {
-    long blockHeight = client.getBlockHeight();
-    Assert.assertTrue(blockHeight > 0);
-    BlockDto blockDto = client.getBlockByHeight(blockHeight);
-    client.getBlockByHash(blockDto.getBlockHash());
-  }
-
-  @Test
-  public void getBlockByHashForFalseTest() throws Exception {
-    long blockHeight = client.getBlockHeight();
-    Assert.assertTrue(blockHeight > 0);
-    BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
-    client.getBlockByHash(blockDto.getBlockHash());
-  }
-
-  @Test
-  public void getBlockByHashForFalseTrue() throws Exception {
-    long blockHeight = client.getBlockHeight();
-    Assert.assertTrue(blockHeight > 0);
-    BlockDto blockDto = client.getBlockByHeight(blockHeight, true);
-    client.getBlockByHash(blockDto.getBlockHash());
+	  BlockDto previousBlock = client.getBlockByHash(blockByHeight.getHeader().getPreviousBlockHash(), false);
+	  Assert.assertEquals(previousBlock.getBlockHash(), blockByHeight.getHeader().getPreviousBlockHash());
+	  Assert.assertEquals(previousBlock.getHeader().getHeight(), blockByHeight.getHeader().getHeight()-1);
   }
 
   @Test

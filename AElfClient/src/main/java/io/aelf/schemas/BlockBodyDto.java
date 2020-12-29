@@ -6,15 +6,15 @@ import java.util.List;
 
 public class BlockBodyDto {
   @JsonProperty("transactionsCount")
-  private long transactionsCount;
+  private int transactionsCount;
   @JsonProperty("transactions")
   private List<String> transactions;
 
-  public long getTransactionsCount() {
+  public int getTransactionsCount() {
     return transactionsCount;
   }
 
-  public void setTransactionsCount(long transactionsCount) {
+  public void setTransactionsCount(int transactionsCount) {
     this.transactionsCount = transactionsCount;
   }
 
