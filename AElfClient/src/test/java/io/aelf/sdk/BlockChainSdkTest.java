@@ -5,7 +5,7 @@ import com.google.protobuf.ByteString;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.protobuf.generated.Core.TransactionResultStatus;
-import io.aelf.protobuf.generated.TokenContract.GetBalanceOutput;
+import io.aelf.protobuf.generated.TokenContract;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged.Builder;
 import io.aelf.schemas.BlockDto;
@@ -30,6 +30,7 @@ import io.aelf.utils.Maps;
 import io.aelf.utils.Sha256;
 import io.aelf.utils.StringUtil;
 import io.aelf.utils.TransactionResultDtoExtension;
+import io.aelf.utils.AddressHelper;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,7 +41,7 @@ import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
+import org.bitcoinj.core.Base58;
 
 public class BlockChainSdkTest {
 
@@ -158,22 +159,8 @@ public class BlockChainSdkTest {
     
     Assert.assertEquals(JsonUtil.toJsonString(blockByHeight), JsonUtil.toJsonString(blockByHash));
     Assert.assertEquals(blockByHeight.getBlockHash(),blockByHash.getBlockHash());
-    Assert.assertFalse(blockByHeight.getBlockHash().isEmpty());
     Assert.assertEquals(blockByHeight.getHeader().getHeight(), blockHeight);
-    Assert.assertFalse( blockByHeight.getHeader().getPreviousBlockHash().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactions().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactionState().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getExtra().isEmpty());
-    Assert.assertEquals("AELF", blockByHeight.getHeader().getChainId());
-    Assert.assertFalse(blockByHeight.getHeader().getBloom().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getSignerPubkey().isEmpty());
-    Assert.assertTrue(blockByHeight.getHeader().getTime().after(new Date()));
-	  Assert.assertTrue(blockByHeight.getBody().getTransactionsCount() > 0);
-	  Assert.assertTrue(blockByHeight.getBody().getTransactions().size() == 0);
-
-	  BlockDto previousBlock = client.getBlockByHash(blockByHeight.getHeader().getPreviousBlockHash(), false);
-	  Assert.assertEquals(previousBlock.getBlockHash(), blockByHeight.getHeader().getPreviousBlockHash());
-	  Assert.assertEquals(previousBlock.getHeader().getHeight(), blockByHeight.getHeader().getHeight()-1);
+    VerifyBlock(blockByHeight,false);
   }
 
 
@@ -185,23 +172,8 @@ public class BlockChainSdkTest {
     BlockDto blockByHash = client.getBlockByHash(blockByHeight.getBlockHash(),false);
     
     Assert.assertEquals(JsonUtil.toJsonString(blockByHeight), JsonUtil.toJsonString(blockByHash));
-    Assert.assertEquals(blockByHeight.getBlockHash(),blockByHash.getBlockHash());
-    Assert.assertFalse(blockByHeight.getBlockHash().isEmpty());
     Assert.assertEquals(blockByHeight.getHeader().getHeight(), blockHeight);
-    Assert.assertFalse( blockByHeight.getHeader().getPreviousBlockHash().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactions().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactionState().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getExtra().isEmpty());
-    Assert.assertEquals("AELF", blockByHeight.getHeader().getChainId());
-    Assert.assertFalse(blockByHeight.getHeader().getBloom().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getSignerPubkey().isEmpty());
-    Assert.assertTrue(blockByHeight.getHeader().getTime().after(new Date()));
-	  Assert.assertTrue(blockByHeight.getBody().getTransactionsCount() > 0);
-	  Assert.assertTrue(blockByHeight.getBody().getTransactions().size() == 0);
-
-	  BlockDto previousBlock = client.getBlockByHash(blockByHeight.getHeader().getPreviousBlockHash(), false);
-	  Assert.assertEquals(previousBlock.getBlockHash(), blockByHeight.getHeader().getPreviousBlockHash());
-	  Assert.assertEquals(previousBlock.getHeader().getHeight(), blockByHeight.getHeader().getHeight()-1);
+    VerifyBlock(blockByHeight,false);
   }
 
   @Test
@@ -213,25 +185,35 @@ public class BlockChainSdkTest {
     
     Assert.assertEquals(JsonUtil.toJsonString(blockByHeight), JsonUtil.toJsonString(blockByHash));
     Assert.assertEquals(blockByHeight.getBlockHash(),blockByHash.getBlockHash());
-    Assert.assertFalse(blockByHeight.getBlockHash().isEmpty());
     Assert.assertEquals(blockByHeight.getHeader().getHeight(), blockHeight);
-    Assert.assertFalse( blockByHeight.getHeader().getPreviousBlockHash().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactions().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getMerkleTreeRootOfTransactionState().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getExtra().isEmpty());
-    Assert.assertEquals("AELF", blockByHeight.getHeader().getChainId());
-    Assert.assertFalse(blockByHeight.getHeader().getBloom().isEmpty());
-    Assert.assertFalse(blockByHeight.getHeader().getSignerPubkey().isEmpty());
-    Assert.assertTrue(blockByHeight.getHeader().getTime().after(new Date()));
-	  Assert.assertTrue(blockByHeight.getBody().getTransactionsCount() > 0);
-	  Assert.assertTrue(blockByHeight.getBody().getTransactions().size() == blockByHeight.getBody().getTransactionsCount());
-    for (String txId : blockByHeight.getBody().getTransactions()) {   
-         Assert.assertFalse(txId.isEmpty());
-     }   
+    VerifyBlock(blockByHeight,true);
+  }
 
-	  BlockDto previousBlock = client.getBlockByHash(blockByHeight.getHeader().getPreviousBlockHash(), false);
-	  Assert.assertEquals(previousBlock.getBlockHash(), blockByHeight.getHeader().getPreviousBlockHash());
-	  Assert.assertEquals(previousBlock.getHeader().getHeight(), blockByHeight.getHeader().getHeight()-1);
+  private void VerifyBlock(BlockDto block, Boolean includeTransactions) throws Exception {
+    Assert.assertFalse(block.getBlockHash().isEmpty());
+    Assert.assertTrue(block.getHeader().getHeight()>0);
+    Assert.assertFalse( block.getHeader().getPreviousBlockHash().isEmpty());
+    Assert.assertFalse(block.getHeader().getMerkleTreeRootOfTransactions().isEmpty());
+    Assert.assertFalse(block.getHeader().getMerkleTreeRootOfTransactionState().isEmpty());
+    Assert.assertFalse(block.getHeader().getExtra().isEmpty());
+    Assert.assertEquals("AELF", block.getHeader().getChainId());
+    Assert.assertFalse(block.getHeader().getBloom().isEmpty());
+    Assert.assertFalse(block.getHeader().getSignerPubkey().isEmpty());
+    Assert.assertTrue(block.getHeader().getTime().after(new Date()));
+	  Assert.assertTrue(block.getBody().getTransactionsCount() > 0);
+
+    if(includeTransactions){
+      Assert.assertTrue(block.getBody().getTransactions().size() == block.getBody().getTransactionsCount());
+      for (String txId : block.getBody().getTransactions()) {   
+         Assert.assertFalse(txId.isEmpty());
+     } 
+    }else{
+      Assert.assertTrue(block.getBody().getTransactions().size() == 0);
+    }
+	  
+	  BlockDto previousBlock = client.getBlockByHash(block.getHeader().getPreviousBlockHash(), false);
+	  Assert.assertEquals(previousBlock.getBlockHash(), block.getHeader().getPreviousBlockHash());
+	  Assert.assertEquals(previousBlock.getHeader().getHeight(), block.getHeader().getHeight()-1);
   }
 
   @Test
@@ -241,20 +223,40 @@ public class BlockChainSdkTest {
 
   @Test
   public void getChainStatusTest() throws Exception {
-    client.getChainStatus();
+    ChainstatusDto chainStatus = client.getChainStatus();
+
+    Assert.assertEquals("AELF", chainStatus.getChainId());
+	  Assert.assertTrue(chainStatus.getBranches().size() >0);
+	  Assert.assertTrue(chainStatus.getLongestChainHeight() > 0);
+	  Assert.assertFalse(chainStatus.getLongestChainHash().isEmpty());
+	  Assert.assertFalse(chainStatus.getGenesisContractAddress().isEmpty());
+	  Assert.assertFalse(chainStatus.getGenesisBlockHash().isEmpty());
+	  Assert.assertTrue(chainStatus.getLastIrreversibleBlockHeight() > 0);
+	  Assert.assertFalse(chainStatus.getLastIrreversibleBlockHash().isEmpty());
+	  Assert.assertTrue(chainStatus.getBestChainHeight() > 0);
+	  Assert.assertFalse(chainStatus.getBestChainHash().isEmpty());
+
+	  BlockDto longestChainBlock = client.getBlockByHash(chainStatus.getLongestChainHash(), false);
+	  Assert.assertEquals(longestChainBlock.getHeader().getHeight(), chainStatus.getLongestChainHeight());
+
+	  BlockDto genesisBlock = client.getBlockByHash(chainStatus.getGenesisBlockHash(), false);
+	  Assert.assertEquals(1, genesisBlock.getHeader().getHeight());
+
+	  BlockDto lastIrreversibleBlock = client.getBlockByHash(chainStatus.getLastIrreversibleBlockHash(), false);
+	  Assert.assertEquals(lastIrreversibleBlock.getHeader().getHeight(), chainStatus.getLastIrreversibleBlockHeight());
+
+	  BlockDto bestChainBlock = client.getBlockByHash(chainStatus.getBestChainHash(), false);
+	  Assert.assertEquals(bestChainBlock.getHeader().getHeight(), chainStatus.getBestChainHeight());
+
+	  String genesisContractAddress = client.getGenesisContractAddress();
+	  Assert.assertEquals(genesisContractAddress, chainStatus.getGenesisContractAddress());
   }
 
   @Test
   public void getContractFileDescriptorSetTest() throws Exception {
-    long blockHeight = client.getBlockHeight();
-    Assert.assertTrue(blockHeight > 0);
-    BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
-    List<TransactionResultDto> transactionResultDtoList = client
-        .getTransactionResults(blockDto.getBlockHash(), 0, 10);
-    for (TransactionResultDto transactionResultDtoObj : transactionResultDtoList) {
-      client
-          .getContractFileDescriptorSet(transactionResultDtoObj.getTransaction().getTo());
-    }
+    String contractAddress = client.getGenesisContractAddress();
+    byte[] descriptorSet = client.getContractFileDescriptorSet(contractAddress);
+    Assert.assertTrue(descriptorSet.length>0);
   }
 
   @Test
@@ -355,38 +357,103 @@ public class BlockChainSdkTest {
 
   @Test
   public void sendTransactionTest() throws Exception {
-    String toAddress = client.getGenesisContractAddress();
-    String methodName = "GetContractAddressByName";
-    byte[] bytes = Sha256.getBytesSha256("AElf.ContractNames.Vote");
-    Client.Hash.Builder hash = Client.Hash.newBuilder();
-    hash.setValue(ByteString.copyFrom(bytes));
-    Client.Hash hashObj = hash.build();
-    Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
+    String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
+    KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
+    Core.Transaction transaction = createTransferTransaction(keyPairInfo.getAddress());
+
     SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
-    sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-    client.sendTransaction(sendTransactionInputObj);
+    sendTransactionInputObj.setRawTransaction(Hex.toHexString(transaction.toByteArray()));
+    SendTransactionOutput sendResult = client.sendTransaction(sendTransactionInputObj);
+    Assert.assertFalse(sendResult.getTransactionId().isEmpty());
+
+    Thread.sleep(4000);
+
+    TransactionResultDto transactionResult = client.getTransactionResult(sendResult.getTransactionId());
+    Assert.assertEquals("MINED",transactionResult.getStatus());
+    Assert.assertEquals(sendResult.getTransactionId(),transactionResult.getTransactionId());
+    Assert.assertTrue(transactionResult.getError().isEmpty());
+
+    Assert.assertTrue(transactionResult.getLogs().size() == 2);
+
+    Assert.assertEquals(tokenContractAddress, transactionResult.getLogs().get(0).getAddress());
+    Assert.assertEquals("TransactionFeeCharged", transactionResult.getLogs().get(0).getName());
+    byte[] nonIndexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(0).getNonIndexed());
+    TransactionFeeCharged feeCharged=TransactionFeeCharged.getDefaultInstance().parseFrom(nonIndexedBytes);
+	  Assert.assertEquals("ELF", feeCharged.getSymbol());
+	  Assert.assertTrue(feeCharged.getAmount() > 0);
+
+	  Assert.assertEquals(tokenContractAddress, transactionResult.getLogs().get(1).getAddress());
+	  Assert.assertEquals("Transferred", transactionResult.getLogs().get(1).getName());
+    byte[] indexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(1).getIndexed().get(0));
+	  TokenContract.Transferred transferred = TokenContract.Transferred.getDefaultInstance().parseFrom(indexedBytes);
+	  Assert.assertEquals(address, AddressHelper.addressToBase58(transferred.getFrom()));
+
+    indexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(1).getIndexed().get(1));
+	  transferred = TokenContract.Transferred.getDefaultInstance().parseFrom(indexedBytes);
+	  Assert.assertEquals(keyPairInfo.getAddress(), AddressHelper.addressToBase58(transferred.getTo()));
+	
+    indexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(1).getIndexed().get(2));
+	  transferred = TokenContract.Transferred.getDefaultInstance().parseFrom(indexedBytes);
+	  Assert.assertEquals("ELF", transferred.getSymbol());
+
+    nonIndexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(1).getNonIndexed());
+	  transferred = TokenContract.Transferred.getDefaultInstance().parseFrom(nonIndexedBytes);
+	  Assert.assertEquals(1000000000, transferred.getAmount());
+    Assert.assertEquals("transfer in test", transferred.getMemo());
+  }
+
+  @Test
+  public void sendFailedTransactionTest() throws Exception {
+    String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
+    KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
+
+    Client.Address to = AddressHelper.base58ToAddress(address);
+
+    TokenContract.TransferInput.Builder paramTransfer = TokenContract.TransferInput.newBuilder();
+    paramTransfer.setTo(to);
+    paramTransfer.setSymbol("ELF");
+    paramTransfer.setAmount(1000000000);
+    paramTransfer.setMemo("transfer in test");
+    TokenContract.TransferInput paramTransferObj = paramTransfer.build();
+
+    String ownerAddress = client.getAddressFromPrivateKey(privateKey);
+
+    Core.Transaction.Builder transactionTransfer = client.generateTransaction(keyPairInfo.getAddress(), tokenContractAddress, "Transfer", paramTransferObj.toByteArray());
+    Core.Transaction transactionTransferObj = transactionTransfer.build();
+    transactionTransfer.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(client.signTransaction(keyPairInfo.getPrivateKey(), transactionTransferObj))));
+    transactionTransferObj = transactionTransfer.build();
+
+    SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
+    sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionTransferObj.toByteArray()));
+    SendTransactionOutput sendResult = client.sendTransaction(sendTransactionInputObj);
+    Assert.assertFalse(sendResult.getTransactionId().isEmpty());
+
+    Thread.sleep(4000);
+
+    TransactionResultDto transactionResult = client.getTransactionResult(sendResult.getTransactionId());
+    Assert.assertEquals("NODEVALIDATIONFAILED",transactionResult.getStatus());
+    Assert.assertEquals("Pre-Error: Transaction fee not enough.",transactionResult.getError());
   }
 
   @Test
   public void sendTransactionsTest() throws Exception {
-    String toAddress = client.getGenesisContractAddress();
-    byte[] param1 = Sha256.getBytesSha256("AElf.ContractNames.Token");
-    byte[] param2 = Sha256.getBytesSha256("AElf.ContractNames.Vote");
-    String methodName = "GetContractAddressByName";
-    List<byte[]> parameters = new ArrayList<byte[]>();
-    parameters.add(param1);
-    parameters.add(param2);
-    for (byte[] tmp : parameters) {
-      Client.Hash.Builder hash = Client.Hash.newBuilder();
-      hash.setValue(ByteString.copyFrom(tmp));
-      Client.Hash hashObj = hash.build();
-      Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
-      SendTransactionsInput sendTransactionsInputs = new SendTransactionsInput();
-      String rawTransactions = Hex.toHexString(transactionObj.toByteArray());
-      sendTransactionsInputs.setRawTransactions(rawTransactions);
-      List<String> listString = client
-          .sendTransactions(sendTransactionsInputs);
-      Assert.assertTrue(listString.size() > 0);
+    List<String> transactions = new ArrayList<String>();
+    for(int i=0;i<2;i++){
+      KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
+      Core.Transaction transaction = createTransferTransaction(keyPairInfo.getAddress());
+      String rawTransaction = Hex.toHexString(transaction.toByteArray());
+      transactions.add(rawTransaction);
+    }
+
+    SendTransactionsInput sendTransactionsInputs = new SendTransactionsInput();
+    sendTransactionsInputs.setRawTransactions(String.join(",",transactions));
+    List<String> results = client.sendTransactions(sendTransactionsInputs);
+
+    Thread.sleep(4000);
+
+    for(int i=0;i<2;i++){
+      TransactionResultDto transactionResult = client.getTransactionResult(results.get(i));
+      Assert.assertEquals("MINED",transactionResult.getStatus());
     }
   }
 
@@ -438,6 +505,9 @@ public class BlockChainSdkTest {
   @Test
   public void isConnectedTest() {
     Assert.assertTrue(client.isConnected());
+
+    AElfClient wrongClient = new AElfClient("http://127.0.0.1:1111");
+    Assert.assertFalse(wrongClient.isConnected());
   }
 
   @Test
@@ -453,8 +523,6 @@ public class BlockChainSdkTest {
     sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
     client.sendTransaction(sendTransactionInputObj);
   }
-
-
 
   private Core.Transaction buildTransaction(String toAddress, String methodName, byte[] tmp)
       throws Exception {
@@ -478,4 +546,52 @@ public class BlockChainSdkTest {
     createRawTransactionInputObj.setRefBlockHash(blockHash);
     return createRawTransactionInputObj;
   }
+
+  private Core.Transaction createTransferTransaction(String toAddress) throws Exception {
+    String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
+
+    Client.Address to = AddressHelper.base58ToAddress(toAddress);
+
+    TokenContract.TransferInput.Builder paramTransfer = TokenContract.TransferInput.newBuilder();
+    paramTransfer.setTo(to);
+    paramTransfer.setSymbol("ELF");
+    paramTransfer.setAmount(1000000000);
+    paramTransfer.setMemo("transfer in test");
+    TokenContract.TransferInput paramTransferObj = paramTransfer.build();
+
+    String ownerAddress = client.getAddressFromPrivateKey(privateKey);
+
+    Core.Transaction.Builder transactionTransfer = client.generateTransaction(ownerAddress, tokenContractAddress, "Transfer", paramTransferObj.toByteArray());
+    Core.Transaction transactionTransferObj = transactionTransfer.build();
+    transactionTransfer.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(client.signTransaction(privateKey, transactionTransferObj))));
+    transactionTransferObj = transactionTransfer.build();
+
+    return transactionTransferObj;
+  }
+
+  // private GetBalanceOutput getBalance(String ownerAddress){
+  //   String tokenContractAddress = client.GetContractAddressByName(privateKey, "AElf.ContractNames.Token");
+
+  //   Client.Address.Builder owner = Client.Address.newBuilder();
+  //   owner.setValue(ByteString.copyFrom(Base58.decodeChecked(ownerAddress)));
+  //   Client.Address ownerObj = owner.build();
+
+  //   GetBalanceInput.Builder paramGetBalance = GetBalanceInput.newBuilder();
+  //   paramGetBalance.setSymbol("ELF");
+  //   paramGetBalance.setOwner(ownerObj);
+  //   GetBalanceInput paramGetBalanceObj = paramGetBalance.build();
+
+  //   Core.Transaction.Builder transactionGetBalance = client.generateTransaction(ownerAddress, tokenContractAddress, "GetBalance", paramGetBalanceObj.toByteArray());
+  //   Core.Transaction transactionGetBalanceObj = transactionGetBalance.build();
+  //   String signature = client.signTransaction(privateKey, transactionGetBalanceObj);
+  //   transactionGetBalance.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+  //   transactionGetBalanceObj = transactionGetBalance.build();
+
+  //   ExecuteTransactionDto executeTransactionDto = new ExecuteTransactionDto();
+  //   executeTransactionDto.setRawTransaction(Hex.toHexString(transactionGetBalanceObj.toByteArray()));
+  //   String transactionGetBalanceResult = client.executeTransaction(executeTransactionDto);
+
+  //   GetBalanceOutput balance = GetBalanceOutput.getDefaultInstance().parseFrom(ByteArrayHelper.hexToByteArray(transactionGetBalanceResult));
+  //   return balance;
+  // }
 }
