@@ -304,8 +304,7 @@ public class AElfClient {
    */
   public String signTransaction(String privateKeyHex, Core.Transaction transaction)
       throws Exception {
-    byte[] transactionData = Sha256.getBytesSha256(transaction.toByteArray());
-    return this.getSignatureWithPrivateKey(privateKeyHex, transactionData);
+    return this.getSignatureWithPrivateKey(privateKeyHex, transaction.toByteArray());
   }
 
   /**
@@ -410,10 +409,11 @@ public class AElfClient {
    * Get the private sha256 signature.
    */
   public String getSignatureWithPrivateKey(String privateKey, byte[] txData) throws Exception {
+    byte[] transactionData = Sha256.getBytesSha256(txData);
     BigInteger privKey = new BigInteger(privateKey, 16);
     BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
     ECKeyPair keyPair = new ECKeyPair(privKey, pubKey);
-    Sign.SignatureData signature = Sign.signMessage(txData, keyPair, false);
+    Sign.SignatureData signature = Sign.signMessage(transactionData, keyPair, false);
     String signatureStr = Hex.toHexString(signature.getR()) + Hex.toHexString(signature.getS());
     String res = StringUtil.toString(signature.getV() - 27);
     if (res.length() == 1) {
