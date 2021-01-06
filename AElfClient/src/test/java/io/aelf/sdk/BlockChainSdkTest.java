@@ -16,6 +16,7 @@ import io.aelf.schemas.ExecuteRawTransactionDto;
 import io.aelf.schemas.ExecuteTransactionDto;
 import io.aelf.schemas.KeyPairInfo;
 import io.aelf.schemas.LogEventDto;
+import io.aelf.schemas.MerklePathDto;
 import io.aelf.schemas.SendRawTransactionInput;
 import io.aelf.schemas.SendRawTransactionOutput;
 import io.aelf.schemas.SendTransactionInput;
@@ -539,15 +540,11 @@ public class BlockChainSdkTest {
 
   @Test
   public void getMerklePathByTransactionIdTest() throws Exception {
-    long blockHeight = client.getBlockHeight();
-    Assert.assertTrue(blockHeight > 0);
-    BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
-    List<TransactionResultDto> transactionResultDtoList = client
-        .getTransactionResults(blockDto.getBlockHash(), 0, 10);
-    for (TransactionResultDto transactionResultDtoObj : transactionResultDtoList) {
-      client
-          .getMerklePathByTransactionId(transactionResultDtoObj.getTransactionId());
-    }
+    BlockDto blockDto = client.getBlockByHeight(1, true);
+    TransactionResultDto transactionResultDto= client
+        .getTransactionResult(blockDto.getBody().getTransactions().get(0));
+    MerklePathDto merklePath = client.getMerklePathByTransactionId(transactionResultDto.getTransactionId());
+    Assert.assertTrue(merklePath.getMerklePathNodes().size() == 4);
   }
 
   @Test
