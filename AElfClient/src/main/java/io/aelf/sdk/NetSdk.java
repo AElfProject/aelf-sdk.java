@@ -12,6 +12,7 @@ import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.StringUtil;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class NetSdk {
 
   private String AElfClientUrl;
   private String version;
+  private String UserName;
+  private String Password;
   private static final String WA_ADDPEER = "/api/net/peer";
   private static final String WA_REMOVEPEER = "/api/net/peer";
   private static final String WA_GETPEERS = "/api/net/peers";
@@ -30,10 +33,14 @@ public class NetSdk {
    *
    * @param url Http Request Url exp:(http://xxxx)
    * @param version application/json;v={version}
+   * @param userName
+   * @param password
    */
-  public NetSdk(String url, String version) {
+  public NetSdk(String url, String version, String userName, String password) {
     this.AElfClientUrl = url;
     this.version = version;
+    this.UserName = userName;
+    this.Password = password;
   }
 
   private NetSdk() {
@@ -45,9 +52,13 @@ public class NetSdk {
   public Boolean addPeer(AddPeerInput input) throws Exception {
     String url = this.AElfClientUrl + WA_ADDPEER;
     MapEntry mapParmas = Maps.newMap();
+
+    String combineString = this.UserName + ":" + this.Password;
+    String combineAuth = "Basic " + Base64.getEncoder().encodeToString(combineString.getBytes());
+
     mapParmas.put("Address", input.getAddress());
     String responseBobyResult = HttpUtilExt
-        .sendPost(url, JsonUtil.toJsonString(mapParmas), this.version);
+        .sendPostWithAuth(url, JsonUtil.toJsonString(mapParmas), this.version, combineAuth);
     if ("true".equals(responseBobyResult)) {
       return true;
     }
@@ -59,8 +70,12 @@ public class NetSdk {
    */
   public Boolean removePeer(String address) throws Exception {
     String url = this.AElfClientUrl + WA_REMOVEPEER + "?address=" + address;
-    String responseBobyResult = HttpUtilExt.sendDelete(url, "UTF-8", this.version);
-    return "true".equals(responseBobyResult);
+
+    String combineString = this.UserName + ":" + this.Password;
+    String combineAuth = "Basic " + Base64.getEncoder().encodeToString(combineString.getBytes());
+
+    String responseBobyResult = HttpUtilExt.sendDelete(url, "UTF-8", this.version, combineAuth);
+   return "true".equals(responseBobyResult);
   }
 
   /**
