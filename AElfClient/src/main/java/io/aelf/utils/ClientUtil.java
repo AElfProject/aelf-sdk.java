@@ -206,7 +206,7 @@ public class ClientUtil {
       }
 
       if (StringUtils.isNotBlank(authBasic)) {
-        httpPost.setHeader("Authoraction", authBasic);
+        httpPost.setHeader("Authorization", authBasic);
       }
 
       httpPost.setEntity(myEntity);
