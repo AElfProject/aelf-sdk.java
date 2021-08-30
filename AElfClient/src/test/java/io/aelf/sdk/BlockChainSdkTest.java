@@ -39,7 +39,6 @@ import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
 
 public class BlockChainSdkTest {
 
