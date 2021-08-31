@@ -43,6 +43,8 @@ public class AElfClient {
 
   private String AElfClientUrl;
   private String version = "1.0";
+  private String UserName;
+  private String Password;
   private BlockChainSdk blcokChainSdk;
   private NetSdk netSdk;
 
@@ -60,6 +62,20 @@ public class AElfClient {
   }
 
   /**
+   * Object dconstruction through the url path and basic auth.
+   * @param url
+   * @param userName
+   * @param password
+   */
+  public AElfClient(String url, String userName, String password) {
+    this.AElfClientUrl = url;
+    this.UserName = userName;
+    this.Password = password;
+    this.getBlockChainSdkObj();
+    this.getNetSdkObj();
+  }
+
+  /**
    * Object construction through the url path.
    *
    * @param url Http Request Url exp:(http://xxxx)
@@ -68,6 +84,22 @@ public class AElfClient {
   public AElfClient(String url, String version) {
     this.AElfClientUrl = url;
     this.version = version;
+    this.getBlockChainSdkObj();
+    this.getNetSdkObj();
+  }
+
+  /**
+   * Object dconstruction through the url path and basic auth.
+   * @param url
+   * @param version
+   * @param userName
+   * @param password
+   */
+  public AElfClient(String url, String version, String userName, String password) {
+    this.AElfClientUrl = url;
+    this.version = version;
+    this.UserName = userName;
+    this.Password = password;
     this.getBlockChainSdkObj();
     this.getNetSdkObj();
   }
@@ -93,7 +125,7 @@ public class AElfClient {
    */
   private NetSdk getNetSdkObj() {
     if (netSdk == null) {
-      netSdk = new NetSdk(this.AElfClientUrl, this.version);
+      netSdk = new NetSdk(this.AElfClientUrl, this.version, this.UserName, this.Password);
     }
     return netSdk;
   }
