@@ -411,10 +411,6 @@ public class BlockChainSdk {
     if (!includeTransactions) {
       return blockDto;
     }
-    String transactionsCountStr = StringUtil
-        .toString(block.getLinkedHashMap("Body").get("Transactions"));
-    final long transactionsCount = Long
-        .parseLong(transactionsCountStr.length() == 0 ? "0" : transactionsCountStr);
 
     List<String> transactions = (List<String>) block.getLinkedHashMap("Body").get("Transactions");
     if (transactions == null) {
@@ -425,7 +421,7 @@ public class BlockChainSdk {
       txs.add(StringUtil.toString(transactionId));
     }
     blockDto.setBody(new BlockBodyDto());
-    blockDto.getBody().setTransactionsCount(transactionsCount);
+    blockDto.getBody().setTransactionsCount(transactions.size());
     blockDto.getBody().setTransactions(txs);
     return blockDto;
   }
