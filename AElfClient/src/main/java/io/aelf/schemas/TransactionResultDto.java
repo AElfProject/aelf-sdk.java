@@ -20,8 +20,6 @@ public class TransactionResultDto {
   private TransactionDto transaction;
   @JsonProperty("ReturnValue")
   private String returnValue;
-  @JsonProperty("ReadableReturnValue")
-  private String readableReturnValue;
   @JsonProperty("Error")
   private String error;
   @JsonProperty("TransactionFee")
@@ -89,14 +87,6 @@ public class TransactionResultDto {
 
   public void setReturnValue(String returnValue) {
     this.returnValue = returnValue;
-  }
-
-  public String getReadableReturnValue() {
-    return readableReturnValue;
-  }
-
-  public void setReadableReturnValue(String readableReturnValue) {
-    this.readableReturnValue = readableReturnValue;
   }
 
   public String getError() {

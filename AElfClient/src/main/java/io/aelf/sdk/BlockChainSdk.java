@@ -398,7 +398,7 @@ public class BlockChainSdk {
     blockDto.getHeader().setMerkleTreeRootOfWorldState(
         StringUtil.toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfWorldState")));
     blockDto.getHeader().setMerkleTreeRootOfTransactionState(StringUtil
-        .toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactionStatus")));
+        .toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactionState")));
     blockDto.getHeader()
         .setExtra(StringUtil.toString(block.getLinkedHashMap("Header").get("Extra")));
     blockDto.getHeader().setHeight(height);
@@ -412,11 +412,11 @@ public class BlockChainSdk {
       return blockDto;
     }
     String transactionsCountStr = StringUtil
-        .toString(block.getLinkedHashMap("Body").get("TransactionIds"));
+        .toString(block.getLinkedHashMap("Body").get("Transactions"));
     final long transactionsCount = Long
         .parseLong(transactionsCountStr.length() == 0 ? "0" : transactionsCountStr);
 
-    List<String> transactions = (List<String>) block.getLinkedHashMap("Body").get("TransactionIds");
+    List<String> transactions = (List<String>) block.getLinkedHashMap("Body").get("Transactions");
     if (transactions == null) {
       transactions = new ArrayList<>();
     }
@@ -438,8 +438,6 @@ public class BlockChainSdk {
     transactionResultObj.setBlockNumber(transactionResult.getLong("BlockNumber", 0));
     transactionResultObj.setBlockHash(transactionResult.getString("BlockHash", ""));
     transactionResultObj.setReturnValue(transactionResult.getString("ReturnValue", ""));
-    transactionResultObj
-        .setReadableReturnValue(transactionResult.getString("ReadableReturnValue", ""));
     transactionResultObj.setError(transactionResult.getString("Error", ""));
     TransactionDto transactionDtoObj = new TransactionDto();
     LinkedHashMap transactionObj = transactionResult
