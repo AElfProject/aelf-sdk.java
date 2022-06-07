@@ -134,15 +134,15 @@ public class BlockChainSdk {
     String chainContext = ClientUtil.sendGet(url, "UTF-8", this.version);
     MapEntry mapObjJson = JsonUtil.parseObject(chainContext);
     LinkedHashMap<String, Integer> branchesMap = mapObjJson
-        .getLinkedHashMap("Branches", new LinkedHashMap());
+        .getLinkedHashMap("branches", new LinkedHashMap());
     Iterator<Map.Entry<String, Integer>> branchesMapSet = branchesMap.entrySet().iterator();
     LinkedHashMap<String, String> notLinkedBlocksMap = mapObjJson
-        .getLinkedHashMap("NotLinkedBlocks", new LinkedHashMap());
+        .getLinkedHashMap("notLinkedBlocks", new LinkedHashMap());
     final Iterator<Map.Entry<String, String>> notLinkedBlocksSets = notLinkedBlocksMap.entrySet()
         .iterator();
 
     ChainstatusDto chainstatusDto = new ChainstatusDto();
-    chainstatusDto.setChainId(mapObjJson.getString("ChainId", ""));
+    chainstatusDto.setChainId(mapObjJson.getString("chainId", ""));
     chainstatusDto.setBranches(new HashMap<String, Long>());
     while (branchesMapSet.hasNext()) {
       Map.Entry<String, Integer> tmp = branchesMapSet.next();
@@ -159,16 +159,16 @@ public class BlockChainSdk {
       String value = tmp.getValue();
       chainstatusDto.getNotLinkedBlocks().put(key, value);
     }
-    chainstatusDto.setLongestChainHeight(mapObjJson.getLong("LongestChainHeight", 0));
-    chainstatusDto.setLongestChainHash(mapObjJson.getString("LongestChainHash", ""));
-    chainstatusDto.setGenesisBlockHash(mapObjJson.getString("GenesisBlockHash", ""));
-    chainstatusDto.setGenesisContractAddress(mapObjJson.getString("GenesisContractAddress", ""));
+    chainstatusDto.setLongestChainHeight(mapObjJson.getLong("longestChainHeight", 0));
+    chainstatusDto.setLongestChainHash(mapObjJson.getString("longestChainHash", ""));
+    chainstatusDto.setGenesisBlockHash(mapObjJson.getString("genesisBlockHash", ""));
+    chainstatusDto.setGenesisContractAddress(mapObjJson.getString("genesisContractAddress", ""));
     chainstatusDto
-        .setLastIrreversibleBlockHash(mapObjJson.getString("LastIrreversibleBlockHash", ""));
+        .setLastIrreversibleBlockHash(mapObjJson.getString("lastIrreversibleBlockHash", ""));
     chainstatusDto
-        .setLastIrreversibleBlockHeight(mapObjJson.getLong("LastIrreversibleBlockHeight", 0));
-    chainstatusDto.setBestChainHash(mapObjJson.getString("BestChainHash", ""));
-    chainstatusDto.setBestChainHeight(mapObjJson.getLong("BestChainHeight", 0));
+        .setLastIrreversibleBlockHeight(mapObjJson.getLong("lastIrreversibleBlockHeight", 0));
+    chainstatusDto.setBestChainHash(mapObjJson.getString("bestChainHash", ""));
+    chainstatusDto.setBestChainHeight(mapObjJson.getLong("bestChainHeight", 0));
     return chainstatusDto;
   }
 
@@ -196,9 +196,9 @@ public class BlockChainSdk {
     List<TaskQueueInfoDto> listTaskQueueInfoDto = new ArrayList<TaskQueueInfoDto>();
     for (LinkedHashMap linkedHashMapObj : responseBodyList) {
       TaskQueueInfoDto taskQueueInfoDto = new TaskQueueInfoDto();
-      String sizeStr = StringUtil.toString(linkedHashMapObj.get("Size"));
+      String sizeStr = StringUtil.toString(linkedHashMapObj.get("size"));
       int size = sizeStr.length() == 0 ? 0 : Integer.parseInt(sizeStr);
-      taskQueueInfoDto.setName(StringUtil.toString(linkedHashMapObj.get("Name")));
+      taskQueueInfoDto.setName(StringUtil.toString(linkedHashMapObj.get("name")));
       taskQueueInfoDto.setSize(size);
       listTaskQueueInfoDto.add(taskQueueInfoDto);
     }
@@ -214,8 +214,8 @@ public class BlockChainSdk {
     String responseBody = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     MapEntry responseBobyMap = JsonUtil.parseObject(responseBody);
     TransactionPoolStatusOutput poolStatusOp = new TransactionPoolStatusOutput();
-    poolStatusOp.setQueued(responseBobyMap.getInteger("Queued"));
-    poolStatusOp.setValidated(responseBobyMap.getInteger("Validated"));
+    poolStatusOp.setQueued(responseBobyMap.getInteger("queued"));
+    poolStatusOp.setValidated(responseBobyMap.getInteger("validated"));
     return poolStatusOp;
   }
 
@@ -236,7 +236,7 @@ public class BlockChainSdk {
     String url = this.AElfClientUrl + WA_CREATERAWTRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry responseBodyMap = JsonUtil.parseObject(responseBody);
-    String rawTransaction = responseBodyMap.getString("RawTransaction", "");
+    String rawTransaction = responseBodyMap.getString("rawTransaction", "");
     CreateRawTransactionOutput createRawTransactionOutput = new CreateRawTransactionOutput();
     createRawTransactionOutput.setRawTransaction(rawTransaction);
     return createRawTransactionOutput;
@@ -260,19 +260,19 @@ public class BlockChainSdk {
     String url = this.AElfClientUrl + WA_SENDRAWTRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry responseBodyMap = JsonUtil.parseObject(responseBody);
-    final String transactionId = responseBodyMap.getString("TransactionId", "");
+    final String transactionId = responseBodyMap.getString("transactionId", "");
 
     TransactionDto transactionDtoObj = new TransactionDto();
     LinkedHashMap transactionObj = responseBodyMap
-        .getLinkedHashMap("Transaction", new LinkedHashMap());
+        .getLinkedHashMap("transaction", new LinkedHashMap());
     MapEntry transactionObjMap = Maps.cloneMapEntry(transactionObj);
-    transactionDtoObj.setFrom(transactionObjMap.getString("From", ""));
-    transactionDtoObj.setTo(transactionObjMap.getString("To", ""));
-    transactionDtoObj.setRefBlockNumber(transactionObjMap.getLong("RefBlockNumber", 0));
-    transactionDtoObj.setRefBlockPrefix(transactionObjMap.getString("RefBlockPrefix", ""));
-    transactionDtoObj.setMethodName(transactionObjMap.getString("MethodName", ""));
-    transactionDtoObj.setParams(transactionObjMap.getString("Params", ""));
-    transactionDtoObj.setSignature(transactionObjMap.getString("Signature", ""));
+    transactionDtoObj.setFrom(transactionObjMap.getString("from", ""));
+    transactionDtoObj.setTo(transactionObjMap.getString("to", ""));
+    transactionDtoObj.setRefBlockNumber(transactionObjMap.getLong("refBlockNumber", 0));
+    transactionDtoObj.setRefBlockPrefix(transactionObjMap.getString("refBlockPrefix", ""));
+    transactionDtoObj.setMethodName(transactionObjMap.getString("methodName", ""));
+    transactionDtoObj.setParams(transactionObjMap.getString("params", ""));
+    transactionDtoObj.setSignature(transactionObjMap.getString("signature", ""));
 
     SendRawTransactionOutput sendRawTransactionOutput = new SendRawTransactionOutput();
     sendRawTransactionOutput.setTransactionId(transactionId);
@@ -288,7 +288,7 @@ public class BlockChainSdk {
     String url = this.AElfClientUrl + WA_SENDTRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry responseBodyMap = JsonUtil.parseObject(responseBody);
-    String rawTransaction = responseBodyMap.getString("TransactionId", "");
+    String rawTransaction = responseBodyMap.getString("transactionId", "");
     SendTransactionOutput sendTransactionOutputObj = new SendTransactionOutput();
     sendTransactionOutputObj.setTransactionId(rawTransaction);
     return sendTransactionOutputObj;
@@ -359,13 +359,13 @@ public class BlockChainSdk {
     merklePathDtoObj.setMerklePathNodes(new ArrayList<MerklePathNodeDto>());
 
     ArrayList<LinkedHashMap> merklePathNodesList = responseBobyMap
-        .getArrayList("MerklePathNodes", new ArrayList());
+        .getArrayList("merklePathNodes", new ArrayList());
     for (LinkedHashMap merklePathNodesObj : merklePathNodesList) {
       MapEntry merklePathNodesObjMap = Maps.cloneMapEntry(merklePathNodesObj);
       MerklePathNodeDto merklePathNodeDtoObj = new MerklePathNodeDto();
-      merklePathNodeDtoObj.setHash(merklePathNodesObjMap.getString("Hash", ""));
+      merklePathNodeDtoObj.setHash(merklePathNodesObjMap.getString("hash", ""));
       merklePathNodeDtoObj
-          .setLeftChildNode(merklePathNodesObjMap.getBoolean("IsLeftChildNode", false));
+          .setLeftChildNode(merklePathNodesObjMap.getBoolean("isLeftChildNode", false));
       merklePathDtoObj.getMerklePathNodes().add(merklePathNodeDtoObj);
     }
     return merklePathDtoObj;
@@ -376,11 +376,11 @@ public class BlockChainSdk {
     if (block == null) {
       throw new RuntimeException("not found");
     }
-    String heightStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Height"));
+    String heightStr = StringUtil.toString(block.getLinkedHashMap("header").get("height"));
     final long height = heightStr.length() == 0 ? 0 : Long.parseLong(heightStr);
-    String bloomStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Bloom"));
+    String bloomStr = StringUtil.toString(block.getLinkedHashMap("header").get("bloom"));
     bloomStr = bloomStr.length() == 0 ? Base64.encodeBase64String(new byte[256]) : bloomStr;
-    final String timeStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Time"));
+    final String timeStr = StringUtil.toString(block.getLinkedHashMap("header").get("time"));
     SimpleDateFormat df;
     if(timeStr.length() == 20){
       df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -389,34 +389,34 @@ public class BlockChainSdk {
     }
     df.setTimeZone(TimeZone.getTimeZone("UTC"));
     BlockDto blockDto = new BlockDto();
-    blockDto.setBlockHash(block.getString("BlockHash"));
+    blockDto.setBlockHash(block.getString("blockHash"));
     blockDto.setHeader(new BlockHeaderDto());
     blockDto.getHeader().setPreviousBlockHash(
-        StringUtil.toString(block.getLinkedHashMap("Header").get("PreviousBlockHash")));
+        StringUtil.toString(block.getLinkedHashMap("header").get("previousBlockHash")));
     blockDto.getHeader().setMerkleTreeRootOfTransactions(
-        StringUtil.toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactions")));
+        StringUtil.toString(block.getLinkedHashMap("header").get("merkleTreeRootOfTransactions")));
     blockDto.getHeader().setMerkleTreeRootOfWorldState(
-        StringUtil.toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfWorldState")));
+        StringUtil.toString(block.getLinkedHashMap("header").get("merkleTreeRootOfWorldState")));
     blockDto.getHeader().setMerkleTreeRootOfTransactionState(StringUtil
-        .toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactionState")));
+        .toString(block.getLinkedHashMap("header").get("merkleTreeRootOfTransactionState")));
     blockDto.getHeader()
-        .setExtra(StringUtil.toString(block.getLinkedHashMap("Header").get("Extra")));
+        .setExtra(StringUtil.toString(block.getLinkedHashMap("header").get("extra")));
     blockDto.getHeader().setHeight(height);
     blockDto.getHeader().setTime(df.parse(timeStr));
     blockDto.getHeader()
-        .setChainId(StringUtil.toString(block.getLinkedHashMap("Header").get("ChainId")));
+        .setChainId(StringUtil.toString(block.getLinkedHashMap("header").get("chainId")));
     blockDto.getHeader().setBloom(bloomStr);
     blockDto.getHeader()
-        .setSignerPubkey(StringUtil.toString(block.getLinkedHashMap("Header").get("SignerPubkey")));
+        .setSignerPubkey(StringUtil.toString(block.getLinkedHashMap("header").get("signerPubkey")));
     if (!includeTransactions) {
       return blockDto;
     }
     String transactionsCountStr = StringUtil
-        .toString(block.getLinkedHashMap("Body").get("Transactions"));
+        .toString(block.getLinkedHashMap("body").get("transactions"));
     final long transactionsCount = Long
         .parseLong(transactionsCountStr.length() == 0 ? "0" : transactionsCountStr);
 
-    List<String> transactions = (List<String>) block.getLinkedHashMap("Body").get("Transactions");
+    List<String> transactions = (List<String>) block.getLinkedHashMap("body").get("transactions");
     if (transactions == null) {
       transactions = new ArrayList<>();
     }
@@ -432,32 +432,32 @@ public class BlockChainSdk {
 
   private TransactionResultDto createTransactionResultDto(MapEntry transactionResult) {
     TransactionResultDto transactionResultObj = new TransactionResultDto();
-    transactionResultObj.setTransactionId(transactionResult.getString("TransactionId", ""));
-    transactionResultObj.setStatus(transactionResult.getString("Status", ""));
-    transactionResultObj.setBloom(transactionResult.getString("Bloom", ""));
-    transactionResultObj.setBlockNumber(transactionResult.getLong("BlockNumber", 0));
-    transactionResultObj.setBlockHash(transactionResult.getString("BlockHash", ""));
-    transactionResultObj.setReturnValue(transactionResult.getString("ReturnValue", ""));
-    transactionResultObj.setError(transactionResult.getString("Error", ""));
+    transactionResultObj.setTransactionId(transactionResult.getString("transactionId", ""));
+    transactionResultObj.setStatus(transactionResult.getString("status", ""));
+    transactionResultObj.setBloom(transactionResult.getString("bloom", ""));
+    transactionResultObj.setBlockNumber(transactionResult.getLong("blockNumber", 0));
+    transactionResultObj.setBlockHash(transactionResult.getString("blockHash", ""));
+    transactionResultObj.setReturnValue(transactionResult.getString("returnValue", ""));
+    transactionResultObj.setError(transactionResult.getString("error", ""));
     TransactionDto transactionDtoObj = new TransactionDto();
     LinkedHashMap transactionObj = transactionResult
-        .getLinkedHashMap("Transaction", new LinkedHashMap());
+        .getLinkedHashMap("transaction", new LinkedHashMap());
     MapEntry transactionObjMap = Maps.cloneMapEntry(transactionObj);
-    transactionDtoObj.setFrom(transactionObjMap.getString("From", ""));
-    transactionDtoObj.setTo(transactionObjMap.getString("To", ""));
-    transactionDtoObj.setRefBlockNumber(transactionObjMap.getLong("RefBlockNumber", 0));
-    transactionDtoObj.setRefBlockPrefix(transactionObjMap.getString("RefBlockPrefix", ""));
-    transactionDtoObj.setMethodName(transactionObjMap.getString("MethodName", ""));
-    transactionDtoObj.setParams(transactionObjMap.getString("Params", ""));
-    transactionDtoObj.setSignature(transactionObjMap.getString("Signature", ""));
+    transactionDtoObj.setFrom(transactionObjMap.getString("from", ""));
+    transactionDtoObj.setTo(transactionObjMap.getString("to", ""));
+    transactionDtoObj.setRefBlockNumber(transactionObjMap.getLong("refBlockNumber", 0));
+    transactionDtoObj.setRefBlockPrefix(transactionObjMap.getString("refBlockPrefix", ""));
+    transactionDtoObj.setMethodName(transactionObjMap.getString("methodName", ""));
+    transactionDtoObj.setParams(transactionObjMap.getString("params", ""));
+    transactionDtoObj.setSignature(transactionObjMap.getString("signature", ""));
     transactionResultObj.setTransaction(transactionDtoObj);
     TransactionFeeDto transactionFeeDtoObj = new TransactionFeeDto();
     transactionFeeDtoObj.setValue(new HashMap<String, Long>());
     LinkedHashMap transactionFeeObj = transactionResult
-        .getLinkedHashMap("TransactionFee", new LinkedHashMap());
+        .getLinkedHashMap("transactionFee", new LinkedHashMap());
     MapEntry transactionFeeObjMap = Maps.cloneMapEntry(transactionFeeObj);
     LinkedHashMap<String, Integer> transactionFeeValueObjMap = transactionFeeObjMap
-        .getLinkedHashMap("Value", new LinkedHashMap<String, Integer>());
+        .getLinkedHashMap("value", new LinkedHashMap<String, Integer>());
     Iterator<Map.Entry<String, Integer>> transactionFeeValueObjSets = transactionFeeValueObjMap
         .entrySet().iterator();
     while (transactionFeeValueObjSets.hasNext()) {
@@ -469,15 +469,15 @@ public class BlockChainSdk {
     }
     transactionResultObj.setTransactionFee(transactionFeeDtoObj);
     List<LogEventDto> logEventDtoList = new ArrayList<LogEventDto>();
-    List<LinkedHashMap> logsList = transactionResult.getArrayList("Logs", new ArrayList());
+    List<LinkedHashMap> logsList = transactionResult.getArrayList("logs", new ArrayList());
     for (LinkedHashMap logsObj : logsList) {
       LogEventDto logEventDtoObj = new LogEventDto();
       MapEntry logsObjMap = Maps.cloneMapEntry(logsObj);
-      logEventDtoObj.setAddress(logsObjMap.getString("Address", ""));
-      logEventDtoObj.setName(logsObjMap.getString("Name", ""));
+      logEventDtoObj.setAddress(logsObjMap.getString("address", ""));
+      logEventDtoObj.setName(logsObjMap.getString("name", ""));
       logEventDtoObj.setIndexed(new ArrayList<String>());
-      logEventDtoObj.setNonIndexed(logsObjMap.getString("NonIndexed", ""));
-      List<String> ndexedList = logsObjMap.getArrayList("Indexed", new ArrayList<String>());
+      logEventDtoObj.setNonIndexed(logsObjMap.getString("nonIndexed", ""));
+      List<String> ndexedList = logsObjMap.getArrayList("indexed", new ArrayList<String>());
       for (String ndexedStr : ndexedList) {
         logEventDtoObj.getIndexed().add(ndexedStr);
       }
