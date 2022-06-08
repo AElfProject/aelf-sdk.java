@@ -425,7 +425,7 @@ public class BlockChainSdk {
       txs.add(StringUtil.toString(transactionId));
     }
     blockDto.setBody(new BlockBodyDto());
-    blockDto.getBody().setTransactionsCount(transactionsCount);
+    blockDto.getBody().setTransactionsCount(transactions.size());
     blockDto.getBody().setTransactions(txs);
     return blockDto;
   }
