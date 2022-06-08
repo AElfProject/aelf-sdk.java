@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
+
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.apache.commons.lang3.StringUtils;
 
 public final class Maps {
@@ -32,8 +34,12 @@ public final class Maps {
     return (MapEntry) entry.clone();
   }
 
-  public static Map newHashMap() {
-    return (MapEntry) entry.clone();
+  public static Map newCaseInsensitiveMap(){
+    return (CaseInsensitiveMap) entry.clone();
+  }
+
+  public static HashMap newHashMap() {
+    return new HashMap();
   }
 
   public static LinkedMapEntry newLinkedHashMap() {

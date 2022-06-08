@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -143,6 +145,27 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements Cloneab
     }
   }
 
+  @Override
+  public CaseInsensitiveMap getCaseInsensitiveMap(K key) {
+    return getCaseInsensitiveMap(key,(CaseInsensitiveMap) null);
+  }
+
+  @Override
+  public CaseInsensitiveMap getCaseInsensitiveMap(K key, CaseInsensitiveMap defaultValue) {
+    Object obj = this.get(key);
+    if (obj == null) {
+      return defaultValue;
+    } else if (obj instanceof HashMap) {
+      return (CaseInsensitiveMap) obj;
+    } else if (obj instanceof Map) {
+      MapEntry map = Maps.newMapEntry();
+      map.putAll((Map) obj);
+      return map;
+    } else {
+      return defaultValue;
+    }
+  }
+
   /**
    * getHashMap.
    */
@@ -160,7 +183,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements Cloneab
     } else if (obj instanceof HashMap) {
       return (HashMap) obj;
     } else if (obj instanceof Map) {
-      MapEntry map = Maps.newMapEntry();
+      HashMap map = Maps.newHashMap();
       map.putAll((Map) obj);
       return map;
     } else {

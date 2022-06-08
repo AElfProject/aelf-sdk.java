@@ -21,13 +21,8 @@ import io.aelf.schemas.TransactionDto;
 import io.aelf.schemas.TransactionFeeDto;
 import io.aelf.schemas.TransactionPoolStatusOutput;
 import io.aelf.schemas.TransactionResultDto;
-import io.aelf.utils.BitConverter;
-import io.aelf.utils.ClientUtil;
-import io.aelf.utils.HttpUtilExt;
-import io.aelf.utils.JsonUtil;
-import io.aelf.utils.MapEntry;
-import io.aelf.utils.Maps;
-import io.aelf.utils.StringUtil;
+import io.aelf.utils.*;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -212,10 +207,10 @@ public class BlockChainSdk {
   public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
     String url = this.AElfClientUrl + WA_GETTRANSACTIONPOOLSTATUS;
     String responseBody = HttpUtilExt.sendGet(url, "UTF-8", this.version);
-    MapEntry responseBobyMap = JsonUtil.parseObject(responseBody);
+    MapEntry responseBodyMap = JsonUtil.parseObject(responseBody);
     TransactionPoolStatusOutput poolStatusOp = new TransactionPoolStatusOutput();
-    poolStatusOp.setQueued(responseBobyMap.getInteger("queued"));
-    poolStatusOp.setValidated(responseBobyMap.getInteger("validated"));
+    poolStatusOp.setQueued(responseBodyMap.getInteger("queued"));
+    poolStatusOp.setValidated(responseBodyMap.getInteger("validated"));
     return poolStatusOp;
   }
 

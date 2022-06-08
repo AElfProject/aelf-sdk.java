@@ -1,5 +1,7 @@
 package io.aelf.utils;
 
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
+
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -40,6 +42,10 @@ public interface IMapEntry<K, V> extends Map<K, V> {
   Map getMap(K var1);
 
   Map getMap(K var1, Map var2);
+
+  CaseInsensitiveMap getCaseInsensitiveMap(K var1);
+
+  CaseInsensitiveMap getCaseInsensitiveMap(K var1,CaseInsensitiveMap var2);
 
   String[] getArray(K var1);
 
