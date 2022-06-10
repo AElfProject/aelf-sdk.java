@@ -417,7 +417,7 @@ public class BlockChainSdkTest {
   }
 
   @Test
-  public void sendTransferredTransactionTest() throws Exception {
+  public void sendTransferTransactionTest() throws Exception {
     String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
     KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
     Core.Transaction transaction = createTransferTransaction(keyPairInfo.getAddress());
