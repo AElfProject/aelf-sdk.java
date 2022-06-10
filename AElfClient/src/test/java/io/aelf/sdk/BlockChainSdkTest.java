@@ -23,6 +23,7 @@ import io.aelf.schemas.SendTransactionsInput;
 import io.aelf.schemas.TaskQueueInfoDto;
 import io.aelf.schemas.TransactionResultDto;
 import io.aelf.sdk.AElfClient;
+import io.aelf.utils.AddressHelper;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
@@ -39,6 +40,7 @@ import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import io.aelf.protobuf.generated.TokenContract;
 
 public class BlockChainSdkTest {
 
@@ -414,6 +416,63 @@ public class BlockChainSdkTest {
     client.sendTransaction(sendTransactionInputObj);
   }
 
+  @Test
+  public void sendTransferredTransactionTest() throws Exception {
+    String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
+    KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
+    Core.Transaction transaction = createTransferTransaction(keyPairInfo.getAddress());
+
+    SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
+    sendTransactionInputObj.setRawTransaction(Hex.toHexString(transaction.toByteArray()));
+    SendTransactionOutput sendResult = client.sendTransaction(sendTransactionInputObj);
+    Assert.assertFalse(sendResult.getTransactionId().isEmpty());
+
+    Thread.sleep(4000);
+
+    TransactionResultDto transactionResult = client.getTransactionResult(sendResult.getTransactionId());
+    Assert.assertEquals("MINED",transactionResult.getStatus());
+    Assert.assertEquals(sendResult.getTransactionId(),transactionResult.getTransactionId());
+    Assert.assertTrue(transactionResult.getError().isEmpty());
+
+    Assert.assertTrue(transactionResult.getLogs().size() == 2);
+
+    Assert.assertEquals(tokenContractAddress, transactionResult.getLogs().get(0).getAddress());
+    Assert.assertEquals("TransactionFeeCharged", transactionResult.getLogs().get(0).getName());
+    byte[] nonIndexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(0).getNonIndexed());
+    TransactionFeeCharged feeCharged=TransactionFeeCharged.getDefaultInstance().parseFrom(nonIndexedBytes);
+	  Assert.assertEquals("ELF", feeCharged.getSymbol());
+	  Assert.assertTrue(feeCharged.getAmount() > 0);
+
+    TokenContract.Transferred transferred = TransactionResultDtoExtension.getTransferredEvent(tokenContractAddress,transactionResult);
+
+	  Assert.assertEquals(address, AddressHelper.addressToBase58(transferred.getFrom()));
+	  Assert.assertEquals(keyPairInfo.getAddress(), AddressHelper.addressToBase58(transferred.getTo()));
+	  Assert.assertEquals("ELF", transferred.getSymbol());
+	  Assert.assertEquals(1000000000, transferred.getAmount());
+    Assert.assertEquals("transfer in test", transferred.getMemo());
+  }
+
+  private Core.Transaction createTransferTransaction(String toAddress) throws Exception {
+    String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
+
+    Client.Address to = AddressHelper.base58ToAddress(toAddress);
+
+    TokenContract.TransferInput.Builder paramTransfer = TokenContract.TransferInput.newBuilder();
+    paramTransfer.setTo(to);
+    paramTransfer.setSymbol("ELF");
+    paramTransfer.setAmount(1000000000);
+    paramTransfer.setMemo("transfer in test");
+    TokenContract.TransferInput paramTransferObj = paramTransfer.build();
+
+    String ownerAddress = client.getAddressFromPrivateKey(privateKey);
+
+    Core.Transaction.Builder transactionTransfer = client.generateTransaction(ownerAddress, tokenContractAddress, "Transfer", paramTransferObj.toByteArray());
+    Core.Transaction transactionTransferObj = transactionTransfer.build();
+    transactionTransfer.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(client.signTransaction(privateKey, transactionTransferObj))));
+    transactionTransferObj = transactionTransfer.build();
+
+    return transactionTransferObj;
+  }
 
 
   private Core.Transaction buildTransaction(String toAddress, String methodName, byte[] tmp)

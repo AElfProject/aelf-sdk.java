@@ -13022,6 +13022,1401 @@ public final class TokenContract {
 
   }
 
+  public interface TransferredOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Transferred)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The source address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address from = 1 [(.is_indexed) = true];</code>
+     * @return Whether the from field is set.
+     */
+    boolean hasFrom();
+    /**
+     * <pre>
+     * The source address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address from = 1 [(.is_indexed) = true];</code>
+     * @return The from.
+     */
+    io.aelf.protobuf.generated.Client.Address getFrom();
+    /**
+     * <pre>
+     * The source address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address from = 1 [(.is_indexed) = true];</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getFromOrBuilder();
+
+    /**
+     * <pre>
+     * The destination address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address to = 2 [(.is_indexed) = true];</code>
+     * @return Whether the to field is set.
+     */
+    boolean hasTo();
+    /**
+     * <pre>
+     * The destination address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address to = 2 [(.is_indexed) = true];</code>
+     * @return The to.
+     */
+    io.aelf.protobuf.generated.Client.Address getTo();
+    /**
+     * <pre>
+     * The destination address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address to = 2 [(.is_indexed) = true];</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getToOrBuilder();
+
+    /**
+     * <pre>
+     * The symbol of the transferred token.
+     * </pre>
+     *
+     * <code>string symbol = 3 [(.is_indexed) = true];</code>
+     * @return The symbol.
+     */
+    java.lang.String getSymbol();
+    /**
+     * <pre>
+     * The symbol of the transferred token.
+     * </pre>
+     *
+     * <code>string symbol = 3 [(.is_indexed) = true];</code>
+     * @return The bytes for symbol.
+     */
+    com.google.protobuf.ByteString
+        getSymbolBytes();
+
+    /**
+     * <pre>
+     * The amount of the transferred token.
+     * </pre>
+     *
+     * <code>int64 amount = 4;</code>
+     * @return The amount.
+     */
+    long getAmount();
+
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 5;</code>
+     * @return The memo.
+     */
+    java.lang.String getMemo();
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 5;</code>
+     * @return The bytes for memo.
+     */
+    com.google.protobuf.ByteString
+        getMemoBytes();
+  }
+  /**
+   * Protobuf type {@code Transferred}
+   */
+  public  static final class Transferred extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Transferred)
+      TransferredOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Transferred.newBuilder() to construct.
+    private Transferred(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Transferred() {
+      symbol_ = "";
+      memo_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Transferred();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Transferred(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (from_ != null) {
+                subBuilder = from_.toBuilder();
+              }
+              from_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(from_);
+                from_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
+              if (to_ != null) {
+                subBuilder = to_.toBuilder();
+              }
+              to_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(to_);
+                to_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              symbol_ = s;
+              break;
+            }
+            case 32: {
+
+              amount_ = input.readInt64();
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              memo_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return io.aelf.protobuf.generated.TokenContract.internal_static_Transferred_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return io.aelf.protobuf.generated.TokenContract.internal_static_Transferred_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              io.aelf.protobuf.generated.TokenContract.Transferred.class, io.aelf.protobuf.generated.TokenContract.Transferred.Builder.class);
+    }
+
+    public static final int FROM_FIELD_NUMBER = 1;
+    private io.aelf.protobuf.generated.Client.Address from_;
+    /**
+     * <pre>
+     * The source address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address from = 1 [(.is_indexed) = true];</code>
+     * @return Whether the from field is set.
+     */
+    public boolean hasFrom() {
+      return from_ != null;
+    }
+    /**
+     * <pre>
+     * The source address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address from = 1 [(.is_indexed) = true];</code>
+     * @return The from.
+     */
+    public io.aelf.protobuf.generated.Client.Address getFrom() {
+      return from_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : from_;
+    }
+    /**
+     * <pre>
+     * The source address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address from = 1 [(.is_indexed) = true];</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getFromOrBuilder() {
+      return getFrom();
+    }
+
+    public static final int TO_FIELD_NUMBER = 2;
+    private io.aelf.protobuf.generated.Client.Address to_;
+    /**
+     * <pre>
+     * The destination address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address to = 2 [(.is_indexed) = true];</code>
+     * @return Whether the to field is set.
+     */
+    public boolean hasTo() {
+      return to_ != null;
+    }
+    /**
+     * <pre>
+     * The destination address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address to = 2 [(.is_indexed) = true];</code>
+     * @return The to.
+     */
+    public io.aelf.protobuf.generated.Client.Address getTo() {
+      return to_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
+    }
+    /**
+     * <pre>
+     * The destination address of the transferred token.
+     * </pre>
+     *
+     * <code>.Address to = 2 [(.is_indexed) = true];</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getToOrBuilder() {
+      return getTo();
+    }
+
+    public static final int SYMBOL_FIELD_NUMBER = 3;
+    private volatile java.lang.Object symbol_;
+    /**
+     * <pre>
+     * The symbol of the transferred token.
+     * </pre>
+     *
+     * <code>string symbol = 3 [(.is_indexed) = true];</code>
+     * @return The symbol.
+     */
+    public java.lang.String getSymbol() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        symbol_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The symbol of the transferred token.
+     * </pre>
+     *
+     * <code>string symbol = 3 [(.is_indexed) = true];</code>
+     * @return The bytes for symbol.
+     */
+    public com.google.protobuf.ByteString
+        getSymbolBytes() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        symbol_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AMOUNT_FIELD_NUMBER = 4;
+    private long amount_;
+    /**
+     * <pre>
+     * The amount of the transferred token.
+     * </pre>
+     *
+     * <code>int64 amount = 4;</code>
+     * @return The amount.
+     */
+    public long getAmount() {
+      return amount_;
+    }
+
+    public static final int MEMO_FIELD_NUMBER = 5;
+    private volatile java.lang.Object memo_;
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 5;</code>
+     * @return The memo.
+     */
+    public java.lang.String getMemo() {
+      java.lang.Object ref = memo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        memo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The memo.
+     * </pre>
+     *
+     * <code>string memo = 5;</code>
+     * @return The bytes for memo.
+     */
+    public com.google.protobuf.ByteString
+        getMemoBytes() {
+      java.lang.Object ref = memo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        memo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (from_ != null) {
+        output.writeMessage(1, getFrom());
+      }
+      if (to_ != null) {
+        output.writeMessage(2, getTo());
+      }
+      if (!getSymbolBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, symbol_);
+      }
+      if (amount_ != 0L) {
+        output.writeInt64(4, amount_);
+      }
+      if (!getMemoBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, memo_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (from_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getFrom());
+      }
+      if (to_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTo());
+      }
+      if (!getSymbolBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, symbol_);
+      }
+      if (amount_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, amount_);
+      }
+      if (!getMemoBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, memo_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof io.aelf.protobuf.generated.TokenContract.Transferred)) {
+        return super.equals(obj);
+      }
+      io.aelf.protobuf.generated.TokenContract.Transferred other = (io.aelf.protobuf.generated.TokenContract.Transferred) obj;
+
+      if (hasFrom() != other.hasFrom()) return false;
+      if (hasFrom()) {
+        if (!getFrom()
+            .equals(other.getFrom())) return false;
+      }
+      if (hasTo() != other.hasTo()) return false;
+      if (hasTo()) {
+        if (!getTo()
+            .equals(other.getTo())) return false;
+      }
+      if (!getSymbol()
+          .equals(other.getSymbol())) return false;
+      if (getAmount()
+          != other.getAmount()) return false;
+      if (!getMemo()
+          .equals(other.getMemo())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasFrom()) {
+        hash = (37 * hash) + FROM_FIELD_NUMBER;
+        hash = (53 * hash) + getFrom().hashCode();
+      }
+      if (hasTo()) {
+        hash = (37 * hash) + TO_FIELD_NUMBER;
+        hash = (53 * hash) + getTo().hashCode();
+      }
+      hash = (37 * hash) + SYMBOL_FIELD_NUMBER;
+      hash = (53 * hash) + getSymbol().hashCode();
+      hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getAmount());
+      hash = (37 * hash) + MEMO_FIELD_NUMBER;
+      hash = (53 * hash) + getMemo().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static io.aelf.protobuf.generated.TokenContract.Transferred parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(io.aelf.protobuf.generated.TokenContract.Transferred prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Transferred}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Transferred)
+        io.aelf.protobuf.generated.TokenContract.TransferredOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return io.aelf.protobuf.generated.TokenContract.internal_static_Transferred_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return io.aelf.protobuf.generated.TokenContract.internal_static_Transferred_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                io.aelf.protobuf.generated.TokenContract.Transferred.class, io.aelf.protobuf.generated.TokenContract.Transferred.Builder.class);
+      }
+
+      // Construct using io.aelf.protobuf.generated.TokenContract.Transferred.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (fromBuilder_ == null) {
+          from_ = null;
+        } else {
+          from_ = null;
+          fromBuilder_ = null;
+        }
+        if (toBuilder_ == null) {
+          to_ = null;
+        } else {
+          to_ = null;
+          toBuilder_ = null;
+        }
+        symbol_ = "";
+
+        amount_ = 0L;
+
+        memo_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return io.aelf.protobuf.generated.TokenContract.internal_static_Transferred_descriptor;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.TokenContract.Transferred getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.TokenContract.Transferred.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.TokenContract.Transferred build() {
+        io.aelf.protobuf.generated.TokenContract.Transferred result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public io.aelf.protobuf.generated.TokenContract.Transferred buildPartial() {
+        io.aelf.protobuf.generated.TokenContract.Transferred result = new io.aelf.protobuf.generated.TokenContract.Transferred(this);
+        if (fromBuilder_ == null) {
+          result.from_ = from_;
+        } else {
+          result.from_ = fromBuilder_.build();
+        }
+        if (toBuilder_ == null) {
+          result.to_ = to_;
+        } else {
+          result.to_ = toBuilder_.build();
+        }
+        result.symbol_ = symbol_;
+        result.amount_ = amount_;
+        result.memo_ = memo_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof io.aelf.protobuf.generated.TokenContract.Transferred) {
+          return mergeFrom((io.aelf.protobuf.generated.TokenContract.Transferred)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(io.aelf.protobuf.generated.TokenContract.Transferred other) {
+        if (other == io.aelf.protobuf.generated.TokenContract.Transferred.getDefaultInstance()) return this;
+        if (other.hasFrom()) {
+          mergeFrom(other.getFrom());
+        }
+        if (other.hasTo()) {
+          mergeTo(other.getTo());
+        }
+        if (!other.getSymbol().isEmpty()) {
+          symbol_ = other.symbol_;
+          onChanged();
+        }
+        if (other.getAmount() != 0L) {
+          setAmount(other.getAmount());
+        }
+        if (!other.getMemo().isEmpty()) {
+          memo_ = other.memo_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        io.aelf.protobuf.generated.TokenContract.Transferred parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (io.aelf.protobuf.generated.TokenContract.Transferred) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private io.aelf.protobuf.generated.Client.Address from_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> fromBuilder_;
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       * @return Whether the from field is set.
+       */
+      public boolean hasFrom() {
+        return fromBuilder_ != null || from_ != null;
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       * @return The from.
+       */
+      public io.aelf.protobuf.generated.Client.Address getFrom() {
+        if (fromBuilder_ == null) {
+          return from_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : from_;
+        } else {
+          return fromBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       */
+      public Builder setFrom(io.aelf.protobuf.generated.Client.Address value) {
+        if (fromBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          from_ = value;
+          onChanged();
+        } else {
+          fromBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       */
+      public Builder setFrom(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (fromBuilder_ == null) {
+          from_ = builderForValue.build();
+          onChanged();
+        } else {
+          fromBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       */
+      public Builder mergeFrom(io.aelf.protobuf.generated.Client.Address value) {
+        if (fromBuilder_ == null) {
+          if (from_ != null) {
+            from_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(from_).mergeFrom(value).buildPartial();
+          } else {
+            from_ = value;
+          }
+          onChanged();
+        } else {
+          fromBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       */
+      public Builder clearFrom() {
+        if (fromBuilder_ == null) {
+          from_ = null;
+          onChanged();
+        } else {
+          from_ = null;
+          fromBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getFromBuilder() {
+        
+        onChanged();
+        return getFromFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getFromOrBuilder() {
+        if (fromBuilder_ != null) {
+          return fromBuilder_.getMessageOrBuilder();
+        } else {
+          return from_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : from_;
+        }
+      }
+      /**
+       * <pre>
+       * The source address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address from = 1 [(.is_indexed) = true];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getFromFieldBuilder() {
+        if (fromBuilder_ == null) {
+          fromBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getFrom(),
+                  getParentForChildren(),
+                  isClean());
+          from_ = null;
+        }
+        return fromBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.Address to_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> toBuilder_;
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       * @return Whether the to field is set.
+       */
+      public boolean hasTo() {
+        return toBuilder_ != null || to_ != null;
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       * @return The to.
+       */
+      public io.aelf.protobuf.generated.Client.Address getTo() {
+        if (toBuilder_ == null) {
+          return to_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
+        } else {
+          return toBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       */
+      public Builder setTo(io.aelf.protobuf.generated.Client.Address value) {
+        if (toBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          to_ = value;
+          onChanged();
+        } else {
+          toBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       */
+      public Builder setTo(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (toBuilder_ == null) {
+          to_ = builderForValue.build();
+          onChanged();
+        } else {
+          toBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       */
+      public Builder mergeTo(io.aelf.protobuf.generated.Client.Address value) {
+        if (toBuilder_ == null) {
+          if (to_ != null) {
+            to_ =
+              io.aelf.protobuf.generated.Client.Address.newBuilder(to_).mergeFrom(value).buildPartial();
+          } else {
+            to_ = value;
+          }
+          onChanged();
+        } else {
+          toBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       */
+      public Builder clearTo() {
+        if (toBuilder_ == null) {
+          to_ = null;
+          onChanged();
+        } else {
+          to_ = null;
+          toBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getToBuilder() {
+        
+        onChanged();
+        return getToFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getToOrBuilder() {
+        if (toBuilder_ != null) {
+          return toBuilder_.getMessageOrBuilder();
+        } else {
+          return to_ == null ?
+              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
+        }
+      }
+      /**
+       * <pre>
+       * The destination address of the transferred token.
+       * </pre>
+       *
+       * <code>.Address to = 2 [(.is_indexed) = true];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+          getToFieldBuilder() {
+        if (toBuilder_ == null) {
+          toBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
+                  getTo(),
+                  getParentForChildren(),
+                  isClean());
+          to_ = null;
+        }
+        return toBuilder_;
+      }
+
+      private java.lang.Object symbol_ = "";
+      /**
+       * <pre>
+       * The symbol of the transferred token.
+       * </pre>
+       *
+       * <code>string symbol = 3 [(.is_indexed) = true];</code>
+       * @return The symbol.
+       */
+      public java.lang.String getSymbol() {
+        java.lang.Object ref = symbol_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          symbol_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The symbol of the transferred token.
+       * </pre>
+       *
+       * <code>string symbol = 3 [(.is_indexed) = true];</code>
+       * @return The bytes for symbol.
+       */
+      public com.google.protobuf.ByteString
+          getSymbolBytes() {
+        java.lang.Object ref = symbol_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          symbol_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The symbol of the transferred token.
+       * </pre>
+       *
+       * <code>string symbol = 3 [(.is_indexed) = true];</code>
+       * @param value The symbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSymbol(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The symbol of the transferred token.
+       * </pre>
+       *
+       * <code>string symbol = 3 [(.is_indexed) = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSymbol() {
+        
+        symbol_ = getDefaultInstance().getSymbol();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The symbol of the transferred token.
+       * </pre>
+       *
+       * <code>string symbol = 3 [(.is_indexed) = true];</code>
+       * @param value The bytes for symbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSymbolBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long amount_ ;
+      /**
+       * <pre>
+       * The amount of the transferred token.
+       * </pre>
+       *
+       * <code>int64 amount = 4;</code>
+       * @return The amount.
+       */
+      public long getAmount() {
+        return amount_;
+      }
+      /**
+       * <pre>
+       * The amount of the transferred token.
+       * </pre>
+       *
+       * <code>int64 amount = 4;</code>
+       * @param value The amount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAmount(long value) {
+        
+        amount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The amount of the transferred token.
+       * </pre>
+       *
+       * <code>int64 amount = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAmount() {
+        
+        amount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object memo_ = "";
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 5;</code>
+       * @return The memo.
+       */
+      public java.lang.String getMemo() {
+        java.lang.Object ref = memo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          memo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 5;</code>
+       * @return The bytes for memo.
+       */
+      public com.google.protobuf.ByteString
+          getMemoBytes() {
+        java.lang.Object ref = memo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          memo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 5;</code>
+       * @param value The memo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMemo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        memo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMemo() {
+        
+        memo_ = getDefaultInstance().getMemo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The memo.
+       * </pre>
+       *
+       * <code>string memo = 5;</code>
+       * @param value The bytes for memo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMemoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        memo_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Transferred)
+    }
+
+    // @@protoc_insertion_point(class_scope:Transferred)
+    private static final io.aelf.protobuf.generated.TokenContract.Transferred DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.TokenContract.Transferred();
+    }
+
+    public static io.aelf.protobuf.generated.TokenContract.Transferred getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Transferred>
+        PARSER = new com.google.protobuf.AbstractParser<Transferred>() {
+      @java.lang.Override
+      public Transferred parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Transferred(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Transferred> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Transferred> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public io.aelf.protobuf.generated.TokenContract.Transferred getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TokenInfo_descriptor;
   private static final 
@@ -13087,6 +14482,11 @@ public final class TokenContract {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TransferInput_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Transferred_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Transferred_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -13096,41 +14496,46 @@ public final class TokenContract {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024token_contract.proto\032\014client.proto\"\276\001\n" +
-      "\tTokenInfo\022\016\n\006symbol\030\001 \001(\t\022\022\n\ntoken_name" +
-      "\030\002 \001(\t\022\016\n\006supply\030\003 \001(\003\022\024\n\014total_supply\030\004" +
-      " \001(\003\022\020\n\010decimals\030\005 \001(\005\022\030\n\006issuer\030\006 \001(\0132\010" +
-      ".Address\022\023\n\013is_burnable\030\007 \001(\010\022\026\n\016issue_c" +
-      "hain_id\030\010 \001(\005\022\016\n\006issued\030\t \001(\003\"#\n\021GetToke" +
-      "nInfoInput\022\016\n\006symbol\030\001 \001(\t\"*\n\rTokenInfoL" +
-      "ist\022\031\n\005value\030\001 \003(\0132\n.TokenInfo\":\n\017GetBal" +
-      "anceInput\022\016\n\006symbol\030\001 \001(\t\022\027\n\005owner\030\002 \001(\013" +
-      "2\010.Address\"L\n\020GetBalanceOutput\022\016\n\006symbol" +
-      "\030\001 \001(\t\022\027\n\005owner\030\002 \001(\0132\010.Address\022\017\n\007balan" +
-      "ce\030\003 \001(\003\"W\n\021GetAllowanceInput\022\016\n\006symbol\030" +
-      "\001 \001(\t\022\027\n\005owner\030\002 \001(\0132\010.Address\022\031\n\007spende" +
-      "r\030\003 \001(\0132\010.Address\"k\n\022GetAllowanceOutput\022" +
-      "\016\n\006symbol\030\001 \001(\t\022\027\n\005owner\030\002 \001(\0132\010.Address" +
-      "\022\031\n\007spender\030\003 \001(\0132\010.Address\022\021\n\tallowance" +
-      "\030\004 \001(\003\"?\n\022IsInWhiteListInput\022\016\n\006symbol\030\001" +
-      " \001(\t\022\031\n\007address\030\002 \001(\0132\010.Address\"Y\n\024GetLo" +
-      "ckedAmountInput\022\031\n\007address\030\001 \001(\0132\010.Addre" +
-      "ss\022\016\n\006symbol\030\002 \001(\t\022\026\n\007lock_id\030\003 \001(\0132\005.Ha" +
-      "sh\"j\n\025GetLockedAmountOutput\022\031\n\007address\030\001" +
-      " \001(\0132\010.Address\022\016\n\006symbol\030\002 \001(\t\022\026\n\007lock_i" +
-      "d\030\003 \001(\0132\005.Hash\022\016\n\006amount\030\004 \001(\003\"U\n GetVir" +
-      "tualAddressForLockingInput\022\031\n\007address\030\001 " +
-      "\001(\0132\010.Address\022\026\n\007lock_id\030\002 \001(\0132\005.Hash\"A\n" +
-      ".GetCrossChainTransferTokenContractAddre" +
-      "ssInput\022\017\n\007chainId\030\001 \001(\005\"S\n\rTransferInpu" +
-      "t\022\024\n\002to\030\001 \001(\0132\010.Address\022\016\n\006symbol\030\002 \001(\t\022" +
-      "\016\n\006amount\030\003 \001(\003\022\014\n\004memo\030\004 \001(\tB\034\n\032io.aelf" +
-      ".protobuf.generatedb\006proto3"
+      "\n\024token_contract.proto\032\014client.proto\032\rop" +
+      "tions.proto\"\276\001\n\tTokenInfo\022\016\n\006symbol\030\001 \001(" +
+      "\t\022\022\n\ntoken_name\030\002 \001(\t\022\016\n\006supply\030\003 \001(\003\022\024\n" +
+      "\014total_supply\030\004 \001(\003\022\020\n\010decimals\030\005 \001(\005\022\030\n" +
+      "\006issuer\030\006 \001(\0132\010.Address\022\023\n\013is_burnable\030\007" +
+      " \001(\010\022\026\n\016issue_chain_id\030\010 \001(\005\022\016\n\006issued\030\t" +
+      " \001(\003\"#\n\021GetTokenInfoInput\022\016\n\006symbol\030\001 \001(" +
+      "\t\"*\n\rTokenInfoList\022\031\n\005value\030\001 \003(\0132\n.Toke" +
+      "nInfo\":\n\017GetBalanceInput\022\016\n\006symbol\030\001 \001(\t" +
+      "\022\027\n\005owner\030\002 \001(\0132\010.Address\"L\n\020GetBalanceO" +
+      "utput\022\016\n\006symbol\030\001 \001(\t\022\027\n\005owner\030\002 \001(\0132\010.A" +
+      "ddress\022\017\n\007balance\030\003 \001(\003\"W\n\021GetAllowanceI" +
+      "nput\022\016\n\006symbol\030\001 \001(\t\022\027\n\005owner\030\002 \001(\0132\010.Ad" +
+      "dress\022\031\n\007spender\030\003 \001(\0132\010.Address\"k\n\022GetA" +
+      "llowanceOutput\022\016\n\006symbol\030\001 \001(\t\022\027\n\005owner\030" +
+      "\002 \001(\0132\010.Address\022\031\n\007spender\030\003 \001(\0132\010.Addre" +
+      "ss\022\021\n\tallowance\030\004 \001(\003\"?\n\022IsInWhiteListIn" +
+      "put\022\016\n\006symbol\030\001 \001(\t\022\031\n\007address\030\002 \001(\0132\010.A" +
+      "ddress\"Y\n\024GetLockedAmountInput\022\031\n\007addres" +
+      "s\030\001 \001(\0132\010.Address\022\016\n\006symbol\030\002 \001(\t\022\026\n\007loc" +
+      "k_id\030\003 \001(\0132\005.Hash\"j\n\025GetLockedAmountOutp" +
+      "ut\022\031\n\007address\030\001 \001(\0132\010.Address\022\016\n\006symbol\030" +
+      "\002 \001(\t\022\026\n\007lock_id\030\003 \001(\0132\005.Hash\022\016\n\006amount\030" +
+      "\004 \001(\003\"U\n GetVirtualAddressForLockingInpu" +
+      "t\022\031\n\007address\030\001 \001(\0132\010.Address\022\026\n\007lock_id\030" +
+      "\002 \001(\0132\005.Hash\"A\n.GetCrossChainTransferTok" +
+      "enContractAddressInput\022\017\n\007chainId\030\001 \001(\005\"" +
+      "S\n\rTransferInput\022\024\n\002to\030\001 \001(\0132\010.Address\022\016" +
+      "\n\006symbol\030\002 \001(\t\022\016\n\006amount\030\003 \001(\003\022\014\n\004memo\030\004" +
+      " \001(\t\"\204\001\n\013Transferred\022\035\n\004from\030\001 \001(\0132\010.Add" +
+      "ressB\005\210\217\365\001\001\022\033\n\002to\030\002 \001(\0132\010.AddressB\005\210\217\365\001\001" +
+      "\022\025\n\006symbol\030\003 \001(\tB\005\210\217\365\001\001\022\016\n\006amount\030\004 \001(\003\022" +
+      "\014\n\004memo\030\005 \001(\t:\004\240\273\030\001B\034\n\032io.aelf.protobuf." +
+      "generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           io.aelf.protobuf.generated.Client.getDescriptor(),
+          io.aelf.protobuf.generated.Options.getDescriptor(),
         });
     internal_static_TokenInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -13210,7 +14615,20 @@ public final class TokenContract {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TransferInput_descriptor,
         new java.lang.String[] { "To", "Symbol", "Amount", "Memo", });
+    internal_static_Transferred_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_Transferred_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Transferred_descriptor,
+        new java.lang.String[] { "From", "To", "Symbol", "Amount", "Memo", });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(io.aelf.protobuf.generated.Options.isEvent);
+    registry.add(io.aelf.protobuf.generated.Options.isIndexed);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
     io.aelf.protobuf.generated.Client.getDescriptor();
+    io.aelf.protobuf.generated.Options.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
