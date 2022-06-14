@@ -4,6 +4,7 @@ import com.google.protobuf.ByteString;
 
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
+import io.aelf.protobuf.generated.Core.Transaction;
 import io.aelf.protobuf.generated.Core.TransactionResultStatus;
 import io.aelf.protobuf.generated.TokenContract.GetBalanceOutput;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
@@ -24,6 +25,7 @@ import io.aelf.schemas.TaskQueueInfoDto;
 import io.aelf.schemas.TransactionResultDto;
 import io.aelf.sdk.AElfClient;
 import io.aelf.utils.AddressHelper;
+import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
@@ -36,11 +38,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.apache.commons.codec.binary.Base64;
+import org.bitcoinj.core.Base58;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import io.aelf.protobuf.generated.TokenContract;
+import io.aelf.protobuf.generated.Client.Address;
 
 public class BlockChainSdkTest {
 
@@ -496,5 +500,15 @@ public class BlockChainSdkTest {
     createRawTransactionInputObj.setRefBlockNumber(height);
     createRawTransactionInputObj.setRefBlockHash(blockHash);
     return createRawTransactionInputObj;
+  }
+
+  @Test
+  public void checkSumTest() throws Exception {
+    boolean checkResult = Base58Ext.checkSum(address);
+    Assert.assertTrue(checkResult);
+
+    address = address+"EE";
+    checkResult = Base58Ext.checkSum(address);
+    Assert.assertFalse(checkResult);
   }
 }
