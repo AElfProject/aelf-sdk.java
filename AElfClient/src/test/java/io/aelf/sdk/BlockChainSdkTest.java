@@ -503,12 +503,12 @@ public class BlockChainSdkTest {
   }
 
   @Test
-  public void checkSumTest() throws Exception {
-    boolean checkResult = Base58Ext.checkSum(address);
+  public void checksumTest() throws Exception {
+    boolean checkResult = Base58Ext.verifyChecksum(address);
     Assert.assertTrue(checkResult);
 
     address = address+"EE";
-    checkResult = Base58Ext.checkSum(address);
+    checkResult = Base58Ext.verifyChecksum(address);
     Assert.assertFalse(checkResult);
   }
 }

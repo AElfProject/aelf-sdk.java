@@ -24,16 +24,14 @@ public class Base58Ext {
     return Base58.encode(addressBytes);
   }
 
-  public static boolean checkSum(String data){
+  public static boolean verifyChecksum(String data){
     byte[] addressBytes = Base58.decode(data);
-    byte[] sumFromData = new byte[CheckSumSize];
-    System.arraycopy(addressBytes, addressBytes.length - CheckSumSize, sumFromData, 0, CheckSumSize);
-    byte[] dataWithoutSum = new byte[addressBytes.length - CheckSumSize];
-    System.arraycopy(addressBytes, 0, dataWithoutSum, 0, addressBytes.length-CheckSumSize);
-    byte[] sumHash = Sha256Hash.hashTwice(dataWithoutSum);
-    byte[] sum = new byte[CheckSumSize];
-    System.arraycopy(sumHash, 0, sum, 0, CheckSumSize);
+    byte[] checksumFromData = new byte[CheckSumSize];
+    System.arraycopy(addressBytes, addressBytes.length - CheckSumSize, checksumFromData, 0, CheckSumSize);
+    byte[] checksumHash = Sha256Hash.hashTwice(addressBytes,0,addressBytes.length - CheckSumSize);
+    byte[] checksum = new byte[CheckSumSize];
+    System.arraycopy(checksumHash, 0, checksum, 0, CheckSumSize);
 
-    return Arrays.equals(sumFromData, sum);
+    return Arrays.equals(checksumFromData, checksum);
   }
 }
