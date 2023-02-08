@@ -117,6 +117,7 @@ public class AElfClient {
     if (blcokChainSdk == null) {
       blcokChainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
     }
+
     return blcokChainSdk;
   }
 
