@@ -82,6 +82,8 @@ public class NetSdk {
    * Gets information about the peer nodes of the current node.Optional whether to include metrics.
    * wa:/api/net/peers?withMetrics=false
    */
+
+
   public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
     String url = this.AElfClientUrl + WA_GETPEERS + "?withMetrics=" + withMetrics;
     String peersChain = ClientUtil.sendGet(url, "UTF-8", this.version);
@@ -101,6 +103,7 @@ public class NetSdk {
       peerDtoObj.setBufferedTransactionsCount(
           responseBobyMapObj.getInteger("BufferedAnnouncementsCount", 0));
       peerDtoObj.setRequestMetrics(new ArrayList());
+      peerDtoObj.setNodeVersion(responseBobyMapObj.getString("NodeVersion",""));
       List<LinkedHashMap> requestMetricsList = responseBobyMapObj
           .getArrayList("RequestMetrics", new ArrayList<LinkedHashMap>());
       for (LinkedHashMap requestMetricsObj : requestMetricsList) {

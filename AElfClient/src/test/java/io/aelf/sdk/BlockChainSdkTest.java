@@ -8,20 +8,7 @@ import io.aelf.protobuf.generated.Core.TransactionResultStatus;
 import io.aelf.protobuf.generated.TokenContract.GetBalanceOutput;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged.Builder;
-import io.aelf.schemas.BlockDto;
-import io.aelf.schemas.ChainstatusDto;
-import io.aelf.schemas.CreateRawTransactionInput;
-import io.aelf.schemas.CreateRawTransactionOutput;
-import io.aelf.schemas.ExecuteRawTransactionDto;
-import io.aelf.schemas.ExecuteTransactionDto;
-import io.aelf.schemas.KeyPairInfo;
-import io.aelf.schemas.LogEventDto;
-import io.aelf.schemas.SendRawTransactionInput;
-import io.aelf.schemas.SendTransactionInput;
-import io.aelf.schemas.SendTransactionOutput;
-import io.aelf.schemas.SendTransactionsInput;
-import io.aelf.schemas.TaskQueueInfoDto;
-import io.aelf.schemas.TransactionResultDto;
+import io.aelf.schemas.*;
 import io.aelf.sdk.AElfClient;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.JsonUtil;
@@ -412,6 +399,26 @@ public class BlockChainSdkTest {
     SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
     sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
     client.sendTransaction(sendTransactionInputObj);
+  }
+
+  @Test
+  public void getTransactionFeeResultTest() throws Exception {
+    String toAddress = client.getGenesisContractAddress();
+    final String methodName = "GetContractAddressByName";
+    byte[] paramBytes = Sha256.getBytesSha256("AElf.ContractNames.Token");
+    ChainstatusDto status = client.getChainStatus();
+    final long height = status.getBestChainHeight();
+    final String blockHash = status.getBestChainHash();
+    MapEntry mapParamsObj = Maps.newMapEntry();
+    Base64 base64 = new Base64();
+    mapParamsObj.put("value", base64.encodeToString(paramBytes));
+    String param = JsonUtil.toJsonString(mapParamsObj);
+    CreateRawTransactionInput createRawTransactionInputObj = createRowBuild(toAddress, methodName,
+            param, height, blockHash);
+    CreateRawTransactionOutput out = client.createRawTransaction(createRawTransactionInputObj);
+    CalculateTransactionFeeInput input = new CalculateTransactionFeeInput();
+    input.setRawTransaction(out.getRawTransaction());
+    client.getTransactionFee(input);
   }
 
 

@@ -4,25 +4,7 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
-import io.aelf.schemas.AddPeerInput;
-import io.aelf.schemas.BlockDto;
-import io.aelf.schemas.ChainstatusDto;
-import io.aelf.schemas.CreateRawTransactionInput;
-import io.aelf.schemas.CreateRawTransactionOutput;
-import io.aelf.schemas.ExecuteRawTransactionDto;
-import io.aelf.schemas.ExecuteTransactionDto;
-import io.aelf.schemas.KeyPairInfo;
-import io.aelf.schemas.MerklePathDto;
-import io.aelf.schemas.NetworkInfoOutput;
-import io.aelf.schemas.PeerDto;
-import io.aelf.schemas.SendRawTransactionInput;
-import io.aelf.schemas.SendRawTransactionOutput;
-import io.aelf.schemas.SendTransactionInput;
-import io.aelf.schemas.SendTransactionOutput;
-import io.aelf.schemas.SendTransactionsInput;
-import io.aelf.schemas.TaskQueueInfoDto;
-import io.aelf.schemas.TransactionPoolStatusOutput;
-import io.aelf.schemas.TransactionResultDto;
+import io.aelf.schemas.*;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.JsonUtil;
@@ -469,4 +451,9 @@ public class AElfClient {
       return false;
     }
   }
+
+  public TransactionFeeResultOutput getTransactionFee(CalculateTransactionFeeInput input) throws Exception {
+    return this.getBlockChainSdkObj().getTransactionFeeResult(input);
+  }
+
 }

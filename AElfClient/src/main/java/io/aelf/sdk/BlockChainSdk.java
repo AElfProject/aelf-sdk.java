@@ -1,26 +1,6 @@
 package io.aelf.sdk;
 
-import io.aelf.schemas.BlockBodyDto;
-import io.aelf.schemas.BlockDto;
-import io.aelf.schemas.BlockHeaderDto;
-import io.aelf.schemas.ChainstatusDto;
-import io.aelf.schemas.CreateRawTransactionInput;
-import io.aelf.schemas.CreateRawTransactionOutput;
-import io.aelf.schemas.ExecuteRawTransactionDto;
-import io.aelf.schemas.ExecuteTransactionDto;
-import io.aelf.schemas.LogEventDto;
-import io.aelf.schemas.MerklePathDto;
-import io.aelf.schemas.MerklePathNodeDto;
-import io.aelf.schemas.SendRawTransactionInput;
-import io.aelf.schemas.SendRawTransactionOutput;
-import io.aelf.schemas.SendTransactionInput;
-import io.aelf.schemas.SendTransactionOutput;
-import io.aelf.schemas.SendTransactionsInput;
-import io.aelf.schemas.TaskQueueInfoDto;
-import io.aelf.schemas.TransactionDto;
-import io.aelf.schemas.TransactionFeeDto;
-import io.aelf.schemas.TransactionPoolStatusOutput;
-import io.aelf.schemas.TransactionResultDto;
+import io.aelf.schemas.*;
 import io.aelf.utils.BitConverter;
 import io.aelf.utils.ClientUtil;
 import io.aelf.utils.HttpUtilExt;
@@ -60,6 +40,7 @@ public class BlockChainSdk {
   private static final String WA_GETTRANSACTIONRESULTS = "/api/blockChain/transactionResults";
   private static final String WA_SENDTRANSACTIONS = "/api/blockChain/sendTransactions";
   private static final String WA_GETMBYTRANSACTIONID = "/api/blockChain/merklePathByTransactionId";
+  private static final String WA_CALCULATETRANSACTIONFEE = "/api/blockChain/calculateTransactionFee";
 
   /**
    * Object construction through the url path.
@@ -371,6 +352,14 @@ public class BlockChainSdk {
     return merklePathDtoObj;
   }
 
+
+
+  public TransactionFeeResultOutput getTransactionFeeResult(CalculateTransactionFeeInput input) throws Exception {
+    String url = this.AElfClientUrl + WA_CALCULATETRANSACTIONFEE;
+    String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
+    TransactionFeeResultOutput output = JsonUtil.parseObject(responseBody, TransactionFeeResultOutput.class);
+    return output;
+  }
 
   private BlockDto createBlockDto(MapEntry block, Boolean includeTransactions) throws Exception {
     if (block == null) {
