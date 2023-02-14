@@ -29,10 +29,10 @@ import org.junit.Test;
 
 public class BlockChainSdkTest {
 
-  static final String HTTPURL = "http://127.0.0.1:8000";
+  static final String HTTPURL = "http://127.0.0.1:8001";
   AElfClient client = null;
-  String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
-  String address = "";
+  String privateKey = "e3ca0260c3e50526fda2dd3ea8f42476d28d63dfced53e25954d04c2f0c88f17";
+  String address = "GYMiWZFExk7eTVkWRtjtNtWYiFEgs8Bde7mcMKFKbs5zGRmU6";
 
   /**
    * init junit.
@@ -418,7 +418,8 @@ public class BlockChainSdkTest {
     CreateRawTransactionOutput out = client.createRawTransaction(createRawTransactionInputObj);
     CalculateTransactionFeeInput input = new CalculateTransactionFeeInput();
     input.setRawTransaction(out.getRawTransaction());
-    client.getTransactionFee(input);
+    TransactionFeeResultOutput output = client.getTransactionFee(input);
+    System.out.println(JsonUtil.toJsonString(output));
   }
 
 

@@ -1,6 +1,7 @@
 package io.aelf.sdk;
 
 import io.aelf.schemas.AddPeerInput;
+import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;
 import io.aelf.sdk.AElfClient;
 import java.util.List;
@@ -11,7 +12,7 @@ import org.junit.Test;
 
 public class NetSdkTest {
 
-  static final String HTTPURL = "http://127.0.0.1:8000";
+  static final String HTTPURL = "http://127.0.0.1:8001";
   static final String OPREATIONADDRESS = "127.0.0.1:7003";
   AElfClient client = null;
 
