@@ -417,8 +417,8 @@ public class BlockChainSdkTest {
         CreateRawTransactionOutput out = client.createRawTransaction(createRawTransactionInputObj);
         CalculateTransactionFeeInput input = new CalculateTransactionFeeInput();
         input.setRawTransaction(out.getRawTransaction());
-        //TransactionFeeResultOutput output = client.getTransactionFee(input);
-        //System.out.println(JsonUtil.toJsonString(output));
+        TransactionFeeResultOutput output = client.getTransactionFee(input);
+        Assert.assertNull(output.getTransactionFee());
     }
 
 
