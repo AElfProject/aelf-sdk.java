@@ -5,13 +5,13 @@ sudo sed -i "s/127.0.0.1/$ip/g" appsettings.json
 sudo apt update && apt install unzip
 sudo mkdir -p /home/ubuntu/.ssh/aelf/keys && sudo mkdir -p /root/.ssh/aelf/keys
 cd ../../
-wget https://github.com/AElfProject/AElf/releases/download/v1.0.0/aelf.zip
+wget https://github.com/AElfProject/AElf/releases/download/v1.2.3/aelf.zip
 sudo unzip aelf.zip
 sudo mkdir -p aelf/aelf/keys
 sudo cp scripts/aelf-node/keys/*.json aelf/aelf/keys/
 sudo cp scripts/aelf-node/app* aelf/
 echo "start node"
 cd aelf && sudo dotnet AElf.Launcher.dll  >/dev/null 2>&1 &
-sleep 30
+sleep 90
 height=`curl -s http://$ip:8000/api/blockChain/blockHeight`
 echo "height is $height"
