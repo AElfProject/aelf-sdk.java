@@ -401,7 +401,7 @@ public class BlockChainSdkTest {
     }
 
     @Test
-    public void getTransactionFeeResultTest() throws Exception {
+    public void CalculateTransactionFeeResultTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
         final String methodName = "GetContractAddressByName";
         byte[] paramBytes = Sha256.getBytesSha256("AElf.ContractNames.Token");
@@ -417,7 +417,7 @@ public class BlockChainSdkTest {
         CreateRawTransactionOutput out = client.createRawTransaction(createRawTransactionInputObj);
         CalculateTransactionFeeInput input = new CalculateTransactionFeeInput();
         input.setRawTransaction(out.getRawTransaction());
-        TransactionFeeResultOutput output = client.getTransactionFee(input);
+        TransactionFeeResultOutput output = client.calculateTransactionFee(input);
         Assert.assertNull(output.getTransactionFee());
     }
 

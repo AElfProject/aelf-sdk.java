@@ -354,7 +354,7 @@ public class BlockChainSdk {
 
 
 
-  public TransactionFeeResultOutput getTransactionFeeResult(CalculateTransactionFeeInput input) throws Exception {
+  public TransactionFeeResultOutput calculateTransactionFeeResult(CalculateTransactionFeeInput input) throws Exception {
     String url = this.AElfClientUrl + WA_CALCULATETRANSACTIONFEE;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     TransactionFeeResultOutput output = JsonUtil.parseObject(responseBody, TransactionFeeResultOutput.class);
