@@ -29,10 +29,10 @@ import org.junit.Test;
 
 public class BlockChainSdkTest {
 
-  static final String HTTPURL = "http://127.0.0.1:8001";
+  static final String HTTPURL = "http://127.0.0.1:8000";
   AElfClient client = null;
-  String privateKey = "e3ca0260c3e50526fda2dd3ea8f42476d28d63dfced53e25954d04c2f0c88f17";
-  String address = "GYMiWZFExk7eTVkWRtjtNtWYiFEgs8Bde7mcMKFKbs5zGRmU6";
+  String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
+  String address = "";
 
   /**
    * init junit.
