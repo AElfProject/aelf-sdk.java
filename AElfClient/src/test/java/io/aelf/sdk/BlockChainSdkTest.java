@@ -4,18 +4,14 @@ import com.google.protobuf.ByteString;
 
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
-import io.aelf.protobuf.generated.Core.TransactionResultStatus;
-import io.aelf.protobuf.generated.TokenContract.GetBalanceOutput;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged.Builder;
 import io.aelf.schemas.*;
-import io.aelf.sdk.AElfClient;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.Sha256;
-import io.aelf.utils.StringUtil;
 import io.aelf.utils.TransactionResultDtoExtension;
 
 import java.math.BigInteger;
