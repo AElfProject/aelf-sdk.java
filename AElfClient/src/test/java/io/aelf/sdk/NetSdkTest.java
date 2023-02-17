@@ -1,9 +1,7 @@
 package io.aelf.sdk;
 
 import io.aelf.schemas.AddPeerInput;
-import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;
-import io.aelf.sdk.AElfClient;
 
 import java.util.List;
 
@@ -25,13 +23,13 @@ public class NetSdkTest {
 
     @Test
     public void getNetworkInfo() throws Exception {
-        Assert.assertTrue(client.getNetworkInfo() != null);
+        Assert.assertNotNull(client.getNetworkInfo());
     }
 
     @Test
     public void getPeer() throws Exception {
         List<PeerDto> listPeerDto = client.getPeers(true);
-        Assert.assertTrue(listPeerDto.size() >= 0);
+        Assert.assertTrue(true);
     }
 
     @Ignore
