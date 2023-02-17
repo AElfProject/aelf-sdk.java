@@ -6,7 +6,7 @@ jobs:
   variables:
     phpVersion: 7.2
   steps: 
-  - task: DotNetCoreInstaller@0
+  - task: UseDotNet@2
     inputs:
       version: '6.0.14'
   - powershell: ./scripts/aelf-node/start-window.ps1
@@ -22,7 +22,7 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
-  - task: DotNetCoreInstaller@0
+  - task: UseDotNet@2
     inputs:
       version: '6.0.14'
   - script: cd scripts/aelf-node && bash start.sh
@@ -37,7 +37,7 @@ jobs:
   variables:
     phpVersion: 7.2
   steps:
-  - task: DotNetCoreInstaller@0
+  - task: UseDotNet@2
     inputs:
       version: '6.0.14'
   - script: cd scripts/aelf-node && bash start-mac.sh
