@@ -374,7 +374,7 @@ public class BlockChainSdkTest {
     @Test
     public void getChainIdTest() throws Exception {
         int chainId = client.getChainId();
-        Assert.assertTrue(chainId == 9992731);
+        Assert.assertEquals(9992731, chainId);
     }
 
     @Test
@@ -415,6 +415,8 @@ public class BlockChainSdkTest {
         input.setRawTransaction(out.getRawTransaction());
         TransactionFeeResultOutput output = client.calculateTransactionFee(input);
         System.out.println(JsonUtil.toJsonString(output));
+        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")>18000000),true);
+        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")<19000000),true);
 
     }
 
