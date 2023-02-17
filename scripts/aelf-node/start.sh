@@ -3,7 +3,7 @@ dir=`pwd`
 ip=`ip a | grep eth0 |grep 'inet' | awk -F/ '{print $1}'| awk '{print $2}'`
 sudo sed -i "s/127.0.0.1/$ip/g" appsettings.json
 sudo apt update && apt install unzip
-sudo mkdir -p /home/ubuntu/.ssh/aelf/keys && sudo mkdir -p /root/.ssh/aelf/keys
+sudo mkdir -p /home/ubuntu/.ssh/aelf/keys && sudo mkdir -p /root/.local/share/aelf/keys/
 cd ../../
 wget https://github.com/AElfProject/AElf/releases/download/v1.2.3/aelf.zip
 sudo unzip aelf.zip
