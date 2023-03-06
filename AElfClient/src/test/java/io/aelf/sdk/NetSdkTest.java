@@ -1,6 +1,8 @@
 package io.aelf.sdk;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.aelf.schemas.AddPeerInput;
+import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;
 
 import java.util.List;
@@ -14,6 +16,9 @@ public class NetSdkTest {
 
     static final String HTTPURL = "http://127.0.0.1:8000";
     static final String OPREATIONADDRESS = "127.0.0.1:7003";
+
+    static final String VERSION = "1.2.3.0";
+
     AElfClient client = null;
 
     @Before
@@ -23,7 +28,10 @@ public class NetSdkTest {
 
     @Test
     public void getNetworkInfo() throws Exception {
-        Assert.assertNotNull(client.getNetworkInfo());
+        NetworkInfoOutput networkInfo = client.getNetworkInfo();
+        Assert.assertNotNull(networkInfo);
+        Assert.assertEquals(networkInfo.getVersion(),VERSION);
+
     }
 
     @Test
