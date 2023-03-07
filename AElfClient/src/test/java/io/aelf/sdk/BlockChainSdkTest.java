@@ -413,7 +413,7 @@ public class BlockChainSdkTest {
         CreateRawTransactionOutput out = client.createRawTransaction(createRawTransactionInputObj);
         CalculateTransactionFeeInput input = new CalculateTransactionFeeInput();
         input.setRawTransaction(out.getRawTransaction());
-        TransactionFeeResultOutput output = client.calculateTransactionFee(input);
+        CalculateTransactionFeeOutput output = client.calculateTransactionFee(input);
         System.out.println(JsonUtil.toJsonString(output));
         Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")>18000000),true);
         Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")<19000000),true);

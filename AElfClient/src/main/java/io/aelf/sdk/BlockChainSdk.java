@@ -354,10 +354,10 @@ public class BlockChainSdk {
 
 
 
-  public TransactionFeeResultOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
+  public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
     String url = this.AElfClientUrl + WA_CALCULATETRANSACTIONFEE;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
-    return JsonUtil.parseObject(responseBody, TransactionFeeResultOutput.class);
+    return JsonUtil.parseObject(responseBody, CalculateTransactionFeeOutput.class);
   }
 
   private BlockDto createBlockDto(MapEntry block, Boolean includeTransactions) throws Exception {

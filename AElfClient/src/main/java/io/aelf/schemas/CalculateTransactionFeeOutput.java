@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashMap;
 
-public class TransactionFeeResultOutput {
+public class CalculateTransactionFeeOutput {
     @JsonProperty("Success")
 
 

@@ -459,7 +459,7 @@ public class AElfClient {
    * @return TransactionFeeResultOutput
    * @throws Exception
    */
-  public TransactionFeeResultOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
+  public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
     return this.getBlockChainSdkObj().calculateTransactionFee(input);
   }
 
