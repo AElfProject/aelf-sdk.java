@@ -397,7 +397,7 @@ public class BlockChainSdkTest {
     }
 
     @Test
-    public void CalculateTransactionFeeResultTest() throws Exception {
+    public void calculateTransactionFeeResultTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
         final String methodName = "GetContractAddressByName";
         byte[] paramBytes = Sha256.getBytesSha256("AElf.ContractNames.Token");
