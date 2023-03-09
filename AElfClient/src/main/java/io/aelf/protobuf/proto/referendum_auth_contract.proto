@@ -4,8 +4,16 @@ import "client.proto";
 option java_package = "io.aelf.protobuf.generated";
 
 message Organization {
-    int64 release_threshold = 1;
+    // The threshold for releasing the proposal.
+    ProposalReleaseThreshold proposal_release_threshold = 1;
+    // The token used during proposal operations.
     string token_symbol = 2;
+    // The address of organization.
     Address organization_address = 3;
+    // The organizations id.
     Hash organization_hash = 4;
+    // The proposer whitelist.
+    ProposerWhiteList proposer_white_list = 5;
+    // The creation token is for organization address generation.
+    Hash creation_token = 6;
 }

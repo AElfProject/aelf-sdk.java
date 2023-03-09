@@ -12,7 +12,7 @@ public class HttpUtilExt {
    */
   public static String sendGet(String reqUrl,
       String decodeCharset, String version) throws Exception {
-    logger.info("Request address:" + reqUrl);
+    logger.debug("Request address:" + reqUrl);
     if (StringUtil.isBlank(version)) {
       version = "";
     } else {
@@ -23,23 +23,23 @@ public class HttpUtilExt {
       chainContext = chainContext.replace("@ERROR:@", "");
       throw new RuntimeException(chainContext);
     }
-    logger.info("Return parameters:" + chainContext);
+    logger.debug("Return parameters:" + chainContext);
     return chainContext;
   }
 
   /**
    * HTTP DELETE Request help method.
    */
-  public static String sendDelete(String reqUrl, String decodeCharset, String version) {
-    logger.info("Request address:" + reqUrl);
+  public static String sendDelete(String reqUrl, String decodeCharset, String version, String basicAuth) {
+    logger.debug("Request address:" + reqUrl);
     if (StringUtil.isBlank(version)) {
       version = "";
     } else {
       version = ";v=" + version;
     }
     String chainContext = ClientUtil
-        .sendDelete(reqUrl, decodeCharset, "application/json" + version);
-    logger.info("Return parameters:" + chainContext);
+        .sendDelete(reqUrl, decodeCharset, "application/json" + version, basicAuth);
+    logger.debug("Return parameters:" + chainContext);
     return chainContext;
   }
 
@@ -52,14 +52,34 @@ public class HttpUtilExt {
     } else {
       version = ";v=" + version;
     }
-    logger.info("Request address:" + reqUrl);
+    logger.debug("Request address:" + reqUrl);
     String chainContext = ClientUtil
         .sendPost(reqUrl, params, "UTF-8", "UTF-8", "application/json" + version);
     if (StringUtil.toString(chainContext).length() > 0 && chainContext.contains("@ERROR:@")) {
       chainContext = chainContext.replace("@ERROR:@", "");
       throw new RuntimeException(chainContext);
     }
-    logger.info("Return parameters:" + chainContext);
+    logger.debug("Return parameters:" + chainContext);
+    return chainContext;
+  }
+
+  /**
+   * HTTP POST Request help method.
+   */
+  public static String sendPostWithAuth(String reqUrl, String params, String version, String authBasic) throws Exception {
+    if (StringUtil.isBlank(version)) {
+      version = "";
+    } else {
+      version = ";v=" + version;
+    }
+    logger.debug("Request address:" + reqUrl);
+    String chainContext = ClientUtil
+            .sendPostWithAuth(reqUrl, params, "UTF-8", "UTF-8", "application/json" + version, authBasic);
+    if (StringUtil.toString(chainContext).length() > 0 && chainContext.contains("@ERROR:@")) {
+      chainContext = chainContext.replace("@ERROR:@", "");
+      throw new RuntimeException(chainContext);
+    }
+    logger.debug("Return parameters:" + chainContext);
     return chainContext;
   }
 }

@@ -19,16 +19,28 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder();
@@ -126,6 +138,10 @@ public final class VoteContract {
     public static final int VOTING_ITEM_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
@@ -133,6 +149,10 @@ public final class VoteContract {
       return votingItemId_ != null;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
@@ -140,6 +160,10 @@ public final class VoteContract {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -465,6 +489,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return Whether the votingItemId field is set.
        */
@@ -472,6 +500,10 @@ public final class VoteContract {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return The votingItemId.
        */
@@ -483,6 +515,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -499,6 +535,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(
@@ -513,6 +553,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -531,6 +575,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
@@ -545,6 +593,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
@@ -553,6 +605,10 @@ public final class VoteContract {
         return getVotingItemIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -564,6 +620,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -637,10 +697,18 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
     int getVotedItemVoteIdsCount();
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
     boolean containsVotedItemVoteIds(
@@ -652,11 +720,19 @@ public final class VoteContract {
     java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
     getVotedItemVoteIds();
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
     java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
     getVotedItemVoteIdsMap();
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
 
@@ -664,6 +740,10 @@ public final class VoteContract {
         java.lang.String key,
         io.aelf.protobuf.generated.VoteContract.VotedIds defaultValue);
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
 
@@ -800,6 +880,10 @@ public final class VoteContract {
       return internalGetVotedItemVoteIds().getMap().size();
     }
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
 
@@ -816,6 +900,10 @@ public final class VoteContract {
       return getVotedItemVoteIdsMap();
     }
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
 
@@ -823,6 +911,10 @@ public final class VoteContract {
       return internalGetVotedItemVoteIds().getMap();
     }
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
 
@@ -835,6 +927,10 @@ public final class VoteContract {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
+     * <pre>
+     * The voted ids.
+     * </pre>
+     *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
 
@@ -1212,6 +1308,10 @@ public final class VoteContract {
         return internalGetVotedItemVoteIds().getMap().size();
       }
       /**
+       * <pre>
+       * The voted ids.
+       * </pre>
+       *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
 
@@ -1228,6 +1328,10 @@ public final class VoteContract {
         return getVotedItemVoteIdsMap();
       }
       /**
+       * <pre>
+       * The voted ids.
+       * </pre>
+       *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
 
@@ -1235,6 +1339,10 @@ public final class VoteContract {
         return internalGetVotedItemVoteIds().getMap();
       }
       /**
+       * <pre>
+       * The voted ids.
+       * </pre>
+       *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
 
@@ -1247,6 +1355,10 @@ public final class VoteContract {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
+       * <pre>
+       * The voted ids.
+       * </pre>
+       *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
 
@@ -1267,6 +1379,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voted ids.
+       * </pre>
+       *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
 
@@ -1286,6 +1402,10 @@ public final class VoteContract {
         return internalGetMutableVotedItemVoteIds().getMutableMap();
       }
       /**
+       * <pre>
+       * The voted ids.
+       * </pre>
+       *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
       public Builder putVotedItemVoteIds(
@@ -1298,6 +1418,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voted ids.
+       * </pre>
+       *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
 
@@ -1365,48 +1489,88 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.Hash> 
         getActiveVotesList();
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     io.aelf.protobuf.generated.Client.Hash getActiveVotes(int index);
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     int getActiveVotesCount();
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getActiveVotesOrBuilderList();
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getActiveVotesOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.Hash> 
         getWithdrawnVotesList();
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     io.aelf.protobuf.generated.Client.Hash getWithdrawnVotes(int index);
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     int getWithdrawnVotesCount();
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getWithdrawnVotesOrBuilderList();
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getWithdrawnVotesOrBuilder(
@@ -1519,12 +1683,20 @@ public final class VoteContract {
     public static final int ACTIVE_VOTES_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> activeVotes_;
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getActiveVotesList() {
       return activeVotes_;
     }
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -1532,18 +1704,30 @@ public final class VoteContract {
       return activeVotes_;
     }
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     public int getActiveVotesCount() {
       return activeVotes_.size();
     }
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.Hash getActiveVotes(int index) {
       return activeVotes_.get(index);
     }
     /**
+     * <pre>
+     * The active vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash active_votes = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getActiveVotesOrBuilder(
@@ -1554,12 +1738,20 @@ public final class VoteContract {
     public static final int WITHDRAWN_VOTES_FIELD_NUMBER = 2;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> withdrawnVotes_;
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getWithdrawnVotesList() {
       return withdrawnVotes_;
     }
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -1567,18 +1759,30 @@ public final class VoteContract {
       return withdrawnVotes_;
     }
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     public int getWithdrawnVotesCount() {
       return withdrawnVotes_.size();
     }
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.Hash getWithdrawnVotes(int index) {
       return withdrawnVotes_.get(index);
     }
     /**
+     * <pre>
+     * The withdrawn vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getWithdrawnVotesOrBuilder(
@@ -1996,6 +2200,10 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> activeVotesBuilder_;
 
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash> getActiveVotesList() {
@@ -2006,6 +2214,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public int getActiveVotesCount() {
@@ -2016,6 +2228,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash getActiveVotes(int index) {
@@ -2026,6 +2242,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder setActiveVotes(
@@ -2043,6 +2263,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder setActiveVotes(
@@ -2057,6 +2281,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder addActiveVotes(io.aelf.protobuf.generated.Client.Hash value) {
@@ -2073,6 +2301,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder addActiveVotes(
@@ -2090,6 +2322,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder addActiveVotes(
@@ -2104,6 +2340,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder addActiveVotes(
@@ -2118,6 +2358,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder addAllActiveVotes(
@@ -2133,6 +2377,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder clearActiveVotes() {
@@ -2146,6 +2394,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public Builder removeActiveVotes(int index) {
@@ -2159,6 +2411,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getActiveVotesBuilder(
@@ -2166,6 +2422,10 @@ public final class VoteContract {
         return getActiveVotesFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getActiveVotesOrBuilder(
@@ -2176,6 +2436,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -2187,6 +2451,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addActiveVotesBuilder() {
@@ -2194,6 +2462,10 @@ public final class VoteContract {
             io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addActiveVotesBuilder(
@@ -2202,6 +2474,10 @@ public final class VoteContract {
             index, io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash active_votes = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash.Builder> 
@@ -2236,6 +2512,10 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> withdrawnVotesBuilder_;
 
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash> getWithdrawnVotesList() {
@@ -2246,6 +2526,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public int getWithdrawnVotesCount() {
@@ -2256,6 +2540,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash getWithdrawnVotes(int index) {
@@ -2266,6 +2554,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder setWithdrawnVotes(
@@ -2283,6 +2575,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder setWithdrawnVotes(
@@ -2297,6 +2593,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder addWithdrawnVotes(io.aelf.protobuf.generated.Client.Hash value) {
@@ -2313,6 +2613,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder addWithdrawnVotes(
@@ -2330,6 +2634,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder addWithdrawnVotes(
@@ -2344,6 +2652,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder addWithdrawnVotes(
@@ -2358,6 +2670,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder addAllWithdrawnVotes(
@@ -2373,6 +2689,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder clearWithdrawnVotes() {
@@ -2386,6 +2706,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public Builder removeWithdrawnVotes(int index) {
@@ -2399,6 +2723,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getWithdrawnVotesBuilder(
@@ -2406,6 +2734,10 @@ public final class VoteContract {
         return getWithdrawnVotesFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getWithdrawnVotesOrBuilder(
@@ -2416,6 +2748,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -2427,6 +2763,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addWithdrawnVotesBuilder() {
@@ -2434,6 +2774,10 @@ public final class VoteContract {
             io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addWithdrawnVotesBuilder(
@@ -2442,6 +2786,10 @@ public final class VoteContract {
             index, io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The withdrawn vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_votes = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash.Builder> 
@@ -2520,22 +2868,38 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder();
 
     /**
-     * <code>sint64 snapshot_number = 2;</code>
+     * <pre>
+     * The snapshot number.
+     * </pre>
+     *
+     * <code>int64 snapshot_number = 2;</code>
      * @return The snapshotNumber.
      */
     long getSnapshotNumber();
@@ -2600,7 +2964,7 @@ public final class VoteContract {
             }
             case 16: {
 
-              snapshotNumber_ = input.readSInt64();
+              snapshotNumber_ = input.readInt64();
               break;
             }
             default: {
@@ -2638,6 +3002,10 @@ public final class VoteContract {
     public static final int VOTING_ITEM_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
@@ -2645,6 +3013,10 @@ public final class VoteContract {
       return votingItemId_ != null;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
@@ -2652,6 +3024,10 @@ public final class VoteContract {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -2661,7 +3037,11 @@ public final class VoteContract {
     public static final int SNAPSHOT_NUMBER_FIELD_NUMBER = 2;
     private long snapshotNumber_;
     /**
-     * <code>sint64 snapshot_number = 2;</code>
+     * <pre>
+     * The snapshot number.
+     * </pre>
+     *
+     * <code>int64 snapshot_number = 2;</code>
      * @return The snapshotNumber.
      */
     public long getSnapshotNumber() {
@@ -2686,7 +3066,7 @@ public final class VoteContract {
         output.writeMessage(1, getVotingItemId());
       }
       if (snapshotNumber_ != 0L) {
-        output.writeSInt64(2, snapshotNumber_);
+        output.writeInt64(2, snapshotNumber_);
       }
       unknownFields.writeTo(output);
     }
@@ -2703,7 +3083,7 @@ public final class VoteContract {
       }
       if (snapshotNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, snapshotNumber_);
+          .computeInt64Size(2, snapshotNumber_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3005,6 +3385,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return Whether the votingItemId field is set.
        */
@@ -3012,6 +3396,10 @@ public final class VoteContract {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return The votingItemId.
        */
@@ -3023,6 +3411,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -3039,6 +3431,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(
@@ -3053,6 +3449,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -3071,6 +3471,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
@@ -3085,6 +3489,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
@@ -3093,6 +3501,10 @@ public final class VoteContract {
         return getVotingItemIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -3104,6 +3516,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3122,14 +3538,22 @@ public final class VoteContract {
 
       private long snapshotNumber_ ;
       /**
-       * <code>sint64 snapshot_number = 2;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 2;</code>
        * @return The snapshotNumber.
        */
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
       /**
-       * <code>sint64 snapshot_number = 2;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 2;</code>
        * @param value The snapshotNumber to set.
        * @return This builder for chaining.
        */
@@ -3140,7 +3564,11 @@ public final class VoteContract {
         return this;
       }
       /**
-       * <code>sint64 snapshot_number = 2;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
@@ -3207,34 +3635,46 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder();
 
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
     int getResultsCount();
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
     boolean containsResults(
         java.lang.String key);
@@ -3246,19 +3686,19 @@ public final class VoteContract {
     getResults();
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
     java.util.Map<java.lang.String, java.lang.Long>
     getResultsMap();
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     long getResultsOrDefault(
@@ -3266,59 +3706,95 @@ public final class VoteContract {
         long defaultValue);
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     long getResultsOrThrow(
         java.lang.String key);
 
     /**
-     * <code>sint64 snapshot_number = 3;</code>
+     * <pre>
+     * The snapshot number.
+     * </pre>
+     *
+     * <code>int64 snapshot_number = 3;</code>
      * @return The snapshotNumber.
      */
     long getSnapshotNumber();
 
     /**
-     * <code>sint64 voters_count = 4;</code>
+     * <pre>
+     * The total number of voters.
+     * </pre>
+     *
+     * <code>int64 voters_count = 4;</code>
      * @return The votersCount.
      */
     long getVotersCount();
 
     /**
+     * <pre>
+     * The start time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      * @return Whether the snapshotStartTimestamp field is set.
      */
     boolean hasSnapshotStartTimestamp();
     /**
+     * <pre>
+     * The start time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      * @return The snapshotStartTimestamp.
      */
     com.google.protobuf.Timestamp getSnapshotStartTimestamp();
     /**
+     * <pre>
+     * The start time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      */
     com.google.protobuf.TimestampOrBuilder getSnapshotStartTimestampOrBuilder();
 
     /**
+     * <pre>
+     * The end time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      * @return Whether the snapshotEndTimestamp field is set.
      */
     boolean hasSnapshotEndTimestamp();
     /**
+     * <pre>
+     * The end time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      * @return The snapshotEndTimestamp.
      */
     com.google.protobuf.Timestamp getSnapshotEndTimestamp();
     /**
+     * <pre>
+     * The end time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      */
     com.google.protobuf.TimestampOrBuilder getSnapshotEndTimestampOrBuilder();
 
     /**
-     * <code>sint64 votes_amount = 7;</code>
+     * <pre>
+     * Total votes received during the process of this snapshot.
+     * </pre>
+     *
+     * <code>int64 votes_amount = 7;</code>
      * @return The votesAmount.
      */
     long getVotesAmount();
@@ -3397,12 +3873,12 @@ public final class VoteContract {
             }
             case 24: {
 
-              snapshotNumber_ = input.readSInt64();
+              snapshotNumber_ = input.readInt64();
               break;
             }
             case 32: {
 
-              votersCount_ = input.readSInt64();
+              votersCount_ = input.readInt64();
               break;
             }
             case 42: {
@@ -3433,7 +3909,7 @@ public final class VoteContract {
             }
             case 56: {
 
-              votesAmount_ = input.readSInt64();
+              votesAmount_ = input.readInt64();
               break;
             }
             default: {
@@ -3483,6 +3959,10 @@ public final class VoteContract {
     public static final int VOTING_ITEM_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
@@ -3490,6 +3970,10 @@ public final class VoteContract {
       return votingItemId_ != null;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
@@ -3497,6 +3981,10 @@ public final class VoteContract {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -3512,7 +4000,7 @@ public final class VoteContract {
                   io.aelf.protobuf.generated.VoteContract.internal_static_VotingResult_ResultsEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.SINT64,
+                  com.google.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
     private com.google.protobuf.MapField<
@@ -3531,10 +4019,10 @@ public final class VoteContract {
     }
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public boolean containsResults(
@@ -3551,10 +4039,10 @@ public final class VoteContract {
     }
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public java.util.Map<java.lang.String, java.lang.Long> getResultsMap() {
@@ -3562,10 +4050,10 @@ public final class VoteContract {
     }
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public long getResultsOrDefault(
@@ -3578,10 +4066,10 @@ public final class VoteContract {
     }
     /**
      * <pre>
-     * option -&gt; amount
+     * The voting result, option -&gt; amount of votes,
      * </pre>
      *
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public long getResultsOrThrow(
@@ -3598,7 +4086,11 @@ public final class VoteContract {
     public static final int SNAPSHOT_NUMBER_FIELD_NUMBER = 3;
     private long snapshotNumber_;
     /**
-     * <code>sint64 snapshot_number = 3;</code>
+     * <pre>
+     * The snapshot number.
+     * </pre>
+     *
+     * <code>int64 snapshot_number = 3;</code>
      * @return The snapshotNumber.
      */
     public long getSnapshotNumber() {
@@ -3608,7 +4100,11 @@ public final class VoteContract {
     public static final int VOTERS_COUNT_FIELD_NUMBER = 4;
     private long votersCount_;
     /**
-     * <code>sint64 voters_count = 4;</code>
+     * <pre>
+     * The total number of voters.
+     * </pre>
+     *
+     * <code>int64 voters_count = 4;</code>
      * @return The votersCount.
      */
     public long getVotersCount() {
@@ -3618,6 +4114,10 @@ public final class VoteContract {
     public static final int SNAPSHOT_START_TIMESTAMP_FIELD_NUMBER = 5;
     private com.google.protobuf.Timestamp snapshotStartTimestamp_;
     /**
+     * <pre>
+     * The start time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      * @return Whether the snapshotStartTimestamp field is set.
      */
@@ -3625,6 +4125,10 @@ public final class VoteContract {
       return snapshotStartTimestamp_ != null;
     }
     /**
+     * <pre>
+     * The start time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      * @return The snapshotStartTimestamp.
      */
@@ -3632,6 +4136,10 @@ public final class VoteContract {
       return snapshotStartTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotStartTimestamp_;
     }
     /**
+     * <pre>
+     * The start time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getSnapshotStartTimestampOrBuilder() {
@@ -3641,6 +4149,10 @@ public final class VoteContract {
     public static final int SNAPSHOT_END_TIMESTAMP_FIELD_NUMBER = 6;
     private com.google.protobuf.Timestamp snapshotEndTimestamp_;
     /**
+     * <pre>
+     * The end time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      * @return Whether the snapshotEndTimestamp field is set.
      */
@@ -3648,6 +4160,10 @@ public final class VoteContract {
       return snapshotEndTimestamp_ != null;
     }
     /**
+     * <pre>
+     * The end time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      * @return The snapshotEndTimestamp.
      */
@@ -3655,6 +4171,10 @@ public final class VoteContract {
       return snapshotEndTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotEndTimestamp_;
     }
     /**
+     * <pre>
+     * The end time of this snapshot.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getSnapshotEndTimestampOrBuilder() {
@@ -3664,7 +4184,11 @@ public final class VoteContract {
     public static final int VOTES_AMOUNT_FIELD_NUMBER = 7;
     private long votesAmount_;
     /**
-     * <code>sint64 votes_amount = 7;</code>
+     * <pre>
+     * Total votes received during the process of this snapshot.
+     * </pre>
+     *
+     * <code>int64 votes_amount = 7;</code>
      * @return The votesAmount.
      */
     public long getVotesAmount() {
@@ -3695,10 +4219,10 @@ public final class VoteContract {
           ResultsDefaultEntryHolder.defaultEntry,
           2);
       if (snapshotNumber_ != 0L) {
-        output.writeSInt64(3, snapshotNumber_);
+        output.writeInt64(3, snapshotNumber_);
       }
       if (votersCount_ != 0L) {
-        output.writeSInt64(4, votersCount_);
+        output.writeInt64(4, votersCount_);
       }
       if (snapshotStartTimestamp_ != null) {
         output.writeMessage(5, getSnapshotStartTimestamp());
@@ -3707,7 +4231,7 @@ public final class VoteContract {
         output.writeMessage(6, getSnapshotEndTimestamp());
       }
       if (votesAmount_ != 0L) {
-        output.writeSInt64(7, votesAmount_);
+        output.writeInt64(7, votesAmount_);
       }
       unknownFields.writeTo(output);
     }
@@ -3734,11 +4258,11 @@ public final class VoteContract {
       }
       if (snapshotNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, snapshotNumber_);
+          .computeInt64Size(3, snapshotNumber_);
       }
       if (votersCount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(4, votersCount_);
+          .computeInt64Size(4, votersCount_);
       }
       if (snapshotStartTimestamp_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -3750,7 +4274,7 @@ public final class VoteContract {
       }
       if (votesAmount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(7, votesAmount_);
+          .computeInt64Size(7, votesAmount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4155,6 +4679,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return Whether the votingItemId field is set.
        */
@@ -4162,6 +4690,10 @@ public final class VoteContract {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return The votingItemId.
        */
@@ -4173,6 +4705,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -4189,6 +4725,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(
@@ -4203,6 +4743,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -4221,6 +4765,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
@@ -4235,6 +4783,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
@@ -4243,6 +4795,10 @@ public final class VoteContract {
         return getVotingItemIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -4254,6 +4810,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -4298,10 +4858,10 @@ public final class VoteContract {
       }
       /**
        * <pre>
-       * option -&gt; amount
+       * The voting result, option -&gt; amount of votes,
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public boolean containsResults(
@@ -4318,10 +4878,10 @@ public final class VoteContract {
       }
       /**
        * <pre>
-       * option -&gt; amount
+       * The voting result, option -&gt; amount of votes,
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public java.util.Map<java.lang.String, java.lang.Long> getResultsMap() {
@@ -4329,10 +4889,10 @@ public final class VoteContract {
       }
       /**
        * <pre>
-       * option -&gt; amount
+       * The voting result, option -&gt; amount of votes,
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public long getResultsOrDefault(
@@ -4345,10 +4905,10 @@ public final class VoteContract {
       }
       /**
        * <pre>
-       * option -&gt; amount
+       * The voting result, option -&gt; amount of votes,
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public long getResultsOrThrow(
@@ -4369,10 +4929,10 @@ public final class VoteContract {
       }
       /**
        * <pre>
-       * option -&gt; amount
+       * The voting result, option -&gt; amount of votes,
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public Builder removeResults(
@@ -4392,10 +4952,10 @@ public final class VoteContract {
       }
       /**
        * <pre>
-       * option -&gt; amount
+       * The voting result, option -&gt; amount of votes,
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
       public Builder putResults(
           java.lang.String key,
@@ -4408,10 +4968,10 @@ public final class VoteContract {
       }
       /**
        * <pre>
-       * option -&gt; amount
+       * The voting result, option -&gt; amount of votes,
        * </pre>
        *
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public Builder putAllResults(
@@ -4423,14 +4983,22 @@ public final class VoteContract {
 
       private long snapshotNumber_ ;
       /**
-       * <code>sint64 snapshot_number = 3;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 3;</code>
        * @return The snapshotNumber.
        */
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
       /**
-       * <code>sint64 snapshot_number = 3;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 3;</code>
        * @param value The snapshotNumber to set.
        * @return This builder for chaining.
        */
@@ -4441,7 +5009,11 @@ public final class VoteContract {
         return this;
       }
       /**
-       * <code>sint64 snapshot_number = 3;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
@@ -4453,14 +5025,22 @@ public final class VoteContract {
 
       private long votersCount_ ;
       /**
-       * <code>sint64 voters_count = 4;</code>
+       * <pre>
+       * The total number of voters.
+       * </pre>
+       *
+       * <code>int64 voters_count = 4;</code>
        * @return The votersCount.
        */
       public long getVotersCount() {
         return votersCount_;
       }
       /**
-       * <code>sint64 voters_count = 4;</code>
+       * <pre>
+       * The total number of voters.
+       * </pre>
+       *
+       * <code>int64 voters_count = 4;</code>
        * @param value The votersCount to set.
        * @return This builder for chaining.
        */
@@ -4471,7 +5051,11 @@ public final class VoteContract {
         return this;
       }
       /**
-       * <code>sint64 voters_count = 4;</code>
+       * <pre>
+       * The total number of voters.
+       * </pre>
+       *
+       * <code>int64 voters_count = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearVotersCount() {
@@ -4485,6 +5069,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> snapshotStartTimestampBuilder_;
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        * @return Whether the snapshotStartTimestamp field is set.
        */
@@ -4492,6 +5080,10 @@ public final class VoteContract {
         return snapshotStartTimestampBuilder_ != null || snapshotStartTimestamp_ != null;
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        * @return The snapshotStartTimestamp.
        */
@@ -4503,6 +5095,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public Builder setSnapshotStartTimestamp(com.google.protobuf.Timestamp value) {
@@ -4519,6 +5115,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public Builder setSnapshotStartTimestamp(
@@ -4533,6 +5133,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public Builder mergeSnapshotStartTimestamp(com.google.protobuf.Timestamp value) {
@@ -4551,6 +5155,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public Builder clearSnapshotStartTimestamp() {
@@ -4565,6 +5173,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getSnapshotStartTimestampBuilder() {
@@ -4573,6 +5185,10 @@ public final class VoteContract {
         return getSnapshotStartTimestampFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getSnapshotStartTimestampOrBuilder() {
@@ -4584,6 +5200,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The start time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -4604,6 +5224,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> snapshotEndTimestampBuilder_;
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        * @return Whether the snapshotEndTimestamp field is set.
        */
@@ -4611,6 +5235,10 @@ public final class VoteContract {
         return snapshotEndTimestampBuilder_ != null || snapshotEndTimestamp_ != null;
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        * @return The snapshotEndTimestamp.
        */
@@ -4622,6 +5250,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public Builder setSnapshotEndTimestamp(com.google.protobuf.Timestamp value) {
@@ -4638,6 +5270,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public Builder setSnapshotEndTimestamp(
@@ -4652,6 +5288,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public Builder mergeSnapshotEndTimestamp(com.google.protobuf.Timestamp value) {
@@ -4670,6 +5310,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public Builder clearSnapshotEndTimestamp() {
@@ -4684,6 +5328,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public com.google.protobuf.Timestamp.Builder getSnapshotEndTimestampBuilder() {
@@ -4692,6 +5340,10 @@ public final class VoteContract {
         return getSnapshotEndTimestampFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getSnapshotEndTimestampOrBuilder() {
@@ -4703,6 +5355,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The end time of this snapshot.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -4721,14 +5377,22 @@ public final class VoteContract {
 
       private long votesAmount_ ;
       /**
-       * <code>sint64 votes_amount = 7;</code>
+       * <pre>
+       * Total votes received during the process of this snapshot.
+       * </pre>
+       *
+       * <code>int64 votes_amount = 7;</code>
        * @return The votesAmount.
        */
       public long getVotesAmount() {
         return votesAmount_;
       }
       /**
-       * <code>sint64 votes_amount = 7;</code>
+       * <pre>
+       * Total votes received during the process of this snapshot.
+       * </pre>
+       *
+       * <code>int64 votes_amount = 7;</code>
        * @param value The votesAmount to set.
        * @return This builder for chaining.
        */
@@ -4739,7 +5403,11 @@ public final class VoteContract {
         return this;
       }
       /**
-       * <code>sint64 votes_amount = 7;</code>
+       * <pre>
+       * Total votes received during the process of this snapshot.
+       * </pre>
+       *
+       * <code>int64 votes_amount = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearVotesAmount() {
@@ -4806,89 +5474,157 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
     boolean hasVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
     io.aelf.protobuf.generated.Client.Hash getVotingItemId();
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder();
 
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 2;</code>
      * @return Whether the voter field is set.
      */
     boolean hasVoter();
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 2;</code>
      * @return The voter.
      */
     io.aelf.protobuf.generated.Client.Address getVoter();
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 2;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getVoterOrBuilder();
 
     /**
-     * <code>sint64 snapshot_number = 3;</code>
+     * <pre>
+     * The snapshot number.
+     * </pre>
+     *
+     * <code>int64 snapshot_number = 3;</code>
      * @return The snapshotNumber.
      */
     long getSnapshotNumber();
 
     /**
-     * <code>sint64 amount = 4;</code>
+     * <pre>
+     * The amount of vote.
+     * </pre>
+     *
+     * <code>int64 amount = 4;</code>
      * @return The amount.
      */
     long getAmount();
 
     /**
+     * <pre>
+     * The time of withdraw.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      * @return Whether the withdrawTimestamp field is set.
      */
     boolean hasWithdrawTimestamp();
     /**
+     * <pre>
+     * The time of withdraw.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      * @return The withdrawTimestamp.
      */
     com.google.protobuf.Timestamp getWithdrawTimestamp();
     /**
+     * <pre>
+     * The time of withdraw.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      */
     com.google.protobuf.TimestampOrBuilder getWithdrawTimestampOrBuilder();
 
     /**
+     * <pre>
+     * The time of vote.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      * @return Whether the voteTimestamp field is set.
      */
     boolean hasVoteTimestamp();
     /**
+     * <pre>
+     * The time of vote.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      * @return The voteTimestamp.
      */
     com.google.protobuf.Timestamp getVoteTimestamp();
     /**
+     * <pre>
+     * The time of vote.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      */
     com.google.protobuf.TimestampOrBuilder getVoteTimestampOrBuilder();
 
     /**
+     * <pre>
+     * Whether the vote had been withdrawn.
+     * </pre>
+     *
      * <code>bool is_withdrawn = 7;</code>
      * @return The isWithdrawn.
      */
     boolean getIsWithdrawn();
 
     /**
+     * <pre>
+     * The option voted.
+     * </pre>
+     *
      * <code>string option = 8;</code>
      * @return The option.
      */
     java.lang.String getOption();
     /**
+     * <pre>
+     * The option voted.
+     * </pre>
+     *
      * <code>string option = 8;</code>
      * @return The bytes for option.
      */
@@ -4896,6 +5632,10 @@ public final class VoteContract {
         getOptionBytes();
 
     /**
+     * <pre>
+     * Whether vote others.
+     * </pre>
+     *
      * <code>bool is_change_target = 9;</code>
      * @return The isChangeTarget.
      */
@@ -4975,12 +5715,12 @@ public final class VoteContract {
             }
             case 24: {
 
-              snapshotNumber_ = input.readSInt64();
+              snapshotNumber_ = input.readInt64();
               break;
             }
             case 32: {
 
-              amount_ = input.readSInt64();
+              amount_ = input.readInt64();
               break;
             }
             case 42: {
@@ -5060,6 +5800,10 @@ public final class VoteContract {
     public static final int VOTING_ITEM_ID_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Hash votingItemId_;
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
@@ -5067,6 +5811,10 @@ public final class VoteContract {
       return votingItemId_ != null;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
@@ -5074,6 +5822,10 @@ public final class VoteContract {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
     /**
+     * <pre>
+     * The voting activity id.
+     * </pre>
+     *
      * <code>.Hash voting_item_id = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -5083,6 +5835,10 @@ public final class VoteContract {
     public static final int VOTER_FIELD_NUMBER = 2;
     private io.aelf.protobuf.generated.Client.Address voter_;
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 2;</code>
      * @return Whether the voter field is set.
      */
@@ -5090,6 +5846,10 @@ public final class VoteContract {
       return voter_ != null;
     }
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 2;</code>
      * @return The voter.
      */
@@ -5097,6 +5857,10 @@ public final class VoteContract {
       return voter_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : voter_;
     }
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getVoterOrBuilder() {
@@ -5106,7 +5870,11 @@ public final class VoteContract {
     public static final int SNAPSHOT_NUMBER_FIELD_NUMBER = 3;
     private long snapshotNumber_;
     /**
-     * <code>sint64 snapshot_number = 3;</code>
+     * <pre>
+     * The snapshot number.
+     * </pre>
+     *
+     * <code>int64 snapshot_number = 3;</code>
      * @return The snapshotNumber.
      */
     public long getSnapshotNumber() {
@@ -5116,7 +5884,11 @@ public final class VoteContract {
     public static final int AMOUNT_FIELD_NUMBER = 4;
     private long amount_;
     /**
-     * <code>sint64 amount = 4;</code>
+     * <pre>
+     * The amount of vote.
+     * </pre>
+     *
+     * <code>int64 amount = 4;</code>
      * @return The amount.
      */
     public long getAmount() {
@@ -5126,6 +5898,10 @@ public final class VoteContract {
     public static final int WITHDRAW_TIMESTAMP_FIELD_NUMBER = 5;
     private com.google.protobuf.Timestamp withdrawTimestamp_;
     /**
+     * <pre>
+     * The time of withdraw.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      * @return Whether the withdrawTimestamp field is set.
      */
@@ -5133,6 +5909,10 @@ public final class VoteContract {
       return withdrawTimestamp_ != null;
     }
     /**
+     * <pre>
+     * The time of withdraw.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      * @return The withdrawTimestamp.
      */
@@ -5140,6 +5920,10 @@ public final class VoteContract {
       return withdrawTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : withdrawTimestamp_;
     }
     /**
+     * <pre>
+     * The time of withdraw.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getWithdrawTimestampOrBuilder() {
@@ -5149,6 +5933,10 @@ public final class VoteContract {
     public static final int VOTE_TIMESTAMP_FIELD_NUMBER = 6;
     private com.google.protobuf.Timestamp voteTimestamp_;
     /**
+     * <pre>
+     * The time of vote.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      * @return Whether the voteTimestamp field is set.
      */
@@ -5156,6 +5944,10 @@ public final class VoteContract {
       return voteTimestamp_ != null;
     }
     /**
+     * <pre>
+     * The time of vote.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      * @return The voteTimestamp.
      */
@@ -5163,6 +5955,10 @@ public final class VoteContract {
       return voteTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : voteTimestamp_;
     }
     /**
+     * <pre>
+     * The time of vote.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getVoteTimestampOrBuilder() {
@@ -5172,6 +5968,10 @@ public final class VoteContract {
     public static final int IS_WITHDRAWN_FIELD_NUMBER = 7;
     private boolean isWithdrawn_;
     /**
+     * <pre>
+     * Whether the vote had been withdrawn.
+     * </pre>
+     *
      * <code>bool is_withdrawn = 7;</code>
      * @return The isWithdrawn.
      */
@@ -5182,6 +5982,10 @@ public final class VoteContract {
     public static final int OPTION_FIELD_NUMBER = 8;
     private volatile java.lang.Object option_;
     /**
+     * <pre>
+     * The option voted.
+     * </pre>
+     *
      * <code>string option = 8;</code>
      * @return The option.
      */
@@ -5198,6 +6002,10 @@ public final class VoteContract {
       }
     }
     /**
+     * <pre>
+     * The option voted.
+     * </pre>
+     *
      * <code>string option = 8;</code>
      * @return The bytes for option.
      */
@@ -5218,6 +6026,10 @@ public final class VoteContract {
     public static final int IS_CHANGE_TARGET_FIELD_NUMBER = 9;
     private boolean isChangeTarget_;
     /**
+     * <pre>
+     * Whether vote others.
+     * </pre>
+     *
      * <code>bool is_change_target = 9;</code>
      * @return The isChangeTarget.
      */
@@ -5246,10 +6058,10 @@ public final class VoteContract {
         output.writeMessage(2, getVoter());
       }
       if (snapshotNumber_ != 0L) {
-        output.writeSInt64(3, snapshotNumber_);
+        output.writeInt64(3, snapshotNumber_);
       }
       if (amount_ != 0L) {
-        output.writeSInt64(4, amount_);
+        output.writeInt64(4, amount_);
       }
       if (withdrawTimestamp_ != null) {
         output.writeMessage(5, getWithdrawTimestamp());
@@ -5285,11 +6097,11 @@ public final class VoteContract {
       }
       if (snapshotNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, snapshotNumber_);
+          .computeInt64Size(3, snapshotNumber_);
       }
       if (amount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(4, amount_);
+          .computeInt64Size(4, amount_);
       }
       if (withdrawTimestamp_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -5723,6 +6535,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> votingItemIdBuilder_;
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return Whether the votingItemId field is set.
        */
@@ -5730,6 +6546,10 @@ public final class VoteContract {
         return votingItemIdBuilder_ != null || votingItemId_ != null;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        * @return The votingItemId.
        */
@@ -5741,6 +6561,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -5757,6 +6581,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder setVotingItemId(
@@ -5771,6 +6599,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -5789,6 +6621,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
@@ -5803,6 +6639,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
@@ -5811,6 +6651,10 @@ public final class VoteContract {
         return getVotingItemIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
@@ -5822,6 +6666,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting activity id.
+       * </pre>
+       *
        * <code>.Hash voting_item_id = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -5842,6 +6690,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> voterBuilder_;
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        * @return Whether the voter field is set.
        */
@@ -5849,6 +6701,10 @@ public final class VoteContract {
         return voterBuilder_ != null || voter_ != null;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        * @return The voter.
        */
@@ -5860,6 +6716,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        */
       public Builder setVoter(io.aelf.protobuf.generated.Client.Address value) {
@@ -5876,6 +6736,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        */
       public Builder setVoter(
@@ -5890,6 +6754,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        */
       public Builder mergeVoter(io.aelf.protobuf.generated.Client.Address value) {
@@ -5908,6 +6776,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        */
       public Builder clearVoter() {
@@ -5922,6 +6794,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getVoterBuilder() {
@@ -5930,6 +6806,10 @@ public final class VoteContract {
         return getVoterFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getVoterOrBuilder() {
@@ -5941,6 +6821,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -5959,14 +6843,22 @@ public final class VoteContract {
 
       private long snapshotNumber_ ;
       /**
-       * <code>sint64 snapshot_number = 3;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 3;</code>
        * @return The snapshotNumber.
        */
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
       /**
-       * <code>sint64 snapshot_number = 3;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 3;</code>
        * @param value The snapshotNumber to set.
        * @return This builder for chaining.
        */
@@ -5977,7 +6869,11 @@ public final class VoteContract {
         return this;
       }
       /**
-       * <code>sint64 snapshot_number = 3;</code>
+       * <pre>
+       * The snapshot number.
+       * </pre>
+       *
+       * <code>int64 snapshot_number = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
@@ -5989,14 +6885,22 @@ public final class VoteContract {
 
       private long amount_ ;
       /**
-       * <code>sint64 amount = 4;</code>
+       * <pre>
+       * The amount of vote.
+       * </pre>
+       *
+       * <code>int64 amount = 4;</code>
        * @return The amount.
        */
       public long getAmount() {
         return amount_;
       }
       /**
-       * <code>sint64 amount = 4;</code>
+       * <pre>
+       * The amount of vote.
+       * </pre>
+       *
+       * <code>int64 amount = 4;</code>
        * @param value The amount to set.
        * @return This builder for chaining.
        */
@@ -6007,7 +6911,11 @@ public final class VoteContract {
         return this;
       }
       /**
-       * <code>sint64 amount = 4;</code>
+       * <pre>
+       * The amount of vote.
+       * </pre>
+       *
+       * <code>int64 amount = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
@@ -6021,6 +6929,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> withdrawTimestampBuilder_;
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        * @return Whether the withdrawTimestamp field is set.
        */
@@ -6028,6 +6940,10 @@ public final class VoteContract {
         return withdrawTimestampBuilder_ != null || withdrawTimestamp_ != null;
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        * @return The withdrawTimestamp.
        */
@@ -6039,6 +6955,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public Builder setWithdrawTimestamp(com.google.protobuf.Timestamp value) {
@@ -6055,6 +6975,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public Builder setWithdrawTimestamp(
@@ -6069,6 +6993,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public Builder mergeWithdrawTimestamp(com.google.protobuf.Timestamp value) {
@@ -6087,6 +7015,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public Builder clearWithdrawTimestamp() {
@@ -6101,6 +7033,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getWithdrawTimestampBuilder() {
@@ -6109,6 +7045,10 @@ public final class VoteContract {
         return getWithdrawTimestampFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getWithdrawTimestampOrBuilder() {
@@ -6120,6 +7060,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The time of withdraw.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -6140,6 +7084,10 @@ public final class VoteContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> voteTimestampBuilder_;
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        * @return Whether the voteTimestamp field is set.
        */
@@ -6147,6 +7095,10 @@ public final class VoteContract {
         return voteTimestampBuilder_ != null || voteTimestamp_ != null;
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        * @return The voteTimestamp.
        */
@@ -6158,6 +7110,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public Builder setVoteTimestamp(com.google.protobuf.Timestamp value) {
@@ -6174,6 +7130,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public Builder setVoteTimestamp(
@@ -6188,6 +7148,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public Builder mergeVoteTimestamp(com.google.protobuf.Timestamp value) {
@@ -6206,6 +7170,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public Builder clearVoteTimestamp() {
@@ -6220,6 +7188,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public com.google.protobuf.Timestamp.Builder getVoteTimestampBuilder() {
@@ -6228,6 +7200,10 @@ public final class VoteContract {
         return getVoteTimestampFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getVoteTimestampOrBuilder() {
@@ -6239,6 +7215,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The time of vote.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -6257,6 +7237,10 @@ public final class VoteContract {
 
       private boolean isWithdrawn_ ;
       /**
+       * <pre>
+       * Whether the vote had been withdrawn.
+       * </pre>
+       *
        * <code>bool is_withdrawn = 7;</code>
        * @return The isWithdrawn.
        */
@@ -6264,6 +7248,10 @@ public final class VoteContract {
         return isWithdrawn_;
       }
       /**
+       * <pre>
+       * Whether the vote had been withdrawn.
+       * </pre>
+       *
        * <code>bool is_withdrawn = 7;</code>
        * @param value The isWithdrawn to set.
        * @return This builder for chaining.
@@ -6275,6 +7263,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * Whether the vote had been withdrawn.
+       * </pre>
+       *
        * <code>bool is_withdrawn = 7;</code>
        * @return This builder for chaining.
        */
@@ -6287,6 +7279,10 @@ public final class VoteContract {
 
       private java.lang.Object option_ = "";
       /**
+       * <pre>
+       * The option voted.
+       * </pre>
+       *
        * <code>string option = 8;</code>
        * @return The option.
        */
@@ -6303,6 +7299,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The option voted.
+       * </pre>
+       *
        * <code>string option = 8;</code>
        * @return The bytes for option.
        */
@@ -6320,6 +7320,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The option voted.
+       * </pre>
+       *
        * <code>string option = 8;</code>
        * @param value The option to set.
        * @return This builder for chaining.
@@ -6335,6 +7339,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The option voted.
+       * </pre>
+       *
        * <code>string option = 8;</code>
        * @return This builder for chaining.
        */
@@ -6345,6 +7353,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The option voted.
+       * </pre>
+       *
        * <code>string option = 8;</code>
        * @param value The bytes for option to set.
        * @return This builder for chaining.
@@ -6363,6 +7375,10 @@ public final class VoteContract {
 
       private boolean isChangeTarget_ ;
       /**
+       * <pre>
+       * Whether vote others.
+       * </pre>
+       *
        * <code>bool is_change_target = 9;</code>
        * @return The isChangeTarget.
        */
@@ -6370,6 +7386,10 @@ public final class VoteContract {
         return isChangeTarget_;
       }
       /**
+       * <pre>
+       * Whether vote others.
+       * </pre>
+       *
        * <code>bool is_change_target = 9;</code>
        * @param value The isChangeTarget to set.
        * @return This builder for chaining.
@@ -6381,6 +7401,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * Whether vote others.
+       * </pre>
+       *
        * <code>bool is_change_target = 9;</code>
        * @return This builder for chaining.
        */
@@ -6448,24 +7472,44 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.Hash> 
         getIdsList();
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     io.aelf.protobuf.generated.Client.Hash getIds(int index);
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     int getIdsCount();
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getIdsOrBuilderList();
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getIdsOrBuilder(
@@ -6565,12 +7609,20 @@ public final class VoteContract {
     public static final int IDS_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> ids_;
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getIdsList() {
       return ids_;
     }
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -6578,18 +7630,30 @@ public final class VoteContract {
       return ids_;
     }
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     public int getIdsCount() {
       return ids_.size();
     }
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.Hash getIds(int index) {
       return ids_.get(index);
     }
     /**
+     * <pre>
+     * The vote ids.
+     * </pre>
+     *
      * <code>repeated .Hash ids = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getIdsOrBuilder(
@@ -6952,6 +8016,10 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> idsBuilder_;
 
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash> getIdsList() {
@@ -6962,6 +8030,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public int getIdsCount() {
@@ -6972,6 +8044,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash getIds(int index) {
@@ -6982,6 +8058,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder setIds(
@@ -6999,6 +8079,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder setIds(
@@ -7013,6 +8097,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder addIds(io.aelf.protobuf.generated.Client.Hash value) {
@@ -7029,6 +8117,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder addIds(
@@ -7046,6 +8138,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder addIds(
@@ -7060,6 +8156,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder addIds(
@@ -7074,6 +8174,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder addAllIds(
@@ -7089,6 +8193,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder clearIds() {
@@ -7102,6 +8210,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public Builder removeIds(int index) {
@@ -7115,6 +8227,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getIdsBuilder(
@@ -7122,6 +8238,10 @@ public final class VoteContract {
         return getIdsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getIdsOrBuilder(
@@ -7132,6 +8252,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -7143,6 +8267,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addIdsBuilder() {
@@ -7150,6 +8278,10 @@ public final class VoteContract {
             io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addIdsBuilder(
@@ -7158,6 +8290,10 @@ public final class VoteContract {
             index, io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The vote ids.
+       * </pre>
+       *
        * <code>repeated .Hash ids = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash.Builder> 
@@ -7236,24 +8372,44 @@ public final class VoteContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.VoteContract.VotingRecord> 
         getRecordsList();
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     io.aelf.protobuf.generated.VoteContract.VotingRecord getRecords(int index);
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     int getRecordsCount();
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder> 
         getRecordsOrBuilderList();
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder getRecordsOrBuilder(
@@ -7353,12 +8509,20 @@ public final class VoteContract {
     public static final int RECORDS_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.VoteContract.VotingRecord> records_;
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.VoteContract.VotingRecord> getRecordsList() {
       return records_;
     }
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder> 
@@ -7366,18 +8530,30 @@ public final class VoteContract {
       return records_;
     }
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     public int getRecordsCount() {
       return records_.size();
     }
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     public io.aelf.protobuf.generated.VoteContract.VotingRecord getRecords(int index) {
       return records_.get(index);
     }
     /**
+     * <pre>
+     * The voting records.
+     * </pre>
+     *
      * <code>repeated .VotingRecord records = 1;</code>
      */
     public io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder getRecordsOrBuilder(
@@ -7740,6 +8916,10 @@ public final class VoteContract {
           io.aelf.protobuf.generated.VoteContract.VotingRecord, io.aelf.protobuf.generated.VoteContract.VotingRecord.Builder, io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder> recordsBuilder_;
 
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.VoteContract.VotingRecord> getRecordsList() {
@@ -7750,6 +8930,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public int getRecordsCount() {
@@ -7760,6 +8944,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public io.aelf.protobuf.generated.VoteContract.VotingRecord getRecords(int index) {
@@ -7770,6 +8958,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder setRecords(
@@ -7787,6 +8979,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder setRecords(
@@ -7801,6 +8997,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder addRecords(io.aelf.protobuf.generated.VoteContract.VotingRecord value) {
@@ -7817,6 +9017,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder addRecords(
@@ -7834,6 +9038,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder addRecords(
@@ -7848,6 +9056,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder addRecords(
@@ -7862,6 +9074,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder addAllRecords(
@@ -7877,6 +9093,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder clearRecords() {
@@ -7890,6 +9110,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public Builder removeRecords(int index) {
@@ -7903,6 +9127,10 @@ public final class VoteContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public io.aelf.protobuf.generated.VoteContract.VotingRecord.Builder getRecordsBuilder(
@@ -7910,6 +9138,10 @@ public final class VoteContract {
         return getRecordsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder getRecordsOrBuilder(
@@ -7920,6 +9152,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder> 
@@ -7931,6 +9167,10 @@ public final class VoteContract {
         }
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public io.aelf.protobuf.generated.VoteContract.VotingRecord.Builder addRecordsBuilder() {
@@ -7938,6 +9178,10 @@ public final class VoteContract {
             io.aelf.protobuf.generated.VoteContract.VotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public io.aelf.protobuf.generated.VoteContract.VotingRecord.Builder addRecordsBuilder(
@@ -7946,6 +9190,10 @@ public final class VoteContract {
             index, io.aelf.protobuf.generated.VoteContract.VotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting records.
+       * </pre>
+       *
        * <code>repeated .VotingRecord records = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.VoteContract.VotingRecord.Builder> 
@@ -8088,18 +9336,18 @@ public final class VoteContract {
       "\022\033\n\014active_votes\030\001 \003(\0132\005.Hash\022\036\n\017withdra" +
       "wn_votes\030\002 \003(\0132\005.Hash\"N\n\024GetVotingResult" +
       "Input\022\035\n\016voting_item_id\030\001 \001(\0132\005.Hash\022\027\n\017" +
-      "snapshot_number\030\002 \001(\022\"\311\002\n\014VotingResult\022\035" +
+      "snapshot_number\030\002 \001(\003\"\311\002\n\014VotingResult\022\035" +
       "\n\016voting_item_id\030\001 \001(\0132\005.Hash\022+\n\007results" +
       "\030\002 \003(\0132\032.VotingResult.ResultsEntry\022\027\n\017sn" +
-      "apshot_number\030\003 \001(\022\022\024\n\014voters_count\030\004 \001(" +
-      "\022\022<\n\030snapshot_start_timestamp\030\005 \001(\0132\032.go" +
+      "apshot_number\030\003 \001(\003\022\024\n\014voters_count\030\004 \001(" +
+      "\003\022<\n\030snapshot_start_timestamp\030\005 \001(\0132\032.go" +
       "ogle.protobuf.Timestamp\022:\n\026snapshot_end_" +
       "timestamp\030\006 \001(\0132\032.google.protobuf.Timest" +
-      "amp\022\024\n\014votes_amount\030\007 \001(\022\032.\n\014ResultsEntr" +
-      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:\0028\001\"\233\002\n\014Vo" +
+      "amp\022\024\n\014votes_amount\030\007 \001(\003\032.\n\014ResultsEntr" +
+      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\"\233\002\n\014Vo" +
       "tingRecord\022\035\n\016voting_item_id\030\001 \001(\0132\005.Has" +
       "h\022\027\n\005voter\030\002 \001(\0132\010.Address\022\027\n\017snapshot_n" +
-      "umber\030\003 \001(\022\022\016\n\006amount\030\004 \001(\022\0226\n\022withdraw_" +
+      "umber\030\003 \001(\003\022\016\n\006amount\030\004 \001(\003\0226\n\022withdraw_" +
       "timestamp\030\005 \001(\0132\032.google.protobuf.Timest" +
       "amp\0222\n\016vote_timestamp\030\006 \001(\0132\032.google.pro" +
       "tobuf.Timestamp\022\024\n\014is_withdrawn\030\007 \001(\010\022\016\n" +

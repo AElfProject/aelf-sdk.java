@@ -4,25 +4,7 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
-import io.aelf.schemas.AddPeerInput;
-import io.aelf.schemas.BlockDto;
-import io.aelf.schemas.ChainstatusDto;
-import io.aelf.schemas.CreateRawTransactionInput;
-import io.aelf.schemas.CreateRawTransactionOutput;
-import io.aelf.schemas.ExecuteRawTransactionDto;
-import io.aelf.schemas.ExecuteTransactionDto;
-import io.aelf.schemas.KeyPairInfo;
-import io.aelf.schemas.MerklePathDto;
-import io.aelf.schemas.NetworkInfoOutput;
-import io.aelf.schemas.PeerDto;
-import io.aelf.schemas.SendRawTransactionInput;
-import io.aelf.schemas.SendRawTransactionOutput;
-import io.aelf.schemas.SendTransactionInput;
-import io.aelf.schemas.SendTransactionOutput;
-import io.aelf.schemas.SendTransactionsInput;
-import io.aelf.schemas.TaskQueueInfoDto;
-import io.aelf.schemas.TransactionPoolStatusOutput;
-import io.aelf.schemas.TransactionResultDto;
+import io.aelf.schemas.*;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.JsonUtil;
@@ -43,6 +25,8 @@ public class AElfClient {
 
   private String AElfClientUrl;
   private String version = "1.0";
+  private String UserName;
+  private String Password;
   private BlockChainSdk blcokChainSdk;
   private NetSdk netSdk;
 
@@ -60,6 +44,20 @@ public class AElfClient {
   }
 
   /**
+   * Object dconstruction through the url path and basic auth.
+   * @param url
+   * @param userName
+   * @param password
+   */
+  public AElfClient(String url, String userName, String password) {
+    this.AElfClientUrl = url;
+    this.UserName = userName;
+    this.Password = password;
+    this.getBlockChainSdkObj();
+    this.getNetSdkObj();
+  }
+
+  /**
    * Object construction through the url path.
    *
    * @param url Http Request Url exp:(http://xxxx)
@@ -68,6 +66,22 @@ public class AElfClient {
   public AElfClient(String url, String version) {
     this.AElfClientUrl = url;
     this.version = version;
+    this.getBlockChainSdkObj();
+    this.getNetSdkObj();
+  }
+
+  /**
+   * Object dconstruction through the url path and basic auth.
+   * @param url
+   * @param version
+   * @param userName
+   * @param password
+   */
+  public AElfClient(String url, String version, String userName, String password) {
+    this.AElfClientUrl = url;
+    this.version = version;
+    this.UserName = userName;
+    this.Password = password;
     this.getBlockChainSdkObj();
     this.getNetSdkObj();
   }
@@ -85,6 +99,7 @@ public class AElfClient {
     if (blcokChainSdk == null) {
       blcokChainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
     }
+
     return blcokChainSdk;
   }
 
@@ -93,7 +108,7 @@ public class AElfClient {
    */
   private NetSdk getNetSdkObj() {
     if (netSdk == null) {
-      netSdk = new NetSdk(this.AElfClientUrl, this.version);
+      netSdk = new NetSdk(this.AElfClientUrl, this.version, this.UserName, this.Password);
     }
     return netSdk;
   }
@@ -147,8 +162,8 @@ public class AElfClient {
   /**
    * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
    */
-  public byte[] getContractFilCeDescriptorSet(String address) throws Exception {
-    return this.getBlockChainSdkObj().getContractFilCeDescriptorSet(address);
+  public byte[] getContractFileDescriptorSet(String address) throws Exception {
+    return this.getBlockChainSdkObj().getContractFileDescriptorSet(address);
   }
 
   /**
@@ -281,7 +296,6 @@ public class AElfClient {
   public Core.Transaction.Builder generateTransaction(String from, String to, String methodName,
       byte[] params) throws Exception {
     final ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatus();
-    final Client.Hash.Builder hash = Client.Hash.newBuilder();
     final Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
     Client.Address.Builder addressForm = Client.Address.newBuilder();
     Client.Address.Builder addressTo = Client.Address.newBuilder();
@@ -292,9 +306,7 @@ public class AElfClient {
     transaction.setFrom(addressFormObj);
     transaction.setTo(addressToObj);
     transaction.setMethodName(methodName);
-    hash.setValue(ByteString.copyFrom(params));
-    Client.Hash hashObj = hash.build();
-    transaction.setParams(hashObj.toByteString());
+    transaction.setParams(ByteString.copyFrom(params));
     transaction.setRefBlockNumber(chainStatus.getBestChainHeight());
     byte[] refBlockPrefix = ByteArrayHelper.hexToByteArray(chainStatus.getBestChainHash());
     refBlockPrefix = Arrays.copyOf(refBlockPrefix, 4);
@@ -380,8 +392,11 @@ public class AElfClient {
     String from = this.getAddressFromPrivateKey(privateKey);
     String to = this.getGenesisContractAddress();
     String methodName = "GetContractAddressByName";
+    Client.Hash.Builder hash = Client.Hash.newBuilder();
+    hash.setValue(ByteString.copyFrom(contractNameHash));
+    Client.Hash hashObj = hash.build();
     Core.Transaction.Builder transaction = this
-        .generateTransaction(from, to, methodName, contractNameHash);
+        .generateTransaction(from, to, methodName, hashObj.toByteArray());
     String signature = this.signTransaction(privateKey, transaction.build());
     transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
     Core.Transaction transactionObj = transaction.build();
@@ -436,4 +451,16 @@ public class AElfClient {
       return false;
     }
   }
+
+
+  /**
+   * @Description calculateTransactionFee
+   * @param input
+   * @return TransactionFeeResultOutput
+   * @throws Exception
+   */
+  public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
+    return this.getBlockChainSdkObj().calculateTransactionFee(input);
+  }
+
 }

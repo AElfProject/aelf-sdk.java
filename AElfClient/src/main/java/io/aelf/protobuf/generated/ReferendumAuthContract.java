@@ -19,17 +19,46 @@ public final class ReferendumAuthContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 release_threshold = 1;</code>
-     * @return The releaseThreshold.
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+     * @return Whether the proposalReleaseThreshold field is set.
      */
-    long getReleaseThreshold();
+    boolean hasProposalReleaseThreshold();
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+     * @return The proposalReleaseThreshold.
+     */
+    io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold();
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+     */
+    io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder();
 
     /**
+     * <pre>
+     * The token used during proposal operations.
+     * </pre>
+     *
      * <code>string token_symbol = 2;</code>
      * @return The tokenSymbol.
      */
     java.lang.String getTokenSymbol();
     /**
+     * <pre>
+     * The token used during proposal operations.
+     * </pre>
+     *
      * <code>string token_symbol = 2;</code>
      * @return The bytes for tokenSymbol.
      */
@@ -37,34 +66,112 @@ public final class ReferendumAuthContract {
         getTokenSymbolBytes();
 
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 3;</code>
      * @return Whether the organizationAddress field is set.
      */
     boolean hasOrganizationAddress();
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 3;</code>
      * @return The organizationAddress.
      */
     io.aelf.protobuf.generated.Client.Address getOrganizationAddress();
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 3;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder();
 
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 4;</code>
      * @return Whether the organizationHash field is set.
      */
     boolean hasOrganizationHash();
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 4;</code>
      * @return The organizationHash.
      */
     io.aelf.protobuf.generated.Client.Hash getOrganizationHash();
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 4;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder();
+
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+     * @return Whether the proposerWhiteList field is set.
+     */
+    boolean hasProposerWhiteList();
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+     * @return The proposerWhiteList.
+     */
+    io.aelf.protobuf.generated.Client.ProposerWhiteList getProposerWhiteList();
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+     */
+    io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder getProposerWhiteListOrBuilder();
+
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return Whether the creationToken field is set.
+     */
+    boolean hasCreationToken();
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return The creationToken.
+     */
+    io.aelf.protobuf.generated.Client.Hash getCreationToken();
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     */
+    io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder();
   }
   /**
    * Protobuf type {@code Organization}
@@ -112,9 +219,17 @@ public final class ReferendumAuthContract {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 10: {
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder subBuilder = null;
+              if (proposalReleaseThreshold_ != null) {
+                subBuilder = proposalReleaseThreshold_.toBuilder();
+              }
+              proposalReleaseThreshold_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(proposalReleaseThreshold_);
+                proposalReleaseThreshold_ = subBuilder.buildPartial();
+              }
 
-              releaseThreshold_ = input.readInt64();
               break;
             }
             case 18: {
@@ -145,6 +260,32 @@ public final class ReferendumAuthContract {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(organizationHash_);
                 organizationHash_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 42: {
+              io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder subBuilder = null;
+              if (proposerWhiteList_ != null) {
+                subBuilder = proposerWhiteList_.toBuilder();
+              }
+              proposerWhiteList_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposerWhiteList.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(proposerWhiteList_);
+                proposerWhiteList_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 50: {
+              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
+              if (creationToken_ != null) {
+                subBuilder = creationToken_.toBuilder();
+              }
+              creationToken_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(creationToken_);
+                creationToken_ = subBuilder.buildPartial();
               }
 
               break;
@@ -181,19 +322,48 @@ public final class ReferendumAuthContract {
               io.aelf.protobuf.generated.ReferendumAuthContract.Organization.class, io.aelf.protobuf.generated.ReferendumAuthContract.Organization.Builder.class);
     }
 
-    public static final int RELEASE_THRESHOLD_FIELD_NUMBER = 1;
-    private long releaseThreshold_;
+    public static final int PROPOSAL_RELEASE_THRESHOLD_FIELD_NUMBER = 1;
+    private io.aelf.protobuf.generated.Client.ProposalReleaseThreshold proposalReleaseThreshold_;
     /**
-     * <code>int64 release_threshold = 1;</code>
-     * @return The releaseThreshold.
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+     * @return Whether the proposalReleaseThreshold field is set.
      */
-    public long getReleaseThreshold() {
-      return releaseThreshold_;
+    public boolean hasProposalReleaseThreshold() {
+      return proposalReleaseThreshold_ != null;
+    }
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+     * @return The proposalReleaseThreshold.
+     */
+    public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
+      return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+    }
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
+      return getProposalReleaseThreshold();
     }
 
     public static final int TOKEN_SYMBOL_FIELD_NUMBER = 2;
     private volatile java.lang.Object tokenSymbol_;
     /**
+     * <pre>
+     * The token used during proposal operations.
+     * </pre>
+     *
      * <code>string token_symbol = 2;</code>
      * @return The tokenSymbol.
      */
@@ -210,6 +380,10 @@ public final class ReferendumAuthContract {
       }
     }
     /**
+     * <pre>
+     * The token used during proposal operations.
+     * </pre>
+     *
      * <code>string token_symbol = 2;</code>
      * @return The bytes for tokenSymbol.
      */
@@ -230,6 +404,10 @@ public final class ReferendumAuthContract {
     public static final int ORGANIZATION_ADDRESS_FIELD_NUMBER = 3;
     private io.aelf.protobuf.generated.Client.Address organizationAddress_;
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 3;</code>
      * @return Whether the organizationAddress field is set.
      */
@@ -237,6 +415,10 @@ public final class ReferendumAuthContract {
       return organizationAddress_ != null;
     }
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 3;</code>
      * @return The organizationAddress.
      */
@@ -244,6 +426,10 @@ public final class ReferendumAuthContract {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 3;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -253,6 +439,10 @@ public final class ReferendumAuthContract {
     public static final int ORGANIZATION_HASH_FIELD_NUMBER = 4;
     private io.aelf.protobuf.generated.Client.Hash organizationHash_;
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 4;</code>
      * @return Whether the organizationHash field is set.
      */
@@ -260,6 +450,10 @@ public final class ReferendumAuthContract {
       return organizationHash_ != null;
     }
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 4;</code>
      * @return The organizationHash.
      */
@@ -267,10 +461,84 @@ public final class ReferendumAuthContract {
       return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
     }
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 4;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
       return getOrganizationHash();
+    }
+
+    public static final int PROPOSER_WHITE_LIST_FIELD_NUMBER = 5;
+    private io.aelf.protobuf.generated.Client.ProposerWhiteList proposerWhiteList_;
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+     * @return Whether the proposerWhiteList field is set.
+     */
+    public boolean hasProposerWhiteList() {
+      return proposerWhiteList_ != null;
+    }
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+     * @return The proposerWhiteList.
+     */
+    public io.aelf.protobuf.generated.Client.ProposerWhiteList getProposerWhiteList() {
+      return proposerWhiteList_ == null ? io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
+    }
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder getProposerWhiteListOrBuilder() {
+      return getProposerWhiteList();
+    }
+
+    public static final int CREATION_TOKEN_FIELD_NUMBER = 6;
+    private io.aelf.protobuf.generated.Client.Hash creationToken_;
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return Whether the creationToken field is set.
+     */
+    public boolean hasCreationToken() {
+      return creationToken_ != null;
+    }
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return The creationToken.
+     */
+    public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
+      return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+    }
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     */
+    public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
+      return getCreationToken();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -287,8 +555,8 @@ public final class ReferendumAuthContract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (releaseThreshold_ != 0L) {
-        output.writeInt64(1, releaseThreshold_);
+      if (proposalReleaseThreshold_ != null) {
+        output.writeMessage(1, getProposalReleaseThreshold());
       }
       if (!getTokenSymbolBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tokenSymbol_);
@@ -299,6 +567,12 @@ public final class ReferendumAuthContract {
       if (organizationHash_ != null) {
         output.writeMessage(4, getOrganizationHash());
       }
+      if (proposerWhiteList_ != null) {
+        output.writeMessage(5, getProposerWhiteList());
+      }
+      if (creationToken_ != null) {
+        output.writeMessage(6, getCreationToken());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -308,9 +582,9 @@ public final class ReferendumAuthContract {
       if (size != -1) return size;
 
       size = 0;
-      if (releaseThreshold_ != 0L) {
+      if (proposalReleaseThreshold_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, releaseThreshold_);
+          .computeMessageSize(1, getProposalReleaseThreshold());
       }
       if (!getTokenSymbolBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tokenSymbol_);
@@ -322,6 +596,14 @@ public final class ReferendumAuthContract {
       if (organizationHash_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getOrganizationHash());
+      }
+      if (proposerWhiteList_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getProposerWhiteList());
+      }
+      if (creationToken_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getCreationToken());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -338,8 +620,11 @@ public final class ReferendumAuthContract {
       }
       io.aelf.protobuf.generated.ReferendumAuthContract.Organization other = (io.aelf.protobuf.generated.ReferendumAuthContract.Organization) obj;
 
-      if (getReleaseThreshold()
-          != other.getReleaseThreshold()) return false;
+      if (hasProposalReleaseThreshold() != other.hasProposalReleaseThreshold()) return false;
+      if (hasProposalReleaseThreshold()) {
+        if (!getProposalReleaseThreshold()
+            .equals(other.getProposalReleaseThreshold())) return false;
+      }
       if (!getTokenSymbol()
           .equals(other.getTokenSymbol())) return false;
       if (hasOrganizationAddress() != other.hasOrganizationAddress()) return false;
@@ -352,6 +637,16 @@ public final class ReferendumAuthContract {
         if (!getOrganizationHash()
             .equals(other.getOrganizationHash())) return false;
       }
+      if (hasProposerWhiteList() != other.hasProposerWhiteList()) return false;
+      if (hasProposerWhiteList()) {
+        if (!getProposerWhiteList()
+            .equals(other.getProposerWhiteList())) return false;
+      }
+      if (hasCreationToken() != other.hasCreationToken()) return false;
+      if (hasCreationToken()) {
+        if (!getCreationToken()
+            .equals(other.getCreationToken())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -363,9 +658,10 @@ public final class ReferendumAuthContract {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RELEASE_THRESHOLD_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getReleaseThreshold());
+      if (hasProposalReleaseThreshold()) {
+        hash = (37 * hash) + PROPOSAL_RELEASE_THRESHOLD_FIELD_NUMBER;
+        hash = (53 * hash) + getProposalReleaseThreshold().hashCode();
+      }
       hash = (37 * hash) + TOKEN_SYMBOL_FIELD_NUMBER;
       hash = (53 * hash) + getTokenSymbol().hashCode();
       if (hasOrganizationAddress()) {
@@ -375,6 +671,14 @@ public final class ReferendumAuthContract {
       if (hasOrganizationHash()) {
         hash = (37 * hash) + ORGANIZATION_HASH_FIELD_NUMBER;
         hash = (53 * hash) + getOrganizationHash().hashCode();
+      }
+      if (hasProposerWhiteList()) {
+        hash = (37 * hash) + PROPOSER_WHITE_LIST_FIELD_NUMBER;
+        hash = (53 * hash) + getProposerWhiteList().hashCode();
+      }
+      if (hasCreationToken()) {
+        hash = (37 * hash) + CREATION_TOKEN_FIELD_NUMBER;
+        hash = (53 * hash) + getCreationToken().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -509,8 +813,12 @@ public final class ReferendumAuthContract {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        releaseThreshold_ = 0L;
-
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = null;
+        } else {
+          proposalReleaseThreshold_ = null;
+          proposalReleaseThresholdBuilder_ = null;
+        }
         tokenSymbol_ = "";
 
         if (organizationAddressBuilder_ == null) {
@@ -524,6 +832,18 @@ public final class ReferendumAuthContract {
         } else {
           organizationHash_ = null;
           organizationHashBuilder_ = null;
+        }
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteList_ = null;
+        } else {
+          proposerWhiteList_ = null;
+          proposerWhiteListBuilder_ = null;
+        }
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = null;
+        } else {
+          creationToken_ = null;
+          creationTokenBuilder_ = null;
         }
         return this;
       }
@@ -551,7 +871,11 @@ public final class ReferendumAuthContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ReferendumAuthContract.Organization buildPartial() {
         io.aelf.protobuf.generated.ReferendumAuthContract.Organization result = new io.aelf.protobuf.generated.ReferendumAuthContract.Organization(this);
-        result.releaseThreshold_ = releaseThreshold_;
+        if (proposalReleaseThresholdBuilder_ == null) {
+          result.proposalReleaseThreshold_ = proposalReleaseThreshold_;
+        } else {
+          result.proposalReleaseThreshold_ = proposalReleaseThresholdBuilder_.build();
+        }
         result.tokenSymbol_ = tokenSymbol_;
         if (organizationAddressBuilder_ == null) {
           result.organizationAddress_ = organizationAddress_;
@@ -562,6 +886,16 @@ public final class ReferendumAuthContract {
           result.organizationHash_ = organizationHash_;
         } else {
           result.organizationHash_ = organizationHashBuilder_.build();
+        }
+        if (proposerWhiteListBuilder_ == null) {
+          result.proposerWhiteList_ = proposerWhiteList_;
+        } else {
+          result.proposerWhiteList_ = proposerWhiteListBuilder_.build();
+        }
+        if (creationTokenBuilder_ == null) {
+          result.creationToken_ = creationToken_;
+        } else {
+          result.creationToken_ = creationTokenBuilder_.build();
         }
         onBuilt();
         return result;
@@ -611,8 +945,8 @@ public final class ReferendumAuthContract {
 
       public Builder mergeFrom(io.aelf.protobuf.generated.ReferendumAuthContract.Organization other) {
         if (other == io.aelf.protobuf.generated.ReferendumAuthContract.Organization.getDefaultInstance()) return this;
-        if (other.getReleaseThreshold() != 0L) {
-          setReleaseThreshold(other.getReleaseThreshold());
+        if (other.hasProposalReleaseThreshold()) {
+          mergeProposalReleaseThreshold(other.getProposalReleaseThreshold());
         }
         if (!other.getTokenSymbol().isEmpty()) {
           tokenSymbol_ = other.tokenSymbol_;
@@ -623,6 +957,12 @@ public final class ReferendumAuthContract {
         }
         if (other.hasOrganizationHash()) {
           mergeOrganizationHash(other.getOrganizationHash());
+        }
+        if (other.hasProposerWhiteList()) {
+          mergeProposerWhiteList(other.getProposerWhiteList());
+        }
+        if (other.hasCreationToken()) {
+          mergeCreationToken(other.getCreationToken());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -653,38 +993,167 @@ public final class ReferendumAuthContract {
         return this;
       }
 
-      private long releaseThreshold_ ;
+      private io.aelf.protobuf.generated.Client.ProposalReleaseThreshold proposalReleaseThreshold_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder> proposalReleaseThresholdBuilder_;
       /**
-       * <code>int64 release_threshold = 1;</code>
-       * @return The releaseThreshold.
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       * @return Whether the proposalReleaseThreshold field is set.
        */
-      public long getReleaseThreshold() {
-        return releaseThreshold_;
+      public boolean hasProposalReleaseThreshold() {
+        return proposalReleaseThresholdBuilder_ != null || proposalReleaseThreshold_ != null;
       }
       /**
-       * <code>int64 release_threshold = 1;</code>
-       * @param value The releaseThreshold to set.
-       * @return This builder for chaining.
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       * @return The proposalReleaseThreshold.
        */
-      public Builder setReleaseThreshold(long value) {
-        
-        releaseThreshold_ = value;
-        onChanged();
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+        } else {
+          return proposalReleaseThresholdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       */
+      public Builder setProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          proposalReleaseThreshold_ = value;
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>int64 release_threshold = 1;</code>
-       * @return This builder for chaining.
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
        */
-      public Builder clearReleaseThreshold() {
-        
-        releaseThreshold_ = 0L;
-        onChanged();
+      public Builder setProposalReleaseThreshold(
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder builderForValue) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = builderForValue.build();
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       */
+      public Builder mergeProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          if (proposalReleaseThreshold_ != null) {
+            proposalReleaseThreshold_ =
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.newBuilder(proposalReleaseThreshold_).mergeFrom(value).buildPartial();
+          } else {
+            proposalReleaseThreshold_ = value;
+          }
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       */
+      public Builder clearProposalReleaseThreshold() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = null;
+          onChanged();
+        } else {
+          proposalReleaseThreshold_ = null;
+          proposalReleaseThresholdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder getProposalReleaseThresholdBuilder() {
+        
+        onChanged();
+        return getProposalReleaseThresholdFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
+        if (proposalReleaseThresholdBuilder_ != null) {
+          return proposalReleaseThresholdBuilder_.getMessageOrBuilder();
+        } else {
+          return proposalReleaseThreshold_ == null ?
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+        }
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder> 
+          getProposalReleaseThresholdFieldBuilder() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThresholdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder>(
+                  getProposalReleaseThreshold(),
+                  getParentForChildren(),
+                  isClean());
+          proposalReleaseThreshold_ = null;
+        }
+        return proposalReleaseThresholdBuilder_;
       }
 
       private java.lang.Object tokenSymbol_ = "";
       /**
+       * <pre>
+       * The token used during proposal operations.
+       * </pre>
+       *
        * <code>string token_symbol = 2;</code>
        * @return The tokenSymbol.
        */
@@ -701,6 +1170,10 @@ public final class ReferendumAuthContract {
         }
       }
       /**
+       * <pre>
+       * The token used during proposal operations.
+       * </pre>
+       *
        * <code>string token_symbol = 2;</code>
        * @return The bytes for tokenSymbol.
        */
@@ -718,6 +1191,10 @@ public final class ReferendumAuthContract {
         }
       }
       /**
+       * <pre>
+       * The token used during proposal operations.
+       * </pre>
+       *
        * <code>string token_symbol = 2;</code>
        * @param value The tokenSymbol to set.
        * @return This builder for chaining.
@@ -733,6 +1210,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The token used during proposal operations.
+       * </pre>
+       *
        * <code>string token_symbol = 2;</code>
        * @return This builder for chaining.
        */
@@ -743,6 +1224,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The token used during proposal operations.
+       * </pre>
+       *
        * <code>string token_symbol = 2;</code>
        * @param value The bytes for tokenSymbol to set.
        * @return This builder for chaining.
@@ -763,6 +1248,10 @@ public final class ReferendumAuthContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> organizationAddressBuilder_;
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        * @return Whether the organizationAddress field is set.
        */
@@ -770,6 +1259,10 @@ public final class ReferendumAuthContract {
         return organizationAddressBuilder_ != null || organizationAddress_ != null;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        * @return The organizationAddress.
        */
@@ -781,6 +1274,10 @@ public final class ReferendumAuthContract {
         }
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        */
       public Builder setOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -797,6 +1294,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        */
       public Builder setOrganizationAddress(
@@ -811,6 +1312,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        */
       public Builder mergeOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -829,6 +1334,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        */
       public Builder clearOrganizationAddress() {
@@ -843,6 +1352,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getOrganizationAddressBuilder() {
@@ -851,6 +1364,10 @@ public final class ReferendumAuthContract {
         return getOrganizationAddressFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -862,6 +1379,10 @@ public final class ReferendumAuthContract {
         }
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -882,6 +1403,10 @@ public final class ReferendumAuthContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> organizationHashBuilder_;
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        * @return Whether the organizationHash field is set.
        */
@@ -889,6 +1414,10 @@ public final class ReferendumAuthContract {
         return organizationHashBuilder_ != null || organizationHash_ != null;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        * @return The organizationHash.
        */
@@ -900,6 +1429,10 @@ public final class ReferendumAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        */
       public Builder setOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -916,6 +1449,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        */
       public Builder setOrganizationHash(
@@ -930,6 +1467,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        */
       public Builder mergeOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -948,6 +1489,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        */
       public Builder clearOrganizationHash() {
@@ -962,6 +1507,10 @@ public final class ReferendumAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getOrganizationHashBuilder() {
@@ -970,6 +1519,10 @@ public final class ReferendumAuthContract {
         return getOrganizationHashFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
@@ -981,6 +1534,10 @@ public final class ReferendumAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -995,6 +1552,316 @@ public final class ReferendumAuthContract {
           organizationHash_ = null;
         }
         return organizationHashBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.ProposerWhiteList proposerWhiteList_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposerWhiteList, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder, io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder> proposerWhiteListBuilder_;
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       * @return Whether the proposerWhiteList field is set.
+       */
+      public boolean hasProposerWhiteList() {
+        return proposerWhiteListBuilder_ != null || proposerWhiteList_ != null;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       * @return The proposerWhiteList.
+       */
+      public io.aelf.protobuf.generated.Client.ProposerWhiteList getProposerWhiteList() {
+        if (proposerWhiteListBuilder_ == null) {
+          return proposerWhiteList_ == null ? io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
+        } else {
+          return proposerWhiteListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       */
+      public Builder setProposerWhiteList(io.aelf.protobuf.generated.Client.ProposerWhiteList value) {
+        if (proposerWhiteListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          proposerWhiteList_ = value;
+          onChanged();
+        } else {
+          proposerWhiteListBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       */
+      public Builder setProposerWhiteList(
+          io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder builderForValue) {
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteList_ = builderForValue.build();
+          onChanged();
+        } else {
+          proposerWhiteListBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       */
+      public Builder mergeProposerWhiteList(io.aelf.protobuf.generated.Client.ProposerWhiteList value) {
+        if (proposerWhiteListBuilder_ == null) {
+          if (proposerWhiteList_ != null) {
+            proposerWhiteList_ =
+              io.aelf.protobuf.generated.Client.ProposerWhiteList.newBuilder(proposerWhiteList_).mergeFrom(value).buildPartial();
+          } else {
+            proposerWhiteList_ = value;
+          }
+          onChanged();
+        } else {
+          proposerWhiteListBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       */
+      public Builder clearProposerWhiteList() {
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteList_ = null;
+          onChanged();
+        } else {
+          proposerWhiteList_ = null;
+          proposerWhiteListBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder getProposerWhiteListBuilder() {
+        
+        onChanged();
+        return getProposerWhiteListFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder getProposerWhiteListOrBuilder() {
+        if (proposerWhiteListBuilder_ != null) {
+          return proposerWhiteListBuilder_.getMessageOrBuilder();
+        } else {
+          return proposerWhiteList_ == null ?
+              io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
+        }
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposerWhiteList, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder, io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder> 
+          getProposerWhiteListFieldBuilder() {
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ProposerWhiteList, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder, io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder>(
+                  getProposerWhiteList(),
+                  getParentForChildren(),
+                  isClean());
+          proposerWhiteList_ = null;
+        }
+        return proposerWhiteListBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.Hash creationToken_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> creationTokenBuilder_;
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       * @return Whether the creationToken field is set.
+       */
+      public boolean hasCreationToken() {
+        return creationTokenBuilder_ != null || creationToken_ != null;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       * @return The creationToken.
+       */
+      public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
+        if (creationTokenBuilder_ == null) {
+          return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+        } else {
+          return creationTokenBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder setCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
+        if (creationTokenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          creationToken_ = value;
+          onChanged();
+        } else {
+          creationTokenBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder setCreationToken(
+          io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = builderForValue.build();
+          onChanged();
+        } else {
+          creationTokenBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder mergeCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
+        if (creationTokenBuilder_ == null) {
+          if (creationToken_ != null) {
+            creationToken_ =
+              io.aelf.protobuf.generated.Client.Hash.newBuilder(creationToken_).mergeFrom(value).buildPartial();
+          } else {
+            creationToken_ = value;
+          }
+          onChanged();
+        } else {
+          creationTokenBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder clearCreationToken() {
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = null;
+          onChanged();
+        } else {
+          creationToken_ = null;
+          creationTokenBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Hash.Builder getCreationTokenBuilder() {
+        
+        onChanged();
+        return getCreationTokenFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
+        if (creationTokenBuilder_ != null) {
+          return creationTokenBuilder_.getMessageOrBuilder();
+        } else {
+          return creationToken_ == null ?
+              io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+        }
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> 
+          getCreationTokenFieldBuilder() {
+        if (creationTokenBuilder_ == null) {
+          creationTokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder>(
+                  getCreationToken(),
+                  getParentForChildren(),
+                  isClean());
+          creationToken_ = null;
+        }
+        return creationTokenBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1064,11 +1931,14 @@ public final class ReferendumAuthContract {
   static {
     java.lang.String[] descriptorData = {
       "\n\036referendum_auth_contract.proto\032\014client" +
-      ".proto\"\211\001\n\014Organization\022\031\n\021release_thres" +
-      "hold\030\001 \001(\003\022\024\n\014token_symbol\030\002 \001(\t\022&\n\024orga" +
-      "nization_address\030\003 \001(\0132\010.Address\022 \n\021orga" +
-      "nization_hash\030\004 \001(\0132\005.HashB\034\n\032io.aelf.pr" +
-      "otobuf.generatedb\006proto3"
+      ".proto\"\375\001\n\014Organization\022=\n\032proposal_rele" +
+      "ase_threshold\030\001 \001(\0132\031.ProposalReleaseThr" +
+      "eshold\022\024\n\014token_symbol\030\002 \001(\t\022&\n\024organiza" +
+      "tion_address\030\003 \001(\0132\010.Address\022 \n\021organiza" +
+      "tion_hash\030\004 \001(\0132\005.Hash\022/\n\023proposer_white" +
+      "_list\030\005 \001(\0132\022.ProposerWhiteList\022\035\n\016creat" +
+      "ion_token\030\006 \001(\0132\005.HashB\034\n\032io.aelf.protob" +
+      "uf.generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1080,7 +1950,7 @@ public final class ReferendumAuthContract {
     internal_static_Organization_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Organization_descriptor,
-        new java.lang.String[] { "ReleaseThreshold", "TokenSymbol", "OrganizationAddress", "OrganizationHash", });
+        new java.lang.String[] { "ProposalReleaseThreshold", "TokenSymbol", "OrganizationAddress", "OrganizationHash", "ProposerWhiteList", "CreationToken", });
     io.aelf.protobuf.generated.Client.getDescriptor();
   }
 

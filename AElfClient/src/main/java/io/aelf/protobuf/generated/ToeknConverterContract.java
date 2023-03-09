@@ -19,11 +19,19 @@ public final class ToeknConverterContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
     java.lang.String getSymbol();
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
@@ -121,6 +129,10 @@ public final class ToeknConverterContract {
     public static final int SYMBOL_FIELD_NUMBER = 1;
     private volatile java.lang.Object symbol_;
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
@@ -137,6 +149,10 @@ public final class ToeknConverterContract {
       }
     }
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
@@ -462,6 +478,10 @@ public final class ToeknConverterContract {
 
       private java.lang.Object symbol_ = "";
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return The symbol.
        */
@@ -478,6 +498,10 @@ public final class ToeknConverterContract {
         }
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return The bytes for symbol.
        */
@@ -495,6 +519,10 @@ public final class ToeknConverterContract {
         }
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @param value The symbol to set.
        * @return This builder for chaining.
@@ -510,6 +538,10 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return This builder for chaining.
        */
@@ -520,6 +552,10 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @param value The bytes for symbol to set.
        * @return This builder for chaining.
@@ -593,11 +629,19 @@ public final class ToeknConverterContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
     java.lang.String getSymbol();
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
@@ -605,17 +649,29 @@ public final class ToeknConverterContract {
         getSymbolBytes();
 
     /**
-     * <code>sint64 virtual_balance = 2;</code>
+     * <pre>
+     * The virtual balance for base token.
+     * </pre>
+     *
+     * <code>int64 virtual_balance = 2;</code>
      * @return The virtualBalance.
      */
     long getVirtualBalance();
 
     /**
+     * <pre>
+     * The calculated weight value for this Connector.
+     * </pre>
+     *
      * <code>string weight = 3;</code>
      * @return The weight.
      */
     java.lang.String getWeight();
     /**
+     * <pre>
+     * The calculated weight value for this Connector.
+     * </pre>
+     *
      * <code>string weight = 3;</code>
      * @return The bytes for weight.
      */
@@ -624,7 +680,7 @@ public final class ToeknConverterContract {
 
     /**
      * <pre>
-     * true if virtual balance is enabled, false if not
+     * Whether to use Virtual Balance.
      * </pre>
      *
      * <code>bool is_virtual_balance_enabled = 4;</code>
@@ -633,10 +689,44 @@ public final class ToeknConverterContract {
     boolean getIsVirtualBalanceEnabled();
 
     /**
+     * <pre>
+     * Whether the connector is enabled.
+     * </pre>
+     *
      * <code>bool is_purchase_enabled = 5;</code>
      * @return The isPurchaseEnabled.
      */
     boolean getIsPurchaseEnabled();
+
+    /**
+     * <pre>
+     * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+     * </pre>
+     *
+     * <code>string related_symbol = 6;</code>
+     * @return The relatedSymbol.
+     */
+    java.lang.String getRelatedSymbol();
+    /**
+     * <pre>
+     * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+     * </pre>
+     *
+     * <code>string related_symbol = 6;</code>
+     * @return The bytes for relatedSymbol.
+     */
+    com.google.protobuf.ByteString
+        getRelatedSymbolBytes();
+
+    /**
+     * <pre>
+     * Indicates if the connector is base token connector.
+     * </pre>
+     *
+     * <code>bool is_deposit_account = 7;</code>
+     * @return The isDepositAccount.
+     */
+    boolean getIsDepositAccount();
   }
   /**
    * Protobuf type {@code Connector}
@@ -653,6 +743,7 @@ public final class ToeknConverterContract {
     private Connector() {
       symbol_ = "";
       weight_ = "";
+      relatedSymbol_ = "";
     }
 
     @java.lang.Override
@@ -693,7 +784,7 @@ public final class ToeknConverterContract {
             }
             case 16: {
 
-              virtualBalance_ = input.readSInt64();
+              virtualBalance_ = input.readInt64();
               break;
             }
             case 26: {
@@ -710,6 +801,17 @@ public final class ToeknConverterContract {
             case 40: {
 
               isPurchaseEnabled_ = input.readBool();
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              relatedSymbol_ = s;
+              break;
+            }
+            case 56: {
+
+              isDepositAccount_ = input.readBool();
               break;
             }
             default: {
@@ -747,6 +849,10 @@ public final class ToeknConverterContract {
     public static final int SYMBOL_FIELD_NUMBER = 1;
     private volatile java.lang.Object symbol_;
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
@@ -763,6 +869,10 @@ public final class ToeknConverterContract {
       }
     }
     /**
+     * <pre>
+     * The token symbol.
+     * </pre>
+     *
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
@@ -783,7 +893,11 @@ public final class ToeknConverterContract {
     public static final int VIRTUAL_BALANCE_FIELD_NUMBER = 2;
     private long virtualBalance_;
     /**
-     * <code>sint64 virtual_balance = 2;</code>
+     * <pre>
+     * The virtual balance for base token.
+     * </pre>
+     *
+     * <code>int64 virtual_balance = 2;</code>
      * @return The virtualBalance.
      */
     public long getVirtualBalance() {
@@ -793,6 +907,10 @@ public final class ToeknConverterContract {
     public static final int WEIGHT_FIELD_NUMBER = 3;
     private volatile java.lang.Object weight_;
     /**
+     * <pre>
+     * The calculated weight value for this Connector.
+     * </pre>
+     *
      * <code>string weight = 3;</code>
      * @return The weight.
      */
@@ -809,6 +927,10 @@ public final class ToeknConverterContract {
       }
     }
     /**
+     * <pre>
+     * The calculated weight value for this Connector.
+     * </pre>
+     *
      * <code>string weight = 3;</code>
      * @return The bytes for weight.
      */
@@ -830,7 +952,7 @@ public final class ToeknConverterContract {
     private boolean isVirtualBalanceEnabled_;
     /**
      * <pre>
-     * true if virtual balance is enabled, false if not
+     * Whether to use Virtual Balance.
      * </pre>
      *
      * <code>bool is_virtual_balance_enabled = 4;</code>
@@ -843,11 +965,73 @@ public final class ToeknConverterContract {
     public static final int IS_PURCHASE_ENABLED_FIELD_NUMBER = 5;
     private boolean isPurchaseEnabled_;
     /**
+     * <pre>
+     * Whether the connector is enabled.
+     * </pre>
+     *
      * <code>bool is_purchase_enabled = 5;</code>
      * @return The isPurchaseEnabled.
      */
     public boolean getIsPurchaseEnabled() {
       return isPurchaseEnabled_;
+    }
+
+    public static final int RELATED_SYMBOL_FIELD_NUMBER = 6;
+    private volatile java.lang.Object relatedSymbol_;
+    /**
+     * <pre>
+     * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+     * </pre>
+     *
+     * <code>string related_symbol = 6;</code>
+     * @return The relatedSymbol.
+     */
+    public java.lang.String getRelatedSymbol() {
+      java.lang.Object ref = relatedSymbol_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        relatedSymbol_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+     * </pre>
+     *
+     * <code>string related_symbol = 6;</code>
+     * @return The bytes for relatedSymbol.
+     */
+    public com.google.protobuf.ByteString
+        getRelatedSymbolBytes() {
+      java.lang.Object ref = relatedSymbol_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        relatedSymbol_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int IS_DEPOSIT_ACCOUNT_FIELD_NUMBER = 7;
+    private boolean isDepositAccount_;
+    /**
+     * <pre>
+     * Indicates if the connector is base token connector.
+     * </pre>
+     *
+     * <code>bool is_deposit_account = 7;</code>
+     * @return The isDepositAccount.
+     */
+    public boolean getIsDepositAccount() {
+      return isDepositAccount_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -868,7 +1052,7 @@ public final class ToeknConverterContract {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (virtualBalance_ != 0L) {
-        output.writeSInt64(2, virtualBalance_);
+        output.writeInt64(2, virtualBalance_);
       }
       if (!getWeightBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, weight_);
@@ -878,6 +1062,12 @@ public final class ToeknConverterContract {
       }
       if (isPurchaseEnabled_ != false) {
         output.writeBool(5, isPurchaseEnabled_);
+      }
+      if (!getRelatedSymbolBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, relatedSymbol_);
+      }
+      if (isDepositAccount_ != false) {
+        output.writeBool(7, isDepositAccount_);
       }
       unknownFields.writeTo(output);
     }
@@ -893,7 +1083,7 @@ public final class ToeknConverterContract {
       }
       if (virtualBalance_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, virtualBalance_);
+          .computeInt64Size(2, virtualBalance_);
       }
       if (!getWeightBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, weight_);
@@ -905,6 +1095,13 @@ public final class ToeknConverterContract {
       if (isPurchaseEnabled_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, isPurchaseEnabled_);
+      }
+      if (!getRelatedSymbolBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, relatedSymbol_);
+      }
+      if (isDepositAccount_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, isDepositAccount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -931,6 +1128,10 @@ public final class ToeknConverterContract {
           != other.getIsVirtualBalanceEnabled()) return false;
       if (getIsPurchaseEnabled()
           != other.getIsPurchaseEnabled()) return false;
+      if (!getRelatedSymbol()
+          .equals(other.getRelatedSymbol())) return false;
+      if (getIsDepositAccount()
+          != other.getIsDepositAccount()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -955,6 +1156,11 @@ public final class ToeknConverterContract {
       hash = (37 * hash) + IS_PURCHASE_ENABLED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsPurchaseEnabled());
+      hash = (37 * hash) + RELATED_SYMBOL_FIELD_NUMBER;
+      hash = (53 * hash) + getRelatedSymbol().hashCode();
+      hash = (37 * hash) + IS_DEPOSIT_ACCOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsDepositAccount());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1098,6 +1304,10 @@ public final class ToeknConverterContract {
 
         isPurchaseEnabled_ = false;
 
+        relatedSymbol_ = "";
+
+        isDepositAccount_ = false;
+
         return this;
       }
 
@@ -1129,6 +1339,8 @@ public final class ToeknConverterContract {
         result.weight_ = weight_;
         result.isVirtualBalanceEnabled_ = isVirtualBalanceEnabled_;
         result.isPurchaseEnabled_ = isPurchaseEnabled_;
+        result.relatedSymbol_ = relatedSymbol_;
+        result.isDepositAccount_ = isDepositAccount_;
         onBuilt();
         return result;
       }
@@ -1194,6 +1406,13 @@ public final class ToeknConverterContract {
         if (other.getIsPurchaseEnabled() != false) {
           setIsPurchaseEnabled(other.getIsPurchaseEnabled());
         }
+        if (!other.getRelatedSymbol().isEmpty()) {
+          relatedSymbol_ = other.relatedSymbol_;
+          onChanged();
+        }
+        if (other.getIsDepositAccount() != false) {
+          setIsDepositAccount(other.getIsDepositAccount());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -1225,6 +1444,10 @@ public final class ToeknConverterContract {
 
       private java.lang.Object symbol_ = "";
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return The symbol.
        */
@@ -1241,6 +1464,10 @@ public final class ToeknConverterContract {
         }
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return The bytes for symbol.
        */
@@ -1258,6 +1485,10 @@ public final class ToeknConverterContract {
         }
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @param value The symbol to set.
        * @return This builder for chaining.
@@ -1273,6 +1504,10 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @return This builder for chaining.
        */
@@ -1283,6 +1518,10 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
+       * <pre>
+       * The token symbol.
+       * </pre>
+       *
        * <code>string symbol = 1;</code>
        * @param value The bytes for symbol to set.
        * @return This builder for chaining.
@@ -1301,14 +1540,22 @@ public final class ToeknConverterContract {
 
       private long virtualBalance_ ;
       /**
-       * <code>sint64 virtual_balance = 2;</code>
+       * <pre>
+       * The virtual balance for base token.
+       * </pre>
+       *
+       * <code>int64 virtual_balance = 2;</code>
        * @return The virtualBalance.
        */
       public long getVirtualBalance() {
         return virtualBalance_;
       }
       /**
-       * <code>sint64 virtual_balance = 2;</code>
+       * <pre>
+       * The virtual balance for base token.
+       * </pre>
+       *
+       * <code>int64 virtual_balance = 2;</code>
        * @param value The virtualBalance to set.
        * @return This builder for chaining.
        */
@@ -1319,7 +1566,11 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
-       * <code>sint64 virtual_balance = 2;</code>
+       * <pre>
+       * The virtual balance for base token.
+       * </pre>
+       *
+       * <code>int64 virtual_balance = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearVirtualBalance() {
@@ -1331,6 +1582,10 @@ public final class ToeknConverterContract {
 
       private java.lang.Object weight_ = "";
       /**
+       * <pre>
+       * The calculated weight value for this Connector.
+       * </pre>
+       *
        * <code>string weight = 3;</code>
        * @return The weight.
        */
@@ -1347,6 +1602,10 @@ public final class ToeknConverterContract {
         }
       }
       /**
+       * <pre>
+       * The calculated weight value for this Connector.
+       * </pre>
+       *
        * <code>string weight = 3;</code>
        * @return The bytes for weight.
        */
@@ -1364,6 +1623,10 @@ public final class ToeknConverterContract {
         }
       }
       /**
+       * <pre>
+       * The calculated weight value for this Connector.
+       * </pre>
+       *
        * <code>string weight = 3;</code>
        * @param value The weight to set.
        * @return This builder for chaining.
@@ -1379,6 +1642,10 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
+       * <pre>
+       * The calculated weight value for this Connector.
+       * </pre>
+       *
        * <code>string weight = 3;</code>
        * @return This builder for chaining.
        */
@@ -1389,6 +1656,10 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
+       * <pre>
+       * The calculated weight value for this Connector.
+       * </pre>
+       *
        * <code>string weight = 3;</code>
        * @param value The bytes for weight to set.
        * @return This builder for chaining.
@@ -1408,7 +1679,7 @@ public final class ToeknConverterContract {
       private boolean isVirtualBalanceEnabled_ ;
       /**
        * <pre>
-       * true if virtual balance is enabled, false if not
+       * Whether to use Virtual Balance.
        * </pre>
        *
        * <code>bool is_virtual_balance_enabled = 4;</code>
@@ -1419,7 +1690,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <pre>
-       * true if virtual balance is enabled, false if not
+       * Whether to use Virtual Balance.
        * </pre>
        *
        * <code>bool is_virtual_balance_enabled = 4;</code>
@@ -1434,7 +1705,7 @@ public final class ToeknConverterContract {
       }
       /**
        * <pre>
-       * true if virtual balance is enabled, false if not
+       * Whether to use Virtual Balance.
        * </pre>
        *
        * <code>bool is_virtual_balance_enabled = 4;</code>
@@ -1449,6 +1720,10 @@ public final class ToeknConverterContract {
 
       private boolean isPurchaseEnabled_ ;
       /**
+       * <pre>
+       * Whether the connector is enabled.
+       * </pre>
+       *
        * <code>bool is_purchase_enabled = 5;</code>
        * @return The isPurchaseEnabled.
        */
@@ -1456,6 +1731,10 @@ public final class ToeknConverterContract {
         return isPurchaseEnabled_;
       }
       /**
+       * <pre>
+       * Whether the connector is enabled.
+       * </pre>
+       *
        * <code>bool is_purchase_enabled = 5;</code>
        * @param value The isPurchaseEnabled to set.
        * @return This builder for chaining.
@@ -1467,12 +1746,154 @@ public final class ToeknConverterContract {
         return this;
       }
       /**
+       * <pre>
+       * Whether the connector is enabled.
+       * </pre>
+       *
        * <code>bool is_purchase_enabled = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearIsPurchaseEnabled() {
         
         isPurchaseEnabled_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object relatedSymbol_ = "";
+      /**
+       * <pre>
+       * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+       * </pre>
+       *
+       * <code>string related_symbol = 6;</code>
+       * @return The relatedSymbol.
+       */
+      public java.lang.String getRelatedSymbol() {
+        java.lang.Object ref = relatedSymbol_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          relatedSymbol_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+       * </pre>
+       *
+       * <code>string related_symbol = 6;</code>
+       * @return The bytes for relatedSymbol.
+       */
+      public com.google.protobuf.ByteString
+          getRelatedSymbolBytes() {
+        java.lang.Object ref = relatedSymbol_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          relatedSymbol_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+       * </pre>
+       *
+       * <code>string related_symbol = 6;</code>
+       * @param value The relatedSymbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelatedSymbol(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        relatedSymbol_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+       * </pre>
+       *
+       * <code>string related_symbol = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelatedSymbol() {
+        
+        relatedSymbol_ = getDefaultInstance().getRelatedSymbol();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
+       * </pre>
+       *
+       * <code>string related_symbol = 6;</code>
+       * @param value The bytes for relatedSymbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelatedSymbolBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        relatedSymbol_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean isDepositAccount_ ;
+      /**
+       * <pre>
+       * Indicates if the connector is base token connector.
+       * </pre>
+       *
+       * <code>bool is_deposit_account = 7;</code>
+       * @return The isDepositAccount.
+       */
+      public boolean getIsDepositAccount() {
+        return isDepositAccount_;
+      }
+      /**
+       * <pre>
+       * Indicates if the connector is base token connector.
+       * </pre>
+       *
+       * <code>bool is_deposit_account = 7;</code>
+       * @param value The isDepositAccount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsDepositAccount(boolean value) {
+        
+        isDepositAccount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Indicates if the connector is base token connector.
+       * </pre>
+       *
+       * <code>bool is_deposit_account = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsDepositAccount() {
+        
+        isDepositAccount_ = false;
         onChanged();
         return this;
       }
@@ -1549,11 +1970,13 @@ public final class ToeknConverterContract {
   static {
     java.lang.String[] descriptorData = {
       "\n\036toekn_converter_contract.proto\"\035\n\013Toke" +
-      "nSymbol\022\016\n\006symbol\030\001 \001(\t\"\205\001\n\tConnector\022\016\n" +
-      "\006symbol\030\001 \001(\t\022\027\n\017virtual_balance\030\002 \001(\022\022\016" +
+      "nSymbol\022\016\n\006symbol\030\001 \001(\t\"\271\001\n\tConnector\022\016\n" +
+      "\006symbol\030\001 \001(\t\022\027\n\017virtual_balance\030\002 \001(\003\022\016" +
       "\n\006weight\030\003 \001(\t\022\"\n\032is_virtual_balance_ena" +
-      "bled\030\004 \001(\010\022\033\n\023is_purchase_enabled\030\005 \001(\010B" +
-      "\034\n\032io.aelf.protobuf.generatedb\006proto3"
+      "bled\030\004 \001(\010\022\033\n\023is_purchase_enabled\030\005 \001(\010\022" +
+      "\026\n\016related_symbol\030\006 \001(\t\022\032\n\022is_deposit_ac" +
+      "count\030\007 \001(\010B\034\n\032io.aelf.protobuf.generate" +
+      "db\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1570,7 +1993,7 @@ public final class ToeknConverterContract {
     internal_static_Connector_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Connector_descriptor,
-        new java.lang.String[] { "Symbol", "VirtualBalance", "Weight", "IsVirtualBalanceEnabled", "IsPurchaseEnabled", });
+        new java.lang.String[] { "Symbol", "VirtualBalance", "Weight", "IsVirtualBalanceEnabled", "IsPurchaseEnabled", "RelatedSymbol", "IsDepositAccount", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,26 +1,6 @@
 package io.aelf.sdk;
 
-import io.aelf.schemas.BlockBodyDto;
-import io.aelf.schemas.BlockDto;
-import io.aelf.schemas.BlockHeaderDto;
-import io.aelf.schemas.ChainstatusDto;
-import io.aelf.schemas.CreateRawTransactionInput;
-import io.aelf.schemas.CreateRawTransactionOutput;
-import io.aelf.schemas.ExecuteRawTransactionDto;
-import io.aelf.schemas.ExecuteTransactionDto;
-import io.aelf.schemas.LogEventDto;
-import io.aelf.schemas.MerklePathDto;
-import io.aelf.schemas.MerklePathNodeDto;
-import io.aelf.schemas.SendRawTransactionInput;
-import io.aelf.schemas.SendRawTransactionOutput;
-import io.aelf.schemas.SendTransactionInput;
-import io.aelf.schemas.SendTransactionOutput;
-import io.aelf.schemas.SendTransactionsInput;
-import io.aelf.schemas.TaskQueueInfoDto;
-import io.aelf.schemas.TransactionDto;
-import io.aelf.schemas.TransactionFeeDto;
-import io.aelf.schemas.TransactionPoolStatusOutput;
-import io.aelf.schemas.TransactionResultDto;
+import io.aelf.schemas.*;
 import io.aelf.utils.BitConverter;
 import io.aelf.utils.ClientUtil;
 import io.aelf.utils.HttpUtilExt;
@@ -60,6 +40,7 @@ public class BlockChainSdk {
   private static final String WA_GETTRANSACTIONRESULTS = "/api/blockChain/transactionResults";
   private static final String WA_SENDTRANSACTIONS = "/api/blockChain/sendTransactions";
   private static final String WA_GETMBYTRANSACTIONID = "/api/blockChain/merklePathByTransactionId";
+  private static final String WA_CALCULATETRANSACTIONFEE = "/api/blockChain/calculateTransactionFee";
 
   /**
    * Object construction through the url path.
@@ -175,13 +156,13 @@ public class BlockChainSdk {
   /**
    * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
    */
-  public byte[] getContractFilCeDescriptorSet(String address) throws Exception {
+  public byte[] getContractFileDescriptorSet(String address) throws Exception {
     String url = this.AElfClientUrl + WA_GETCFCRIPTORSET + "?address=" + address;
     String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     if (chainContext.startsWith("\"") && chainContext.endsWith("\"")) {
       return chainContext.getBytes();
     } else {
-      throw new RuntimeException("getContractFilCeDescriptorSet body Exception");
+      throw new RuntimeException("getContractFileDescriptorSet body Exception");
     }
 
   }
@@ -372,6 +353,13 @@ public class BlockChainSdk {
   }
 
 
+
+  public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
+    String url = this.AElfClientUrl + WA_CALCULATETRANSACTIONFEE;
+    String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
+    return JsonUtil.parseObject(responseBody, CalculateTransactionFeeOutput.class);
+  }
+
   private BlockDto createBlockDto(MapEntry block, Boolean includeTransactions) throws Exception {
     if (block == null) {
       throw new RuntimeException("not found");
@@ -381,7 +369,12 @@ public class BlockChainSdk {
     String bloomStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Bloom"));
     bloomStr = bloomStr.length() == 0 ? Base64.encodeBase64String(new byte[256]) : bloomStr;
     final String timeStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Time"));
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    SimpleDateFormat df;
+    if(timeStr.length() == 20){
+      df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    }else{
+      df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    }
     df.setTimeZone(TimeZone.getTimeZone("UTC"));
     BlockDto blockDto = new BlockDto();
     blockDto.setBlockHash(block.getString("BlockHash"));
@@ -393,7 +386,7 @@ public class BlockChainSdk {
     blockDto.getHeader().setMerkleTreeRootOfWorldState(
         StringUtil.toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfWorldState")));
     blockDto.getHeader().setMerkleTreeRootOfTransactionState(StringUtil
-        .toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactionStatus")));
+        .toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactionState")));
     blockDto.getHeader()
         .setExtra(StringUtil.toString(block.getLinkedHashMap("Header").get("Extra")));
     blockDto.getHeader().setHeight(height);
@@ -406,12 +399,8 @@ public class BlockChainSdk {
     if (!includeTransactions) {
       return blockDto;
     }
-    String transactionsCountStr = StringUtil
-        .toString(block.getLinkedHashMap("Body").get("TransactionIds"));
-    final long transactionsCount = Long
-        .parseLong(transactionsCountStr.length() == 0 ? "0" : transactionsCountStr);
 
-    List<String> transactions = (List<String>) block.getLinkedHashMap("Body").get("TransactionIds");
+    List<String> transactions = (List<String>) block.getLinkedHashMap("Body").get("Transactions");
     if (transactions == null) {
       transactions = new ArrayList<>();
     }
@@ -420,7 +409,7 @@ public class BlockChainSdk {
       txs.add(StringUtil.toString(transactionId));
     }
     blockDto.setBody(new BlockBodyDto());
-    blockDto.getBody().setTransactionsCount(transactionsCount);
+    blockDto.getBody().setTransactionsCount(transactions.size());
     blockDto.getBody().setTransactions(txs);
     return blockDto;
   }
@@ -433,8 +422,6 @@ public class BlockChainSdk {
     transactionResultObj.setBlockNumber(transactionResult.getLong("BlockNumber", 0));
     transactionResultObj.setBlockHash(transactionResult.getString("BlockHash", ""));
     transactionResultObj.setReturnValue(transactionResult.getString("ReturnValue", ""));
-    transactionResultObj
-        .setReadableReturnValue(transactionResult.getString("ReadableReturnValue", ""));
     transactionResultObj.setError(transactionResult.getString("Error", ""));
     TransactionDto transactionDtoObj = new TransactionDto();
     LinkedHashMap transactionObj = transactionResult

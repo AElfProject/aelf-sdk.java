@@ -84,13 +84,13 @@ public class ClientUtil {
       if (200 != response.getStatusLine().getStatusCode()) {
         responseContent = "@ERROR:@" + responseContent;
       }
-      logger.info("Request address:" + httpGet.getURI());
-      logger.info("Response status:" + response.getStatusLine());
-      logger.info("Response length:" + responseLength);
-      logger.info("Response content:" + responseContent);
+      logger.debug("Request address:" + httpGet.getURI());
+      logger.debug("Response status:" + response.getStatusLine());
+      logger.debug("Response length:" + responseLength);
+      logger.debug("Response content:" + responseContent);
     } catch (Exception ex) {
       responseContent = "@ERROR:@" + ex.getMessage();
-      logger.info("sendGet Exception:", ex);
+      logger.debug("sendGet Exception:", ex);
     } finally {
       httpClient.getConnectionManager().shutdown();
     }
@@ -104,7 +104,7 @@ public class ClientUtil {
    * @param reqUrl not blank
    * @param decodeCharset not blank
    */
-  public static String sendDelete(String reqUrl, String decodeCharset, String contentType) {
+  public static String sendDelete(String reqUrl, String decodeCharset, String contentType, String authBasic) {
     long responseLength = 0L;
     String responseContent = null;
     HttpClient httpClient = new DefaultHttpClient();
@@ -117,6 +117,11 @@ public class ClientUtil {
       } else {
         httpDelete.setHeader("Content-Type", contentType);
       }
+
+      if (!StringUtils.isBlank(authBasic)) {
+        httpDelete.setHeader("Authorization", authBasic);
+      }
+
       HttpResponse response = httpClient.execute(httpDelete);
       HttpEntity entity = response.getEntity();
       if (entity != null) {
@@ -129,12 +134,12 @@ public class ClientUtil {
         responseContent = "@ERROR:@" + responseContent;
       }
 
-      logger.info("Request address:" + httpDelete.getURI());
-      logger.info("Response status:" + response.getStatusLine());
-      logger.info("Response length:" + responseLength);
-      logger.info("Response content:" + responseContent);
+      logger.debug("Request address:" + httpDelete.getURI());
+      logger.debug("Response status:" + response.getStatusLine());
+      logger.debug("Response length:" + responseLength);
+      logger.debug("Response content:" + responseContent);
     } catch (Exception ex) {
-      logger.info("sendDelete Exception:", ex);
+      logger.error("sendDelete Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
     } finally {
       httpClient.getConnectionManager().shutdown();
@@ -178,7 +183,47 @@ public class ClientUtil {
         responseContent = "@ERROR:@" + responseContent;
       }
     } catch (Exception ex) {
-      logger.info("sendPost Exception:", ex);
+      logger.error("sendPost Exception:", ex);
+      responseContent = "@ERROR:@" + ex.getMessage();
+    } finally {
+      httpClient.getConnectionManager().shutdown();
+    }
+
+    return responseContent;
+  }
+
+  public static String sendPostWithAuth(String reqUrl, String param, String encodeCharset,
+                                        String decodeCharset, String contentType, String authBasic) {
+    String responseContent = null;
+    HttpClient httpClient = setProxy();
+    HttpPost httpPost = new HttpPost(reqUrl);
+    try {
+      StringEntity myEntity = new StringEntity(param, encodeCharset);
+      if (StringUtils.isBlank(contentType)) {
+        myEntity.setContentType("application/x-www-form-urlencoded");
+      } else {
+        myEntity.setContentType(contentType);
+      }
+
+      if (StringUtils.isNotBlank(authBasic)) {
+        httpPost.setHeader("Authorization", authBasic);
+      }
+
+      httpPost.setEntity(myEntity);
+
+      System.out.print(httpPost.getFirstHeader("Content-Type"));
+      HttpResponse response = httpClient.execute(httpPost);
+      HttpEntity entity = response.getEntity();
+      if (entity != null) {
+        responseContent = EntityUtils
+                .toString(entity, decodeCharset == null ? "UTF-8" : decodeCharset);
+        EntityUtils.consume(entity);
+      }
+      if (200 != response.getStatusLine().getStatusCode()) {
+        responseContent = "@ERROR:@" + responseContent;
+      }
+    } catch (Exception ex) {
+      logger.error("sendPost Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
     } finally {
       httpClient.getConnectionManager().shutdown();

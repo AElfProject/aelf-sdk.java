@@ -19,24 +19,44 @@ public final class ParliamentAuthContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.Hash> 
         getProposalIdsList();
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     io.aelf.protobuf.generated.Client.Hash getProposalIds(int index);
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     int getProposalIdsCount();
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getProposalIdsOrBuilderList();
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getProposalIdsOrBuilder(
@@ -140,12 +160,20 @@ public final class ParliamentAuthContract {
     public static final int PROPOSAL_IDS_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> proposalIds_;
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getProposalIdsList() {
       return proposalIds_;
     }
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -153,18 +181,30 @@ public final class ParliamentAuthContract {
       return proposalIds_;
     }
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     public int getProposalIdsCount() {
       return proposalIds_.size();
     }
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.Hash getProposalIds(int index) {
       return proposalIds_.get(index);
     }
     /**
+     * <pre>
+     * The list of proposal ids.
+     * </pre>
+     *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getProposalIdsOrBuilder(
@@ -531,6 +571,10 @@ public final class ParliamentAuthContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> proposalIdsBuilder_;
 
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash> getProposalIdsList() {
@@ -541,6 +585,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public int getProposalIdsCount() {
@@ -551,6 +599,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash getProposalIds(int index) {
@@ -561,6 +613,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder setProposalIds(
@@ -578,6 +634,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder setProposalIds(
@@ -592,6 +652,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder addProposalIds(io.aelf.protobuf.generated.Client.Hash value) {
@@ -608,6 +672,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder addProposalIds(
@@ -625,6 +693,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder addProposalIds(
@@ -639,6 +711,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder addProposalIds(
@@ -653,6 +729,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder addAllProposalIds(
@@ -668,6 +748,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder clearProposalIds() {
@@ -681,6 +765,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public Builder removeProposalIds(int index) {
@@ -694,6 +782,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getProposalIdsBuilder(
@@ -701,6 +793,10 @@ public final class ParliamentAuthContract {
         return getProposalIdsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getProposalIdsOrBuilder(
@@ -711,6 +807,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -722,6 +822,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addProposalIdsBuilder() {
@@ -729,6 +833,10 @@ public final class ParliamentAuthContract {
             io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addProposalIdsBuilder(
@@ -737,6 +845,10 @@ public final class ParliamentAuthContract {
             index, io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The list of proposal ids.
+       * </pre>
+       *
        * <code>repeated .Hash proposal_ids = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash.Builder> 
@@ -815,40 +927,132 @@ public final class ParliamentAuthContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>sint32 release_threshold = 1;</code>
-     * @return The releaseThreshold.
+     * <pre>
+     * Indicates if proposals need authority to be created.
+     * </pre>
+     *
+     * <code>bool proposer_authority_required = 1;</code>
+     * @return The proposerAuthorityRequired.
      */
-    int getReleaseThreshold();
+    boolean getProposerAuthorityRequired();
 
     /**
+     * <pre>
+     * The organization address.
+     * </pre>
+     *
      * <code>.Address organization_address = 2;</code>
      * @return Whether the organizationAddress field is set.
      */
     boolean hasOrganizationAddress();
     /**
+     * <pre>
+     * The organization address.
+     * </pre>
+     *
      * <code>.Address organization_address = 2;</code>
      * @return The organizationAddress.
      */
     io.aelf.protobuf.generated.Client.Address getOrganizationAddress();
     /**
+     * <pre>
+     * The organization address.
+     * </pre>
+     *
      * <code>.Address organization_address = 2;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder();
 
     /**
+     * <pre>
+     * The organization id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 3;</code>
      * @return Whether the organizationHash field is set.
      */
     boolean hasOrganizationHash();
     /**
+     * <pre>
+     * The organization id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 3;</code>
      * @return The organizationHash.
      */
     io.aelf.protobuf.generated.Client.Hash getOrganizationHash();
     /**
+     * <pre>
+     * The organization id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 3;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder();
+
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+     * @return Whether the proposalReleaseThreshold field is set.
+     */
+    boolean hasProposalReleaseThreshold();
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+     * @return The proposalReleaseThreshold.
+     */
+    io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold();
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+     */
+    io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder();
+
+    /**
+     * <pre>
+     * Indicates if parliament member can propose to this organization.
+     * </pre>
+     *
+     * <code>bool parliament_member_proposing_allowed = 5;</code>
+     * @return The parliamentMemberProposingAllowed.
+     */
+    boolean getParliamentMemberProposingAllowed();
+
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return Whether the creationToken field is set.
+     */
+    boolean hasCreationToken();
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return The creationToken.
+     */
+    io.aelf.protobuf.generated.Client.Hash getCreationToken();
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     */
+    io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder();
   }
   /**
    * Protobuf type {@code Organization}
@@ -897,7 +1101,7 @@ public final class ParliamentAuthContract {
               break;
             case 8: {
 
-              releaseThreshold_ = input.readSInt32();
+              proposerAuthorityRequired_ = input.readBool();
               break;
             }
             case 18: {
@@ -922,6 +1126,37 @@ public final class ParliamentAuthContract {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(organizationHash_);
                 organizationHash_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder subBuilder = null;
+              if (proposalReleaseThreshold_ != null) {
+                subBuilder = proposalReleaseThreshold_.toBuilder();
+              }
+              proposalReleaseThreshold_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(proposalReleaseThreshold_);
+                proposalReleaseThreshold_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 40: {
+
+              parliamentMemberProposingAllowed_ = input.readBool();
+              break;
+            }
+            case 50: {
+              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
+              if (creationToken_ != null) {
+                subBuilder = creationToken_.toBuilder();
+              }
+              creationToken_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(creationToken_);
+                creationToken_ = subBuilder.buildPartial();
               }
 
               break;
@@ -958,19 +1193,27 @@ public final class ParliamentAuthContract {
               io.aelf.protobuf.generated.ParliamentAuthContract.Organization.class, io.aelf.protobuf.generated.ParliamentAuthContract.Organization.Builder.class);
     }
 
-    public static final int RELEASE_THRESHOLD_FIELD_NUMBER = 1;
-    private int releaseThreshold_;
+    public static final int PROPOSER_AUTHORITY_REQUIRED_FIELD_NUMBER = 1;
+    private boolean proposerAuthorityRequired_;
     /**
-     * <code>sint32 release_threshold = 1;</code>
-     * @return The releaseThreshold.
+     * <pre>
+     * Indicates if proposals need authority to be created.
+     * </pre>
+     *
+     * <code>bool proposer_authority_required = 1;</code>
+     * @return The proposerAuthorityRequired.
      */
-    public int getReleaseThreshold() {
-      return releaseThreshold_;
+    public boolean getProposerAuthorityRequired() {
+      return proposerAuthorityRequired_;
     }
 
     public static final int ORGANIZATION_ADDRESS_FIELD_NUMBER = 2;
     private io.aelf.protobuf.generated.Client.Address organizationAddress_;
     /**
+     * <pre>
+     * The organization address.
+     * </pre>
+     *
      * <code>.Address organization_address = 2;</code>
      * @return Whether the organizationAddress field is set.
      */
@@ -978,6 +1221,10 @@ public final class ParliamentAuthContract {
       return organizationAddress_ != null;
     }
     /**
+     * <pre>
+     * The organization address.
+     * </pre>
+     *
      * <code>.Address organization_address = 2;</code>
      * @return The organizationAddress.
      */
@@ -985,6 +1232,10 @@ public final class ParliamentAuthContract {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
     /**
+     * <pre>
+     * The organization address.
+     * </pre>
+     *
      * <code>.Address organization_address = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -994,6 +1245,10 @@ public final class ParliamentAuthContract {
     public static final int ORGANIZATION_HASH_FIELD_NUMBER = 3;
     private io.aelf.protobuf.generated.Client.Hash organizationHash_;
     /**
+     * <pre>
+     * The organization id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 3;</code>
      * @return Whether the organizationHash field is set.
      */
@@ -1001,6 +1256,10 @@ public final class ParliamentAuthContract {
       return organizationHash_ != null;
     }
     /**
+     * <pre>
+     * The organization id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 3;</code>
      * @return The organizationHash.
      */
@@ -1008,10 +1267,98 @@ public final class ParliamentAuthContract {
       return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
     }
     /**
+     * <pre>
+     * The organization id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 3;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
       return getOrganizationHash();
+    }
+
+    public static final int PROPOSAL_RELEASE_THRESHOLD_FIELD_NUMBER = 4;
+    private io.aelf.protobuf.generated.Client.ProposalReleaseThreshold proposalReleaseThreshold_;
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+     * @return Whether the proposalReleaseThreshold field is set.
+     */
+    public boolean hasProposalReleaseThreshold() {
+      return proposalReleaseThreshold_ != null;
+    }
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+     * @return The proposalReleaseThreshold.
+     */
+    public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
+      return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+    }
+    /**
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
+      return getProposalReleaseThreshold();
+    }
+
+    public static final int PARLIAMENT_MEMBER_PROPOSING_ALLOWED_FIELD_NUMBER = 5;
+    private boolean parliamentMemberProposingAllowed_;
+    /**
+     * <pre>
+     * Indicates if parliament member can propose to this organization.
+     * </pre>
+     *
+     * <code>bool parliament_member_proposing_allowed = 5;</code>
+     * @return The parliamentMemberProposingAllowed.
+     */
+    public boolean getParliamentMemberProposingAllowed() {
+      return parliamentMemberProposingAllowed_;
+    }
+
+    public static final int CREATION_TOKEN_FIELD_NUMBER = 6;
+    private io.aelf.protobuf.generated.Client.Hash creationToken_;
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return Whether the creationToken field is set.
+     */
+    public boolean hasCreationToken() {
+      return creationToken_ != null;
+    }
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return The creationToken.
+     */
+    public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
+      return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+    }
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     */
+    public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
+      return getCreationToken();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1028,14 +1375,23 @@ public final class ParliamentAuthContract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (releaseThreshold_ != 0) {
-        output.writeSInt32(1, releaseThreshold_);
+      if (proposerAuthorityRequired_ != false) {
+        output.writeBool(1, proposerAuthorityRequired_);
       }
       if (organizationAddress_ != null) {
         output.writeMessage(2, getOrganizationAddress());
       }
       if (organizationHash_ != null) {
         output.writeMessage(3, getOrganizationHash());
+      }
+      if (proposalReleaseThreshold_ != null) {
+        output.writeMessage(4, getProposalReleaseThreshold());
+      }
+      if (parliamentMemberProposingAllowed_ != false) {
+        output.writeBool(5, parliamentMemberProposingAllowed_);
+      }
+      if (creationToken_ != null) {
+        output.writeMessage(6, getCreationToken());
       }
       unknownFields.writeTo(output);
     }
@@ -1046,9 +1402,9 @@ public final class ParliamentAuthContract {
       if (size != -1) return size;
 
       size = 0;
-      if (releaseThreshold_ != 0) {
+      if (proposerAuthorityRequired_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(1, releaseThreshold_);
+          .computeBoolSize(1, proposerAuthorityRequired_);
       }
       if (organizationAddress_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -1057,6 +1413,18 @@ public final class ParliamentAuthContract {
       if (organizationHash_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getOrganizationHash());
+      }
+      if (proposalReleaseThreshold_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getProposalReleaseThreshold());
+      }
+      if (parliamentMemberProposingAllowed_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, parliamentMemberProposingAllowed_);
+      }
+      if (creationToken_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getCreationToken());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1073,8 +1441,8 @@ public final class ParliamentAuthContract {
       }
       io.aelf.protobuf.generated.ParliamentAuthContract.Organization other = (io.aelf.protobuf.generated.ParliamentAuthContract.Organization) obj;
 
-      if (getReleaseThreshold()
-          != other.getReleaseThreshold()) return false;
+      if (getProposerAuthorityRequired()
+          != other.getProposerAuthorityRequired()) return false;
       if (hasOrganizationAddress() != other.hasOrganizationAddress()) return false;
       if (hasOrganizationAddress()) {
         if (!getOrganizationAddress()
@@ -1084,6 +1452,18 @@ public final class ParliamentAuthContract {
       if (hasOrganizationHash()) {
         if (!getOrganizationHash()
             .equals(other.getOrganizationHash())) return false;
+      }
+      if (hasProposalReleaseThreshold() != other.hasProposalReleaseThreshold()) return false;
+      if (hasProposalReleaseThreshold()) {
+        if (!getProposalReleaseThreshold()
+            .equals(other.getProposalReleaseThreshold())) return false;
+      }
+      if (getParliamentMemberProposingAllowed()
+          != other.getParliamentMemberProposingAllowed()) return false;
+      if (hasCreationToken() != other.hasCreationToken()) return false;
+      if (hasCreationToken()) {
+        if (!getCreationToken()
+            .equals(other.getCreationToken())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -1096,8 +1476,9 @@ public final class ParliamentAuthContract {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RELEASE_THRESHOLD_FIELD_NUMBER;
-      hash = (53 * hash) + getReleaseThreshold();
+      hash = (37 * hash) + PROPOSER_AUTHORITY_REQUIRED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getProposerAuthorityRequired());
       if (hasOrganizationAddress()) {
         hash = (37 * hash) + ORGANIZATION_ADDRESS_FIELD_NUMBER;
         hash = (53 * hash) + getOrganizationAddress().hashCode();
@@ -1105,6 +1486,17 @@ public final class ParliamentAuthContract {
       if (hasOrganizationHash()) {
         hash = (37 * hash) + ORGANIZATION_HASH_FIELD_NUMBER;
         hash = (53 * hash) + getOrganizationHash().hashCode();
+      }
+      if (hasProposalReleaseThreshold()) {
+        hash = (37 * hash) + PROPOSAL_RELEASE_THRESHOLD_FIELD_NUMBER;
+        hash = (53 * hash) + getProposalReleaseThreshold().hashCode();
+      }
+      hash = (37 * hash) + PARLIAMENT_MEMBER_PROPOSING_ALLOWED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getParliamentMemberProposingAllowed());
+      if (hasCreationToken()) {
+        hash = (37 * hash) + CREATION_TOKEN_FIELD_NUMBER;
+        hash = (53 * hash) + getCreationToken().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -1239,7 +1631,7 @@ public final class ParliamentAuthContract {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        releaseThreshold_ = 0;
+        proposerAuthorityRequired_ = false;
 
         if (organizationAddressBuilder_ == null) {
           organizationAddress_ = null;
@@ -1252,6 +1644,20 @@ public final class ParliamentAuthContract {
         } else {
           organizationHash_ = null;
           organizationHashBuilder_ = null;
+        }
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = null;
+        } else {
+          proposalReleaseThreshold_ = null;
+          proposalReleaseThresholdBuilder_ = null;
+        }
+        parliamentMemberProposingAllowed_ = false;
+
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = null;
+        } else {
+          creationToken_ = null;
+          creationTokenBuilder_ = null;
         }
         return this;
       }
@@ -1279,7 +1685,7 @@ public final class ParliamentAuthContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ParliamentAuthContract.Organization buildPartial() {
         io.aelf.protobuf.generated.ParliamentAuthContract.Organization result = new io.aelf.protobuf.generated.ParliamentAuthContract.Organization(this);
-        result.releaseThreshold_ = releaseThreshold_;
+        result.proposerAuthorityRequired_ = proposerAuthorityRequired_;
         if (organizationAddressBuilder_ == null) {
           result.organizationAddress_ = organizationAddress_;
         } else {
@@ -1289,6 +1695,17 @@ public final class ParliamentAuthContract {
           result.organizationHash_ = organizationHash_;
         } else {
           result.organizationHash_ = organizationHashBuilder_.build();
+        }
+        if (proposalReleaseThresholdBuilder_ == null) {
+          result.proposalReleaseThreshold_ = proposalReleaseThreshold_;
+        } else {
+          result.proposalReleaseThreshold_ = proposalReleaseThresholdBuilder_.build();
+        }
+        result.parliamentMemberProposingAllowed_ = parliamentMemberProposingAllowed_;
+        if (creationTokenBuilder_ == null) {
+          result.creationToken_ = creationToken_;
+        } else {
+          result.creationToken_ = creationTokenBuilder_.build();
         }
         onBuilt();
         return result;
@@ -1338,14 +1755,23 @@ public final class ParliamentAuthContract {
 
       public Builder mergeFrom(io.aelf.protobuf.generated.ParliamentAuthContract.Organization other) {
         if (other == io.aelf.protobuf.generated.ParliamentAuthContract.Organization.getDefaultInstance()) return this;
-        if (other.getReleaseThreshold() != 0) {
-          setReleaseThreshold(other.getReleaseThreshold());
+        if (other.getProposerAuthorityRequired() != false) {
+          setProposerAuthorityRequired(other.getProposerAuthorityRequired());
         }
         if (other.hasOrganizationAddress()) {
           mergeOrganizationAddress(other.getOrganizationAddress());
         }
         if (other.hasOrganizationHash()) {
           mergeOrganizationHash(other.getOrganizationHash());
+        }
+        if (other.hasProposalReleaseThreshold()) {
+          mergeProposalReleaseThreshold(other.getProposalReleaseThreshold());
+        }
+        if (other.getParliamentMemberProposingAllowed() != false) {
+          setParliamentMemberProposingAllowed(other.getParliamentMemberProposingAllowed());
+        }
+        if (other.hasCreationToken()) {
+          mergeCreationToken(other.getCreationToken());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1376,32 +1802,44 @@ public final class ParliamentAuthContract {
         return this;
       }
 
-      private int releaseThreshold_ ;
+      private boolean proposerAuthorityRequired_ ;
       /**
-       * <code>sint32 release_threshold = 1;</code>
-       * @return The releaseThreshold.
+       * <pre>
+       * Indicates if proposals need authority to be created.
+       * </pre>
+       *
+       * <code>bool proposer_authority_required = 1;</code>
+       * @return The proposerAuthorityRequired.
        */
-      public int getReleaseThreshold() {
-        return releaseThreshold_;
+      public boolean getProposerAuthorityRequired() {
+        return proposerAuthorityRequired_;
       }
       /**
-       * <code>sint32 release_threshold = 1;</code>
-       * @param value The releaseThreshold to set.
+       * <pre>
+       * Indicates if proposals need authority to be created.
+       * </pre>
+       *
+       * <code>bool proposer_authority_required = 1;</code>
+       * @param value The proposerAuthorityRequired to set.
        * @return This builder for chaining.
        */
-      public Builder setReleaseThreshold(int value) {
+      public Builder setProposerAuthorityRequired(boolean value) {
         
-        releaseThreshold_ = value;
+        proposerAuthorityRequired_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>sint32 release_threshold = 1;</code>
+       * <pre>
+       * Indicates if proposals need authority to be created.
+       * </pre>
+       *
+       * <code>bool proposer_authority_required = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearReleaseThreshold() {
+      public Builder clearProposerAuthorityRequired() {
         
-        releaseThreshold_ = 0;
+        proposerAuthorityRequired_ = false;
         onChanged();
         return this;
       }
@@ -1410,6 +1848,10 @@ public final class ParliamentAuthContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> organizationAddressBuilder_;
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        * @return Whether the organizationAddress field is set.
        */
@@ -1417,6 +1859,10 @@ public final class ParliamentAuthContract {
         return organizationAddressBuilder_ != null || organizationAddress_ != null;
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        * @return The organizationAddress.
        */
@@ -1428,6 +1874,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        */
       public Builder setOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -1444,6 +1894,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        */
       public Builder setOrganizationAddress(
@@ -1458,6 +1912,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        */
       public Builder mergeOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -1476,6 +1934,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        */
       public Builder clearOrganizationAddress() {
@@ -1490,6 +1952,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getOrganizationAddressBuilder() {
@@ -1498,6 +1964,10 @@ public final class ParliamentAuthContract {
         return getOrganizationAddressFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -1509,6 +1979,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organization address.
+       * </pre>
+       *
        * <code>.Address organization_address = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1529,6 +2003,10 @@ public final class ParliamentAuthContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> organizationHashBuilder_;
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        * @return Whether the organizationHash field is set.
        */
@@ -1536,6 +2014,10 @@ public final class ParliamentAuthContract {
         return organizationHashBuilder_ != null || organizationHash_ != null;
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        * @return The organizationHash.
        */
@@ -1547,6 +2029,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        */
       public Builder setOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -1563,6 +2049,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        */
       public Builder setOrganizationHash(
@@ -1577,6 +2067,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        */
       public Builder mergeOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -1595,6 +2089,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        */
       public Builder clearOrganizationHash() {
@@ -1609,6 +2107,10 @@ public final class ParliamentAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getOrganizationHashBuilder() {
@@ -1617,6 +2119,10 @@ public final class ParliamentAuthContract {
         return getOrganizationHashFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
@@ -1628,6 +2134,10 @@ public final class ParliamentAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organization id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1642,6 +2152,358 @@ public final class ParliamentAuthContract {
           organizationHash_ = null;
         }
         return organizationHashBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.ProposalReleaseThreshold proposalReleaseThreshold_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder> proposalReleaseThresholdBuilder_;
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       * @return Whether the proposalReleaseThreshold field is set.
+       */
+      public boolean hasProposalReleaseThreshold() {
+        return proposalReleaseThresholdBuilder_ != null || proposalReleaseThreshold_ != null;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       * @return The proposalReleaseThreshold.
+       */
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+        } else {
+          return proposalReleaseThresholdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       */
+      public Builder setProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          proposalReleaseThreshold_ = value;
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       */
+      public Builder setProposalReleaseThreshold(
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder builderForValue) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = builderForValue.build();
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       */
+      public Builder mergeProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          if (proposalReleaseThreshold_ != null) {
+            proposalReleaseThreshold_ =
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.newBuilder(proposalReleaseThreshold_).mergeFrom(value).buildPartial();
+          } else {
+            proposalReleaseThreshold_ = value;
+          }
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       */
+      public Builder clearProposalReleaseThreshold() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = null;
+          onChanged();
+        } else {
+          proposalReleaseThreshold_ = null;
+          proposalReleaseThresholdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder getProposalReleaseThresholdBuilder() {
+        
+        onChanged();
+        return getProposalReleaseThresholdFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
+        if (proposalReleaseThresholdBuilder_ != null) {
+          return proposalReleaseThresholdBuilder_.getMessageOrBuilder();
+        } else {
+          return proposalReleaseThreshold_ == null ?
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+        }
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder> 
+          getProposalReleaseThresholdFieldBuilder() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThresholdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder>(
+                  getProposalReleaseThreshold(),
+                  getParentForChildren(),
+                  isClean());
+          proposalReleaseThreshold_ = null;
+        }
+        return proposalReleaseThresholdBuilder_;
+      }
+
+      private boolean parliamentMemberProposingAllowed_ ;
+      /**
+       * <pre>
+       * Indicates if parliament member can propose to this organization.
+       * </pre>
+       *
+       * <code>bool parliament_member_proposing_allowed = 5;</code>
+       * @return The parliamentMemberProposingAllowed.
+       */
+      public boolean getParliamentMemberProposingAllowed() {
+        return parliamentMemberProposingAllowed_;
+      }
+      /**
+       * <pre>
+       * Indicates if parliament member can propose to this organization.
+       * </pre>
+       *
+       * <code>bool parliament_member_proposing_allowed = 5;</code>
+       * @param value The parliamentMemberProposingAllowed to set.
+       * @return This builder for chaining.
+       */
+      public Builder setParliamentMemberProposingAllowed(boolean value) {
+        
+        parliamentMemberProposingAllowed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Indicates if parliament member can propose to this organization.
+       * </pre>
+       *
+       * <code>bool parliament_member_proposing_allowed = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearParliamentMemberProposingAllowed() {
+        
+        parliamentMemberProposingAllowed_ = false;
+        onChanged();
+        return this;
+      }
+
+      private io.aelf.protobuf.generated.Client.Hash creationToken_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> creationTokenBuilder_;
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       * @return Whether the creationToken field is set.
+       */
+      public boolean hasCreationToken() {
+        return creationTokenBuilder_ != null || creationToken_ != null;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       * @return The creationToken.
+       */
+      public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
+        if (creationTokenBuilder_ == null) {
+          return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+        } else {
+          return creationTokenBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder setCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
+        if (creationTokenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          creationToken_ = value;
+          onChanged();
+        } else {
+          creationTokenBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder setCreationToken(
+          io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = builderForValue.build();
+          onChanged();
+        } else {
+          creationTokenBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder mergeCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
+        if (creationTokenBuilder_ == null) {
+          if (creationToken_ != null) {
+            creationToken_ =
+              io.aelf.protobuf.generated.Client.Hash.newBuilder(creationToken_).mergeFrom(value).buildPartial();
+          } else {
+            creationToken_ = value;
+          }
+          onChanged();
+        } else {
+          creationTokenBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder clearCreationToken() {
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = null;
+          onChanged();
+        } else {
+          creationToken_ = null;
+          creationTokenBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Hash.Builder getCreationTokenBuilder() {
+        
+        onChanged();
+        return getCreationTokenFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
+        if (creationTokenBuilder_ != null) {
+          return creationTokenBuilder_.getMessageOrBuilder();
+        } else {
+          return creationToken_ == null ?
+              io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+        }
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> 
+          getCreationTokenFieldBuilder() {
+        if (creationTokenBuilder_ == null) {
+          creationTokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder>(
+                  getCreationToken(),
+                  getParentForChildren(),
+                  isClean());
+          creationToken_ = null;
+        }
+        return creationTokenBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1717,11 +2579,14 @@ public final class ParliamentAuthContract {
     java.lang.String[] descriptorData = {
       "\n\036parliament_auth_contract.proto\032\014client" +
       ".proto\"-\n\016ProposalIdList\022\033\n\014proposal_ids" +
-      "\030\001 \003(\0132\005.Hash\"s\n\014Organization\022\031\n\021release" +
-      "_threshold\030\001 \001(\021\022&\n\024organization_address" +
-      "\030\002 \001(\0132\010.Address\022 \n\021organization_hash\030\003 " +
-      "\001(\0132\005.HashB\034\n\032io.aelf.protobuf.generated" +
-      "b\006proto3"
+      "\030\001 \003(\0132\005.Hash\"\210\002\n\014Organization\022#\n\033propos" +
+      "er_authority_required\030\001 \001(\010\022&\n\024organizat" +
+      "ion_address\030\002 \001(\0132\010.Address\022 \n\021organizat" +
+      "ion_hash\030\003 \001(\0132\005.Hash\022=\n\032proposal_releas" +
+      "e_threshold\030\004 \001(\0132\031.ProposalReleaseThres" +
+      "hold\022+\n#parliament_member_proposing_allo" +
+      "wed\030\005 \001(\010\022\035\n\016creation_token\030\006 \001(\0132\005.Hash" +
+      "B\034\n\032io.aelf.protobuf.generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1739,7 +2604,7 @@ public final class ParliamentAuthContract {
     internal_static_Organization_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Organization_descriptor,
-        new java.lang.String[] { "ReleaseThreshold", "OrganizationAddress", "OrganizationHash", });
+        new java.lang.String[] { "ProposerAuthorityRequired", "OrganizationAddress", "OrganizationHash", "ProposalReleaseThreshold", "ParliamentMemberProposingAllowed", "CreationToken", });
     io.aelf.protobuf.generated.Client.getDescriptor();
   }
 

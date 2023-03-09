@@ -19,70 +19,166 @@ public final class AssociationAuthContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 release_threshold = 1;</code>
-     * @return The releaseThreshold.
+     * <pre>
+     * The organization members.
+     * </pre>
+     *
+     * <code>.OrganizationMemberList organization_member_list = 1;</code>
+     * @return Whether the organizationMemberList field is set.
      */
-    int getReleaseThreshold();
+    boolean hasOrganizationMemberList();
+    /**
+     * <pre>
+     * The organization members.
+     * </pre>
+     *
+     * <code>.OrganizationMemberList organization_member_list = 1;</code>
+     * @return The organizationMemberList.
+     */
+    io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList getOrganizationMemberList();
+    /**
+     * <pre>
+     * The organization members.
+     * </pre>
+     *
+     * <code>.OrganizationMemberList organization_member_list = 1;</code>
+     */
+    io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberListOrBuilder getOrganizationMemberListOrBuilder();
 
     /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+     * @return Whether the proposalReleaseThreshold field is set.
      */
-    java.util.List<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer> 
-        getReviewersList();
+    boolean hasProposalReleaseThreshold();
     /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+     * @return The proposalReleaseThreshold.
      */
-    io.aelf.protobuf.generated.AssociationAuthContract.Reviewer getReviewers(int index);
+    io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold();
     /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
      */
-    int getReviewersCount();
-    /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
-     */
-    java.util.List<? extends io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder> 
-        getReviewersOrBuilderList();
-    /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
-     */
-    io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder getReviewersOrBuilder(
-        int index);
+    io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder();
 
     /**
-     * <code>int32 proposer_threshold = 3;</code>
-     * @return The proposerThreshold.
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+     * @return Whether the proposerWhiteList field is set.
      */
-    int getProposerThreshold();
+    boolean hasProposerWhiteList();
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+     * @return The proposerWhiteList.
+     */
+    io.aelf.protobuf.generated.Client.ProposerWhiteList getProposerWhiteList();
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+     */
+    io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder getProposerWhiteListOrBuilder();
 
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 4;</code>
      * @return Whether the organizationAddress field is set.
      */
     boolean hasOrganizationAddress();
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 4;</code>
      * @return The organizationAddress.
      */
     io.aelf.protobuf.generated.Client.Address getOrganizationAddress();
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 4;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder();
 
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 5;</code>
      * @return Whether the organizationHash field is set.
      */
     boolean hasOrganizationHash();
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 5;</code>
      * @return The organizationHash.
      */
     io.aelf.protobuf.generated.Client.Hash getOrganizationHash();
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 5;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder();
+
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return Whether the creationToken field is set.
+     */
+    boolean hasCreationToken();
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return The creationToken.
+     */
+    io.aelf.protobuf.generated.Client.Hash getCreationToken();
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     */
+    io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder();
   }
   /**
    * <pre>
@@ -101,7 +197,6 @@ public final class AssociationAuthContract {
       super(builder);
     }
     private Organization() {
-      reviewers_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -124,7 +219,6 @@ public final class AssociationAuthContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -135,23 +229,43 @@ public final class AssociationAuthContract {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 10: {
+              io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder subBuilder = null;
+              if (organizationMemberList_ != null) {
+                subBuilder = organizationMemberList_.toBuilder();
+              }
+              organizationMemberList_ = input.readMessage(io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(organizationMemberList_);
+                organizationMemberList_ = subBuilder.buildPartial();
+              }
 
-              releaseThreshold_ = input.readInt32();
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                reviewers_ = new java.util.ArrayList<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer>();
-                mutable_bitField0_ |= 0x00000001;
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder subBuilder = null;
+              if (proposalReleaseThreshold_ != null) {
+                subBuilder = proposalReleaseThreshold_.toBuilder();
               }
-              reviewers_.add(
-                  input.readMessage(io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.parser(), extensionRegistry));
+              proposalReleaseThreshold_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(proposalReleaseThreshold_);
+                proposalReleaseThreshold_ = subBuilder.buildPartial();
+              }
+
               break;
             }
-            case 24: {
+            case 26: {
+              io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder subBuilder = null;
+              if (proposerWhiteList_ != null) {
+                subBuilder = proposerWhiteList_.toBuilder();
+              }
+              proposerWhiteList_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposerWhiteList.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(proposerWhiteList_);
+                proposerWhiteList_ = subBuilder.buildPartial();
+              }
 
-              proposerThreshold_ = input.readInt32();
               break;
             }
             case 34: {
@@ -180,6 +294,19 @@ public final class AssociationAuthContract {
 
               break;
             }
+            case 50: {
+              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
+              if (creationToken_ != null) {
+                subBuilder = creationToken_.toBuilder();
+              }
+              creationToken_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(creationToken_);
+                creationToken_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -195,9 +322,6 @@ public final class AssociationAuthContract {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          reviewers_ = java.util.Collections.unmodifiableList(reviewers_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -215,64 +339,118 @@ public final class AssociationAuthContract {
               io.aelf.protobuf.generated.AssociationAuthContract.Organization.class, io.aelf.protobuf.generated.AssociationAuthContract.Organization.Builder.class);
     }
 
-    public static final int RELEASE_THRESHOLD_FIELD_NUMBER = 1;
-    private int releaseThreshold_;
+    public static final int ORGANIZATION_MEMBER_LIST_FIELD_NUMBER = 1;
+    private io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList organizationMemberList_;
     /**
-     * <code>int32 release_threshold = 1;</code>
-     * @return The releaseThreshold.
+     * <pre>
+     * The organization members.
+     * </pre>
+     *
+     * <code>.OrganizationMemberList organization_member_list = 1;</code>
+     * @return Whether the organizationMemberList field is set.
      */
-    public int getReleaseThreshold() {
-      return releaseThreshold_;
+    public boolean hasOrganizationMemberList() {
+      return organizationMemberList_ != null;
+    }
+    /**
+     * <pre>
+     * The organization members.
+     * </pre>
+     *
+     * <code>.OrganizationMemberList organization_member_list = 1;</code>
+     * @return The organizationMemberList.
+     */
+    public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList getOrganizationMemberList() {
+      return organizationMemberList_ == null ? io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.getDefaultInstance() : organizationMemberList_;
+    }
+    /**
+     * <pre>
+     * The organization members.
+     * </pre>
+     *
+     * <code>.OrganizationMemberList organization_member_list = 1;</code>
+     */
+    public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberListOrBuilder getOrganizationMemberListOrBuilder() {
+      return getOrganizationMemberList();
     }
 
-    public static final int REVIEWERS_FIELD_NUMBER = 2;
-    private java.util.List<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer> reviewers_;
+    public static final int PROPOSAL_RELEASE_THRESHOLD_FIELD_NUMBER = 2;
+    private io.aelf.protobuf.generated.Client.ProposalReleaseThreshold proposalReleaseThreshold_;
     /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+     * @return Whether the proposalReleaseThreshold field is set.
      */
-    public java.util.List<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer> getReviewersList() {
-      return reviewers_;
+    public boolean hasProposalReleaseThreshold() {
+      return proposalReleaseThreshold_ != null;
     }
     /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+     * @return The proposalReleaseThreshold.
      */
-    public java.util.List<? extends io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder> 
-        getReviewersOrBuilderList() {
-      return reviewers_;
+    public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
+      return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
     }
     /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
+     * <pre>
+     * The threshold for releasing the proposal.
+     * </pre>
+     *
+     * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
      */
-    public int getReviewersCount() {
-      return reviewers_.size();
-    }
-    /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
-     */
-    public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer getReviewers(int index) {
-      return reviewers_.get(index);
-    }
-    /**
-     * <code>repeated .Reviewer reviewers = 2;</code>
-     */
-    public io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder getReviewersOrBuilder(
-        int index) {
-      return reviewers_.get(index);
+    public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
+      return getProposalReleaseThreshold();
     }
 
-    public static final int PROPOSER_THRESHOLD_FIELD_NUMBER = 3;
-    private int proposerThreshold_;
+    public static final int PROPOSER_WHITE_LIST_FIELD_NUMBER = 3;
+    private io.aelf.protobuf.generated.Client.ProposerWhiteList proposerWhiteList_;
     /**
-     * <code>int32 proposer_threshold = 3;</code>
-     * @return The proposerThreshold.
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+     * @return Whether the proposerWhiteList field is set.
      */
-    public int getProposerThreshold() {
-      return proposerThreshold_;
+    public boolean hasProposerWhiteList() {
+      return proposerWhiteList_ != null;
+    }
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+     * @return The proposerWhiteList.
+     */
+    public io.aelf.protobuf.generated.Client.ProposerWhiteList getProposerWhiteList() {
+      return proposerWhiteList_ == null ? io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
+    }
+    /**
+     * <pre>
+     * The proposer whitelist.
+     * </pre>
+     *
+     * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+     */
+    public io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder getProposerWhiteListOrBuilder() {
+      return getProposerWhiteList();
     }
 
     public static final int ORGANIZATION_ADDRESS_FIELD_NUMBER = 4;
     private io.aelf.protobuf.generated.Client.Address organizationAddress_;
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 4;</code>
      * @return Whether the organizationAddress field is set.
      */
@@ -280,6 +458,10 @@ public final class AssociationAuthContract {
       return organizationAddress_ != null;
     }
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 4;</code>
      * @return The organizationAddress.
      */
@@ -287,6 +469,10 @@ public final class AssociationAuthContract {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
     /**
+     * <pre>
+     * The address of organization.
+     * </pre>
+     *
      * <code>.Address organization_address = 4;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -296,6 +482,10 @@ public final class AssociationAuthContract {
     public static final int ORGANIZATION_HASH_FIELD_NUMBER = 5;
     private io.aelf.protobuf.generated.Client.Hash organizationHash_;
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 5;</code>
      * @return Whether the organizationHash field is set.
      */
@@ -303,6 +493,10 @@ public final class AssociationAuthContract {
       return organizationHash_ != null;
     }
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 5;</code>
      * @return The organizationHash.
      */
@@ -310,10 +504,49 @@ public final class AssociationAuthContract {
       return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
     }
     /**
+     * <pre>
+     * The organizations id.
+     * </pre>
+     *
      * <code>.Hash organization_hash = 5;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
       return getOrganizationHash();
+    }
+
+    public static final int CREATION_TOKEN_FIELD_NUMBER = 6;
+    private io.aelf.protobuf.generated.Client.Hash creationToken_;
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return Whether the creationToken field is set.
+     */
+    public boolean hasCreationToken() {
+      return creationToken_ != null;
+    }
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     * @return The creationToken.
+     */
+    public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
+      return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+    }
+    /**
+     * <pre>
+     * The creation token is for organization address generation.
+     * </pre>
+     *
+     * <code>.Hash creation_token = 6;</code>
+     */
+    public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
+      return getCreationToken();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -330,20 +563,23 @@ public final class AssociationAuthContract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (releaseThreshold_ != 0) {
-        output.writeInt32(1, releaseThreshold_);
+      if (organizationMemberList_ != null) {
+        output.writeMessage(1, getOrganizationMemberList());
       }
-      for (int i = 0; i < reviewers_.size(); i++) {
-        output.writeMessage(2, reviewers_.get(i));
+      if (proposalReleaseThreshold_ != null) {
+        output.writeMessage(2, getProposalReleaseThreshold());
       }
-      if (proposerThreshold_ != 0) {
-        output.writeInt32(3, proposerThreshold_);
+      if (proposerWhiteList_ != null) {
+        output.writeMessage(3, getProposerWhiteList());
       }
       if (organizationAddress_ != null) {
         output.writeMessage(4, getOrganizationAddress());
       }
       if (organizationHash_ != null) {
         output.writeMessage(5, getOrganizationHash());
+      }
+      if (creationToken_ != null) {
+        output.writeMessage(6, getCreationToken());
       }
       unknownFields.writeTo(output);
     }
@@ -354,17 +590,17 @@ public final class AssociationAuthContract {
       if (size != -1) return size;
 
       size = 0;
-      if (releaseThreshold_ != 0) {
+      if (organizationMemberList_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, releaseThreshold_);
+          .computeMessageSize(1, getOrganizationMemberList());
       }
-      for (int i = 0; i < reviewers_.size(); i++) {
+      if (proposalReleaseThreshold_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, reviewers_.get(i));
+          .computeMessageSize(2, getProposalReleaseThreshold());
       }
-      if (proposerThreshold_ != 0) {
+      if (proposerWhiteList_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, proposerThreshold_);
+          .computeMessageSize(3, getProposerWhiteList());
       }
       if (organizationAddress_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -373,6 +609,10 @@ public final class AssociationAuthContract {
       if (organizationHash_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getOrganizationHash());
+      }
+      if (creationToken_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getCreationToken());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -389,12 +629,21 @@ public final class AssociationAuthContract {
       }
       io.aelf.protobuf.generated.AssociationAuthContract.Organization other = (io.aelf.protobuf.generated.AssociationAuthContract.Organization) obj;
 
-      if (getReleaseThreshold()
-          != other.getReleaseThreshold()) return false;
-      if (!getReviewersList()
-          .equals(other.getReviewersList())) return false;
-      if (getProposerThreshold()
-          != other.getProposerThreshold()) return false;
+      if (hasOrganizationMemberList() != other.hasOrganizationMemberList()) return false;
+      if (hasOrganizationMemberList()) {
+        if (!getOrganizationMemberList()
+            .equals(other.getOrganizationMemberList())) return false;
+      }
+      if (hasProposalReleaseThreshold() != other.hasProposalReleaseThreshold()) return false;
+      if (hasProposalReleaseThreshold()) {
+        if (!getProposalReleaseThreshold()
+            .equals(other.getProposalReleaseThreshold())) return false;
+      }
+      if (hasProposerWhiteList() != other.hasProposerWhiteList()) return false;
+      if (hasProposerWhiteList()) {
+        if (!getProposerWhiteList()
+            .equals(other.getProposerWhiteList())) return false;
+      }
       if (hasOrganizationAddress() != other.hasOrganizationAddress()) return false;
       if (hasOrganizationAddress()) {
         if (!getOrganizationAddress()
@@ -404,6 +653,11 @@ public final class AssociationAuthContract {
       if (hasOrganizationHash()) {
         if (!getOrganizationHash()
             .equals(other.getOrganizationHash())) return false;
+      }
+      if (hasCreationToken() != other.hasCreationToken()) return false;
+      if (hasCreationToken()) {
+        if (!getCreationToken()
+            .equals(other.getCreationToken())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -416,14 +670,18 @@ public final class AssociationAuthContract {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RELEASE_THRESHOLD_FIELD_NUMBER;
-      hash = (53 * hash) + getReleaseThreshold();
-      if (getReviewersCount() > 0) {
-        hash = (37 * hash) + REVIEWERS_FIELD_NUMBER;
-        hash = (53 * hash) + getReviewersList().hashCode();
+      if (hasOrganizationMemberList()) {
+        hash = (37 * hash) + ORGANIZATION_MEMBER_LIST_FIELD_NUMBER;
+        hash = (53 * hash) + getOrganizationMemberList().hashCode();
       }
-      hash = (37 * hash) + PROPOSER_THRESHOLD_FIELD_NUMBER;
-      hash = (53 * hash) + getProposerThreshold();
+      if (hasProposalReleaseThreshold()) {
+        hash = (37 * hash) + PROPOSAL_RELEASE_THRESHOLD_FIELD_NUMBER;
+        hash = (53 * hash) + getProposalReleaseThreshold().hashCode();
+      }
+      if (hasProposerWhiteList()) {
+        hash = (37 * hash) + PROPOSER_WHITE_LIST_FIELD_NUMBER;
+        hash = (53 * hash) + getProposerWhiteList().hashCode();
+      }
       if (hasOrganizationAddress()) {
         hash = (37 * hash) + ORGANIZATION_ADDRESS_FIELD_NUMBER;
         hash = (53 * hash) + getOrganizationAddress().hashCode();
@@ -431,6 +689,10 @@ public final class AssociationAuthContract {
       if (hasOrganizationHash()) {
         hash = (37 * hash) + ORGANIZATION_HASH_FIELD_NUMBER;
         hash = (53 * hash) + getOrganizationHash().hashCode();
+      }
+      if (hasCreationToken()) {
+        hash = (37 * hash) + CREATION_TOKEN_FIELD_NUMBER;
+        hash = (53 * hash) + getCreationToken().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -564,22 +826,29 @@ public final class AssociationAuthContract {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getReviewersFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        releaseThreshold_ = 0;
-
-        if (reviewersBuilder_ == null) {
-          reviewers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        if (organizationMemberListBuilder_ == null) {
+          organizationMemberList_ = null;
         } else {
-          reviewersBuilder_.clear();
+          organizationMemberList_ = null;
+          organizationMemberListBuilder_ = null;
         }
-        proposerThreshold_ = 0;
-
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = null;
+        } else {
+          proposalReleaseThreshold_ = null;
+          proposalReleaseThresholdBuilder_ = null;
+        }
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteList_ = null;
+        } else {
+          proposerWhiteList_ = null;
+          proposerWhiteListBuilder_ = null;
+        }
         if (organizationAddressBuilder_ == null) {
           organizationAddress_ = null;
         } else {
@@ -591,6 +860,12 @@ public final class AssociationAuthContract {
         } else {
           organizationHash_ = null;
           organizationHashBuilder_ = null;
+        }
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = null;
+        } else {
+          creationToken_ = null;
+          creationTokenBuilder_ = null;
         }
         return this;
       }
@@ -618,18 +893,21 @@ public final class AssociationAuthContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.AssociationAuthContract.Organization buildPartial() {
         io.aelf.protobuf.generated.AssociationAuthContract.Organization result = new io.aelf.protobuf.generated.AssociationAuthContract.Organization(this);
-        int from_bitField0_ = bitField0_;
-        result.releaseThreshold_ = releaseThreshold_;
-        if (reviewersBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            reviewers_ = java.util.Collections.unmodifiableList(reviewers_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.reviewers_ = reviewers_;
+        if (organizationMemberListBuilder_ == null) {
+          result.organizationMemberList_ = organizationMemberList_;
         } else {
-          result.reviewers_ = reviewersBuilder_.build();
+          result.organizationMemberList_ = organizationMemberListBuilder_.build();
         }
-        result.proposerThreshold_ = proposerThreshold_;
+        if (proposalReleaseThresholdBuilder_ == null) {
+          result.proposalReleaseThreshold_ = proposalReleaseThreshold_;
+        } else {
+          result.proposalReleaseThreshold_ = proposalReleaseThresholdBuilder_.build();
+        }
+        if (proposerWhiteListBuilder_ == null) {
+          result.proposerWhiteList_ = proposerWhiteList_;
+        } else {
+          result.proposerWhiteList_ = proposerWhiteListBuilder_.build();
+        }
         if (organizationAddressBuilder_ == null) {
           result.organizationAddress_ = organizationAddress_;
         } else {
@@ -639,6 +917,11 @@ public final class AssociationAuthContract {
           result.organizationHash_ = organizationHash_;
         } else {
           result.organizationHash_ = organizationHashBuilder_.build();
+        }
+        if (creationTokenBuilder_ == null) {
+          result.creationToken_ = creationToken_;
+        } else {
+          result.creationToken_ = creationTokenBuilder_.build();
         }
         onBuilt();
         return result;
@@ -688,43 +971,23 @@ public final class AssociationAuthContract {
 
       public Builder mergeFrom(io.aelf.protobuf.generated.AssociationAuthContract.Organization other) {
         if (other == io.aelf.protobuf.generated.AssociationAuthContract.Organization.getDefaultInstance()) return this;
-        if (other.getReleaseThreshold() != 0) {
-          setReleaseThreshold(other.getReleaseThreshold());
+        if (other.hasOrganizationMemberList()) {
+          mergeOrganizationMemberList(other.getOrganizationMemberList());
         }
-        if (reviewersBuilder_ == null) {
-          if (!other.reviewers_.isEmpty()) {
-            if (reviewers_.isEmpty()) {
-              reviewers_ = other.reviewers_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureReviewersIsMutable();
-              reviewers_.addAll(other.reviewers_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.reviewers_.isEmpty()) {
-            if (reviewersBuilder_.isEmpty()) {
-              reviewersBuilder_.dispose();
-              reviewersBuilder_ = null;
-              reviewers_ = other.reviewers_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              reviewersBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getReviewersFieldBuilder() : null;
-            } else {
-              reviewersBuilder_.addAllMessages(other.reviewers_);
-            }
-          }
+        if (other.hasProposalReleaseThreshold()) {
+          mergeProposalReleaseThreshold(other.getProposalReleaseThreshold());
         }
-        if (other.getProposerThreshold() != 0) {
-          setProposerThreshold(other.getProposerThreshold());
+        if (other.hasProposerWhiteList()) {
+          mergeProposerWhiteList(other.getProposerWhiteList());
         }
         if (other.hasOrganizationAddress()) {
           mergeOrganizationAddress(other.getOrganizationAddress());
         }
         if (other.hasOrganizationHash()) {
           mergeOrganizationHash(other.getOrganizationHash());
+        }
+        if (other.hasCreationToken()) {
+          mergeCreationToken(other.getCreationToken());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -754,312 +1017,480 @@ public final class AssociationAuthContract {
         }
         return this;
       }
-      private int bitField0_;
 
-      private int releaseThreshold_ ;
+      private io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList organizationMemberList_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberListOrBuilder> organizationMemberListBuilder_;
       /**
-       * <code>int32 release_threshold = 1;</code>
-       * @return The releaseThreshold.
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
+       * @return Whether the organizationMemberList field is set.
        */
-      public int getReleaseThreshold() {
-        return releaseThreshold_;
+      public boolean hasOrganizationMemberList() {
+        return organizationMemberListBuilder_ != null || organizationMemberList_ != null;
       }
       /**
-       * <code>int32 release_threshold = 1;</code>
-       * @param value The releaseThreshold to set.
-       * @return This builder for chaining.
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
+       * @return The organizationMemberList.
        */
-      public Builder setReleaseThreshold(int value) {
+      public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList getOrganizationMemberList() {
+        if (organizationMemberListBuilder_ == null) {
+          return organizationMemberList_ == null ? io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.getDefaultInstance() : organizationMemberList_;
+        } else {
+          return organizationMemberListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
+       */
+      public Builder setOrganizationMemberList(io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList value) {
+        if (organizationMemberListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          organizationMemberList_ = value;
+          onChanged();
+        } else {
+          organizationMemberListBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
+       */
+      public Builder setOrganizationMemberList(
+          io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder builderForValue) {
+        if (organizationMemberListBuilder_ == null) {
+          organizationMemberList_ = builderForValue.build();
+          onChanged();
+        } else {
+          organizationMemberListBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
+       */
+      public Builder mergeOrganizationMemberList(io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList value) {
+        if (organizationMemberListBuilder_ == null) {
+          if (organizationMemberList_ != null) {
+            organizationMemberList_ =
+              io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.newBuilder(organizationMemberList_).mergeFrom(value).buildPartial();
+          } else {
+            organizationMemberList_ = value;
+          }
+          onChanged();
+        } else {
+          organizationMemberListBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
+       */
+      public Builder clearOrganizationMemberList() {
+        if (organizationMemberListBuilder_ == null) {
+          organizationMemberList_ = null;
+          onChanged();
+        } else {
+          organizationMemberList_ = null;
+          organizationMemberListBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
+       */
+      public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder getOrganizationMemberListBuilder() {
         
-        releaseThreshold_ = value;
         onChanged();
-        return this;
+        return getOrganizationMemberListFieldBuilder().getBuilder();
       }
       /**
-       * <code>int32 release_threshold = 1;</code>
-       * @return This builder for chaining.
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
        */
-      public Builder clearReleaseThreshold() {
-        
-        releaseThreshold_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer> reviewers_ =
-        java.util.Collections.emptyList();
-      private void ensureReviewersIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          reviewers_ = new java.util.ArrayList<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer>(reviewers_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          io.aelf.protobuf.generated.AssociationAuthContract.Reviewer, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder, io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder> reviewersBuilder_;
-
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public java.util.List<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer> getReviewersList() {
-        if (reviewersBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(reviewers_);
+      public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberListOrBuilder getOrganizationMemberListOrBuilder() {
+        if (organizationMemberListBuilder_ != null) {
+          return organizationMemberListBuilder_.getMessageOrBuilder();
         } else {
-          return reviewersBuilder_.getMessageList();
+          return organizationMemberList_ == null ?
+              io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.getDefaultInstance() : organizationMemberList_;
         }
       }
       /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
+       * <pre>
+       * The organization members.
+       * </pre>
+       *
+       * <code>.OrganizationMemberList organization_member_list = 1;</code>
        */
-      public int getReviewersCount() {
-        if (reviewersBuilder_ == null) {
-          return reviewers_.size();
-        } else {
-          return reviewersBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer getReviewers(int index) {
-        if (reviewersBuilder_ == null) {
-          return reviewers_.get(index);
-        } else {
-          return reviewersBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder setReviewers(
-          int index, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer value) {
-        if (reviewersBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureReviewersIsMutable();
-          reviewers_.set(index, value);
-          onChanged();
-        } else {
-          reviewersBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder setReviewers(
-          int index, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder builderForValue) {
-        if (reviewersBuilder_ == null) {
-          ensureReviewersIsMutable();
-          reviewers_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          reviewersBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder addReviewers(io.aelf.protobuf.generated.AssociationAuthContract.Reviewer value) {
-        if (reviewersBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureReviewersIsMutable();
-          reviewers_.add(value);
-          onChanged();
-        } else {
-          reviewersBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder addReviewers(
-          int index, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer value) {
-        if (reviewersBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureReviewersIsMutable();
-          reviewers_.add(index, value);
-          onChanged();
-        } else {
-          reviewersBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder addReviewers(
-          io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder builderForValue) {
-        if (reviewersBuilder_ == null) {
-          ensureReviewersIsMutable();
-          reviewers_.add(builderForValue.build());
-          onChanged();
-        } else {
-          reviewersBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder addReviewers(
-          int index, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder builderForValue) {
-        if (reviewersBuilder_ == null) {
-          ensureReviewersIsMutable();
-          reviewers_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          reviewersBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder addAllReviewers(
-          java.lang.Iterable<? extends io.aelf.protobuf.generated.AssociationAuthContract.Reviewer> values) {
-        if (reviewersBuilder_ == null) {
-          ensureReviewersIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, reviewers_);
-          onChanged();
-        } else {
-          reviewersBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder clearReviewers() {
-        if (reviewersBuilder_ == null) {
-          reviewers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          reviewersBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public Builder removeReviewers(int index) {
-        if (reviewersBuilder_ == null) {
-          ensureReviewersIsMutable();
-          reviewers_.remove(index);
-          onChanged();
-        } else {
-          reviewersBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder getReviewersBuilder(
-          int index) {
-        return getReviewersFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder getReviewersOrBuilder(
-          int index) {
-        if (reviewersBuilder_ == null) {
-          return reviewers_.get(index);  } else {
-          return reviewersBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public java.util.List<? extends io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder> 
-           getReviewersOrBuilderList() {
-        if (reviewersBuilder_ != null) {
-          return reviewersBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(reviewers_);
-        }
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder addReviewersBuilder() {
-        return getReviewersFieldBuilder().addBuilder(
-            io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder addReviewersBuilder(
-          int index) {
-        return getReviewersFieldBuilder().addBuilder(
-            index, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .Reviewer reviewers = 2;</code>
-       */
-      public java.util.List<io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder> 
-           getReviewersBuilderList() {
-        return getReviewersFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          io.aelf.protobuf.generated.AssociationAuthContract.Reviewer, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder, io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder> 
-          getReviewersFieldBuilder() {
-        if (reviewersBuilder_ == null) {
-          reviewersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              io.aelf.protobuf.generated.AssociationAuthContract.Reviewer, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder, io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder>(
-                  reviewers_,
-                  ((bitField0_ & 0x00000001) != 0),
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberListOrBuilder> 
+          getOrganizationMemberListFieldBuilder() {
+        if (organizationMemberListBuilder_ == null) {
+          organizationMemberListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberListOrBuilder>(
+                  getOrganizationMemberList(),
                   getParentForChildren(),
                   isClean());
-          reviewers_ = null;
+          organizationMemberList_ = null;
         }
-        return reviewersBuilder_;
+        return organizationMemberListBuilder_;
       }
 
-      private int proposerThreshold_ ;
+      private io.aelf.protobuf.generated.Client.ProposalReleaseThreshold proposalReleaseThreshold_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder> proposalReleaseThresholdBuilder_;
       /**
-       * <code>int32 proposer_threshold = 3;</code>
-       * @return The proposerThreshold.
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       * @return Whether the proposalReleaseThreshold field is set.
        */
-      public int getProposerThreshold() {
-        return proposerThreshold_;
+      public boolean hasProposalReleaseThreshold() {
+        return proposalReleaseThresholdBuilder_ != null || proposalReleaseThreshold_ != null;
       }
       /**
-       * <code>int32 proposer_threshold = 3;</code>
-       * @param value The proposerThreshold to set.
-       * @return This builder for chaining.
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       * @return The proposalReleaseThreshold.
        */
-      public Builder setProposerThreshold(int value) {
-        
-        proposerThreshold_ = value;
-        onChanged();
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+        } else {
+          return proposalReleaseThresholdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       */
+      public Builder setProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          proposalReleaseThreshold_ = value;
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>int32 proposer_threshold = 3;</code>
-       * @return This builder for chaining.
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
        */
-      public Builder clearProposerThreshold() {
-        
-        proposerThreshold_ = 0;
-        onChanged();
+      public Builder setProposalReleaseThreshold(
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder builderForValue) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = builderForValue.build();
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       */
+      public Builder mergeProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          if (proposalReleaseThreshold_ != null) {
+            proposalReleaseThreshold_ =
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.newBuilder(proposalReleaseThreshold_).mergeFrom(value).buildPartial();
+          } else {
+            proposalReleaseThreshold_ = value;
+          }
+          onChanged();
+        } else {
+          proposalReleaseThresholdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       */
+      public Builder clearProposalReleaseThreshold() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThreshold_ = null;
+          onChanged();
+        } else {
+          proposalReleaseThreshold_ = null;
+          proposalReleaseThresholdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder getProposalReleaseThresholdBuilder() {
+        
+        onChanged();
+        return getProposalReleaseThresholdFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
+        if (proposalReleaseThresholdBuilder_ != null) {
+          return proposalReleaseThresholdBuilder_.getMessageOrBuilder();
+        } else {
+          return proposalReleaseThreshold_ == null ?
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
+        }
+      }
+      /**
+       * <pre>
+       * The threshold for releasing the proposal.
+       * </pre>
+       *
+       * <code>.ProposalReleaseThreshold proposal_release_threshold = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder> 
+          getProposalReleaseThresholdFieldBuilder() {
+        if (proposalReleaseThresholdBuilder_ == null) {
+          proposalReleaseThresholdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold, io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder, io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder>(
+                  getProposalReleaseThreshold(),
+                  getParentForChildren(),
+                  isClean());
+          proposalReleaseThreshold_ = null;
+        }
+        return proposalReleaseThresholdBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.ProposerWhiteList proposerWhiteList_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposerWhiteList, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder, io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder> proposerWhiteListBuilder_;
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       * @return Whether the proposerWhiteList field is set.
+       */
+      public boolean hasProposerWhiteList() {
+        return proposerWhiteListBuilder_ != null || proposerWhiteList_ != null;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       * @return The proposerWhiteList.
+       */
+      public io.aelf.protobuf.generated.Client.ProposerWhiteList getProposerWhiteList() {
+        if (proposerWhiteListBuilder_ == null) {
+          return proposerWhiteList_ == null ? io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
+        } else {
+          return proposerWhiteListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       */
+      public Builder setProposerWhiteList(io.aelf.protobuf.generated.Client.ProposerWhiteList value) {
+        if (proposerWhiteListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          proposerWhiteList_ = value;
+          onChanged();
+        } else {
+          proposerWhiteListBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       */
+      public Builder setProposerWhiteList(
+          io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder builderForValue) {
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteList_ = builderForValue.build();
+          onChanged();
+        } else {
+          proposerWhiteListBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       */
+      public Builder mergeProposerWhiteList(io.aelf.protobuf.generated.Client.ProposerWhiteList value) {
+        if (proposerWhiteListBuilder_ == null) {
+          if (proposerWhiteList_ != null) {
+            proposerWhiteList_ =
+              io.aelf.protobuf.generated.Client.ProposerWhiteList.newBuilder(proposerWhiteList_).mergeFrom(value).buildPartial();
+          } else {
+            proposerWhiteList_ = value;
+          }
+          onChanged();
+        } else {
+          proposerWhiteListBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       */
+      public Builder clearProposerWhiteList() {
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteList_ = null;
+          onChanged();
+        } else {
+          proposerWhiteList_ = null;
+          proposerWhiteListBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder getProposerWhiteListBuilder() {
+        
+        onChanged();
+        return getProposerWhiteListFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       */
+      public io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder getProposerWhiteListOrBuilder() {
+        if (proposerWhiteListBuilder_ != null) {
+          return proposerWhiteListBuilder_.getMessageOrBuilder();
+        } else {
+          return proposerWhiteList_ == null ?
+              io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
+        }
+      }
+      /**
+       * <pre>
+       * The proposer whitelist.
+       * </pre>
+       *
+       * <code>.ProposerWhiteList proposer_white_list = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.ProposerWhiteList, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder, io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder> 
+          getProposerWhiteListFieldBuilder() {
+        if (proposerWhiteListBuilder_ == null) {
+          proposerWhiteListBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.ProposerWhiteList, io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder, io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder>(
+                  getProposerWhiteList(),
+                  getParentForChildren(),
+                  isClean());
+          proposerWhiteList_ = null;
+        }
+        return proposerWhiteListBuilder_;
       }
 
       private io.aelf.protobuf.generated.Client.Address organizationAddress_;
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> organizationAddressBuilder_;
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        * @return Whether the organizationAddress field is set.
        */
@@ -1067,6 +1498,10 @@ public final class AssociationAuthContract {
         return organizationAddressBuilder_ != null || organizationAddress_ != null;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        * @return The organizationAddress.
        */
@@ -1078,6 +1513,10 @@ public final class AssociationAuthContract {
         }
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        */
       public Builder setOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -1094,6 +1533,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        */
       public Builder setOrganizationAddress(
@@ -1108,6 +1551,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        */
       public Builder mergeOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
@@ -1126,6 +1573,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        */
       public Builder clearOrganizationAddress() {
@@ -1140,6 +1591,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getOrganizationAddressBuilder() {
@@ -1148,6 +1603,10 @@ public final class AssociationAuthContract {
         return getOrganizationAddressFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
@@ -1159,6 +1618,10 @@ public final class AssociationAuthContract {
         }
       }
       /**
+       * <pre>
+       * The address of organization.
+       * </pre>
+       *
        * <code>.Address organization_address = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1179,6 +1642,10 @@ public final class AssociationAuthContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> organizationHashBuilder_;
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        * @return Whether the organizationHash field is set.
        */
@@ -1186,6 +1653,10 @@ public final class AssociationAuthContract {
         return organizationHashBuilder_ != null || organizationHash_ != null;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        * @return The organizationHash.
        */
@@ -1197,6 +1668,10 @@ public final class AssociationAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        */
       public Builder setOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -1213,6 +1688,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        */
       public Builder setOrganizationHash(
@@ -1227,6 +1706,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        */
       public Builder mergeOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
@@ -1245,6 +1728,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        */
       public Builder clearOrganizationHash() {
@@ -1259,6 +1746,10 @@ public final class AssociationAuthContract {
         return this;
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getOrganizationHashBuilder() {
@@ -1267,6 +1758,10 @@ public final class AssociationAuthContract {
         return getOrganizationHashFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
@@ -1278,6 +1773,10 @@ public final class AssociationAuthContract {
         }
       }
       /**
+       * <pre>
+       * The organizations id.
+       * </pre>
+       *
        * <code>.Hash organization_hash = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1292,6 +1791,161 @@ public final class AssociationAuthContract {
           organizationHash_ = null;
         }
         return organizationHashBuilder_;
+      }
+
+      private io.aelf.protobuf.generated.Client.Hash creationToken_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> creationTokenBuilder_;
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       * @return Whether the creationToken field is set.
+       */
+      public boolean hasCreationToken() {
+        return creationTokenBuilder_ != null || creationToken_ != null;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       * @return The creationToken.
+       */
+      public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
+        if (creationTokenBuilder_ == null) {
+          return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+        } else {
+          return creationTokenBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder setCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
+        if (creationTokenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          creationToken_ = value;
+          onChanged();
+        } else {
+          creationTokenBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder setCreationToken(
+          io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = builderForValue.build();
+          onChanged();
+        } else {
+          creationTokenBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder mergeCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
+        if (creationTokenBuilder_ == null) {
+          if (creationToken_ != null) {
+            creationToken_ =
+              io.aelf.protobuf.generated.Client.Hash.newBuilder(creationToken_).mergeFrom(value).buildPartial();
+          } else {
+            creationToken_ = value;
+          }
+          onChanged();
+        } else {
+          creationTokenBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public Builder clearCreationToken() {
+        if (creationTokenBuilder_ == null) {
+          creationToken_ = null;
+          onChanged();
+        } else {
+          creationToken_ = null;
+          creationTokenBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Hash.Builder getCreationTokenBuilder() {
+        
+        onChanged();
+        return getCreationTokenFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
+        if (creationTokenBuilder_ != null) {
+          return creationTokenBuilder_.getMessageOrBuilder();
+        } else {
+          return creationToken_ == null ?
+              io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
+        }
+      }
+      /**
+       * <pre>
+       * The creation token is for organization address generation.
+       * </pre>
+       *
+       * <code>.Hash creation_token = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> 
+          getCreationTokenFieldBuilder() {
+        if (creationTokenBuilder_ == null) {
+          creationTokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder>(
+                  getCreationToken(),
+                  getParentForChildren(),
+                  isClean());
+          creationToken_ = null;
+        }
+        return creationTokenBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1346,51 +2000,75 @@ public final class AssociationAuthContract {
 
   }
 
-  public interface ReviewerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Reviewer)
+  public interface OrganizationMemberListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:OrganizationMemberList)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.Address address = 1;</code>
-     * @return Whether the address field is set.
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    boolean hasAddress();
+    java.util.List<io.aelf.protobuf.generated.Client.Address> 
+        getOrganizationMembersList();
     /**
-     * <code>.Address address = 1;</code>
-     * @return The address.
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    io.aelf.protobuf.generated.Client.Address getAddress();
+    io.aelf.protobuf.generated.Client.Address getOrganizationMembers(int index);
     /**
-     * <code>.Address address = 1;</code>
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    io.aelf.protobuf.generated.Client.AddressOrBuilder getAddressOrBuilder();
-
+    int getOrganizationMembersCount();
     /**
-     * <code>int32 weight = 2;</code>
-     * @return The weight.
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    int getWeight();
+    java.util.List<? extends io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+        getOrganizationMembersOrBuilderList();
+    /**
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
+     */
+    io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationMembersOrBuilder(
+        int index);
   }
   /**
-   * Protobuf type {@code Reviewer}
+   * Protobuf type {@code OrganizationMemberList}
    */
-  public  static final class Reviewer extends
+  public  static final class OrganizationMemberList extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Reviewer)
-      ReviewerOrBuilder {
+      // @@protoc_insertion_point(message_implements:OrganizationMemberList)
+      OrganizationMemberListOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Reviewer.newBuilder() to construct.
-    private Reviewer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use OrganizationMemberList.newBuilder() to construct.
+    private OrganizationMemberList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Reviewer() {
+    private OrganizationMemberList() {
+      organizationMembers_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Reviewer();
+      return new OrganizationMemberList();
     }
 
     @java.lang.Override
@@ -1398,7 +2076,7 @@ public final class AssociationAuthContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Reviewer(
+    private OrganizationMemberList(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1406,6 +2084,7 @@ public final class AssociationAuthContract {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1417,21 +2096,12 @@ public final class AssociationAuthContract {
               done = true;
               break;
             case 10: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (address_ != null) {
-                subBuilder = address_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                organizationMembers_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Address>();
+                mutable_bitField0_ |= 0x00000001;
               }
-              address_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(address_);
-                address_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-
-              weight_ = input.readInt32();
+              organizationMembers_.add(
+                  input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -1449,54 +2119,79 @@ public final class AssociationAuthContract {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          organizationMembers_ = java.util.Collections.unmodifiableList(organizationMembers_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_Reviewer_descriptor;
+      return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_OrganizationMemberList_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_Reviewer_fieldAccessorTable
+      return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_OrganizationMemberList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.class, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder.class);
+              io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.class, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder.class);
     }
 
-    public static final int ADDRESS_FIELD_NUMBER = 1;
-    private io.aelf.protobuf.generated.Client.Address address_;
+    public static final int ORGANIZATION_MEMBERS_FIELD_NUMBER = 1;
+    private java.util.List<io.aelf.protobuf.generated.Client.Address> organizationMembers_;
     /**
-     * <code>.Address address = 1;</code>
-     * @return Whether the address field is set.
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    public boolean hasAddress() {
-      return address_ != null;
+    public java.util.List<io.aelf.protobuf.generated.Client.Address> getOrganizationMembersList() {
+      return organizationMembers_;
     }
     /**
-     * <code>.Address address = 1;</code>
-     * @return The address.
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    public io.aelf.protobuf.generated.Client.Address getAddress() {
-      return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
+    public java.util.List<? extends io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+        getOrganizationMembersOrBuilderList() {
+      return organizationMembers_;
     }
     /**
-     * <code>.Address address = 1;</code>
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    public io.aelf.protobuf.generated.Client.AddressOrBuilder getAddressOrBuilder() {
-      return getAddress();
+    public int getOrganizationMembersCount() {
+      return organizationMembers_.size();
     }
-
-    public static final int WEIGHT_FIELD_NUMBER = 2;
-    private int weight_;
     /**
-     * <code>int32 weight = 2;</code>
-     * @return The weight.
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
      */
-    public int getWeight() {
-      return weight_;
+    public io.aelf.protobuf.generated.Client.Address getOrganizationMembers(int index) {
+      return organizationMembers_.get(index);
+    }
+    /**
+     * <pre>
+     * The address of organization members.
+     * </pre>
+     *
+     * <code>repeated .Address organization_members = 1;</code>
+     */
+    public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationMembersOrBuilder(
+        int index) {
+      return organizationMembers_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1513,11 +2208,8 @@ public final class AssociationAuthContract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (address_ != null) {
-        output.writeMessage(1, getAddress());
-      }
-      if (weight_ != 0) {
-        output.writeInt32(2, weight_);
+      for (int i = 0; i < organizationMembers_.size(); i++) {
+        output.writeMessage(1, organizationMembers_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -1528,13 +2220,9 @@ public final class AssociationAuthContract {
       if (size != -1) return size;
 
       size = 0;
-      if (address_ != null) {
+      for (int i = 0; i < organizationMembers_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getAddress());
-      }
-      if (weight_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, weight_);
+          .computeMessageSize(1, organizationMembers_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1546,18 +2234,13 @@ public final class AssociationAuthContract {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof io.aelf.protobuf.generated.AssociationAuthContract.Reviewer)) {
+      if (!(obj instanceof io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList)) {
         return super.equals(obj);
       }
-      io.aelf.protobuf.generated.AssociationAuthContract.Reviewer other = (io.aelf.protobuf.generated.AssociationAuthContract.Reviewer) obj;
+      io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList other = (io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList) obj;
 
-      if (hasAddress() != other.hasAddress()) return false;
-      if (hasAddress()) {
-        if (!getAddress()
-            .equals(other.getAddress())) return false;
-      }
-      if (getWeight()
-          != other.getWeight()) return false;
+      if (!getOrganizationMembersList()
+          .equals(other.getOrganizationMembersList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1569,80 +2252,78 @@ public final class AssociationAuthContract {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasAddress()) {
-        hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + getAddress().hashCode();
+      if (getOrganizationMembersCount() > 0) {
+        hash = (37 * hash) + ORGANIZATION_MEMBERS_FIELD_NUMBER;
+        hash = (53 * hash) + getOrganizationMembersList().hashCode();
       }
-      hash = (37 * hash) + WEIGHT_FIELD_NUMBER;
-      hash = (53 * hash) + getWeight();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(byte[] data)
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(java.io.InputStream input)
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseDelimitedFrom(java.io.InputStream input)
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseDelimitedFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parseFrom(
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1655,7 +2336,7 @@ public final class AssociationAuthContract {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(io.aelf.protobuf.generated.AssociationAuthContract.Reviewer prototype) {
+    public static Builder newBuilder(io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1671,26 +2352,26 @@ public final class AssociationAuthContract {
       return builder;
     }
     /**
-     * Protobuf type {@code Reviewer}
+     * Protobuf type {@code OrganizationMemberList}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Reviewer)
-        io.aelf.protobuf.generated.AssociationAuthContract.ReviewerOrBuilder {
+        // @@protoc_insertion_point(builder_implements:OrganizationMemberList)
+        io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberListOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_Reviewer_descriptor;
+        return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_OrganizationMemberList_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_Reviewer_fieldAccessorTable
+        return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_OrganizationMemberList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.class, io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.Builder.class);
+                io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.class, io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.Builder.class);
       }
 
-      // Construct using io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.newBuilder()
+      // Construct using io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1703,36 +2384,35 @@ public final class AssociationAuthContract {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getOrganizationMembersFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (addressBuilder_ == null) {
-          address_ = null;
+        if (organizationMembersBuilder_ == null) {
+          organizationMembers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          address_ = null;
-          addressBuilder_ = null;
+          organizationMembersBuilder_.clear();
         }
-        weight_ = 0;
-
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_Reviewer_descriptor;
+        return io.aelf.protobuf.generated.AssociationAuthContract.internal_static_OrganizationMemberList_descriptor;
       }
 
       @java.lang.Override
-      public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer getDefaultInstanceForType() {
-        return io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.getDefaultInstance();
+      public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList getDefaultInstanceForType() {
+        return io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.getDefaultInstance();
       }
 
       @java.lang.Override
-      public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer build() {
-        io.aelf.protobuf.generated.AssociationAuthContract.Reviewer result = buildPartial();
+      public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList build() {
+        io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1740,14 +2420,18 @@ public final class AssociationAuthContract {
       }
 
       @java.lang.Override
-      public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer buildPartial() {
-        io.aelf.protobuf.generated.AssociationAuthContract.Reviewer result = new io.aelf.protobuf.generated.AssociationAuthContract.Reviewer(this);
-        if (addressBuilder_ == null) {
-          result.address_ = address_;
+      public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList buildPartial() {
+        io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList result = new io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList(this);
+        int from_bitField0_ = bitField0_;
+        if (organizationMembersBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            organizationMembers_ = java.util.Collections.unmodifiableList(organizationMembers_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.organizationMembers_ = organizationMembers_;
         } else {
-          result.address_ = addressBuilder_.build();
+          result.organizationMembers_ = organizationMembersBuilder_.build();
         }
-        result.weight_ = weight_;
         onBuilt();
         return result;
       }
@@ -1786,21 +2470,41 @@ public final class AssociationAuthContract {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.aelf.protobuf.generated.AssociationAuthContract.Reviewer) {
-          return mergeFrom((io.aelf.protobuf.generated.AssociationAuthContract.Reviewer)other);
+        if (other instanceof io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList) {
+          return mergeFrom((io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(io.aelf.protobuf.generated.AssociationAuthContract.Reviewer other) {
-        if (other == io.aelf.protobuf.generated.AssociationAuthContract.Reviewer.getDefaultInstance()) return this;
-        if (other.hasAddress()) {
-          mergeAddress(other.getAddress());
-        }
-        if (other.getWeight() != 0) {
-          setWeight(other.getWeight());
+      public Builder mergeFrom(io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList other) {
+        if (other == io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList.getDefaultInstance()) return this;
+        if (organizationMembersBuilder_ == null) {
+          if (!other.organizationMembers_.isEmpty()) {
+            if (organizationMembers_.isEmpty()) {
+              organizationMembers_ = other.organizationMembers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureOrganizationMembersIsMutable();
+              organizationMembers_.addAll(other.organizationMembers_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.organizationMembers_.isEmpty()) {
+            if (organizationMembersBuilder_.isEmpty()) {
+              organizationMembersBuilder_.dispose();
+              organizationMembersBuilder_ = null;
+              organizationMembers_ = other.organizationMembers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              organizationMembersBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getOrganizationMembersFieldBuilder() : null;
+            } else {
+              organizationMembersBuilder_.addAllMessages(other.organizationMembers_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1817,11 +2521,11 @@ public final class AssociationAuthContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.AssociationAuthContract.Reviewer parsedMessage = null;
+        io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.AssociationAuthContract.Reviewer) e.getUnfinishedMessage();
+          parsedMessage = (io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1830,154 +2534,318 @@ public final class AssociationAuthContract {
         }
         return this;
       }
+      private int bitField0_;
 
-      private io.aelf.protobuf.generated.Client.Address address_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> addressBuilder_;
-      /**
-       * <code>.Address address = 1;</code>
-       * @return Whether the address field is set.
-       */
-      public boolean hasAddress() {
-        return addressBuilder_ != null || address_ != null;
+      private java.util.List<io.aelf.protobuf.generated.Client.Address> organizationMembers_ =
+        java.util.Collections.emptyList();
+      private void ensureOrganizationMembersIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          organizationMembers_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Address>(organizationMembers_);
+          bitField0_ |= 0x00000001;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> organizationMembersBuilder_;
+
       /**
-       * <code>.Address address = 1;</code>
-       * @return The address.
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.Address getAddress() {
-        if (addressBuilder_ == null) {
-          return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
+      public java.util.List<io.aelf.protobuf.generated.Client.Address> getOrganizationMembersList() {
+        if (organizationMembersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(organizationMembers_);
         } else {
-          return addressBuilder_.getMessage();
+          return organizationMembersBuilder_.getMessageList();
         }
       }
       /**
-       * <code>.Address address = 1;</code>
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      public Builder setAddress(io.aelf.protobuf.generated.Client.Address value) {
-        if (addressBuilder_ == null) {
+      public int getOrganizationMembersCount() {
+        if (organizationMembersBuilder_ == null) {
+          return organizationMembers_.size();
+        } else {
+          return organizationMembersBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address getOrganizationMembers(int index) {
+        if (organizationMembersBuilder_ == null) {
+          return organizationMembers_.get(index);
+        } else {
+          return organizationMembersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public Builder setOrganizationMembers(
+          int index, io.aelf.protobuf.generated.Client.Address value) {
+        if (organizationMembersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          address_ = value;
+          ensureOrganizationMembersIsMutable();
+          organizationMembers_.set(index, value);
           onChanged();
         } else {
-          addressBuilder_.setMessage(value);
+          organizationMembersBuilder_.setMessage(index, value);
         }
-
         return this;
       }
       /**
-       * <code>.Address address = 1;</code>
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      public Builder setAddress(
-          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
-        if (addressBuilder_ == null) {
-          address_ = builderForValue.build();
+      public Builder setOrganizationMembers(
+          int index, io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (organizationMembersBuilder_ == null) {
+          ensureOrganizationMembersIsMutable();
+          organizationMembers_.set(index, builderForValue.build());
           onChanged();
         } else {
-          addressBuilder_.setMessage(builderForValue.build());
+          organizationMembersBuilder_.setMessage(index, builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>.Address address = 1;</code>
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      public Builder mergeAddress(io.aelf.protobuf.generated.Client.Address value) {
-        if (addressBuilder_ == null) {
-          if (address_ != null) {
-            address_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(address_).mergeFrom(value).buildPartial();
-          } else {
-            address_ = value;
+      public Builder addOrganizationMembers(io.aelf.protobuf.generated.Client.Address value) {
+        if (organizationMembersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
+          ensureOrganizationMembersIsMutable();
+          organizationMembers_.add(value);
           onChanged();
         } else {
-          addressBuilder_.mergeFrom(value);
+          organizationMembersBuilder_.addMessage(value);
         }
-
         return this;
       }
       /**
-       * <code>.Address address = 1;</code>
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      public Builder clearAddress() {
-        if (addressBuilder_ == null) {
-          address_ = null;
+      public Builder addOrganizationMembers(
+          int index, io.aelf.protobuf.generated.Client.Address value) {
+        if (organizationMembersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrganizationMembersIsMutable();
+          organizationMembers_.add(index, value);
           onChanged();
         } else {
-          address_ = null;
-          addressBuilder_ = null;
+          organizationMembersBuilder_.addMessage(index, value);
         }
-
         return this;
       }
       /**
-       * <code>.Address address = 1;</code>
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.Address.Builder getAddressBuilder() {
-        
-        onChanged();
-        return getAddressFieldBuilder().getBuilder();
+      public Builder addOrganizationMembers(
+          io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (organizationMembersBuilder_ == null) {
+          ensureOrganizationMembersIsMutable();
+          organizationMembers_.add(builderForValue.build());
+          onChanged();
+        } else {
+          organizationMembersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
       }
       /**
-       * <code>.Address address = 1;</code>
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      public io.aelf.protobuf.generated.Client.AddressOrBuilder getAddressOrBuilder() {
-        if (addressBuilder_ != null) {
-          return addressBuilder_.getMessageOrBuilder();
+      public Builder addOrganizationMembers(
+          int index, io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
+        if (organizationMembersBuilder_ == null) {
+          ensureOrganizationMembersIsMutable();
+          organizationMembers_.add(index, builderForValue.build());
+          onChanged();
         } else {
-          return address_ == null ?
-              io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
+          organizationMembersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public Builder addAllOrganizationMembers(
+          java.lang.Iterable<? extends io.aelf.protobuf.generated.Client.Address> values) {
+        if (organizationMembersBuilder_ == null) {
+          ensureOrganizationMembersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, organizationMembers_);
+          onChanged();
+        } else {
+          organizationMembersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public Builder clearOrganizationMembers() {
+        if (organizationMembersBuilder_ == null) {
+          organizationMembers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          organizationMembersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public Builder removeOrganizationMembers(int index) {
+        if (organizationMembersBuilder_ == null) {
+          ensureOrganizationMembersIsMutable();
+          organizationMembers_.remove(index);
+          onChanged();
+        } else {
+          organizationMembersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder getOrganizationMembersBuilder(
+          int index) {
+        return getOrganizationMembersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationMembersOrBuilder(
+          int index) {
+        if (organizationMembersBuilder_ == null) {
+          return organizationMembers_.get(index);  } else {
+          return organizationMembersBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>.Address address = 1;</code>
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      public java.util.List<? extends io.aelf.protobuf.generated.Client.AddressOrBuilder> 
+           getOrganizationMembersOrBuilderList() {
+        if (organizationMembersBuilder_ != null) {
+          return organizationMembersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(organizationMembers_);
+        }
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder addOrganizationMembersBuilder() {
+        return getOrganizationMembersFieldBuilder().addBuilder(
+            io.aelf.protobuf.generated.Client.Address.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public io.aelf.protobuf.generated.Client.Address.Builder addOrganizationMembersBuilder(
+          int index) {
+        return getOrganizationMembersFieldBuilder().addBuilder(
+            index, io.aelf.protobuf.generated.Client.Address.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * The address of organization members.
+       * </pre>
+       *
+       * <code>repeated .Address organization_members = 1;</code>
+       */
+      public java.util.List<io.aelf.protobuf.generated.Client.Address.Builder> 
+           getOrganizationMembersBuilderList() {
+        return getOrganizationMembersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> 
-          getAddressFieldBuilder() {
-        if (addressBuilder_ == null) {
-          addressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getOrganizationMembersFieldBuilder() {
+        if (organizationMembersBuilder_ == null) {
+          organizationMembersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder>(
-                  getAddress(),
+                  organizationMembers_,
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
-          address_ = null;
+          organizationMembers_ = null;
         }
-        return addressBuilder_;
-      }
-
-      private int weight_ ;
-      /**
-       * <code>int32 weight = 2;</code>
-       * @return The weight.
-       */
-      public int getWeight() {
-        return weight_;
-      }
-      /**
-       * <code>int32 weight = 2;</code>
-       * @param value The weight to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWeight(int value) {
-        
-        weight_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 weight = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWeight() {
-        
-        weight_ = 0;
-        onChanged();
-        return this;
+        return organizationMembersBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1992,41 +2860,41 @@ public final class AssociationAuthContract {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Reviewer)
+      // @@protoc_insertion_point(builder_scope:OrganizationMemberList)
     }
 
-    // @@protoc_insertion_point(class_scope:Reviewer)
-    private static final io.aelf.protobuf.generated.AssociationAuthContract.Reviewer DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:OrganizationMemberList)
+    private static final io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.AssociationAuthContract.Reviewer();
+      DEFAULT_INSTANCE = new io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList();
     }
 
-    public static io.aelf.protobuf.generated.AssociationAuthContract.Reviewer getDefaultInstance() {
+    public static io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Reviewer>
-        PARSER = new com.google.protobuf.AbstractParser<Reviewer>() {
+    private static final com.google.protobuf.Parser<OrganizationMemberList>
+        PARSER = new com.google.protobuf.AbstractParser<OrganizationMemberList>() {
       @java.lang.Override
-      public Reviewer parsePartialFrom(
+      public OrganizationMemberList parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Reviewer(input, extensionRegistry);
+        return new OrganizationMemberList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Reviewer> parser() {
+    public static com.google.protobuf.Parser<OrganizationMemberList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Reviewer> getParserForType() {
+    public com.google.protobuf.Parser<OrganizationMemberList> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public io.aelf.protobuf.generated.AssociationAuthContract.Reviewer getDefaultInstanceForType() {
+    public io.aelf.protobuf.generated.AssociationAuthContract.OrganizationMemberList getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2038,10 +2906,10 @@ public final class AssociationAuthContract {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Organization_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Reviewer_descriptor;
+    internal_static_OrganizationMemberList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Reviewer_fieldAccessorTable;
+      internal_static_OrganizationMemberList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2052,13 +2920,17 @@ public final class AssociationAuthContract {
   static {
     java.lang.String[] descriptorData = {
       "\n\037association_auth_contract.proto\032\014clien" +
-      "t.proto\"\255\001\n\014Organization\022\031\n\021release_thre" +
-      "shold\030\001 \001(\005\022\034\n\treviewers\030\002 \003(\0132\t.Reviewe" +
-      "r\022\032\n\022proposer_threshold\030\003 \001(\005\022&\n\024organiz" +
-      "ation_address\030\004 \001(\0132\010.Address\022 \n\021organiz" +
-      "ation_hash\030\005 \001(\0132\005.Hash\"5\n\010Reviewer\022\031\n\007a" +
-      "ddress\030\001 \001(\0132\010.Address\022\016\n\006weight\030\002 \001(\005B\034" +
-      "\n\032io.aelf.protobuf.generatedb\006proto3"
+      "t.proto\"\242\002\n\014Organization\0229\n\030organization" +
+      "_member_list\030\001 \001(\0132\027.OrganizationMemberL" +
+      "ist\022=\n\032proposal_release_threshold\030\002 \001(\0132" +
+      "\031.ProposalReleaseThreshold\022/\n\023proposer_w" +
+      "hite_list\030\003 \001(\0132\022.ProposerWhiteList\022&\n\024o" +
+      "rganization_address\030\004 \001(\0132\010.Address\022 \n\021o" +
+      "rganization_hash\030\005 \001(\0132\005.Hash\022\035\n\016creatio" +
+      "n_token\030\006 \001(\0132\005.Hash\"@\n\026OrganizationMemb" +
+      "erList\022&\n\024organization_members\030\001 \003(\0132\010.A" +
+      "ddressB\034\n\032io.aelf.protobuf.generatedb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2070,13 +2942,13 @@ public final class AssociationAuthContract {
     internal_static_Organization_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Organization_descriptor,
-        new java.lang.String[] { "ReleaseThreshold", "Reviewers", "ProposerThreshold", "OrganizationAddress", "OrganizationHash", });
-    internal_static_Reviewer_descriptor =
+        new java.lang.String[] { "OrganizationMemberList", "ProposalReleaseThreshold", "ProposerWhiteList", "OrganizationAddress", "OrganizationHash", "CreationToken", });
+    internal_static_OrganizationMemberList_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_Reviewer_fieldAccessorTable = new
+    internal_static_OrganizationMemberList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Reviewer_descriptor,
-        new java.lang.String[] { "Address", "Weight", });
+        internal_static_OrganizationMemberList_descriptor,
+        new java.lang.String[] { "OrganizationMembers", });
     io.aelf.protobuf.generated.Client.getDescriptor();
   }
 

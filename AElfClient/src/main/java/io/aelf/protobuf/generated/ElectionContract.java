@@ -19,11 +19,19 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Candidate’s public key.
+     * </pre>
+     *
      * <code>string pubkey = 1;</code>
      * @return The pubkey.
      */
     java.lang.String getPubkey();
     /**
+     * <pre>
+     * Candidate’s public key.
+     * </pre>
+     *
      * <code>string pubkey = 1;</code>
      * @return The bytes for pubkey.
      */
@@ -31,56 +39,96 @@ public final class ElectionContract {
         getPubkeyBytes();
 
     /**
-     * <code>repeated sint64 terms = 2;</code>
+     * <pre>
+     * The number of terms that the candidate is elected.
+     * </pre>
+     *
+     * <code>repeated int64 terms = 2;</code>
      * @return A list containing the terms.
      */
     java.util.List<java.lang.Long> getTermsList();
     /**
-     * <code>repeated sint64 terms = 2;</code>
+     * <pre>
+     * The number of terms that the candidate is elected.
+     * </pre>
+     *
+     * <code>repeated int64 terms = 2;</code>
      * @return The count of terms.
      */
     int getTermsCount();
     /**
-     * <code>repeated sint64 terms = 2;</code>
+     * <pre>
+     * The number of terms that the candidate is elected.
+     * </pre>
+     *
+     * <code>repeated int64 terms = 2;</code>
      * @param index The index of the element to return.
      * @return The terms at the given index.
      */
     long getTerms(int index);
 
     /**
-     * <code>sint64 produced_blocks = 3;</code>
+     * <pre>
+     * The number of blocks the candidate has produced.
+     * </pre>
+     *
+     * <code>int64 produced_blocks = 3;</code>
      * @return The producedBlocks.
      */
     long getProducedBlocks();
 
     /**
-     * <code>sint64 missed_time_slots = 4;</code>
+     * <pre>
+     * The time slot for which the candidate failed to produce blocks.
+     * </pre>
+     *
+     * <code>int64 missed_time_slots = 4;</code>
      * @return The missedTimeSlots.
      */
     long getMissedTimeSlots();
 
     /**
-     * <code>sint64 continual_appointment_count = 5;</code>
+     * <pre>
+     * The count of continual appointment.
+     * </pre>
+     *
+     * <code>int64 continual_appointment_count = 5;</code>
      * @return The continualAppointmentCount.
      */
     long getContinualAppointmentCount();
 
     /**
+     * <pre>
+     * The transaction id when the candidate announced.
+     * </pre>
+     *
      * <code>.Hash announcement_transaction_id = 6;</code>
      * @return Whether the announcementTransactionId field is set.
      */
     boolean hasAnnouncementTransactionId();
     /**
+     * <pre>
+     * The transaction id when the candidate announced.
+     * </pre>
+     *
      * <code>.Hash announcement_transaction_id = 6;</code>
      * @return The announcementTransactionId.
      */
     io.aelf.protobuf.generated.Client.Hash getAnnouncementTransactionId();
     /**
+     * <pre>
+     * The transaction id when the candidate announced.
+     * </pre>
+     *
      * <code>.Hash announcement_transaction_id = 6;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getAnnouncementTransactionIdOrBuilder();
 
     /**
+     * <pre>
+     * Indicate whether the candidate can be elected in the current term.
+     * </pre>
+     *
      * <code>bool is_current_candidate = 7;</code>
      * @return The isCurrentCandidate.
      */
@@ -149,7 +197,7 @@ public final class ElectionContract {
                 terms_ = newLongList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              terms_.addLong(input.readSInt64());
+              terms_.addLong(input.readInt64());
               break;
             }
             case 18: {
@@ -160,24 +208,24 @@ public final class ElectionContract {
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                terms_.addLong(input.readSInt64());
+                terms_.addLong(input.readInt64());
               }
               input.popLimit(limit);
               break;
             }
             case 24: {
 
-              producedBlocks_ = input.readSInt64();
+              producedBlocks_ = input.readInt64();
               break;
             }
             case 32: {
 
-              missedTimeSlots_ = input.readSInt64();
+              missedTimeSlots_ = input.readInt64();
               break;
             }
             case 40: {
 
-              continualAppointmentCount_ = input.readSInt64();
+              continualAppointmentCount_ = input.readInt64();
               break;
             }
             case 50: {
@@ -236,6 +284,10 @@ public final class ElectionContract {
     public static final int PUBKEY_FIELD_NUMBER = 1;
     private volatile java.lang.Object pubkey_;
     /**
+     * <pre>
+     * Candidate’s public key.
+     * </pre>
+     *
      * <code>string pubkey = 1;</code>
      * @return The pubkey.
      */
@@ -252,6 +304,10 @@ public final class ElectionContract {
       }
     }
     /**
+     * <pre>
+     * Candidate’s public key.
+     * </pre>
+     *
      * <code>string pubkey = 1;</code>
      * @return The bytes for pubkey.
      */
@@ -272,7 +328,11 @@ public final class ElectionContract {
     public static final int TERMS_FIELD_NUMBER = 2;
     private com.google.protobuf.Internal.LongList terms_;
     /**
-     * <code>repeated sint64 terms = 2;</code>
+     * <pre>
+     * The number of terms that the candidate is elected.
+     * </pre>
+     *
+     * <code>repeated int64 terms = 2;</code>
      * @return A list containing the terms.
      */
     public java.util.List<java.lang.Long>
@@ -280,14 +340,22 @@ public final class ElectionContract {
       return terms_;
     }
     /**
-     * <code>repeated sint64 terms = 2;</code>
+     * <pre>
+     * The number of terms that the candidate is elected.
+     * </pre>
+     *
+     * <code>repeated int64 terms = 2;</code>
      * @return The count of terms.
      */
     public int getTermsCount() {
       return terms_.size();
     }
     /**
-     * <code>repeated sint64 terms = 2;</code>
+     * <pre>
+     * The number of terms that the candidate is elected.
+     * </pre>
+     *
+     * <code>repeated int64 terms = 2;</code>
      * @param index The index of the element to return.
      * @return The terms at the given index.
      */
@@ -299,7 +367,11 @@ public final class ElectionContract {
     public static final int PRODUCED_BLOCKS_FIELD_NUMBER = 3;
     private long producedBlocks_;
     /**
-     * <code>sint64 produced_blocks = 3;</code>
+     * <pre>
+     * The number of blocks the candidate has produced.
+     * </pre>
+     *
+     * <code>int64 produced_blocks = 3;</code>
      * @return The producedBlocks.
      */
     public long getProducedBlocks() {
@@ -309,7 +381,11 @@ public final class ElectionContract {
     public static final int MISSED_TIME_SLOTS_FIELD_NUMBER = 4;
     private long missedTimeSlots_;
     /**
-     * <code>sint64 missed_time_slots = 4;</code>
+     * <pre>
+     * The time slot for which the candidate failed to produce blocks.
+     * </pre>
+     *
+     * <code>int64 missed_time_slots = 4;</code>
      * @return The missedTimeSlots.
      */
     public long getMissedTimeSlots() {
@@ -319,7 +395,11 @@ public final class ElectionContract {
     public static final int CONTINUAL_APPOINTMENT_COUNT_FIELD_NUMBER = 5;
     private long continualAppointmentCount_;
     /**
-     * <code>sint64 continual_appointment_count = 5;</code>
+     * <pre>
+     * The count of continual appointment.
+     * </pre>
+     *
+     * <code>int64 continual_appointment_count = 5;</code>
      * @return The continualAppointmentCount.
      */
     public long getContinualAppointmentCount() {
@@ -329,6 +409,10 @@ public final class ElectionContract {
     public static final int ANNOUNCEMENT_TRANSACTION_ID_FIELD_NUMBER = 6;
     private io.aelf.protobuf.generated.Client.Hash announcementTransactionId_;
     /**
+     * <pre>
+     * The transaction id when the candidate announced.
+     * </pre>
+     *
      * <code>.Hash announcement_transaction_id = 6;</code>
      * @return Whether the announcementTransactionId field is set.
      */
@@ -336,6 +420,10 @@ public final class ElectionContract {
       return announcementTransactionId_ != null;
     }
     /**
+     * <pre>
+     * The transaction id when the candidate announced.
+     * </pre>
+     *
      * <code>.Hash announcement_transaction_id = 6;</code>
      * @return The announcementTransactionId.
      */
@@ -343,6 +431,10 @@ public final class ElectionContract {
       return announcementTransactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : announcementTransactionId_;
     }
     /**
+     * <pre>
+     * The transaction id when the candidate announced.
+     * </pre>
+     *
      * <code>.Hash announcement_transaction_id = 6;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getAnnouncementTransactionIdOrBuilder() {
@@ -352,6 +444,10 @@ public final class ElectionContract {
     public static final int IS_CURRENT_CANDIDATE_FIELD_NUMBER = 7;
     private boolean isCurrentCandidate_;
     /**
+     * <pre>
+     * Indicate whether the candidate can be elected in the current term.
+     * </pre>
+     *
      * <code>bool is_current_candidate = 7;</code>
      * @return The isCurrentCandidate.
      */
@@ -382,16 +478,16 @@ public final class ElectionContract {
         output.writeUInt32NoTag(termsMemoizedSerializedSize);
       }
       for (int i = 0; i < terms_.size(); i++) {
-        output.writeSInt64NoTag(terms_.getLong(i));
+        output.writeInt64NoTag(terms_.getLong(i));
       }
       if (producedBlocks_ != 0L) {
-        output.writeSInt64(3, producedBlocks_);
+        output.writeInt64(3, producedBlocks_);
       }
       if (missedTimeSlots_ != 0L) {
-        output.writeSInt64(4, missedTimeSlots_);
+        output.writeInt64(4, missedTimeSlots_);
       }
       if (continualAppointmentCount_ != 0L) {
-        output.writeSInt64(5, continualAppointmentCount_);
+        output.writeInt64(5, continualAppointmentCount_);
       }
       if (announcementTransactionId_ != null) {
         output.writeMessage(6, getAnnouncementTransactionId());
@@ -415,7 +511,7 @@ public final class ElectionContract {
         int dataSize = 0;
         for (int i = 0; i < terms_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeSInt64SizeNoTag(terms_.getLong(i));
+            .computeInt64SizeNoTag(terms_.getLong(i));
         }
         size += dataSize;
         if (!getTermsList().isEmpty()) {
@@ -427,15 +523,15 @@ public final class ElectionContract {
       }
       if (producedBlocks_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, producedBlocks_);
+          .computeInt64Size(3, producedBlocks_);
       }
       if (missedTimeSlots_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(4, missedTimeSlots_);
+          .computeInt64Size(4, missedTimeSlots_);
       }
       if (continualAppointmentCount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(5, continualAppointmentCount_);
+          .computeInt64Size(5, continualAppointmentCount_);
       }
       if (announcementTransactionId_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -816,6 +912,10 @@ public final class ElectionContract {
 
       private java.lang.Object pubkey_ = "";
       /**
+       * <pre>
+       * Candidate’s public key.
+       * </pre>
+       *
        * <code>string pubkey = 1;</code>
        * @return The pubkey.
        */
@@ -832,6 +932,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * Candidate’s public key.
+       * </pre>
+       *
        * <code>string pubkey = 1;</code>
        * @return The bytes for pubkey.
        */
@@ -849,6 +953,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * Candidate’s public key.
+       * </pre>
+       *
        * <code>string pubkey = 1;</code>
        * @param value The pubkey to set.
        * @return This builder for chaining.
@@ -864,6 +972,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * Candidate’s public key.
+       * </pre>
+       *
        * <code>string pubkey = 1;</code>
        * @return This builder for chaining.
        */
@@ -874,6 +986,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * Candidate’s public key.
+       * </pre>
+       *
        * <code>string pubkey = 1;</code>
        * @param value The bytes for pubkey to set.
        * @return This builder for chaining.
@@ -898,7 +1014,11 @@ public final class ElectionContract {
          }
       }
       /**
-       * <code>repeated sint64 terms = 2;</code>
+       * <pre>
+       * The number of terms that the candidate is elected.
+       * </pre>
+       *
+       * <code>repeated int64 terms = 2;</code>
        * @return A list containing the terms.
        */
       public java.util.List<java.lang.Long>
@@ -907,14 +1027,22 @@ public final class ElectionContract {
                  java.util.Collections.unmodifiableList(terms_) : terms_;
       }
       /**
-       * <code>repeated sint64 terms = 2;</code>
+       * <pre>
+       * The number of terms that the candidate is elected.
+       * </pre>
+       *
+       * <code>repeated int64 terms = 2;</code>
        * @return The count of terms.
        */
       public int getTermsCount() {
         return terms_.size();
       }
       /**
-       * <code>repeated sint64 terms = 2;</code>
+       * <pre>
+       * The number of terms that the candidate is elected.
+       * </pre>
+       *
+       * <code>repeated int64 terms = 2;</code>
        * @param index The index of the element to return.
        * @return The terms at the given index.
        */
@@ -922,7 +1050,11 @@ public final class ElectionContract {
         return terms_.getLong(index);
       }
       /**
-       * <code>repeated sint64 terms = 2;</code>
+       * <pre>
+       * The number of terms that the candidate is elected.
+       * </pre>
+       *
+       * <code>repeated int64 terms = 2;</code>
        * @param index The index to set the value at.
        * @param value The terms to set.
        * @return This builder for chaining.
@@ -935,7 +1067,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 terms = 2;</code>
+       * <pre>
+       * The number of terms that the candidate is elected.
+       * </pre>
+       *
+       * <code>repeated int64 terms = 2;</code>
        * @param value The terms to add.
        * @return This builder for chaining.
        */
@@ -946,7 +1082,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 terms = 2;</code>
+       * <pre>
+       * The number of terms that the candidate is elected.
+       * </pre>
+       *
+       * <code>repeated int64 terms = 2;</code>
        * @param values The terms to add.
        * @return This builder for chaining.
        */
@@ -959,7 +1099,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 terms = 2;</code>
+       * <pre>
+       * The number of terms that the candidate is elected.
+       * </pre>
+       *
+       * <code>repeated int64 terms = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTerms() {
@@ -971,14 +1115,22 @@ public final class ElectionContract {
 
       private long producedBlocks_ ;
       /**
-       * <code>sint64 produced_blocks = 3;</code>
+       * <pre>
+       * The number of blocks the candidate has produced.
+       * </pre>
+       *
+       * <code>int64 produced_blocks = 3;</code>
        * @return The producedBlocks.
        */
       public long getProducedBlocks() {
         return producedBlocks_;
       }
       /**
-       * <code>sint64 produced_blocks = 3;</code>
+       * <pre>
+       * The number of blocks the candidate has produced.
+       * </pre>
+       *
+       * <code>int64 produced_blocks = 3;</code>
        * @param value The producedBlocks to set.
        * @return This builder for chaining.
        */
@@ -989,7 +1141,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 produced_blocks = 3;</code>
+       * <pre>
+       * The number of blocks the candidate has produced.
+       * </pre>
+       *
+       * <code>int64 produced_blocks = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearProducedBlocks() {
@@ -1001,14 +1157,22 @@ public final class ElectionContract {
 
       private long missedTimeSlots_ ;
       /**
-       * <code>sint64 missed_time_slots = 4;</code>
+       * <pre>
+       * The time slot for which the candidate failed to produce blocks.
+       * </pre>
+       *
+       * <code>int64 missed_time_slots = 4;</code>
        * @return The missedTimeSlots.
        */
       public long getMissedTimeSlots() {
         return missedTimeSlots_;
       }
       /**
-       * <code>sint64 missed_time_slots = 4;</code>
+       * <pre>
+       * The time slot for which the candidate failed to produce blocks.
+       * </pre>
+       *
+       * <code>int64 missed_time_slots = 4;</code>
        * @param value The missedTimeSlots to set.
        * @return This builder for chaining.
        */
@@ -1019,7 +1183,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 missed_time_slots = 4;</code>
+       * <pre>
+       * The time slot for which the candidate failed to produce blocks.
+       * </pre>
+       *
+       * <code>int64 missed_time_slots = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearMissedTimeSlots() {
@@ -1031,14 +1199,22 @@ public final class ElectionContract {
 
       private long continualAppointmentCount_ ;
       /**
-       * <code>sint64 continual_appointment_count = 5;</code>
+       * <pre>
+       * The count of continual appointment.
+       * </pre>
+       *
+       * <code>int64 continual_appointment_count = 5;</code>
        * @return The continualAppointmentCount.
        */
       public long getContinualAppointmentCount() {
         return continualAppointmentCount_;
       }
       /**
-       * <code>sint64 continual_appointment_count = 5;</code>
+       * <pre>
+       * The count of continual appointment.
+       * </pre>
+       *
+       * <code>int64 continual_appointment_count = 5;</code>
        * @param value The continualAppointmentCount to set.
        * @return This builder for chaining.
        */
@@ -1049,7 +1225,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 continual_appointment_count = 5;</code>
+       * <pre>
+       * The count of continual appointment.
+       * </pre>
+       *
+       * <code>int64 continual_appointment_count = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearContinualAppointmentCount() {
@@ -1063,6 +1243,10 @@ public final class ElectionContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> announcementTransactionIdBuilder_;
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        * @return Whether the announcementTransactionId field is set.
        */
@@ -1070,6 +1254,10 @@ public final class ElectionContract {
         return announcementTransactionIdBuilder_ != null || announcementTransactionId_ != null;
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        * @return The announcementTransactionId.
        */
@@ -1081,6 +1269,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        */
       public Builder setAnnouncementTransactionId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -1097,6 +1289,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        */
       public Builder setAnnouncementTransactionId(
@@ -1111,6 +1307,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        */
       public Builder mergeAnnouncementTransactionId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -1129,6 +1329,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        */
       public Builder clearAnnouncementTransactionId() {
@@ -1143,6 +1347,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getAnnouncementTransactionIdBuilder() {
@@ -1151,6 +1359,10 @@ public final class ElectionContract {
         return getAnnouncementTransactionIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getAnnouncementTransactionIdOrBuilder() {
@@ -1162,6 +1374,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The transaction id when the candidate announced.
+       * </pre>
+       *
        * <code>.Hash announcement_transaction_id = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1180,6 +1396,10 @@ public final class ElectionContract {
 
       private boolean isCurrentCandidate_ ;
       /**
+       * <pre>
+       * Indicate whether the candidate can be elected in the current term.
+       * </pre>
+       *
        * <code>bool is_current_candidate = 7;</code>
        * @return The isCurrentCandidate.
        */
@@ -1187,6 +1407,10 @@ public final class ElectionContract {
         return isCurrentCandidate_;
       }
       /**
+       * <pre>
+       * Indicate whether the candidate can be elected in the current term.
+       * </pre>
+       *
        * <code>bool is_current_candidate = 7;</code>
        * @param value The isCurrentCandidate to set.
        * @return This builder for chaining.
@@ -1198,6 +1422,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * Indicate whether the candidate can be elected in the current term.
+       * </pre>
+       *
        * <code>bool is_current_candidate = 7;</code>
        * @return This builder for chaining.
        */
@@ -1265,7 +1493,11 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>sint64 term_number = 1;</code>
+     * <pre>
+     * The term number.
+     * </pre>
+     *
+     * <code>int64 term_number = 1;</code>
      * @return The termNumber.
      */
     long getTermNumber();
@@ -1317,7 +1549,7 @@ public final class ElectionContract {
               break;
             case 8: {
 
-              termNumber_ = input.readSInt64();
+              termNumber_ = input.readInt64();
               break;
             }
             default: {
@@ -1355,7 +1587,11 @@ public final class ElectionContract {
     public static final int TERM_NUMBER_FIELD_NUMBER = 1;
     private long termNumber_;
     /**
-     * <code>sint64 term_number = 1;</code>
+     * <pre>
+     * The term number.
+     * </pre>
+     *
+     * <code>int64 term_number = 1;</code>
      * @return The termNumber.
      */
     public long getTermNumber() {
@@ -1377,7 +1613,7 @@ public final class ElectionContract {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (termNumber_ != 0L) {
-        output.writeSInt64(1, termNumber_);
+        output.writeInt64(1, termNumber_);
       }
       unknownFields.writeTo(output);
     }
@@ -1390,7 +1626,7 @@ public final class ElectionContract {
       size = 0;
       if (termNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(1, termNumber_);
+          .computeInt64Size(1, termNumber_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1667,14 +1903,22 @@ public final class ElectionContract {
 
       private long termNumber_ ;
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number.
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number.
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @param value The termNumber to set.
        * @return This builder for chaining.
        */
@@ -1685,7 +1929,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number.
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
@@ -1752,23 +2000,39 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>sint64 end_round_number = 1;</code>
+     * <pre>
+     * The end round number of this term.
+     * </pre>
+     *
+     * <code>int64 end_round_number = 1;</code>
      * @return The endRoundNumber.
      */
     long getEndRoundNumber();
 
     /**
-     * <code>sint64 mined_blocks = 2;</code>
+     * <pre>
+     * The number of blocks mined in this term. 
+     * </pre>
+     *
+     * <code>int64 mined_blocks = 2;</code>
      * @return The minedBlocks.
      */
     long getMinedBlocks();
 
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
     int getElectionResultCount();
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
     boolean containsElectionResult(
         java.lang.String key);
@@ -1779,19 +2043,31 @@ public final class ElectionContract {
     java.util.Map<java.lang.String, java.lang.Long>
     getElectionResult();
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
     java.util.Map<java.lang.String, java.lang.Long>
     getElectionResultMap();
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
 
     long getElectionResultOrDefault(
         java.lang.String key,
         long defaultValue);
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
 
     long getElectionResultOrThrow(
@@ -1845,12 +2121,12 @@ public final class ElectionContract {
               break;
             case 8: {
 
-              endRoundNumber_ = input.readSInt64();
+              endRoundNumber_ = input.readInt64();
               break;
             }
             case 16: {
 
-              minedBlocks_ = input.readSInt64();
+              minedBlocks_ = input.readInt64();
               break;
             }
             case 26: {
@@ -1913,7 +2189,11 @@ public final class ElectionContract {
     public static final int END_ROUND_NUMBER_FIELD_NUMBER = 1;
     private long endRoundNumber_;
     /**
-     * <code>sint64 end_round_number = 1;</code>
+     * <pre>
+     * The end round number of this term.
+     * </pre>
+     *
+     * <code>int64 end_round_number = 1;</code>
      * @return The endRoundNumber.
      */
     public long getEndRoundNumber() {
@@ -1923,7 +2203,11 @@ public final class ElectionContract {
     public static final int MINED_BLOCKS_FIELD_NUMBER = 2;
     private long minedBlocks_;
     /**
-     * <code>sint64 mined_blocks = 2;</code>
+     * <pre>
+     * The number of blocks mined in this term. 
+     * </pre>
+     *
+     * <code>int64 mined_blocks = 2;</code>
      * @return The minedBlocks.
      */
     public long getMinedBlocks() {
@@ -1939,7 +2223,7 @@ public final class ElectionContract {
                   io.aelf.protobuf.generated.ElectionContract.internal_static_TermSnapshot_ElectionResultEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.SINT64,
+                  com.google.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
     private com.google.protobuf.MapField<
@@ -1957,7 +2241,11 @@ public final class ElectionContract {
       return internalGetElectionResult().getMap().size();
     }
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
 
     public boolean containsElectionResult(
@@ -1973,14 +2261,22 @@ public final class ElectionContract {
       return getElectionResultMap();
     }
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
 
     public java.util.Map<java.lang.String, java.lang.Long> getElectionResultMap() {
       return internalGetElectionResult().getMap();
     }
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
 
     public long getElectionResultOrDefault(
@@ -1992,7 +2288,11 @@ public final class ElectionContract {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; election_result = 3;</code>
      */
 
     public long getElectionResultOrThrow(
@@ -2021,10 +2321,10 @@ public final class ElectionContract {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (endRoundNumber_ != 0L) {
-        output.writeSInt64(1, endRoundNumber_);
+        output.writeInt64(1, endRoundNumber_);
       }
       if (minedBlocks_ != 0L) {
-        output.writeSInt64(2, minedBlocks_);
+        output.writeInt64(2, minedBlocks_);
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
@@ -2043,11 +2343,11 @@ public final class ElectionContract {
       size = 0;
       if (endRoundNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(1, endRoundNumber_);
+          .computeInt64Size(1, endRoundNumber_);
       }
       if (minedBlocks_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, minedBlocks_);
+          .computeInt64Size(2, minedBlocks_);
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.Long> entry
            : internalGetElectionResult().getMap().entrySet()) {
@@ -2380,14 +2680,22 @@ public final class ElectionContract {
 
       private long endRoundNumber_ ;
       /**
-       * <code>sint64 end_round_number = 1;</code>
+       * <pre>
+       * The end round number of this term.
+       * </pre>
+       *
+       * <code>int64 end_round_number = 1;</code>
        * @return The endRoundNumber.
        */
       public long getEndRoundNumber() {
         return endRoundNumber_;
       }
       /**
-       * <code>sint64 end_round_number = 1;</code>
+       * <pre>
+       * The end round number of this term.
+       * </pre>
+       *
+       * <code>int64 end_round_number = 1;</code>
        * @param value The endRoundNumber to set.
        * @return This builder for chaining.
        */
@@ -2398,7 +2706,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 end_round_number = 1;</code>
+       * <pre>
+       * The end round number of this term.
+       * </pre>
+       *
+       * <code>int64 end_round_number = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearEndRoundNumber() {
@@ -2410,14 +2722,22 @@ public final class ElectionContract {
 
       private long minedBlocks_ ;
       /**
-       * <code>sint64 mined_blocks = 2;</code>
+       * <pre>
+       * The number of blocks mined in this term. 
+       * </pre>
+       *
+       * <code>int64 mined_blocks = 2;</code>
        * @return The minedBlocks.
        */
       public long getMinedBlocks() {
         return minedBlocks_;
       }
       /**
-       * <code>sint64 mined_blocks = 2;</code>
+       * <pre>
+       * The number of blocks mined in this term. 
+       * </pre>
+       *
+       * <code>int64 mined_blocks = 2;</code>
        * @param value The minedBlocks to set.
        * @return This builder for chaining.
        */
@@ -2428,7 +2748,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 mined_blocks = 2;</code>
+       * <pre>
+       * The number of blocks mined in this term. 
+       * </pre>
+       *
+       * <code>int64 mined_blocks = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMinedBlocks() {
@@ -2465,7 +2789,11 @@ public final class ElectionContract {
         return internalGetElectionResult().getMap().size();
       }
       /**
-       * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; election_result = 3;</code>
        */
 
       public boolean containsElectionResult(
@@ -2481,14 +2809,22 @@ public final class ElectionContract {
         return getElectionResultMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; election_result = 3;</code>
        */
 
       public java.util.Map<java.lang.String, java.lang.Long> getElectionResultMap() {
         return internalGetElectionResult().getMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; election_result = 3;</code>
        */
 
       public long getElectionResultOrDefault(
@@ -2500,7 +2836,11 @@ public final class ElectionContract {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; election_result = 3;</code>
        */
 
       public long getElectionResultOrThrow(
@@ -2520,7 +2860,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; election_result = 3;</code>
        */
 
       public Builder removeElectionResult(
@@ -2539,7 +2883,11 @@ public final class ElectionContract {
         return internalGetMutableElectionResult().getMutableMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; election_result = 3;</code>
        */
       public Builder putElectionResult(
           java.lang.String key,
@@ -2551,7 +2899,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>map&lt;string, sint64&gt; election_result = 3;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; election_result = 3;</code>
        */
 
       public Builder putAllElectionResult(
@@ -2618,7 +2970,11 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>sint64 term_number = 1;</code>
+     * <pre>
+     * The term number.
+     * </pre>
+     *
+     * <code>int64 term_number = 1;</code>
      * @return The termNumber.
      */
     long getTermNumber();
@@ -2670,7 +3026,7 @@ public final class ElectionContract {
               break;
             case 8: {
 
-              termNumber_ = input.readSInt64();
+              termNumber_ = input.readInt64();
               break;
             }
             default: {
@@ -2708,7 +3064,11 @@ public final class ElectionContract {
     public static final int TERM_NUMBER_FIELD_NUMBER = 1;
     private long termNumber_;
     /**
-     * <code>sint64 term_number = 1;</code>
+     * <pre>
+     * The term number.
+     * </pre>
+     *
+     * <code>int64 term_number = 1;</code>
      * @return The termNumber.
      */
     public long getTermNumber() {
@@ -2730,7 +3090,7 @@ public final class ElectionContract {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (termNumber_ != 0L) {
-        output.writeSInt64(1, termNumber_);
+        output.writeInt64(1, termNumber_);
       }
       unknownFields.writeTo(output);
     }
@@ -2743,7 +3103,7 @@ public final class ElectionContract {
       size = 0;
       if (termNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(1, termNumber_);
+          .computeInt64Size(1, termNumber_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3020,14 +3380,22 @@ public final class ElectionContract {
 
       private long termNumber_ ;
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number.
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number.
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @param value The termNumber to set.
        * @return This builder for chaining.
        */
@@ -3038,7 +3406,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number.
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
@@ -3105,17 +3477,29 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>sint64 term_number = 1;</code>
+     * <pre>
+     * The term number
+     * </pre>
+     *
+     * <code>int64 term_number = 1;</code>
      * @return The termNumber.
      */
     long getTermNumber();
 
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
     int getResultsCount();
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
     boolean containsResults(
         java.lang.String key);
@@ -3126,25 +3510,41 @@ public final class ElectionContract {
     java.util.Map<java.lang.String, java.lang.Long>
     getResults();
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
     java.util.Map<java.lang.String, java.lang.Long>
     getResultsMap();
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     long getResultsOrDefault(
         java.lang.String key,
         long defaultValue);
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     long getResultsOrThrow(
         java.lang.String key);
 
     /**
+     * <pre>
+     * Whether an election is currently being held.
+     * </pre>
+     *
      * <code>bool is_active = 3;</code>
      * @return The isActive.
      */
@@ -3198,7 +3598,7 @@ public final class ElectionContract {
               break;
             case 8: {
 
-              termNumber_ = input.readSInt64();
+              termNumber_ = input.readInt64();
               break;
             }
             case 18: {
@@ -3266,7 +3666,11 @@ public final class ElectionContract {
     public static final int TERM_NUMBER_FIELD_NUMBER = 1;
     private long termNumber_;
     /**
-     * <code>sint64 term_number = 1;</code>
+     * <pre>
+     * The term number
+     * </pre>
+     *
+     * <code>int64 term_number = 1;</code>
      * @return The termNumber.
      */
     public long getTermNumber() {
@@ -3282,7 +3686,7 @@ public final class ElectionContract {
                   io.aelf.protobuf.generated.ElectionContract.internal_static_ElectionResult_ResultsEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.SINT64,
+                  com.google.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
     private com.google.protobuf.MapField<
@@ -3300,7 +3704,11 @@ public final class ElectionContract {
       return internalGetResults().getMap().size();
     }
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public boolean containsResults(
@@ -3316,14 +3724,22 @@ public final class ElectionContract {
       return getResultsMap();
     }
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public java.util.Map<java.lang.String, java.lang.Long> getResultsMap() {
       return internalGetResults().getMap();
     }
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public long getResultsOrDefault(
@@ -3335,7 +3751,11 @@ public final class ElectionContract {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, sint64&gt; results = 2;</code>
+     * <pre>
+     * The election result, candidates’ public key -&gt; number of votes.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; results = 2;</code>
      */
 
     public long getResultsOrThrow(
@@ -3352,6 +3772,10 @@ public final class ElectionContract {
     public static final int IS_ACTIVE_FIELD_NUMBER = 3;
     private boolean isActive_;
     /**
+     * <pre>
+     * Whether an election is currently being held.
+     * </pre>
+     *
      * <code>bool is_active = 3;</code>
      * @return The isActive.
      */
@@ -3374,7 +3798,7 @@ public final class ElectionContract {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (termNumber_ != 0L) {
-        output.writeSInt64(1, termNumber_);
+        output.writeInt64(1, termNumber_);
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
@@ -3396,7 +3820,7 @@ public final class ElectionContract {
       size = 0;
       if (termNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(1, termNumber_);
+          .computeInt64Size(1, termNumber_);
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.Long> entry
            : internalGetResults().getMap().entrySet()) {
@@ -3733,14 +4157,22 @@ public final class ElectionContract {
 
       private long termNumber_ ;
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @param value The termNumber to set.
        * @return This builder for chaining.
        */
@@ -3751,7 +4183,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 term_number = 1;</code>
+       * <pre>
+       * The term number
+       * </pre>
+       *
+       * <code>int64 term_number = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
@@ -3788,7 +4224,11 @@ public final class ElectionContract {
         return internalGetResults().getMap().size();
       }
       /**
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public boolean containsResults(
@@ -3804,14 +4244,22 @@ public final class ElectionContract {
         return getResultsMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public java.util.Map<java.lang.String, java.lang.Long> getResultsMap() {
         return internalGetResults().getMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public long getResultsOrDefault(
@@ -3823,7 +4271,11 @@ public final class ElectionContract {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public long getResultsOrThrow(
@@ -3843,7 +4295,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public Builder removeResults(
@@ -3862,7 +4318,11 @@ public final class ElectionContract {
         return internalGetMutableResults().getMutableMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
       public Builder putResults(
           java.lang.String key,
@@ -3874,7 +4334,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>map&lt;string, sint64&gt; results = 2;</code>
+       * <pre>
+       * The election result, candidates’ public key -&gt; number of votes.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; results = 2;</code>
        */
 
       public Builder putAllResults(
@@ -3886,6 +4350,10 @@ public final class ElectionContract {
 
       private boolean isActive_ ;
       /**
+       * <pre>
+       * Whether an election is currently being held.
+       * </pre>
+       *
        * <code>bool is_active = 3;</code>
        * @return The isActive.
        */
@@ -3893,6 +4361,10 @@ public final class ElectionContract {
         return isActive_;
       }
       /**
+       * <pre>
+       * Whether an election is currently being held.
+       * </pre>
+       *
        * <code>bool is_active = 3;</code>
        * @param value The isActive to set.
        * @return This builder for chaining.
@@ -3904,6 +4376,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * Whether an election is currently being held.
+       * </pre>
+       *
        * <code>bool is_active = 3;</code>
        * @return This builder for chaining.
        */
@@ -3972,7 +4448,7 @@ public final class ElectionContract {
 
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -3981,7 +4457,7 @@ public final class ElectionContract {
         getActiveVotingRecordIdsList();
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -3989,7 +4465,7 @@ public final class ElectionContract {
     io.aelf.protobuf.generated.Client.Hash getActiveVotingRecordIds(int index);
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -3997,7 +4473,7 @@ public final class ElectionContract {
     int getActiveVotingRecordIdsCount();
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -4006,7 +4482,7 @@ public final class ElectionContract {
         getActiveVotingRecordIdsOrBuilderList();
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -4015,90 +4491,162 @@ public final class ElectionContract {
         int index);
 
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.Hash> 
         getWithdrawnVotingRecordIdsList();
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     io.aelf.protobuf.generated.Client.Hash getWithdrawnVotingRecordIds(int index);
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     int getWithdrawnVotingRecordIdsCount();
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getWithdrawnVotingRecordIdsOrBuilderList();
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getWithdrawnVotingRecordIdsOrBuilder(
         int index);
 
     /**
-     * <code>sint64 active_voted_votes_amount = 3;</code>
+     * <pre>
+     * The total number of active votes.
+     * </pre>
+     *
+     * <code>int64 active_voted_votes_amount = 3;</code>
      * @return The activeVotedVotesAmount.
      */
     long getActiveVotedVotesAmount();
 
     /**
-     * <code>sint64 all_voted_votes_amount = 4;</code>
+     * <pre>
+     * The total number of votes (including the number of votes withdrawn).
+     * </pre>
+     *
+     * <code>int64 all_voted_votes_amount = 4;</code>
      * @return The allVotedVotesAmount.
      */
     long getAllVotedVotesAmount();
 
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> 
         getActiveVotingRecordsList();
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getActiveVotingRecords(int index);
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     int getActiveVotingRecordsCount();
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
         getActiveVotingRecordsOrBuilderList();
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getActiveVotingRecordsOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> 
         getWithdrawnVotesRecordsList();
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getWithdrawnVotesRecords(int index);
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     int getWithdrawnVotesRecordsCount();
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
         getWithdrawnVotesRecordsOrBuilderList();
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getWithdrawnVotesRecordsOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * Public key for voter.
+     * </pre>
+     *
      * <code>bytes pubkey = 7;</code>
      * @return The pubkey.
      */
@@ -4175,12 +4723,12 @@ public final class ElectionContract {
             }
             case 24: {
 
-              activeVotedVotesAmount_ = input.readSInt64();
+              activeVotedVotesAmount_ = input.readInt64();
               break;
             }
             case 32: {
 
-              allVotedVotesAmount_ = input.readSInt64();
+              allVotedVotesAmount_ = input.readInt64();
               break;
             }
             case 42: {
@@ -4254,7 +4802,7 @@ public final class ElectionContract {
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> activeVotingRecordIds_;
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -4264,7 +4812,7 @@ public final class ElectionContract {
     }
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -4275,7 +4823,7 @@ public final class ElectionContract {
     }
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -4285,7 +4833,7 @@ public final class ElectionContract {
     }
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -4295,7 +4843,7 @@ public final class ElectionContract {
     }
     /**
      * <pre>
-     * Not withdrawn.
+     * The active voting record ids.
      * </pre>
      *
      * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -4308,12 +4856,20 @@ public final class ElectionContract {
     public static final int WITHDRAWN_VOTING_RECORD_IDS_FIELD_NUMBER = 2;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> withdrawnVotingRecordIds_;
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getWithdrawnVotingRecordIdsList() {
       return withdrawnVotingRecordIds_;
     }
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -4321,18 +4877,30 @@ public final class ElectionContract {
       return withdrawnVotingRecordIds_;
     }
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     public int getWithdrawnVotingRecordIdsCount() {
       return withdrawnVotingRecordIds_.size();
     }
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.Hash getWithdrawnVotingRecordIds(int index) {
       return withdrawnVotingRecordIds_.get(index);
     }
     /**
+     * <pre>
+     * The voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getWithdrawnVotingRecordIdsOrBuilder(
@@ -4343,7 +4911,11 @@ public final class ElectionContract {
     public static final int ACTIVE_VOTED_VOTES_AMOUNT_FIELD_NUMBER = 3;
     private long activeVotedVotesAmount_;
     /**
-     * <code>sint64 active_voted_votes_amount = 3;</code>
+     * <pre>
+     * The total number of active votes.
+     * </pre>
+     *
+     * <code>int64 active_voted_votes_amount = 3;</code>
      * @return The activeVotedVotesAmount.
      */
     public long getActiveVotedVotesAmount() {
@@ -4353,7 +4925,11 @@ public final class ElectionContract {
     public static final int ALL_VOTED_VOTES_AMOUNT_FIELD_NUMBER = 4;
     private long allVotedVotesAmount_;
     /**
-     * <code>sint64 all_voted_votes_amount = 4;</code>
+     * <pre>
+     * The total number of votes (including the number of votes withdrawn).
+     * </pre>
+     *
+     * <code>int64 all_voted_votes_amount = 4;</code>
      * @return The allVotedVotesAmount.
      */
     public long getAllVotedVotesAmount() {
@@ -4363,12 +4939,20 @@ public final class ElectionContract {
     public static final int ACTIVE_VOTING_RECORDS_FIELD_NUMBER = 5;
     private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> activeVotingRecords_;
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getActiveVotingRecordsList() {
       return activeVotingRecords_;
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -4376,18 +4960,30 @@ public final class ElectionContract {
       return activeVotingRecords_;
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     public int getActiveVotingRecordsCount() {
       return activeVotingRecords_.size();
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getActiveVotingRecords(int index) {
       return activeVotingRecords_.get(index);
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getActiveVotingRecordsOrBuilder(
@@ -4398,12 +4994,20 @@ public final class ElectionContract {
     public static final int WITHDRAWN_VOTES_RECORDS_FIELD_NUMBER = 6;
     private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> withdrawnVotesRecords_;
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getWithdrawnVotesRecordsList() {
       return withdrawnVotesRecords_;
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -4411,18 +5015,30 @@ public final class ElectionContract {
       return withdrawnVotesRecords_;
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     public int getWithdrawnVotesRecordsCount() {
       return withdrawnVotesRecords_.size();
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getWithdrawnVotesRecords(int index) {
       return withdrawnVotesRecords_.get(index);
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getWithdrawnVotesRecordsOrBuilder(
@@ -4433,6 +5049,10 @@ public final class ElectionContract {
     public static final int PUBKEY_FIELD_NUMBER = 7;
     private com.google.protobuf.ByteString pubkey_;
     /**
+     * <pre>
+     * Public key for voter.
+     * </pre>
+     *
      * <code>bytes pubkey = 7;</code>
      * @return The pubkey.
      */
@@ -4461,10 +5081,10 @@ public final class ElectionContract {
         output.writeMessage(2, withdrawnVotingRecordIds_.get(i));
       }
       if (activeVotedVotesAmount_ != 0L) {
-        output.writeSInt64(3, activeVotedVotesAmount_);
+        output.writeInt64(3, activeVotedVotesAmount_);
       }
       if (allVotedVotesAmount_ != 0L) {
-        output.writeSInt64(4, allVotedVotesAmount_);
+        output.writeInt64(4, allVotedVotesAmount_);
       }
       for (int i = 0; i < activeVotingRecords_.size(); i++) {
         output.writeMessage(5, activeVotingRecords_.get(i));
@@ -4494,11 +5114,11 @@ public final class ElectionContract {
       }
       if (activeVotedVotesAmount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, activeVotedVotesAmount_);
+          .computeInt64Size(3, activeVotedVotesAmount_);
       }
       if (allVotedVotesAmount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(4, allVotedVotesAmount_);
+          .computeInt64Size(4, allVotedVotesAmount_);
       }
       for (int i = 0; i < activeVotingRecords_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -5014,7 +5634,7 @@ public final class ElectionContract {
 
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5028,7 +5648,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5042,7 +5662,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5056,7 +5676,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5077,7 +5697,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5095,7 +5715,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5115,7 +5735,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5136,7 +5756,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5154,7 +5774,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5172,7 +5792,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5191,7 +5811,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5208,7 +5828,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5225,7 +5845,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5236,7 +5856,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5250,7 +5870,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5265,7 +5885,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5276,7 +5896,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5288,7 +5908,7 @@ public final class ElectionContract {
       }
       /**
        * <pre>
-       * Not withdrawn.
+       * The active voting record ids.
        * </pre>
        *
        * <code>repeated .Hash active_voting_record_ids = 1;</code>
@@ -5325,6 +5945,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> withdrawnVotingRecordIdsBuilder_;
 
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash> getWithdrawnVotingRecordIdsList() {
@@ -5335,6 +5959,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public int getWithdrawnVotingRecordIdsCount() {
@@ -5345,6 +5973,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash getWithdrawnVotingRecordIds(int index) {
@@ -5355,6 +5987,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder setWithdrawnVotingRecordIds(
@@ -5372,6 +6008,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder setWithdrawnVotingRecordIds(
@@ -5386,6 +6026,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addWithdrawnVotingRecordIds(io.aelf.protobuf.generated.Client.Hash value) {
@@ -5402,6 +6046,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addWithdrawnVotingRecordIds(
@@ -5419,6 +6067,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addWithdrawnVotingRecordIds(
@@ -5433,6 +6085,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addWithdrawnVotingRecordIds(
@@ -5447,6 +6103,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addAllWithdrawnVotingRecordIds(
@@ -5462,6 +6122,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder clearWithdrawnVotingRecordIds() {
@@ -5475,6 +6139,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public Builder removeWithdrawnVotingRecordIds(int index) {
@@ -5488,6 +6156,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getWithdrawnVotingRecordIdsBuilder(
@@ -5495,6 +6167,10 @@ public final class ElectionContract {
         return getWithdrawnVotingRecordIdsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getWithdrawnVotingRecordIdsOrBuilder(
@@ -5505,6 +6181,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -5516,6 +6196,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addWithdrawnVotingRecordIdsBuilder() {
@@ -5523,6 +6207,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addWithdrawnVotingRecordIdsBuilder(
@@ -5531,6 +6219,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash withdrawn_voting_record_ids = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash.Builder> 
@@ -5554,14 +6246,22 @@ public final class ElectionContract {
 
       private long activeVotedVotesAmount_ ;
       /**
-       * <code>sint64 active_voted_votes_amount = 3;</code>
+       * <pre>
+       * The total number of active votes.
+       * </pre>
+       *
+       * <code>int64 active_voted_votes_amount = 3;</code>
        * @return The activeVotedVotesAmount.
        */
       public long getActiveVotedVotesAmount() {
         return activeVotedVotesAmount_;
       }
       /**
-       * <code>sint64 active_voted_votes_amount = 3;</code>
+       * <pre>
+       * The total number of active votes.
+       * </pre>
+       *
+       * <code>int64 active_voted_votes_amount = 3;</code>
        * @param value The activeVotedVotesAmount to set.
        * @return This builder for chaining.
        */
@@ -5572,7 +6272,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 active_voted_votes_amount = 3;</code>
+       * <pre>
+       * The total number of active votes.
+       * </pre>
+       *
+       * <code>int64 active_voted_votes_amount = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearActiveVotedVotesAmount() {
@@ -5584,14 +6288,22 @@ public final class ElectionContract {
 
       private long allVotedVotesAmount_ ;
       /**
-       * <code>sint64 all_voted_votes_amount = 4;</code>
+       * <pre>
+       * The total number of votes (including the number of votes withdrawn).
+       * </pre>
+       *
+       * <code>int64 all_voted_votes_amount = 4;</code>
        * @return The allVotedVotesAmount.
        */
       public long getAllVotedVotesAmount() {
         return allVotedVotesAmount_;
       }
       /**
-       * <code>sint64 all_voted_votes_amount = 4;</code>
+       * <pre>
+       * The total number of votes (including the number of votes withdrawn).
+       * </pre>
+       *
+       * <code>int64 all_voted_votes_amount = 4;</code>
        * @param value The allVotedVotesAmount to set.
        * @return This builder for chaining.
        */
@@ -5602,7 +6314,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 all_voted_votes_amount = 4;</code>
+       * <pre>
+       * The total number of votes (including the number of votes withdrawn).
+       * </pre>
+       *
+       * <code>int64 all_voted_votes_amount = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearAllVotedVotesAmount() {
@@ -5625,6 +6341,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> activeVotingRecordsBuilder_;
 
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getActiveVotingRecordsList() {
@@ -5635,6 +6355,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public int getActiveVotingRecordsCount() {
@@ -5645,6 +6369,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getActiveVotingRecords(int index) {
@@ -5655,6 +6383,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder setActiveVotingRecords(
@@ -5672,6 +6404,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder setActiveVotingRecords(
@@ -5686,6 +6422,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder addActiveVotingRecords(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord value) {
@@ -5702,6 +6442,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder addActiveVotingRecords(
@@ -5719,6 +6463,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder addActiveVotingRecords(
@@ -5733,6 +6481,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder addActiveVotingRecords(
@@ -5747,6 +6499,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder addAllActiveVotingRecords(
@@ -5762,6 +6518,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder clearActiveVotingRecords() {
@@ -5775,6 +6535,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public Builder removeActiveVotingRecords(int index) {
@@ -5788,6 +6552,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder getActiveVotingRecordsBuilder(
@@ -5795,6 +6563,10 @@ public final class ElectionContract {
         return getActiveVotingRecordsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getActiveVotingRecordsOrBuilder(
@@ -5805,6 +6577,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -5816,6 +6592,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addActiveVotingRecordsBuilder() {
@@ -5823,6 +6603,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addActiveVotingRecordsBuilder(
@@ -5831,6 +6615,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord active_voting_records = 5;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder> 
@@ -5865,6 +6653,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> withdrawnVotesRecordsBuilder_;
 
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getWithdrawnVotesRecordsList() {
@@ -5875,6 +6667,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public int getWithdrawnVotesRecordsCount() {
@@ -5885,6 +6681,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getWithdrawnVotesRecords(int index) {
@@ -5895,6 +6695,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder setWithdrawnVotesRecords(
@@ -5912,6 +6716,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder setWithdrawnVotesRecords(
@@ -5926,6 +6734,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder addWithdrawnVotesRecords(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord value) {
@@ -5942,6 +6754,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder addWithdrawnVotesRecords(
@@ -5959,6 +6775,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder addWithdrawnVotesRecords(
@@ -5973,6 +6793,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder addWithdrawnVotesRecords(
@@ -5987,6 +6811,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder addAllWithdrawnVotesRecords(
@@ -6002,6 +6830,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder clearWithdrawnVotesRecords() {
@@ -6015,6 +6847,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public Builder removeWithdrawnVotesRecords(int index) {
@@ -6028,6 +6864,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder getWithdrawnVotesRecordsBuilder(
@@ -6035,6 +6875,10 @@ public final class ElectionContract {
         return getWithdrawnVotesRecordsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getWithdrawnVotesRecordsOrBuilder(
@@ -6045,6 +6889,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -6056,6 +6904,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addWithdrawnVotesRecordsBuilder() {
@@ -6063,6 +6915,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addWithdrawnVotesRecordsBuilder(
@@ -6071,6 +6927,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord withdrawn_votes_records = 6;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder> 
@@ -6094,6 +6954,10 @@ public final class ElectionContract {
 
       private com.google.protobuf.ByteString pubkey_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       * Public key for voter.
+       * </pre>
+       *
        * <code>bytes pubkey = 7;</code>
        * @return The pubkey.
        */
@@ -6101,6 +6965,10 @@ public final class ElectionContract {
         return pubkey_;
       }
       /**
+       * <pre>
+       * Public key for voter.
+       * </pre>
+       *
        * <code>bytes pubkey = 7;</code>
        * @param value The pubkey to set.
        * @return This builder for chaining.
@@ -6115,6 +6983,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * Public key for voter.
+       * </pre>
+       *
        * <code>bytes pubkey = 7;</code>
        * @return This builder for chaining.
        */
@@ -6182,26 +7054,46 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 1;</code>
      * @return Whether the voter field is set.
      */
     boolean hasVoter();
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 1;</code>
      * @return The voter.
      */
     io.aelf.protobuf.generated.Client.Address getVoter();
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 1;</code>
      */
     io.aelf.protobuf.generated.Client.AddressOrBuilder getVoterOrBuilder();
 
     /**
+     * <pre>
+     * The public key of candidate.
+     * </pre>
+     *
      * <code>string candidate = 2;</code>
      * @return The candidate.
      */
     java.lang.String getCandidate();
     /**
+     * <pre>
+     * The public key of candidate.
+     * </pre>
+     *
      * <code>string candidate = 2;</code>
      * @return The bytes for candidate.
      */
@@ -6209,97 +7101,169 @@ public final class ElectionContract {
         getCandidateBytes();
 
     /**
-     * <code>sint64 amount = 3;</code>
+     * <pre>
+     * Amount of voting.
+     * </pre>
+     *
+     * <code>int64 amount = 3;</code>
      * @return The amount.
      */
     long getAmount();
 
     /**
-     * <code>sint64 term_number = 4;</code>
+     * <pre>
+     * The term number of voting.
+     * </pre>
+     *
+     * <code>int64 term_number = 4;</code>
      * @return The termNumber.
      */
     long getTermNumber();
 
     /**
+     * <pre>
+     * The vote id.
+     * </pre>
+     *
      * <code>.Hash vote_id = 5;</code>
      * @return Whether the voteId field is set.
      */
     boolean hasVoteId();
     /**
+     * <pre>
+     * The vote id.
+     * </pre>
+     *
      * <code>.Hash vote_id = 5;</code>
      * @return The voteId.
      */
     io.aelf.protobuf.generated.Client.Hash getVoteId();
     /**
+     * <pre>
+     * The vote id.
+     * </pre>
+     *
      * <code>.Hash vote_id = 5;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getVoteIdOrBuilder();
 
     /**
-     * <code>sint64 lock_time = 7;</code>
+     * <pre>
+     * Vote lock time.
+     * </pre>
+     *
+     * <code>int64 lock_time = 6;</code>
      * @return The lockTime.
      */
     long getLockTime();
 
     /**
-     * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * <pre>
+     * The unlock timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
      * @return Whether the unlockTimestamp field is set.
      */
     boolean hasUnlockTimestamp();
     /**
-     * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * <pre>
+     * The unlock timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
      * @return The unlockTimestamp.
      */
     com.google.protobuf.Timestamp getUnlockTimestamp();
     /**
-     * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * <pre>
+     * The unlock timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
      */
     com.google.protobuf.TimestampOrBuilder getUnlockTimestampOrBuilder();
 
     /**
-     * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * <pre>
+     * The withdraw timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
      * @return Whether the withdrawTimestamp field is set.
      */
     boolean hasWithdrawTimestamp();
     /**
-     * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * <pre>
+     * The withdraw timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
      * @return The withdrawTimestamp.
      */
     com.google.protobuf.Timestamp getWithdrawTimestamp();
     /**
-     * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * <pre>
+     * The withdraw timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
      */
     com.google.protobuf.TimestampOrBuilder getWithdrawTimestampOrBuilder();
 
     /**
-     * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * <pre>
+     * The vote timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
      * @return Whether the voteTimestamp field is set.
      */
     boolean hasVoteTimestamp();
     /**
-     * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * <pre>
+     * The vote timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
      * @return The voteTimestamp.
      */
     com.google.protobuf.Timestamp getVoteTimestamp();
     /**
-     * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * <pre>
+     * The vote timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
      */
     com.google.protobuf.TimestampOrBuilder getVoteTimestampOrBuilder();
 
     /**
-     * <code>bool is_withdrawn = 13;</code>
+     * <pre>
+     * Indicates if the vote has been withdrawn.
+     * </pre>
+     *
+     * <code>bool is_withdrawn = 10;</code>
      * @return The isWithdrawn.
      */
     boolean getIsWithdrawn();
 
     /**
-     * <code>sint64 weight = 14;</code>
+     * <pre>
+     * Vote weight for sharing bonus.
+     * </pre>
+     *
+     * <code>int64 weight = 11;</code>
      * @return The weight.
      */
     long getWeight();
 
     /**
-     * <code>bool is_change_target = 15;</code>
+     * <pre>
+     * Whether vote others.
+     * </pre>
+     *
+     * <code>bool is_change_target = 12;</code>
      * @return The isChangeTarget.
      */
     boolean getIsChangeTarget();
@@ -6371,12 +7335,12 @@ public final class ElectionContract {
             }
             case 24: {
 
-              amount_ = input.readSInt64();
+              amount_ = input.readInt64();
               break;
             }
             case 32: {
 
-              termNumber_ = input.readSInt64();
+              termNumber_ = input.readInt64();
               break;
             }
             case 42: {
@@ -6392,12 +7356,12 @@ public final class ElectionContract {
 
               break;
             }
-            case 56: {
+            case 48: {
 
-              lockTime_ = input.readSInt64();
+              lockTime_ = input.readInt64();
               break;
             }
-            case 82: {
+            case 58: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (unlockTimestamp_ != null) {
                 subBuilder = unlockTimestamp_.toBuilder();
@@ -6410,7 +7374,7 @@ public final class ElectionContract {
 
               break;
             }
-            case 90: {
+            case 66: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (withdrawTimestamp_ != null) {
                 subBuilder = withdrawTimestamp_.toBuilder();
@@ -6423,7 +7387,7 @@ public final class ElectionContract {
 
               break;
             }
-            case 98: {
+            case 74: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (voteTimestamp_ != null) {
                 subBuilder = voteTimestamp_.toBuilder();
@@ -6436,17 +7400,17 @@ public final class ElectionContract {
 
               break;
             }
-            case 104: {
+            case 80: {
 
               isWithdrawn_ = input.readBool();
               break;
             }
-            case 112: {
+            case 88: {
 
-              weight_ = input.readSInt64();
+              weight_ = input.readInt64();
               break;
             }
-            case 120: {
+            case 96: {
 
               isChangeTarget_ = input.readBool();
               break;
@@ -6486,6 +7450,10 @@ public final class ElectionContract {
     public static final int VOTER_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.Client.Address voter_;
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 1;</code>
      * @return Whether the voter field is set.
      */
@@ -6493,6 +7461,10 @@ public final class ElectionContract {
       return voter_ != null;
     }
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 1;</code>
      * @return The voter.
      */
@@ -6500,6 +7472,10 @@ public final class ElectionContract {
       return voter_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : voter_;
     }
     /**
+     * <pre>
+     * The address of voter.
+     * </pre>
+     *
      * <code>.Address voter = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getVoterOrBuilder() {
@@ -6509,6 +7485,10 @@ public final class ElectionContract {
     public static final int CANDIDATE_FIELD_NUMBER = 2;
     private volatile java.lang.Object candidate_;
     /**
+     * <pre>
+     * The public key of candidate.
+     * </pre>
+     *
      * <code>string candidate = 2;</code>
      * @return The candidate.
      */
@@ -6525,6 +7505,10 @@ public final class ElectionContract {
       }
     }
     /**
+     * <pre>
+     * The public key of candidate.
+     * </pre>
+     *
      * <code>string candidate = 2;</code>
      * @return The bytes for candidate.
      */
@@ -6545,7 +7529,11 @@ public final class ElectionContract {
     public static final int AMOUNT_FIELD_NUMBER = 3;
     private long amount_;
     /**
-     * <code>sint64 amount = 3;</code>
+     * <pre>
+     * Amount of voting.
+     * </pre>
+     *
+     * <code>int64 amount = 3;</code>
      * @return The amount.
      */
     public long getAmount() {
@@ -6555,7 +7543,11 @@ public final class ElectionContract {
     public static final int TERM_NUMBER_FIELD_NUMBER = 4;
     private long termNumber_;
     /**
-     * <code>sint64 term_number = 4;</code>
+     * <pre>
+     * The term number of voting.
+     * </pre>
+     *
+     * <code>int64 term_number = 4;</code>
      * @return The termNumber.
      */
     public long getTermNumber() {
@@ -6565,6 +7557,10 @@ public final class ElectionContract {
     public static final int VOTE_ID_FIELD_NUMBER = 5;
     private io.aelf.protobuf.generated.Client.Hash voteId_;
     /**
+     * <pre>
+     * The vote id.
+     * </pre>
+     *
      * <code>.Hash vote_id = 5;</code>
      * @return Whether the voteId field is set.
      */
@@ -6572,6 +7568,10 @@ public final class ElectionContract {
       return voteId_ != null;
     }
     /**
+     * <pre>
+     * The vote id.
+     * </pre>
+     *
      * <code>.Hash vote_id = 5;</code>
      * @return The voteId.
      */
@@ -6579,115 +7579,171 @@ public final class ElectionContract {
       return voteId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : voteId_;
     }
     /**
+     * <pre>
+     * The vote id.
+     * </pre>
+     *
      * <code>.Hash vote_id = 5;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVoteIdOrBuilder() {
       return getVoteId();
     }
 
-    public static final int LOCK_TIME_FIELD_NUMBER = 7;
+    public static final int LOCK_TIME_FIELD_NUMBER = 6;
     private long lockTime_;
     /**
-     * <code>sint64 lock_time = 7;</code>
+     * <pre>
+     * Vote lock time.
+     * </pre>
+     *
+     * <code>int64 lock_time = 6;</code>
      * @return The lockTime.
      */
     public long getLockTime() {
       return lockTime_;
     }
 
-    public static final int UNLOCK_TIMESTAMP_FIELD_NUMBER = 10;
+    public static final int UNLOCK_TIMESTAMP_FIELD_NUMBER = 7;
     private com.google.protobuf.Timestamp unlockTimestamp_;
     /**
-     * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * <pre>
+     * The unlock timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
      * @return Whether the unlockTimestamp field is set.
      */
     public boolean hasUnlockTimestamp() {
       return unlockTimestamp_ != null;
     }
     /**
-     * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * <pre>
+     * The unlock timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
      * @return The unlockTimestamp.
      */
     public com.google.protobuf.Timestamp getUnlockTimestamp() {
       return unlockTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : unlockTimestamp_;
     }
     /**
-     * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+     * <pre>
+     * The unlock timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getUnlockTimestampOrBuilder() {
       return getUnlockTimestamp();
     }
 
-    public static final int WITHDRAW_TIMESTAMP_FIELD_NUMBER = 11;
+    public static final int WITHDRAW_TIMESTAMP_FIELD_NUMBER = 8;
     private com.google.protobuf.Timestamp withdrawTimestamp_;
     /**
-     * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * <pre>
+     * The withdraw timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
      * @return Whether the withdrawTimestamp field is set.
      */
     public boolean hasWithdrawTimestamp() {
       return withdrawTimestamp_ != null;
     }
     /**
-     * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * <pre>
+     * The withdraw timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
      * @return The withdrawTimestamp.
      */
     public com.google.protobuf.Timestamp getWithdrawTimestamp() {
       return withdrawTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : withdrawTimestamp_;
     }
     /**
-     * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+     * <pre>
+     * The withdraw timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getWithdrawTimestampOrBuilder() {
       return getWithdrawTimestamp();
     }
 
-    public static final int VOTE_TIMESTAMP_FIELD_NUMBER = 12;
+    public static final int VOTE_TIMESTAMP_FIELD_NUMBER = 9;
     private com.google.protobuf.Timestamp voteTimestamp_;
     /**
-     * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * <pre>
+     * The vote timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
      * @return Whether the voteTimestamp field is set.
      */
     public boolean hasVoteTimestamp() {
       return voteTimestamp_ != null;
     }
     /**
-     * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * <pre>
+     * The vote timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
      * @return The voteTimestamp.
      */
     public com.google.protobuf.Timestamp getVoteTimestamp() {
       return voteTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : voteTimestamp_;
     }
     /**
-     * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+     * <pre>
+     * The vote timestamp.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
      */
     public com.google.protobuf.TimestampOrBuilder getVoteTimestampOrBuilder() {
       return getVoteTimestamp();
     }
 
-    public static final int IS_WITHDRAWN_FIELD_NUMBER = 13;
+    public static final int IS_WITHDRAWN_FIELD_NUMBER = 10;
     private boolean isWithdrawn_;
     /**
-     * <code>bool is_withdrawn = 13;</code>
+     * <pre>
+     * Indicates if the vote has been withdrawn.
+     * </pre>
+     *
+     * <code>bool is_withdrawn = 10;</code>
      * @return The isWithdrawn.
      */
     public boolean getIsWithdrawn() {
       return isWithdrawn_;
     }
 
-    public static final int WEIGHT_FIELD_NUMBER = 14;
+    public static final int WEIGHT_FIELD_NUMBER = 11;
     private long weight_;
     /**
-     * <code>sint64 weight = 14;</code>
+     * <pre>
+     * Vote weight for sharing bonus.
+     * </pre>
+     *
+     * <code>int64 weight = 11;</code>
      * @return The weight.
      */
     public long getWeight() {
       return weight_;
     }
 
-    public static final int IS_CHANGE_TARGET_FIELD_NUMBER = 15;
+    public static final int IS_CHANGE_TARGET_FIELD_NUMBER = 12;
     private boolean isChangeTarget_;
     /**
-     * <code>bool is_change_target = 15;</code>
+     * <pre>
+     * Whether vote others.
+     * </pre>
+     *
+     * <code>bool is_change_target = 12;</code>
      * @return The isChangeTarget.
      */
     public boolean getIsChangeTarget() {
@@ -6715,34 +7771,34 @@ public final class ElectionContract {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, candidate_);
       }
       if (amount_ != 0L) {
-        output.writeSInt64(3, amount_);
+        output.writeInt64(3, amount_);
       }
       if (termNumber_ != 0L) {
-        output.writeSInt64(4, termNumber_);
+        output.writeInt64(4, termNumber_);
       }
       if (voteId_ != null) {
         output.writeMessage(5, getVoteId());
       }
       if (lockTime_ != 0L) {
-        output.writeSInt64(7, lockTime_);
+        output.writeInt64(6, lockTime_);
       }
       if (unlockTimestamp_ != null) {
-        output.writeMessage(10, getUnlockTimestamp());
+        output.writeMessage(7, getUnlockTimestamp());
       }
       if (withdrawTimestamp_ != null) {
-        output.writeMessage(11, getWithdrawTimestamp());
+        output.writeMessage(8, getWithdrawTimestamp());
       }
       if (voteTimestamp_ != null) {
-        output.writeMessage(12, getVoteTimestamp());
+        output.writeMessage(9, getVoteTimestamp());
       }
       if (isWithdrawn_ != false) {
-        output.writeBool(13, isWithdrawn_);
+        output.writeBool(10, isWithdrawn_);
       }
       if (weight_ != 0L) {
-        output.writeSInt64(14, weight_);
+        output.writeInt64(11, weight_);
       }
       if (isChangeTarget_ != false) {
-        output.writeBool(15, isChangeTarget_);
+        output.writeBool(12, isChangeTarget_);
       }
       unknownFields.writeTo(output);
     }
@@ -6762,11 +7818,11 @@ public final class ElectionContract {
       }
       if (amount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, amount_);
+          .computeInt64Size(3, amount_);
       }
       if (termNumber_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(4, termNumber_);
+          .computeInt64Size(4, termNumber_);
       }
       if (voteId_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -6774,31 +7830,31 @@ public final class ElectionContract {
       }
       if (lockTime_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(7, lockTime_);
+          .computeInt64Size(6, lockTime_);
       }
       if (unlockTimestamp_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, getUnlockTimestamp());
+          .computeMessageSize(7, getUnlockTimestamp());
       }
       if (withdrawTimestamp_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, getWithdrawTimestamp());
+          .computeMessageSize(8, getWithdrawTimestamp());
       }
       if (voteTimestamp_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, getVoteTimestamp());
+          .computeMessageSize(9, getVoteTimestamp());
       }
       if (isWithdrawn_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(13, isWithdrawn_);
+          .computeBoolSize(10, isWithdrawn_);
       }
       if (weight_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(14, weight_);
+          .computeInt64Size(11, weight_);
       }
       if (isChangeTarget_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(15, isChangeTarget_);
+          .computeBoolSize(12, isChangeTarget_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7258,6 +8314,10 @@ public final class ElectionContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Address, io.aelf.protobuf.generated.Client.Address.Builder, io.aelf.protobuf.generated.Client.AddressOrBuilder> voterBuilder_;
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        * @return Whether the voter field is set.
        */
@@ -7265,6 +8325,10 @@ public final class ElectionContract {
         return voterBuilder_ != null || voter_ != null;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        * @return The voter.
        */
@@ -7276,6 +8340,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        */
       public Builder setVoter(io.aelf.protobuf.generated.Client.Address value) {
@@ -7292,6 +8360,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        */
       public Builder setVoter(
@@ -7306,6 +8378,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        */
       public Builder mergeVoter(io.aelf.protobuf.generated.Client.Address value) {
@@ -7324,6 +8400,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        */
       public Builder clearVoter() {
@@ -7338,6 +8418,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getVoterBuilder() {
@@ -7346,6 +8430,10 @@ public final class ElectionContract {
         return getVoterFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.AddressOrBuilder getVoterOrBuilder() {
@@ -7357,6 +8445,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The address of voter.
+       * </pre>
+       *
        * <code>.Address voter = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -7375,6 +8467,10 @@ public final class ElectionContract {
 
       private java.lang.Object candidate_ = "";
       /**
+       * <pre>
+       * The public key of candidate.
+       * </pre>
+       *
        * <code>string candidate = 2;</code>
        * @return The candidate.
        */
@@ -7391,6 +8487,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The public key of candidate.
+       * </pre>
+       *
        * <code>string candidate = 2;</code>
        * @return The bytes for candidate.
        */
@@ -7408,6 +8508,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The public key of candidate.
+       * </pre>
+       *
        * <code>string candidate = 2;</code>
        * @param value The candidate to set.
        * @return This builder for chaining.
@@ -7423,6 +8527,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The public key of candidate.
+       * </pre>
+       *
        * <code>string candidate = 2;</code>
        * @return This builder for chaining.
        */
@@ -7433,6 +8541,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The public key of candidate.
+       * </pre>
+       *
        * <code>string candidate = 2;</code>
        * @param value The bytes for candidate to set.
        * @return This builder for chaining.
@@ -7451,14 +8563,22 @@ public final class ElectionContract {
 
       private long amount_ ;
       /**
-       * <code>sint64 amount = 3;</code>
+       * <pre>
+       * Amount of voting.
+       * </pre>
+       *
+       * <code>int64 amount = 3;</code>
        * @return The amount.
        */
       public long getAmount() {
         return amount_;
       }
       /**
-       * <code>sint64 amount = 3;</code>
+       * <pre>
+       * Amount of voting.
+       * </pre>
+       *
+       * <code>int64 amount = 3;</code>
        * @param value The amount to set.
        * @return This builder for chaining.
        */
@@ -7469,7 +8589,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 amount = 3;</code>
+       * <pre>
+       * Amount of voting.
+       * </pre>
+       *
+       * <code>int64 amount = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
@@ -7481,14 +8605,22 @@ public final class ElectionContract {
 
       private long termNumber_ ;
       /**
-       * <code>sint64 term_number = 4;</code>
+       * <pre>
+       * The term number of voting.
+       * </pre>
+       *
+       * <code>int64 term_number = 4;</code>
        * @return The termNumber.
        */
       public long getTermNumber() {
         return termNumber_;
       }
       /**
-       * <code>sint64 term_number = 4;</code>
+       * <pre>
+       * The term number of voting.
+       * </pre>
+       *
+       * <code>int64 term_number = 4;</code>
        * @param value The termNumber to set.
        * @return This builder for chaining.
        */
@@ -7499,7 +8631,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 term_number = 4;</code>
+       * <pre>
+       * The term number of voting.
+       * </pre>
+       *
+       * <code>int64 term_number = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
@@ -7513,6 +8649,10 @@ public final class ElectionContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> voteIdBuilder_;
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        * @return Whether the voteId field is set.
        */
@@ -7520,6 +8660,10 @@ public final class ElectionContract {
         return voteIdBuilder_ != null || voteId_ != null;
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        * @return The voteId.
        */
@@ -7531,6 +8675,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        */
       public Builder setVoteId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -7547,6 +8695,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        */
       public Builder setVoteId(
@@ -7561,6 +8713,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        */
       public Builder mergeVoteId(io.aelf.protobuf.generated.Client.Hash value) {
@@ -7579,6 +8735,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        */
       public Builder clearVoteId() {
@@ -7593,6 +8753,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVoteIdBuilder() {
@@ -7601,6 +8765,10 @@ public final class ElectionContract {
         return getVoteIdFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getVoteIdOrBuilder() {
@@ -7612,6 +8780,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The vote id.
+       * </pre>
+       *
        * <code>.Hash vote_id = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -7630,14 +8802,22 @@ public final class ElectionContract {
 
       private long lockTime_ ;
       /**
-       * <code>sint64 lock_time = 7;</code>
+       * <pre>
+       * Vote lock time.
+       * </pre>
+       *
+       * <code>int64 lock_time = 6;</code>
        * @return The lockTime.
        */
       public long getLockTime() {
         return lockTime_;
       }
       /**
-       * <code>sint64 lock_time = 7;</code>
+       * <pre>
+       * Vote lock time.
+       * </pre>
+       *
+       * <code>int64 lock_time = 6;</code>
        * @param value The lockTime to set.
        * @return This builder for chaining.
        */
@@ -7648,7 +8828,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 lock_time = 7;</code>
+       * <pre>
+       * Vote lock time.
+       * </pre>
+       *
+       * <code>int64 lock_time = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearLockTime() {
@@ -7662,14 +8846,22 @@ public final class ElectionContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> unlockTimestampBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        * @return Whether the unlockTimestamp field is set.
        */
       public boolean hasUnlockTimestamp() {
         return unlockTimestampBuilder_ != null || unlockTimestamp_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        * @return The unlockTimestamp.
        */
       public com.google.protobuf.Timestamp getUnlockTimestamp() {
@@ -7680,7 +8872,11 @@ public final class ElectionContract {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        */
       public Builder setUnlockTimestamp(com.google.protobuf.Timestamp value) {
         if (unlockTimestampBuilder_ == null) {
@@ -7696,7 +8892,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        */
       public Builder setUnlockTimestamp(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -7710,7 +8910,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        */
       public Builder mergeUnlockTimestamp(com.google.protobuf.Timestamp value) {
         if (unlockTimestampBuilder_ == null) {
@@ -7728,7 +8932,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        */
       public Builder clearUnlockTimestamp() {
         if (unlockTimestampBuilder_ == null) {
@@ -7742,7 +8950,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        */
       public com.google.protobuf.Timestamp.Builder getUnlockTimestampBuilder() {
         
@@ -7750,7 +8962,11 @@ public final class ElectionContract {
         return getUnlockTimestampFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getUnlockTimestampOrBuilder() {
         if (unlockTimestampBuilder_ != null) {
@@ -7761,7 +8977,11 @@ public final class ElectionContract {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp unlock_timestamp = 10;</code>
+       * <pre>
+       * The unlock timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp unlock_timestamp = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -7781,14 +9001,22 @@ public final class ElectionContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> withdrawTimestampBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        * @return Whether the withdrawTimestamp field is set.
        */
       public boolean hasWithdrawTimestamp() {
         return withdrawTimestampBuilder_ != null || withdrawTimestamp_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        * @return The withdrawTimestamp.
        */
       public com.google.protobuf.Timestamp getWithdrawTimestamp() {
@@ -7799,7 +9027,11 @@ public final class ElectionContract {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        */
       public Builder setWithdrawTimestamp(com.google.protobuf.Timestamp value) {
         if (withdrawTimestampBuilder_ == null) {
@@ -7815,7 +9047,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        */
       public Builder setWithdrawTimestamp(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -7829,7 +9065,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        */
       public Builder mergeWithdrawTimestamp(com.google.protobuf.Timestamp value) {
         if (withdrawTimestampBuilder_ == null) {
@@ -7847,7 +9087,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        */
       public Builder clearWithdrawTimestamp() {
         if (withdrawTimestampBuilder_ == null) {
@@ -7861,7 +9105,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        */
       public com.google.protobuf.Timestamp.Builder getWithdrawTimestampBuilder() {
         
@@ -7869,7 +9117,11 @@ public final class ElectionContract {
         return getWithdrawTimestampFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getWithdrawTimestampOrBuilder() {
         if (withdrawTimestampBuilder_ != null) {
@@ -7880,7 +9132,11 @@ public final class ElectionContract {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp withdraw_timestamp = 11;</code>
+       * <pre>
+       * The withdraw timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp withdraw_timestamp = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -7900,14 +9156,22 @@ public final class ElectionContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> voteTimestampBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        * @return Whether the voteTimestamp field is set.
        */
       public boolean hasVoteTimestamp() {
         return voteTimestampBuilder_ != null || voteTimestamp_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        * @return The voteTimestamp.
        */
       public com.google.protobuf.Timestamp getVoteTimestamp() {
@@ -7918,7 +9182,11 @@ public final class ElectionContract {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        */
       public Builder setVoteTimestamp(com.google.protobuf.Timestamp value) {
         if (voteTimestampBuilder_ == null) {
@@ -7934,7 +9202,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        */
       public Builder setVoteTimestamp(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -7948,7 +9220,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        */
       public Builder mergeVoteTimestamp(com.google.protobuf.Timestamp value) {
         if (voteTimestampBuilder_ == null) {
@@ -7966,7 +9242,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        */
       public Builder clearVoteTimestamp() {
         if (voteTimestampBuilder_ == null) {
@@ -7980,7 +9260,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        */
       public com.google.protobuf.Timestamp.Builder getVoteTimestampBuilder() {
         
@@ -7988,7 +9272,11 @@ public final class ElectionContract {
         return getVoteTimestampFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getVoteTimestampOrBuilder() {
         if (voteTimestampBuilder_ != null) {
@@ -7999,7 +9287,11 @@ public final class ElectionContract {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp vote_timestamp = 12;</code>
+       * <pre>
+       * The vote timestamp.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp vote_timestamp = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -8017,14 +9309,22 @@ public final class ElectionContract {
 
       private boolean isWithdrawn_ ;
       /**
-       * <code>bool is_withdrawn = 13;</code>
+       * <pre>
+       * Indicates if the vote has been withdrawn.
+       * </pre>
+       *
+       * <code>bool is_withdrawn = 10;</code>
        * @return The isWithdrawn.
        */
       public boolean getIsWithdrawn() {
         return isWithdrawn_;
       }
       /**
-       * <code>bool is_withdrawn = 13;</code>
+       * <pre>
+       * Indicates if the vote has been withdrawn.
+       * </pre>
+       *
+       * <code>bool is_withdrawn = 10;</code>
        * @param value The isWithdrawn to set.
        * @return This builder for chaining.
        */
@@ -8035,7 +9335,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>bool is_withdrawn = 13;</code>
+       * <pre>
+       * Indicates if the vote has been withdrawn.
+       * </pre>
+       *
+       * <code>bool is_withdrawn = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearIsWithdrawn() {
@@ -8047,14 +9351,22 @@ public final class ElectionContract {
 
       private long weight_ ;
       /**
-       * <code>sint64 weight = 14;</code>
+       * <pre>
+       * Vote weight for sharing bonus.
+       * </pre>
+       *
+       * <code>int64 weight = 11;</code>
        * @return The weight.
        */
       public long getWeight() {
         return weight_;
       }
       /**
-       * <code>sint64 weight = 14;</code>
+       * <pre>
+       * Vote weight for sharing bonus.
+       * </pre>
+       *
+       * <code>int64 weight = 11;</code>
        * @param value The weight to set.
        * @return This builder for chaining.
        */
@@ -8065,7 +9377,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 weight = 14;</code>
+       * <pre>
+       * Vote weight for sharing bonus.
+       * </pre>
+       *
+       * <code>int64 weight = 11;</code>
        * @return This builder for chaining.
        */
       public Builder clearWeight() {
@@ -8077,14 +9393,22 @@ public final class ElectionContract {
 
       private boolean isChangeTarget_ ;
       /**
-       * <code>bool is_change_target = 15;</code>
+       * <pre>
+       * Whether vote others.
+       * </pre>
+       *
+       * <code>bool is_change_target = 12;</code>
        * @return The isChangeTarget.
        */
       public boolean getIsChangeTarget() {
         return isChangeTarget_;
       }
       /**
-       * <code>bool is_change_target = 15;</code>
+       * <pre>
+       * Whether vote others.
+       * </pre>
+       *
+       * <code>bool is_change_target = 12;</code>
        * @param value The isChangeTarget to set.
        * @return This builder for chaining.
        */
@@ -8095,7 +9419,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>bool is_change_target = 15;</code>
+       * <pre>
+       * Whether vote others.
+       * </pre>
+       *
+       * <code>bool is_change_target = 12;</code>
        * @return This builder for chaining.
        */
       public Builder clearIsChangeTarget() {
@@ -8162,114 +9490,206 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.Hash> 
         getObtainedActiveVotingRecordIdsList();
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     io.aelf.protobuf.generated.Client.Hash getObtainedActiveVotingRecordIds(int index);
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     int getObtainedActiveVotingRecordIdsCount();
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getObtainedActiveVotingRecordIdsOrBuilderList();
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getObtainedActiveVotingRecordIdsOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     java.util.List<io.aelf.protobuf.generated.Client.Hash> 
         getObtainedWithdrawnVotingRecordIdsList();
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     io.aelf.protobuf.generated.Client.Hash getObtainedWithdrawnVotingRecordIds(int index);
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     int getObtainedWithdrawnVotingRecordIdsCount();
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getObtainedWithdrawnVotingRecordIdsOrBuilderList();
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     io.aelf.protobuf.generated.Client.HashOrBuilder getObtainedWithdrawnVotingRecordIdsOrBuilder(
         int index);
 
     /**
-     * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+     * <pre>
+     * The total number of active votes obtained.
+     * </pre>
+     *
+     * <code>int64 obtained_active_voted_votes_amount = 3;</code>
      * @return The obtainedActiveVotedVotesAmount.
      */
     long getObtainedActiveVotedVotesAmount();
 
     /**
-     * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+     * <pre>
+     * The total number of votes obtained.
+     * </pre>
+     *
+     * <code>int64 all_obtained_voted_votes_amount = 4;</code>
      * @return The allObtainedVotedVotesAmount.
      */
     long getAllObtainedVotedVotesAmount();
 
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> 
         getObtainedActiveVotingRecordsList();
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getObtainedActiveVotingRecords(int index);
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     int getObtainedActiveVotingRecordsCount();
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
         getObtainedActiveVotingRecordsOrBuilderList();
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getObtainedActiveVotingRecordsOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> 
         getObtainedWithdrawnVotesRecordsList();
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getObtainedWithdrawnVotesRecords(int index);
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     int getObtainedWithdrawnVotesRecordsCount();
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
         getObtainedWithdrawnVotesRecordsOrBuilderList();
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getObtainedWithdrawnVotesRecordsOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * Public key for candidate.
+     * </pre>
+     *
      * <code>bytes pubkey = 7;</code>
      * @return The pubkey.
      */
@@ -8346,12 +9766,12 @@ public final class ElectionContract {
             }
             case 24: {
 
-              obtainedActiveVotedVotesAmount_ = input.readSInt64();
+              obtainedActiveVotedVotesAmount_ = input.readInt64();
               break;
             }
             case 32: {
 
-              allObtainedVotedVotesAmount_ = input.readSInt64();
+              allObtainedVotedVotesAmount_ = input.readInt64();
               break;
             }
             case 42: {
@@ -8424,12 +9844,20 @@ public final class ElectionContract {
     public static final int OBTAINED_ACTIVE_VOTING_RECORD_IDS_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> obtainedActiveVotingRecordIds_;
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getObtainedActiveVotingRecordIdsList() {
       return obtainedActiveVotingRecordIds_;
     }
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -8437,18 +9865,30 @@ public final class ElectionContract {
       return obtainedActiveVotingRecordIds_;
     }
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     public int getObtainedActiveVotingRecordIdsCount() {
       return obtainedActiveVotingRecordIds_.size();
     }
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.Hash getObtainedActiveVotingRecordIds(int index) {
       return obtainedActiveVotingRecordIds_.get(index);
     }
     /**
+     * <pre>
+     * The active voting record ids obtained.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getObtainedActiveVotingRecordIdsOrBuilder(
@@ -8459,12 +9899,20 @@ public final class ElectionContract {
     public static final int OBTAINED_WITHDRAWN_VOTING_RECORD_IDS_FIELD_NUMBER = 2;
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> obtainedWithdrawnVotingRecordIds_;
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getObtainedWithdrawnVotingRecordIdsList() {
       return obtainedWithdrawnVotingRecordIds_;
     }
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -8472,18 +9920,30 @@ public final class ElectionContract {
       return obtainedWithdrawnVotingRecordIds_;
     }
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     public int getObtainedWithdrawnVotingRecordIdsCount() {
       return obtainedWithdrawnVotingRecordIds_.size();
     }
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.Hash getObtainedWithdrawnVotingRecordIds(int index) {
       return obtainedWithdrawnVotingRecordIds_.get(index);
     }
     /**
+     * <pre>
+     * The active voting record ids that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
      */
     public io.aelf.protobuf.generated.Client.HashOrBuilder getObtainedWithdrawnVotingRecordIdsOrBuilder(
@@ -8494,7 +9954,11 @@ public final class ElectionContract {
     public static final int OBTAINED_ACTIVE_VOTED_VOTES_AMOUNT_FIELD_NUMBER = 3;
     private long obtainedActiveVotedVotesAmount_;
     /**
-     * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+     * <pre>
+     * The total number of active votes obtained.
+     * </pre>
+     *
+     * <code>int64 obtained_active_voted_votes_amount = 3;</code>
      * @return The obtainedActiveVotedVotesAmount.
      */
     public long getObtainedActiveVotedVotesAmount() {
@@ -8504,7 +9968,11 @@ public final class ElectionContract {
     public static final int ALL_OBTAINED_VOTED_VOTES_AMOUNT_FIELD_NUMBER = 4;
     private long allObtainedVotedVotesAmount_;
     /**
-     * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+     * <pre>
+     * The total number of votes obtained.
+     * </pre>
+     *
+     * <code>int64 all_obtained_voted_votes_amount = 4;</code>
      * @return The allObtainedVotedVotesAmount.
      */
     public long getAllObtainedVotedVotesAmount() {
@@ -8514,12 +9982,20 @@ public final class ElectionContract {
     public static final int OBTAINED_ACTIVE_VOTING_RECORDS_FIELD_NUMBER = 5;
     private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> obtainedActiveVotingRecords_;
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getObtainedActiveVotingRecordsList() {
       return obtainedActiveVotingRecords_;
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -8527,18 +10003,30 @@ public final class ElectionContract {
       return obtainedActiveVotingRecords_;
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     public int getObtainedActiveVotingRecordsCount() {
       return obtainedActiveVotingRecords_.size();
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getObtainedActiveVotingRecords(int index) {
       return obtainedActiveVotingRecords_.get(index);
     }
     /**
+     * <pre>
+     * The active voting records.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getObtainedActiveVotingRecordsOrBuilder(
@@ -8549,12 +10037,20 @@ public final class ElectionContract {
     public static final int OBTAINED_WITHDRAWN_VOTES_RECORDS_FIELD_NUMBER = 6;
     private java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> obtainedWithdrawnVotesRecords_;
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getObtainedWithdrawnVotesRecordsList() {
       return obtainedWithdrawnVotesRecords_;
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -8562,18 +10058,30 @@ public final class ElectionContract {
       return obtainedWithdrawnVotesRecords_;
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     public int getObtainedWithdrawnVotesRecordsCount() {
       return obtainedWithdrawnVotesRecords_.size();
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getObtainedWithdrawnVotesRecords(int index) {
       return obtainedWithdrawnVotesRecords_.get(index);
     }
     /**
+     * <pre>
+     * The voting records that were withdrawn.
+     * </pre>
+     *
      * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getObtainedWithdrawnVotesRecordsOrBuilder(
@@ -8584,6 +10092,10 @@ public final class ElectionContract {
     public static final int PUBKEY_FIELD_NUMBER = 7;
     private com.google.protobuf.ByteString pubkey_;
     /**
+     * <pre>
+     * Public key for candidate.
+     * </pre>
+     *
      * <code>bytes pubkey = 7;</code>
      * @return The pubkey.
      */
@@ -8612,10 +10124,10 @@ public final class ElectionContract {
         output.writeMessage(2, obtainedWithdrawnVotingRecordIds_.get(i));
       }
       if (obtainedActiveVotedVotesAmount_ != 0L) {
-        output.writeSInt64(3, obtainedActiveVotedVotesAmount_);
+        output.writeInt64(3, obtainedActiveVotedVotesAmount_);
       }
       if (allObtainedVotedVotesAmount_ != 0L) {
-        output.writeSInt64(4, allObtainedVotedVotesAmount_);
+        output.writeInt64(4, allObtainedVotedVotesAmount_);
       }
       for (int i = 0; i < obtainedActiveVotingRecords_.size(); i++) {
         output.writeMessage(5, obtainedActiveVotingRecords_.get(i));
@@ -8645,11 +10157,11 @@ public final class ElectionContract {
       }
       if (obtainedActiveVotedVotesAmount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, obtainedActiveVotedVotesAmount_);
+          .computeInt64Size(3, obtainedActiveVotedVotesAmount_);
       }
       if (allObtainedVotedVotesAmount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(4, allObtainedVotedVotesAmount_);
+          .computeInt64Size(4, allObtainedVotedVotesAmount_);
       }
       for (int i = 0; i < obtainedActiveVotingRecords_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -9164,6 +10676,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> obtainedActiveVotingRecordIdsBuilder_;
 
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash> getObtainedActiveVotingRecordIdsList() {
@@ -9174,6 +10690,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public int getObtainedActiveVotingRecordIdsCount() {
@@ -9184,6 +10704,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash getObtainedActiveVotingRecordIds(int index) {
@@ -9194,6 +10718,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder setObtainedActiveVotingRecordIds(
@@ -9211,6 +10739,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder setObtainedActiveVotingRecordIds(
@@ -9225,6 +10757,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder addObtainedActiveVotingRecordIds(io.aelf.protobuf.generated.Client.Hash value) {
@@ -9241,6 +10777,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder addObtainedActiveVotingRecordIds(
@@ -9258,6 +10798,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder addObtainedActiveVotingRecordIds(
@@ -9272,6 +10816,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder addObtainedActiveVotingRecordIds(
@@ -9286,6 +10834,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder addAllObtainedActiveVotingRecordIds(
@@ -9301,6 +10853,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder clearObtainedActiveVotingRecordIds() {
@@ -9314,6 +10870,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public Builder removeObtainedActiveVotingRecordIds(int index) {
@@ -9327,6 +10887,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getObtainedActiveVotingRecordIdsBuilder(
@@ -9334,6 +10898,10 @@ public final class ElectionContract {
         return getObtainedActiveVotingRecordIdsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getObtainedActiveVotingRecordIdsOrBuilder(
@@ -9344,6 +10912,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -9355,6 +10927,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addObtainedActiveVotingRecordIdsBuilder() {
@@ -9362,6 +10938,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addObtainedActiveVotingRecordIdsBuilder(
@@ -9370,6 +10950,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting record ids obtained.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_active_voting_record_ids = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash.Builder> 
@@ -9404,6 +10988,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.Client.Hash, io.aelf.protobuf.generated.Client.Hash.Builder, io.aelf.protobuf.generated.Client.HashOrBuilder> obtainedWithdrawnVotingRecordIdsBuilder_;
 
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash> getObtainedWithdrawnVotingRecordIdsList() {
@@ -9414,6 +11002,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public int getObtainedWithdrawnVotingRecordIdsCount() {
@@ -9424,6 +11016,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash getObtainedWithdrawnVotingRecordIds(int index) {
@@ -9434,6 +11030,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder setObtainedWithdrawnVotingRecordIds(
@@ -9451,6 +11051,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder setObtainedWithdrawnVotingRecordIds(
@@ -9465,6 +11069,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addObtainedWithdrawnVotingRecordIds(io.aelf.protobuf.generated.Client.Hash value) {
@@ -9481,6 +11089,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addObtainedWithdrawnVotingRecordIds(
@@ -9498,6 +11110,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addObtainedWithdrawnVotingRecordIds(
@@ -9512,6 +11128,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addObtainedWithdrawnVotingRecordIds(
@@ -9526,6 +11146,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder addAllObtainedWithdrawnVotingRecordIds(
@@ -9541,6 +11165,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder clearObtainedWithdrawnVotingRecordIds() {
@@ -9554,6 +11182,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public Builder removeObtainedWithdrawnVotingRecordIds(int index) {
@@ -9567,6 +11199,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getObtainedWithdrawnVotingRecordIdsBuilder(
@@ -9574,6 +11210,10 @@ public final class ElectionContract {
         return getObtainedWithdrawnVotingRecordIdsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.HashOrBuilder getObtainedWithdrawnVotingRecordIdsOrBuilder(
@@ -9584,6 +11224,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
@@ -9595,6 +11239,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addObtainedWithdrawnVotingRecordIdsBuilder() {
@@ -9602,6 +11250,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder addObtainedWithdrawnVotingRecordIdsBuilder(
@@ -9610,6 +11262,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.Client.Hash.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting record ids that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .Hash obtained_withdrawn_voting_record_ids = 2;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.Client.Hash.Builder> 
@@ -9633,14 +11289,22 @@ public final class ElectionContract {
 
       private long obtainedActiveVotedVotesAmount_ ;
       /**
-       * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+       * <pre>
+       * The total number of active votes obtained.
+       * </pre>
+       *
+       * <code>int64 obtained_active_voted_votes_amount = 3;</code>
        * @return The obtainedActiveVotedVotesAmount.
        */
       public long getObtainedActiveVotedVotesAmount() {
         return obtainedActiveVotedVotesAmount_;
       }
       /**
-       * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+       * <pre>
+       * The total number of active votes obtained.
+       * </pre>
+       *
+       * <code>int64 obtained_active_voted_votes_amount = 3;</code>
        * @param value The obtainedActiveVotedVotesAmount to set.
        * @return This builder for chaining.
        */
@@ -9651,7 +11315,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 obtained_active_voted_votes_amount = 3;</code>
+       * <pre>
+       * The total number of active votes obtained.
+       * </pre>
+       *
+       * <code>int64 obtained_active_voted_votes_amount = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearObtainedActiveVotedVotesAmount() {
@@ -9663,14 +11331,22 @@ public final class ElectionContract {
 
       private long allObtainedVotedVotesAmount_ ;
       /**
-       * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+       * <pre>
+       * The total number of votes obtained.
+       * </pre>
+       *
+       * <code>int64 all_obtained_voted_votes_amount = 4;</code>
        * @return The allObtainedVotedVotesAmount.
        */
       public long getAllObtainedVotedVotesAmount() {
         return allObtainedVotedVotesAmount_;
       }
       /**
-       * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+       * <pre>
+       * The total number of votes obtained.
+       * </pre>
+       *
+       * <code>int64 all_obtained_voted_votes_amount = 4;</code>
        * @param value The allObtainedVotedVotesAmount to set.
        * @return This builder for chaining.
        */
@@ -9681,7 +11357,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 all_obtained_voted_votes_amount = 4;</code>
+       * <pre>
+       * The total number of votes obtained.
+       * </pre>
+       *
+       * <code>int64 all_obtained_voted_votes_amount = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearAllObtainedVotedVotesAmount() {
@@ -9704,6 +11384,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> obtainedActiveVotingRecordsBuilder_;
 
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getObtainedActiveVotingRecordsList() {
@@ -9714,6 +11398,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public int getObtainedActiveVotingRecordsCount() {
@@ -9724,6 +11412,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getObtainedActiveVotingRecords(int index) {
@@ -9734,6 +11426,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder setObtainedActiveVotingRecords(
@@ -9751,6 +11447,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder setObtainedActiveVotingRecords(
@@ -9765,6 +11465,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder addObtainedActiveVotingRecords(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord value) {
@@ -9781,6 +11485,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder addObtainedActiveVotingRecords(
@@ -9798,6 +11506,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder addObtainedActiveVotingRecords(
@@ -9812,6 +11524,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder addObtainedActiveVotingRecords(
@@ -9826,6 +11542,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder addAllObtainedActiveVotingRecords(
@@ -9841,6 +11561,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder clearObtainedActiveVotingRecords() {
@@ -9854,6 +11578,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public Builder removeObtainedActiveVotingRecords(int index) {
@@ -9867,6 +11595,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder getObtainedActiveVotingRecordsBuilder(
@@ -9874,6 +11606,10 @@ public final class ElectionContract {
         return getObtainedActiveVotingRecordsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getObtainedActiveVotingRecordsOrBuilder(
@@ -9884,6 +11620,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -9895,6 +11635,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addObtainedActiveVotingRecordsBuilder() {
@@ -9902,6 +11646,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addObtainedActiveVotingRecordsBuilder(
@@ -9910,6 +11658,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The active voting records.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_active_voting_records = 5;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder> 
@@ -9944,6 +11696,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> obtainedWithdrawnVotesRecordsBuilder_;
 
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord> getObtainedWithdrawnVotesRecordsList() {
@@ -9954,6 +11710,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public int getObtainedWithdrawnVotesRecordsCount() {
@@ -9964,6 +11724,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord getObtainedWithdrawnVotesRecords(int index) {
@@ -9974,6 +11738,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder setObtainedWithdrawnVotesRecords(
@@ -9991,6 +11759,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder setObtainedWithdrawnVotesRecords(
@@ -10005,6 +11777,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder addObtainedWithdrawnVotesRecords(io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord value) {
@@ -10021,6 +11797,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder addObtainedWithdrawnVotesRecords(
@@ -10038,6 +11818,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder addObtainedWithdrawnVotesRecords(
@@ -10052,6 +11836,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder addObtainedWithdrawnVotesRecords(
@@ -10066,6 +11854,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder addAllObtainedWithdrawnVotesRecords(
@@ -10081,6 +11873,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder clearObtainedWithdrawnVotesRecords() {
@@ -10094,6 +11890,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public Builder removeObtainedWithdrawnVotesRecords(int index) {
@@ -10107,6 +11907,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder getObtainedWithdrawnVotesRecordsBuilder(
@@ -10114,6 +11918,10 @@ public final class ElectionContract {
         return getObtainedWithdrawnVotesRecordsFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder getObtainedWithdrawnVotesRecordsOrBuilder(
@@ -10124,6 +11932,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecordOrBuilder> 
@@ -10135,6 +11947,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addObtainedWithdrawnVotesRecordsBuilder() {
@@ -10142,6 +11958,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder addObtainedWithdrawnVotesRecordsBuilder(
@@ -10150,6 +11970,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The voting records that were withdrawn.
+       * </pre>
+       *
        * <code>repeated .ElectionVotingRecord obtained_withdrawn_votes_records = 6;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.ElectionVotingRecord.Builder> 
@@ -10173,6 +11997,10 @@ public final class ElectionContract {
 
       private com.google.protobuf.ByteString pubkey_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       * Public key for candidate.
+       * </pre>
+       *
        * <code>bytes pubkey = 7;</code>
        * @return The pubkey.
        */
@@ -10180,6 +12008,10 @@ public final class ElectionContract {
         return pubkey_;
       }
       /**
+       * <pre>
+       * Public key for candidate.
+       * </pre>
+       *
        * <code>bytes pubkey = 7;</code>
        * @param value The pubkey to set.
        * @return This builder for chaining.
@@ -10194,6 +12026,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * Public key for candidate.
+       * </pre>
+       *
        * <code>bytes pubkey = 7;</code>
        * @return This builder for chaining.
        */
@@ -10261,17 +12097,29 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * Token lock time.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return A list containing the value.
      */
     java.util.List<java.lang.Long> getValueList();
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * Token lock time.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return The count of value.
      */
     int getValueCount();
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * Token lock time.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @param index The index of the element to return.
      * @return The value at the given index.
      */
@@ -10329,7 +12177,7 @@ public final class ElectionContract {
                 value_ = newLongList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              value_.addLong(input.readSInt64());
+              value_.addLong(input.readInt64());
               break;
             }
             case 10: {
@@ -10340,7 +12188,7 @@ public final class ElectionContract {
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                value_.addLong(input.readSInt64());
+                value_.addLong(input.readInt64());
               }
               input.popLimit(limit);
               break;
@@ -10383,7 +12231,11 @@ public final class ElectionContract {
     public static final int VALUE_FIELD_NUMBER = 1;
     private com.google.protobuf.Internal.LongList value_;
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * Token lock time.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return A list containing the value.
      */
     public java.util.List<java.lang.Long>
@@ -10391,14 +12243,22 @@ public final class ElectionContract {
       return value_;
     }
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * Token lock time.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return The count of value.
      */
     public int getValueCount() {
       return value_.size();
     }
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * Token lock time.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @param index The index of the element to return.
      * @return The value at the given index.
      */
@@ -10427,7 +12287,7 @@ public final class ElectionContract {
         output.writeUInt32NoTag(valueMemoizedSerializedSize);
       }
       for (int i = 0; i < value_.size(); i++) {
-        output.writeSInt64NoTag(value_.getLong(i));
+        output.writeInt64NoTag(value_.getLong(i));
       }
       unknownFields.writeTo(output);
     }
@@ -10442,7 +12302,7 @@ public final class ElectionContract {
         int dataSize = 0;
         for (int i = 0; i < value_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeSInt64SizeNoTag(value_.getLong(i));
+            .computeInt64SizeNoTag(value_.getLong(i));
         }
         size += dataSize;
         if (!getValueList().isEmpty()) {
@@ -10747,7 +12607,11 @@ public final class ElectionContract {
          }
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * Token lock time.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @return A list containing the value.
        */
       public java.util.List<java.lang.Long>
@@ -10756,14 +12620,22 @@ public final class ElectionContract {
                  java.util.Collections.unmodifiableList(value_) : value_;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * Token lock time.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @return The count of value.
        */
       public int getValueCount() {
         return value_.size();
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * Token lock time.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param index The index of the element to return.
        * @return The value at the given index.
        */
@@ -10771,7 +12643,11 @@ public final class ElectionContract {
         return value_.getLong(index);
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * Token lock time.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param index The index to set the value at.
        * @param value The value to set.
        * @return This builder for chaining.
@@ -10784,7 +12660,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * Token lock time.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param value The value to add.
        * @return This builder for chaining.
        */
@@ -10795,7 +12675,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * Token lock time.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param values The value to add.
        * @return This builder for chaining.
        */
@@ -10808,7 +12692,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * Token lock time.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
@@ -10875,17 +12763,29 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * The weight calculated.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return A list containing the value.
      */
     java.util.List<java.lang.Long> getValueList();
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * The weight calculated.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return The count of value.
      */
     int getValueCount();
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * The weight calculated.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @param index The index of the element to return.
      * @return The value at the given index.
      */
@@ -10943,7 +12843,7 @@ public final class ElectionContract {
                 value_ = newLongList();
                 mutable_bitField0_ |= 0x00000001;
               }
-              value_.addLong(input.readSInt64());
+              value_.addLong(input.readInt64());
               break;
             }
             case 10: {
@@ -10954,7 +12854,7 @@ public final class ElectionContract {
                 mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                value_.addLong(input.readSInt64());
+                value_.addLong(input.readInt64());
               }
               input.popLimit(limit);
               break;
@@ -10997,7 +12897,11 @@ public final class ElectionContract {
     public static final int VALUE_FIELD_NUMBER = 1;
     private com.google.protobuf.Internal.LongList value_;
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * The weight calculated.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return A list containing the value.
      */
     public java.util.List<java.lang.Long>
@@ -11005,14 +12909,22 @@ public final class ElectionContract {
       return value_;
     }
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * The weight calculated.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @return The count of value.
      */
     public int getValueCount() {
       return value_.size();
     }
     /**
-     * <code>repeated sint64 value = 1;</code>
+     * <pre>
+     * The weight calculated.
+     * </pre>
+     *
+     * <code>repeated int64 value = 1;</code>
      * @param index The index of the element to return.
      * @return The value at the given index.
      */
@@ -11041,7 +12953,7 @@ public final class ElectionContract {
         output.writeUInt32NoTag(valueMemoizedSerializedSize);
       }
       for (int i = 0; i < value_.size(); i++) {
-        output.writeSInt64NoTag(value_.getLong(i));
+        output.writeInt64NoTag(value_.getLong(i));
       }
       unknownFields.writeTo(output);
     }
@@ -11056,7 +12968,7 @@ public final class ElectionContract {
         int dataSize = 0;
         for (int i = 0; i < value_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeSInt64SizeNoTag(value_.getLong(i));
+            .computeInt64SizeNoTag(value_.getLong(i));
         }
         size += dataSize;
         if (!getValueList().isEmpty()) {
@@ -11361,7 +13273,11 @@ public final class ElectionContract {
          }
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * The weight calculated.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @return A list containing the value.
        */
       public java.util.List<java.lang.Long>
@@ -11370,14 +13286,22 @@ public final class ElectionContract {
                  java.util.Collections.unmodifiableList(value_) : value_;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * The weight calculated.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @return The count of value.
        */
       public int getValueCount() {
         return value_.size();
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * The weight calculated.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param index The index of the element to return.
        * @return The value at the given index.
        */
@@ -11385,7 +13309,11 @@ public final class ElectionContract {
         return value_.getLong(index);
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * The weight calculated.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param index The index to set the value at.
        * @param value The value to set.
        * @return This builder for chaining.
@@ -11398,7 +13326,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * The weight calculated.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param value The value to add.
        * @return This builder for chaining.
        */
@@ -11409,7 +13341,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * The weight calculated.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @param values The value to add.
        * @return This builder for chaining.
        */
@@ -11422,7 +13358,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>repeated sint64 value = 1;</code>
+       * <pre>
+       * The weight calculated.
+       * </pre>
+       *
+       * <code>repeated int64 value = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
@@ -11489,13 +13429,21 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>sint32 start = 1;</code>
+     * <pre>
+     * The start index.
+     * </pre>
+     *
+     * <code>int32 start = 1;</code>
      * @return The start.
      */
     int getStart();
 
     /**
-     * <code>sint32 length = 2;</code>
+     * <pre>
+     * The number of records.
+     * </pre>
+     *
+     * <code>int32 length = 2;</code>
      * @return The length.
      */
     int getLength();
@@ -11547,12 +13495,12 @@ public final class ElectionContract {
               break;
             case 8: {
 
-              start_ = input.readSInt32();
+              start_ = input.readInt32();
               break;
             }
             case 16: {
 
-              length_ = input.readSInt32();
+              length_ = input.readInt32();
               break;
             }
             default: {
@@ -11590,7 +13538,11 @@ public final class ElectionContract {
     public static final int START_FIELD_NUMBER = 1;
     private int start_;
     /**
-     * <code>sint32 start = 1;</code>
+     * <pre>
+     * The start index.
+     * </pre>
+     *
+     * <code>int32 start = 1;</code>
      * @return The start.
      */
     public int getStart() {
@@ -11600,7 +13552,11 @@ public final class ElectionContract {
     public static final int LENGTH_FIELD_NUMBER = 2;
     private int length_;
     /**
-     * <code>sint32 length = 2;</code>
+     * <pre>
+     * The number of records.
+     * </pre>
+     *
+     * <code>int32 length = 2;</code>
      * @return The length.
      */
     public int getLength() {
@@ -11622,10 +13578,10 @@ public final class ElectionContract {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (start_ != 0) {
-        output.writeSInt32(1, start_);
+        output.writeInt32(1, start_);
       }
       if (length_ != 0) {
-        output.writeSInt32(2, length_);
+        output.writeInt32(2, length_);
       }
       unknownFields.writeTo(output);
     }
@@ -11638,11 +13594,11 @@ public final class ElectionContract {
       size = 0;
       if (start_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(1, start_);
+          .computeInt32Size(1, start_);
       }
       if (length_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(2, length_);
+          .computeInt32Size(2, length_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11928,14 +13884,22 @@ public final class ElectionContract {
 
       private int start_ ;
       /**
-       * <code>sint32 start = 1;</code>
+       * <pre>
+       * The start index.
+       * </pre>
+       *
+       * <code>int32 start = 1;</code>
        * @return The start.
        */
       public int getStart() {
         return start_;
       }
       /**
-       * <code>sint32 start = 1;</code>
+       * <pre>
+       * The start index.
+       * </pre>
+       *
+       * <code>int32 start = 1;</code>
        * @param value The start to set.
        * @return This builder for chaining.
        */
@@ -11946,7 +13910,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint32 start = 1;</code>
+       * <pre>
+       * The start index.
+       * </pre>
+       *
+       * <code>int32 start = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearStart() {
@@ -11958,14 +13926,22 @@ public final class ElectionContract {
 
       private int length_ ;
       /**
-       * <code>sint32 length = 2;</code>
+       * <pre>
+       * The number of records.
+       * </pre>
+       *
+       * <code>int32 length = 2;</code>
        * @return The length.
        */
       public int getLength() {
         return length_;
       }
       /**
-       * <code>sint32 length = 2;</code>
+       * <pre>
+       * The number of records.
+       * </pre>
+       *
+       * <code>int32 length = 2;</code>
        * @param value The length to set.
        * @return This builder for chaining.
        */
@@ -11976,7 +13952,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint32 length = 2;</code>
+       * <pre>
+       * The number of records.
+       * </pre>
+       *
+       * <code>int32 length = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearLength() {
@@ -12043,22 +14023,38 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The candidate information.
+     * </pre>
+     *
      * <code>.CandidateInformation candidate_information = 1;</code>
      * @return Whether the candidateInformation field is set.
      */
     boolean hasCandidateInformation();
     /**
+     * <pre>
+     * The candidate information.
+     * </pre>
+     *
      * <code>.CandidateInformation candidate_information = 1;</code>
      * @return The candidateInformation.
      */
     io.aelf.protobuf.generated.ElectionContract.CandidateInformation getCandidateInformation();
     /**
+     * <pre>
+     * The candidate information.
+     * </pre>
+     *
      * <code>.CandidateInformation candidate_information = 1;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.CandidateInformationOrBuilder getCandidateInformationOrBuilder();
 
     /**
-     * <code>sint64 obtained_votes_amount = 2;</code>
+     * <pre>
+     * The number of votes a candidate has obtained.
+     * </pre>
+     *
+     * <code>int64 obtained_votes_amount = 2;</code>
      * @return The obtainedVotesAmount.
      */
     long getObtainedVotesAmount();
@@ -12123,7 +14119,7 @@ public final class ElectionContract {
             }
             case 16: {
 
-              obtainedVotesAmount_ = input.readSInt64();
+              obtainedVotesAmount_ = input.readInt64();
               break;
             }
             default: {
@@ -12161,6 +14157,10 @@ public final class ElectionContract {
     public static final int CANDIDATE_INFORMATION_FIELD_NUMBER = 1;
     private io.aelf.protobuf.generated.ElectionContract.CandidateInformation candidateInformation_;
     /**
+     * <pre>
+     * The candidate information.
+     * </pre>
+     *
      * <code>.CandidateInformation candidate_information = 1;</code>
      * @return Whether the candidateInformation field is set.
      */
@@ -12168,6 +14168,10 @@ public final class ElectionContract {
       return candidateInformation_ != null;
     }
     /**
+     * <pre>
+     * The candidate information.
+     * </pre>
+     *
      * <code>.CandidateInformation candidate_information = 1;</code>
      * @return The candidateInformation.
      */
@@ -12175,6 +14179,10 @@ public final class ElectionContract {
       return candidateInformation_ == null ? io.aelf.protobuf.generated.ElectionContract.CandidateInformation.getDefaultInstance() : candidateInformation_;
     }
     /**
+     * <pre>
+     * The candidate information.
+     * </pre>
+     *
      * <code>.CandidateInformation candidate_information = 1;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.CandidateInformationOrBuilder getCandidateInformationOrBuilder() {
@@ -12184,7 +14192,11 @@ public final class ElectionContract {
     public static final int OBTAINED_VOTES_AMOUNT_FIELD_NUMBER = 2;
     private long obtainedVotesAmount_;
     /**
-     * <code>sint64 obtained_votes_amount = 2;</code>
+     * <pre>
+     * The number of votes a candidate has obtained.
+     * </pre>
+     *
+     * <code>int64 obtained_votes_amount = 2;</code>
      * @return The obtainedVotesAmount.
      */
     public long getObtainedVotesAmount() {
@@ -12209,7 +14221,7 @@ public final class ElectionContract {
         output.writeMessage(1, getCandidateInformation());
       }
       if (obtainedVotesAmount_ != 0L) {
-        output.writeSInt64(2, obtainedVotesAmount_);
+        output.writeInt64(2, obtainedVotesAmount_);
       }
       unknownFields.writeTo(output);
     }
@@ -12226,7 +14238,7 @@ public final class ElectionContract {
       }
       if (obtainedVotesAmount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, obtainedVotesAmount_);
+          .computeInt64Size(2, obtainedVotesAmount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -12528,6 +14540,10 @@ public final class ElectionContract {
       private com.google.protobuf.SingleFieldBuilderV3<
           io.aelf.protobuf.generated.ElectionContract.CandidateInformation, io.aelf.protobuf.generated.ElectionContract.CandidateInformation.Builder, io.aelf.protobuf.generated.ElectionContract.CandidateInformationOrBuilder> candidateInformationBuilder_;
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        * @return Whether the candidateInformation field is set.
        */
@@ -12535,6 +14551,10 @@ public final class ElectionContract {
         return candidateInformationBuilder_ != null || candidateInformation_ != null;
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        * @return The candidateInformation.
        */
@@ -12546,6 +14566,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        */
       public Builder setCandidateInformation(io.aelf.protobuf.generated.ElectionContract.CandidateInformation value) {
@@ -12562,6 +14586,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        */
       public Builder setCandidateInformation(
@@ -12576,6 +14604,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        */
       public Builder mergeCandidateInformation(io.aelf.protobuf.generated.ElectionContract.CandidateInformation value) {
@@ -12594,6 +14626,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        */
       public Builder clearCandidateInformation() {
@@ -12608,6 +14644,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateInformation.Builder getCandidateInformationBuilder() {
@@ -12616,6 +14656,10 @@ public final class ElectionContract {
         return getCandidateInformationFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateInformationOrBuilder getCandidateInformationOrBuilder() {
@@ -12627,6 +14671,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The candidate information.
+       * </pre>
+       *
        * <code>.CandidateInformation candidate_information = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -12645,14 +14693,22 @@ public final class ElectionContract {
 
       private long obtainedVotesAmount_ ;
       /**
-       * <code>sint64 obtained_votes_amount = 2;</code>
+       * <pre>
+       * The number of votes a candidate has obtained.
+       * </pre>
+       *
+       * <code>int64 obtained_votes_amount = 2;</code>
        * @return The obtainedVotesAmount.
        */
       public long getObtainedVotesAmount() {
         return obtainedVotesAmount_;
       }
       /**
-       * <code>sint64 obtained_votes_amount = 2;</code>
+       * <pre>
+       * The number of votes a candidate has obtained.
+       * </pre>
+       *
+       * <code>int64 obtained_votes_amount = 2;</code>
        * @param value The obtainedVotesAmount to set.
        * @return This builder for chaining.
        */
@@ -12663,7 +14719,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 obtained_votes_amount = 2;</code>
+       * <pre>
+       * The number of votes a candidate has obtained.
+       * </pre>
+       *
+       * <code>int64 obtained_votes_amount = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearObtainedVotesAmount() {
@@ -12730,24 +14790,44 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     java.util.List<io.aelf.protobuf.generated.ElectionContract.CandidateDetail> 
         getValueList();
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.CandidateDetail getValue(int index);
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     int getValueCount();
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.CandidateDetailOrBuilder> 
         getValueOrBuilderList();
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     io.aelf.protobuf.generated.ElectionContract.CandidateDetailOrBuilder getValueOrBuilder(
@@ -12847,12 +14927,20 @@ public final class ElectionContract {
     public static final int VALUE_FIELD_NUMBER = 1;
     private java.util.List<io.aelf.protobuf.generated.ElectionContract.CandidateDetail> value_;
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     public java.util.List<io.aelf.protobuf.generated.ElectionContract.CandidateDetail> getValueList() {
       return value_;
     }
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.CandidateDetailOrBuilder> 
@@ -12860,18 +14948,30 @@ public final class ElectionContract {
       return value_;
     }
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     public int getValueCount() {
       return value_.size();
     }
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.CandidateDetail getValue(int index) {
       return value_.get(index);
     }
     /**
+     * <pre>
+     * The details of the candidates.
+     * </pre>
+     *
      * <code>repeated .CandidateDetail value = 1;</code>
      */
     public io.aelf.protobuf.generated.ElectionContract.CandidateDetailOrBuilder getValueOrBuilder(
@@ -13234,6 +15334,10 @@ public final class ElectionContract {
           io.aelf.protobuf.generated.ElectionContract.CandidateDetail, io.aelf.protobuf.generated.ElectionContract.CandidateDetail.Builder, io.aelf.protobuf.generated.ElectionContract.CandidateDetailOrBuilder> valueBuilder_;
 
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.CandidateDetail> getValueList() {
@@ -13244,6 +15348,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public int getValueCount() {
@@ -13254,6 +15362,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateDetail getValue(int index) {
@@ -13264,6 +15376,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder setValue(
@@ -13281,6 +15397,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder setValue(
@@ -13295,6 +15415,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder addValue(io.aelf.protobuf.generated.ElectionContract.CandidateDetail value) {
@@ -13311,6 +15435,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder addValue(
@@ -13328,6 +15456,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder addValue(
@@ -13342,6 +15474,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder addValue(
@@ -13356,6 +15492,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder addAllValue(
@@ -13371,6 +15511,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder clearValue() {
@@ -13384,6 +15528,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public Builder removeValue(int index) {
@@ -13397,6 +15545,10 @@ public final class ElectionContract {
         return this;
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateDetail.Builder getValueBuilder(
@@ -13404,6 +15556,10 @@ public final class ElectionContract {
         return getValueFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateDetailOrBuilder getValueOrBuilder(
@@ -13414,6 +15570,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public java.util.List<? extends io.aelf.protobuf.generated.ElectionContract.CandidateDetailOrBuilder> 
@@ -13425,6 +15585,10 @@ public final class ElectionContract {
         }
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateDetail.Builder addValueBuilder() {
@@ -13432,6 +15596,10 @@ public final class ElectionContract {
             io.aelf.protobuf.generated.ElectionContract.CandidateDetail.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public io.aelf.protobuf.generated.ElectionContract.CandidateDetail.Builder addValueBuilder(
@@ -13440,6 +15608,10 @@ public final class ElectionContract {
             index, io.aelf.protobuf.generated.ElectionContract.CandidateDetail.getDefaultInstance());
       }
       /**
+       * <pre>
+       * The details of the candidates.
+       * </pre>
+       *
        * <code>repeated .CandidateDetail value = 1;</code>
        */
       public java.util.List<io.aelf.protobuf.generated.ElectionContract.CandidateDetail.Builder> 
@@ -13518,11 +15690,19 @@ public final class ElectionContract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
     int getDataCentersCount();
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
     boolean containsDataCenters(
         java.lang.String key);
@@ -13533,26 +15713,38 @@ public final class ElectionContract {
     java.util.Map<java.lang.String, java.lang.Long>
     getDataCenters();
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
     java.util.Map<java.lang.String, java.lang.Long>
     getDataCentersMap();
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
 
     long getDataCentersOrDefault(
         java.lang.String key,
         long defaultValue);
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
 
     long getDataCentersOrThrow(
         java.lang.String key);
 
     /**
-     * <code>sint64 minimum_votes = 2;</code>
+     * <code>int64 minimum_votes = 2;</code>
      * @return The minimumVotes.
      */
     long getMinimumVotes();
@@ -13618,7 +15810,7 @@ public final class ElectionContract {
             }
             case 16: {
 
-              minimumVotes_ = input.readSInt64();
+              minimumVotes_ = input.readInt64();
               break;
             }
             default: {
@@ -13674,7 +15866,7 @@ public final class ElectionContract {
                   io.aelf.protobuf.generated.ElectionContract.internal_static_DataCenterRankingList_DataCentersEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.SINT64,
+                  com.google.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
     private com.google.protobuf.MapField<
@@ -13692,7 +15884,11 @@ public final class ElectionContract {
       return internalGetDataCenters().getMap().size();
     }
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
 
     public boolean containsDataCenters(
@@ -13708,14 +15904,22 @@ public final class ElectionContract {
       return getDataCentersMap();
     }
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
 
     public java.util.Map<java.lang.String, java.lang.Long> getDataCentersMap() {
       return internalGetDataCenters().getMap();
     }
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
 
     public long getDataCentersOrDefault(
@@ -13727,7 +15931,11 @@ public final class ElectionContract {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+     * <pre>
+     * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+     * </pre>
+     *
+     * <code>map&lt;string, int64&gt; data_centers = 1;</code>
      */
 
     public long getDataCentersOrThrow(
@@ -13744,7 +15952,7 @@ public final class ElectionContract {
     public static final int MINIMUM_VOTES_FIELD_NUMBER = 2;
     private long minimumVotes_;
     /**
-     * <code>sint64 minimum_votes = 2;</code>
+     * <code>int64 minimum_votes = 2;</code>
      * @return The minimumVotes.
      */
     public long getMinimumVotes() {
@@ -13772,7 +15980,7 @@ public final class ElectionContract {
           DataCentersDefaultEntryHolder.defaultEntry,
           1);
       if (minimumVotes_ != 0L) {
-        output.writeSInt64(2, minimumVotes_);
+        output.writeInt64(2, minimumVotes_);
       }
       unknownFields.writeTo(output);
     }
@@ -13795,7 +16003,7 @@ public final class ElectionContract {
       }
       if (minimumVotes_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(2, minimumVotes_);
+          .computeInt64Size(2, minimumVotes_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -14132,7 +16340,11 @@ public final class ElectionContract {
         return internalGetDataCenters().getMap().size();
       }
       /**
-       * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+       * <pre>
+       * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; data_centers = 1;</code>
        */
 
       public boolean containsDataCenters(
@@ -14148,14 +16360,22 @@ public final class ElectionContract {
         return getDataCentersMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+       * <pre>
+       * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; data_centers = 1;</code>
        */
 
       public java.util.Map<java.lang.String, java.lang.Long> getDataCentersMap() {
         return internalGetDataCenters().getMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+       * <pre>
+       * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; data_centers = 1;</code>
        */
 
       public long getDataCentersOrDefault(
@@ -14167,7 +16387,11 @@ public final class ElectionContract {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+       * <pre>
+       * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; data_centers = 1;</code>
        */
 
       public long getDataCentersOrThrow(
@@ -14187,7 +16411,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+       * <pre>
+       * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; data_centers = 1;</code>
        */
 
       public Builder removeDataCenters(
@@ -14206,7 +16434,11 @@ public final class ElectionContract {
         return internalGetMutableDataCenters().getMutableMap();
       }
       /**
-       * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+       * <pre>
+       * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; data_centers = 1;</code>
        */
       public Builder putDataCenters(
           java.lang.String key,
@@ -14218,7 +16450,11 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>map&lt;string, sint64&gt; data_centers = 1;</code>
+       * <pre>
+       * The top n * 5 candidates with vote amount, candidate public key -&gt; vote amount.
+       * </pre>
+       *
+       * <code>map&lt;string, int64&gt; data_centers = 1;</code>
        */
 
       public Builder putAllDataCenters(
@@ -14230,14 +16466,14 @@ public final class ElectionContract {
 
       private long minimumVotes_ ;
       /**
-       * <code>sint64 minimum_votes = 2;</code>
+       * <code>int64 minimum_votes = 2;</code>
        * @return The minimumVotes.
        */
       public long getMinimumVotes() {
         return minimumVotes_;
       }
       /**
-       * <code>sint64 minimum_votes = 2;</code>
+       * <code>int64 minimum_votes = 2;</code>
        * @param value The minimumVotes to set.
        * @return This builder for chaining.
        */
@@ -14248,7 +16484,7 @@ public final class ElectionContract {
         return this;
       }
       /**
-       * <code>sint64 minimum_votes = 2;</code>
+       * <code>int64 minimum_votes = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMinimumVotes() {
@@ -14407,59 +16643,59 @@ public final class ElectionContract {
       "\n\027election_contract.proto\032\037google/protob" +
       "uf/timestamp.proto\032\014client.proto\"\330\001\n\024Can" +
       "didateInformation\022\016\n\006pubkey\030\001 \001(\t\022\r\n\005ter" +
-      "ms\030\002 \003(\022\022\027\n\017produced_blocks\030\003 \001(\022\022\031\n\021mis" +
-      "sed_time_slots\030\004 \001(\022\022#\n\033continual_appoin" +
-      "tment_count\030\005 \001(\022\022*\n\033announcement_transa" +
+      "ms\030\002 \003(\003\022\027\n\017produced_blocks\030\003 \001(\003\022\031\n\021mis" +
+      "sed_time_slots\030\004 \001(\003\022#\n\033continual_appoin" +
+      "tment_count\030\005 \001(\003\022*\n\033announcement_transa" +
       "ction_id\030\006 \001(\0132\005.Hash\022\034\n\024is_current_cand" +
       "idate\030\007 \001(\010\"+\n\024GetTermSnapshotInput\022\023\n\013t" +
-      "erm_number\030\001 \001(\022\"\261\001\n\014TermSnapshot\022\030\n\020end" +
-      "_round_number\030\001 \001(\022\022\024\n\014mined_blocks\030\002 \001(" +
-      "\022\022:\n\017election_result\030\003 \003(\0132!.TermSnapsho" +
+      "erm_number\030\001 \001(\003\"\261\001\n\014TermSnapshot\022\030\n\020end" +
+      "_round_number\030\001 \001(\003\022\024\n\014mined_blocks\030\002 \001(" +
+      "\003\022:\n\017election_result\030\003 \003(\0132!.TermSnapsho" +
       "t.ElectionResultEntry\0325\n\023ElectionResultE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:\0028\001\"-\n\026" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\"-\n\026" +
       "GetElectionResultInput\022\023\n\013term_number\030\001 " +
-      "\001(\022\"\227\001\n\016ElectionResult\022\023\n\013term_number\030\001 " +
-      "\001(\022\022-\n\007results\030\002 \003(\0132\034.ElectionResult.Re" +
+      "\001(\003\"\227\001\n\016ElectionResult\022\023\n\013term_number\030\001 " +
+      "\001(\003\022-\n\007results\030\002 \003(\0132\034.ElectionResult.Re" +
       "sultsEntry\022\021\n\tis_active\030\003 \001(\010\032.\n\014Results" +
-      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:\0028\001\"\243\002" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\"\243\002" +
       "\n\013ElectorVote\022\'\n\030active_voting_record_id" +
       "s\030\001 \003(\0132\005.Hash\022*\n\033withdrawn_voting_recor" +
       "d_ids\030\002 \003(\0132\005.Hash\022!\n\031active_voted_votes" +
-      "_amount\030\003 \001(\022\022\036\n\026all_voted_votes_amount\030" +
-      "\004 \001(\022\0224\n\025active_voting_records\030\005 \003(\0132\025.E" +
+      "_amount\030\003 \001(\003\022\036\n\026all_voted_votes_amount\030" +
+      "\004 \001(\003\0224\n\025active_voting_records\030\005 \003(\0132\025.E" +
       "lectionVotingRecord\0226\n\027withdrawn_votes_r" +
       "ecords\030\006 \003(\0132\025.ElectionVotingRecord\022\016\n\006p" +
       "ubkey\030\007 \001(\014\"\364\002\n\024ElectionVotingRecord\022\027\n\005" +
       "voter\030\001 \001(\0132\010.Address\022\021\n\tcandidate\030\002 \001(\t" +
-      "\022\016\n\006amount\030\003 \001(\022\022\023\n\013term_number\030\004 \001(\022\022\026\n" +
-      "\007vote_id\030\005 \001(\0132\005.Hash\022\021\n\tlock_time\030\007 \001(\022" +
-      "\0224\n\020unlock_timestamp\030\n \001(\0132\032.google.prot" +
-      "obuf.Timestamp\0226\n\022withdraw_timestamp\030\013 \001" +
+      "\022\016\n\006amount\030\003 \001(\003\022\023\n\013term_number\030\004 \001(\003\022\026\n" +
+      "\007vote_id\030\005 \001(\0132\005.Hash\022\021\n\tlock_time\030\006 \001(\003" +
+      "\0224\n\020unlock_timestamp\030\007 \001(\0132\032.google.prot" +
+      "obuf.Timestamp\0226\n\022withdraw_timestamp\030\010 \001" +
       "(\0132\032.google.protobuf.Timestamp\0222\n\016vote_t" +
-      "imestamp\030\014 \001(\0132\032.google.protobuf.Timesta" +
-      "mp\022\024\n\014is_withdrawn\030\r \001(\010\022\016\n\006weight\030\016 \001(\022" +
-      "\022\030\n\020is_change_target\030\017 \001(\010\"\333\002\n\rCandidate" +
+      "imestamp\030\t \001(\0132\032.google.protobuf.Timesta" +
+      "mp\022\024\n\014is_withdrawn\030\n \001(\010\022\016\n\006weight\030\013 \001(\003" +
+      "\022\030\n\020is_change_target\030\014 \001(\010\"\333\002\n\rCandidate" +
       "Vote\0220\n!obtained_active_voting_record_id" +
       "s\030\001 \003(\0132\005.Hash\0223\n$obtained_withdrawn_vot" +
       "ing_record_ids\030\002 \003(\0132\005.Hash\022*\n\"obtained_" +
-      "active_voted_votes_amount\030\003 \001(\022\022\'\n\037all_o" +
-      "btained_voted_votes_amount\030\004 \001(\022\022=\n\036obta" +
+      "active_voted_votes_amount\030\003 \001(\003\022\'\n\037all_o" +
+      "btained_voted_votes_amount\030\004 \001(\003\022=\n\036obta" +
       "ined_active_voting_records\030\005 \003(\0132\025.Elect" +
       "ionVotingRecord\022?\n obtained_withdrawn_vo" +
       "tes_records\030\006 \003(\0132\025.ElectionVotingRecord" +
       "\022\016\n\006pubkey\030\007 \001(\014\"2\n!GetWelfareRewardAmou" +
-      "ntSampleInput\022\r\n\005value\030\001 \003(\022\"3\n\"GetWelfa" +
+      "ntSampleInput\022\r\n\005value\030\001 \003(\003\"3\n\"GetWelfa" +
       "reRewardAmountSampleOutput\022\r\n\005value\030\001 \003(" +
-      "\022\"0\n\017PageInformation\022\r\n\005start\030\001 \001(\021\022\016\n\006l" +
-      "ength\030\002 \001(\021\"f\n\017CandidateDetail\0224\n\025candid" +
+      "\003\"0\n\017PageInformation\022\r\n\005start\030\001 \001(\005\022\016\n\006l" +
+      "ength\030\002 \001(\005\"f\n\017CandidateDetail\0224\n\025candid" +
       "ate_information\030\001 \001(\0132\025.CandidateInforma" +
-      "tion\022\035\n\025obtained_votes_amount\030\002 \001(\022\"H\n%G" +
+      "tion\022\035\n\025obtained_votes_amount\030\002 \001(\003\"H\n%G" +
       "etPageableCandidateInformationOutput\022\037\n\005" +
       "value\030\001 \003(\0132\020.CandidateDetail\"\241\001\n\025DataCe" +
       "nterRankingList\022=\n\014data_centers\030\001 \003(\0132\'." +
       "DataCenterRankingList.DataCentersEntry\022\025" +
-      "\n\rminimum_votes\030\002 \001(\022\0322\n\020DataCentersEntr" +
-      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\022:\0028\001B\034\n\032io." +
+      "\n\rminimum_votes\030\002 \001(\003\0322\n\020DataCentersEntr" +
+      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028\001B\034\n\032io." +
       "aelf.protobuf.generatedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
