@@ -1,0 +1,96 @@
+@startuml async-refactor
+
+class AElfClient {
+  + BlockDto getBlockByHeight(int height) throws Exception
+    + ...()
+}
+
+class AndroidAElfClient extends Platform {
+  /** AndroidPlatform may use another way to make async calls unlike Java SDK */
+  ...
+}
+
+class JavaAelfClient extends Platform {
+  ...
+}
+
+abstract class Platform extends AElfClient {
+  /** Any public API from AElfClient will have a async version */
+  + void setAsyncCaller(AsyncCaller caller)
+  + void getBlockByHeightAsync(int height, SuccessCallback<BlockDto> success, FailCallback<?> fail)
+  + ...()
+}
+
+class AsyncCaller {
+  - AElfAsyncExecutor executor
+  # void setExecutor(AElfAsyncExecutor executor)
+  # void asyncCall(AElfFunction func)
+  # void asyncCall(AElfFunction func, SuccessCallback<T> success)
+  # void asyncCall(AElfFunction func, SuccessCallback<T> success, FailCallback<F> fail)
+}
+
+interface AElfCommand<T,F extends AElfResult> {
+  + @Nullable SuccessCallback<T> success
+  + @Nullable FailCallback<F> fail
+  + AElfFunction func
+  + constructor(AElfFunction func, @Nullable SuccessCallback<T> success, @Nullable FailCallback<F> fail)
+}
+
+interface AElfAsyncExecutor {
+  # enqueueNewRequest(AElfCommand command)
+  /** This interface contains code that deals with the async calls, which is not fully shown here */
+  ...
+  - Queue<AElfCommand> queue
+}
+
+interface AElfFunction {
+  + AElfResult run() throws AElfException
+}
+
+class AElfException extends Exception {
+  ...
+}
+
+class AElfResult<R> {
+  + int resultCode
+  + @Nullable R result
+  + constructor(int resultCode,@Nullable R result)
+}
+
+interface SuccessCallback<T> {
+  + void onSuccess(@Nullable AElfResult<T> result)
+}
+
+interface FailCallback<F> {
+  + void onFail(@Nullable AElfResult<F> reason)
+}
+
+note right of Platform::getBlockByHeightAsync
+  public getBlockByHeightAsync(int height, SuccessCallback<BlockDto> success, FailCallback<?> fail) {
+    AsyncCaller.asyncCall(new AElfFunction() {
+      @Override
+      public AElfResult run() throws AElfException {
+        return new AElfResult(0, getBlockByHeight(height));
+      }
+    }, success, fail);
+  }
+end note
+
+note top of AsyncCaller
+  public static void asyncCall(AElfFunction func, SuccessCallback<T> success, FailCallback<F> fail) {
+    this.executor.enqueueNewRequest(new AElfCommand(func, success, fail));
+  }
+end note
+
+Platform <-- AsyncCaller
+AsyncCaller <-- AElfFunction
+AElfFunction <-- AElfException
+AElfAsyncExecutor <-- AElfCommand
+SuccessCallback <-- AElfResult
+FailCallback <-- AElfResult
+AsyncCaller <-- AElfCommand
+AsyncCaller <-- AElfAsyncExecutor
+AsyncCaller <-- SuccessCallback
+AsyncCaller <-- FailCallback
+
+@enduml
