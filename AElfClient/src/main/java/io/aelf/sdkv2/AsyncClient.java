@@ -1,7 +1,6 @@
 package io.aelf.sdkv2;
 
 import io.aelf.async.*;
-import io.aelf.async.Void;
 import io.aelf.sdk.AElfClient;
 import io.aelf.utils.AElfException;
 
