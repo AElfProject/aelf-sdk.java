@@ -3,10 +3,14 @@ package io.aelf.async;
 import javax.annotation.Nullable;
 
 public class AsyncResult<R>{
-    public int resultCode;
+    public final int resultCode;
 
     @Nullable
     public final R result;
+
+    public AsyncResult(@Nullable R result){
+        this(ResultCode.SUCCESS,result);
+    }
 
     public AsyncResult(int resultCode){
         this(resultCode,null);

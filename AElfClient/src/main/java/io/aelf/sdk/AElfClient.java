@@ -7,13 +7,14 @@ import io.aelf.protobuf.generated.Core;
 import io.aelf.schemas.*;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
-import io.aelf.utils.JsonUtil;
 import io.aelf.utils.Sha256;
 import io.aelf.utils.StringUtil;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nullable;
+
+import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
@@ -21,15 +22,13 @@ import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
 
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class AElfClient {
 
-  private String AElfClientUrl;
+  private final String AElfClientUrl;
   private String version = "1.0";
-  private String UserName;
-  private String Password;
-  private BlockChainSdk blcokChainSdk;
+  private BlockChainSdk blockchainSdk;
   private NetSdk netSdk;
-
 
   /**
    * Object construction through the url path.
@@ -37,24 +36,7 @@ public class AElfClient {
    * @param url Http Request Url exp:(http://xxxx)
    */
   public AElfClient(String url) {
-    this.AElfClientUrl = url;
-    this.getBlockChainSdkObj();
-    this.getNetSdkObj();
-
-  }
-
-  /**
-   * Object dconstruction through the url path and basic auth.
-   * @param url
-   * @param userName
-   * @param password
-   */
-  public AElfClient(String url, String userName, String password) {
-    this.AElfClientUrl = url;
-    this.UserName = userName;
-    this.Password = password;
-    this.getBlockChainSdkObj();
-    this.getNetSdkObj();
+    this(url,null);
   }
 
   /**
@@ -64,52 +46,48 @@ public class AElfClient {
    * @param version application/json;v={version}
    */
   public AElfClient(String url, String version) {
-    this.AElfClientUrl = url;
-    this.version = version;
-    this.getBlockChainSdkObj();
-    this.getNetSdkObj();
+    this(url,version,null,null);
   }
 
   /**
-   * Object dconstruction through the url path and basic auth.
-   * @param url
-   * @param version
-   * @param userName
-   * @param password
+   * Object deconstruction through the url path and basic auth.
+   */
+  public AElfClient(String url, String userName, String password) {
+    this(url,null,userName,password);
+  }
+
+  /**
+   * Object deconstruction through the url path and basic auth.
    */
   public AElfClient(String url, String version, String userName, String password) {
     this.AElfClientUrl = url;
-    this.version = version;
-    this.UserName = userName;
-    this.Password = password;
+    if(!TextUtils.isEmpty(version)) {
+      this.version = version;
+    }
     this.getBlockChainSdkObj();
-    this.getNetSdkObj();
-  }
-
-  private AElfClient() {
-
+    this.initNetSdkObj(userName,password);
   }
 
   /**
-   * Get the instance object of BlcokChainSdk.
+   * Get the instance object of BlockChainSdk.
    *
    * @return BlockChainSdk Object ins
    */
   private BlockChainSdk getBlockChainSdkObj() {
-    if (blcokChainSdk == null) {
-      blcokChainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
+    if (blockchainSdk == null) {
+      blockchainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
     }
+    return blockchainSdk;
+  }
 
-    return blcokChainSdk;
+  private void initNetSdkObj(String userName,String password){
+    netSdk = new NetSdk(this.AElfClientUrl, this.version, userName, password);
   }
 
   /**
    * Get the instance object of getNetSdkObj.
    */
   private NetSdk getNetSdkObj() {
-    if (netSdk == null) {
-      netSdk = new NetSdk(this.AElfClientUrl, this.version, this.UserName, this.Password);
-    }
     return netSdk;
   }
 
@@ -129,7 +107,7 @@ public class AElfClient {
   }
 
   /**
-   * Get information about a given block by block hash. Otionally with the list of its transactions.
+   * Get information about a given block by block hash, optionally with the list of its transactions.
    * wa://api/blockChain/block?includeTransactions={includeTransactions}
    */
   public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
@@ -153,7 +131,7 @@ public class AElfClient {
   }
 
   /**
-   * Get the current status of the block chain. wa:/api/blockChain/chainStatus
+   * Get the current status of the blockchain. wa:/api/blockChain/chainStatus
    */
   public ChainstatusDto getChainStatus() throws Exception {
     return this.getBlockChainSdkObj().getChainStatus();
@@ -248,7 +226,7 @@ public class AElfClient {
   }
 
   /**
-   * Get merkle path of a transaction. wa:/api/blockChain/merklePathByTransactionId
+   * Get merkle tree's path of a transaction. wa:/api/blockChain/merklePathByTransactionId
    */
   public MerklePathDto getMerklePathByTransactionId(String transactionId) {
     return this.getBlockChainSdkObj().getMerklePathByTransactionId(transactionId);
@@ -324,7 +302,7 @@ public class AElfClient {
   }
 
   /**
-   * Get the address of genesis contract.
+   * Get the address of the genesis contract.
    *
    * @return address
    */
@@ -340,10 +318,10 @@ public class AElfClient {
    * @return Str
    */
   public String getAddressFromPubKey(@Nullable String pubKey) {
+    if(pubKey==null) return "";
     byte[] publicKey = ByteArrayHelper.hexToByteArray(pubKey);
     byte[] hashTwice = Sha256Hash.hashTwice(publicKey);
-    String address = Base58Ext.encodeChecked(hashTwice);
-    return address;
+    return Base58Ext.encodeChecked(hashTwice);
   }
 
   /**
@@ -363,7 +341,7 @@ public class AElfClient {
     Core.Transaction transactionObj = transaction.build();
     ExecuteTransactionDto executeTransactionDto = new ExecuteTransactionDto();
     executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-    String response = this.blcokChainSdk.executeTransaction(executeTransactionDto);
+    String response = this.blockchainSdk.executeTransaction(executeTransactionDto);
     StringValue symbol = StringValue.parseFrom(ByteArrayHelper.hexToByteArray(response));
     return symbol.getValue() + "_" + address + "_" + chainIdString;
   }
@@ -371,8 +349,7 @@ public class AElfClient {
   /**
    * new generateKeyPairInfo;
    */
-  public KeyPairInfo generateKeyPairInfo()
-      throws Exception {
+  public KeyPairInfo generateKeyPairInfo() {
     ECKey keyPair = new ECKey();
     String privateKey = keyPair.getPrivateKeyAsHex();
     String publicKey = keyPair.getPublicKeyAsHex();
@@ -385,7 +362,7 @@ public class AElfClient {
   }
 
   /**
-   * Get address of a contract by given contractNameHash.
+   * Get the address of a contract by given contractNameHash.
    */
   public String getContractAddressByName(String privateKey, byte[] contractNameHash)
       throws Exception {
@@ -402,32 +379,30 @@ public class AElfClient {
     Core.Transaction transactionObj = transaction.build();
     ExecuteTransactionDto executeTransactionDto = new ExecuteTransactionDto();
     executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-    String response = this.blcokChainSdk.executeTransaction(executeTransactionDto);
+    String response = this.blockchainSdk.executeTransaction(executeTransactionDto);
     byte[] byteArray = ByteArrayHelper.hexToByteArray(response);
-    String base58Str = Base58Ext.encodeChecked(
-        Client.Address.getDefaultInstance().parseFrom(byteArray).getValue().toByteArray());
-    return base58Str;
+    return Base58Ext.encodeChecked(
+        Client.Address.parseFrom(byteArray).getValue().toByteArray());
   }
 
   /**
-   * Get address of a contract by given contractNameHash.
+   * Get the address of a contract by given contractNameHash.
    */
   public String getAddressFromPrivateKey(String privateKey) {
     org.bitcoinj.core.ECKey aelfKey = org.bitcoinj.core.ECKey
         .fromPrivate(new BigInteger(privateKey, 16)).decompress();
     byte[] publicKey = aelfKey.getPubKey();
     byte[] hashTwice = Sha256Hash.hashTwice(publicKey);
-    String address = Base58Ext.encodeChecked(hashTwice);
-    return address;
+    return Base58Ext.encodeChecked(hashTwice);
   }
 
   /**
    * Get the private sha256 signature.
    */
-  public String getSignatureWithPrivateKey(String privateKey, byte[] txData) throws Exception {
-    BigInteger privKey = new BigInteger(privateKey, 16);
-    BigInteger pubKey = Sign.publicKeyFromPrivate(privKey);
-    ECKeyPair keyPair = new ECKeyPair(privKey, pubKey);
+  public String getSignatureWithPrivateKey(String privateKey, byte[] txData) {
+    BigInteger key = new BigInteger(privateKey, 16);
+    BigInteger pubKey = Sign.publicKeyFromPrivate(key);
+    ECKeyPair keyPair = new ECKeyPair(key, pubKey);
     Sign.SignatureData signature = Sign.signMessage(txData, keyPair, false);
     String signatureStr = Hex.toHexString(signature.getR()) + Hex.toHexString(signature.getS());
     String res = StringUtil.toString(signature.getV() - 27);
@@ -454,10 +429,7 @@ public class AElfClient {
 
 
   /**
-   * @Description calculateTransactionFee
-   * @param input
-   * @return TransactionFeeResultOutput
-   * @throws Exception
+   * calculate the transactionFee.
    */
   public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
     return this.getBlockChainSdkObj().calculateTransactionFee(input);

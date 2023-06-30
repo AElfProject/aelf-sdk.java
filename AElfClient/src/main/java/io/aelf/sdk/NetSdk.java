@@ -11,6 +11,8 @@ import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.StringUtil;
+
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.LinkedHashMap;
@@ -18,104 +20,81 @@ import java.util.List;
 
 @SuppressWarnings("unchecked")
 public class NetSdk {
-
-  private String AElfClientUrl;
-  private String version;
-  private String UserName;
-  private String Password;
-  private static final String WA_ADDPEER = "/api/net/peer";
-  private static final String WA_REMOVEPEER = "/api/net/peer";
-  private static final String WA_GETPEERS = "/api/net/peers";
-  private static final String WA_GETNETWORKINFO = "/api/net/networkInfo";
+  private final String AElfClientUrl;
+  private final String version;
+  private final String combineAuth;
+  private static final String WA_ADD_PEER = "/api/net/peer";
+  private static final String WA_REMOVE_PEER = "/api/net/peer";
+  private static final String WA_GET_PEERS = "/api/net/peers";
+  private static final String WA_GET_NETWORK_INFO = "/api/net/networkInfo";
 
   /**
    * Object construction through the url path.
-   *
-   * @param url Http Request Url exp:(http://xxxx)
-   * @param version application/json;v={version}
-   * @param userName
-   * @param password
    */
-  public NetSdk(String url, String version, String userName, String password) {
+  public NetSdk(String url, String version, @Nullable String userName, @Nullable String password) {
     this.AElfClientUrl = url;
     this.version = version;
-    this.UserName = userName;
-    this.Password = password;
-  }
-
-  private NetSdk() {
+    String combineString = userName + ":" + password;
+    this.combineAuth = "Basic " + Base64.getEncoder().encodeToString(combineString.getBytes());
   }
 
   /**
    * Attempts to add a node to the connected network nodes wa:/api/net/peer.
    */
   public Boolean addPeer(AddPeerInput input) throws Exception {
-    String url = this.AElfClientUrl + WA_ADDPEER;
-    MapEntry mapParmas = Maps.newMap();
-
-    String combineString = this.UserName + ":" + this.Password;
-    String combineAuth = "Basic " + Base64.getEncoder().encodeToString(combineString.getBytes());
-
-    mapParmas.put("Address", input.getAddress());
-    String responseBobyResult = HttpUtilExt
-        .sendPostWithAuth(url, JsonUtil.toJsonString(mapParmas), this.version, combineAuth);
-    if ("true".equals(responseBobyResult)) {
-      return true;
-    }
-    return false;
+    String url = this.AElfClientUrl + WA_ADD_PEER;
+    MapEntry<String,String> mapParams = Maps.newMap();
+    mapParams.put("Address", input.getAddress());
+    String responseBodyResult = HttpUtilExt
+        .sendPostWithAuth(url, JsonUtil.toJsonString(mapParams), this.version, this.combineAuth);
+    return "true".equals(responseBodyResult);
   }
 
   /**
    * Attempts to remove a node from the connected network nodes wa:/api/net/peer.
    */
   public Boolean removePeer(String address) throws Exception {
-    String url = this.AElfClientUrl + WA_REMOVEPEER + "?address=" + address;
-
-    String combineString = this.UserName + ":" + this.Password;
-    String combineAuth = "Basic " + Base64.getEncoder().encodeToString(combineString.getBytes());
-
-    String responseBobyResult = HttpUtilExt.sendDelete(url, "UTF-8", this.version, combineAuth);
-   return "true".equals(responseBobyResult);
+    String url = this.AElfClientUrl + WA_REMOVE_PEER + "?address=" + address;
+    String responseBodyResult = HttpUtilExt.sendDelete(url, "UTF-8", this.version, this.combineAuth);
+   return "true".equals(responseBodyResult);
   }
 
   /**
    * Gets information about the peer nodes of the current node.Optional whether to include metrics.
    * wa:/api/net/peers?withMetrics=false
    */
-
-
   public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
-    String url = this.AElfClientUrl + WA_GETPEERS + "?withMetrics=" + withMetrics;
+    String url = this.AElfClientUrl + WA_GET_PEERS + "?withMetrics=" + withMetrics;
     String peersChain = ClientUtil.sendGet(url, "UTF-8", this.version);
-    List<PeerDto> listPeerDto = new ArrayList<PeerDto>();
-    List<LinkedHashMap> responseBobyList = JsonUtil.parseObject(peersChain, List.class);
-    for (LinkedHashMap responseBobyObj : responseBobyList) {
-      MapEntry responseBobyMapObj = Maps.cloneMapEntry(responseBobyObj);
+    List<PeerDto> listPeerDto = new ArrayList<>();
+    List<LinkedHashMap<String,?>> responseBobyList = JsonUtil.parseObject(peersChain, List.class);
+    for (LinkedHashMap<String,?> responseBodyObj : responseBobyList) {
+      MapEntry<String,?> responseBodyMapObj = Maps.cloneMapEntry(responseBodyObj);
       PeerDto peerDtoObj = new PeerDto();
-      peerDtoObj.setIpAddress(responseBobyMapObj.getString("IpAddress", ""));
-      peerDtoObj.setProtocolVersion(responseBobyMapObj.getInteger("ProtocolVersion", 0));
-      peerDtoObj.setConnectionTime(responseBobyMapObj.getLong("ConnectionTime", 0));
-      peerDtoObj.setConnectionStatus(responseBobyMapObj.getString("ConnectionStatus", ""));
-      peerDtoObj.setInbound(responseBobyMapObj.getBoolean("Inbound", false));
+      peerDtoObj.setIpAddress(responseBodyMapObj.getString("IpAddress", ""));
+      peerDtoObj.setProtocolVersion(responseBodyMapObj.getInteger("ProtocolVersion", 0));
+      peerDtoObj.setConnectionTime(responseBodyMapObj.getLong("ConnectionTime", 0));
+      peerDtoObj.setConnectionStatus(responseBodyMapObj.getString("ConnectionStatus", ""));
+      peerDtoObj.setInbound(responseBodyMapObj.getBoolean("Inbound", false));
       peerDtoObj.setBufferedAnnouncementsCount(
-          responseBobyMapObj.getInteger("BufferedTransactionsCount", 0));
-      peerDtoObj.setBufferedBlocksCount(responseBobyMapObj.getInteger("BufferedBlocksCount", 0));
+          responseBodyMapObj.getInteger("BufferedTransactionsCount", 0));
+      peerDtoObj.setBufferedBlocksCount(responseBodyMapObj.getInteger("BufferedBlocksCount", 0));
       peerDtoObj.setBufferedTransactionsCount(
-          responseBobyMapObj.getInteger("BufferedAnnouncementsCount", 0));
-      peerDtoObj.setRequestMetrics(new ArrayList());
-      peerDtoObj.setNodeVersion(responseBobyMapObj.getString("NodeVersion",""));
-      List<LinkedHashMap> requestMetricsList = responseBobyMapObj
-          .getArrayList("RequestMetrics", new ArrayList<LinkedHashMap>());
-      for (LinkedHashMap requestMetricsObj : requestMetricsList) {
-        MapEntry requestMetricsMapObj = Maps.cloneMapEntry(requestMetricsObj);
+          responseBodyMapObj.getInteger("BufferedAnnouncementsCount", 0));
+      peerDtoObj.setRequestMetrics(new ArrayList<>());
+      peerDtoObj.setNodeVersion(responseBodyMapObj.getString("NodeVersion",""));
+      List<LinkedHashMap<String,?>> requestMetricsList = responseBodyMapObj
+          .getArrayList("RequestMetrics", new ArrayList<LinkedHashMap<String,?>>());
+      for (LinkedHashMap<String,?> requestMetricsObj : requestMetricsList) {
+        MapEntry<String,?> requestMetricsMapObj = Maps.cloneMapEntry(requestMetricsObj);
         RequestMetric requestMetricObj = new RequestMetric();
         requestMetricObj.setMethodName(requestMetricsMapObj.getString("MethodName", ""));
         requestMetricObj.setRoundTripTime(requestMetricsMapObj.getLong("RoundTripTime", 0));
         requestMetricObj.setInfo(requestMetricsMapObj.getString("Info", ""));
         requestMetricObj.setRequestTime(new Timestamp());
 
-        LinkedHashMap requestTimeObj = requestMetricsMapObj
-            .getLinkedHashMap("RequestTime", new LinkedHashMap());
+        LinkedHashMap<String, String> requestTimeObj = requestMetricsMapObj
+            .getLinkedHashMap("RequestTime", new LinkedHashMap<>());
         if (requestTimeObj.containsKey("Nanos")) {
           int value = Integer
               .parseInt(StringUtil.toString(requestTimeObj.getOrDefault("Nanos", "0")));
@@ -123,11 +102,11 @@ public class NetSdk {
         }
         if (requestTimeObj.containsKey("Seconds")) {
           long value = Long
-              .parseLong(StringUtil.toString(requestTimeObj.getOrDefault("Nanos", "0")));
+              .parseLong(StringUtil.toString(
+                      requestTimeObj.getOrDefault("Nanos", "0")));
           requestMetricObj.getRequestTime().setSeconds(value);
         }
         peerDtoObj.getRequestMetrics().add(requestMetricObj);
-
       }
       listPeerDto.add(peerDtoObj);
     }
@@ -139,12 +118,13 @@ public class NetSdk {
    */
   public NetworkInfoOutput getNetworkInfo() throws Exception {
     String networkChain = ClientUtil
-        .sendGet(this.AElfClientUrl + WA_GETNETWORKINFO, "UTF-8", this.version);
-    MapEntry responseBobyMap = JsonUtil.parseObject(networkChain);
+        .sendGet(this.AElfClientUrl + WA_GET_NETWORK_INFO, "UTF-8", this.version);
+    MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(networkChain);
+    if(responseBodyMap==null) throw new RuntimeException();
     NetworkInfoOutput networkInfoOutput = new NetworkInfoOutput();
-    networkInfoOutput.setVersion(responseBobyMap.getString("Version"));
-    networkInfoOutput.setConnections(responseBobyMap.getInteger("Connections", 0));
-    networkInfoOutput.setProtocolVersion(responseBobyMap.getInteger("ProtocolVersion", 0));
+    networkInfoOutput.setVersion(responseBodyMap.getString("Version"));
+    networkInfoOutput.setConnections(responseBodyMap.getInteger("Connections", 0));
+    networkInfoOutput.setProtocolVersion(responseBodyMap.getInteger("ProtocolVersion", 0));
     return networkInfoOutput;
   }
 }

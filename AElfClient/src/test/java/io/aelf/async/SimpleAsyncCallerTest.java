@@ -46,7 +46,7 @@ public class SimpleAsyncCallerTest {
 
 class TestAsyncExecutor extends AsyncExecutor {
     @Override
-    public <T> void enqueueNewRequest(AsyncCommand<T> command) {
+    protected <T> void executeRequest(AsyncCommand<T> command) {
         new Thread(()->{
             try{
                 AsyncResult<T> result=command.function.run();
