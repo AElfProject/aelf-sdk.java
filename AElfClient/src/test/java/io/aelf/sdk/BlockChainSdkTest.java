@@ -27,7 +27,7 @@ import org.junit.Test;
 
 public class BlockChainSdkTest {
 
-    static final String HTTPURL = "http://127.0.0.1:8000";
+    static final String HTTP_URL = "http://127.0.0.1:8000";
     AElfClient client = null;
     String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
     String address = "";
@@ -35,11 +35,10 @@ public class BlockChainSdkTest {
     /**
      * init junit.
      *
-     * @throws Exception not blank
      */
     @Before
-    public void init() throws Exception {
-        client = new AElfClient(HTTPURL);
+    public void init() {
+        client = new AElfClient(HTTP_URL);
         address = client.getAddressFromPrivateKey(privateKey);
     }
 
@@ -86,18 +85,17 @@ public class BlockChainSdkTest {
         transactionResultDto.getLogs().add(logEventDto);
 
         HashMap<String, Long> transactionFees = TransactionResultDtoExtension.getTransactionFees(transactionResultDto);
-        Assert.assertTrue(transactionFees.keySet().size() == 3);
-        Assert.assertTrue(transactionFees.get("ELF") == 1000);
-        Assert.assertTrue(transactionFees.get("READ") == 800);
-        Assert.assertTrue(transactionFees.get("WRITE") == 600);
+        Assert.assertEquals(3, transactionFees.keySet().size());
+        Assert.assertEquals(1000, (long) transactionFees.get("ELF"));
+        Assert.assertEquals(800, (long) transactionFees.get("READ"));
+        Assert.assertEquals(600, (long) transactionFees.get("WRITE"));
 
         transactionResultDto = new TransactionResultDto();
         transactionResultDto.setLogs(new ArrayList<>());
         transactionFees = TransactionResultDtoExtension.getTransactionFees(transactionResultDto);
-        Assert.assertTrue(transactionFees.size() == 0);
+        Assert.assertEquals(0, transactionFees.size());
 
     }
-
 
     @Test
     public void getAddressFromPubKeyTest() {
@@ -105,13 +103,13 @@ public class BlockChainSdkTest {
                 .fromPrivate(new BigInteger(privateKey, 16)).decompress();
         String pubKey = Hex.toHexString(aelfKey.getPubKey());
         String pubKeyAddress = client.getAddressFromPubKey(pubKey);
-        Assert.assertTrue(pubKeyAddress.equals(address));
+        Assert.assertEquals(pubKeyAddress, address);
     }
 
     @Test
     public void getFormattedAddressTest() throws Exception {
         String addressVal = client.getFormattedAddress(privateKey, address);
-        Assert.assertTrue(("ELF_" + address + "_AELF").equals(addressVal));
+        Assert.assertEquals(("ELF_" + address + "_AELF"), addressVal);
     }
 
     @Test
@@ -123,7 +121,7 @@ public class BlockChainSdkTest {
 
     @Test
     public void getPublicKeyAsHexTest() throws Exception {
-        Assert.assertTrue("SD6BXDrKT2syNd1WehtPyRo3dPBiXqfGUj8UJym7YP9W9RynM".equals(address));
+        Assert.assertEquals("SD6BXDrKT2syNd1WehtPyRo3dPBiXqfGUj8UJym7YP9W9RynM", address);
     }
 
     @Test
@@ -139,7 +137,6 @@ public class BlockChainSdkTest {
         client.getBlockByHeight(blockHeight);
     }
 
-
     @Test
     public void getBlockByHeightForFalseTest() throws Exception {
         long blockHeight = client.getBlockHeight();
@@ -153,7 +150,6 @@ public class BlockChainSdkTest {
         Assert.assertTrue(blockHeight > 0);
         client.getBlockByHeight(blockHeight, true);
     }
-
 
     @Test
     public void getBlockByHashDefaultTest() throws Exception {
@@ -335,7 +331,6 @@ public class BlockChainSdkTest {
         }
     }
 
-
     @Test
     public void getTransactionResultsTest() throws Exception {
         long blockHeight = client.getBlockHeight();
@@ -343,7 +338,6 @@ public class BlockChainSdkTest {
         BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
         client.getTransactionResults(blockDto.getBlockHash(), 0, 10);
     }
-
 
     @Test
     public void getTransactionResultTest() throws Exception {
@@ -415,11 +409,10 @@ public class BlockChainSdkTest {
         input.setRawTransaction(out.getRawTransaction());
         CalculateTransactionFeeOutput output = client.calculateTransactionFee(input);
         System.out.println(JsonUtil.toJsonString(output));
-        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")>18000000),true);
-        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")<19000000),true);
+        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF") > 18000000), true);
+        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF") < 19000000), true);
 
     }
-
 
     private Core.Transaction buildTransaction(String toAddress, String methodName, byte[] tmp)
             throws Exception {
@@ -433,7 +426,7 @@ public class BlockChainSdkTest {
     }
 
     private CreateRawTransactionInput createRowBuild(String toAddress, String methodName,
-                                                     String param, long height, String blockHash) {
+            String param, long height, String blockHash) {
         CreateRawTransactionInput createRawTransactionInputObj = new CreateRawTransactionInput();
         createRawTransactionInputObj.setFrom(address);
         createRawTransactionInputObj.setTo(toAddress);

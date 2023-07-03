@@ -9,11 +9,6 @@ import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.Sha256;
 import io.aelf.utils.StringUtil;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.Nullable;
-
 import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.ECKey;
@@ -22,7 +17,12 @@ import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
 
-@SuppressWarnings({"UnusedReturnValue", "unused"})
+import javax.annotation.Nullable;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.List;
+
+@SuppressWarnings({ "UnusedReturnValue", "unused" })
 public class AElfClient {
 
   private final String AElfClientUrl;
@@ -36,24 +36,24 @@ public class AElfClient {
    * @param url Http Request Url exp:(http://xxxx)
    */
   public AElfClient(String url) {
-    this(url,null);
+    this(url, null);
   }
 
   /**
    * Object construction through the url path.
    *
-   * @param url Http Request Url exp:(http://xxxx)
+   * @param url     Http Request Url exp:(http://xxxx)
    * @param version application/json;v={version}
    */
   public AElfClient(String url, String version) {
-    this(url,version,null,null);
+    this(url, version, null, null);
   }
 
   /**
    * Object deconstruction through the url path and basic auth.
    */
   public AElfClient(String url, String userName, String password) {
-    this(url,null,userName,password);
+    this(url, null, userName, password);
   }
 
   /**
@@ -61,11 +61,11 @@ public class AElfClient {
    */
   public AElfClient(String url, String version, String userName, String password) {
     this.AElfClientUrl = url;
-    if(!TextUtils.isEmpty(version)) {
+    if (!TextUtils.isEmpty(version)) {
       this.version = version;
     }
     this.getBlockChainSdkObj();
-    this.initNetSdkObj(userName,password);
+    this.initNetSdkObj(userName, password);
   }
 
   /**
@@ -80,7 +80,7 @@ public class AElfClient {
     return blockchainSdk;
   }
 
-  private void initNetSdkObj(String userName,String password){
+  private void initNetSdkObj(String userName, String password) {
     netSdk = new NetSdk(this.AElfClientUrl, this.version, userName, password);
   }
 
@@ -99,7 +99,8 @@ public class AElfClient {
   }
 
   /**
-   * Get information of a block by given block hash. Optional whether to include transaction
+   * Get information of a block by given block hash. Optional whether to include
+   * transaction
    * information.
    */
   public BlockDto getBlockByHash(String blockHash) throws Exception {
@@ -107,7 +108,8 @@ public class AElfClient {
   }
 
   /**
-   * Get information about a given block by block hash, optionally with the list of its transactions.
+   * Get information about a given block by block hash, optionally with the list
+   * of its transactions.
    * wa://api/blockChain/block?includeTransactions={includeTransactions}
    */
   public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
@@ -115,7 +117,8 @@ public class AElfClient {
   }
 
   /**
-   * Get information of a block by specified height. Optional whether to include transaction
+   * Get information of a block by specified height. Optional whether to include
+   * transaction
    * information.
    */
   public BlockDto getBlockByHeight(long blockHeight) throws Exception {
@@ -123,8 +126,10 @@ public class AElfClient {
   }
 
   /**
-   * Get information of a block by specified height. Optional whether to include transaction
-   * information. wa://api/blockChain/blockByHeight?includeTransactions={includeTransactions}
+   * Get information of a block by specified height. Optional whether to include
+   * transaction
+   * information.
+   * wa://api/blockChain/blockByHeight?includeTransactions={includeTransactions}
    */
   public BlockDto getBlockByHeight(long blockHeight, boolean includeTransactions) throws Exception {
     return this.getBlockChainSdkObj().getBlockByHeight(blockHeight, includeTransactions);
@@ -138,21 +143,24 @@ public class AElfClient {
   }
 
   /**
-   * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
+   * Get the protobuf definitions related to a contract
+   * /api/blockChain/contractFileDescriptorSet.
    */
   public byte[] getContractFileDescriptorSet(String address) throws Exception {
     return this.getBlockChainSdkObj().getContractFileDescriptorSet(address);
   }
 
   /**
-   * Gets the status information of the task queue wa:/api/blockChain/taskQueueStatus.
+   * Gets the status information of the task queue
+   * wa:/api/blockChain/taskQueueStatus.
    */
   public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception {
     return this.getBlockChainSdkObj().getTaskQueueStatus();
   }
 
   /**
-   * Gets information about the current transaction pool.wa:/api/blockChain/transactionPoolStatus
+   * Gets information about the current transaction
+   * pool.wa:/api/blockChain/transactionPoolStatus
    */
   public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
     return this.getBlockChainSdkObj().getTransactionPoolStatus();
@@ -174,7 +182,8 @@ public class AElfClient {
   }
 
   /**
-   * Call a method of a contract by given serialized str wa:/api/blockChain/executeRawTransaction.
+   * Call a method of a contract by given serialized str
+   * wa:/api/blockChain/executeRawTransaction.
    */
   public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
     return this.getBlockChainSdkObj().executeRawTransaction(input);
@@ -226,7 +235,8 @@ public class AElfClient {
   }
 
   /**
-   * Get merkle tree's path of a transaction. wa:/api/blockChain/merklePathByTransactionId
+   * Get merkle tree's path of a transaction.
+   * wa:/api/blockChain/merklePathByTransactionId
    */
   public MerklePathDto getMerklePathByTransactionId(String transactionId) {
     return this.getBlockChainSdkObj().getMerklePathByTransactionId(transactionId);
@@ -254,7 +264,8 @@ public class AElfClient {
   }
 
   /**
-   * Gets information about the peer nodes of the current node.Optional whether to include metrics.
+   * Gets information about the peer nodes of the current node.Optional whether to
+   * include metrics.
    * wa:/api/net/peers?withMetrics=false
    */
   public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
@@ -262,7 +273,8 @@ public class AElfClient {
   }
 
   /**
-   * Get information about the node’s connection to the network. wa:/api/net/networkInfo
+   * Get information about the node’s connection to the network.
+   * wa:/api/net/networkInfo
    */
   public NetworkInfoOutput getNetworkInfo() throws Exception {
     return this.getNetSdkObj().getNetworkInfo();
@@ -318,14 +330,16 @@ public class AElfClient {
    * @return Str
    */
   public String getAddressFromPubKey(@Nullable String pubKey) {
-    if(pubKey==null) return "";
+    if (pubKey == null)
+      return "";
     byte[] publicKey = ByteArrayHelper.hexToByteArray(pubKey);
     byte[] hashTwice = Sha256Hash.hashTwice(publicKey);
     return Base58Ext.encodeChecked(hashTwice);
   }
 
   /**
-   * Convert the Address to the displayed string：symbol_base58-string_base58-string-chain-id.
+   * Convert the Address to the displayed
+   * string：symbol_base58-string_base58-string-chain-id.
    */
   public String getFormattedAddress(String privateKey, String address) throws Exception {
     String chainIdString = this.getBlockChainSdkObj().getChainStatus().getChainId();
@@ -426,7 +440,6 @@ public class AElfClient {
       return false;
     }
   }
-
 
   /**
    * calculate the transactionFee.

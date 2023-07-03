@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class AsyncTestLooper<R> {
 
+    private final Map<Integer,AsyncResult<R>> map=new HashMap<>();
+
     private final ResultChecker<AsyncResult<R>> checker;
     private final AssertFailure<AsyncResult<R>> failer;
     private int maxWaitingTime=5000;
@@ -29,8 +31,6 @@ public class AsyncTestLooper<R> {
             this.initHookAtPosition(i);
         }
     }
-    private final Map<Integer,AsyncResult<R>> map=new HashMap<>();
-
     public synchronized void initHookAtPosition(int position){
         map.put(position,null);
     }
@@ -67,6 +67,44 @@ public class AsyncTestLooper<R> {
     }
 }
 
+class AsyncTestSingleLooper<R> {
+    public void setResult(AsyncResult<R> result) {
+        this.result = result;
+    }
+
+    private AsyncResult<R> result;
+    @Nullable
+    private final ResultChecker<AsyncResult<R>> checker;
+
+    public AsyncTestSingleLooper(){this(null);}
+
+    public AsyncTestSingleLooper(@Nullable ResultChecker<AsyncResult<R>> checker) {
+        this.checker = checker;
+    }
+
+    public void loop() throws RuntimeException {
+        final long start=System.currentTimeMillis();
+        while(true){
+            try{
+                Thread.sleep(10);
+            }catch (InterruptedException e){
+                throw new RuntimeException("Test Interrupted.");
+            }
+            int maxWaitingTime = 20*1000;
+            if(System.currentTimeMillis()-start> maxWaitingTime){
+                throw new RuntimeException("Test Timeout reached:"+ maxWaitingTime +"ms.");
+            }
+            if(result==null) continue;
+            if((checker!=null && !checker.isOk(result)) || !result.isOk()){
+                throw new RuntimeException("Async Test Failed.");
+            }else{
+                return;
+            }
+        }
+    }
+}
+
+@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 interface ResultChecker<R>{
     boolean isOk(@Nullable R item);
 }

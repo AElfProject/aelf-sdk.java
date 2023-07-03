@@ -10,7 +10,7 @@ public interface ResultCode {
      */
     int SUCCESS=1;
     /**
-     * Some error happens when deal with your request.
+     * Some error happens when deals with your request.
      */
     int INTERNAL_ERROR=-1;
     /**

@@ -24,4 +24,9 @@ public class AsyncResult<R>{
     public boolean isOk(){
         return this.resultCode==ResultCode.SUCCESS;
     }
+
+    @Override
+    public String toString(){
+        return "AsyncResult's ResultCode:"+this.resultCode;
+    }
 }

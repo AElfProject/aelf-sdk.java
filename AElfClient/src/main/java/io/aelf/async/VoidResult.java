@@ -5,4 +5,5 @@ public final class VoidResult extends AsyncResult<Void>{
     public VoidResult(int resultCode) {
         super(resultCode);
     }
+
 }

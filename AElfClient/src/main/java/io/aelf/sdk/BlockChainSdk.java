@@ -13,7 +13,7 @@ import java.util.*;
 
 import org.bitcoinj.core.Base58;
 
-@SuppressWarnings({"unchecked", "unused", "SpellCheckingInspection"})
+@SuppressWarnings({ "unchecked", "unused", "SpellCheckingInspection" })
 public class BlockChainSdk {
 
   private final String AElfClientUrl;
@@ -54,28 +54,31 @@ public class BlockChainSdk {
   }
 
   /**
-   * Get information of a block by given block hash. Optional whether to include transaction
+   * Get information of a block by given block hash. Optional whether to include
+   * transaction
    * information.
    */
   public BlockDto getBlockByHash(String blockHash) throws Exception {
     return this.getBlockByHash(blockHash, false);
   }
 
-
   /**
-   * Get information about a given block by block hash, optionally with the list of its transactions.
+   * Get information about a given block by block hash, optionally with the list
+   * of its transactions.
    * wa://api/blockChain/block?includeTransactions={includeTransactions}
    */
   public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
     String chainContext = HttpUtilExt.sendGet(
         this.AElfClientUrl + WA_BLOCK + "?blockHash=" + blockHash + "&includeTransactions="
-            + includeTransactions, "UTF-8", this.version);
-    MapEntry<String,?> mapObjJson = JsonUtil.parseObject(chainContext);
+            + includeTransactions,
+        "UTF-8", this.version);
+    MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
     return createBlockDto(mapObjJson, includeTransactions);
   }
 
   /**
-   * Get information of a block by specified height. Optional whether to include transaction
+   * Get information of a block by specified height. Optional whether to include
+   * transaction
    * information.
    */
   public BlockDto getBlockByHeight(long blockHeight) throws Exception {
@@ -83,8 +86,10 @@ public class BlockChainSdk {
   }
 
   /**
-   * Get information of a block by specified height, Optional: whether to include transaction.
-   * information. wa://api/blockChain/blockByHeight?includeTransactions={includeTransactions}
+   * Get information of a block by specified height, Optional: whether to include
+   * transaction.
+   * information.
+   * wa://api/blockChain/blockByHeight?includeTransactions={includeTransactions}
    */
   public BlockDto getBlockByHeight(long blockHeight, boolean includeTransactions) throws Exception {
     if (blockHeight == 0) {
@@ -93,10 +98,9 @@ public class BlockChainSdk {
     String url = this.AElfClientUrl + WA_BLOCK_BY_HEIGHT + "?blockHeight=" + blockHeight
         + "&includeTransactions=" + includeTransactions;
     String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
-    MapEntry<String,?> mapObjJson = JsonUtil.parseObject(chainContext);
+    MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
     return createBlockDto(mapObjJson, includeTransactions);
   }
-
 
   /**
    * Get the current status of the blockchain. wa:/api/blockChain/chainStatus
@@ -104,8 +108,9 @@ public class BlockChainSdk {
   public ChainstatusDto getChainStatus() throws RuntimeException {
     String url = this.AElfClientUrl + WA_GET_CHAIN_STATUS;
     String chainContext = ClientUtil.sendGet(url, "UTF-8", this.version);
-    MapEntry<String,?> mapObjJson = JsonUtil.parseObject(chainContext);
-    if(mapObjJson==null) throw new RuntimeException();
+    MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
+    if (mapObjJson == null)
+      throw new RuntimeException();
     LinkedHashMap<String, Integer> branchesMap = mapObjJson
         .getLinkedHashMap("Branches", new LinkedHashMap<>());
     Iterator<Map.Entry<String, Integer>> branchesMapSet = branchesMap.entrySet().iterator();
@@ -146,7 +151,8 @@ public class BlockChainSdk {
   }
 
   /**
-   * Get the protobuf definitions related to a contract /api/blockChain/contractFileDescriptorSet.
+   * Get the protobuf definitions related to a contract
+   * /api/blockChain/contractFileDescriptorSet.
    */
   public byte[] getContractFileDescriptorSet(String address) throws Exception {
     String url = this.AElfClientUrl + WA_GET_DESCRIPTOR_SET + "?address=" + address;
@@ -160,14 +166,15 @@ public class BlockChainSdk {
   }
 
   /**
-   * Gets the status information of the task queue wa:/api/blockChain/taskQueueStatus.
+   * Gets the status information of the task queue
+   * wa:/api/blockChain/taskQueueStatus.
    */
   public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception {
     String responseBody = HttpUtilExt
         .sendGet(this.AElfClientUrl + WA_GET_TASK_QUEUE_STATUS, "UTF-8", this.version);
-    List<LinkedHashMap<String,?>> responseBodyList = JsonUtil.parseObject(responseBody, List.class);
+    List<LinkedHashMap<String, ?>> responseBodyList = JsonUtil.parseObject(responseBody, List.class);
     List<TaskQueueInfoDto> listTaskQueueInfoDto = new ArrayList<>();
-    for (LinkedHashMap<String,?> linkedHashMapObj : responseBodyList) {
+    for (LinkedHashMap<String, ?> linkedHashMapObj : responseBodyList) {
       TaskQueueInfoDto taskQueueInfoDto = new TaskQueueInfoDto();
       String sizeStr = StringUtil.toString(linkedHashMapObj.get("Size"));
       int size = sizeStr.length() == 0 ? 0 : Integer.parseInt(sizeStr);
@@ -180,19 +187,20 @@ public class BlockChainSdk {
   }
 
   /**
-   * Gets information about the current transaction pool.wa:/api/blockChain/transactionPoolStatus
+   * Gets information about the current transaction
+   * pool.wa:/api/blockChain/transactionPoolStatus
    */
   public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
     String url = this.AElfClientUrl + WA_GET_TRANSACTION_POOL_STATUS;
     String responseBody = HttpUtilExt.sendGet(url, "UTF-8", this.version);
-    MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(responseBody);
-    if(responseBodyMap==null) throw new RuntimeException();
+    MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
+    if (responseBodyMap == null)
+      throw new RuntimeException();
     TransactionPoolStatusOutput poolStatusOp = new TransactionPoolStatusOutput();
     poolStatusOp.setQueued(responseBodyMap.getInteger("Queued"));
     poolStatusOp.setValidated(responseBodyMap.getInteger("Validated"));
     return poolStatusOp;
   }
-
 
   /**
    * Call a read-only method of a contract. wa:/api/blockChain/executeTransaction
@@ -209,8 +217,9 @@ public class BlockChainSdk {
       throws Exception {
     String url = this.AElfClientUrl + WA_CREATE_RAW_TRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
-    MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(responseBody);
-    if(responseBodyMap==null) throw new RuntimeException();
+    MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
+    if (responseBodyMap == null)
+      throw new RuntimeException();
     String rawTransaction = responseBodyMap.getString("RawTransaction", "");
     CreateRawTransactionOutput createRawTransactionOutput = new CreateRawTransactionOutput();
     createRawTransactionOutput.setRawTransaction(rawTransaction);
@@ -218,13 +227,13 @@ public class BlockChainSdk {
   }
 
   /**
-   * Call a method of a contract by given serialized str wa:/api/blockChain/executeRawTransaction.
+   * Call a method of a contract by given serialized str
+   * wa:/api/blockChain/executeRawTransaction.
    */
   public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
     String url = this.AElfClientUrl + WA_EXECUTE_RAW_TRANSACTION;
     return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
   }
-
 
   /**
    * Broadcast a serialized transaction. wa:/api/blockChain/sendRawTransaction
@@ -233,14 +242,15 @@ public class BlockChainSdk {
       throws Exception {
     String url = this.AElfClientUrl + WA_SEND_RAW_TRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
-    MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(responseBody);
-    if(responseBodyMap==null) throw new RuntimeException();
+    MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
+    if (responseBodyMap == null)
+      throw new RuntimeException();
     final String transactionId = responseBodyMap.getString("TransactionId", "");
 
     TransactionDto transactionDtoObj = new TransactionDto();
-    LinkedHashMap<String,?> transactionObj = responseBodyMap
+    LinkedHashMap<String, ?> transactionObj = responseBodyMap
         .getLinkedHashMap("Transaction", new LinkedHashMap<>());
-    MapEntry<String,?> transactionObjMap = Maps.cloneMapEntry(transactionObj);
+    MapEntry<String, ?> transactionObjMap = Maps.cloneMapEntry(transactionObj);
     transactionDtoObj.setFrom(transactionObjMap.getString("From", ""));
     transactionDtoObj.setTo(transactionObjMap.getString("To", ""));
     transactionDtoObj.setRefBlockNumber(transactionObjMap.getLong("RefBlockNumber", 0));
@@ -255,15 +265,15 @@ public class BlockChainSdk {
     return sendRawTransactionOutput;
   }
 
-
   /**
    * Broadcast a transaction wa:/api/blockChain/sendTransaction.
    */
   public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception {
     String url = this.AElfClientUrl + WA_SEND_TRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
-    MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(responseBody);
-    if(responseBodyMap==null) throw new RuntimeException();
+    MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
+    if (responseBodyMap == null)
+      throw new RuntimeException();
     String rawTransaction = responseBodyMap.getString("TransactionId", "");
     SendTransactionOutput sendTransactionOutputObj = new SendTransactionOutput();
     sendTransactionOutputObj.setTransactionId(rawTransaction);
@@ -283,11 +293,11 @@ public class BlockChainSdk {
    * Get the current status of a transaction wa:/api/blockChain/transactionResult.
    */
   public TransactionResultDto getTransactionResult(String transactionId) throws RuntimeException {
-    String url =
-        this.AElfClientUrl + WA_GET_TRANSACTION_RESULT + "?transactionId=" + transactionId;
+    String url = this.AElfClientUrl + WA_GET_TRANSACTION_RESULT + "?transactionId=" + transactionId;
     String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
-    MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(responseBody);
-    if(responseBodyMap==null) throw new RuntimeException();
+    MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
+    if (responseBodyMap == null)
+      throw new RuntimeException();
     return createTransactionResultDto(responseBodyMap);
   }
 
@@ -310,35 +320,36 @@ public class BlockChainSdk {
     if (limit <= 0 || limit > 100) {
       throw new RuntimeException("Error.InvalidLimit");
     }
-    String url =
-        this.AElfClientUrl + WA_GET_TRANSACTION_RESULTS + "?blockHash=" + blockHash + "&offset="
-            + offset + "&limit=" + limit;
+    String url = this.AElfClientUrl + WA_GET_TRANSACTION_RESULTS + "?blockHash=" + blockHash + "&offset="
+        + offset + "&limit=" + limit;
     String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
-    List<LinkedHashMap<String,?>> responseBobyList = JsonUtil.parseObject(responseBody, List.class);
+    List<LinkedHashMap<String, ?>> responseBobyList = JsonUtil.parseObject(responseBody, List.class);
     List<TransactionResultDto> transactionResultDtoList = new ArrayList<>();
-    for (LinkedHashMap<String,?> responseBodyObj : responseBobyList) {
-      MapEntry<String,?> responseBodyObjMap = Maps.cloneMapEntry(responseBodyObj);
+    for (LinkedHashMap<String, ?> responseBodyObj : responseBobyList) {
+      MapEntry<String, ?> responseBodyObjMap = Maps.cloneMapEntry(responseBodyObj);
       transactionResultDtoList.add(createTransactionResultDto(responseBodyObjMap));
     }
     return transactionResultDtoList;
   }
 
   /**
-   * Get merkle tree's path of a transaction. wa:/api/blockChain/merklePathByTransactionId
+   * Get merkle tree's path of a transaction.
+   * wa:/api/blockChain/merklePathByTransactionId
    */
   public MerklePathDto getMerklePathByTransactionId(String transactionId) {
     String url = this.AElfClientUrl + WA_GET_M_BY_TRANSACTION_ID + "?transactionId="
         + transactionId;
     String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
-    MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(responseBody);
+    MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
     MerklePathDto merklePathDtoObj = new MerklePathDto();
     merklePathDtoObj.setMerklePathNodes(new ArrayList<>());
-    if(responseBodyMap==null) throw new RuntimeException();
+    if (responseBodyMap == null)
+      throw new RuntimeException();
 
-    ArrayList<LinkedHashMap<String,?>> merklePathNodesList = responseBodyMap
+    ArrayList<LinkedHashMap<String, ?>> merklePathNodesList = responseBodyMap
         .getArrayList("MerklePathNodes", new ArrayList<>());
-    for (LinkedHashMap<String,?> merklePathNodesObj : merklePathNodesList) {
-      MapEntry<String,?> merklePathNodesObjMap = Maps.cloneMapEntry(merklePathNodesObj);
+    for (LinkedHashMap<String, ?> merklePathNodesObj : merklePathNodesList) {
+      MapEntry<String, ?> merklePathNodesObjMap = Maps.cloneMapEntry(merklePathNodesObj);
       MerklePathNodeDto merklePathNodeDtoObj = new MerklePathNodeDto();
       merklePathNodeDtoObj.setHash(merklePathNodesObjMap.getString("Hash", ""));
       merklePathNodeDtoObj
@@ -348,15 +359,13 @@ public class BlockChainSdk {
     return merklePathDtoObj;
   }
 
-
-
   public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
     String url = this.AElfClientUrl + WA_CALCULATE_TRANSACTION_FEE;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     return JsonUtil.parseObject(responseBody, CalculateTransactionFeeOutput.class);
   }
 
-  private BlockDto createBlockDto(MapEntry<String,?> block, Boolean includeTransactions) throws Exception {
+  private BlockDto createBlockDto(MapEntry<String, ?> block, Boolean includeTransactions) throws Exception {
     if (block == null) {
       throw new RuntimeException("not found");
     }
@@ -366,9 +375,9 @@ public class BlockChainSdk {
     bloomStr = bloomStr.length() == 0 ? Base64.getEncoder().encodeToString(new byte[256]) : bloomStr;
     final String timeStr = StringUtil.toString(block.getLinkedHashMap("Header").get("Time"));
     SimpleDateFormat df;
-    if(timeStr.length() == 20){
+    if (timeStr.length() == 20) {
       df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-    }else{
+    } else {
       df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     }
     df.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -410,7 +419,7 @@ public class BlockChainSdk {
     return blockDto;
   }
 
-  private TransactionResultDto createTransactionResultDto(MapEntry<String,?> transactionResult) {
+  private TransactionResultDto createTransactionResultDto(MapEntry<String, ?> transactionResult) {
     TransactionResultDto transactionResultObj = new TransactionResultDto();
     transactionResultObj.setTransactionId(transactionResult.getString("TransactionId", ""));
     transactionResultObj.setStatus(transactionResult.getString("Status", ""));
@@ -420,9 +429,9 @@ public class BlockChainSdk {
     transactionResultObj.setReturnValue(transactionResult.getString("ReturnValue", ""));
     transactionResultObj.setError(transactionResult.getString("Error", ""));
     TransactionDto transactionDtoObj = new TransactionDto();
-    LinkedHashMap<String,?> transactionObj = transactionResult
+    LinkedHashMap<String, ?> transactionObj = transactionResult
         .getLinkedHashMap("Transaction", new LinkedHashMap<>());
-    MapEntry<String,?> transactionObjMap = Maps.cloneMapEntry(transactionObj);
+    MapEntry<String, ?> transactionObjMap = Maps.cloneMapEntry(transactionObj);
     transactionDtoObj.setFrom(transactionObjMap.getString("From", ""));
     transactionDtoObj.setTo(transactionObjMap.getString("To", ""));
     transactionDtoObj.setRefBlockNumber(transactionObjMap.getLong("RefBlockNumber", 0));
@@ -433,13 +442,13 @@ public class BlockChainSdk {
     transactionResultObj.setTransaction(transactionDtoObj);
     TransactionFeeDto transactionFeeDtoObj = new TransactionFeeDto();
     transactionFeeDtoObj.setValue(new HashMap<>());
-    LinkedHashMap<String,?> transactionFeeObj = transactionResult
+    LinkedHashMap<String, ?> transactionFeeObj = transactionResult
         .getLinkedHashMap("TransactionFee", new LinkedHashMap<>());
-    MapEntry<String,?> transactionFeeObjMap = Maps.cloneMapEntry(transactionFeeObj);
+    MapEntry<String, ?> transactionFeeObjMap = Maps.cloneMapEntry(transactionFeeObj);
     LinkedHashMap<String, Integer> transactionFeeValueObjMap = transactionFeeObjMap
         .getLinkedHashMap("Value", new LinkedHashMap<String, Integer>());
     for (Map.Entry<String, Integer> tmp : transactionFeeValueObjMap
-            .entrySet()) {
+        .entrySet()) {
       String key = tmp.getKey();
       Integer valueInteger = tmp.getValue();
       Long valueLong = valueInteger.longValue();
@@ -447,10 +456,10 @@ public class BlockChainSdk {
     }
     transactionResultObj.setTransactionFee(transactionFeeDtoObj);
     List<LogEventDto> logEventDtoList = new ArrayList<>();
-    List<LinkedHashMap<String,?>> logsList = transactionResult.getArrayList("Logs", new ArrayList<>());
-    for (LinkedHashMap<String,?> logsObj : logsList) {
+    List<LinkedHashMap<String, ?>> logsList = transactionResult.getArrayList("Logs", new ArrayList<>());
+    for (LinkedHashMap<String, ?> logsObj : logsList) {
       LogEventDto logEventDtoObj = new LogEventDto();
-      MapEntry<String,?> logsObjMap = Maps.cloneMapEntry(logsObj);
+      MapEntry<String, ?> logsObjMap = Maps.cloneMapEntry(logsObj);
       logEventDtoObj.setAddress(logsObjMap.getString("Address", ""));
       logEventDtoObj.setName(logsObjMap.getString("Name", ""));
       logEventDtoObj.setIndexed(new ArrayList<>());
