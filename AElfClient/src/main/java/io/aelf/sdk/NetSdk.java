@@ -5,12 +5,12 @@ import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;
 import io.aelf.schemas.RequestMetric;
 import io.aelf.schemas.Timestamp;
-import io.aelf.utils.ClientUtil;
 import io.aelf.utils.HttpUtilExt;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.StringUtil;
+import io.aelf.utils.network.NetworkConnector;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class NetSdk {
    */
   public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
     String url = this.AElfClientUrl + WA_GET_PEERS + "?withMetrics=" + withMetrics;
-    String peersChain = ClientUtil.sendGet(url, "UTF-8", this.version);
+    String peersChain = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
     List<PeerDto> listPeerDto = new ArrayList<>();
     List<LinkedHashMap<String,?>> responseBobyList = JsonUtil.parseObject(peersChain, List.class);
     for (LinkedHashMap<String,?> responseBodyObj : responseBobyList) {
@@ -117,7 +117,7 @@ public class NetSdk {
    * Get information about the node’s connection to the network. wa:/api/net/networkInfo
    */
   public NetworkInfoOutput getNetworkInfo() throws Exception {
-    String networkChain = ClientUtil
+    String networkChain = NetworkConnector.getIns()
         .sendGet(this.AElfClientUrl + WA_GET_NETWORK_INFO, "UTF-8", this.version);
     MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(networkChain);
     if(responseBodyMap==null) throw new RuntimeException();

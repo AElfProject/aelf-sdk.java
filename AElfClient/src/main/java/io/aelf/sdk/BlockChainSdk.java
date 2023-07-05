@@ -1,8 +1,9 @@
 package io.aelf.sdk;
 
 import io.aelf.schemas.*;
+import io.aelf.utils.network.APIPath;
 import io.aelf.utils.BitConverter;
-import io.aelf.utils.ClientUtil;
+import io.aelf.utils.network.NetworkConnector;
 import io.aelf.utils.HttpUtilExt;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
@@ -15,27 +16,8 @@ import org.bitcoinj.core.Base58;
 
 @SuppressWarnings({ "unchecked", "unused", "SpellCheckingInspection" })
 public class BlockChainSdk {
-
   private final String AElfClientUrl;
   private final String version;
-  private static final String WA_BLOCK_HEIGHT = "/api/blockChain/blockHeight";
-  private static final String WA_BLOCK = "/api/blockChain/block";
-  private static final String WA_BLOCK_BY_HEIGHT = "/api/blockChain/blockByHeight";
-  private static final String WA_GET_TRANSACTION_POOL_STATUS = "/api/blockChain/transactionPoolStatus";
-  private static final String WA_GET_CHAIN_STATUS = "/api/blockChain/chainStatus";
-  private static final String WA_GET_DESCRIPTOR_SET = "/api/blockChain/contractFileDescriptorSet";
-  private static final String WA_GET_TASK_QUEUE_STATUS = "/api/blockChain/taskQueueStatus";
-  private static final String WA_EXECUTE_TRANSACTION = "/api/blockChain/executeTransaction";
-  private static final String WA_EXECUTE_RAW_TRANSACTION = "/api/blockChain/executeRawTransaction";
-  private static final String WA_CREATE_RAW_TRANSACTION = "/api/blockChain/rawTransaction";
-  private static final String WA_SEND_RAW_TRANSACTION = "/api/blockChain/sendRawTransaction";
-  private static final String WA_SEND_TRANSACTION = "/api/blockChain/sendTransaction";
-  private static final String WA_GET_TRANSACTION_RESULT = "/api/blockChain/transactionResult";
-  private static final String WA_GET_TRANSACTION_RESULTS = "/api/blockChain/transactionResults";
-  private static final String WA_SEND_TRANSACTIONS = "/api/blockChain/sendTransactions";
-  private static final String WA_GET_M_BY_TRANSACTION_ID = "/api/blockChain/merklePathByTransactionId";
-  private static final String WA_CALCULATE_TRANSACTION_FEE = "/api/blockChain/calculateTransactionFee";
-
   /**
    * Object construction through the url path.
    */
@@ -49,7 +31,7 @@ public class BlockChainSdk {
    */
   public long getBlockHeight() throws Exception {
     String chainContext = HttpUtilExt
-        .sendGet(this.AElfClientUrl + WA_BLOCK_HEIGHT, "UTF-8", this.version);
+        .sendGet(this.AElfClientUrl + APIPath.WA_BLOCK_HEIGHT, "UTF-8", this.version);
     return Long.parseLong(chainContext);
   }
 
@@ -69,7 +51,7 @@ public class BlockChainSdk {
    */
   public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
     String chainContext = HttpUtilExt.sendGet(
-        this.AElfClientUrl + WA_BLOCK + "?blockHash=" + blockHash + "&includeTransactions="
+        this.AElfClientUrl + APIPath.WA_BLOCK + "?blockHash=" + blockHash + "&includeTransactions="
             + includeTransactions,
         "UTF-8", this.version);
     MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
@@ -95,7 +77,7 @@ public class BlockChainSdk {
     if (blockHeight == 0) {
       throw new RuntimeException("[20001]Not found");
     }
-    String url = this.AElfClientUrl + WA_BLOCK_BY_HEIGHT + "?blockHeight=" + blockHeight
+    String url = this.AElfClientUrl + APIPath.WA_BLOCK_BY_HEIGHT + "?blockHeight=" + blockHeight
         + "&includeTransactions=" + includeTransactions;
     String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
@@ -106,8 +88,8 @@ public class BlockChainSdk {
    * Get the current status of the blockchain. wa:/api/blockChain/chainStatus
    */
   public ChainstatusDto getChainStatus() throws RuntimeException {
-    String url = this.AElfClientUrl + WA_GET_CHAIN_STATUS;
-    String chainContext = ClientUtil.sendGet(url, "UTF-8", this.version);
+    String url = this.AElfClientUrl + APIPath.WA_GET_CHAIN_STATUS;
+    String chainContext = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
     MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
     if (mapObjJson == null)
       throw new RuntimeException();
@@ -155,7 +137,7 @@ public class BlockChainSdk {
    * /api/blockChain/contractFileDescriptorSet.
    */
   public byte[] getContractFileDescriptorSet(String address) throws Exception {
-    String url = this.AElfClientUrl + WA_GET_DESCRIPTOR_SET + "?address=" + address;
+    String url = this.AElfClientUrl + APIPath.WA_GET_DESCRIPTOR_SET + "?address=" + address;
     String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     if (chainContext.startsWith("\"") && chainContext.endsWith("\"")) {
       return chainContext.getBytes();
@@ -171,7 +153,7 @@ public class BlockChainSdk {
    */
   public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception {
     String responseBody = HttpUtilExt
-        .sendGet(this.AElfClientUrl + WA_GET_TASK_QUEUE_STATUS, "UTF-8", this.version);
+        .sendGet(this.AElfClientUrl + APIPath.WA_GET_TASK_QUEUE_STATUS, "UTF-8", this.version);
     List<LinkedHashMap<String, ?>> responseBodyList = JsonUtil.parseObject(responseBody, List.class);
     List<TaskQueueInfoDto> listTaskQueueInfoDto = new ArrayList<>();
     for (LinkedHashMap<String, ?> linkedHashMapObj : responseBodyList) {
@@ -191,7 +173,7 @@ public class BlockChainSdk {
    * pool.wa:/api/blockChain/transactionPoolStatus
    */
   public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
-    String url = this.AElfClientUrl + WA_GET_TRANSACTION_POOL_STATUS;
+    String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_POOL_STATUS;
     String responseBody = HttpUtilExt.sendGet(url, "UTF-8", this.version);
     MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
     if (responseBodyMap == null)
@@ -206,7 +188,7 @@ public class BlockChainSdk {
    * Call a read-only method of a contract. wa:/api/blockChain/executeTransaction
    */
   public String executeTransaction(ExecuteTransactionDto input) throws Exception {
-    String url = this.AElfClientUrl + WA_EXECUTE_TRANSACTION;
+    String url = this.AElfClientUrl + APIPath.WA_EXECUTE_TRANSACTION;
     return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
   }
 
@@ -215,7 +197,7 @@ public class BlockChainSdk {
    */
   public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input)
       throws Exception {
-    String url = this.AElfClientUrl + WA_CREATE_RAW_TRANSACTION;
+    String url = this.AElfClientUrl + APIPath.WA_CREATE_RAW_TRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
     if (responseBodyMap == null)
@@ -231,7 +213,7 @@ public class BlockChainSdk {
    * wa:/api/blockChain/executeRawTransaction.
    */
   public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
-    String url = this.AElfClientUrl + WA_EXECUTE_RAW_TRANSACTION;
+    String url = this.AElfClientUrl + APIPath.WA_EXECUTE_RAW_TRANSACTION;
     return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
   }
 
@@ -240,7 +222,7 @@ public class BlockChainSdk {
    */
   public SendRawTransactionOutput sendRawTransaction(SendRawTransactionInput input)
       throws Exception {
-    String url = this.AElfClientUrl + WA_SEND_RAW_TRANSACTION;
+    String url = this.AElfClientUrl + APIPath.WA_SEND_RAW_TRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
     if (responseBodyMap == null)
@@ -269,7 +251,7 @@ public class BlockChainSdk {
    * Broadcast a transaction wa:/api/blockChain/sendTransaction.
    */
   public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception {
-    String url = this.AElfClientUrl + WA_SEND_TRANSACTION;
+    String url = this.AElfClientUrl + APIPath.WA_SEND_TRANSACTION;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
     if (responseBodyMap == null)
@@ -284,7 +266,7 @@ public class BlockChainSdk {
    * Broadcast volume transactions wa:/api/blockChain/sendTransactions.
    */
   public List<String> sendTransactions(SendTransactionsInput input) throws Exception {
-    String url = this.AElfClientUrl + WA_SEND_TRANSACTIONS;
+    String url = this.AElfClientUrl + APIPath.WA_SEND_TRANSACTIONS;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     return JsonUtil.parseObject(responseBody, List.class);
   }
@@ -293,8 +275,8 @@ public class BlockChainSdk {
    * Get the current status of a transaction wa:/api/blockChain/transactionResult.
    */
   public TransactionResultDto getTransactionResult(String transactionId) throws RuntimeException {
-    String url = this.AElfClientUrl + WA_GET_TRANSACTION_RESULT + "?transactionId=" + transactionId;
-    String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
+    String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_RESULT + "?transactionId=" + transactionId;
+    String responseBody = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
     MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
     if (responseBodyMap == null)
       throw new RuntimeException();
@@ -320,9 +302,9 @@ public class BlockChainSdk {
     if (limit <= 0 || limit > 100) {
       throw new RuntimeException("Error.InvalidLimit");
     }
-    String url = this.AElfClientUrl + WA_GET_TRANSACTION_RESULTS + "?blockHash=" + blockHash + "&offset="
+    String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_RESULTS + "?blockHash=" + blockHash + "&offset="
         + offset + "&limit=" + limit;
-    String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
+    String responseBody = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
     List<LinkedHashMap<String, ?>> responseBobyList = JsonUtil.parseObject(responseBody, List.class);
     List<TransactionResultDto> transactionResultDtoList = new ArrayList<>();
     for (LinkedHashMap<String, ?> responseBodyObj : responseBobyList) {
@@ -337,9 +319,9 @@ public class BlockChainSdk {
    * wa:/api/blockChain/merklePathByTransactionId
    */
   public MerklePathDto getMerklePathByTransactionId(String transactionId) {
-    String url = this.AElfClientUrl + WA_GET_M_BY_TRANSACTION_ID + "?transactionId="
+    String url = this.AElfClientUrl + APIPath.WA_GET_M_BY_TRANSACTION_ID + "?transactionId="
         + transactionId;
-    String responseBody = ClientUtil.sendGet(url, "UTF-8", this.version);
+    String responseBody = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
     MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
     MerklePathDto merklePathDtoObj = new MerklePathDto();
     merklePathDtoObj.setMerklePathNodes(new ArrayList<>());
@@ -360,7 +342,7 @@ public class BlockChainSdk {
   }
 
   public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
-    String url = this.AElfClientUrl + WA_CALCULATE_TRANSACTION_FEE;
+    String url = this.AElfClientUrl + APIPath.WA_CALCULATE_TRANSACTION_FEE;
     String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     return JsonUtil.parseObject(responseBody, CalculateTransactionFeeOutput.class);
   }

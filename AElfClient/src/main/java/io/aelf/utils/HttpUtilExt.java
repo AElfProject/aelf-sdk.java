@@ -1,5 +1,6 @@
 package io.aelf.utils;
 
+import io.aelf.utils.network.NetworkConnector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +19,7 @@ public class HttpUtilExt {
     } else {
       version = ";v=" + version;
     }
-    String chainContext = ClientUtil.sendGet(reqUrl, decodeCharset, "application/json" + version);
+    String chainContext = NetworkConnector.getIns().sendGet(reqUrl, decodeCharset, "application/json" + version);
     if (StringUtil.toString(chainContext).length() > 0 && chainContext.contains("@ERROR:@")) {
       chainContext = chainContext.replace("@ERROR:@", "");
       throw new RuntimeException(chainContext);
@@ -37,7 +38,7 @@ public class HttpUtilExt {
     } else {
       version = ";v=" + version;
     }
-    String chainContext = ClientUtil
+    String chainContext = NetworkConnector.getIns()
         .sendDelete(reqUrl, decodeCharset, "application/json" + version, basicAuth);
     logger.debug("Return parameters:" + chainContext);
     return chainContext;
@@ -53,7 +54,7 @@ public class HttpUtilExt {
       version = ";v=" + version;
     }
     logger.debug("Request address:" + reqUrl);
-    String chainContext = ClientUtil
+    String chainContext = NetworkConnector.getIns()
         .sendPost(reqUrl, params, "UTF-8", "UTF-8", "application/json" + version);
     if (StringUtil.toString(chainContext).length() > 0 && chainContext.contains("@ERROR:@")) {
       chainContext = chainContext.replace("@ERROR:@", "");
@@ -73,7 +74,7 @@ public class HttpUtilExt {
       version = ";v=" + version;
     }
     logger.debug("Request address:" + reqUrl);
-    String chainContext = ClientUtil
+    String chainContext = NetworkConnector.getIns()
             .sendPostWithAuth(reqUrl, params, "UTF-8", "UTF-8", "application/json" + version, authBasic);
     if (StringUtil.toString(chainContext).length() > 0 && chainContext.contains("@ERROR:@")) {
       chainContext = chainContext.replace("@ERROR:@", "");

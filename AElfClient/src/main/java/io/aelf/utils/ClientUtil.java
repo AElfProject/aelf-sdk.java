@@ -1,5 +1,8 @@
 package io.aelf.utils;
 
+import io.aelf.sdk.AElfClient;
+import io.aelf.sdkv2.AElfClientV2;
+import io.aelf.utils.network.NetworkConnector;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -16,6 +19,17 @@ import org.apache.http.util.EntityUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * This class is deprecated since it is using raw {@link HttpClient}
+ * which is not recommended now.<br/>
+ * Do not use it, and it might be removed in the future update.<br/>
+ * If somehow you are still using it from outside our SDK, consider refactoring your code to
+ * the new form WebSDK {@link NetworkConnector} and use {@link AElfClientV2} instead of
+ * deprecated {@link AElfClient}.
+ * @see AElfClientV2
+ * @see NetworkConnector
+ */
+@Deprecated
 public class ClientUtil {
 
   protected static final Logger logger = LogManager.getLogger(ClientUtil.class);
@@ -28,18 +42,16 @@ public class ClientUtil {
     if (!"true".equals(proxySet)) {
       if (connectTimeout != null && connectTimeout.length > 0) {
         RequestConfig config = RequestConfig.custom().setConnectTimeout(connectTimeout[0]).build();
-        HttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(config).build();
-        return httpClient;
+        return HttpClients.custom().setDefaultRequestConfig(config).build();
       } else {
-        HttpClient httpClient = new DefaultHttpClient();
-        return httpClient;
+        return new DefaultHttpClient();
       }
     } else {
       String proxyType = System.getProperty("proxyType");
       String host = System.getProperty(proxyType + ".proxyHost");
       int port = Integer.parseInt(System.getProperty(proxyType + ".proxyPort"));
       HttpHost proxy = new HttpHost(host, port, proxyType);
-      RequestConfig config = null;
+      RequestConfig config;
       if (connectTimeout != null && connectTimeout.length > 0) {
         config = RequestConfig.custom().setConnectTimeout(connectTimeout[0]).setProxy(proxy)
             .build();
@@ -47,8 +59,7 @@ public class ClientUtil {
         config = RequestConfig.custom().setProxy(proxy).build();
       }
 
-      HttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(config).build();
-      return httpClient;
+      return HttpClients.custom().setDefaultRequestConfig(config).build();
     }
   }
 

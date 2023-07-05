@@ -2,10 +2,13 @@ package io.aelf.async;
 
 import io.aelf.schemas.BlockDto;
 import io.aelf.sdk.BlockChainSdkTest;
-import io.aelf.sdkv2.AsyncClient;
+import io.aelf.sdkv2.AElfClientV2;
+import io.aelf.sdkv2.ClientAsync;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.annotation.Nonnull;
 
 /**
  * Since the AsyncClient only provides async-wrapped API,
@@ -15,8 +18,8 @@ import org.junit.Test;
  * @see BlockChainSdkTest
  */
 @SuppressWarnings("DataFlowIssue")
-public class AsyncClientTest {
-    private AsyncClient client;
+public class ClientAsyncTest {
+    private ClientAsync client;
 
     private static final String HTTP_URL = "http://192.168.66.61:8000";
 
@@ -25,12 +28,12 @@ public class AsyncClientTest {
 
     @Before
     public void init() {
-        this.client = new AsyncClient(HTTP_URL);
+        this.client = new AElfClientV2(HTTP_URL);
         this.address = client.getAddressFromPrivateKey(privateKey);
     }
 
-    private void onFail(AsyncResult<Void> e) {
-        System.out.println("Test Failed!" + e.toString());
+    private void onFail(@Nonnull AsyncResult<Void> e) {
+        System.out.println("Test Failed!" + e);
         throw new RuntimeException();
     }
 

@@ -5,6 +5,7 @@ import com.google.protobuf.StringValue;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.schemas.*;
+import io.aelf.sdkv2.AElfClientV2;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.Sha256;
@@ -22,6 +23,11 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @deprecated - This class is deprecated, and we recommend you to use the {@link AElfClientV2}
+ *  * which contains both async APIs and common APIs.
+ */
+@Deprecated
 @SuppressWarnings({ "UnusedReturnValue", "unused" })
 public class AElfClient {
 
@@ -64,8 +70,12 @@ public class AElfClient {
     if (!TextUtils.isEmpty(version)) {
       this.version = version;
     }
-    this.getBlockChainSdkObj();
+    this.initBlockChainSdk();
     this.initNetSdkObj(userName, password);
+  }
+
+  private void initBlockChainSdk(){
+    blockchainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
   }
 
   /**
@@ -74,9 +84,6 @@ public class AElfClient {
    * @return BlockChainSdk Object ins
    */
   private BlockChainSdk getBlockChainSdkObj() {
-    if (blockchainSdk == null) {
-      blockchainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
-    }
     return blockchainSdk;
   }
 
