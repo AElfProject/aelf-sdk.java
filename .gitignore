@@ -29,3 +29,4 @@ target
 .txt
 /AElfClient/src/main/java/io/aelf/protobuf/generated/
 /aelf/
+/out/artifacts/aelf_sdk_jar/

@@ -18,31 +18,35 @@ public class LogEventDto {
     return address;
   }
 
-  public void setAddress(String address) {
+  public LogEventDto setAddress(String address) {
     this.address = address;
+    return this;
   }
 
   public String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public LogEventDto setName(String name) {
     this.name = name;
+    return this;
   }
 
   public List<String> getIndexed() {
     return this.indexed;
   }
 
-  public void setIndexed(List<String> indexed) {
+  public LogEventDto setIndexed(List<String> indexed) {
     this.indexed = indexed;
+    return this;
   }
 
   public String getNonIndexed() {
     return this.nonIndexed;
   }
 
-  public void setNonIndexed(String nonIndexed) {
+  public LogEventDto setNonIndexed(String nonIndexed) {
     this.nonIndexed = nonIndexed;
+    return this;
   }
 }

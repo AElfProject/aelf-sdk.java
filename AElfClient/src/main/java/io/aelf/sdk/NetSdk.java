@@ -70,28 +70,28 @@ public class NetSdk {
     List<LinkedHashMap<String,?>> responseBobyList = JsonUtil.parseObject(peersChain, List.class);
     for (LinkedHashMap<String,?> responseBodyObj : responseBobyList) {
       MapEntry<String,?> responseBodyMapObj = Maps.cloneMapEntry(responseBodyObj);
-      PeerDto peerDtoObj = new PeerDto();
-      peerDtoObj.setIpAddress(responseBodyMapObj.getString("IpAddress", ""));
-      peerDtoObj.setProtocolVersion(responseBodyMapObj.getInteger("ProtocolVersion", 0));
-      peerDtoObj.setConnectionTime(responseBodyMapObj.getLong("ConnectionTime", 0));
-      peerDtoObj.setConnectionStatus(responseBodyMapObj.getString("ConnectionStatus", ""));
-      peerDtoObj.setInbound(responseBodyMapObj.getBoolean("Inbound", false));
-      peerDtoObj.setBufferedAnnouncementsCount(
-          responseBodyMapObj.getInteger("BufferedTransactionsCount", 0));
-      peerDtoObj.setBufferedBlocksCount(responseBodyMapObj.getInteger("BufferedBlocksCount", 0));
-      peerDtoObj.setBufferedTransactionsCount(
-          responseBodyMapObj.getInteger("BufferedAnnouncementsCount", 0));
-      peerDtoObj.setRequestMetrics(new ArrayList<>());
-      peerDtoObj.setNodeVersion(responseBodyMapObj.getString("NodeVersion",""));
+      PeerDto peerDtoObj = new PeerDto()
+              .setIpAddress(responseBodyMapObj.getString("IpAddress", ""))
+              .setProtocolVersion(responseBodyMapObj.getInteger("ProtocolVersion", 0))
+              .setConnectionTime(responseBodyMapObj.getLong("ConnectionTime", 0))
+              .setConnectionStatus(responseBodyMapObj.getString("ConnectionStatus", ""))
+              .setInbound(responseBodyMapObj.getBoolean("Inbound", false))
+              .setBufferedAnnouncementsCount(
+          responseBodyMapObj.getInteger("BufferedTransactionsCount", 0))
+              .setBufferedBlocksCount(responseBodyMapObj.getInteger("BufferedBlocksCount", 0))
+              .setBufferedTransactionsCount(
+          responseBodyMapObj.getInteger("BufferedAnnouncementsCount", 0))
+              .setRequestMetrics(new ArrayList<>())
+              .setNodeVersion(responseBodyMapObj.getString("NodeVersion",""));
       List<LinkedHashMap<String,?>> requestMetricsList = responseBodyMapObj
           .getArrayList("RequestMetrics", new ArrayList<LinkedHashMap<String,?>>());
       for (LinkedHashMap<String,?> requestMetricsObj : requestMetricsList) {
         MapEntry<String,?> requestMetricsMapObj = Maps.cloneMapEntry(requestMetricsObj);
-        RequestMetric requestMetricObj = new RequestMetric();
-        requestMetricObj.setMethodName(requestMetricsMapObj.getString("MethodName", ""));
-        requestMetricObj.setRoundTripTime(requestMetricsMapObj.getLong("RoundTripTime", 0));
-        requestMetricObj.setInfo(requestMetricsMapObj.getString("Info", ""));
-        requestMetricObj.setRequestTime(new Timestamp());
+        RequestMetric requestMetricObj = new RequestMetric()
+                .setMethodName(requestMetricsMapObj.getString("MethodName", ""))
+                .setRoundTripTime(requestMetricsMapObj.getLong("RoundTripTime", 0))
+                .setInfo(requestMetricsMapObj.getString("Info", ""))
+                .setRequestTime(new Timestamp());
 
         LinkedHashMap<String, String> requestTimeObj = requestMetricsMapObj
             .getLinkedHashMap("RequestTime", new LinkedHashMap<>());
@@ -121,10 +121,9 @@ public class NetSdk {
         .sendGet(this.AElfClientUrl + WA_GET_NETWORK_INFO, "UTF-8", this.version);
     MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(networkChain);
     if(responseBodyMap==null) throw new RuntimeException();
-    NetworkInfoOutput networkInfoOutput = new NetworkInfoOutput();
-    networkInfoOutput.setVersion(responseBodyMap.getString("Version"));
-    networkInfoOutput.setConnections(responseBodyMap.getInteger("Connections", 0));
-    networkInfoOutput.setProtocolVersion(responseBodyMap.getInteger("ProtocolVersion", 0));
-    return networkInfoOutput;
+    return new NetworkInfoOutput()
+            .setVersion(responseBodyMap.getString("Version"))
+            .setConnections(responseBodyMap.getInteger("Connections", 0))
+            .setProtocolVersion(responseBodyMap.getInteger("ProtocolVersion", 0));
   }
 }

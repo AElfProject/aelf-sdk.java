@@ -40,7 +40,7 @@ public abstract class ClientAsync extends AElfClient {
     // Some methods throw Exception rather than AElfException, this method will
     // convert them.
     @NotNull
-    @org.jetbrains.annotations.Contract(pure = true)
+    @org.jetbrains.annotations.Contract(pure = true, value = "_ -> !null")
     protected final <T> AsyncFunction<T> convertFunction(@NotNull FunctionPrimal<T> func) {
         return () -> {
             try {
@@ -216,7 +216,3 @@ public abstract class ClientAsync extends AElfClient {
 }
 
 
-@FunctionalInterface
-interface FunctionPrimal<T> {
-    T run() throws Exception;
-}
