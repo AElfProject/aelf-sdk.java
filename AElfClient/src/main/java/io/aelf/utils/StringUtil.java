@@ -1,10 +1,10 @@
 package io.aelf.utils;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class StringUtil {
 
   /**
@@ -39,14 +39,11 @@ public class StringUtil {
    * @param value not blank
    * @return string
    */
-  public static String toSelectStr(List resultList, String key, String value) {
+  public static String toSelectStr(List<Map<?,?>> resultList, String key, String value) {
     StringBuilder selectStr = new StringBuilder();
-    Iterator var5 = resultList.iterator();
 
-    while (var5.hasNext()) {
-      Object object = var5.next();
-      Map obj = (Map) object;
-      selectStr.append("<option value='" + obj.get(key) + "'>" + obj.get(value) + "</option>");
+    for (Map<?,?> map : resultList) {
+      selectStr.append("<option value='").append(map.get(key)).append("'>").append(map.get(value)).append("</option>");
     }
 
     return selectStr.toString();
@@ -67,7 +64,7 @@ public class StringUtil {
    * @return string
    */
   public static String firstCharToLowerCase(String str) {
-    Character firstChar = str.charAt(0);
+    char firstChar = str.charAt(0);
     String tail = str.substring(1);
     str = Character.toLowerCase(firstChar) + tail;
     return str;
@@ -79,7 +76,7 @@ public class StringUtil {
    * @return string
    */
   public static String firstCharToUpperCase(String str) {
-    Character firstChar = str.charAt(0);
+    char firstChar = str.charAt(0);
     String tail = str.substring(1);
     str = Character.toUpperCase(firstChar) + tail;
     return str;
@@ -112,11 +109,9 @@ public class StringUtil {
     if (strings == null) {
       return false;
     } else {
-      String[] var4 = strings;
       int var3 = strings.length;
 
-      for (int var2 = 0; var2 < var3; ++var2) {
-        String str = var4[var2];
+      for (String str : strings) {
         if (str == null || "".equals(str.trim())) {
           return false;
         }
@@ -128,18 +123,16 @@ public class StringUtil {
 
   /**
    * The string is not null.
-   * @param paras not blank
+   * @param params not blank
    * @return boolean
    */
-  public static boolean notNull(Object... paras) {
-    if (paras == null) {
+  public static boolean notNull(Object... params) {
+    if (params == null) {
       return false;
     } else {
-      Object[] var4 = paras;
-      int var3 = paras.length;
+      int var3 = params.length;
 
-      for (int var2 = 0; var2 < var3; ++var2) {
-        Object obj = var4[var2];
+      for (Object obj : params) {
         if (obj == null) {
           return false;
         }
@@ -184,14 +177,12 @@ public class StringUtil {
    * @param key not blank
    * @return string
    */
-  public static String toStringBySeparator(List<Map> list, String separator, String key) {
+  public static String toStringBySeparator(List<Map<String,?>> list, String separator, String key) {
     if (list != null && !list.isEmpty()) {
-      StringBuffer str = new StringBuffer();
-      Iterator var5 = list.iterator();
+      StringBuilder str = new StringBuilder();
 
-      while (var5.hasNext()) {
-        Map map = (Map) var5.next();
-        str.append(map.get(key) + ",");
+      for (Map<String,?> map : list) {
+        str.append(map.get(key)).append(",");
       }
 
       int length = str.length();
@@ -234,7 +225,7 @@ public class StringUtil {
    * @return List string Object
    */
   public static List<String> toList(String str, int len) {
-    List<String> result = new ArrayList();
+    List<String> result = new ArrayList<>();
     int end = len;
     int start = 0;
 

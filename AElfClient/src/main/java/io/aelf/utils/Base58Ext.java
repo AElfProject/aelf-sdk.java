@@ -12,7 +12,7 @@ public class Base58Ext {
    * @return String
    */
   public static String encodeChecked(byte[] payload) {
-    // A stringified buffer is:
+    // A stringify-buffer is:
     // 1 byte version + data bytes + 4 bytes check code (a truncated hash)
     byte[] addressBytes = new byte[payload.length + 4];
     System.arraycopy(payload, 0, addressBytes, 0, payload.length);

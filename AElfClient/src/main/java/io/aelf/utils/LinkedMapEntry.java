@@ -21,8 +21,8 @@ import java.util.TreeSet;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
-public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements Cloneable,
-    IMapEntry<K, V> {
+public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
+        IMapEntry<K, V> {
 
   /**
    * LinkedMapEntry constructor.

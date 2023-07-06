@@ -2,10 +2,12 @@ package io.aelf.utils;
 
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Digital terabyte array utility class.
  */
+@SuppressWarnings("unused")
 public class BitConverter {
 
   /**
@@ -135,7 +137,7 @@ public class BitConverter {
    * @return An array of bytes containing the result of encoding the specified character set
    */
   public static byte[] getBytes(String data) {
-    return data.getBytes(Charset.forName("UTF-8"));
+    return data.getBytes(StandardCharsets.UTF_8);
   }
 
   /**
@@ -156,7 +158,7 @@ public class BitConverter {
    * @return Boolean value
    */
   public static boolean toBoolean(byte[] bytes) {
-    return bytes[0] == 0 ? false : true;
+    return bytes[0] != 0;
   }
 
   /**
@@ -341,7 +343,7 @@ public class BitConverter {
    * @return character string
    */
   public static String toString(byte[] bytes) {
-    return new String(bytes, Charset.forName("UTF-8"));
+    return new String(bytes, StandardCharsets.UTF_8);
   }
 
   /**

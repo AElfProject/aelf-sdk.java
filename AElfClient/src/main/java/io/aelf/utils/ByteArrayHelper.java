@@ -1,5 +1,6 @@
 package io.aelf.utils;
 
+@SuppressWarnings("unused")
 public class ByteArrayHelper {
 
 
@@ -12,7 +13,7 @@ public class ByteArrayHelper {
   public static byte[] hexToByteArray(String inHex) {
     int hexlen = inHex.length();
     byte[] result;
-    if (hexlen >= 0 && hexlen % 2 == 1) {
+    if (hexlen % 2 == 1) {
       hexlen++;
       result = new byte[(hexlen / 2)];
       inHex = "0" + inHex;
@@ -34,9 +35,9 @@ public class ByteArrayHelper {
    * @return Converted Hex string
    */
   public static String bytesToHex(byte[] bytes) {
-    StringBuffer sb = new StringBuffer();
-    for (int i = 0; i < bytes.length; i++) {
-      String hex = Integer.toHexString(bytes[i] & 0xFF);
+    StringBuilder sb = new StringBuilder();
+    for (byte aByte : bytes) {
+      String hex = Integer.toHexString(aByte & 0xFF);
       if (hex.length() < 2) {
         sb.append(0);
       }

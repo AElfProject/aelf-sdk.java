@@ -1,5 +1,6 @@
 package io.aelf.async;
 
+import io.aelf.async.global.TestParams;
 import io.aelf.schemas.BlockDto;
 import io.aelf.sdk.BlockChainSdkTest;
 import io.aelf.sdkv2.AElfClientV2;
@@ -20,16 +21,12 @@ import javax.annotation.Nonnull;
 @SuppressWarnings("DataFlowIssue")
 public class ClientAsyncTest {
     private ClientAsync client;
-
-    private static final String HTTP_URL = "http://192.168.66.61:8000";
-
-    String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
     String address = "";
 
     @Before
     public void init() {
-        this.client = new AElfClientV2(HTTP_URL);
-        this.address = client.getAddressFromPrivateKey(privateKey);
+        this.client = new AElfClientV2(TestParams.CLIENT_HTTP_URL);
+        this.address = client.getAddressFromPrivateKey(TestParams.TEST_PRIVATE_KEY);
     }
 
     private void onFail(@Nonnull AsyncResult<Void> e) {

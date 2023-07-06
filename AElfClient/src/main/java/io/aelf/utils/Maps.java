@@ -94,13 +94,13 @@ public final class Maps {
    * @param <T> T
    * @return T extends Map
    */
-  public static <T extends Map> Map newMapHasKeys(T map, Object... keys) {
-    Map newMap = null;
+  public static <T extends Map> Map<Object, Object> newMapHasKeys(T map, Object... keys) {
+    Map<Object, Object> newMap = null;
     if (map instanceof HashMap) {
-      newMap = (HashMap) ((HashMap) map).clone();
+      newMap = (HashMap<Object, Object>) ((HashMap) map).clone();
       newMap.clear();
     } else {
-      newMap = new HashMap(20);
+      newMap = new HashMap<>(20);
     }
 
     Object[] var6 = keys;
@@ -197,7 +197,7 @@ public final class Maps {
    */
   public static <K, V> MapEntry<K, V> cloneMapEntry(Map<K, V> map, boolean rs) {
     if (!rs && map instanceof MapEntry) {
-      return (MapEntry) ((MapEntry) map).clone();
+      return (MapEntry<K, V>) ((MapEntry) map).clone();
     } else {
       MapEntry maps = newMapEntry();
       maps.putAll(map);
@@ -216,10 +216,10 @@ public final class Maps {
     try {
       Class<?> clazz = map.getClass();
       Method method = clazz.getDeclaredMethod("clone");
-      return (Map) (method != null && method.isAccessible() ? (Map) method
+      return (method != null && method.isAccessible() ? (Map) method
           .invoke(map, (Object[]) null) : new MapEntry(map));
     } catch (Exception var3) {
-      return new MapEntry(map);
+      return new MapEntry<>(map);
     }
   }
 

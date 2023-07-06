@@ -22,7 +22,7 @@ import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 @SuppressWarnings("unchecked")
-public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntry<K, V> {
+public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
 
   /**
    * MapEntry constructor.
@@ -113,15 +113,15 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
    * getOutputStream.
    *
    * @param key not blank
-   * @param defauleValue not blank
+   * @param defaultValue not blank
    * @return OutputStream
    */
-  public OutputStream getOutputStream(K key, OutputStream defauleValue) {
+  public OutputStream getOutputStream(K key, OutputStream defaultValue) {
     Object obj = this.get(key);
     if (obj == null) {
-      return defauleValue;
+      return defaultValue;
     } else {
-      return obj instanceof OutputStream ? (OutputStream) obj : defauleValue;
+      return obj instanceof OutputStream ? (OutputStream) obj : defaultValue;
     }
   }
 
@@ -139,15 +139,15 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
    * getCollection.
    *
    * @param key not blank
-   * @param defauleValue not blank
+   * @param defaultValue not blank
    * @return Collection
    */
-  public Collection getCollection(K key, Collection defauleValue) {
+  public Collection getCollection(K key, Collection defaultValue) {
     Object obj = this.get(key);
     if (obj == null) {
-      return defauleValue;
+      return defaultValue;
     } else {
-      return obj instanceof Collection ? (Collection) obj : defauleValue;
+      return obj instanceof Collection ? (Collection) obj : defaultValue;
     }
   }
 
@@ -191,13 +191,13 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
    * getHashMap.
    *
    * @param key not blank
-   * @param defauleValue not blank
+   * @param defaultValue not blank
    * @return HashMap
    */
-  public HashMap getHashMap(K key, HashMap defauleValue) {
+  public HashMap getHashMap(K key, HashMap defaultValue) {
     Object obj = this.get(key);
     if (obj == null) {
-      return defauleValue;
+      return defaultValue;
     } else if (obj instanceof HashMap) {
       return (HashMap) obj;
     } else if (obj instanceof Map) {
@@ -205,7 +205,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
       map.putAll((Map) obj);
       return map;
     } else {
-      return defauleValue;
+      return defaultValue;
     }
   }
 
@@ -281,13 +281,13 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
    * getMapEntry.
    *
    * @param key not blank
-   * @param defauleValue not blank
+   * @param defaultValue not blank
    * @return MapEntry
    */
-  public MapEntry getMapEntry(K key, MapEntry defauleValue) {
+  public MapEntry getMapEntry(K key, MapEntry defaultValue) {
     Object obj = this.get(key);
     if (obj == null) {
-      return defauleValue;
+      return defaultValue;
     } else if (obj instanceof MapEntry) {
       return (MapEntry) obj;
     } else if (obj instanceof Map) {
@@ -295,7 +295,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements Cloneable, IMapEntr
       map.putAll((Map) obj);
       return map;
     } else {
-      return defauleValue;
+      return defaultValue;
     }
   }
 

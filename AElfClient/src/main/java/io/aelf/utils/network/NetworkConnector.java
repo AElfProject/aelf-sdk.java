@@ -36,6 +36,7 @@ public class NetworkConnector implements NetworkImpl {
             .build();
 
 
+    @Contract(pure = true)
     private String stringEncode(@NotNull String res, @Nullable String decodeCharset) throws NullPointerException {
         return !StringUtil.isBlank(decodeCharset) && !"UTF-8".equals(decodeCharset) ?
                 new String(res.getBytes(StandardCharsets.UTF_8), Charset.forName(decodeCharset)) :

@@ -29,6 +29,7 @@ import org.apache.logging.log4j.Logger;
  * @see AElfClientV2
  * @see NetworkConnector
  */
+@SuppressWarnings("unused")
 @Deprecated
 public class ClientUtil {
 
@@ -73,10 +74,9 @@ public class ClientUtil {
   public static String sendGet(String reqUrl, String decodeCharset, String contentType) {
     long responseLength = 0L;
     String responseContent = null;
-    HttpClient httpClient = new DefaultHttpClient();
     HttpGet httpGet = new HttpGet(reqUrl);
 
-    try {
+    try( DefaultHttpClient httpClient = new DefaultHttpClient() ) {
       setProxy();
       if (StringUtils.isBlank(contentType)) {
         httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -102,8 +102,6 @@ public class ClientUtil {
     } catch (Exception ex) {
       responseContent = "@ERROR:@" + ex.getMessage();
       logger.debug("sendGet Exception:", ex);
-    } finally {
-      httpClient.getConnectionManager().shutdown();
     }
 
     return responseContent;
@@ -118,10 +116,9 @@ public class ClientUtil {
   public static String sendDelete(String reqUrl, String decodeCharset, String contentType, String authBasic) {
     long responseLength = 0L;
     String responseContent = null;
-    HttpClient httpClient = new DefaultHttpClient();
     HttpDelete httpDelete = new HttpDelete(reqUrl);
 
-    try {
+    try(DefaultHttpClient httpClient = new DefaultHttpClient()) {
       setProxy();
       if (StringUtils.isBlank(contentType)) {
         httpDelete.setHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -152,8 +149,6 @@ public class ClientUtil {
     } catch (Exception ex) {
       logger.error("sendDelete Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
-    } finally {
-      httpClient.getConnectionManager().shutdown();
     }
 
     return responseContent;

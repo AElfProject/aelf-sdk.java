@@ -5,21 +5,17 @@ import io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
 import io.aelf.schemas.LogEventDto;
 import io.aelf.schemas.TransactionResultDto;
+
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
-import org.apache.commons.codec.binary.Base64;
 
-/**
- * @author linhui linhui@tydic.com
- * @title: TransactionResultDtoExtension
- * @description: TODO
- * @date 2020/3/230:40
- */
 public class TransactionResultDtoExtension {
 
   public static HashMap<String,Long> getTransactionFees(TransactionResultDto transactionResultDto)
       throws InvalidProtocolBufferException {
-    HashMap transactionFeesDict = new HashMap<String,Long>();
+    HashMap<String,Long> transactionFeesDict = new HashMap<>();
+    Base64.Decoder decoder=Base64.getDecoder();
     if(transactionResultDto==null || transactionResultDto.getLogs()==null){
       return transactionFeesDict;
     }
@@ -28,8 +24,7 @@ public class TransactionResultDtoExtension {
     {
       if (StringUtil.toString(log.getName()).contains("TransactionFeeCharged"))
       {
-        Base64 base64 = new Base64();
-        byte[] byteStringMessage=base64.decode(log.getNonIndexed());
+        byte[] byteStringMessage=decoder.decode(log.getNonIndexed());
         TransactionFeeCharged info = TransactionFeeCharged.parseFrom(ByteString.copyFrom(byteStringMessage));
         transactionFeesDict.put(info.getSymbol(), info.getAmount());
       }
@@ -39,8 +34,7 @@ public class TransactionResultDtoExtension {
     {
       if (StringUtil.toString(log.getName()).contains("ResourceTokenCharged"))
       {
-        Base64 base64 = new Base64();
-        byte[] byteStringMessage=base64.decode(log.getNonIndexed());
+        byte[] byteStringMessage=decoder.decode(log.getNonIndexed());
         ResourceTokenCharged info = ResourceTokenCharged.parseFrom(ByteString.copyFrom(byteStringMessage));
         transactionFeesDict.put(info.getSymbol(), info.getAmount());
       }
