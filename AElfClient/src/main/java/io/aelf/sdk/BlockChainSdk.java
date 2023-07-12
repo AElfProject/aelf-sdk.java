@@ -454,7 +454,7 @@ public class BlockChainSdk {
     /**
      * Get id of the chain.
      */
-    public int getChainId() throws Exception {
+    public int getChainId() {
         ChainstatusDto chainStatusDto = this.getChainStatus();
         String base58ChainId = chainStatusDto.getChainId();
         byte[] bytes = Base58.decode(base58ChainId);

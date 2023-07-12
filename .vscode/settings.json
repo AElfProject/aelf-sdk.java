@@ -1,0 +1,8 @@
+{
+  "java.compile.nullAnalysis.mode": "automatic",
+  "cSpell.words": [
+    "Chainstatus",
+    "Merkle"
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive"
+}

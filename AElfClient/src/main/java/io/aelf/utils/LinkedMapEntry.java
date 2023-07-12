@@ -676,7 +676,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
       return (Boolean) obj;
     } else if (obj instanceof String) {
       if (NumberUtils.isNumber(obj.toString())) {
-        return NumberUtils.createInteger(obj.toString()) >= 1 ? true : false;
+        return NumberUtils.createInteger(obj.toString()) >= 1;
       } else if (!((String) obj).equalsIgnoreCase("Y") && !((String) obj).equalsIgnoreCase("TRUE")
           && !((String) obj).equalsIgnoreCase("YES") && !((String) obj).equals("是")) {
         return !((String) obj).equalsIgnoreCase("N") && !((String) obj).equalsIgnoreCase("FALSE")
@@ -686,7 +686,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
         return true;
       }
     } else if (obj instanceof Number) {
-      return !obj.equals(1) && ((Number) obj).intValue() < 1 ? false : true;
+      return obj.equals(1) || ((Number) obj).intValue() >= 1;
     } else {
       return b;
     }

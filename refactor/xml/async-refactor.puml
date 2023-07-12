@@ -15,7 +15,7 @@ class JavaAelfClient extends Platform {
 }
 
 abstract class Platform extends AElfClient {
-  /** Any public API from AElfClient will have a async version */
+  /** Any public API from AElfClient will have an async version */
   + void setAsyncCaller(AsyncCaller caller)
   + void getBlockByHeightAsync(int height, SuccessCallback<BlockDto> success, FailCallback<?> fail)
   + ...()

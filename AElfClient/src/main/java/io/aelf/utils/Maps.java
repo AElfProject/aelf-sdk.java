@@ -18,8 +18,8 @@ import org.apache.commons.lang3.StringUtils;
 
 public final class Maps {
 
-  private static MapEntry entry = new MapEntry(20);
-  private static LinkedMapEntry linkedMapEntry = new LinkedMapEntry(20);
+  private static final MapEntry entry = new MapEntry(20);
+  private static final LinkedMapEntry linkedMapEntry = new LinkedMapEntry(20);
 
   public Maps() {
   }
@@ -95,7 +95,7 @@ public final class Maps {
    * @return T extends Map
    */
   public static <T extends Map> Map<Object, Object> newMapHasKeys(T map, Object... keys) {
-    Map<Object, Object> newMap = null;
+    Map<Object, Object> newMap;
     if (map instanceof HashMap) {
       newMap = (HashMap<Object, Object>) ((HashMap) map).clone();
       newMap.clear();
@@ -212,12 +212,13 @@ public final class Maps {
    * @param <V> not blank
    * @return Map
    */
+  @SuppressWarnings("deprecation")
   public static <K, V> Map<K, V> cloneMap(Map<K, V> map) {
     try {
       Class<?> clazz = map.getClass();
       Method method = clazz.getDeclaredMethod("clone");
-      return (method != null && method.isAccessible() ? (Map) method
-          .invoke(map, (Object[]) null) : new MapEntry(map));
+      return method.isAccessible() ? (Map<K,V>) method
+          .invoke(map, (Object[]) null) : new MapEntry<>(map);
     } catch (Exception var3) {
       return new MapEntry<>(map);
     }

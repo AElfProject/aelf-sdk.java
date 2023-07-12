@@ -10,6 +10,7 @@ import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.StringUtil;
+import io.aelf.utils.network.APIPath;
 import io.aelf.utils.network.NetworkConnector;
 
 import javax.annotation.Nullable;
@@ -18,15 +19,12 @@ import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+
 @SuppressWarnings("unchecked")
 public class NetSdk {
   private final String AElfClientUrl;
   private final String version;
   private final String combineAuth;
-  private static final String WA_ADD_PEER = "/api/net/peer";
-  private static final String WA_REMOVE_PEER = "/api/net/peer";
-  private static final String WA_GET_PEERS = "/api/net/peers";
-  private static final String WA_GET_NETWORK_INFO = "/api/net/networkInfo";
 
   /**
    * Object construction through the url path.
@@ -42,7 +40,7 @@ public class NetSdk {
    * Attempts to add a node to the connected network nodes wa:/api/net/peer.
    */
   public Boolean addPeer(AddPeerInput input) throws Exception {
-    String url = this.AElfClientUrl + WA_ADD_PEER;
+    String url = this.AElfClientUrl + APIPath.WA_ADD_PEER;
     MapEntry<String,String> mapParams = Maps.newMap();
     mapParams.put("Address", input.getAddress());
     String responseBodyResult = HttpUtilExt
@@ -53,8 +51,8 @@ public class NetSdk {
   /**
    * Attempts to remove a node from the connected network nodes wa:/api/net/peer.
    */
-  public Boolean removePeer(String address) throws Exception {
-    String url = this.AElfClientUrl + WA_REMOVE_PEER + "?address=" + address;
+  public Boolean removePeer(String address) {
+    String url = this.AElfClientUrl + APIPath.WA_REMOVE_PEER + "?address=" + address;
     String responseBodyResult = HttpUtilExt.sendDelete(url, "UTF-8", this.version, this.combineAuth);
    return "true".equals(responseBodyResult);
   }
@@ -63,8 +61,8 @@ public class NetSdk {
    * Gets information about the peer nodes of the current node.Optional whether to include metrics.
    * wa:/api/net/peers?withMetrics=false
    */
-  public List<PeerDto> getPeers(Boolean withMetrics) throws Exception {
-    String url = this.AElfClientUrl + WA_GET_PEERS + "?withMetrics=" + withMetrics;
+  public List<PeerDto> getPeers(Boolean withMetrics) {
+    String url = this.AElfClientUrl + APIPath.WA_GET_PEERS + "?withMetrics=" + withMetrics;
     String peersChain = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
     List<PeerDto> listPeerDto = new ArrayList<>();
     List<LinkedHashMap<String,?>> responseBobyList = JsonUtil.parseObject(peersChain, List.class);
@@ -116,9 +114,9 @@ public class NetSdk {
   /**
    * Get information about the node’s connection to the network. wa:/api/net/networkInfo
    */
-  public NetworkInfoOutput getNetworkInfo() throws Exception {
+  public NetworkInfoOutput getNetworkInfo() {
     String networkChain = NetworkConnector.getIns()
-        .sendGet(this.AElfClientUrl + WA_GET_NETWORK_INFO, "UTF-8", this.version);
+        .sendGet(this.AElfClientUrl + APIPath.WA_GET_NETWORK_INFO, "UTF-8", this.version);
     MapEntry<String,?> responseBodyMap = JsonUtil.parseObject(networkChain);
     if(responseBodyMap==null) throw new RuntimeException();
     return new NetworkInfoOutput()

@@ -12,7 +12,7 @@ public class HttpUtilExt {
    * HTTP GET Request help method.
    */
   public static String sendGet(String reqUrl,
-      String decodeCharset, String version) throws Exception {
+      String decodeCharset, String version) {
     logger.debug("Request address:" + reqUrl);
     if (StringUtil.isBlank(version)) {
       version = "";
@@ -47,7 +47,7 @@ public class HttpUtilExt {
   /**
    * HTTP POST Request help method.
    */
-  public static String sendPost(String reqUrl, String params, String version) throws Exception {
+  public static String sendPost(String reqUrl, String params, String version) {
     if (StringUtil.isBlank(version)) {
       version = "";
     } else {
@@ -67,7 +67,7 @@ public class HttpUtilExt {
   /**
    * HTTP POST Request help method.
    */
-  public static String sendPostWithAuth(String reqUrl, String params, String version, String authBasic) throws Exception {
+  public static String sendPostWithAuth(String reqUrl, String params, String version, String authBasic) {
     if (StringUtil.isBlank(version)) {
       version = "";
     } else {

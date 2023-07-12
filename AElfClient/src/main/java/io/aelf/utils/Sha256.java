@@ -43,11 +43,11 @@ public class Sha256 {
   }
 
   /**
-   * * Converts  bytes to hexadecimal     * @param bytes     * @return hex     .
+   * * Converts bytes to hexadecimal     * @param bytes     * @return hex     .
    */
   private static String byte2Hex(byte[] bytes) {
     StringBuilder stringBuffer = new StringBuilder();
-    String temp = null;
+    String temp;
     for (byte aByte : bytes) {
       temp = Integer.toHexString(aByte & 0xFF);
       if (temp.length() == 1) {

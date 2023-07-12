@@ -28,7 +28,7 @@ import java.util.List;
  * * which contains both async APIs and common APIs.
  */
 @Deprecated
-@SuppressWarnings({"UnusedReturnValue", "unused"})
+@SuppressWarnings({"UnusedReturnValue", "unused", "DeprecatedIsStillUsed"})
 public class AElfClient {
 
     private final String AElfClientUrl;
@@ -71,7 +71,7 @@ public class AElfClient {
             this.version = version;
         }
         this.initBlockChainSdk();
-        this.initNetSdkObj(userName, password);
+        this.initNetSdkConfig(userName, password);
     }
 
     private void initBlockChainSdk() {
@@ -87,7 +87,7 @@ public class AElfClient {
         return blockchainSdk;
     }
 
-    private void initNetSdkObj(String userName, String password) {
+    private void initNetSdkConfig(String userName, String password) {
         netSdk = new NetSdk(this.AElfClientUrl, this.version, userName, password);
     }
 
@@ -143,7 +143,7 @@ public class AElfClient {
     /**
      * Get the current status of the blockchain. wa:/api/blockChain/chainStatus
      */
-    public ChainstatusDto getChainStatus() throws Exception {
+    public ChainstatusDto getChainStatus() {
         return this.getBlockChainSdkObj().getChainStatus();
     }
 
@@ -219,7 +219,7 @@ public class AElfClient {
     /**
      * Get the current status of a transaction wa:/api/blockChain/transactionResult.
      */
-    public TransactionResultDto getTransactionResult(String transactionId) throws Exception {
+    public TransactionResultDto getTransactionResult(String transactionId) {
         return this.getBlockChainSdkObj().getTransactionResult(transactionId);
     }
 
@@ -234,8 +234,7 @@ public class AElfClient {
     /**
      * Get multiple transaction results. wa:/api/blockChain/transactionResults
      */
-    public List<TransactionResultDto> getTransactionResults(String blockHash, int offset, int limit)
-            throws Exception {
+    public List<TransactionResultDto> getTransactionResults(String blockHash, int offset, int limit) {
         return this.getBlockChainSdkObj().getTransactionResults(blockHash, offset, limit);
     }
 
@@ -289,7 +288,7 @@ public class AElfClient {
      * Build a transaction from the input parameters.
      */
     public Core.Transaction.Builder generateTransaction(String from, String to, String methodName,
-                                                        byte[] params) throws Exception {
+                                                        byte[] params) {
         final ChainstatusDto chainStatus = this.getBlockChainSdkObj().getChainStatus();
         final Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
         Client.Address.Builder addressForm = Client.Address.newBuilder();
@@ -312,8 +311,7 @@ public class AElfClient {
     /**
      * Sign a transaction using private key.
      */
-    public String signTransaction(String privateKeyHex, Core.Transaction transaction)
-            throws Exception {
+    public String signTransaction(String privateKeyHex, Core.Transaction transaction) {
         byte[] transactionData = Sha256.getBytesSha256(transaction.toByteArray());
         return this.getSignatureWithPrivateKey(privateKeyHex, transactionData);
     }
@@ -323,7 +321,7 @@ public class AElfClient {
      *
      * @return address
      */
-    public String getGenesisContractAddress() throws Exception {
+    public String getGenesisContractAddress() {
         ChainstatusDto chainstatusDto = this.getBlockChainSdkObj().getChainStatus();
         return chainstatusDto.getGenesisContractAddress();
     }
