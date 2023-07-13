@@ -6,7 +6,7 @@ import io.aelf.async.DefaultAsyncExecutor;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("unused")
-public class AElfClientV2 extends ClientAsync {
+public class AElfClientV2 extends AElfClientAsync {
     public AElfClientV2(String url) {
         super(url);
     }

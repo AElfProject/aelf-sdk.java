@@ -1,9 +1,10 @@
 package io.aelf.sdk;
 
 import io.aelf.schemas.*;
-import io.aelf.utils.network.APIPath;
+import io.aelf.network.APIPath;
+import io.aelf.utils.AElfUrl;
 import io.aelf.utils.BitConverter;
-import io.aelf.utils.network.NetworkConnector;
+import io.aelf.network.NetworkConnector;
 import io.aelf.utils.HttpUtilExt;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
@@ -15,13 +16,16 @@ import java.util.*;
 
 import org.bitcoinj.core.Base58;
 
-@SuppressWarnings({"unchecked", "unused", "SpellCheckingInspection"})
+@SuppressWarnings({ "unchecked", "unused", "SpellCheckingInspection" })
 public class BlockChainSdk {
     private final String AElfClientUrl;
     private final String version;
 
     /**
-     * Object construction through the url path.
+     * Object construction through the url path and version.
+     * 
+     * @param url     url of the node
+     * @param version version
      */
     public BlockChainSdk(String url, String version) {
         this.AElfClientUrl = url;
@@ -29,8 +33,11 @@ public class BlockChainSdk {
     }
 
     /**
-     * Get the height of the current chain. wa:/api/blockChain/blockHeight
+     * Get the height of the current chain.
+     * 
+     * @return block height
      */
+    @AElfUrl(url = "wa://api/blockChain/blockHeight")
     public long getBlockHeight() throws Exception {
         String chainContext = HttpUtilExt
                 .sendGet(this.AElfClientUrl + APIPath.WA_BLOCK_HEIGHT, "UTF-8", this.version);
@@ -38,19 +45,27 @@ public class BlockChainSdk {
     }
 
     /**
-     * Get information of a block by given block hash. Optional whether to include
-     * transaction
-     * information.
+     * Get information of a block by given block hash.
+     * <p>
+     * Optional: whether to include transaction information.
+     * 
+     * @param blockHash block hash
+     * @return {@link BlockDto} block information
      */
     public BlockDto getBlockByHash(String blockHash) throws Exception {
         return this.getBlockByHash(blockHash, false);
     }
 
     /**
-     * Get information about a given block by block hash, optionally with the list
-     * of its transactions.
-     * wa://api/blockChain/block?includeTransactions={includeTransactions}
+     * Get information about a given block by block hash.
+     * <p>
+     * Optional: whether with the list of its transactions or not.
+     * 
+     * @param blockHash           block hash
+     * @param includeTransactions whether to include transaction information
+     * @return {@link BlockDto} block information
      */
+    @AElfUrl(url = "wa://api/blockChain/block?blockHash={blockHash}&includeTransactions={includeTransactions}")
     public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
         String chainContext = HttpUtilExt.sendGet(
                 this.AElfClientUrl + APIPath.WA_BLOCK + "?blockHash=" + blockHash + "&includeTransactions="
@@ -61,20 +76,27 @@ public class BlockChainSdk {
     }
 
     /**
-     * Get information of a block by specified height. Optional whether to include
-     * transaction
-     * information.
+     * Get information of a block by specified height.
+     * <p>
+     * Optional: whether to include transaction information.
+     * 
+     * @param blockHeight block height
+     * @return {@link BlockDto} block information
      */
     public BlockDto getBlockByHeight(long blockHeight) throws Exception {
         return this.getBlockByHeight(blockHeight, false);
     }
 
     /**
-     * Get information of a block by specified height, Optional: whether to include
-     * transaction.
-     * information.
-     * wa://api/blockChain/blockByHeight?includeTransactions={includeTransactions}
+     * Get information of a block by specified height.
+     * <p>
+     * Optional: whether to include transaction information.
+     * 
+     * @param blockHeight         block height
+     * @param includeTransactions whether to include transaction information
+     * @return {@link BlockDto} block information
      */
+    @AElfUrl(url = "wa://api/blockChain/blockByHeight?blockHeight={blockHeight}&includeTransactions={includeTransactions}")
     public BlockDto getBlockByHeight(long blockHeight, boolean includeTransactions) throws Exception {
         if (blockHeight == 0) {
             throw new RuntimeException("[20001]Not found");
@@ -87,8 +109,11 @@ public class BlockChainSdk {
     }
 
     /**
-     * Get the current status of the blockchain. wa:/api/blockChain/chainStatus
+     * Get the current status of the blockchain.
+     * 
+     * @return {@link ChainstatusDto} chain status
      */
+    @AElfUrl(url = "wa://api/blockChain/chainStatus")
     public ChainstatusDto getChainStatus() throws RuntimeException {
         String url = this.AElfClientUrl + APIPath.WA_GET_CHAIN_STATUS;
         String chainContext = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
@@ -134,8 +159,11 @@ public class BlockChainSdk {
 
     /**
      * Get the protobuf definitions related to a contract
-     * /api/blockChain/contractFileDescriptorSet.
+     * 
+     * @param address contract address
+     * @return byte[] protobuf definitions
      */
+    @AElfUrl(url = "wa://api/blockChain/contractFileDescriptorSet?address={address}")
     public byte[] getContractFileDescriptorSet(String address) throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_GET_DESCRIPTOR_SET + "?address=" + address;
         String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
@@ -148,9 +176,11 @@ public class BlockChainSdk {
     }
 
     /**
-     * Gets the status information of the task queue
-     * wa:/api/blockChain/taskQueueStatus.
+     * Get the status information of the task queue.
+     * 
+     * @return {@link TaskQueueInfoDto} task queue information
      */
+    @AElfUrl(url = "wa://api/blockChain/taskQueueStatus")
     public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception {
         String responseBody = HttpUtilExt
                 .sendGet(this.AElfClientUrl + APIPath.WA_GET_TASK_QUEUE_STATUS, "UTF-8", this.version);
@@ -169,9 +199,11 @@ public class BlockChainSdk {
     }
 
     /**
-     * Gets information about the current transaction
-     * pool.wa:/api/blockChain/transactionPoolStatus
+     * Get the information about the current transaction pool.
+     * 
+     * @return {@link TransactionPoolStatusOutput} transaction pool status
      */
+    @AElfUrl(url = "wa://api/blockChain/transactionPoolStatus")
     public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_POOL_STATUS;
         String responseBody = HttpUtilExt.sendGet(url, "UTF-8", this.version);
@@ -185,16 +217,24 @@ public class BlockChainSdk {
     }
 
     /**
-     * Call a read-only method of a contract. wa:/api/blockChain/executeTransaction
+     * Call a read-only method of a contract.
+     * 
+     * @param input {@link ExecuteTransactionDto} input
+     * @return {@link String} output
      */
+    @AElfUrl(url = "wa://api/blockChain/executeTransaction")
     public String executeTransaction(ExecuteTransactionDto input) throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_EXECUTE_TRANSACTION;
         return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     }
 
     /**
-     * Creates an unsigned serialized transaction wa:/api/blockChain/rawTransaction.
+     * Creates an unsigned serialized transaction.
+     * 
+     * @param input {@link CreateRawTransactionInput} input
+     * @return {@link CreateRawTransactionOutput} output
      */
+    @AElfUrl(url = "wa://api/blockChain/rawTransaction")
     public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input)
             throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_CREATE_RAW_TRANSACTION;
@@ -209,17 +249,24 @@ public class BlockChainSdk {
     }
 
     /**
-     * Call a method of a contract by given serialized str
-     * wa:/api/blockChain/executeRawTransaction.
+     * Call a method of a contract by given serialized string.
+     * 
+     * @param input {@link ExecuteRawTransactionDto} input
+     * @return {@link String} output
      */
+    @AElfUrl(url = "wa://api/blockChain/executeRawTransaction")
     public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_EXECUTE_RAW_TRANSACTION;
         return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
     }
 
     /**
-     * Broadcast a serialized transaction. wa:/api/blockChain/sendRawTransaction
+     * Broadcast a serialized transaction.
+     * 
+     * @param input {@link SendRawTransactionInput} input
+     * @return {@link SendRawTransactionOutput} output
      */
+    @AElfUrl(url = "wa://api/blockChain/sendRawTransaction")
     public SendRawTransactionOutput sendRawTransaction(SendRawTransactionInput input)
             throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_SEND_RAW_TRANSACTION;
@@ -248,8 +295,12 @@ public class BlockChainSdk {
     }
 
     /**
-     * Broadcast a transaction wa:/api/blockChain/sendTransaction.
+     * Broadcast a transaction.
+     * 
+     * @param input {@link SendTransactionInput} input
+     * @return {@link SendTransactionOutput} output
      */
+    @AElfUrl(url = "wa://api/blockChain/sendTransaction")
     public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_SEND_TRANSACTION;
         String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
@@ -263,8 +314,12 @@ public class BlockChainSdk {
     }
 
     /**
-     * Broadcast volume transactions wa:/api/blockChain/sendTransactions.
+     * Broadcast volume transactions.
+     * 
+     * @param input {@link SendTransactionsInput} input
+     * @return {@link List} output
      */
+    @AElfUrl(url = "wa://api/blockChain/sendTransactions")
     public List<String> sendTransactions(SendTransactionsInput input) throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_SEND_TRANSACTIONS;
         String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
@@ -272,8 +327,12 @@ public class BlockChainSdk {
     }
 
     /**
-     * Get the current status of a transaction wa:/api/blockChain/transactionResult.
+     * Get the current status of a transaction.
+     * 
+     * @param transactionId {@link String} transactionId
+     * @return {@link TransactionResultDto} output
      */
+    @AElfUrl(url = "wa://api/blockChain/transactionResult")
     public TransactionResultDto getTransactionResult(String transactionId) throws RuntimeException {
         String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_RESULT + "?transactionId=" + transactionId;
         String responseBody = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
@@ -284,16 +343,25 @@ public class BlockChainSdk {
     }
 
     /**
-     * Get results of multiple transactions by specified blockHash and the offset.
-     * wa:/api/blockChain/transactionResults
+     * Get the results of multiple transactions.
+     * 
+     * @param blockHash {@link String} blockHash
+     * @return {@link List} output
      */
+    @AElfUrl(url = "wa://api/blockChain/transactionResults")
     public List<TransactionResultDto> getTransactionResults(String blockHash) throws RuntimeException {
         return this.getTransactionResults(blockHash, 0, 10);
     }
 
     /**
-     * Get multiple transaction results. wa:/api/blockChain/transactionResults
+     * Get multiple transaction results by specified blockHash and the offset.
+     * 
+     * @param blockHash {@link String} blockHash
+     * @param offset    {@link Integer} offset
+     * @param limit     {@link Integer} limit
+     * @return {@link List} output
      */
+    @AElfUrl(url = "wa://api/blockChain/transactionResults")
     public List<TransactionResultDto> getTransactionResults(String blockHash, int offset, int limit)
             throws RuntimeException {
         if (offset < 0) {
@@ -316,8 +384,11 @@ public class BlockChainSdk {
 
     /**
      * Get merkle tree's path of a transaction.
-     * wa:/api/blockChain/merklePathByTransactionId
+     * 
+     * @param transactionId {@link String} transactionId
+     * @return {@link MerklePathDto} output
      */
+    @AElfUrl(url = "wa://api/blockChain/merklePathByTransactionId")
     public MerklePathDto getMerklePathByTransactionId(String transactionId) {
         String url = this.AElfClientUrl + APIPath.WA_GET_M_BY_TRANSACTION_ID + "?transactionId="
                 + transactionId;
@@ -340,6 +411,13 @@ public class BlockChainSdk {
         return merklePathDtoObj;
     }
 
+    /**
+     * Calculate the transaction fee.
+     * 
+     * @param input {@link CalculateTransactionFeeInput} input
+     * @return {@link CalculateTransactionFeeOutput} output
+     */
+    @AElfUrl(url = "wa://api/blockChain/calculateTransactionFee")
     public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
         String url = this.AElfClientUrl + APIPath.WA_CALCULATE_TRANSACTION_FEE;
         String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
@@ -366,7 +444,7 @@ public class BlockChainSdk {
         blockDto.setBlockHash(block.getString("BlockHash"));
         blockDto.setHeader(new BlockHeaderDto());
         blockDto.getHeader().setPreviousBlockHash(
-                        StringUtil.toString(block.getLinkedHashMap("Header").get("PreviousBlockHash")))
+                StringUtil.toString(block.getLinkedHashMap("Header").get("PreviousBlockHash")))
                 .setMerkleTreeRootOfTransactions(
                         StringUtil.toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactions")))
                 .setMerkleTreeRootOfWorldState(
@@ -453,6 +531,8 @@ public class BlockChainSdk {
 
     /**
      * Get id of the chain.
+     * 
+     * @return {@link Integer} id
      */
     public int getChainId() {
         ChainstatusDto chainStatusDto = this.getChainStatus();

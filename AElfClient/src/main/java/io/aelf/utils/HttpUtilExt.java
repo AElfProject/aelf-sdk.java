@@ -1,6 +1,6 @@
 package io.aelf.utils;
 
-import io.aelf.utils.network.NetworkConnector;
+import io.aelf.network.NetworkConnector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

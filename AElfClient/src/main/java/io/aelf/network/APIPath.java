@@ -1,4 +1,4 @@
-package io.aelf.utils.network;
+package io.aelf.network;
 
 public class APIPath {
     public static final String WA_BLOCK_HEIGHT = "/api/blockChain/blockHeight";

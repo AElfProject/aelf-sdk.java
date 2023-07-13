@@ -4,7 +4,7 @@ import io.aelf.async.global.TestParams;
 import io.aelf.schemas.BlockDto;
 import io.aelf.sdk.BlockChainSdkTest;
 import io.aelf.sdkv2.AElfClientV2;
-import io.aelf.sdkv2.ClientAsync;
+import io.aelf.sdkv2.AElfClientAsync;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,8 +19,8 @@ import javax.annotation.Nonnull;
  * @see BlockChainSdkTest
  */
 @SuppressWarnings("DataFlowIssue")
-public class ClientAsyncTest {
-    private ClientAsync client;
+public class AElfClientAsyncTest {
+    private AElfClientAsync client;
     String address = "";
 
     @Before

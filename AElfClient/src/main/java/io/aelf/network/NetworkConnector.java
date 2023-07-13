@@ -1,4 +1,4 @@
-package io.aelf.utils.network;
+package io.aelf.network;
 
 import io.aelf.async.ResultCode;
 import io.aelf.utils.AElfException;
@@ -57,7 +57,7 @@ public class NetworkConnector implements NetworkImpl {
                         "charset=" + encodeCharSet);
     }
 
-    protected String newWorkExecutor(Request.Builder builder, @Nullable String decodeCharset) throws AElfException {
+    protected String startNetworkAndGetResult(Request.Builder builder, @Nullable String decodeCharset) throws AElfException {
         try (Response response = client.newCall(builder.build()).execute()) {
             if (!response.isSuccessful() || response.body() == null) {
                 throw new AElfException(ResultCode.INTERNAL_ERROR, "Network failure");
@@ -86,7 +86,7 @@ public class NetworkConnector implements NetworkImpl {
                 .url(reqUrl)
                 .addHeader("Content-Type",
                         this.getContentType(contentType, null));
-        return this.newWorkExecutor(request, decodeCharset);
+        return this.startNetworkAndGetResult(request, decodeCharset);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class NetworkConnector implements NetworkImpl {
         if (!StringUtil.isBlank(authBasic)) {
             request.addHeader("Authorization", authBasic);
         }
-        return this.newWorkExecutor(request, decodeCharset);
+        return this.startNetworkAndGetResult(request, decodeCharset);
     }
 
     @Override
@@ -151,6 +151,6 @@ public class NetworkConnector implements NetworkImpl {
         if (!StringUtil.isBlank(authBasic)) {
             request.addHeader("Authorization", authBasic);
         }
-        return this.newWorkExecutor(request, decodeCharset);
+        return this.startNetworkAndGetResult(request, decodeCharset);
     }
 }

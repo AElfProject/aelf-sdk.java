@@ -2,7 +2,7 @@ package io.aelf.utils;
 
 import io.aelf.sdk.AElfClient;
 import io.aelf.sdkv2.AElfClientV2;
-import io.aelf.utils.network.NetworkConnector;
+import io.aelf.network.NetworkConnector;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;

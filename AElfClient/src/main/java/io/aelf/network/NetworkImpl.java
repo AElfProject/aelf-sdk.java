@@ -1,4 +1,4 @@
-package io.aelf.utils.network;
+package io.aelf.network;
 
 public interface NetworkImpl {
     String sendGet(String reqUrl);
