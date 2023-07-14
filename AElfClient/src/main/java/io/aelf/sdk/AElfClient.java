@@ -2,6 +2,8 @@ package io.aelf.sdk;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
+import io.aelf.network.CommonHeaderInterceptor;
+import io.aelf.network.RetrofitFactory;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.schemas.*;
@@ -21,6 +23,7 @@ import org.web3j.crypto.Sign;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
@@ -61,7 +64,7 @@ public class AElfClient {
     /**
      * Init AElfClient with peer's auth information,
      * this will allow you to get access to some operations, such as
-     * {@link NetSdk#removePeer()} and {@link NetSdk#addPeer()}.
+     * {@link NetSdk#addPeer(AddPeerInput)} and {@link NetSdk#removePeer(String)}.
      * 
      * @param url      peer's URL
      * @param username peer's username
@@ -86,10 +89,16 @@ public class AElfClient {
         }
         this.initBlockChainConfig();
         this.initNetSdkConfig(username, password);
+        RetrofitFactory.init(url);
+        initBasicConfig();
+    }
+
+    private void initBasicConfig() {
+        CommonHeaderInterceptor.setVersion(this.version);
     }
 
     private void initBlockChainConfig() {
-        blockchainSdk = new BlockChainSdk(this.AElfClientUrl, this.version);
+        blockchainSdk = new BlockChainSdk();
     }
 
     private BlockChainSdk getBlockChainConfig() {
@@ -97,7 +106,7 @@ public class AElfClient {
     }
 
     private void initNetSdkConfig(String userName, String password) {
-        netSdk = new NetSdk(this.AElfClientUrl, this.version, userName, password);
+        netSdk = new NetSdk(userName, password);
     }
 
     private NetSdk getNetSdkConfig() {
@@ -163,7 +172,7 @@ public class AElfClient {
      * @return {@link ChainstatusDto} chain status
      */
     @AElfUrl(url = "wa://api/blockChain/chainStatus")
-    public ChainstatusDto getChainStatus() {
+    public ChainstatusDto getChainStatus() throws IOException {
         return this.getBlockChainConfig().getChainStatus();
     }
 
@@ -200,7 +209,7 @@ public class AElfClient {
      * Call a read-only method of a contract.
      * 
      * @param input {@link ExecuteTransactionDto} input
-     * @return {@link ExecuteTransactionOutput} contract's output
+     * @return {@link String} contract's output
      */
     @AElfUrl(url = "wa://api/blockChain/executeTransaction")
     public String executeTransaction(ExecuteTransactionDto input) throws Exception {
@@ -223,7 +232,7 @@ public class AElfClient {
      * Call a method of a contract by given serialized transaction info.
      * 
      * @param input {@link ExecuteRawTransactionDto} input
-     * @return {@link ExecuteRawTransactionOutput} contract's output
+     * @return {@link String} contract's output
      */
     @AElfUrl(url = "wa://api/blockChain/executeRawTransaction")
     public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
@@ -231,7 +240,7 @@ public class AElfClient {
     }
 
     /**
-     * Broadcast a raw serialized transaction to the blockchain network.
+     * Broadcast a raw-serialized transaction to the blockchain network.
      * 
      * @param input {@link SendRawTransactionInput} input
      * @return {@link SendRawTransactionOutput} transaction id
@@ -258,7 +267,7 @@ public class AElfClient {
      * 
      * @param input {@link SendTransactionsInput} input that contains many
      *              transactions
-     * @return {@link SendTransactionsOutput} transaction ids
+     * @return {@link List} transaction ids
      */
     @AElfUrl(url = "wa://api/blockChain/sendTransactions")
     public List<String> sendTransactions(SendTransactionsInput input) throws Exception {
@@ -272,12 +281,12 @@ public class AElfClient {
      * @return {@link TransactionResultDto} transaction status
      */
     @AElfUrl(url = "wa://api/blockChain/transactionResult")
-    public TransactionResultDto getTransactionResult(String transactionId) {
+    public TransactionResultDto getTransactionResult(String transactionId) throws Exception {
         return this.getBlockChainConfig().getTransactionResult(transactionId);
     }
 
     /**
-     * Get results of multiple transactions.
+     * Get the results of multiple transactions.
      * wa:/api/blockChain/transactionResults
      */
     @AElfUrl(url = "wa://api/blockChain/transactionResults?blockHash={blockHash}")
@@ -294,7 +303,7 @@ public class AElfClient {
      * @return {@link TransactionResultDto} transaction results
      */
     @AElfUrl(url = "wa://api/blockChain/transactionResults?blockHash={blockHash}&offset={offset}&limit={limit}")
-    public List<TransactionResultDto> getTransactionResults(String blockHash, int offset, int limit) {
+    public List<TransactionResultDto> getTransactionResults(String blockHash, int offset, int limit) throws Exception {
         return this.getBlockChainConfig().getTransactionResults(blockHash, offset, limit);
     }
 
@@ -305,7 +314,7 @@ public class AElfClient {
      * @return {@link MerklePathDto} merkle tree's path
      */
     @AElfUrl(url = "wa://api/blockChain/merklePathByTransactionId?transactionId={transactionId}")
-    public MerklePathDto getMerklePathByTransactionId(String transactionId) {
+    public MerklePathDto getMerklePathByTransactionId(String transactionId) throws Exception {
         return this.getBlockChainConfig().getMerklePathByTransactionId(transactionId);
     }
 
@@ -374,7 +383,7 @@ public class AElfClient {
      * @param params     params
      */
     public Core.Transaction.Builder generateTransaction(String from, String to, String methodName,
-            byte[] params) {
+            byte[] params) throws IOException {
         final ChainstatusDto chainStatus = this.getBlockChainConfig().getChainStatus();
         final Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
         Client.Address.Builder addressForm = Client.Address.newBuilder();
@@ -412,7 +421,7 @@ public class AElfClient {
      *
      * @return genesis contract address
      */
-    public String getGenesisContractAddress() {
+    public String getGenesisContractAddress() throws IOException {
         ChainstatusDto chainstatusDto = this.getBlockChainConfig().getChainStatus();
         return chainstatusDto.getGenesisContractAddress();
     }
@@ -424,8 +433,6 @@ public class AElfClient {
      * @return account address
      */
     public String getAddressFromPubKey(@Nonnull String pubKey) {
-        if (pubKey == null)
-            return "";
         byte[] publicKey = ByteArrayHelper.hexToByteArray(pubKey);
         byte[] hashTwice = Sha256Hash.hashTwice(publicKey);
         return Base58Ext.encodeChecked(hashTwice);
@@ -433,7 +440,8 @@ public class AElfClient {
 
     /**
      * Convert the primal address to the formatted version.
-     * string：symbol_base58-string_base58-string-chain-id.
+     * <p>
+     * String：symbol_base58-string_base58-string-chain-id.
      * 
      * @param address    primal address
      * @param privateKey private key to sign
@@ -502,9 +510,9 @@ public class AElfClient {
     }
 
     /**
-     * Get the address from private key.
+     * Get the address from a private key.
      * 
-     * @param privateKeyHex private key hex
+     * @param privateKey private key hex
      * @return address string
      */
     public String getAddressFromPrivateKey(String privateKey) {

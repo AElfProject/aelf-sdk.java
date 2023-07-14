@@ -1,54 +1,53 @@
 package io.aelf.sdk;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import io.aelf.network.RetrofitFactory;
 import io.aelf.schemas.*;
-import io.aelf.network.APIPath;
 import io.aelf.utils.AElfUrl;
 import io.aelf.utils.BitConverter;
-import io.aelf.network.NetworkConnector;
-import io.aelf.utils.HttpUtilExt;
 import io.aelf.utils.JsonUtil;
 import io.aelf.utils.MapEntry;
 import io.aelf.utils.Maps;
 import io.aelf.utils.StringUtil;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
 
-@SuppressWarnings({ "unchecked", "unused", "SpellCheckingInspection" })
+@SuppressWarnings({"unchecked", "SpellCheckingInspection", "unused", "DataFlowIssue"})
 public class BlockChainSdk {
-    private final String AElfClientUrl;
-    private final String version;
 
-    /**
-     * Object construction through the url path and version.
-     * 
-     * @param url     url of the node
-     * @param version version
-     */
-    public BlockChainSdk(String url, String version) {
-        this.AElfClientUrl = url;
-        this.version = version;
+    public BlockChainSdk() {
     }
 
     /**
      * Get the height of the current chain.
-     * 
+     *
      * @return block height
      */
     @AElfUrl(url = "wa://api/blockChain/blockHeight")
     public long getBlockHeight() throws Exception {
-        String chainContext = HttpUtilExt
-                .sendGet(this.AElfClientUrl + APIPath.WA_BLOCK_HEIGHT, "UTF-8", this.version);
-        return Long.parseLong(chainContext);
+        String chainContext = RetrofitFactory.getAPIService()
+                .getBlockHeight()
+                .execute()
+                .body();
+        if (chainContext != null) {
+            return Long.parseLong(chainContext);
+        }
+        return -1;
     }
 
     /**
      * Get information of a block by given block hash.
      * <p>
      * Optional: whether to include transaction information.
-     * 
+     *
      * @param blockHash block hash
      * @return {@link BlockDto} block information
      */
@@ -60,18 +59,19 @@ public class BlockChainSdk {
      * Get information about a given block by block hash.
      * <p>
      * Optional: whether with the list of its transactions or not.
-     * 
+     *
      * @param blockHash           block hash
      * @param includeTransactions whether to include transaction information
      * @return {@link BlockDto} block information
      */
     @AElfUrl(url = "wa://api/blockChain/block?blockHash={blockHash}&includeTransactions={includeTransactions}")
     public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
-        String chainContext = HttpUtilExt.sendGet(
-                this.AElfClientUrl + APIPath.WA_BLOCK + "?blockHash=" + blockHash + "&includeTransactions="
-                        + includeTransactions,
-                "UTF-8", this.version);
-        MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
+        String result = RetrofitFactory.getAPIService()
+                .getBlockByHash(blockHash, includeTransactions)
+                .execute()
+                .body()
+                .toString();
+        MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(result);
         return createBlockDto(mapObjJson, includeTransactions);
     }
 
@@ -79,7 +79,7 @@ public class BlockChainSdk {
      * Get information of a block by specified height.
      * <p>
      * Optional: whether to include transaction information.
-     * 
+     *
      * @param blockHeight block height
      * @return {@link BlockDto} block information
      */
@@ -91,7 +91,7 @@ public class BlockChainSdk {
      * Get information of a block by specified height.
      * <p>
      * Optional: whether to include transaction information.
-     * 
+     *
      * @param blockHeight         block height
      * @param includeTransactions whether to include transaction information
      * @return {@link BlockDto} block information
@@ -101,22 +101,27 @@ public class BlockChainSdk {
         if (blockHeight == 0) {
             throw new RuntimeException("[20001]Not found");
         }
-        String url = this.AElfClientUrl + APIPath.WA_BLOCK_BY_HEIGHT + "?blockHeight=" + blockHeight
-                + "&includeTransactions=" + includeTransactions;
-        String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
-        MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
+        String result = RetrofitFactory.getAPIService()
+                .getBlockByHeight(blockHeight, includeTransactions)
+                .execute()
+                .body()
+                .toString();
+        MapEntry<String,?> mapObjJson = JsonUtil.parseObject(result);
         return createBlockDto(mapObjJson, includeTransactions);
     }
 
     /**
      * Get the current status of the blockchain.
-     * 
+     *
      * @return {@link ChainstatusDto} chain status
      */
     @AElfUrl(url = "wa://api/blockChain/chainStatus")
-    public ChainstatusDto getChainStatus() throws RuntimeException {
-        String url = this.AElfClientUrl + APIPath.WA_GET_CHAIN_STATUS;
-        String chainContext = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
+    public ChainstatusDto getChainStatus() throws RuntimeException, IOException {
+        String chainContext = RetrofitFactory.getAPIService()
+                .getChainStatus()
+                .execute()
+                .body()
+                .toString();
         MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(chainContext);
         if (mapObjJson == null)
             throw new RuntimeException();
@@ -159,15 +164,20 @@ public class BlockChainSdk {
 
     /**
      * Get the protobuf definitions related to a contract
-     * 
+     *
      * @param address contract address
      * @return byte[] protobuf definitions
      */
     @AElfUrl(url = "wa://api/blockChain/contractFileDescriptorSet?address={address}")
     public byte[] getContractFileDescriptorSet(String address) throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_GET_DESCRIPTOR_SET + "?address=" + address;
-        String chainContext = HttpUtilExt.sendGet(url, "UTF-8", this.version);
-        if (chainContext.startsWith("\"") && chainContext.endsWith("\"")) {
+        String chainContext = RetrofitFactory.getAPIService()
+                .getContractFileDescriptorSet(address)
+                .execute()
+                .body()
+                .toString();
+        if (!TextUtils.isBlank(chainContext)
+                && chainContext.startsWith("\"")
+                && chainContext.endsWith("\"")) {
             return chainContext.getBytes();
         } else {
             throw new RuntimeException("getContractFileDescriptorSet body Exception");
@@ -177,13 +187,16 @@ public class BlockChainSdk {
 
     /**
      * Get the status information of the task queue.
-     * 
+     *
      * @return {@link TaskQueueInfoDto} task queue information
      */
     @AElfUrl(url = "wa://api/blockChain/taskQueueStatus")
     public List<TaskQueueInfoDto> getTaskQueueStatus() throws Exception {
-        String responseBody = HttpUtilExt
-                .sendGet(this.AElfClientUrl + APIPath.WA_GET_TASK_QUEUE_STATUS, "UTF-8", this.version);
+        String responseBody = RetrofitFactory.getAPIService()
+                .getTaskQueueStatus()
+                .execute()
+                .body()
+                .toString();
         List<LinkedHashMap<String, ?>> responseBodyList = JsonUtil.parseObject(responseBody, List.class);
         List<TaskQueueInfoDto> listTaskQueueInfoDto = new ArrayList<>();
         for (LinkedHashMap<String, ?> linkedHashMapObj : responseBodyList) {
@@ -200,13 +213,16 @@ public class BlockChainSdk {
 
     /**
      * Get the information about the current transaction pool.
-     * 
+     *
      * @return {@link TransactionPoolStatusOutput} transaction pool status
      */
     @AElfUrl(url = "wa://api/blockChain/transactionPoolStatus")
     public TransactionPoolStatusOutput getTransactionPoolStatus() throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_POOL_STATUS;
-        String responseBody = HttpUtilExt.sendGet(url, "UTF-8", this.version);
+        String responseBody = RetrofitFactory.getAPIService()
+                .getTransactionPoolStatus()
+                .execute()
+                .body()
+                .toString();
         MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
         if (responseBodyMap == null)
             throw new RuntimeException();
@@ -218,27 +234,32 @@ public class BlockChainSdk {
 
     /**
      * Call a read-only method of a contract.
-     * 
+     *
      * @param input {@link ExecuteTransactionDto} input
      * @return {@link String} output
      */
     @AElfUrl(url = "wa://api/blockChain/executeTransaction")
     public String executeTransaction(ExecuteTransactionDto input) throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_EXECUTE_TRANSACTION;
-        return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
+        return RetrofitFactory.getAPIService()
+                .executeTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
+                .execute()
+                .body();
     }
 
     /**
      * Creates an unsigned serialized transaction.
-     * 
+     *
      * @param input {@link CreateRawTransactionInput} input
      * @return {@link CreateRawTransactionOutput} output
      */
     @AElfUrl(url = "wa://api/blockChain/rawTransaction")
     public CreateRawTransactionOutput createRawTransaction(CreateRawTransactionInput input)
             throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_CREATE_RAW_TRANSACTION;
-        String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
+        String responseBody = RetrofitFactory.getAPIService()
+                .createRawTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
+                .execute()
+                .body()
+                .toString();
         MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
         if (responseBodyMap == null)
             throw new RuntimeException();
@@ -250,27 +271,33 @@ public class BlockChainSdk {
 
     /**
      * Call a method of a contract by given serialized string.
-     * 
+     *
      * @param input {@link ExecuteRawTransactionDto} input
      * @return {@link String} output
      */
     @AElfUrl(url = "wa://api/blockChain/executeRawTransaction")
     public String executeRawTransaction(ExecuteRawTransactionDto input) throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_EXECUTE_RAW_TRANSACTION;
-        return HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
+        return RetrofitFactory.getAPIService()
+                .executeRawTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
+                .execute()
+                .body()
+                .toString();
     }
 
     /**
      * Broadcast a serialized transaction.
-     * 
+     *
      * @param input {@link SendRawTransactionInput} input
      * @return {@link SendRawTransactionOutput} output
      */
     @AElfUrl(url = "wa://api/blockChain/sendRawTransaction")
     public SendRawTransactionOutput sendRawTransaction(SendRawTransactionInput input)
             throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_SEND_RAW_TRANSACTION;
-        String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
+        String responseBody = RetrofitFactory.getAPIService()
+                .sendRawTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
+                .execute()
+                .body()
+                .toString();
         MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
         if (responseBodyMap == null)
             throw new RuntimeException();
@@ -296,14 +323,17 @@ public class BlockChainSdk {
 
     /**
      * Broadcast a transaction.
-     * 
+     *
      * @param input {@link SendTransactionInput} input
      * @return {@link SendTransactionOutput} output
      */
     @AElfUrl(url = "wa://api/blockChain/sendTransaction")
     public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_SEND_TRANSACTION;
-        String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
+        String responseBody = RetrofitFactory.getAPIService()
+                .sendTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
+                .execute()
+                .body()
+                .toString();
         MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
         if (responseBodyMap == null)
             throw new RuntimeException();
@@ -315,27 +345,31 @@ public class BlockChainSdk {
 
     /**
      * Broadcast volume transactions.
-     * 
+     *
      * @param input {@link SendTransactionsInput} input
      * @return {@link List} output
      */
     @AElfUrl(url = "wa://api/blockChain/sendTransactions")
     public List<String> sendTransactions(SendTransactionsInput input) throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_SEND_TRANSACTIONS;
-        String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
-        return JsonUtil.parseObject(responseBody, List.class);
+        return RetrofitFactory.getAPIService()
+                .sendTransactions(JsonParser.parseString(JsonUtil.toJsonString(input)))
+                .execute()
+                .body();
     }
 
     /**
      * Get the current status of a transaction.
-     * 
+     *
      * @param transactionId {@link String} transactionId
      * @return {@link TransactionResultDto} output
      */
     @AElfUrl(url = "wa://api/blockChain/transactionResult")
-    public TransactionResultDto getTransactionResult(String transactionId) throws RuntimeException {
-        String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_RESULT + "?transactionId=" + transactionId;
-        String responseBody = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
+    public TransactionResultDto getTransactionResult(String transactionId) throws Exception {
+        String responseBody = RetrofitFactory.getAPIService()
+                .getTransactionResult(transactionId)
+                .execute()
+                .body()
+                .toString();
         MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
         if (responseBodyMap == null)
             throw new RuntimeException();
@@ -344,18 +378,18 @@ public class BlockChainSdk {
 
     /**
      * Get the results of multiple transactions.
-     * 
+     *
      * @param blockHash {@link String} blockHash
      * @return {@link List} output
      */
     @AElfUrl(url = "wa://api/blockChain/transactionResults")
-    public List<TransactionResultDto> getTransactionResults(String blockHash) throws RuntimeException {
+    public List<TransactionResultDto> getTransactionResults(String blockHash) throws Exception {
         return this.getTransactionResults(blockHash, 0, 10);
     }
 
     /**
      * Get multiple transaction results by specified blockHash and the offset.
-     * 
+     *
      * @param blockHash {@link String} blockHash
      * @param offset    {@link Integer} offset
      * @param limit     {@link Integer} limit
@@ -363,16 +397,18 @@ public class BlockChainSdk {
      */
     @AElfUrl(url = "wa://api/blockChain/transactionResults")
     public List<TransactionResultDto> getTransactionResults(String blockHash, int offset, int limit)
-            throws RuntimeException {
+            throws Exception {
         if (offset < 0) {
             throw new RuntimeException("Error.InvalidOffset");
         }
         if (limit <= 0 || limit > 100) {
             throw new RuntimeException("Error.InvalidLimit");
         }
-        String url = this.AElfClientUrl + APIPath.WA_GET_TRANSACTION_RESULTS + "?blockHash=" + blockHash + "&offset="
-                + offset + "&limit=" + limit;
-        String responseBody = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
+        String responseBody = RetrofitFactory.getAPIService()
+                .getTransactionResults(blockHash, offset, limit)
+                .execute()
+                .body()
+                .toString();
         List<LinkedHashMap<String, ?>> responseBobyList = JsonUtil.parseObject(responseBody, List.class);
         List<TransactionResultDto> transactionResultDtoList = new ArrayList<>();
         for (LinkedHashMap<String, ?> responseBodyObj : responseBobyList) {
@@ -384,15 +420,17 @@ public class BlockChainSdk {
 
     /**
      * Get merkle tree's path of a transaction.
-     * 
+     *
      * @param transactionId {@link String} transactionId
      * @return {@link MerklePathDto} output
      */
     @AElfUrl(url = "wa://api/blockChain/merklePathByTransactionId")
-    public MerklePathDto getMerklePathByTransactionId(String transactionId) {
-        String url = this.AElfClientUrl + APIPath.WA_GET_M_BY_TRANSACTION_ID + "?transactionId="
-                + transactionId;
-        String responseBody = NetworkConnector.getIns().sendGet(url, "UTF-8", this.version);
+    public MerklePathDto getMerklePathByTransactionId(String transactionId) throws Exception {
+        String responseBody = RetrofitFactory.getAPIService()
+                .getMerklePathByTransactionId(transactionId)
+                .execute()
+                .body()
+                .toString();
         MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
         MerklePathDto merklePathDtoObj = new MerklePathDto();
         merklePathDtoObj.setMerklePathNodes(new ArrayList<>());
@@ -413,15 +451,16 @@ public class BlockChainSdk {
 
     /**
      * Calculate the transaction fee.
-     * 
+     *
      * @param input {@link CalculateTransactionFeeInput} input
      * @return {@link CalculateTransactionFeeOutput} output
      */
     @AElfUrl(url = "wa://api/blockChain/calculateTransactionFee")
     public CalculateTransactionFeeOutput calculateTransactionFee(CalculateTransactionFeeInput input) throws Exception {
-        String url = this.AElfClientUrl + APIPath.WA_CALCULATE_TRANSACTION_FEE;
-        String responseBody = HttpUtilExt.sendPost(url, JsonUtil.toJsonString(input), this.version);
-        return JsonUtil.parseObject(responseBody, CalculateTransactionFeeOutput.class);
+        return RetrofitFactory.getAPIService()
+                .calculateTransactionFee(JsonParser.parseString(JsonUtil.toJsonString(input)))
+                .execute()
+                .body();
     }
 
     private BlockDto createBlockDto(MapEntry<String, ?> block, Boolean includeTransactions) throws Exception {
@@ -444,7 +483,7 @@ public class BlockChainSdk {
         blockDto.setBlockHash(block.getString("BlockHash"));
         blockDto.setHeader(new BlockHeaderDto());
         blockDto.getHeader().setPreviousBlockHash(
-                StringUtil.toString(block.getLinkedHashMap("Header").get("PreviousBlockHash")))
+                        StringUtil.toString(block.getLinkedHashMap("Header").get("PreviousBlockHash")))
                 .setMerkleTreeRootOfTransactions(
                         StringUtil.toString(block.getLinkedHashMap("Header").get("MerkleTreeRootOfTransactions")))
                 .setMerkleTreeRootOfWorldState(
@@ -531,10 +570,10 @@ public class BlockChainSdk {
 
     /**
      * Get id of the chain.
-     * 
+     *
      * @return {@link Integer} id
      */
-    public int getChainId() {
+    public int getChainId() throws IOException {
         ChainstatusDto chainStatusDto = this.getChainStatus();
         String base58ChainId = chainStatusDto.getChainId();
         byte[] bytes = Base58.decode(base58ChainId);

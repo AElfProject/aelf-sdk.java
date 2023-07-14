@@ -14,7 +14,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
-public class NetworkConnector implements NetworkImpl {
+public class NetworkConnector implements INetworkImpl {
     private static final NetworkConnector connector;
 
     static {
@@ -28,17 +28,22 @@ public class NetworkConnector implements NetworkImpl {
         return connector;
     }
 
+    public OkHttpClient getClient() {
+        return client;
+    }
+
     protected final OkHttpClient client = new OkHttpClient.Builder()
-            .connectTimeout(3 * 1000, TimeUnit.MILLISECONDS)
-            .writeTimeout(3 * 1000, TimeUnit.MILLISECONDS)
-            .readTimeout(5 * 1000, TimeUnit.MILLISECONDS)
-            .callTimeout(10 * 1000, TimeUnit.MILLISECONDS)
+            .connectTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .writeTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .readTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .callTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .addInterceptor(new CommonHeaderInterceptor())
             .build();
 
 
     @Contract(pure = true)
     private String stringEncode(@NotNull String res, @Nullable String decodeCharset) throws NullPointerException {
-        return !StringUtil.isBlank(decodeCharset) && !"UTF-8".equals(decodeCharset) ?
+        return !StringUtil.isBlank(decodeCharset) && !"UTF-8".equalsIgnoreCase(decodeCharset) ?
                 new String(res.getBytes(StandardCharsets.UTF_8), Charset.forName(decodeCharset)) :
                 res;
     }
@@ -46,15 +51,13 @@ public class NetworkConnector implements NetworkImpl {
     @Nonnull
     @Contract(pure = true, value = "_ , _ -> !null")
     protected String getContentType(String contentType, String encodeCharSet) {
-        String defaultContentType = "application/x-www-form-urlencoded";
-        String defaultEncodeCharSet = "charset=utf-8";
         return (StringUtil.isBlank(contentType) ?
-                defaultContentType :
-                contentType) + "; "
-                +
+                DefaultNetworkConfig.DEFAULT_CONTENT_TYPE :
+                contentType)
+                + "; charset=" +
                 (StringUtil.isBlank(encodeCharSet) ?
-                        defaultEncodeCharSet :
-                        "charset=" + encodeCharSet);
+                        DefaultNetworkConfig.DEFAULT_ENCODE_CHARSET :
+                        encodeCharSet);
     }
 
     protected String startNetworkAndGetResult(Request.Builder builder, @Nullable String decodeCharset) throws AElfException {
@@ -71,17 +74,17 @@ public class NetworkConnector implements NetworkImpl {
 
 
     @Override
-    public String sendGet(String reqUrl) {
-        return this.sendGet(reqUrl, null);
+    public String get(String reqUrl) {
+        return this.get(reqUrl, null);
     }
 
     @Override
-    public String sendGet(String reqUrl, @Nullable String decodeCharset) {
-        return this.sendGet(reqUrl, decodeCharset, null);
+    public String get(String reqUrl, @Nullable String decodeCharset) {
+        return this.get(reqUrl, decodeCharset, null);
     }
 
     @Override
-    public String sendGet(String reqUrl, @Nullable String decodeCharset, @Nullable String contentType) throws AElfException {
+    public String get(String reqUrl, @Nullable String decodeCharset, @Nullable String contentType) throws AElfException {
         Request.Builder request = new Request.Builder()
                 .url(reqUrl)
                 .addHeader("Content-Type",
@@ -90,22 +93,22 @@ public class NetworkConnector implements NetworkImpl {
     }
 
     @Override
-    public String sendDelete(String reqUrl) {
-        return this.sendDelete(reqUrl, null);
+    public String delete(String reqUrl) {
+        return this.delete(reqUrl, null);
     }
 
     @Override
-    public String sendDelete(String reqUrl, @Nullable String decodeCharset) {
-        return this.sendDelete(reqUrl, decodeCharset, null);
+    public String delete(String reqUrl, @Nullable String decodeCharset) {
+        return this.delete(reqUrl, decodeCharset, null);
     }
 
     @Override
-    public String sendDelete(String reqUrl, @Nullable String decodeCharset, @Nullable String contentType) {
-        return this.sendDelete(reqUrl, decodeCharset, contentType, null);
+    public String delete(String reqUrl, @Nullable String decodeCharset, @Nullable String contentType) {
+        return this.delete(reqUrl, decodeCharset, contentType, null);
     }
 
     @Override
-    public String sendDelete(String reqUrl, @Nullable String decodeCharset, @Nullable String contentType, @Nullable String authBasic) {
+    public String delete(String reqUrl, @Nullable String decodeCharset, @Nullable String contentType, @Nullable String authBasic) {
         String mContentType = this.getContentType(contentType, null);
         Request.Builder request = new Request.Builder()
                 .url(reqUrl)
@@ -118,31 +121,31 @@ public class NetworkConnector implements NetworkImpl {
     }
 
     @Override
-    public String sendPost(String reqUrl, String param) {
-        return this.sendPost(reqUrl, param, null);
+    public String post(String reqUrl, String param) {
+        return this.post(reqUrl, param, null);
     }
 
     @Override
-    public String sendPost(String reqUrl, String param, @Nullable String encodeCharset) {
-        return this.sendPost(reqUrl, param, encodeCharset, null);
+    public String post(String reqUrl, String param, @Nullable String encodeCharset) {
+        return this.post(reqUrl, param, encodeCharset, null);
     }
 
     @Override
-    public String sendPost(String reqUrl, String param, @Nullable String encodeCharset,
-                           @Nullable String decodeCharset) {
-        return this.sendPost(reqUrl, param, encodeCharset, decodeCharset, null);
+    public String post(String reqUrl, String param, @Nullable String encodeCharset,
+                       @Nullable String decodeCharset) {
+        return this.post(reqUrl, param, encodeCharset, decodeCharset, null);
     }
 
     @Override
-    public String sendPost(String reqUrl, String param, @Nullable String encodeCharset,
-                           @Nullable String decodeCharset, @Nullable String contentType) {
-        return this.sendPostWithAuth(reqUrl, param, encodeCharset, decodeCharset, contentType, null);
+    public String post(String reqUrl, String param, @Nullable String encodeCharset,
+                       @Nullable String decodeCharset, @Nullable String contentType) {
+        return this.postWithAuth(reqUrl, param, encodeCharset, decodeCharset, contentType, null);
     }
 
     @Override
-    public String sendPostWithAuth(String reqUrl, String param, @Nullable String encodeCharset,
-                                   @Nullable String decodeCharset, @Nullable String contentType,
-                                   @Nullable String authBasic) throws AElfException {
+    public String postWithAuth(String reqUrl, String param, @Nullable String encodeCharset,
+                               @Nullable String decodeCharset, @Nullable String contentType,
+                               @Nullable String authBasic) throws AElfException {
         String mContentType = this.getContentType(contentType, encodeCharset);
         Request.Builder request = new Request.Builder()
                 .url(reqUrl)
