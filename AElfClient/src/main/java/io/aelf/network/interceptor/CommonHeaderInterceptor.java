@@ -1,7 +1,6 @@
 package io.aelf.network.interceptor;
 
 import io.aelf.network.NetworkConfig;
-import okhttp3.Interceptor;
 import okhttp3.Response;
 import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.Contract;
