@@ -16,6 +16,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.apache.http.util.TextUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -78,7 +79,7 @@ public class ClientUtil {
 
     try( DefaultHttpClient httpClient = new DefaultHttpClient() ) {
       setProxy();
-      if (StringUtils.isBlank(contentType)) {
+      if (TextUtils.isBlank(contentType)) {
         httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
       } else {
         httpGet.setHeader("Content-Type", contentType);
@@ -120,13 +121,13 @@ public class ClientUtil {
 
     try(DefaultHttpClient httpClient = new DefaultHttpClient()) {
       setProxy();
-      if (StringUtils.isBlank(contentType)) {
+      if (TextUtils.isBlank(contentType)) {
         httpDelete.setHeader("Content-Type", "application/x-www-form-urlencoded");
       } else {
         httpDelete.setHeader("Content-Type", contentType);
       }
 
-      if (!StringUtils.isBlank(authBasic)) {
+      if (!TextUtils.isBlank(authBasic)) {
         httpDelete.setHeader("Authorization", authBasic);
       }
 

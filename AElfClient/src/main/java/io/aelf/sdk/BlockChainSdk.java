@@ -1,7 +1,5 @@
 package io.aelf.sdk;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.aelf.network.RetrofitFactory;
 import io.aelf.schemas.*;
@@ -13,7 +11,6 @@ import io.aelf.utils.Maps;
 import io.aelf.utils.StringUtil;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -106,7 +103,7 @@ public class BlockChainSdk {
                 .execute()
                 .body()
                 .toString();
-        MapEntry<String,?> mapObjJson = JsonUtil.parseObject(result);
+        MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(result);
         return createBlockDto(mapObjJson, includeTransactions);
     }
 

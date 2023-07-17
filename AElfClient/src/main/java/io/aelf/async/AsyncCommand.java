@@ -3,24 +3,24 @@ package io.aelf.async;
 import javax.annotation.Nullable;
 
 class AsyncCommand<T> {
-    public final AsyncFunction<T> function;
+    public final IAsyncFunction<T> function;
     @Nullable
-    public final SuccessCallback<T> successCallback;
+    public final ISuccessCallback<T> successCallback;
     @Nullable
-    public final FailCallback<Void> failCallback;
+    public final IFailCallback<Void> failCallback;
 
-    public AsyncCommand(AsyncFunction<T> function){
-        this(function,null,null);
+    public AsyncCommand(IAsyncFunction<T> function) {
+        this(function, null, null);
     }
 
-    public AsyncCommand(AsyncFunction<T> function, SuccessCallback<T> successCallback){
-        this(function,successCallback,null);
+    public AsyncCommand(IAsyncFunction<T> function, ISuccessCallback<T> successCallback) {
+        this(function, successCallback, null);
     }
 
-    public AsyncCommand(AsyncFunction<T> function, @Nullable SuccessCallback<T> successCallback, @Nullable FailCallback<Void> failCallback){
-        this.function=function;
-        this.successCallback=successCallback;
-        this.failCallback=failCallback;
+    public AsyncCommand(IAsyncFunction<T> function, @Nullable ISuccessCallback<T> successCallback, @Nullable IFailCallback<Void> failCallback) {
+        this.function = function;
+        this.successCallback = successCallback;
+        this.failCallback = failCallback;
     }
 
 }

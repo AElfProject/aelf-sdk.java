@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-@SuppressWarnings({ "unused", "deprecation" })
+@SuppressWarnings({"unused", "deprecation"})
 public abstract class AElfClientAsync extends AElfClient {
     @NotNull
     private final AsyncCaller caller;
@@ -41,7 +41,7 @@ public abstract class AElfClientAsync extends AElfClient {
     // convert them.
     @NotNull
     @org.jetbrains.annotations.Contract(pure = true, value = "_ -> !null")
-    protected final <T> AsyncFunction<T> convertFunction(@NotNull FunctionPrimal<T> func) {
+    protected final <T> IAsyncFunction<T> convertFunction(@NotNull IFunctionPrimal<T> func) {
         return () -> {
             try {
                 return new AsyncResult<>(func.run());
@@ -52,42 +52,42 @@ public abstract class AElfClientAsync extends AElfClient {
         };
     }
 
-    public void getBlockHeightAsync(SuccessCallback<Long> callback, @Nullable FailCallback<Void> onFail) {
+    public void getBlockHeightAsync(ISuccessCallback<Long> callback, @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getBlockHeight), callback, onFail);
     }
 
-    public void getBlockByHashAsync(String blockHash, SuccessCallback<BlockDto> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getBlockByHashAsync(String blockHash, ISuccessCallback<BlockDto> callback,
+                                    @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getBlockByHash(blockHash)), callback, onFail);
     }
 
-    public void getBlockByHashAsync(String blockHash, boolean includeTransactions, SuccessCallback<BlockDto> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getBlockByHashAsync(String blockHash, boolean includeTransactions, ISuccessCallback<BlockDto> callback,
+                                    @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getBlockByHash(blockHash, includeTransactions)), callback, onFail);
     }
 
-    public void getBlockByHeightAsync(long blockHeight, SuccessCallback<BlockDto> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getBlockByHeightAsync(long blockHeight, ISuccessCallback<BlockDto> callback,
+                                      @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getBlockByHeight(blockHeight)), callback, onFail);
     }
 
-    public void getBlockByHeightAsync(long blockHeight, boolean includeTransactions, SuccessCallback<BlockDto> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getBlockByHeightAsync(long blockHeight, boolean includeTransactions, ISuccessCallback<BlockDto> callback,
+                                      @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getBlockByHeight(blockHeight, includeTransactions)), callback,
                 onFail);
     }
 
-    public void getChainStatusAsync(SuccessCallback<ChainstatusDto> callback, @Nullable FailCallback<Void> onFail) {
+    public void getChainStatusAsync(ISuccessCallback<ChainstatusDto> callback, @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getChainStatus), callback, onFail);
     }
 
-    public void getContractFileDescriptorSetAsync(String address, SuccessCallback<byte[]> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getContractFileDescriptorSetAsync(String address, ISuccessCallback<byte[]> callback,
+                                                  @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getContractFileDescriptorSet(address)), callback, onFail);
     }
 
-    public void getTaskQueueStatusAsync(SuccessCallback<List<TaskQueueInfoDto>> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getTaskQueueStatusAsync(ISuccessCallback<List<TaskQueueInfoDto>> callback,
+                                        @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getTaskQueueStatus), callback, onFail);
     }
 
@@ -100,60 +100,60 @@ public abstract class AElfClientAsync extends AElfClient {
      *                       result and handle it
      */
     public synchronized void executeTransactionAsync(final ExecuteTransactionDto rawTransaction,
-            SuccessCallback<String> callback,
-            @NotNull FailCallback<Void> onFail) {
+                                                     ISuccessCallback<String> callback,
+                                                     @NotNull IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> executeTransaction(rawTransaction)), callback, onFail);
     }
 
-    public void getTransactionPoolStatusAsync(SuccessCallback<TransactionPoolStatusOutput> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getTransactionPoolStatusAsync(ISuccessCallback<TransactionPoolStatusOutput> callback,
+                                              @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getTransactionPoolStatus), callback, onFail);
     }
 
-    public void getMerklePathByTransactionIdAsync(String transactionId, SuccessCallback<MerklePathDto> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getMerklePathByTransactionIdAsync(String transactionId, ISuccessCallback<MerklePathDto> callback,
+                                                  @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getMerklePathByTransactionId(transactionId)), callback, onFail);
     }
 
     public void createRawTransactionAsync(CreateRawTransactionInput input,
-            SuccessCallback<CreateRawTransactionOutput> callback,
-            @Nullable FailCallback<Void> onFail) {
+                                          ISuccessCallback<CreateRawTransactionOutput> callback,
+                                          @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> createRawTransaction(input)), callback, onFail);
     }
 
-    public void executeRawTransactionAsync(ExecuteRawTransactionDto input, SuccessCallback<String> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void executeRawTransactionAsync(ExecuteRawTransactionDto input, ISuccessCallback<String> callback,
+                                           @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> executeRawTransaction(input)), callback, onFail);
     }
 
     public void sendRawTransactionAsync(SendRawTransactionInput input,
-            SuccessCallback<SendRawTransactionOutput> callback,
-            @Nullable FailCallback<Void> onFail) {
+                                        ISuccessCallback<SendRawTransactionOutput> callback,
+                                        @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> sendRawTransaction(input)), callback, onFail);
     }
 
-    public void sendTransactionsAsync(SendTransactionsInput input, SuccessCallback<List<String>> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void sendTransactionsAsync(SendTransactionsInput input, ISuccessCallback<List<String>> callback,
+                                      @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> sendTransactions(input)), callback, onFail);
     }
 
-    public void getTransactionResultAsync(String transactionId, SuccessCallback<TransactionResultDto> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getTransactionResultAsync(String transactionId, ISuccessCallback<TransactionResultDto> callback,
+                                          @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getTransactionResult(transactionId)), callback, onFail);
     }
 
-    public void getTransactionResultsAsync(String blockHash, SuccessCallback<List<TransactionResultDto>> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getTransactionResultsAsync(String blockHash, ISuccessCallback<List<TransactionResultDto>> callback,
+                                           @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getTransactionResults(blockHash)), callback, onFail);
     }
 
     public void getTransactionResultsAsync(String blockHash, int offset, int limit,
-            SuccessCallback<List<TransactionResultDto>> callback,
-            @Nullable FailCallback<Void> onFail) {
+                                           ISuccessCallback<List<TransactionResultDto>> callback,
+                                           @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getTransactionResults(blockHash, offset, limit)), callback, onFail);
     }
 
-    public void getChainIdAsync(SuccessCallback<Integer> callback, @Nullable FailCallback<Void> onFail) {
+    public void getChainIdAsync(ISuccessCallback<Integer> callback, @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getChainId), callback, onFail);
     }
 
@@ -166,50 +166,50 @@ public abstract class AElfClientAsync extends AElfClient {
      * @param onFail   - Failure callback, if you don't want to handle the failure,
      *                 provides `null`
      */
-    public void addPeerAsync(AddPeerInput input, SuccessCallback<Boolean> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void addPeerAsync(AddPeerInput input, ISuccessCallback<Boolean> callback,
+                             @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> addPeer(input)), callback, onFail);
     }
 
-    public void removePeerAsync(String address, SuccessCallback<Boolean> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void removePeerAsync(String address, ISuccessCallback<Boolean> callback,
+                                @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> removePeer(address)), callback, onFail);
     }
 
-    public void getPeersAsync(Boolean withMetrics, SuccessCallback<List<PeerDto>> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getPeersAsync(Boolean withMetrics, ISuccessCallback<List<PeerDto>> callback,
+                              @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getPeers(withMetrics)), callback, onFail);
     }
 
-    public void getNetworkInfoAsync(SuccessCallback<NetworkInfoOutput> callback, @Nullable FailCallback<Void> onFail) {
+    public void getNetworkInfoAsync(ISuccessCallback<NetworkInfoOutput> callback, @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getNetworkInfo), callback, onFail);
     }
 
-    public void getGenesisContractAddressAsync(SuccessCallback<String> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getGenesisContractAddressAsync(ISuccessCallback<String> callback,
+                                               @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getGenesisContractAddress), callback, onFail);
     }
 
-    public void getFormattedAddressAsync(String privateKey, String address, SuccessCallback<String> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getFormattedAddressAsync(String privateKey, String address, ISuccessCallback<String> callback,
+                                         @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getFormattedAddress(privateKey, address)), callback, onFail);
     }
 
     public void getContractAddressByNameAsync(String privateKey, byte[] contractNameHash,
-            SuccessCallback<String> callback,
-            @Nullable FailCallback<Void> onFail) {
+                                              ISuccessCallback<String> callback,
+                                              @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getContractAddressByName(privateKey, contractNameHash)), callback,
                 onFail);
     }
 
-    public void getSignatureWithPrivateKeyAsync(String privateKey, byte[] txData, SuccessCallback<String> callback,
-            @Nullable FailCallback<Void> onFail) {
+    public void getSignatureWithPrivateKeyAsync(String privateKey, byte[] txData, ISuccessCallback<String> callback,
+                                                @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> getSignatureWithPrivateKey(privateKey, txData)), callback, onFail);
     }
 
     public void calculateTransactionFeeAsync(CalculateTransactionFeeInput input,
-            SuccessCallback<CalculateTransactionFeeOutput> callback,
-            @Nullable FailCallback<Void> onFail) {
+                                             ISuccessCallback<CalculateTransactionFeeOutput> callback,
+                                             @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(() -> calculateTransactionFee(input)), callback, onFail);
     }
 

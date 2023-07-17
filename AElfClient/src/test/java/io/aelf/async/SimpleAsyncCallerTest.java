@@ -43,7 +43,7 @@ public class SimpleAsyncCallerTest {
     }
 }
 
-class TestAsyncExecutor extends AsyncExecutor {
+class TestAsyncExecutor extends AbstractAsyncExecutor {
     @Override
     protected <T> void executeRequest(AsyncCommand<T> command) {
         new Thread(() -> {

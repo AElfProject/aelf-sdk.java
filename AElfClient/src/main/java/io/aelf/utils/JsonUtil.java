@@ -2,11 +2,11 @@ package io.aelf.utils;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.util.TextUtils;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Map;
 
 public final class JsonUtil {
 
@@ -45,7 +45,7 @@ public final class JsonUtil {
    */
   @Nullable
   public static MapEntry<String,?> parseObject(String value) {
-    return StringUtil.isBlank(value) ? null : parseObject(value, MapEntry.class);
+    return TextUtils.isBlank(value) ? null : parseObject(value, MapEntry.class);
   }
 
   /**
@@ -57,7 +57,7 @@ public final class JsonUtil {
    * @return T
    */
   public static <T> T parseObject(String value, Class<T> clazz, boolean failOnUnknownProperties) {
-    if (StringUtil.isBlank(value)) {
+    if (TextUtils.isBlank(value)) {
       return null;
     } else {
       try {

@@ -1,9 +1,10 @@
 package io.aelf.network;
 
 import io.aelf.async.ResultCode;
+import io.aelf.network.interceptor.CommonHeaderInterceptor;
 import io.aelf.utils.AElfException;
-import io.aelf.utils.StringUtil;
 import okhttp3.*;
+import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,17 +34,17 @@ public class NetworkConnector implements INetworkImpl {
     }
 
     protected final OkHttpClient client = new OkHttpClient.Builder()
-            .connectTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
-            .writeTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
-            .readTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
-            .callTimeout(DefaultNetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .connectTimeout(NetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .writeTimeout(NetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .readTimeout(NetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
+            .callTimeout(NetworkConfig.TIME_OUT_LIMIT, TimeUnit.MILLISECONDS)
             .addInterceptor(new CommonHeaderInterceptor())
             .build();
 
 
     @Contract(pure = true)
     private String stringEncode(@NotNull String res, @Nullable String decodeCharset) throws NullPointerException {
-        return !StringUtil.isBlank(decodeCharset) && !"UTF-8".equalsIgnoreCase(decodeCharset) ?
+        return !TextUtils.isBlank(decodeCharset) && !"UTF-8".equalsIgnoreCase(decodeCharset) ?
                 new String(res.getBytes(StandardCharsets.UTF_8), Charset.forName(decodeCharset)) :
                 res;
     }
@@ -51,12 +52,12 @@ public class NetworkConnector implements INetworkImpl {
     @Nonnull
     @Contract(pure = true, value = "_ , _ -> !null")
     protected String getContentType(String contentType, String encodeCharSet) {
-        return (StringUtil.isBlank(contentType) ?
-                DefaultNetworkConfig.DEFAULT_CONTENT_TYPE :
+        return (TextUtils.isBlank(contentType) ?
+                NetworkConfig.DEFAULT_CONTENT_TYPE :
                 contentType)
                 + "; charset=" +
-                (StringUtil.isBlank(encodeCharSet) ?
-                        DefaultNetworkConfig.DEFAULT_ENCODE_CHARSET :
+                (TextUtils.isBlank(encodeCharSet) ?
+                        NetworkConfig.DEFAULT_ENCODE_CHARSET :
                         encodeCharSet);
     }
 
@@ -114,7 +115,7 @@ public class NetworkConnector implements INetworkImpl {
                 .url(reqUrl)
                 .addHeader("Content-Type", mContentType)
                 .delete();
-        if (!StringUtil.isBlank(authBasic)) {
+        if (!TextUtils.isBlank(authBasic)) {
             request.addHeader("Authorization", authBasic);
         }
         return this.startNetworkAndGetResult(request, decodeCharset);
@@ -151,7 +152,7 @@ public class NetworkConnector implements INetworkImpl {
                 .url(reqUrl)
                 .addHeader("Content-Type", mContentType)
                 .post(RequestBody.create(MediaType.parse(mContentType), param));
-        if (!StringUtil.isBlank(authBasic)) {
+        if (!TextUtils.isBlank(authBasic)) {
             request.addHeader("Authorization", authBasic);
         }
         return this.startNetworkAndGetResult(request, decodeCharset);

@@ -2,7 +2,7 @@ package io.aelf.sdk;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
-import io.aelf.network.CommonHeaderInterceptor;
+import io.aelf.network.interceptor.CommonHeaderInterceptor;
 import io.aelf.network.RetrofitFactory;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
@@ -13,7 +13,6 @@ import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.AElfUrl;
 import io.aelf.utils.Sha256;
 import io.aelf.utils.StringUtil;
-import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
@@ -30,21 +29,18 @@ import java.util.List;
 
 /**
  * @deprecated - This class is deprecated, and we recommend you to use the
- *             {@link AElfClientV2}
- *             * which contains both async APIs and common APIs.
+ * {@link AElfClientV2}
+ * * which contains both async APIs and common APIs.
  */
 @Deprecated
-@SuppressWarnings({ "UnusedReturnValue", "unused", "DeprecatedIsStillUsed" })
+@SuppressWarnings({"UnusedReturnValue", "unused", "DeprecatedIsStillUsed"})
 public class AElfClient {
-
-    private final String AElfClientUrl;
-    private String version = "1.0";
     private BlockChainSdk blockchainSdk;
     private NetSdk netSdk;
 
     /**
      * Init AElfClient only with the peer's URL.
-     * 
+     *
      * @param url peer's URL
      */
     public AElfClient(String url) {
@@ -53,7 +49,7 @@ public class AElfClient {
 
     /**
      * Init AElfClient with peer's URL and version.
-     * 
+     *
      * @param url     peer's URL
      * @param version used for network connection, default is "1.0"
      */
@@ -65,7 +61,7 @@ public class AElfClient {
      * Init AElfClient with peer's auth information,
      * this will allow you to get access to some operations, such as
      * {@link NetSdk#addPeer(AddPeerInput)} and {@link NetSdk#removePeer(String)}.
-     * 
+     *
      * @param url      peer's URL
      * @param username peer's username
      * @param password peer's password
@@ -76,25 +72,21 @@ public class AElfClient {
 
     /**
      * Init AElfClient with all the required params.
-     * 
+     *
      * @param url      peer's URL
      * @param version  used for network connection, default is "1.0"
      * @param username peer's username
      * @param password peer's password
      */
     public AElfClient(String url, @Nullable String version, @Nullable String username, @Nullable String password) {
-        this.AElfClientUrl = url;
-        if (!TextUtils.isEmpty(version)) {
-            this.version = version;
-        }
         this.initBlockChainConfig();
         this.initNetSdkConfig(username, password);
         RetrofitFactory.init(url);
-        initBasicConfig();
+        initBasicConfig(version);
     }
 
-    private void initBasicConfig() {
-        CommonHeaderInterceptor.setVersion(this.version);
+    private void initBasicConfig(String version) {
+        CommonHeaderInterceptor.updateEntireContentType(null, null, version);
     }
 
     private void initBlockChainConfig() {
@@ -115,7 +107,7 @@ public class AElfClient {
 
     /**
      * Get the height of the current chain.
-     * 
+     *
      * @return chain's height
      */
     @AElfUrl(url = "wa://api/blockChain/blockHeight")
@@ -125,7 +117,7 @@ public class AElfClient {
 
     /**
      * Get information of a block by given block hash.
-     * 
+     *
      * @return {@link BlockDto} block information
      */
     public BlockDto getBlockByHash(String blockHash) throws Exception {
@@ -135,7 +127,7 @@ public class AElfClient {
     /**
      * Get information about a given block by block hash,
      * optionally with the list of its transactions or not.
-     * 
+     *
      * @return {@link BlockDto} block information
      */
     @AElfUrl(url = "wa://api/blockChain/block?includeTransactions={includeTransactions}")
@@ -145,7 +137,7 @@ public class AElfClient {
 
     /**
      * Get information of a block by specified height.
-     * 
+     *
      * @param blockHeight block height
      * @return {@link BlockDto} block information
      */
@@ -156,7 +148,7 @@ public class AElfClient {
     /**
      * Get information of a block by specified height,
      * optionally whether to include transaction information or not.
-     * 
+     *
      * @param blockHeight         block height
      * @param includeTransactions whether to include transaction information or not
      * @return {@link BlockDto} block information
@@ -168,7 +160,7 @@ public class AElfClient {
 
     /**
      * Get the current status of the blockchain.
-     * 
+     *
      * @return {@link ChainstatusDto} chain status
      */
     @AElfUrl(url = "wa://api/blockChain/chainStatus")
@@ -178,7 +170,7 @@ public class AElfClient {
 
     /**
      * Get the protobuf definitions related to a contract.
-     * 
+     *
      * @param address contract address
      * @return byte[] protobuf definitions
      */
@@ -189,7 +181,7 @@ public class AElfClient {
 
     /**
      * Get the status information of the peer's task queue.
-     * 
+     *
      * @return {@link TaskQueueInfoDto} task queue information
      */
     @AElfUrl(url = "wa://api/blockChain/taskQueueStatus")
@@ -207,7 +199,7 @@ public class AElfClient {
 
     /**
      * Call a read-only method of a contract.
-     * 
+     *
      * @param input {@link ExecuteTransactionDto} input
      * @return {@link String} contract's output
      */
@@ -218,7 +210,7 @@ public class AElfClient {
 
     /**
      * Creates an unsigned serialized transaction for the caller to use later.
-     * 
+     *
      * @param input {@link CreateRawTransactionInput} input
      * @return {@link CreateRawTransactionOutput} unsigned serialized transaction
      */
@@ -230,7 +222,7 @@ public class AElfClient {
 
     /**
      * Call a method of a contract by given serialized transaction info.
-     * 
+     *
      * @param input {@link ExecuteRawTransactionDto} input
      * @return {@link String} contract's output
      */
@@ -241,7 +233,7 @@ public class AElfClient {
 
     /**
      * Broadcast a raw-serialized transaction to the blockchain network.
-     * 
+     *
      * @param input {@link SendRawTransactionInput} input
      * @return {@link SendRawTransactionOutput} transaction id
      */
@@ -253,7 +245,7 @@ public class AElfClient {
 
     /**
      * Broadcast a transaction to the blockchain network.
-     * 
+     *
      * @param input {@link SendTransactionInput} input
      * @return {@link SendTransactionOutput} transaction id
      */
@@ -264,7 +256,7 @@ public class AElfClient {
 
     /**
      * Broadcast volume transactions.
-     * 
+     *
      * @param input {@link SendTransactionsInput} input that contains many
      *              transactions
      * @return {@link List} transaction ids
@@ -276,7 +268,7 @@ public class AElfClient {
 
     /**
      * Get the current status of a transaction.
-     * 
+     *
      * @param transactionId transaction id
      * @return {@link TransactionResultDto} transaction status
      */
@@ -296,7 +288,7 @@ public class AElfClient {
 
     /**
      * Get multiple transaction results by specified blockHash and the offset.
-     * 
+     *
      * @param blockHash block hash
      * @param offset    offset config
      * @param limit     limit config
@@ -309,7 +301,7 @@ public class AElfClient {
 
     /**
      * Get merkle tree's path of a transaction.
-     * 
+     *
      * @param transactionId transaction id
      * @return {@link MerklePathDto} merkle tree's path
      */
@@ -320,7 +312,7 @@ public class AElfClient {
 
     /**
      * Get id of the chain.
-     * 
+     *
      * @return chain id
      */
     public int getChainId() throws Exception {
@@ -343,7 +335,7 @@ public class AElfClient {
      * <p>
      * Attention: if you wish to call this method, you should have provided the
      * username and password in the constructor of {@link AElfClient}.
-     * 
+     *
      * @param address peer's address
      */
     @AElfUrl(url = "wa://api/net/peer?address={address}")
@@ -355,7 +347,7 @@ public class AElfClient {
      * Gets information about the peer nodes of the current node.
      * <p>
      * Optional: whether to include metrics.
-     * 
+     *
      * @param withMetrics whether to include metrics
      * @return {@link PeerDto} peer nodes
      */
@@ -366,7 +358,7 @@ public class AElfClient {
 
     /**
      * Get information about the node’s connection to the network.
-     * 
+     *
      * @return {@link NetworkInfoOutput} network info
      */
     @AElfUrl(url = "wa://api/net/networkInfo")
@@ -376,14 +368,14 @@ public class AElfClient {
 
     /**
      * Build a transaction from the input parameters.
-     * 
+     *
      * @param from       from address(sender)
      * @param to         to address(receiver)
      * @param methodName method name
      * @param params     params
      */
     public Core.Transaction.Builder generateTransaction(String from, String to, String methodName,
-            byte[] params) throws IOException {
+                                                        byte[] params) throws IOException {
         final ChainstatusDto chainStatus = this.getBlockChainConfig().getChainStatus();
         final Core.Transaction.Builder transaction = Core.Transaction.newBuilder();
         Client.Address.Builder addressForm = Client.Address.newBuilder();
@@ -406,7 +398,7 @@ public class AElfClient {
     /**
      * Sign a transaction using private key.
      * Attention: the transaction should be built by {@link #generateTransaction}.
-     * 
+     *
      * @param privateKeyHex private key hex
      * @param transaction   transaction that will be signed
      * @return signature string
@@ -442,7 +434,7 @@ public class AElfClient {
      * Convert the primal address to the formatted version.
      * <p>
      * String：symbol_base58-string_base58-string-chain-id.
-     * 
+     *
      * @param address    primal address
      * @param privateKey private key to sign
      */
@@ -467,7 +459,7 @@ public class AElfClient {
 
     /**
      * generate key pair info that contains both the public key and the private key.
-     * 
+     *
      * @return {@link KeyPairInfo} key pair info
      */
     public KeyPairInfo generateKeyPairInfo() {
@@ -484,7 +476,7 @@ public class AElfClient {
 
     /**
      * Get the address of a contract by given contractNameHash.
-     * 
+     *
      * @param privateKey       private key to sign
      * @param contractNameHash contract name hash
      */
@@ -511,7 +503,7 @@ public class AElfClient {
 
     /**
      * Get the address from a private key.
-     * 
+     *
      * @param privateKey private key hex
      * @return address string
      */
@@ -525,7 +517,7 @@ public class AElfClient {
 
     /**
      * Get the sha256 signature of data with privateKey string.
-     * 
+     *
      * @param privateKey private key hex
      * @param txData     data to be signed
      * @return signature string
@@ -560,7 +552,7 @@ public class AElfClient {
 
     /**
      * calculate the transactionFee.
-     * 
+     *
      * @param input {@link CalculateTransactionFeeInput} input
      * @return {@link CalculateTransactionFeeOutput} output
      */

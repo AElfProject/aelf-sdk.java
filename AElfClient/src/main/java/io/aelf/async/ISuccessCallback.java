@@ -1,6 +1,6 @@
 package io.aelf.async;
 
 @FunctionalInterface
-public interface SuccessCallback<T> {
+public interface ISuccessCallback<T> {
     void onSuccess(AsyncResult<T> result);
 }

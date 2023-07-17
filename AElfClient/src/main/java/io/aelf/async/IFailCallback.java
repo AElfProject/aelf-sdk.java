@@ -1,6 +1,6 @@
 package io.aelf.async;
 
 @FunctionalInterface
-public interface FailCallback<F> {
+public interface IFailCallback<F> {
     void onFail(AsyncResult<F> reason);
 }
