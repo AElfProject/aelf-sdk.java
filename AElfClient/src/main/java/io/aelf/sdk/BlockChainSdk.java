@@ -3,14 +3,10 @@ package io.aelf.sdk;
 import com.google.gson.JsonParser;
 import io.aelf.network.RetrofitFactory;
 import io.aelf.schemas.*;
-import io.aelf.utils.AElfUrl;
-import io.aelf.utils.BitConverter;
-import io.aelf.utils.JsonUtil;
-import io.aelf.utils.MapEntry;
-import io.aelf.utils.Maps;
-import io.aelf.utils.StringUtil;
+import io.aelf.utils.*;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -19,9 +15,6 @@ import org.bitcoinj.core.Base58;
 
 @SuppressWarnings({"unchecked", "SpellCheckingInspection", "unused", "DataFlowIssue"})
 public class BlockChainSdk {
-
-    public BlockChainSdk() {
-    }
 
     /**
      * Get the height of the current chain.
@@ -34,16 +27,14 @@ public class BlockChainSdk {
                 .getBlockHeight()
                 .execute()
                 .body();
-        if (chainContext != null) {
-            return Long.parseLong(chainContext);
-        }
-        return -1;
+        return chainContext != null
+                ? Long.parseLong(chainContext)
+                : -1;
     }
 
     /**
      * Get information of a block by given block hash.
      * <p>
-     * Optional: whether to include transaction information.
      *
      * @param blockHash block hash
      * @return {@link BlockDto} block information
@@ -63,11 +54,11 @@ public class BlockChainSdk {
      */
     @AElfUrl(url = "wa://api/blockChain/block?blockHash={blockHash}&includeTransactions={includeTransactions}")
     public BlockDto getBlockByHash(String blockHash, boolean includeTransactions) throws Exception {
-        String result = RetrofitFactory.getAPIService()
-                .getBlockByHash(blockHash, includeTransactions)
-                .execute()
-                .body()
-                .toString();
+        String result = RetrofitFactory.networkResult(
+                RetrofitFactory
+                        .getAPIService()
+                        .getBlockByHash(blockHash,includeTransactions)
+        );
         MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(result);
         return createBlockDto(mapObjJson, includeTransactions);
     }
@@ -75,7 +66,6 @@ public class BlockChainSdk {
     /**
      * Get information of a block by specified height.
      * <p>
-     * Optional: whether to include transaction information.
      *
      * @param blockHeight block height
      * @return {@link BlockDto} block information
@@ -95,7 +85,7 @@ public class BlockChainSdk {
      */
     @AElfUrl(url = "wa://api/blockChain/blockByHeight?blockHeight={blockHeight}&includeTransactions={includeTransactions}")
     public BlockDto getBlockByHeight(long blockHeight, boolean includeTransactions) throws Exception {
-        if (blockHeight == 0) {
+        if (blockHeight <= 0) {
             throw new RuntimeException("[20001]Not found");
         }
         String result = RetrofitFactory.getAPIService()
@@ -179,7 +169,6 @@ public class BlockChainSdk {
         } else {
             throw new RuntimeException("getContractFileDescriptorSet body Exception");
         }
-
     }
 
     /**
@@ -205,7 +194,6 @@ public class BlockChainSdk {
             listTaskQueueInfoDto.add(taskQueueInfoDto);
         }
         return listTaskQueueInfoDto;
-
     }
 
     /**
@@ -223,10 +211,9 @@ public class BlockChainSdk {
         MapEntry<String, ?> responseBodyMap = JsonUtil.parseObject(responseBody);
         if (responseBodyMap == null)
             throw new RuntimeException();
-        TransactionPoolStatusOutput poolStatusOp = new TransactionPoolStatusOutput();
-        poolStatusOp.setQueued(responseBodyMap.getInteger("Queued"));
-        poolStatusOp.setValidated(responseBodyMap.getInteger("Validated"));
-        return poolStatusOp;
+        return new TransactionPoolStatusOutput()
+                .setQueued(responseBodyMap.getInteger("Queued"))
+                .setValidated(responseBodyMap.getInteger("Validated"));
     }
 
     /**
@@ -460,7 +447,7 @@ public class BlockChainSdk {
                 .body();
     }
 
-    private BlockDto createBlockDto(MapEntry<String, ?> block, Boolean includeTransactions) throws Exception {
+    private BlockDto createBlockDto(MapEntry<String, ?> block, Boolean includeTransactions) throws ParseException {
         if (block == null) {
             throw new RuntimeException("not found");
         }

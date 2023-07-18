@@ -2,6 +2,7 @@ package io.aelf.sdkv2;
 
 import io.aelf.async.AsyncCaller;
 import io.aelf.async.DefaultAsyncExecutor;
+import retrofit2.Retrofit;
 
 import javax.annotation.Nullable;
 
@@ -23,8 +24,8 @@ public class AElfClientV2 extends AElfClientAsync {
         super(url, version, userName, password);
     }
 
-    public AElfClientV2(String url, String version, String userName, String password, @Nullable AsyncCaller caller) {
-        super(url, version, userName, password, caller);
+    public AElfClientV2(String url, String version, String userName, String password, @Nullable Retrofit.Builder builder, @Nullable AsyncCaller caller) {
+        super(url, version, userName, password, builder, caller);
     }
 
     @Override

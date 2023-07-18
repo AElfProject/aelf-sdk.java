@@ -19,6 +19,7 @@ import org.bitcoinj.core.Sha256Hash;
 import org.bouncycastle.util.encoders.Hex;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
+import retrofit2.Retrofit;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -70,6 +71,20 @@ public class AElfClient {
         this(url, null, username, password);
     }
 
+
+    /**
+     * Init AElfClient with those params.
+     *
+     * @param url      peer's URL
+     * @param version  used for network connection, default is "1.0"
+     * @param username peer's username
+     * @param password peer's password
+     */
+    public AElfClient(@Nullable String url, @Nullable String version, @Nullable String username,
+                      @Nullable String password) {
+        this(url, version, username,password,null);
+    }
+
     /**
      * Init AElfClient with all the required params.
      *
@@ -77,11 +92,15 @@ public class AElfClient {
      * @param version  used for network connection, default is "1.0"
      * @param username peer's username
      * @param password peer's password
+     * @param retrofit you can provide a retrofit object to replace the default one;
+     *                 if you wish to not change the base url set outside,
+     *                 please provide a blank url parameter.
      */
-    public AElfClient(String url, @Nullable String version, @Nullable String username, @Nullable String password) {
+    public AElfClient(@Nullable String url, @Nullable String version, @Nullable String username,
+                      @Nullable String password, @Nullable Retrofit.Builder retrofit) {
         this.initBlockChainConfig();
         this.initNetSdkConfig(username, password);
-        RetrofitFactory.init(url);
+        RetrofitFactory.init(url, retrofit);
         initBasicConfig(version);
     }
 
@@ -108,7 +127,7 @@ public class AElfClient {
     /**
      * Get the height of the current chain.
      *
-     * @return chain's height
+     * @return chain's height, value that below zero means failure
      */
     @AElfUrl(url = "wa://api/blockChain/blockHeight")
     public long getBlockHeight() throws Exception {

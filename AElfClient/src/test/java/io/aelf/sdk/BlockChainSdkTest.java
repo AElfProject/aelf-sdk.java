@@ -31,7 +31,6 @@ public class BlockChainSdkTest {
 
     /**
      * init junit.
-     *
      */
     @Before
     public void init() {
@@ -43,7 +42,7 @@ public class BlockChainSdkTest {
     public void getTransactionFeeTest() throws Exception {
         TransactionResultDto transactionResultDto = new TransactionResultDto();
         transactionResultDto.setLogs(new ArrayList<>());
-        Base64.Encoder encoder=Base64.getEncoder();
+        Base64.Encoder encoder = Base64.getEncoder();
 
         LogEventDto logEventDto = new LogEventDto();
         logEventDto.setName("TransactionFeeCharged");
@@ -228,8 +227,8 @@ public class BlockChainSdkTest {
         ChainstatusDto status = client.getChainStatus();
         final long height = status.getBestChainHeight();
         final String blockHash = status.getBestChainHash();
-        MapEntry<String,String> mapParamsObj = Maps.newMapEntry();
-        Base64.Encoder encoder=Base64.getEncoder();
+        MapEntry<String, String> mapParamsObj = Maps.newMapEntry();
+        Base64.Encoder encoder = Base64.getEncoder();
         mapParamsObj.put("value", encoder.encodeToString(paramBytes));
         String param = JsonUtil.toJsonString(mapParamsObj);
         CreateRawTransactionInput createRawTransactionInputObj = createRowBuild(toAddress, methodName,
@@ -255,8 +254,8 @@ public class BlockChainSdkTest {
         ChainstatusDto status = client.getChainStatus();
         final long height = status.getBestChainHeight();
         final String blockHash = status.getBestChainHash();
-        MapEntry<String,String> mapParamsObj = Maps.newMapEntry();
-        Base64.Encoder encoder=Base64.getEncoder();
+        MapEntry<String, String> mapParamsObj = Maps.newMapEntry();
+        Base64.Encoder encoder = Base64.getEncoder();
         mapParamsObj.put("value", encoder.encodeToString(paramBytes));
         String param = JsonUtil.toJsonString(mapParamsObj);
         CreateRawTransactionInput createRawTransactionInputObj = createRowBuild(toAddress, methodName,
@@ -272,8 +271,8 @@ public class BlockChainSdkTest {
         ChainstatusDto status = client.getChainStatus();
         final long height = status.getBestChainHeight();
         final String blockHash = status.getBestChainHash();
-        MapEntry<String,String> mapParamsObj = Maps.newMapEntry();
-        Base64.Encoder encoder=Base64.getEncoder();
+        MapEntry<String, String> mapParamsObj = Maps.newMapEntry();
+        Base64.Encoder encoder = Base64.getEncoder();
         mapParamsObj.put("value", encoder.encodeToString(paramBytes));
         String param = JsonUtil.toJsonString(mapParamsObj);
         CreateRawTransactionInput createRawTransactionInputObj = createRowBuild(toAddress, methodName,

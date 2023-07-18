@@ -3,8 +3,10 @@ package io.aelf.sdkv2;
 import io.aelf.async.*;
 import io.aelf.schemas.*;
 import io.aelf.sdk.AElfClient;
+import io.aelf.sdk.NetSdk;
 import io.aelf.utils.AElfException;
 import org.jetbrains.annotations.NotNull;
+import retrofit2.Retrofit;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -14,26 +16,69 @@ public abstract class AElfClientAsync extends AElfClient {
     @NotNull
     private final AsyncCaller caller;
 
+    /**
+     * Init AElfClient only with the peer's URL.
+     *
+     * @param url peer's URL
+     */
     public AElfClientAsync(String url) {
         this(url, null);
     }
 
+    /**
+     * Init AElfClient with peer's URL and version.
+     *
+     * @param url     peer's URL
+     * @param version used for network connection, default is "1.0"
+     */
     public AElfClientAsync(String url, String version) {
         this(url, version, null, null);
     }
 
-    public AElfClientAsync(String url, String userName, String password) {
-        this(url, null, userName, password);
+    /**
+     * Init AElfClient with peer's auth information,
+     * this will allow you to get access to some operations, such as
+     * {@link NetSdk#addPeer(AddPeerInput)} and {@link NetSdk#removePeer(String)}.
+     *
+     * @param url      peer's URL
+     * @param username peer's username
+     * @param password peer's password
+     */
+    public AElfClientAsync(String url, String username, String password) {
+        this(url, null, username, password);
     }
 
-    public AElfClientAsync(String url, String version, String userName, String password) {
-        this(url, version, userName, password, null);
+    /**
+     * Init AElfClient with those params.
+     *
+     * @param url      peer's URL
+     * @param version  used for network connection, default is "1.0"
+     * @param username peer's username
+     * @param password peer's password
+     */
+    public AElfClientAsync(@Nullable String url, @Nullable String version,
+                           @Nullable String username, @Nullable String password) {
+        this(url, version, username, password, null, null);
     }
 
-    public AElfClientAsync(String url, String version, String userName, String password, @Nullable AsyncCaller caller) {
-        super(url, version, userName, password);
+    /**
+     * Init AElfClient with all the required params.
+     *
+     * @param url      peer's URL
+     * @param version  used for network connection, default is "1.0"
+     * @param username peer's username
+     * @param password peer's password
+     * @param retrofit you can provide a retrofit object to replace the default one;
+     *                 if you wish to not change the base url set outside,
+     *                 please provide a blank url parameter.
+     */
+    public AElfClientAsync(@Nullable String url, @Nullable String version,
+                           @Nullable String username, @Nullable String password,
+                           @Nullable Retrofit.Builder retrofit, @Nullable AsyncCaller caller) {
+        super(url, version, username, password, retrofit);
         this.caller = caller != null ? caller : this.getCaller();
     }
+
 
     protected abstract AsyncCaller getCaller();
 
@@ -46,7 +91,6 @@ public abstract class AElfClientAsync extends AElfClient {
             try {
                 return new AsyncResult<>(func.run());
             } catch (Exception e) {
-                e.printStackTrace();
                 throw new AElfException(e);
             }
         };

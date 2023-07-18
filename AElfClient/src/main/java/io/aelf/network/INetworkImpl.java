@@ -23,5 +23,5 @@ public interface INetworkImpl {
 
     String post(String reqUrl, String param, String encodeCharset, String decodeCharset, String contentType);
 
-    String postWithAuth(String reqUrl, String param, String encodeCharset, String decodeCharset, String contentType, String authBasic);
+    String post(String reqUrl, String param, String encodeCharset, String decodeCharset, String contentType, String authBasic);
 }

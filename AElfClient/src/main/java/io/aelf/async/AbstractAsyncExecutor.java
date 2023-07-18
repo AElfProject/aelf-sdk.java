@@ -1,5 +1,6 @@
 package io.aelf.async;
 
+import io.aelf.response.ResultCode;
 import io.aelf.utils.AElfException;
 
 // Its subClass will determine how to deal with the async calls
@@ -12,21 +13,16 @@ public abstract class AbstractAsyncExecutor {
 
     protected <T> void onNewRequest(AsyncCommand<T> command) {
         try {
-            AsyncResult<T> result = command.function.run();
+            AsyncResult<T> result = command.run();
             if (result == null) {
                 throw new AElfException(ResultCode.INTERNAL_ERROR, "AsyncResult is null");
             } else if (!result.isOk()) {
                 throw new AElfException(result.resultCode, "AsyncResult provides a code that shows a failure");
             } else {
-                if (command.successCallback != null) {
-                    command.successCallback.onSuccess(result);
-                }
+                command.onSuccess(result);
             }
         } catch (AElfException e) {
-            e.printStackTrace();
-            if (command.failCallback != null) {
-                command.failCallback.onFail(new VoidResult(e.resultCode));
-            }
+            command.onFail(new VoidResult(e.getResultCode()));
             throw e;
         }
     }

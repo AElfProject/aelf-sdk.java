@@ -1,5 +1,6 @@
 package io.aelf.async;
 
+import io.aelf.response.ResultCode;
 import io.aelf.utils.AElfException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,13 +23,13 @@ public class SimpleAsyncCallerTest {
         for (int i = 0; i < size; i++) {
             int finalI = i;
             caller.asyncCall(() -> {
-                try {
-                    Thread.sleep(200 + finalI);
-                } catch (InterruptedException e) {
-                    return new AsyncResult<>(ResultCode.SUCCESS, "ERROR" + finalI);
-                }
-                return new AsyncResult<>(ResultCode.SUCCESS, "OK" + finalI);
-            },
+                        try {
+                            Thread.sleep(200 + finalI);
+                        } catch (InterruptedException e) {
+                            return new AsyncResult<>(ResultCode.SUCCESS, "ERROR" + finalI);
+                        }
+                        return new AsyncResult<>(ResultCode.SUCCESS, "OK" + finalI);
+                    },
                     response -> {
                         System.out.println("It's thread " + finalI + " and the response is " + response.result);
                         Assert.assertEquals("OK" + finalI, response.result);
@@ -48,21 +49,16 @@ class TestAsyncExecutor extends AbstractAsyncExecutor {
     protected <T> void executeRequest(AsyncCommand<T> command) {
         new Thread(() -> {
             try {
-                AsyncResult<T> result = command.function.run();
+                AsyncResult<T> result = command.run();
                 if (result == null) {
                     throw new AElfException(ResultCode.INTERNAL_ERROR, "AsyncResult is null");
                 } else if (!result.isOk()) {
                     throw new AElfException(result.resultCode, "AsyncResult provides a code that shows a failure");
                 } else {
-                    if (command.successCallback != null) {
-                        command.successCallback.onSuccess(result);
-                    }
+                    command.onSuccess(result);
                 }
             } catch (AElfException e) {
-                e.printStackTrace();
-                if (command.failCallback != null) {
-                    command.failCallback.onFail(new VoidResult(e.resultCode));
-                }
+                command.onFail(new VoidResult(e.getResultCode()));
                 throw e;
             }
         }).start();

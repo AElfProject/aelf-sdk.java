@@ -1,5 +1,7 @@
 package io.aelf.async;
 
+import io.aelf.response.ResultCode;
+
 import javax.annotation.Nullable;
 
 public class AsyncResult<R> {

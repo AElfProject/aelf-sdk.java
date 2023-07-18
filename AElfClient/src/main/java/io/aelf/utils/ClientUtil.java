@@ -39,6 +39,7 @@ public class ClientUtil {
   private ClientUtil() {
   }
 
+  @Deprecated
   private static HttpClient setProxy(Integer... connectTimeout) {
     String proxySet = StringUtil.toString(System.getProperty("proxySet"));
     if (!"true".equals(proxySet)) {
@@ -72,6 +73,7 @@ public class ClientUtil {
    * @param decodeCharset not blank
    * @return str
    */
+  @Deprecated
   public static String sendGet(String reqUrl, String decodeCharset, String contentType) {
     long responseLength = 0L;
     String responseContent = null;
@@ -114,6 +116,7 @@ public class ClientUtil {
    * @param reqUrl not blank
    * @param decodeCharset not blank
    */
+  @Deprecated
   public static String sendDelete(String reqUrl, String decodeCharset, String contentType, String authBasic) {
     long responseLength = 0L;
     String responseContent = null;
@@ -164,6 +167,7 @@ public class ClientUtil {
    * @param decodeCharset not blank
    * @param contentType not blank
    */
+  @Deprecated
   public static String sendPost(String reqUrl, String param, String encodeCharset,
       String decodeCharset, String contentType) {
     String responseContent = null;
@@ -199,6 +203,7 @@ public class ClientUtil {
     return responseContent;
   }
 
+  @Deprecated
   public static String sendPostWithAuth(String reqUrl, String param, String encodeCharset,
                                         String decodeCharset, String contentType, String authBasic) {
     String responseContent = null;

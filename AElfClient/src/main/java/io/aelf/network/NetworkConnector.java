@@ -1,6 +1,6 @@
 package io.aelf.network;
 
-import io.aelf.async.ResultCode;
+import io.aelf.response.ResultCode;
 import io.aelf.network.interceptor.CommonHeaderInterceptor;
 import io.aelf.utils.AElfException;
 import okhttp3.*;
@@ -140,13 +140,13 @@ public class NetworkConnector implements INetworkImpl {
     @Override
     public String post(String reqUrl, String param, @Nullable String encodeCharset,
                        @Nullable String decodeCharset, @Nullable String contentType) {
-        return this.postWithAuth(reqUrl, param, encodeCharset, decodeCharset, contentType, null);
+        return this.post(reqUrl, param, encodeCharset, decodeCharset, contentType, null);
     }
 
     @Override
-    public String postWithAuth(String reqUrl, String param, @Nullable String encodeCharset,
-                               @Nullable String decodeCharset, @Nullable String contentType,
-                               @Nullable String authBasic) throws AElfException {
+    public String post(String reqUrl, String param, @Nullable String encodeCharset,
+                       @Nullable String decodeCharset, @Nullable String contentType,
+                       @Nullable String authBasic) throws AElfException {
         String mContentType = this.getContentType(contentType, encodeCharset);
         Request.Builder request = new Request.Builder()
                 .url(reqUrl)

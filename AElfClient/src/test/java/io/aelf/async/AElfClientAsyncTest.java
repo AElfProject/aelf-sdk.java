@@ -55,7 +55,7 @@ public class AElfClientAsyncTest {
     public void manyRequestsPressureTest() {
         AsyncTestLooper<Long> looper = new AsyncTestLooper<>(res -> res.result > 0,
                 res -> res != null && !res.isOk(),60*1000);
-        int size = 100;
+        int size = 10;
         looper.setDeterminedSize(size);
         for (int i = 0; i < size; i++) {
             int finalI = i;

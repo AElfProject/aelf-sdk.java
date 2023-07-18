@@ -1,8 +1,11 @@
-package io.aelf.async;
+package io.aelf.response;
 
 /**
  * Any ResultCode that below zero represents an issue that your code may not expect, such as network disconnection, SDK internal error, etc.
+ * <p>
  * Those above zero (expect for SUCCESS=1) represent an issue that your code can prevent from, for example, parameter error.
+ * <p>
+ * @see ErrorMessage
  */
 public interface ResultCode {
     /**
@@ -10,7 +13,7 @@ public interface ResultCode {
      */
     int SUCCESS = 1;
     /**
-     * Some error happens when deals with your request.
+     * Some errors occur when deal with your request.
      */
     int INTERNAL_ERROR = -1;
     /**

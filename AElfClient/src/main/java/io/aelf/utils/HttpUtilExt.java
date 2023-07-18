@@ -96,7 +96,7 @@ public class HttpUtilExt {
     }
     logger.debug("Request address:".concat(reqUrl));
     String chainContext = NetworkConnector.getIns()
-            .postWithAuth(reqUrl, params, "UTF-8", "UTF-8", "application/json" + version, authBasic);
+            .post(reqUrl, params, "UTF-8", "UTF-8", "application/json" + version, authBasic);
     if (StringUtil.toString(chainContext).length() > 0 && chainContext.contains("@ERROR:@")) {
       chainContext = chainContext.replace("@ERROR:@", "");
       throw new RuntimeException(chainContext);
