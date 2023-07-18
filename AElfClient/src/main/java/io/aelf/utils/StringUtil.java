@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unused")
 public class StringUtil {
 
     /**
@@ -104,6 +103,7 @@ public class StringUtil {
      * @param str not blank
      * @return boolean
      */
+    @Deprecated
     public static boolean notBlank(String str) {
         return str != null && !"".equals(str.trim());
     }
@@ -118,14 +118,11 @@ public class StringUtil {
         if (strings == null) {
             return false;
         } else {
-            int var3 = strings.length;
-
             for (String str : strings) {
                 if (str == null || "".equals(str.trim())) {
                     return false;
                 }
             }
-
             return true;
         }
     }
@@ -140,8 +137,6 @@ public class StringUtil {
         if (params == null) {
             return false;
         } else {
-            int var3 = params.length;
-
             for (Object obj : params) {
                 if (obj == null) {
                     return false;
@@ -194,16 +189,13 @@ public class StringUtil {
     public static String toStringBySeparator(List<Map<String, ?>> list, String separator, String key) {
         if (list != null && !list.isEmpty()) {
             StringBuilder str = new StringBuilder();
-
             for (Map<String, ?> map : list) {
                 str.append(map.get(key)).append(",");
             }
-
             int length = str.length();
             if (length > 1) {
                 str.replace(length - 1, length, "");
             }
-
             return str.toString();
         } else {
             return "";

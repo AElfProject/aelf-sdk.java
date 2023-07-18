@@ -2,7 +2,7 @@ package io.aelf.sdk;
 
 import com.google.protobuf.ByteString;
 
-import io.aelf.async.global.TestParams;
+import io.aelf.internal.global.TestParams;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;

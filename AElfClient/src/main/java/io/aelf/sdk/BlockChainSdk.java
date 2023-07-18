@@ -13,7 +13,7 @@ import java.util.*;
 import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
 
-@SuppressWarnings({"unchecked", "SpellCheckingInspection", "unused", "DataFlowIssue"})
+@SuppressWarnings({"unchecked", "SpellCheckingInspection", "unused", "DataFlowIssue", "deprecation"})
 public class BlockChainSdk {
 
     /**

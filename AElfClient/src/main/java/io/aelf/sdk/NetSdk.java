@@ -20,7 +20,7 @@ import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-@SuppressWarnings({"unchecked", "DataFlowIssue"})
+@SuppressWarnings({"unchecked", "DataFlowIssue", "deprecation"})
 public class NetSdk {
     private final String combineAuth;
 

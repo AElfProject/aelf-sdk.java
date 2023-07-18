@@ -17,6 +17,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * ## Deprecated ##
+ * This class contains code that leaks generic constraints,
+ * which may result in the wrong type cast.
+ * <p>
+ * DO NOT USE IT in your new code by now, we are trying to
+ * replace it with its generic version in the future.
+ */
+@SuppressWarnings({"rawtypes", "unchecked", "unused"})
+@Deprecated
+
 public final class Maps {
 
     private static final MapEntry entry = new MapEntry(20);
@@ -78,14 +89,9 @@ public final class Maps {
      * @return T extends Map
      */
     public static <T extends Map> T removeKeys(T map, Object... removeKeys) {
-        Object[] var5 = removeKeys;
-        int var4 = removeKeys.length;
-
-        for (int var3 = 0; var3 < var4; ++var3) {
-            Object removeKey = var5[var3];
+        for (Object removeKey : removeKeys) {
             map.remove(removeKey);
         }
-
         return map;
     }
 
@@ -105,15 +111,9 @@ public final class Maps {
         } else {
             newMap = new HashMap<>(20);
         }
-
-        Object[] var6 = keys;
-        int var5 = keys.length;
-
-        for (int var4 = 0; var4 < var5; ++var4) {
-            Object key = var6[var4];
+        for (Object key : keys) {
             newMap.put(key, map.get(key));
         }
-
         return newMap;
     }
 
@@ -149,16 +149,11 @@ public final class Maps {
      * @return boolean
      */
     public static boolean isBlankKeys(Map map, String... keys) {
-        String[] var5 = keys;
-        int var4 = keys.length;
-
-        for (int var3 = 0; var3 < var4; ++var3) {
-            String key = var5[var3];
+        for (String key : keys) {
             if (isBlankKey(map, key)) {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -170,16 +165,11 @@ public final class Maps {
      * @return boolean
      */
     public static boolean isNotBlankKeys(Map map, String... keys) {
-        String[] var5 = keys;
-        int var4 = keys.length;
-
-        for (int var3 = 0; var3 < var4; ++var3) {
-            String key = var5[var3];
+        for (String key : keys) {
             if (isNotBlankKey(map, key)) {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -222,7 +212,6 @@ public final class Maps {
      * @param <V> not blank
      * @return Map
      */
-    @SuppressWarnings("deprecation")
     public static <K, V> Map<K, V> cloneMap(Map<K, V> map) {
         try {
             Class<?> clazz = map.getClass();

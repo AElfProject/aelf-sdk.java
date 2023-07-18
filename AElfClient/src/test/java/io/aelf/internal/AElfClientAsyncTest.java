@@ -1,10 +1,10 @@
-package io.aelf.async;
+package io.aelf.internal;
 
-import io.aelf.async.global.TestParams;
+import io.aelf.internal.global.TestParams;
 import io.aelf.schemas.BlockDto;
 import io.aelf.sdk.BlockChainSdkTest;
-import io.aelf.sdkv2.AElfClientV2;
-import io.aelf.sdkv2.AElfClientAsync;
+import io.aelf.internal.sdkv2.AElfClientV2;
+import io.aelf.internal.sdkv2.AElfClientAsync;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import org.junit.Test;
 import javax.annotation.Nonnull;
 
 /**
- * Since the AsyncClient only provides async-wrapped API,
+ * Since the AsyncClient only provides internal-wrapped API,
  * and actually it doesn't contain additional code, This test
  * file will only test some of its APIS.
  * 

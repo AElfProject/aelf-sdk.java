@@ -22,7 +22,16 @@ import java.util.TreeSet;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
-@SuppressWarnings("unchecked")
+/**
+ * ## Deprecated ##
+ * This class contains code that leaks generic constraints,
+ * which may result in the wrong type cast.
+ * <p>
+ * DO NOT USE IT in your new code by now, we are trying to
+ * replace it with its generic version in the future.
+ */
+@SuppressWarnings({"rawtypes", "unchecked", "unused"})
+@Deprecated
 public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
 
     /**
@@ -55,22 +64,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @param key not blank
      */
     public File getFile(K key) {
-        return this.getFile(key, (File) null);
+        return this.getFile(key, null);
     }
 
     /**
      * getFile.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return File
      */
-    public File getFile(K key, File defauleValue) {
+    public File getFile(K key, File defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof File ? (File) obj : defauleValue;
+            return obj instanceof File ? (File) obj : defaultValue;
         }
     }
 
@@ -81,22 +90,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return InputStream
      */
     public InputStream getInputStream(K key) {
-        return this.getInputStream(key, (InputStream) null);
+        return this.getInputStream(key, null);
     }
 
     /**
      * getInputStream.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return InputStream
      */
-    public InputStream getInputStream(K key, InputStream defauleValue) {
+    public InputStream getInputStream(K key, InputStream defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof InputStream ? (InputStream) obj : defauleValue;
+            return obj instanceof InputStream ? (InputStream) obj : defaultValue;
         }
     }
 
@@ -107,7 +116,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return OutputStream
      */
     public OutputStream getOutputStream(K key) {
-        return this.getOutputStream(key, (OutputStream) null);
+        return this.getOutputStream(key, null);
     }
 
     /**
@@ -133,7 +142,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return Collection
      */
     public Collection getCollection(K key) {
-        return this.getCollection(key, (Collection) null);
+        return this.getCollection(key, null);
     }
 
     /**
@@ -159,22 +168,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return Map
      */
     public Map getMap(K key) {
-        return this.getMap(key, (Map) null);
+        return this.getMap(key, null);
     }
 
     /**
      * getMap.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return Map
      */
-    public Map getMap(K key, Map defauleValue) {
+    public Map getMap(K key, Map defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof Map ? (Map) obj : defauleValue;
+            return obj instanceof Map ? (Map) obj : defaultValue;
         }
     }
 
@@ -185,7 +194,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return HashMap
      */
     public HashMap getHashMap(K key) {
-        return this.getHashMap(key, (HashMap) null);
+        return this.getHashMap(key, null);
     }
 
     /**
@@ -217,22 +226,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return TreeMap
      */
     public TreeMap getTreeMap(K key) {
-        return this.getTreeMap(key, (TreeMap) null);
+        return this.getTreeMap(key, null);
     }
 
     /**
      * getTreeMap.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return TreeMap
      */
-    public TreeMap getTreeMap(K key, TreeMap defauleValue) {
+    public TreeMap getTreeMap(K key, TreeMap defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof TreeMap ? (TreeMap) obj : defauleValue;
+            return obj instanceof TreeMap ? (TreeMap) obj : defaultValue;
         }
     }
 
@@ -243,20 +252,20 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return LinkedHashMap.
      */
     public LinkedHashMap getLinkedHashMap(K key) {
-        return this.getLinkedHashMap(key, (LinkedHashMap) null);
+        return this.getLinkedHashMap(key, null);
     }
 
     /**
      * getLinkedHashMap.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return LinkedHashMap
      */
-    public LinkedHashMap getLinkedHashMap(K key, LinkedHashMap defauleValue) {
+    public LinkedHashMap getLinkedHashMap(K key, LinkedHashMap defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else if (obj instanceof LinkedHashMap) {
             return (LinkedHashMap) obj;
         } else if (obj instanceof Map) {
@@ -264,7 +273,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
             map.putAll((Map) obj);
             return map;
         } else {
-            return defauleValue;
+            return defaultValue;
         }
     }
 
@@ -275,7 +284,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return MapEntry
      */
     public MapEntry getMapEntry(K key) {
-        return this.getMapEntry(key, (MapEntry) null);
+        return this.getMapEntry(key, null);
     }
 
     /**
@@ -307,20 +316,20 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return LinkedMapEntry
      */
     public LinkedMapEntry getLinkedMapEntry(K key) {
-        return this.getLinkedMapEntry(key, (LinkedMapEntry) null);
+        return this.getLinkedMapEntry(key, null);
     }
 
     /**
      * getLinkedMapEntry.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return LinkedMapEntry
      */
-    public LinkedMapEntry getLinkedMapEntry(K key, LinkedMapEntry defauleValue) {
+    public LinkedMapEntry getLinkedMapEntry(K key, LinkedMapEntry defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else if (obj instanceof LinkedMapEntry) {
             return (LinkedMapEntry) obj;
         } else if (obj instanceof Map) {
@@ -328,7 +337,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
             map.putAll((Map) obj);
             return map;
         } else {
-            return defauleValue;
+            return defaultValue;
         }
     }
 
@@ -339,22 +348,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return List
      */
     public List getList(K key) {
-        return this.getList(key, (List) null);
+        return this.getList(key, null);
     }
 
     /**
      * getList.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return List
      */
-    public List getList(K key, List defauleValue) {
+    public List getList(K key, List defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof List ? (List) obj : defauleValue;
+            return obj instanceof List ? (List) obj : defaultValue;
         }
     }
 
@@ -365,22 +374,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return ArrayList
      */
     public ArrayList getArrayList(K key) {
-        return this.getArrayList(key, (ArrayList) null);
+        return this.getArrayList(key, null);
     }
 
     /**
      * getArrayList.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return ArrayList
      */
-    public ArrayList getArrayList(K key, ArrayList defauleValue) {
+    public ArrayList getArrayList(K key, ArrayList defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof ArrayList ? (ArrayList) obj : defauleValue;
+            return obj instanceof ArrayList ? (ArrayList) obj : defaultValue;
         }
     }
 
@@ -391,22 +400,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return LinkedList
      */
     public LinkedList getLinkedList(K key) {
-        return this.getLinkedList(key, (LinkedList) null);
+        return this.getLinkedList(key, null);
     }
 
     /**
      * getLinkedList.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return LinkedList
      */
-    public LinkedList getLinkedList(K key, LinkedList defauleValue) {
+    public LinkedList getLinkedList(K key, LinkedList defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof LinkedList ? (LinkedList) obj : defauleValue;
+            return obj instanceof LinkedList ? (LinkedList) obj : defaultValue;
         }
     }
 
@@ -417,22 +426,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return Set
      */
     public Set getSet(K key) {
-        return this.getSet(key, (Set) null);
+        return this.getSet(key, null);
     }
 
     /**
      * getSet.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return Set
      */
-    public Set getSet(K key, Set defauleValue) {
+    public Set getSet(K key, Set defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof Set ? (Set) obj : defauleValue;
+            return obj instanceof Set ? (Set) obj : defaultValue;
         }
     }
 
@@ -443,22 +452,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return HashSet
      */
     public HashSet getHashSet(K key) {
-        return this.getHashSet(key, (HashSet) null);
+        return this.getHashSet(key, null);
     }
 
     /**
      * getHashSet.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return HashSet
      */
-    public HashSet getHashSet(K key, HashSet defauleValue) {
+    public HashSet getHashSet(K key, HashSet defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof HashSet ? (HashSet) obj : defauleValue;
+            return obj instanceof HashSet ? (HashSet) obj : defaultValue;
         }
     }
 
@@ -469,22 +478,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return TreeSet
      */
     public TreeSet getTreeSet(K key) {
-        return this.getTreeSet(key, (TreeSet) null);
+        return this.getTreeSet(key, null);
     }
 
     /**
      * getTreeSet.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return TreeSet
      */
-    public TreeSet getTreeSet(K key, TreeSet defauleValue) {
+    public TreeSet getTreeSet(K key, TreeSet defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof TreeSet ? (TreeSet) obj : defauleValue;
+            return obj instanceof TreeSet ? (TreeSet) obj : defaultValue;
         }
     }
 
@@ -495,22 +504,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return LinkedHashSet
      */
     public LinkedHashSet getLinkedHashSet(K key) {
-        return this.getLinkedHashSet(key, (LinkedHashSet) null);
+        return this.getLinkedHashSet(key, null);
     }
 
     /**
      * getLinkedHashSet.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return LinkedHashSet
      */
-    public LinkedHashSet getLinkedHashSet(K key, LinkedHashSet defauleValue) {
+    public LinkedHashSet getLinkedHashSet(K key, LinkedHashSet defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof LinkedHashSet ? (LinkedHashSet) obj : defauleValue;
+            return obj instanceof LinkedHashSet ? (LinkedHashSet) obj : defaultValue;
         }
     }
 
@@ -529,24 +538,24 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * getString.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return String
      */
-    public String getString(K key, String defauleValue) {
+    public String getString(K key, String defaultValue) {
         Object object = this.get(key);
-        return object == null ? defauleValue : object.toString();
+        return object == null ? defaultValue : object.toString();
     }
 
     /**
      * getObject.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return Object
      */
-    public Object getObject(Object key, Object defauleValue) {
+    public Object getObject(Object key, Object defaultValue) {
         Object object = this.get(key);
-        return object == null ? defauleValue : object;
+        return object == null ? defaultValue : object;
     }
 
     /**
@@ -556,7 +565,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return Object
      */
     public Object getObject(Object key) {
-        return this.getObject(key, (Object) null);
+        return this.getObject(key, null);
     }
 
     /**
@@ -635,7 +644,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return byte[]
      */
     public byte[] getByte(K key) {
-        return this.getByte(key, (byte[]) null);
+        return this.getByte(key, null);
     }
 
     /**
@@ -786,9 +795,9 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
             if (NumberUtils.isNumber(obj.toString())) {
                 return NumberUtils.createInteger(obj.toString()) >= 1;
             } else if (!((String) obj).equalsIgnoreCase("Y") && !((String) obj).equalsIgnoreCase("TRUE")
-                    && !((String) obj).equalsIgnoreCase("YES") && !((String) obj).equals("是")) {
+                    && !((String) obj).equalsIgnoreCase("YES") && !obj.equals("是")) {
                 return !((String) obj).equalsIgnoreCase("N") && !((String) obj).equalsIgnoreCase("FALSE")
-                        && !((String) obj).equalsIgnoreCase("NO") && !((String) obj).equals("否") ? BooleanUtils
+                        && !((String) obj).equalsIgnoreCase("NO") && !obj.equals("否") ? BooleanUtils
                         .toBooleanObject(obj.toString()) : false;
             } else {
                 return true;
@@ -807,7 +816,7 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return Date
      */
     public Date getDate(K key) {
-        return this.getDate(key, (Date) null);
+        return this.getDate(key, null);
     }
 
     /**
@@ -833,22 +842,22 @@ public class MapEntry<K, V> extends HashMap<K, V> implements IMapEntry<K, V> {
      * @return String[]
      */
     public String[] getArray(K key) {
-        return this.getArray(key, (String[]) null);
+        return this.getArray(key, null);
     }
 
     /**
      * getArray.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return String[]
      */
-    public String[] getArray(K key, String[] defauleValue) {
+    public String[] getArray(K key, String[] defaultValue) {
         Object object = this.get(key);
         if (object == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return object instanceof String[] ? (String[]) object : defauleValue;
+            return object instanceof String[] ? (String[]) object : defaultValue;
         }
     }
 }

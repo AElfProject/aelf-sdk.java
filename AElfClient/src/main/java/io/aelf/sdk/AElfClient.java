@@ -7,7 +7,7 @@ import io.aelf.network.RetrofitFactory;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.schemas.*;
-import io.aelf.sdkv2.AElfClientV2;
+import io.aelf.internal.sdkv2.AElfClientV2;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.AElfUrl;
@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * @deprecated - This class is deprecated, and we recommend you to use the
  * {@link AElfClientV2}
- * * which contains both async APIs and common APIs.
+ * which contains both internal APIs and common APIs.
  */
 @Deprecated
 @SuppressWarnings({"UnusedReturnValue", "unused", "DeprecatedIsStillUsed"})
@@ -82,7 +82,7 @@ public class AElfClient {
      */
     public AElfClient(@Nullable String url, @Nullable String version, @Nullable String username,
                       @Nullable String password) {
-        this(url, version, username,password,null);
+        this(url, version, username, password, null);
     }
 
     /**

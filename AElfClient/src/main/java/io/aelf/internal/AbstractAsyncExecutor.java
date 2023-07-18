@@ -1,9 +1,9 @@
-package io.aelf.async;
+package io.aelf.internal;
 
 import io.aelf.response.ResultCode;
 import io.aelf.utils.AElfException;
 
-// Its subClass will determine how to deal with the async calls
+// Its subClass will determine how to deal with the internal calls
 public abstract class AbstractAsyncExecutor {
     public <T> void enqueueNewRequest(AsyncCommand<T> command) {
         this.executeRequest(command);

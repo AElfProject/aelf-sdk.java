@@ -1,6 +1,6 @@
 package io.aelf.sdk;
 
-import io.aelf.async.global.TestParams;
+import io.aelf.internal.global.TestParams;
 import io.aelf.schemas.AddPeerInput;
 import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;

@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.StringWriter;
 
+@SuppressWarnings({"deprecation", "unchecked"})
 public final class JsonUtil {
 
   private static final ObjectMapper MAPPER = new ObjectMapper();

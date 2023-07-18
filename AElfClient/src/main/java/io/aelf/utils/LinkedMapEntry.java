@@ -22,6 +22,16 @@ import java.util.TreeSet;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+/**
+ * ## Deprecated ##
+ * This class contains code that leaks generic constraints,
+ * which may result in the wrong type cast.
+ * <p>
+ * DO NOT USE IT in your new code by now, we are trying to
+ * replace it with its generic version in the future.
+ */
+@SuppressWarnings({"rawtypes", "unchecked", "unused"})
+@Deprecated
 public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
         IMapEntry<K, V> {
 
@@ -53,18 +63,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getFile.
      */
     public File getFile(K key) {
-        return this.getFile(key, (File) null);
+        return this.getFile(key, null);
     }
 
     /**
      * getFile.
      */
-    public File getFile(K key, File defauleValue) {
+    public File getFile(K key, File defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof File ? (File) obj : defauleValue;
+            return obj instanceof File ? (File) obj : defaultValue;
         }
     }
 
@@ -72,18 +82,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getInputStream.
      */
     public InputStream getInputStream(K key) {
-        return this.getInputStream(key, (InputStream) null);
+        return this.getInputStream(key, null);
     }
 
     /**
      * getInputStream.
      */
-    public InputStream getInputStream(K key, InputStream defauleValue) {
+    public InputStream getInputStream(K key, InputStream defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof InputStream ? (InputStream) obj : defauleValue;
+            return obj instanceof InputStream ? (InputStream) obj : defaultValue;
         }
     }
 
@@ -91,18 +101,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getOutputStream.
      */
     public OutputStream getOutputStream(K key) {
-        return this.getOutputStream(key, (OutputStream) null);
+        return this.getOutputStream(key, null);
     }
 
     /**
      * getOutputStream.
      */
-    public OutputStream getOutputStream(K key, OutputStream defauleValue) {
+    public OutputStream getOutputStream(K key, OutputStream defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof OutputStream ? (OutputStream) obj : defauleValue;
+            return obj instanceof OutputStream ? (OutputStream) obj : defaultValue;
         }
     }
 
@@ -110,18 +120,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getCollection.
      */
     public Collection getCollection(K key) {
-        return this.getCollection(key, (Collection) null);
+        return this.getCollection(key, null);
     }
 
     /**
      * getCollection.
      */
-    public Collection getCollection(K key, Collection defauleValue) {
+    public Collection getCollection(K key, Collection defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof Collection ? (Collection) obj : defauleValue;
+            return obj instanceof Collection ? (Collection) obj : defaultValue;
         }
     }
 
@@ -129,18 +139,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getMap.
      */
     public Map getMap(K key) {
-        return this.getMap(key, (Map) null);
+        return this.getMap(key, null);
     }
 
     /**
      * getMap.
      */
-    public Map getMap(K key, Map defauleValue) {
+    public Map getMap(K key, Map defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof Map ? (Map) obj : defauleValue;
+            return obj instanceof Map ? (Map) obj : defaultValue;
         }
     }
 
@@ -148,16 +158,16 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getHashMap.
      */
     public HashMap getHashMap(K key) {
-        return this.getHashMap(key, (HashMap) null);
+        return this.getHashMap(key, null);
     }
 
     /**
      * getHashMap.
      */
-    public HashMap getHashMap(K key, HashMap defauleValue) {
+    public HashMap getHashMap(K key, HashMap defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else if (obj instanceof HashMap) {
             return (HashMap) obj;
         } else if (obj instanceof Map) {
@@ -165,7 +175,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
             map.putAll((Map) obj);
             return map;
         } else {
-            return defauleValue;
+            return defaultValue;
         }
     }
 
@@ -173,18 +183,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getTreeMap.
      */
     public TreeMap getTreeMap(K key) {
-        return this.getTreeMap(key, (TreeMap) null);
+        return this.getTreeMap(key, null);
     }
 
     /**
      * getTreeMap.
      */
-    public TreeMap getTreeMap(K key, TreeMap defauleValue) {
+    public TreeMap getTreeMap(K key, TreeMap defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof TreeMap ? (TreeMap) obj : defauleValue;
+            return obj instanceof TreeMap ? (TreeMap) obj : defaultValue;
         }
     }
 
@@ -192,16 +202,16 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getLinkedHashMap.
      */
     public LinkedHashMap getLinkedHashMap(K key) {
-        return this.getLinkedHashMap(key, (LinkedHashMap) null);
+        return this.getLinkedHashMap(key, null);
     }
 
     /**
      * getLinkedHashMap.
      */
-    public LinkedHashMap getLinkedHashMap(K key, LinkedHashMap defauleValue) {
+    public LinkedHashMap getLinkedHashMap(K key, LinkedHashMap defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else if (obj instanceof LinkedHashMap) {
             return (LinkedHashMap) obj;
         } else if (obj instanceof Map) {
@@ -209,7 +219,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
             map.putAll((Map) obj);
             return map;
         } else {
-            return defauleValue;
+            return defaultValue;
         }
     }
 
@@ -217,16 +227,16 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getMapEntry.
      */
     public MapEntry getMapEntry(K key) {
-        return this.getMapEntry(key, (MapEntry) null);
+        return this.getMapEntry(key, null);
     }
 
     /**
      * getMapEntry.
      */
-    public MapEntry getMapEntry(K key, MapEntry defauleValue) {
+    public MapEntry getMapEntry(K key, MapEntry defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else if (obj instanceof MapEntry) {
             return (MapEntry) obj;
         } else if (obj instanceof Map) {
@@ -234,7 +244,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
             map.putAll((Map) obj);
             return map;
         } else {
-            return defauleValue;
+            return defaultValue;
         }
     }
 
@@ -242,16 +252,16 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getLinkedMapEntry.
      */
     public LinkedMapEntry getLinkedMapEntry(K key) {
-        return this.getLinkedMapEntry(key, (LinkedMapEntry) null);
+        return this.getLinkedMapEntry(key, null);
     }
 
     /**
      * getLinkedMapEntry.
      */
-    public LinkedMapEntry getLinkedMapEntry(K key, LinkedMapEntry defauleValue) {
+    public LinkedMapEntry getLinkedMapEntry(K key, LinkedMapEntry defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else if (obj instanceof LinkedMapEntry) {
             return (LinkedMapEntry) obj;
         } else if (obj instanceof Map) {
@@ -259,7 +269,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
             map.putAll((Map) obj);
             return map;
         } else {
-            return defauleValue;
+            return defaultValue;
         }
     }
 
@@ -267,18 +277,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getList.
      */
     public List getList(K key) {
-        return this.getList(key, (List) null);
+        return this.getList(key, null);
     }
 
     /**
      * getList.
      */
-    public List getList(K key, List defauleValue) {
+    public List getList(K key, List defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof List ? (List) obj : defauleValue;
+            return obj instanceof List ? (List) obj : defaultValue;
         }
     }
 
@@ -286,18 +296,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getArrayList.
      */
     public ArrayList getArrayList(K key) {
-        return this.getArrayList(key, (ArrayList) null);
+        return this.getArrayList(key, null);
     }
 
     /**
      * getArrayList.
      */
-    public ArrayList getArrayList(K key, ArrayList defauleValue) {
+    public ArrayList getArrayList(K key, ArrayList defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof ArrayList ? (ArrayList) obj : defauleValue;
+            return obj instanceof ArrayList ? (ArrayList) obj : defaultValue;
         }
     }
 
@@ -305,18 +315,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getLinkedList.
      */
     public LinkedList getLinkedList(K key) {
-        return this.getLinkedList(key, (LinkedList) null);
+        return this.getLinkedList(key, null);
     }
 
     /**
      * getLinkedList.
      */
-    public LinkedList getLinkedList(K key, LinkedList defauleValue) {
+    public LinkedList getLinkedList(K key, LinkedList defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof LinkedList ? (LinkedList) obj : defauleValue;
+            return obj instanceof LinkedList ? (LinkedList) obj : defaultValue;
         }
     }
 
@@ -324,18 +334,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getSet.
      */
     public Set getSet(K key) {
-        return this.getSet(key, (Set) null);
+        return this.getSet(key, null);
     }
 
     /**
      * getSet.
      */
-    public Set getSet(K key, Set defauleValue) {
+    public Set getSet(K key, Set defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof Set ? (Set) obj : defauleValue;
+            return obj instanceof Set ? (Set) obj : defaultValue;
         }
     }
 
@@ -343,18 +353,18 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getHashSet.
      */
     public HashSet getHashSet(K key) {
-        return this.getHashSet(key, (HashSet) null);
+        return this.getHashSet(key, null);
     }
 
     /**
      * getHashSet.
      */
-    public HashSet getHashSet(K key, HashSet defauleValue) {
+    public HashSet getHashSet(K key, HashSet defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof HashSet ? (HashSet) obj : defauleValue;
+            return obj instanceof HashSet ? (HashSet) obj : defaultValue;
         }
     }
 
@@ -365,22 +375,22 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * @return TreeSet
      */
     public TreeSet getTreeSet(K key) {
-        return this.getTreeSet(key, (TreeSet) null);
+        return this.getTreeSet(key, null);
     }
 
     /**
      * getTreeSet.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return TreeSet
      */
-    public TreeSet getTreeSet(K key, TreeSet defauleValue) {
+    public TreeSet getTreeSet(K key, TreeSet defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof TreeSet ? (TreeSet) obj : defauleValue;
+            return obj instanceof TreeSet ? (TreeSet) obj : defaultValue;
         }
     }
 
@@ -391,22 +401,22 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * @return LinkedHashSet
      */
     public LinkedHashSet getLinkedHashSet(K key) {
-        return this.getLinkedHashSet(key, (LinkedHashSet) null);
+        return this.getLinkedHashSet(key, null);
     }
 
     /**
      * getLinkedHashSet.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return LinkedHashSet
      */
-    public LinkedHashSet getLinkedHashSet(K key, LinkedHashSet defauleValue) {
+    public LinkedHashSet getLinkedHashSet(K key, LinkedHashSet defaultValue) {
         Object obj = this.get(key);
         if (obj == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return obj instanceof LinkedHashSet ? (LinkedHashSet) obj : defauleValue;
+            return obj instanceof LinkedHashSet ? (LinkedHashSet) obj : defaultValue;
         }
     }
 
@@ -414,12 +424,12 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getString.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return string
      */
-    public String getString(K key, String defauleValue) {
+    public String getString(K key, String defaultValue) {
         Object object = this.get(key);
-        return object == null ? defauleValue : object.toString();
+        return object == null ? defaultValue : object.toString();
     }
 
     /**
@@ -437,12 +447,12 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * getObject.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return Object
      */
-    public Object getObject(Object key, Object defauleValue) {
+    public Object getObject(Object key, Object defaultValue) {
         Object object = this.get(key);
-        return object == null ? defauleValue : object;
+        return object == null ? defaultValue : object;
     }
 
     /**
@@ -452,7 +462,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * @return Object
      */
     public Object getObject(Object key) {
-        return this.getObject(key, (Object) null);
+        return this.getObject(key, null);
     }
 
     /**
@@ -531,7 +541,7 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * @return byte[]
      */
     public byte[] getByte(K key) {
-        return this.getByte(key, (byte[]) null);
+        return this.getByte(key, null);
     }
 
     /**
@@ -709,9 +719,9 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
             if (NumberUtils.isNumber(obj.toString())) {
                 return NumberUtils.createInteger(obj.toString()) >= 1;
             } else if (!((String) obj).equalsIgnoreCase("Y") && !((String) obj).equalsIgnoreCase("TRUE")
-                    && !((String) obj).equalsIgnoreCase("YES") && !((String) obj).equals("是")) {
+                    && !((String) obj).equalsIgnoreCase("YES") && !obj.equals("是")) {
                 return !((String) obj).equalsIgnoreCase("N") && !((String) obj).equalsIgnoreCase("FALSE")
-                        && !((String) obj).equalsIgnoreCase("NO") && !((String) obj).equals("否") ? BooleanUtils
+                        && !((String) obj).equalsIgnoreCase("NO") && !obj.equals("否") ? BooleanUtils
                         .toBooleanObject(obj.toString()) : false;
             } else {
                 return true;
@@ -730,22 +740,22 @@ public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
      * @return String[]
      */
     public String[] getArray(K key) {
-        return this.getArray(key, (String[]) null);
+        return this.getArray(key, null);
     }
 
     /**
      * getArray.
      *
      * @param key          not blank
-     * @param defauleValue not blank
+     * @param defaultValue not blank
      * @return String[]
      */
-    public String[] getArray(K key, String[] defauleValue) {
+    public String[] getArray(K key, String[] defaultValue) {
         Object object = this.get(key);
         if (object == null) {
-            return defauleValue;
+            return defaultValue;
         } else {
-            return object instanceof String[] ? (String[]) object : defauleValue;
+            return object instanceof String[] ? (String[]) object : defaultValue;
         }
     }
 }

@@ -1,4 +1,4 @@
-package io.aelf.async.global;
+package io.aelf.internal.global;
 
 public interface TestParams {
     String CLIENT_HTTP_URL = "http://192.168.66.61:8000";

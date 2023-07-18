@@ -1,7 +1,7 @@
-package io.aelf.sdkv2;
+package io.aelf.internal.sdkv2;
 
-import io.aelf.async.AsyncCaller;
-import io.aelf.async.DefaultAsyncExecutor;
+import io.aelf.internal.AsyncCaller;
+import io.aelf.internal.DefaultAsyncExecutor;
 import retrofit2.Retrofit;
 
 import javax.annotation.Nullable;

@@ -19,6 +19,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+@SuppressWarnings({"rawtypes", "deprecation", "unused"})
 public interface IMapEntry<K, V> extends Map<K, V> {
 
     File getFile(K var1);

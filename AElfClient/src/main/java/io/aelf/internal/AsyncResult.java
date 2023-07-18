@@ -1,10 +1,10 @@
-package io.aelf.async;
+package io.aelf.internal;
 
 import io.aelf.response.ResultCode;
 
 import javax.annotation.Nullable;
 
-public class AsyncResult<R> {
+class AsyncResult<R> {
     public final int resultCode;
 
     @Nullable

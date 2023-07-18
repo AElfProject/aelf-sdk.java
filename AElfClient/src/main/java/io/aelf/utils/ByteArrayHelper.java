@@ -11,17 +11,17 @@ public class ByteArrayHelper {
      * @return The converted byte array results
      */
     public static byte[] hexToByteArray(String inHex) {
-        int hexlen = inHex.length();
+        int hexLen = inHex.length();
         byte[] result;
-        if (hexlen % 2 == 1) {
-            hexlen++;
-            result = new byte[(hexlen / 2)];
+        if (hexLen % 2 == 1) {
+            hexLen++;
+            result = new byte[(hexLen / 2)];
             inHex = "0" + inHex;
         } else {
-            result = new byte[(hexlen / 2)];
+            result = new byte[(hexLen / 2)];
         }
         int j = 0;
-        for (int i = 0; i < hexlen; i += 2) {
+        for (int i = 0; i < hexLen; i += 2) {
             result[j] = hexToByte(inHex.substring(i, i + 2));
             j++;
         }

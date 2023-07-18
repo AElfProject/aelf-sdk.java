@@ -65,15 +65,15 @@ public class Sha256 {
      */
     public static String getSha256ForBytes(byte[] bytes) {
         MessageDigest messageDigest;
-        String encodestr = "";
+        String encodedStr = "";
         try {
             messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(bytes);
-            encodestr = byte2Hex(messageDigest.digest());
+            encodedStr = byte2Hex(messageDigest.digest());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return encodestr;
+        return encodedStr;
     }
 
 

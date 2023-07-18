@@ -1,7 +1,7 @@
-package io.aelf.async;
+package io.aelf.internal;
 
 // It's an AsyncResult that only contains resultCode
-public final class VoidResult extends AsyncResult<Void> {
+final class VoidResult extends AsyncResult<Void> {
     public VoidResult(int resultCode) {
         super(resultCode);
     }

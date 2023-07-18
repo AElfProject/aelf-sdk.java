@@ -1,15 +1,16 @@
-package io.aelf.sdkv2;
+package io.aelf.internal.sdkv2;
 
-import io.aelf.async.*;
+import io.aelf.internal.*;
 import io.aelf.schemas.*;
 import io.aelf.sdk.AElfClient;
 import io.aelf.sdk.NetSdk;
-import io.aelf.utils.AElfException;
 import org.jetbrains.annotations.NotNull;
 import retrofit2.Retrofit;
 
 import javax.annotation.Nullable;
 import java.util.List;
+
+import static io.aelf.internal.AsyncCaller.convertFunction;
 
 @SuppressWarnings({"unused", "deprecation"})
 public abstract class AElfClientAsync extends AElfClient {
@@ -81,20 +82,6 @@ public abstract class AElfClientAsync extends AElfClient {
 
 
     protected abstract AsyncCaller getCaller();
-
-    // Some methods throw Exception rather than AElfException, this method will
-    // convert them.
-    @NotNull
-    @org.jetbrains.annotations.Contract(pure = true, value = "_ -> !null")
-    protected final <T> IAsyncFunction<T> convertFunction(@NotNull IFunctionPrimal<T> func) {
-        return () -> {
-            try {
-                return new AsyncResult<>(func.run());
-            } catch (Exception e) {
-                throw new AElfException(e);
-            }
-        };
-    }
 
     public void getBlockHeightAsync(ISuccessCallback<Long> callback, @Nullable IFailCallback<Void> onFail) {
         this.caller.asyncCall(convertFunction(this::getBlockHeight), callback, onFail);
