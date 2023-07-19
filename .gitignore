@@ -27,6 +27,9 @@ hs_err_pid*
 *.iml
 target
 .txt
-/AElfClient/src/main/java/io/aelf/protobuf/generated/
+
+# new-generated-protobuf-java-class file should not be added to git
+/AElfClient/src/main/java/io/aelf/protobuf/generated/*.java
 /aelf/
 /out/artifacts/aelf_sdk_jar/
+/wget-log

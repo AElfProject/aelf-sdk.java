@@ -18,701 +18,744 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+/**
+ * ## Deprecated ##
+ * This class contains code that leaks generic constraints,
+ * which may result in the wrong type cast.
+ * <p>
+ * DO NOT USE IT in your new code by now, we are trying to
+ * replace it with its generic version in the future.
+ */
+@SuppressWarnings({"rawtypes", "unchecked", "unused"})
+@Deprecated
 public class LinkedMapEntry<K, V> extends LinkedHashMap<K, V> implements
         IMapEntry<K, V> {
 
-  /**
-   * LinkedMapEntry constructor.
-   */
-  public LinkedMapEntry() {
-  }
-
-  /**
-   * LinkedMapEntry constructor.
-   *
-   * @param size less zero
-   */
-  public LinkedMapEntry(int size) {
-    super(size);
-  }
-
-  /**
-   * LinkedMapEntry constructor.
-   *
-   * @param map not null
-   */
-  public LinkedMapEntry(Map map) {
-    super(map);
-  }
-
-  /**
-   * getFile.
-   */
-  public File getFile(K key) {
-    return this.getFile(key, (File) null);
-  }
-
-  /**
-   * getFile.
-   */
-  public File getFile(K key, File defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof File ? (File) obj : defauleValue;
+    /**
+     * LinkedMapEntry constructor.
+     */
+    public LinkedMapEntry() {
     }
-  }
 
-  /**
-   * getInputStream.
-   */
-  public InputStream getInputStream(K key) {
-    return this.getInputStream(key, (InputStream) null);
-  }
-
-  /**
-   * getInputStream.
-   */
-  public InputStream getInputStream(K key, InputStream defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof InputStream ? (InputStream) obj : defauleValue;
+    /**
+     * LinkedMapEntry constructor.
+     *
+     * @param size less zero
+     */
+    public LinkedMapEntry(int size) {
+        super(size);
     }
-  }
 
-  /**
-   * getOutputStream.
-   */
-  public OutputStream getOutputStream(K key) {
-    return this.getOutputStream(key, (OutputStream) null);
-  }
-
-  /**
-   * getOutputStream.
-   */
-  public OutputStream getOutputStream(K key, OutputStream defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof OutputStream ? (OutputStream) obj : defauleValue;
+    /**
+     * LinkedMapEntry constructor.
+     *
+     * @param map not null
+     */
+    public LinkedMapEntry(Map map) {
+        super(map);
     }
-  }
 
-  /**
-   * getCollection.
-   */
-  public Collection getCollection(K key) {
-    return this.getCollection(key, (Collection) null);
-  }
-
-  /**
-   * getCollection.
-   */
-  public Collection getCollection(K key, Collection defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof Collection ? (Collection) obj : defauleValue;
+    /**
+     * getFile.
+     */
+    public File getFile(K key) {
+        return this.getFile(key, null);
     }
-  }
 
-  /**
-   * getMap.
-   */
-  public Map getMap(K key) {
-    return this.getMap(key, (Map) null);
-  }
-
-  /**
-   * getMap.
-   */
-  public Map getMap(K key, Map defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof Map ? (Map) obj : defauleValue;
+    /**
+     * getFile.
+     */
+    public File getFile(K key, File defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof File ? (File) obj : defaultValue;
+        }
     }
-  }
 
-  /**
-   * getHashMap.
-   */
-  public HashMap getHashMap(K key) {
-    return this.getHashMap(key, (HashMap) null);
-  }
-
-  /**
-   * getHashMap.
-   */
-  public HashMap getHashMap(K key, HashMap defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else if (obj instanceof HashMap) {
-      return (HashMap) obj;
-    } else if (obj instanceof Map) {
-      MapEntry map = Maps.newMapEntry();
-      map.putAll((Map) obj);
-      return map;
-    } else {
-      return defauleValue;
+    /**
+     * getInputStream.
+     */
+    public InputStream getInputStream(K key) {
+        return this.getInputStream(key, null);
     }
-  }
 
-  /**
-   * getTreeMap.
-   */
-  public TreeMap getTreeMap(K key) {
-    return this.getTreeMap(key, (TreeMap) null);
-  }
-
-  /**
-   * getTreeMap.
-   */
-  public TreeMap getTreeMap(K key, TreeMap defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof TreeMap ? (TreeMap) obj : defauleValue;
+    /**
+     * getInputStream.
+     */
+    public InputStream getInputStream(K key, InputStream defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof InputStream ? (InputStream) obj : defaultValue;
+        }
     }
-  }
 
-  /**
-   * getLinkedHashMap.
-   */
-  public LinkedHashMap getLinkedHashMap(K key) {
-    return this.getLinkedHashMap(key, (LinkedHashMap) null);
-  }
-
-  /**
-   * getLinkedHashMap.
-   */
-  public LinkedHashMap getLinkedHashMap(K key, LinkedHashMap defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else if (obj instanceof LinkedHashMap) {
-      return (LinkedHashMap) obj;
-    } else if (obj instanceof Map) {
-      LinkedHashMap map = Maps.newLinkedMapEntry();
-      map.putAll((Map) obj);
-      return map;
-    } else {
-      return defauleValue;
+    /**
+     * getOutputStream.
+     */
+    public OutputStream getOutputStream(K key) {
+        return this.getOutputStream(key, null);
     }
-  }
 
-  /**
-   * getMapEntry.
-   */
-  public MapEntry getMapEntry(K key) {
-    return this.getMapEntry(key, (MapEntry) null);
-  }
-
-  /**
-   * getMapEntry.
-   */
-  public MapEntry getMapEntry(K key, MapEntry defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else if (obj instanceof MapEntry) {
-      return (MapEntry) obj;
-    } else if (obj instanceof Map) {
-      MapEntry map = Maps.newMapEntry();
-      map.putAll((Map) obj);
-      return map;
-    } else {
-      return defauleValue;
+    /**
+     * getOutputStream.
+     */
+    public OutputStream getOutputStream(K key, OutputStream defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof OutputStream ? (OutputStream) obj : defaultValue;
+        }
     }
-  }
 
-  /**
-   * getLinkedMapEntry.
-   */
-  public LinkedMapEntry getLinkedMapEntry(K key) {
-    return this.getLinkedMapEntry(key, (LinkedMapEntry) null);
-  }
-
-  /**
-   * getLinkedMapEntry.
-   */
-  public LinkedMapEntry getLinkedMapEntry(K key, LinkedMapEntry defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else if (obj instanceof LinkedMapEntry) {
-      return (LinkedMapEntry) obj;
-    } else if (obj instanceof Map) {
-      LinkedMapEntry map = Maps.newLinkedMapEntry();
-      map.putAll((Map) obj);
-      return map;
-    } else {
-      return defauleValue;
+    /**
+     * getCollection.
+     */
+    public Collection getCollection(K key) {
+        return this.getCollection(key, null);
     }
-  }
 
-  /**
-   * getList.
-   */
-  public List getList(K key) {
-    return this.getList(key, (List) null);
-  }
-
-  /**
-   * getList.
-   */
-  public List getList(K key, List defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof List ? (List) obj : defauleValue;
+    /**
+     * getCollection.
+     */
+    public Collection getCollection(K key, Collection defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof Collection ? (Collection) obj : defaultValue;
+        }
     }
-  }
 
-  /**
-   * getArrayList.
-   */
-  public ArrayList getArrayList(K key) {
-    return this.getArrayList(key, (ArrayList) null);
-  }
-
-  /**
-   * getArrayList.
-   */
-  public ArrayList getArrayList(K key, ArrayList defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof ArrayList ? (ArrayList) obj : defauleValue;
+    /**
+     * getMap.
+     */
+    public Map getMap(K key) {
+        return this.getMap(key, null);
     }
-  }
 
-  /**
-   * getLinkedList.
-   */
-  public LinkedList getLinkedList(K key) {
-    return this.getLinkedList(key, (LinkedList) null);
-  }
-
-  /**
-   * getLinkedList.
-   */
-  public LinkedList getLinkedList(K key, LinkedList defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof LinkedList ? (LinkedList) obj : defauleValue;
+    /**
+     * getMap.
+     */
+    public Map getMap(K key, Map defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof Map ? (Map) obj : defaultValue;
+        }
     }
-  }
 
-  /**
-   * getSet.
-   */
-  public Set getSet(K key) {
-    return this.getSet(key, (Set) null);
-  }
-
-  /**
-   * getSet.
-   */
-  public Set getSet(K key, Set defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof Set ? (Set) obj : defauleValue;
+    /**
+     * getHashMap.
+     */
+    public HashMap getHashMap(K key) {
+        return this.getHashMap(key, null);
     }
-  }
 
-  /**
-   * getHashSet.
-   */
-  public HashSet getHashSet(K key) {
-    return this.getHashSet(key, (HashSet) null);
-  }
-
-  /**
-   * getHashSet.
-   */
-  public HashSet getHashSet(K key, HashSet defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof HashSet ? (HashSet) obj : defauleValue;
+    /**
+     * getHashMap.
+     */
+    public HashMap getHashMap(K key, HashMap defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else if (obj instanceof HashMap) {
+            return (HashMap) obj;
+        } else if (obj instanceof Map) {
+            MapEntry map = Maps.newMapEntry();
+            map.putAll((Map) obj);
+            return map;
+        } else {
+            return defaultValue;
+        }
     }
-  }
 
-  /**
-   * getTreeSet.
-   * @param key not blank
-   * @return TreeSet
-   */
-  public TreeSet getTreeSet(K key) {
-    return this.getTreeSet(key, (TreeSet) null);
-  }
-
-  /**
-   * getTreeSet.
-   * @param key not blank
-   * @param defauleValue not blank
-   * @return TreeSet
-   */
-  public TreeSet getTreeSet(K key, TreeSet defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof TreeSet ? (TreeSet) obj : defauleValue;
+    /**
+     * getTreeMap.
+     */
+    public TreeMap getTreeMap(K key) {
+        return this.getTreeMap(key, null);
     }
-  }
 
-  /**
-   * getLinkedHashSet.
-   * @param key not blank
-   * @return LinkedHashSet
-   */
-  public LinkedHashSet getLinkedHashSet(K key) {
-    return this.getLinkedHashSet(key, (LinkedHashSet) null);
-  }
-
-  /**
-   * getLinkedHashSet.
-   * @param key not blank
-   * @param defauleValue not blank
-   * @return LinkedHashSet
-   */
-  public LinkedHashSet getLinkedHashSet(K key, LinkedHashSet defauleValue) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return defauleValue;
-    } else {
-      return obj instanceof LinkedHashSet ? (LinkedHashSet) obj : defauleValue;
+    /**
+     * getTreeMap.
+     */
+    public TreeMap getTreeMap(K key, TreeMap defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof TreeMap ? (TreeMap) obj : defaultValue;
+        }
     }
-  }
 
-  /**
-   * getString.
-   * @param key not blank
-   * @param defauleValue not blank
-   * @return string
-   */
-  public String getString(K key, String defauleValue) {
-    Object object = this.get(key);
-    return object == null ? defauleValue : object.toString();
-  }
-
-  /**
-   * getString.
-   * @param key not blank
-   * @return String
-   */
-  public String getString(K key) {
-    Object object = this.get(key);
-    return object == null ? null : object.toString();
-  }
-
-  /**
-   * getObject.
-   * @param key not blank
-   * @param defauleValue not blank
-   * @return Object
-   */
-  public Object getObject(Object key, Object defauleValue) {
-    Object object = this.get(key);
-    return object == null ? defauleValue : object;
-  }
-
-  /**
-   * getObject.
-   * @param key not blank
-   * @return Object
-   */
-  public Object getObject(Object key) {
-    return this.getObject(key, (Object) null);
-  }
-
-  /**
-   * getNumber.
-   * @param key not blank
-   * @return Number
-   */
-  protected Number getNumber(K key) {
-    return this.getNumber(key, 0);
-  }
-
-  /**
-   * getNumber.
-   * @param key not blank
-   * @param num not blank
-   * @return Number
-   */
-  protected Number getNumber(K key, Number num) {
-    Object object = this.get(key);
-    if (object == null) {
-      return num;
-    } else {
-      return NumberUtils.isNumber(object.toString()) ? NumberUtils.createNumber(object.toString())
-          : num;
+    /**
+     * getLinkedHashMap.
+     */
+    public LinkedHashMap getLinkedHashMap(K key) {
+        return this.getLinkedHashMap(key, null);
     }
-  }
 
-  /**
-   * getBigDecimal.
-   * @param key not blank
-   * @return BigDecimal
-   */
-  public BigDecimal getBigDecimal(K key) {
-    return this.getBigDecimal(key, 0);
-  }
-
-  /**
-   * getBigDecimal.
-   * @param key not blank
-   * @param num not blank
-   * @return BigDecimal
-   */
-  public BigDecimal getBigDecimal(K key, Number num) {
-    return new BigDecimal(this.getNumber(key, num).toString());
-  }
-
-  /**
-   * getBigInteger.
-   * @param key not blank
-   * @return BigInteger
-   */
-  public BigInteger getBigInteger(K key) {
-    return this.getBigInteger(key, 0);
-  }
-
-  /**
-   * getBigInteger.
-   * @param key not blank
-   * @param num not blank
-   * @return BigInteger
-   */
-  public BigInteger getBigInteger(K key, Number num) {
-    return new BigInteger(this.getNumber(key, num).toString());
-  }
-
-  /**
-   * getByte.
-   * @param key not blank
-   * @return byte[]
-   */
-  public byte[] getByte(K key) {
-    return this.getByte(key, (byte[]) null);
-  }
-
-  /**
-   * getByte.
-   * @param key not blank
-   * @param num not blank
-   * @return byte[]
-   */
-  public byte[] getByte(K key, byte[] num) {
-    Object object = this.get(key);
-    if (object == null) {
-      return num;
-    } else {
-      return object instanceof byte[] ? (byte[]) object : num;
+    /**
+     * getLinkedHashMap.
+     */
+    public LinkedHashMap getLinkedHashMap(K key, LinkedHashMap defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else if (obj instanceof LinkedHashMap) {
+            return (LinkedHashMap) obj;
+        } else if (obj instanceof Map) {
+            LinkedHashMap map = Maps.newLinkedMapEntry();
+            map.putAll((Map) obj);
+            return map;
+        } else {
+            return defaultValue;
+        }
     }
-  }
 
-  /**
-   * getShort.
-   * @param key not blank
-   * @return Short
-   */
-  public Short getShort(K key) {
-    return this.getShort(key, 0);
-  }
-
-  /**
-   * getShort.
-   * @param key not blank
-   * @param num not blank
-   * @return Short
-   */
-  public Short getShort(K key, Number num) {
-    return this.getNumber(key, num).shortValue();
-  }
-
-  /**
-   * getInteger.
-   * @param key not blank
-   * @return Integer
-   */
-  public Integer getInteger(K key) {
-    return this.getInteger(key, 0);
-  }
-
-  /**
-   * getInteger.
-   * @param key not blank
-   * @param num not blank
-   * @return Integer
-   */
-  public Integer getInteger(K key, Number num) {
-    return this.getNumber(key, num).intValue();
-  }
-
-  /**
-   * getLong.
-   * @param key not blank
-   * @return Long
-   */
-  public Long getLong(K key) {
-    return this.getLong(key, 0);
-  }
-
-  /**
-   * getLong.
-   * @param key not blank
-   * @param num not blank
-   * @return Long
-   */
-  public Long getLong(K key, Number num) {
-    return this.getNumber(key, num).longValue();
-  }
-
-  /**
-   * getDouble.
-   * @param key not blank
-   * @return Double
-   */
-  public Double getDouble(K key) {
-    return this.getDouble(key, 0);
-  }
-
-  /**
-   * getDouble.
-   * @param key not blank
-   * @param num not blank
-   * @return Double
-   */
-  public Double getDouble(K key, Number num) {
-    return this.getNumber(key, num).doubleValue();
-  }
-
-  /**
-   * getFloat.
-   * @param key not blank
-   * @return Float
-   */
-  public Float getFloat(K key) {
-    return this.getFloat(key, 0);
-  }
-
-  /**
-   * getFloat.
-   * @param key not blank
-   * @param num not blank
-   * @return Float
-   */
-  public Float getFloat(K key, Number num) {
-    return this.getNumber(key, num).floatValue();
-  }
-
-  /**
-   * getDate.
-   * @param key not blank
-   * @param date not blank
-   * @return Date
-   */
-  public Date getDate(K key, Date date) {
-    Object object = this.get(key);
-    if (object == null) {
-      return date;
-    } else {
-      return object instanceof Date ? (Date) object : date;
+    /**
+     * getMapEntry.
+     */
+    public MapEntry getMapEntry(K key) {
+        return this.getMapEntry(key, null);
     }
-  }
 
-  /**
-   * getDate.
-   * @param key not blank
-   * @return Date
-   */
-  @Override
-  public Date getDate(K key) {
-    return this.getDate(key, new Date(System.currentTimeMillis()));
-  }
-
-  /**
-   * getBoolean.
-   * @param key not blank
-   * @return Boolean
-   */
-  public Boolean getBoolean(K key) {
-    return this.getBoolean(key, Boolean.FALSE);
-  }
-
-  /**
-   * getBoolean.
-   * @param key not blank
-   * @param b not blank
-   * @return Boolean
-   */
-  public Boolean getBoolean(K key, Boolean b) {
-    Object obj = this.get(key);
-    if (obj == null) {
-      return b;
-    } else if (obj instanceof Boolean) {
-      return (Boolean) obj;
-    } else if (obj instanceof String) {
-      if (NumberUtils.isNumber(obj.toString())) {
-        return NumberUtils.createInteger(obj.toString()) >= 1 ? true : false;
-      } else if (!((String) obj).equalsIgnoreCase("Y") && !((String) obj).equalsIgnoreCase("TRUE")
-          && !((String) obj).equalsIgnoreCase("YES") && !((String) obj).equals("是")) {
-        return !((String) obj).equalsIgnoreCase("N") && !((String) obj).equalsIgnoreCase("FALSE")
-            && !((String) obj).equalsIgnoreCase("NO") && !((String) obj).equals("否") ? BooleanUtils
-            .toBooleanObject(obj.toString()) : false;
-      } else {
-        return true;
-      }
-    } else if (obj instanceof Number) {
-      return !obj.equals(1) && ((Number) obj).intValue() < 1 ? false : true;
-    } else {
-      return b;
+    /**
+     * getMapEntry.
+     */
+    public MapEntry getMapEntry(K key, MapEntry defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else if (obj instanceof MapEntry) {
+            return (MapEntry) obj;
+        } else if (obj instanceof Map) {
+            MapEntry map = Maps.newMapEntry();
+            map.putAll((Map) obj);
+            return map;
+        } else {
+            return defaultValue;
+        }
     }
-  }
 
-  /**
-   * getArray.
-   * @param key not blank
-   * @return String[]
-   */
-  public String[] getArray(K key) {
-    return this.getArray(key, (String[]) null);
-  }
-
-  /**
-   * getArray.
-   * @param key not blank
-   * @param defauleValue not blank
-   * @return String[]
-   */
-  public String[] getArray(K key, String[] defauleValue) {
-    Object object = this.get(key);
-    if (object == null) {
-      return defauleValue;
-    } else {
-      return object instanceof String[] ? (String[]) object : defauleValue;
+    /**
+     * getLinkedMapEntry.
+     */
+    public LinkedMapEntry getLinkedMapEntry(K key) {
+        return this.getLinkedMapEntry(key, null);
     }
-  }
+
+    /**
+     * getLinkedMapEntry.
+     */
+    public LinkedMapEntry getLinkedMapEntry(K key, LinkedMapEntry defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else if (obj instanceof LinkedMapEntry) {
+            return (LinkedMapEntry) obj;
+        } else if (obj instanceof Map) {
+            LinkedMapEntry map = Maps.newLinkedMapEntry();
+            map.putAll((Map) obj);
+            return map;
+        } else {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * getList.
+     */
+    public List getList(K key) {
+        return this.getList(key, null);
+    }
+
+    /**
+     * getList.
+     */
+    public List getList(K key, List defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof List ? (List) obj : defaultValue;
+        }
+    }
+
+    /**
+     * getArrayList.
+     */
+    public ArrayList getArrayList(K key) {
+        return this.getArrayList(key, null);
+    }
+
+    /**
+     * getArrayList.
+     */
+    public ArrayList getArrayList(K key, ArrayList defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof ArrayList ? (ArrayList) obj : defaultValue;
+        }
+    }
+
+    /**
+     * getLinkedList.
+     */
+    public LinkedList getLinkedList(K key) {
+        return this.getLinkedList(key, null);
+    }
+
+    /**
+     * getLinkedList.
+     */
+    public LinkedList getLinkedList(K key, LinkedList defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof LinkedList ? (LinkedList) obj : defaultValue;
+        }
+    }
+
+    /**
+     * getSet.
+     */
+    public Set getSet(K key) {
+        return this.getSet(key, null);
+    }
+
+    /**
+     * getSet.
+     */
+    public Set getSet(K key, Set defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof Set ? (Set) obj : defaultValue;
+        }
+    }
+
+    /**
+     * getHashSet.
+     */
+    public HashSet getHashSet(K key) {
+        return this.getHashSet(key, null);
+    }
+
+    /**
+     * getHashSet.
+     */
+    public HashSet getHashSet(K key, HashSet defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof HashSet ? (HashSet) obj : defaultValue;
+        }
+    }
+
+    /**
+     * getTreeSet.
+     *
+     * @param key not blank
+     * @return TreeSet
+     */
+    public TreeSet getTreeSet(K key) {
+        return this.getTreeSet(key, null);
+    }
+
+    /**
+     * getTreeSet.
+     *
+     * @param key          not blank
+     * @param defaultValue not blank
+     * @return TreeSet
+     */
+    public TreeSet getTreeSet(K key, TreeSet defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof TreeSet ? (TreeSet) obj : defaultValue;
+        }
+    }
+
+    /**
+     * getLinkedHashSet.
+     *
+     * @param key not blank
+     * @return LinkedHashSet
+     */
+    public LinkedHashSet getLinkedHashSet(K key) {
+        return this.getLinkedHashSet(key, null);
+    }
+
+    /**
+     * getLinkedHashSet.
+     *
+     * @param key          not blank
+     * @param defaultValue not blank
+     * @return LinkedHashSet
+     */
+    public LinkedHashSet getLinkedHashSet(K key, LinkedHashSet defaultValue) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return defaultValue;
+        } else {
+            return obj instanceof LinkedHashSet ? (LinkedHashSet) obj : defaultValue;
+        }
+    }
+
+    /**
+     * getString.
+     *
+     * @param key          not blank
+     * @param defaultValue not blank
+     * @return string
+     */
+    public String getString(K key, String defaultValue) {
+        Object object = this.get(key);
+        return object == null ? defaultValue : object.toString();
+    }
+
+    /**
+     * getString.
+     *
+     * @param key not blank
+     * @return String
+     */
+    public String getString(K key) {
+        Object object = this.get(key);
+        return object == null ? null : object.toString();
+    }
+
+    /**
+     * getObject.
+     *
+     * @param key          not blank
+     * @param defaultValue not blank
+     * @return Object
+     */
+    public Object getObject(Object key, Object defaultValue) {
+        Object object = this.get(key);
+        return object == null ? defaultValue : object;
+    }
+
+    /**
+     * getObject.
+     *
+     * @param key not blank
+     * @return Object
+     */
+    public Object getObject(Object key) {
+        return this.getObject(key, null);
+    }
+
+    /**
+     * getNumber.
+     *
+     * @param key not blank
+     * @return Number
+     */
+    protected Number getNumber(K key) {
+        return this.getNumber(key, 0);
+    }
+
+    /**
+     * getNumber.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return Number
+     */
+    protected Number getNumber(K key, Number num) {
+        Object object = this.get(key);
+        if (object == null) {
+            return num;
+        } else {
+            return NumberUtils.isNumber(object.toString()) ? NumberUtils.createNumber(object.toString())
+                    : num;
+        }
+    }
+
+    /**
+     * getBigDecimal.
+     *
+     * @param key not blank
+     * @return BigDecimal
+     */
+    public BigDecimal getBigDecimal(K key) {
+        return this.getBigDecimal(key, 0);
+    }
+
+    /**
+     * getBigDecimal.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return BigDecimal
+     */
+    public BigDecimal getBigDecimal(K key, Number num) {
+        return new BigDecimal(this.getNumber(key, num).toString());
+    }
+
+    /**
+     * getBigInteger.
+     *
+     * @param key not blank
+     * @return BigInteger
+     */
+    public BigInteger getBigInteger(K key) {
+        return this.getBigInteger(key, 0);
+    }
+
+    /**
+     * getBigInteger.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return BigInteger
+     */
+    public BigInteger getBigInteger(K key, Number num) {
+        return new BigInteger(this.getNumber(key, num).toString());
+    }
+
+    /**
+     * getByte.
+     *
+     * @param key not blank
+     * @return byte[]
+     */
+    public byte[] getByte(K key) {
+        return this.getByte(key, null);
+    }
+
+    /**
+     * getByte.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return byte[]
+     */
+    public byte[] getByte(K key, byte[] num) {
+        Object object = this.get(key);
+        if (object == null) {
+            return num;
+        } else {
+            return object instanceof byte[] ? (byte[]) object : num;
+        }
+    }
+
+    /**
+     * getShort.
+     *
+     * @param key not blank
+     * @return Short
+     */
+    public Short getShort(K key) {
+        return this.getShort(key, 0);
+    }
+
+    /**
+     * getShort.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return Short
+     */
+    public Short getShort(K key, Number num) {
+        return this.getNumber(key, num).shortValue();
+    }
+
+    /**
+     * getInteger.
+     *
+     * @param key not blank
+     * @return Integer
+     */
+    public Integer getInteger(K key) {
+        return this.getInteger(key, 0);
+    }
+
+    /**
+     * getInteger.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return Integer
+     */
+    public Integer getInteger(K key, Number num) {
+        return this.getNumber(key, num).intValue();
+    }
+
+    /**
+     * getLong.
+     *
+     * @param key not blank
+     * @return Long
+     */
+    public Long getLong(K key) {
+        return this.getLong(key, 0);
+    }
+
+    /**
+     * getLong.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return Long
+     */
+    public Long getLong(K key, Number num) {
+        return this.getNumber(key, num).longValue();
+    }
+
+    /**
+     * getDouble.
+     *
+     * @param key not blank
+     * @return Double
+     */
+    public Double getDouble(K key) {
+        return this.getDouble(key, 0);
+    }
+
+    /**
+     * getDouble.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return Double
+     */
+    public Double getDouble(K key, Number num) {
+        return this.getNumber(key, num).doubleValue();
+    }
+
+    /**
+     * getFloat.
+     *
+     * @param key not blank
+     * @return Float
+     */
+    public Float getFloat(K key) {
+        return this.getFloat(key, 0);
+    }
+
+    /**
+     * getFloat.
+     *
+     * @param key not blank
+     * @param num not blank
+     * @return Float
+     */
+    public Float getFloat(K key, Number num) {
+        return this.getNumber(key, num).floatValue();
+    }
+
+    /**
+     * getDate.
+     *
+     * @param key  not blank
+     * @param date not blank
+     * @return Date
+     */
+    public Date getDate(K key, Date date) {
+        Object object = this.get(key);
+        if (object == null) {
+            return date;
+        } else {
+            return object instanceof Date ? (Date) object : date;
+        }
+    }
+
+    /**
+     * getDate.
+     *
+     * @param key not blank
+     * @return Date
+     */
+    @Override
+    public Date getDate(K key) {
+        return this.getDate(key, new Date(System.currentTimeMillis()));
+    }
+
+    /**
+     * getBoolean.
+     *
+     * @param key not blank
+     * @return Boolean
+     */
+    public Boolean getBoolean(K key) {
+        return this.getBoolean(key, Boolean.FALSE);
+    }
+
+    /**
+     * getBoolean.
+     *
+     * @param key not blank
+     * @param b   not blank
+     * @return Boolean
+     */
+    public Boolean getBoolean(K key, Boolean b) {
+        Object obj = this.get(key);
+        if (obj == null) {
+            return b;
+        } else if (obj instanceof Boolean) {
+            return (Boolean) obj;
+        } else if (obj instanceof String) {
+            if (NumberUtils.isNumber(obj.toString())) {
+                return NumberUtils.createInteger(obj.toString()) >= 1;
+            } else if (!((String) obj).equalsIgnoreCase("Y") && !((String) obj).equalsIgnoreCase("TRUE")
+                    && !((String) obj).equalsIgnoreCase("YES") && !obj.equals("是")) {
+                return !((String) obj).equalsIgnoreCase("N") && !((String) obj).equalsIgnoreCase("FALSE")
+                        && !((String) obj).equalsIgnoreCase("NO") && !obj.equals("否") ? BooleanUtils
+                        .toBooleanObject(obj.toString()) : false;
+            } else {
+                return true;
+            }
+        } else if (obj instanceof Number) {
+            return obj.equals(1) || ((Number) obj).intValue() >= 1;
+        } else {
+            return b;
+        }
+    }
+
+    /**
+     * getArray.
+     *
+     * @param key not blank
+     * @return String[]
+     */
+    public String[] getArray(K key) {
+        return this.getArray(key, null);
+    }
+
+    /**
+     * getArray.
+     *
+     * @param key          not blank
+     * @param defaultValue not blank
+     * @return String[]
+     */
+    public String[] getArray(K key, String[] defaultValue) {
+        Object object = this.get(key);
+        if (object == null) {
+            return defaultValue;
+        } else {
+            return object instanceof String[] ? (String[]) object : defaultValue;
+        }
+    }
 }

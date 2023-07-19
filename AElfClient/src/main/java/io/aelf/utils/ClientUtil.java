@@ -1,8 +1,8 @@
 package io.aelf.utils;
 
 import io.aelf.sdk.AElfClient;
-import io.aelf.sdkv2.AElfClientV2;
-import io.aelf.utils.network.NetworkConnector;
+import io.aelf.internal.sdkv2.AElfClientV2;
+import io.aelf.network.NetworkConnector;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -16,6 +16,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.apache.http.util.TextUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,6 +39,7 @@ public class ClientUtil {
   private ClientUtil() {
   }
 
+  @Deprecated
   private static HttpClient setProxy(Integer... connectTimeout) {
     String proxySet = StringUtil.toString(System.getProperty("proxySet"));
     if (!"true".equals(proxySet)) {
@@ -71,6 +73,7 @@ public class ClientUtil {
    * @param decodeCharset not blank
    * @return str
    */
+  @Deprecated
   public static String sendGet(String reqUrl, String decodeCharset, String contentType) {
     long responseLength = 0L;
     String responseContent = null;
@@ -78,7 +81,7 @@ public class ClientUtil {
 
     try( DefaultHttpClient httpClient = new DefaultHttpClient() ) {
       setProxy();
-      if (StringUtils.isBlank(contentType)) {
+      if (TextUtils.isBlank(contentType)) {
         httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
       } else {
         httpGet.setHeader("Content-Type", contentType);
@@ -113,6 +116,7 @@ public class ClientUtil {
    * @param reqUrl not blank
    * @param decodeCharset not blank
    */
+  @Deprecated
   public static String sendDelete(String reqUrl, String decodeCharset, String contentType, String authBasic) {
     long responseLength = 0L;
     String responseContent = null;
@@ -120,13 +124,13 @@ public class ClientUtil {
 
     try(DefaultHttpClient httpClient = new DefaultHttpClient()) {
       setProxy();
-      if (StringUtils.isBlank(contentType)) {
+      if (TextUtils.isBlank(contentType)) {
         httpDelete.setHeader("Content-Type", "application/x-www-form-urlencoded");
       } else {
         httpDelete.setHeader("Content-Type", contentType);
       }
 
-      if (!StringUtils.isBlank(authBasic)) {
+      if (!TextUtils.isBlank(authBasic)) {
         httpDelete.setHeader("Authorization", authBasic);
       }
 
@@ -163,6 +167,7 @@ public class ClientUtil {
    * @param decodeCharset not blank
    * @param contentType not blank
    */
+  @Deprecated
   public static String sendPost(String reqUrl, String param, String encodeCharset,
       String decodeCharset, String contentType) {
     String responseContent = null;
@@ -198,6 +203,7 @@ public class ClientUtil {
     return responseContent;
   }
 
+  @Deprecated
   public static String sendPostWithAuth(String reqUrl, String param, String encodeCharset,
                                         String decodeCharset, String contentType, String authBasic) {
     String responseContent = null;
