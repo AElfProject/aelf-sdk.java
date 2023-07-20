@@ -2,6 +2,7 @@ package io.aelf.sdk;
 
 import com.google.protobuf.ByteString;
 
+import io.aelf.contract.GlobalContract;
 import io.aelf.internal.global.TestParams;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
@@ -23,11 +24,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.annotation.Nonnull;
+
 @SuppressWarnings("deprecation")
 public class BlockChainSdkTest {
 
     AElfClient client = null;
-    String address = "";
+    String address;
 
     /**
      * init junit.
@@ -36,6 +39,7 @@ public class BlockChainSdkTest {
     public void init() {
         client = new AElfClient(TestParams.CLIENT_HTTP_URL);
         address = client.getAddressFromPrivateKey(TestParams.TEST_PRIVATE_KEY);
+        Assert.assertTrue(address.length() > 0);
     }
 
     @Test
@@ -43,42 +47,16 @@ public class BlockChainSdkTest {
         TransactionResultDto transactionResultDto = new TransactionResultDto();
         transactionResultDto.setLogs(new ArrayList<>());
         Base64.Encoder encoder = Base64.getEncoder();
+        transactionResultDto.getLogs().add(
+                createMockLogItem("TransactionFeeCharged", "ELF", 1000, encoder));
+        transactionResultDto.getLogs().add(
+                createMockLogItem("ResourceTokenCharged", "READ", 800, encoder));
 
-        LogEventDto logEventDto = new LogEventDto();
-        logEventDto.setName("TransactionFeeCharged");
-        Builder tfeeCharged = TransactionFeeCharged.newBuilder();
-        tfeeCharged.setSymbol("ELF");
-        tfeeCharged.setAmount(1000);
-        String nonIndexed = encoder.encodeToString(tfeeCharged.build().toByteArray());
-        logEventDto.setNonIndexed(nonIndexed);
-        transactionResultDto.getLogs().add(logEventDto);
+        transactionResultDto.getLogs().add(
+                createMockLogItem("ResourceTokenCharged", "WRITE", 600, encoder));
 
-        logEventDto = new LogEventDto();
-        logEventDto.setName("ResourceTokenCharged");
-        tfeeCharged = TransactionFeeCharged.newBuilder();
-        tfeeCharged.setSymbol("READ");
-        tfeeCharged.setAmount(800);
-        nonIndexed = encoder.encodeToString(tfeeCharged.build().toByteArray());
-        logEventDto.setNonIndexed(nonIndexed);
-        transactionResultDto.getLogs().add(logEventDto);
-
-        logEventDto = new LogEventDto();
-        logEventDto.setName("ResourceTokenCharged");
-        tfeeCharged = TransactionFeeCharged.newBuilder();
-        tfeeCharged.setSymbol("WRITE");
-        tfeeCharged.setAmount(600);
-        nonIndexed = encoder.encodeToString(tfeeCharged.build().toByteArray());
-        logEventDto.setNonIndexed(nonIndexed);
-        transactionResultDto.getLogs().add(logEventDto);
-
-        logEventDto = new LogEventDto();
-        logEventDto.setName("ResourceTokenOwned");
-        tfeeCharged = TransactionFeeCharged.newBuilder();
-        tfeeCharged.setSymbol("READ");
-        tfeeCharged.setAmount(200);
-        nonIndexed = encoder.encodeToString(tfeeCharged.build().toByteArray());
-        logEventDto.setNonIndexed(nonIndexed);
-        transactionResultDto.getLogs().add(logEventDto);
+        transactionResultDto.getLogs().add(
+                createMockLogItem("ResourceTokenOwned", "READ", 200, encoder));
 
         HashMap<String, Long> transactionFees = TransactionResultDtoExtension.getTransactionFees(transactionResultDto);
         Assert.assertEquals(3, transactionFees.keySet().size());
@@ -91,6 +69,17 @@ public class BlockChainSdkTest {
         transactionFees = TransactionResultDtoExtension.getTransactionFees(transactionResultDto);
         Assert.assertEquals(0, transactionFees.size());
 
+    }
+
+    private LogEventDto createMockLogItem(String name, String symbol, int amount, @Nonnull Base64.Encoder encoder) {
+        LogEventDto logEventDto = new LogEventDto();
+        logEventDto.setName(name);
+        Builder tFeeCharged = TransactionFeeCharged.newBuilder();
+        tFeeCharged.setSymbol(symbol);
+        tFeeCharged.setAmount(amount);
+        String nonIndexed = encoder.encodeToString(tFeeCharged.build().toByteArray());
+        logEventDto.setNonIndexed(nonIndexed);
+        return logEventDto;
     }
 
     @Test
@@ -117,7 +106,7 @@ public class BlockChainSdkTest {
 
     @Test
     public void getPublicKeyAsHexTest() throws Exception {
-        Assert.assertEquals("SD6BXDrKT2syNd1WehtPyRo3dPBiXqfGUj8UJym7YP9W9RynM", address);
+        Assert.assertEquals(TestParams.TEST_PUBLIC_KEY, address);
     }
 
     @Test
@@ -130,21 +119,24 @@ public class BlockChainSdkTest {
     public void getBlockByHeightDefaultTest() throws Exception {
         long blockHeight = client.getBlockHeight();
         Assert.assertTrue(blockHeight > 0);
-        client.getBlockByHeight(blockHeight);
+        BlockDto block = client.getBlockByHeight(blockHeight);
+        Assert.assertTrue(block.getBlockHash().length() > 0);
     }
 
     @Test
     public void getBlockByHeightForFalseTest() throws Exception {
         long blockHeight = client.getBlockHeight();
         Assert.assertTrue(blockHeight > 0);
-        client.getBlockByHeight(blockHeight, false);
+        BlockDto block = client.getBlockByHeight(blockHeight, false);
+        Assert.assertTrue(block.getBlockHash().length() > 0);
     }
 
     @Test
     public void getBlockByHeightForTrueTest() throws Exception {
         long blockHeight = client.getBlockHeight();
         Assert.assertTrue(blockHeight > 0);
-        client.getBlockByHeight(blockHeight, true);
+        BlockDto block = client.getBlockByHeight(blockHeight, true);
+        Assert.assertTrue(block.getBlockHash().length() > 0);
     }
 
     @Test
@@ -152,7 +144,9 @@ public class BlockChainSdkTest {
         long blockHeight = client.getBlockHeight();
         Assert.assertTrue(blockHeight > 0);
         BlockDto blockDto = client.getBlockByHeight(blockHeight);
-        client.getBlockByHash(blockDto.getBlockHash());
+        BlockDto block = client.getBlockByHash(blockDto.getBlockHash());
+        Assert.assertTrue(block.getBlockHash().length() > 0);
+
     }
 
     @Test
@@ -160,7 +154,8 @@ public class BlockChainSdkTest {
         long blockHeight = client.getBlockHeight();
         Assert.assertTrue(blockHeight > 0);
         BlockDto blockDto = client.getBlockByHeight(blockHeight, false);
-        client.getBlockByHash(blockDto.getBlockHash());
+        BlockDto block = client.getBlockByHash(blockDto.getBlockHash());
+        Assert.assertTrue(block.getBlockHash().length() > 0);
     }
 
     @Test
@@ -168,17 +163,20 @@ public class BlockChainSdkTest {
         long blockHeight = client.getBlockHeight();
         Assert.assertTrue(blockHeight > 0);
         BlockDto blockDto = client.getBlockByHeight(blockHeight, true);
-        client.getBlockByHash(blockDto.getBlockHash());
+        BlockDto block = client.getBlockByHash(blockDto.getBlockHash());
+        Assert.assertTrue(block.getBlockHash().length() > 0);
     }
 
     @Test
     public void getTransactionPoolStatusTest() throws Exception {
-        client.getTransactionPoolStatus();
+        TransactionPoolStatusOutput statusOutput = client.getTransactionPoolStatus();
+        Assert.assertNotNull(statusOutput);
     }
 
     @Test
     public void getChainStatusTest() throws Exception {
-        client.getChainStatus();
+        ChainstatusDto chainstatusDto = client.getChainStatus();
+        Assert.assertNotNull(chainstatusDto.getChainId());
     }
 
     @Test
@@ -203,8 +201,8 @@ public class BlockChainSdkTest {
     @Test
     public void executeTransactionTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
-        String methodName = "GetContractAddressByName";
-        byte[] bytes = Sha256.getBytesSha256("AElf.ContractNames.TokenConverter");
+        String methodName = GlobalContract.genesisContract.method_getContractAddressByName;
+        byte[] bytes = Sha256.getBytesSha256(GlobalContract.tokenConverterContract.name);
         Client.Hash.Builder hash = Client.Hash.newBuilder();
         hash.setValue(ByteString.copyFrom(bytes));
         Client.Hash hashObj = hash.build();
@@ -222,8 +220,8 @@ public class BlockChainSdkTest {
     @Test
     public void executeRawTransactionTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
-        final String methodName = "GetContractAddressByName";
-        byte[] paramBytes = Sha256.getBytesSha256("AElf.ContractNames.Consensus");
+        final String methodName = GlobalContract.genesisContract.method_getContractAddressByName;
+        byte[] paramBytes = Sha256.getBytesSha256(GlobalContract.consensusContract.name);
         ChainstatusDto status = client.getChainStatus();
         final long height = status.getBestChainHeight();
         final String blockHash = status.getBestChainHash();
@@ -249,8 +247,8 @@ public class BlockChainSdkTest {
     @Test
     public void createRawTransactionTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
-        final String methodName = "GetContractAddressByName";
-        byte[] paramBytes = Sha256.getBytesSha256("AElf.ContractNames.Token");
+        final String methodName = GlobalContract.genesisContract.method_getContractAddressByName;
+        byte[] paramBytes = Sha256.getBytesSha256(GlobalContract.tokenContract.name);
         ChainstatusDto status = client.getChainStatus();
         final long height = status.getBestChainHeight();
         final String blockHash = status.getBestChainHash();
@@ -266,8 +264,8 @@ public class BlockChainSdkTest {
     @Test
     public void sendRawTransactionTest() throws Exception {
         final String toAddress = client.getGenesisContractAddress();
-        final String methodName = "GetContractAddressByName";
-        byte[] paramBytes = Sha256.getBytesSha256("AElf.ContractNames.Token");
+        final String methodName = GlobalContract.genesisContract.method_getContractAddressByName;
+        byte[] paramBytes = Sha256.getBytesSha256(GlobalContract.tokenContract.name);
         ChainstatusDto status = client.getChainStatus();
         final long height = status.getBestChainHeight();
         final String blockHash = status.getBestChainHash();
@@ -293,8 +291,8 @@ public class BlockChainSdkTest {
     @Test
     public void sendTransactionTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
-        String methodName = "GetContractAddressByName";
-        byte[] bytes = Sha256.getBytesSha256("AElf.ContractNames.Vote");
+        String methodName = GlobalContract.genesisContract.method_getContractAddressByName;
+        byte[] bytes = Sha256.getBytesSha256(GlobalContract.voteContract.name);
         Client.Hash.Builder hash = Client.Hash.newBuilder();
         hash.setValue(ByteString.copyFrom(bytes));
         Client.Hash hashObj = hash.build();
@@ -307,10 +305,10 @@ public class BlockChainSdkTest {
     @Test
     public void sendTransactionsTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
-        byte[] param1 = Sha256.getBytesSha256("AElf.ContractNames.Token");
-        byte[] param2 = Sha256.getBytesSha256("AElf.ContractNames.Vote");
-        String methodName = "GetContractAddressByName";
-        List<byte[]> parameters = new ArrayList<byte[]>();
+        byte[] param1 = Sha256.getBytesSha256(GlobalContract.tokenContract.name);
+        byte[] param2 = Sha256.getBytesSha256(GlobalContract.voteContract.name);
+        String methodName = GlobalContract.genesisContract.method_getContractAddressByName;
+        List<byte[]> parameters = new ArrayList<>();
         parameters.add(param1);
         parameters.add(param2);
         for (byte[] tmp : parameters) {
@@ -343,8 +341,9 @@ public class BlockChainSdkTest {
         List<TransactionResultDto> transactionResultDtoList = client
                 .getTransactionResults(blockDto.getBlockHash(), 0, 10);
         for (TransactionResultDto transactionResultDtoObj : transactionResultDtoList) {
-            client
-                    .getTransactionResult(transactionResultDtoObj.getTransactionId());
+            Assert.assertNotNull(client
+                    .getTransactionResult(transactionResultDtoObj.getTransactionId())
+                    .getTransactionId());
         }
     }
 
@@ -356,11 +355,14 @@ public class BlockChainSdkTest {
         List<TransactionResultDto> transactionResultDtoList = client
                 .getTransactionResults(blockDto.getBlockHash(), 0, 10);
         for (TransactionResultDto transactionResultDtoObj : transactionResultDtoList) {
-            client
-                    .getMerklePathByTransactionId(transactionResultDtoObj.getTransactionId());
+            Assert.assertNotNull(
+                    client.getMerklePathByTransactionId(transactionResultDtoObj.getTransactionId()));
         }
     }
 
+    /**
+     * This test runs under TestNet mainchain.
+     */
     @Test
     public void getChainIdTest() throws Exception {
         int chainId = client.getChainId();
@@ -375,15 +377,15 @@ public class BlockChainSdkTest {
     @Test
     public void protobufTest() throws Exception {
         String toAddress = client.getGenesisContractAddress();
-        byte[] bytes = Sha256.getBytesSha256("AElf.ContractNames.Vote");
-        String methodName = "GetContractAddressByName";
+        byte[] bytes = Sha256.getBytesSha256(GlobalContract.voteContract.name);
+        String methodName = GlobalContract.genesisContract.method_getContractAddressByName;
         Client.Hash.Builder hash = Client.Hash.newBuilder();
         hash.setValue(ByteString.copyFrom(bytes));
         Client.Hash hashObj = hash.build();
         Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
         SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
         sendTransactionInputObj.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-        client.sendTransaction(sendTransactionInputObj);
+        Assert.assertNotNull(client.sendTransaction(sendTransactionInputObj).getTransactionId());
     }
 
 //    @Test

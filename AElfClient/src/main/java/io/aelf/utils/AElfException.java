@@ -61,7 +61,7 @@ public class AElfException extends RuntimeException {
     private static String concatAdditionalMsg(int resultCode, @Nonnull String additionalMsg) {
         return ErrorMessage
                 .getBasicErrorMsg(resultCode)
-                .concat(" info: ")
+                .concat("\n info: ")
                 .concat(additionalMsg);
     }
 }
