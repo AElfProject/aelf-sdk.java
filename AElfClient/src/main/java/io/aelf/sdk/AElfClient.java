@@ -494,23 +494,30 @@ public class AElfClient implements IContractBehaviour {
      */
     public String getContractAddressByName(String privateKey, byte[] contractNameHash)
             throws Exception {
-        String from = this.getAddressFromPrivateKey(privateKey);
-        String to = this.getGenesisContractAddress();
-        String methodName = "GetContractAddressByName";
-        Client.Hash.Builder hash = Client.Hash.newBuilder();
-        hash.setValue(ByteString.copyFrom(contractNameHash));
-        Client.Hash hashObj = hash.build();
-        Core.Transaction.Builder transaction = this
-                .generateTransaction(from, to, methodName, hashObj.toByteArray());
-        String signature = this.signTransaction(privateKey, transaction.build());
-        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
-        Core.Transaction transactionObj = transaction.build();
-        ExecuteTransactionDto executeTransactionDto = new ExecuteTransactionDto();
-        executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-        String response = this.blockchainSdk.executeTransaction(executeTransactionDto);
-        byte[] byteArray = ByteArrayHelper.hexToByteArray(response);
-        return Base58Ext.encodeChecked(
-                Client.Address.parseFrom(byteArray).getValue().toByteArray());
+        return callContractMethod(
+                GlobalContract.genesisContract.name,
+                GlobalContract.genesisContract.method_getContractAddressByName,
+                privateKey,
+                true,
+                contractNameHash
+        );
+    }
+
+    /**
+     * See its overload method
+     * {@link AElfClient#callContractMethod(String, String, String, boolean, String)}
+     * for more information.
+     */
+    @Override
+    public String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
+                                     @Nonnull String privateKey, boolean isViewMethod, byte[] bytes) throws AElfException {
+        return callContractMethod(
+                contractName,
+                methodName,
+                privateKey,
+                isViewMethod,
+                new String(bytes)
+        );
     }
 
     /**
@@ -578,8 +585,9 @@ public class AElfClient implements IContractBehaviour {
                                      @Nullable String optionalParams) throws AElfException {
         try {
             String fromAddress = this.getAddressFromPrivateKey(privateKey);
-            String toAddress = this
-                    .getContractAddressByName(privateKey, Sha256.getBytesSha256(contractName));
+            String toAddress = GlobalContract.genesisContract.name.equals(contractName)
+                    ? this.getGenesisContractAddress()
+                    : this.getContractAddressByName(privateKey, Sha256.getBytesSha256(contractName));
             Core.Transaction.Builder transaction = this.generateTransaction(
                     fromAddress,
                     toAddress,

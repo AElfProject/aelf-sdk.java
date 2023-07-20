@@ -44,5 +44,8 @@ public interface IContractBehaviour {
                               boolean isViewMethod, @NotNull JsonObject optionalParams) throws AElfException;
 
     String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
+                              @Nonnull String privateKey, boolean isViewMethod, byte[] bytes) throws AElfException;
+
+    String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
                               @Nonnull String privateKey, boolean isViewMethod) throws AElfException;
 }
