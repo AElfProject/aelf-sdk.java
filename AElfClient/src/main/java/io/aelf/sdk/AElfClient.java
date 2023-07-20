@@ -466,7 +466,11 @@ public class AElfClient implements IContractBehaviour {
                 privateKey,
                 true
         );
-        return symbol + "_" + address + "_" + chainIdString;
+        return symbol
+                .concat("_")
+                .concat(address)
+                .concat("_")
+                .concat(chainIdString);
     }
 
     /**
