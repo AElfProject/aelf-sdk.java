@@ -1,22 +1,24 @@
 package io.aelf.sdk;
 
+import com.google.gson.JsonObject;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
+import io.aelf.contract.GlobalContract;
+import io.aelf.contract.IContractBehaviour;
 import io.aelf.network.interceptor.CommonHeaderInterceptor;
 import io.aelf.network.RetrofitFactory;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
+import io.aelf.response.ResultCode;
 import io.aelf.schemas.*;
 import io.aelf.internal.sdkv2.AElfClientV2;
-import io.aelf.utils.Base58Ext;
-import io.aelf.utils.ByteArrayHelper;
-import io.aelf.utils.AElfUrl;
-import io.aelf.utils.Sha256;
-import io.aelf.utils.StringUtil;
+import io.aelf.utils.*;
+import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
 import org.bouncycastle.util.encoders.Hex;
+import org.jetbrains.annotations.NotNull;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Sign;
 import retrofit2.Retrofit;
@@ -33,9 +35,8 @@ import java.util.List;
  * {@link AElfClientV2}
  * which contains both internal APIs and common APIs.
  */
-@Deprecated
-@SuppressWarnings({"UnusedReturnValue", "unused", "DeprecatedIsStillUsed"})
-public class AElfClient {
+@SuppressWarnings({"UnusedReturnValue", "DeprecatedIsStillUsed"})
+public class AElfClient implements IContractBehaviour {
     private BlockChainSdk blockchainSdk;
     private NetSdk netSdk;
 
@@ -219,11 +220,11 @@ public class AElfClient {
     /**
      * Call a read-only method of a contract.
      *
-     * @param input {@link ExecuteTransactionDto} input
+     * @param input {@link TransactionWrapper} input
      * @return {@link String} contract's output
      */
     @AElfUrl(url = "wa://api/blockChain/executeTransaction")
-    public String executeTransaction(ExecuteTransactionDto input) throws Exception {
+    public String executeTransaction(TransactionWrapper input) throws Exception {
         return this.getBlockChainConfig().executeTransaction(input);
     }
 
@@ -459,21 +460,17 @@ public class AElfClient {
      */
     public String getFormattedAddress(String privateKey, String address) throws Exception {
         String chainIdString = this.getBlockChainConfig().getChainStatus().getChainId();
-        String fromAddress = this.getAddressFromPrivateKey(privateKey);
-        String toAddress = this
-                .getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
-        String methodName = "GetPrimaryTokenSymbol";
-        byte[] bytes = new byte[0];
-        Core.Transaction.Builder transaction = this
-                .generateTransaction(fromAddress, toAddress, methodName, bytes);
-        String signature = this.signTransaction(privateKey, transaction.build());
-        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
-        Core.Transaction transactionObj = transaction.build();
-        ExecuteTransactionDto executeTransactionDto = new ExecuteTransactionDto();
-        executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-        String response = this.blockchainSdk.executeTransaction(executeTransactionDto);
-        StringValue symbol = StringValue.parseFrom(ByteArrayHelper.hexToByteArray(response));
-        return symbol.getValue() + "_" + address + "_" + chainIdString;
+        String symbol = callContractMethod(
+                GlobalContract.tokenContract.name,
+                GlobalContract.tokenContract.method_getPrimaryTokenSymbol,
+                privateKey,
+                true
+        );
+        return symbol
+                .concat("_")
+                .concat(address)
+                .concat("_")
+                .concat(chainIdString);
     }
 
     /**
@@ -501,23 +498,122 @@ public class AElfClient {
      */
     public String getContractAddressByName(String privateKey, byte[] contractNameHash)
             throws Exception {
-        String from = this.getAddressFromPrivateKey(privateKey);
-        String to = this.getGenesisContractAddress();
-        String methodName = "GetContractAddressByName";
-        Client.Hash.Builder hash = Client.Hash.newBuilder();
-        hash.setValue(ByteString.copyFrom(contractNameHash));
-        Client.Hash hashObj = hash.build();
-        Core.Transaction.Builder transaction = this
-                .generateTransaction(from, to, methodName, hashObj.toByteArray());
-        String signature = this.signTransaction(privateKey, transaction.build());
-        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
-        Core.Transaction transactionObj = transaction.build();
-        ExecuteTransactionDto executeTransactionDto = new ExecuteTransactionDto();
-        executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-        String response = this.blockchainSdk.executeTransaction(executeTransactionDto);
-        byte[] byteArray = ByteArrayHelper.hexToByteArray(response);
-        return Base58Ext.encodeChecked(
-                Client.Address.parseFrom(byteArray).getValue().toByteArray());
+        return callContractMethod(
+                GlobalContract.genesisContract.name,
+                GlobalContract.genesisContract.method_getContractAddressByName,
+                privateKey,
+                true,
+                contractNameHash
+        );
+    }
+
+    /**
+     * See its overload method
+     * {@link AElfClient#callContractMethod(String, String, String, boolean, String)}
+     * for more information.
+     */
+    @Override
+    public String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
+                                     @Nonnull String privateKey, boolean isViewMethod, byte[] bytes) throws AElfException {
+        return callContractMethod(
+                contractName,
+                methodName,
+                privateKey,
+                isViewMethod,
+                new String(bytes)
+        );
+    }
+
+    /**
+     * See its overload method
+     * {@link AElfClient#callContractMethod(String, String, String, boolean, String)}
+     * for more information.
+     */
+    @Override
+    public String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
+                                     @Nonnull String privateKey, boolean isViewMethod) throws AElfException {
+        return callContractMethod(contractName, methodName, privateKey, isViewMethod, "");
+    }
+
+    /**
+     * See its overload method
+     * {@link AElfClient#callContractMethod(String, String, String, boolean, String)}
+     * for more information.
+     */
+    @Override
+    public String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
+                                     @Nonnull String privateKey, boolean isViewMethod, @NotNull JsonObject optionalParams) throws AElfException {
+        return callContractMethod(
+                contractName,
+                methodName,
+                privateKey,
+                isViewMethod,
+                optionalParams.toString()
+        );
+    }
+
+
+    /**
+     * Call a VIEW/SEND method in the particular contract
+     * on the blockchain network, and get the result.
+     * <p>
+     * Actually, when you are trying to execute a transaction, in fact, you
+     * are calling the AElf.ContractNames.Token contract's transfer method
+     * to execute this token transaction (ELF token or others).
+     * <p>
+     * Things go on a similar way when you are trying to call a contract's
+     * method, whether it is a VIEW method or a SEND method.
+     * <p>
+     * When calling this method, a {@link TransactionDto} object will be sent
+     * to the peer, it contains information that will be used when calling
+     * a contract method.
+     *
+     * @param contractName   name of the contract that contains target method
+     * @param methodName     method name that is about to call
+     * @param privateKey     since calling a contract method is actually
+     *                       sending a transaction to the blockchain system,
+     *                       privateKey is needed for sign
+     * @param isViewMethod   whether this method is a VIEW method, calling VIEW
+     *                       methods will have no consequences and side effects,
+     *                       they will only provide a result and have no effect
+     *                       on the contract's State.The other side, SEND methods,
+     *                       will change its contract's State.
+     * @param optionalParams params that need to be sent to
+     * @return {@link String} method result
+     * @throws AElfException when issues happen
+     */
+    @Override
+
+    public String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
+                                     @Nonnull String privateKey, boolean isViewMethod,
+                                     @Nullable String optionalParams) throws AElfException {
+        try {
+            String fromAddress = this.getAddressFromPrivateKey(privateKey);
+            String toAddress = GlobalContract.genesisContract.name.equals(contractName)
+                    ? this.getGenesisContractAddress()
+                    : this.getContractAddressByName(privateKey, Sha256.getBytesSha256(contractName));
+            Core.Transaction.Builder transaction = this.generateTransaction(
+                    fromAddress,
+                    toAddress,
+                    methodName,
+                    TextUtils.isBlank(optionalParams)
+                            ? new byte[0]
+                            : optionalParams.getBytes()
+            );
+            String signature = this.signTransaction(privateKey, transaction.build());
+            transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+            Core.Transaction transactionObj = transaction.build();
+            TransactionWrapper executeTransactionDto = new ExecuteTransactionDto();
+            executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
+            String response = isViewMethod
+                    ? this.blockchainSdk.executeTransaction(executeTransactionDto)
+                    : JsonUtil.toJsonString(this.blockchainSdk.sendTransaction(executeTransactionDto));
+            return StringValue.parseFrom(ByteArrayHelper.hexToByteArray(response)).getValue();
+        } catch (IOException e) {
+            throw new AElfException(ResultCode.NETWORK_DISCONNECTED);
+        } catch (Exception e) {
+            throw new AElfException(e);
+        }
     }
 
     /**

@@ -33,3 +33,4 @@ target
 /aelf/
 /out/artifacts/aelf_sdk_jar/
 /wget-log
+/AElfClient/src/main/java/io/aelf/protobuf/generated/protobuf*/

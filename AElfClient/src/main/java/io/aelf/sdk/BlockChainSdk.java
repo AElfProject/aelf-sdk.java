@@ -57,7 +57,7 @@ public class BlockChainSdk {
         String result = RetrofitFactory.networkResult(
                 RetrofitFactory
                         .getAPIService()
-                        .getBlockByHash(blockHash,includeTransactions)
+                        .getBlockByHash(blockHash, includeTransactions)
         );
         MapEntry<String, ?> mapObjJson = JsonUtil.parseObject(result);
         return createBlockDto(mapObjJson, includeTransactions);
@@ -219,11 +219,11 @@ public class BlockChainSdk {
     /**
      * Call a read-only method of a contract.
      *
-     * @param input {@link ExecuteTransactionDto} input
+     * @param input {@link TransactionWrapper} input
      * @return {@link String} output
      */
     @AElfUrl(url = "wa://api/blockChain/executeTransaction")
-    public String executeTransaction(ExecuteTransactionDto input) throws Exception {
+    public String executeTransaction(TransactionWrapper input) throws Exception {
         return RetrofitFactory.getAPIService()
                 .executeTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
                 .execute()
@@ -308,11 +308,11 @@ public class BlockChainSdk {
     /**
      * Broadcast a transaction.
      *
-     * @param input {@link SendTransactionInput} input
+     * @param input {@link TransactionWrapper} input
      * @return {@link SendTransactionOutput} output
      */
     @AElfUrl(url = "wa://api/blockChain/sendTransaction")
-    public SendTransactionOutput sendTransaction(SendTransactionInput input) throws Exception {
+    public SendTransactionOutput sendTransaction(TransactionWrapper input) throws Exception {
         String responseBody = RetrofitFactory.getAPIService()
                 .sendTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
                 .execute()
