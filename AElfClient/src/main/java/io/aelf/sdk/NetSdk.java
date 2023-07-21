@@ -1,7 +1,7 @@
 package io.aelf.sdk;
 
 import com.google.gson.JsonParser;
-import io.aelf.network.RetrofitFactory;
+import io.aelf.network.factories.RetrofitFactory;
 import io.aelf.schemas.AddPeerInput;
 import io.aelf.schemas.NetworkInfoOutput;
 import io.aelf.schemas.PeerDto;

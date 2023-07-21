@@ -6,7 +6,7 @@ import com.google.protobuf.StringValue;
 import io.aelf.contract.GlobalContract;
 import io.aelf.contract.IContractBehaviour;
 import io.aelf.network.interceptor.CommonHeaderInterceptor;
-import io.aelf.network.RetrofitFactory;
+import io.aelf.network.factories.RetrofitFactory;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.response.ResultCode;
@@ -460,13 +460,14 @@ public class AElfClient implements IContractBehaviour {
      */
     public String getFormattedAddress(String privateKey, String address) throws Exception {
         String chainIdString = this.getBlockChainConfig().getChainStatus().getChainId();
-        String symbol = callContractMethod(
+        String response = callContractMethod(
                 GlobalContract.tokenContract.name,
                 GlobalContract.tokenContract.method_getPrimaryTokenSymbol,
                 privateKey,
                 true
         );
-        return symbol
+        StringValue symbol = StringValue.parseFrom(ByteArrayHelper.hexToByteArray(response));
+        return symbol.getValue()
                 .concat("_")
                 .concat(address)
                 .concat("_")
@@ -498,13 +499,19 @@ public class AElfClient implements IContractBehaviour {
      */
     public String getContractAddressByName(String privateKey, byte[] contractNameHash)
             throws Exception {
-        return callContractMethod(
+        Client.Hash.Builder hash = Client.Hash.newBuilder();
+        hash.setValue(ByteString.copyFrom(contractNameHash));
+        Client.Hash hashObj = hash.build();
+        String response = callContractMethod(
                 GlobalContract.genesisContract.name,
                 GlobalContract.genesisContract.method_getContractAddressByName,
                 privateKey,
                 true,
-                contractNameHash
+                hashObj.toByteArray()
         );
+        byte[] byteArray = ByteArrayHelper.hexToByteArray(response);
+        return Base58Ext.encodeChecked(
+                Client.Address.parseFrom(byteArray).getValue().toByteArray());
     }
 
     /**
@@ -514,14 +521,27 @@ public class AElfClient implements IContractBehaviour {
      */
     @Override
     public String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
-                                     @Nonnull String privateKey, boolean isViewMethod, byte[] bytes) throws AElfException {
-        return callContractMethod(
-                contractName,
-                methodName,
-                privateKey,
-                isViewMethod,
-                new String(bytes)
-        );
+                                     @Nonnull String privateKey, boolean isViewMethod, byte[] optionalParams) throws AElfException {
+        try {
+            String fromAddress = this.getAddressFromPrivateKey(privateKey);
+            String toAddress = GlobalContract.genesisContract.name.equals(contractName)
+                    ? this.getGenesisContractAddress()
+                    : this.getContractAddressByName(privateKey, Sha256.getBytesSha256(contractName));
+            return innerCallContract(
+                    fromAddress,
+                    toAddress,
+                    methodName,
+                    optionalParams == null
+                            ? new byte[0]
+                            : optionalParams,
+                    privateKey,
+                    isViewMethod
+            );
+        } catch (IOException e) {
+            throw new AElfException(e, ResultCode.NETWORK_DISCONNECTED);
+        } catch (Exception e) {
+            throw new AElfException(e);
+        }
     }
 
     /**
@@ -592,28 +612,42 @@ public class AElfClient implements IContractBehaviour {
             String toAddress = GlobalContract.genesisContract.name.equals(contractName)
                     ? this.getGenesisContractAddress()
                     : this.getContractAddressByName(privateKey, Sha256.getBytesSha256(contractName));
-            Core.Transaction.Builder transaction = this.generateTransaction(
+            return innerCallContract(
                     fromAddress,
                     toAddress,
                     methodName,
                     TextUtils.isBlank(optionalParams)
                             ? new byte[0]
-                            : optionalParams.getBytes()
-            );
-            String signature = this.signTransaction(privateKey, transaction.build());
-            transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
-            Core.Transaction transactionObj = transaction.build();
-            TransactionWrapper executeTransactionDto = new ExecuteTransactionDto();
-            executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
-            String response = isViewMethod
-                    ? this.blockchainSdk.executeTransaction(executeTransactionDto)
-                    : JsonUtil.toJsonString(this.blockchainSdk.sendTransaction(executeTransactionDto));
-            return StringValue.parseFrom(ByteArrayHelper.hexToByteArray(response)).getValue();
+                            : Sha256.getBytesSha256(optionalParams),
+                    privateKey,
+                    isViewMethod);
         } catch (IOException e) {
             throw new AElfException(ResultCode.NETWORK_DISCONNECTED);
         } catch (Exception e) {
             throw new AElfException(e);
         }
+    }
+
+    private String innerCallContract(String fromAddress, String toAddress,
+                                     String methodName, byte[] params,
+                                     String privateKey, boolean isViewMethod) throws Exception {
+        Core.Transaction.Builder transaction = this.generateTransaction(
+                fromAddress,
+                toAddress,
+                methodName,
+                params
+        );
+        String signature = this.signTransaction(privateKey, transaction.build());
+        transaction.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(signature)));
+        Core.Transaction transactionObj = transaction.build();
+        TransactionWrapper executeTransactionDto = new ExecuteTransactionDto();
+        executeTransactionDto.setRawTransaction(Hex.toHexString(transactionObj.toByteArray()));
+        String response = isViewMethod
+                ? this.blockchainSdk.executeTransaction(executeTransactionDto)
+                : JsonUtil.toJsonString(this.blockchainSdk.sendTransaction(executeTransactionDto));
+        if (TextUtils.isBlank(response))
+            throw new AElfException(ResultCode.INTERNAL_ERROR, "the peer returned nothing.");
+        return response;
     }
 
     /**

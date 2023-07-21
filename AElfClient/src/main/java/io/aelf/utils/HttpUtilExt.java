@@ -2,7 +2,7 @@ package io.aelf.utils;
 
 import io.aelf.network.APIService;
 import io.aelf.network.NetworkConnector;
-import io.aelf.network.RetrofitFactory;
+import io.aelf.network.factories.RetrofitFactory;
 import org.apache.http.util.TextUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

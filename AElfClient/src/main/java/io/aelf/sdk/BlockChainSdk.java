@@ -1,7 +1,8 @@
 package io.aelf.sdk;
 
 import com.google.gson.JsonParser;
-import io.aelf.network.RetrofitFactory;
+import io.aelf.network.factories.RetrofitFactory;
+import io.aelf.response.ResultCode;
 import io.aelf.schemas.*;
 import io.aelf.utils.*;
 
@@ -12,6 +13,7 @@ import java.util.*;
 
 import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
+import retrofit2.Response;
 
 @SuppressWarnings({"unchecked", "SpellCheckingInspection", "unused", "DataFlowIssue", "deprecation"})
 public class BlockChainSdk {
@@ -220,14 +222,16 @@ public class BlockChainSdk {
      * Call a read-only method of a contract.
      *
      * @param input {@link TransactionWrapper} input
-     * @return {@link String} output
+     * @return {@link String} output, it may return null
      */
     @AElfUrl(url = "wa://api/blockChain/executeTransaction")
     public String executeTransaction(TransactionWrapper input) throws Exception {
-        return RetrofitFactory.getAPIService()
+        Response<String> response = RetrofitFactory.getAPIService()
                 .executeTransaction(JsonParser.parseString(JsonUtil.toJsonString(input)))
-                .execute()
-                .body();
+                .execute();
+        if (!response.isSuccessful()) throw new AElfException(ResultCode.PEER_REJECTED,
+                "it seems that the peer have rejected the transaction.");
+        return response.body();
     }
 
     /**

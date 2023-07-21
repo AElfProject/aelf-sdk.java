@@ -1,8 +1,10 @@
-package io.aelf.network;
+package io.aelf.network.factories;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import io.aelf.network.APIService;
+import io.aelf.network.NetworkConnector;
 import io.aelf.response.ResultCode;
 import io.aelf.utils.AElfException;
 import org.apache.http.util.TextUtils;
@@ -42,6 +44,7 @@ public class RetrofitFactory {
                 .setLenient()
                 .create();
         return new Retrofit.Builder()
+                .addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create());
     }
