@@ -30,5 +30,9 @@ target
 
 /aelf/
 /out/artifacts/aelf_sdk_jar/
+
+/.vscode/
+/.vscode/settings.json
+
 **/wget-log
 /AElfClient/src/main/java/io/aelf/protobuf/generated/protobuf*/
