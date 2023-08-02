@@ -1,3 +1,4 @@
+:: Deprecated - use build.sh file under package **/protobuf/
 set SOURCE_FOLDER=..\java\io\aelf\protobuf\proto
 set IMP_FOLDER=..\java\io\aelf\protobuf\proto
 set JAVA_COMPILER_PATH=protoc

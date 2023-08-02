@@ -30,79 +30,89 @@ public class BlockHeaderDto {
     return previousBlockHash;
   }
 
-  public void setPreviousBlockHash(String previousBlockHash) {
+  public BlockHeaderDto setPreviousBlockHash(String previousBlockHash) {
     this.previousBlockHash = previousBlockHash;
+    return this;
   }
 
   public String getMerkleTreeRootOfTransactions() {
     return merkleTreeRootOfTransactions;
   }
 
-  public void setMerkleTreeRootOfTransactions(String merkleTreeRootOfTransactions) {
+  public BlockHeaderDto setMerkleTreeRootOfTransactions(String merkleTreeRootOfTransactions) {
     this.merkleTreeRootOfTransactions = merkleTreeRootOfTransactions;
+    return this;
   }
 
   public String getMerkleTreeRootOfWorldState() {
     return merkleTreeRootOfWorldState;
   }
 
-  public void setMerkleTreeRootOfWorldState(String merkleTreeRootOfWorldState) {
+  public BlockHeaderDto setMerkleTreeRootOfWorldState(String merkleTreeRootOfWorldState) {
     this.merkleTreeRootOfWorldState = merkleTreeRootOfWorldState;
+    return this;
   }
 
   public String getMerkleTreeRootOfTransactionState() {
     return merkleTreeRootOfTransactionState;
   }
 
-  public void setMerkleTreeRootOfTransactionState(String merkleTreeRootOfTransactionState) {
+  public BlockHeaderDto setMerkleTreeRootOfTransactionState(String merkleTreeRootOfTransactionState) {
     this.merkleTreeRootOfTransactionState = merkleTreeRootOfTransactionState;
+    return this;
   }
 
   public String getExtra() {
     return extra;
   }
 
-  public void setExtra(String extra) {
+  public BlockHeaderDto setExtra(String extra) {
     this.extra = extra;
+    return this;
   }
 
   public long getHeight() {
     return height;
   }
 
-  public void setHeight(long height) {
+  public BlockHeaderDto setHeight(long height) {
     this.height = height;
+    return this;
   }
 
   public Date getTime() {
     return time;
   }
 
-  public void setTime(Date time) {
+  public BlockHeaderDto setTime(Date time) {
     this.time = time;
+    return this;
   }
 
   public String getChainId() {
     return chainId;
   }
 
-  public void setChainId(String chainId) {
+  public BlockHeaderDto setChainId(String chainId) {
     this.chainId = chainId;
+    return this;
   }
 
   public String getBloom() {
     return bloom;
   }
 
-  public void setBloom(String bloom) {
+  public BlockHeaderDto setBloom(String bloom) {
     this.bloom = bloom;
+    return this;
   }
 
   public String getSignerPubkey() {
     return signerPubkey;
   }
 
-  public void setSignerPubkey(String signerPubkey) {
+  public BlockHeaderDto setSignerPubkey(String signerPubkey) {
     this.signerPubkey = signerPubkey;
+    return this;
   }
 }

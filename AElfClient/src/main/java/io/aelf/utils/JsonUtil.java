@@ -2,9 +2,13 @@ package io.aelf.utils;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.util.TextUtils;
+
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.StringWriter;
 
+@SuppressWarnings({"deprecation", "unchecked"})
 public final class JsonUtil {
 
   private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -40,24 +44,25 @@ public final class JsonUtil {
    * @param value not blank
    * @return MapEntry Obj
    */
-  public static MapEntry parseObject(String value) {
-    return StringUtil.isBlank(value) ? null : (MapEntry) parseObject(value, MapEntry.class);
+  @Nullable
+  public static MapEntry<String,?> parseObject(String value) {
+    return TextUtils.isBlank(value) ? null : parseObject(value, MapEntry.class);
   }
 
   /**
    * Generic conversion.
    * @param value not blank
    * @param clazz not blank
-   * @param failOnUnknowProperties not blank
+   * @param failOnUnknownProperties not blank
    * @param <T> not blank
    * @return T
    */
-  public static <T> T parseObject(String value, Class<T> clazz, boolean failOnUnknowProperties) {
-    if (StringUtil.isBlank(value)) {
+  public static <T> T parseObject(String value, Class<T> clazz, boolean failOnUnknownProperties) {
+    if (TextUtils.isBlank(value)) {
       return null;
     } else {
       try {
-        return failOnUnknowProperties ? MAPPER.readValue(value, clazz)
+        return failOnUnknownProperties ? MAPPER.readValue(value, clazz)
             : UNKNOWN_PROPERTIES_MAPPER.readValue(value, clazz);
       } catch (IOException var4) {
         throw new RuntimeException(var4);

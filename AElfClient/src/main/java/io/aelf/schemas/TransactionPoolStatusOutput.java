@@ -12,15 +12,17 @@ public class TransactionPoolStatusOutput {
     return queued;
   }
 
-  public void setQueued(int queued) {
+  public TransactionPoolStatusOutput setQueued(int queued) {
     this.queued = queued;
+    return this;
   }
 
   public int getValidated() {
     return validated;
   }
 
-  public void setValidated(int validated) {
+  public TransactionPoolStatusOutput setValidated(int validated) {
     this.validated = validated;
+    return this;
   }
 }

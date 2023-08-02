@@ -17,31 +17,35 @@ public class RequestMetric {
     return roundTripTime;
   }
 
-  public void setRoundTripTime(long roundTripTime) {
+  public RequestMetric setRoundTripTime(long roundTripTime) {
     this.roundTripTime = roundTripTime;
+    return this;
   }
 
   public String getMethodName() {
     return this.methodName;
   }
 
-  public void setMethodName(String methodName) {
+  public RequestMetric setMethodName(String methodName) {
     this.methodName = methodName;
+    return this;
   }
 
   public String getInfo() {
     return this.info;
   }
 
-  public void setInfo(String info) {
+  public RequestMetric setInfo(String info) {
     this.info = info;
+    return this;
   }
 
   public Timestamp getRequestTime() {
     return this.requestTime;
   }
 
-  public void setRequestTime(Timestamp requestTime) {
+  public RequestMetric setRequestTime(Timestamp requestTime) {
     this.requestTime = requestTime;
+    return this;
   }
 }

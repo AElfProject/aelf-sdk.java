@@ -1,5 +1,8 @@
 package io.aelf.utils;
 
+import io.aelf.sdk.AElfClient;
+import io.aelf.internal.sdkv2.AElfClientV2;
+import io.aelf.network.NetworkConnector;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -13,9 +16,22 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.apache.http.util.TextUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * This class is deprecated since it is using raw {@link HttpClient}
+ * which is not recommended now.<br/>
+ * Do not use it, and it might be removed in the future update.<br/>
+ * If somehow you are still using it from outside our SDK, consider refactoring your code to
+ * the new form WebSDK {@link NetworkConnector} and use {@link AElfClientV2} instead of
+ * deprecated {@link AElfClient}.
+ * @see AElfClientV2
+ * @see NetworkConnector
+ */
+@SuppressWarnings("unused")
+@Deprecated
 public class ClientUtil {
 
   protected static final Logger logger = LogManager.getLogger(ClientUtil.class);
@@ -23,23 +39,22 @@ public class ClientUtil {
   private ClientUtil() {
   }
 
+  @Deprecated
   private static HttpClient setProxy(Integer... connectTimeout) {
     String proxySet = StringUtil.toString(System.getProperty("proxySet"));
     if (!"true".equals(proxySet)) {
       if (connectTimeout != null && connectTimeout.length > 0) {
         RequestConfig config = RequestConfig.custom().setConnectTimeout(connectTimeout[0]).build();
-        HttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(config).build();
-        return httpClient;
+        return HttpClients.custom().setDefaultRequestConfig(config).build();
       } else {
-        HttpClient httpClient = new DefaultHttpClient();
-        return httpClient;
+        return new DefaultHttpClient();
       }
     } else {
       String proxyType = System.getProperty("proxyType");
       String host = System.getProperty(proxyType + ".proxyHost");
       int port = Integer.parseInt(System.getProperty(proxyType + ".proxyPort"));
       HttpHost proxy = new HttpHost(host, port, proxyType);
-      RequestConfig config = null;
+      RequestConfig config;
       if (connectTimeout != null && connectTimeout.length > 0) {
         config = RequestConfig.custom().setConnectTimeout(connectTimeout[0]).setProxy(proxy)
             .build();
@@ -47,8 +62,7 @@ public class ClientUtil {
         config = RequestConfig.custom().setProxy(proxy).build();
       }
 
-      HttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(config).build();
-      return httpClient;
+      return HttpClients.custom().setDefaultRequestConfig(config).build();
     }
   }
 
@@ -59,15 +73,15 @@ public class ClientUtil {
    * @param decodeCharset not blank
    * @return str
    */
+  @Deprecated
   public static String sendGet(String reqUrl, String decodeCharset, String contentType) {
     long responseLength = 0L;
     String responseContent = null;
-    HttpClient httpClient = new DefaultHttpClient();
     HttpGet httpGet = new HttpGet(reqUrl);
 
-    try {
+    try( DefaultHttpClient httpClient = new DefaultHttpClient() ) {
       setProxy();
-      if (StringUtils.isBlank(contentType)) {
+      if (TextUtils.isBlank(contentType)) {
         httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
       } else {
         httpGet.setHeader("Content-Type", contentType);
@@ -91,8 +105,6 @@ public class ClientUtil {
     } catch (Exception ex) {
       responseContent = "@ERROR:@" + ex.getMessage();
       logger.debug("sendGet Exception:", ex);
-    } finally {
-      httpClient.getConnectionManager().shutdown();
     }
 
     return responseContent;
@@ -104,21 +116,21 @@ public class ClientUtil {
    * @param reqUrl not blank
    * @param decodeCharset not blank
    */
+  @Deprecated
   public static String sendDelete(String reqUrl, String decodeCharset, String contentType, String authBasic) {
     long responseLength = 0L;
     String responseContent = null;
-    HttpClient httpClient = new DefaultHttpClient();
     HttpDelete httpDelete = new HttpDelete(reqUrl);
 
-    try {
+    try(DefaultHttpClient httpClient = new DefaultHttpClient()) {
       setProxy();
-      if (StringUtils.isBlank(contentType)) {
+      if (TextUtils.isBlank(contentType)) {
         httpDelete.setHeader("Content-Type", "application/x-www-form-urlencoded");
       } else {
         httpDelete.setHeader("Content-Type", contentType);
       }
 
-      if (!StringUtils.isBlank(authBasic)) {
+      if (!TextUtils.isBlank(authBasic)) {
         httpDelete.setHeader("Authorization", authBasic);
       }
 
@@ -141,8 +153,6 @@ public class ClientUtil {
     } catch (Exception ex) {
       logger.error("sendDelete Exception:", ex);
       responseContent = "@ERROR:@" + ex.getMessage();
-    } finally {
-      httpClient.getConnectionManager().shutdown();
     }
 
     return responseContent;
@@ -157,6 +167,7 @@ public class ClientUtil {
    * @param decodeCharset not blank
    * @param contentType not blank
    */
+  @Deprecated
   public static String sendPost(String reqUrl, String param, String encodeCharset,
       String decodeCharset, String contentType) {
     String responseContent = null;
@@ -192,6 +203,7 @@ public class ClientUtil {
     return responseContent;
   }
 
+  @Deprecated
   public static String sendPostWithAuth(String reqUrl, String param, String encodeCharset,
                                         String decodeCharset, String contentType, String authBasic) {
     String responseContent = null;

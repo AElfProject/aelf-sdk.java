@@ -23,55 +23,62 @@ public class TransactionDto {
     return from;
   }
 
-  public void setFrom(String from) {
+  public TransactionDto setFrom(String from) {
     this.from = from;
+    return this;
   }
 
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public TransactionDto setTo(String to) {
     this.to = to;
+    return this;
   }
 
   public long getRefBlockNumber() {
     return refBlockNumber;
   }
 
-  public void setRefBlockNumber(long refBlockNumber) {
+  public TransactionDto setRefBlockNumber(long refBlockNumber) {
     this.refBlockNumber = refBlockNumber;
+    return this;
   }
 
   public String getRefBlockPrefix() {
     return refBlockPrefix;
   }
 
-  public void setRefBlockPrefix(String refBlockPrefix) {
+  public TransactionDto setRefBlockPrefix(String refBlockPrefix) {
     this.refBlockPrefix = refBlockPrefix;
+    return this;
   }
 
   public String getMethodName() {
     return methodName;
   }
 
-  public void setMethodName(String methodName) {
+  public TransactionDto setMethodName(String methodName) {
     this.methodName = methodName;
+    return this;
   }
 
   public String getParams() {
     return params;
   }
 
-  public void setParams(String params) {
+  public TransactionDto setParams(String params) {
     this.params = params;
+    return this;
   }
 
   public String getSignature() {
     return signature;
   }
 
-  public void setSignature(String signature) {
+  public TransactionDto setSignature(String signature) {
     this.signature = signature;
+    return this;
   }
 }
