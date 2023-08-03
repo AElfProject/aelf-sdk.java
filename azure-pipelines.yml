@@ -6,9 +6,9 @@ jobs:
   variables:
     phpVersion: 7.2
   steps: 
-  - task: DotNetCoreInstaller@0
+  - task: UseDotNet@2
     inputs:
-      version: '3.1.101'
+      version: '6.0.x'
   - powershell: ./scripts/aelf-node/start-window.ps1
     displayName: 'deploy and test'
 # All tasks on Linux
@@ -22,9 +22,9 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
-  - task: DotNetCoreInstaller@0
+  - task: UseDotNet@2
     inputs:
-      version: '3.1.101'
+      version: '6.0.x'
   - script: cd scripts/aelf-node && bash start.sh
     displayName: 'Deploy a full node'
   - script: bash build.sh
@@ -37,9 +37,9 @@ jobs:
   variables:
     phpVersion: 7.2
   steps:
-  - task: DotNetCoreInstaller@0
+  - task: UseDotNet@2
     inputs:
-      version: '3.1.101'
+      version: '6.0.x'
   - script: cd scripts/aelf-node && bash start-mac.sh
     displayName: 'Deploy a full node'
   - script: bash build.sh

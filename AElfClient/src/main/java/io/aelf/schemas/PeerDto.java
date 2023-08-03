@@ -23,6 +23,8 @@ public class PeerDto {
   private int bufferedAnnouncementsCount;
   @JsonProperty("RequestMetrics")
   private List<RequestMetric> requestMetrics;
+  @JsonProperty("NodeVersion")
+  private String nodeVersion;
 
   public String getIpAddress() {
     return ipAddress;
@@ -94,5 +96,13 @@ public class PeerDto {
 
   public void setRequestMetrics(List<RequestMetric> requestMetrics) {
     this.requestMetrics = requestMetrics;
+  }
+
+  public String getNodeVersion() {
+    return nodeVersion;
+  }
+
+  public void setNodeVersion(String nodeVersion) {
+    this.nodeVersion = nodeVersion;
   }
 }
