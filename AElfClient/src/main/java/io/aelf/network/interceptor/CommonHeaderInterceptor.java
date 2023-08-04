@@ -1,6 +1,7 @@
 package io.aelf.network.interceptor;
 
 import io.aelf.network.NetworkConfig;
+import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.Contract;
@@ -16,9 +17,10 @@ public class CommonHeaderInterceptor extends AbstractInterceptor {
         if (TextUtils.isBlank(encodedContentType)) {
             updateEntireContentType();
         }
+        Request.Builder builder = chain.request().newBuilder();
         return chain.proceed(
-                isHeaderContentBlank(chain, NetworkConfig.CONTENT_TYPE_HEADER_NAME) ?
-                        this.singleHeaderReplacement(chain, NetworkConfig.CONTENT_TYPE_HEADER_NAME, encodedContentType)
+                isHeaderContentBlank(builder, NetworkConfig.CONTENT_TYPE_HEADER_NAME) ?
+                        this.checkAndReplaceHeader(builder, NetworkConfig.CONTENT_TYPE_HEADER_NAME, encodedContentType).build()
                         : chain.request()
         );
     }
