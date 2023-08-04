@@ -22,8 +22,6 @@ public abstract class AbstractInterceptor implements Interceptor {
     protected Request.Builder checkAndReplaceHeader(@NotNull Request.Builder builder, @Nonnull String headerName, String content) {
         if(isHeaderContentBlank(builder, headerName)) {
             builder.addHeader(headerName, content);
-        } else {
-            builder.removeHeader(headerName);
         }
         return builder;
     }
