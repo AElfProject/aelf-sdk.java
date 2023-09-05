@@ -29,79 +29,89 @@ public class TransactionResultDto {
     return transactionId;
   }
 
-  public void setTransactionId(String transactionId) {
+  public TransactionResultDto setTransactionId(String transactionId) {
     this.transactionId = transactionId;
+    return this;
   }
 
   public String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public TransactionResultDto setStatus(String status) {
     this.status = status;
+    return this;
   }
 
   public List<LogEventDto> getLogs() {
     return logs;
   }
 
-  public void setLogs(List<LogEventDto> logs) {
+  public TransactionResultDto setLogs(List<LogEventDto> logs) {
     this.logs = logs;
+    return this;
   }
 
   public String getBloom() {
     return bloom;
   }
 
-  public void setBloom(String bloom) {
+  public TransactionResultDto setBloom(String bloom) {
     this.bloom = bloom;
+    return this;
   }
 
   public long getBlockNumber() {
     return blockNumber;
   }
 
-  public void setBlockNumber(long blockNumber) {
+  public TransactionResultDto setBlockNumber(long blockNumber) {
     this.blockNumber = blockNumber;
+    return this;
   }
 
   public String getBlockHash() {
     return blockHash;
   }
 
-  public void setBlockHash(String blockHash) {
+  public TransactionResultDto setBlockHash(String blockHash) {
     this.blockHash = blockHash;
+    return this;
   }
 
   public TransactionDto getTransaction() {
     return transaction;
   }
 
-  public void setTransaction(TransactionDto transaction) {
+  public TransactionResultDto setTransaction(TransactionDto transaction) {
     this.transaction = transaction;
+    return this;
   }
 
   public String getReturnValue() {
     return returnValue;
   }
 
-  public void setReturnValue(String returnValue) {
+  public TransactionResultDto setReturnValue(String returnValue) {
     this.returnValue = returnValue;
+    return this;
   }
 
   public String getError() {
     return error;
   }
 
-  public void setError(String error) {
+  public TransactionResultDto setError(String error) {
     this.error = error;
+    return this;
   }
 
   public TransactionFeeDto getTransactionFee() {
     return transactionFee;
   }
 
-  public void setTransactionFee(TransactionFeeDto transactionFee) {
+  public TransactionResultDto setTransactionFee(TransactionFeeDto transactionFee) {
     this.transactionFee = transactionFee;
+    return this;
   }
 }

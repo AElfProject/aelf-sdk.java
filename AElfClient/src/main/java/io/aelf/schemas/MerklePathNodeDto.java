@@ -13,15 +13,17 @@ public class MerklePathNodeDto {
     return hash;
   }
 
-  public void setHash(String hash) {
+  public MerklePathNodeDto setHash(String hash) {
     this.hash = hash;
+    return this;
   }
 
   public boolean isLeftChildNode() {
     return isLeftChildNode;
   }
 
-  public void setLeftChildNode(boolean leftChildNode) {
+  public MerklePathNodeDto setLeftChildNode(boolean leftChildNode) {
     isLeftChildNode = leftChildNode;
+    return this;
   }
 }

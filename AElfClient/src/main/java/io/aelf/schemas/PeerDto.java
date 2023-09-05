@@ -30,79 +30,89 @@ public class PeerDto {
     return ipAddress;
   }
 
-  public void setIpAddress(String ipAddress) {
-    ipAddress = ipAddress;
+  public PeerDto setIpAddress(String ipAddress) {
+    this.ipAddress = ipAddress;
+    return this;
   }
 
   public int getProtocolVersion() {
     return protocolVersion;
   }
 
-  public void setProtocolVersion(int protocolVersion) {
+  public PeerDto setProtocolVersion(int protocolVersion) {
     this.protocolVersion = protocolVersion;
+    return this;
   }
 
   public long getConnectionTime() {
     return connectionTime;
   }
 
-  public void setConnectionTime(long connectionTime) {
+  public PeerDto setConnectionTime(long connectionTime) {
     this.connectionTime = connectionTime;
+    return this;
   }
 
   public String getConnectionStatus() {
     return this.connectionStatus;
   }
 
-  public void setConnectionStatus(String connectionStatus) {
+  public PeerDto setConnectionStatus(String connectionStatus) {
     this.connectionStatus = connectionStatus;
+    return this;
   }
 
   public boolean isInbound() {
     return this.inbound;
   }
 
-  public void setInbound(boolean inbound) {
+  public PeerDto setInbound(boolean inbound) {
     this.inbound = inbound;
+    return this;
   }
 
   public int getBufferedTransactionsCount() {
     return this.bufferedTransactionsCount;
   }
 
-  public void setBufferedTransactionsCount(int bufferedTransactionsCount) {
+  public PeerDto setBufferedTransactionsCount(int bufferedTransactionsCount) {
     this.bufferedTransactionsCount = bufferedTransactionsCount;
+    return this;
   }
 
   public int getBufferedBlocksCount() {
     return this.bufferedBlocksCount;
   }
 
-  public void setBufferedBlocksCount(int bufferedBlocksCount) {
+  public PeerDto setBufferedBlocksCount(int bufferedBlocksCount) {
     this.bufferedBlocksCount = bufferedBlocksCount;
+    return this;
   }
 
   public int getBufferedAnnouncementsCount() {
     return this.bufferedAnnouncementsCount;
   }
 
-  public void setBufferedAnnouncementsCount(int bufferedAnnouncementsCount) {
+  public PeerDto setBufferedAnnouncementsCount(int bufferedAnnouncementsCount) {
     this.bufferedAnnouncementsCount = bufferedAnnouncementsCount;
+    return this;
   }
 
   public List<RequestMetric> getRequestMetrics() {
     return requestMetrics;
   }
 
-  public void setRequestMetrics(List<RequestMetric> requestMetrics) {
+  public PeerDto setRequestMetrics(List<RequestMetric> requestMetrics) {
     this.requestMetrics = requestMetrics;
+    return this;
   }
 
   public String getNodeVersion() {
     return nodeVersion;
   }
 
-  public void setNodeVersion(String nodeVersion) {
+  public PeerDto setNodeVersion(String nodeVersion) {
     this.nodeVersion = nodeVersion;
+    return this;
   }
 }

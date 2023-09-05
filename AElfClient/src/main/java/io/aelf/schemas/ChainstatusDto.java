@@ -32,87 +32,98 @@ public class ChainstatusDto {
     return chainId;
   }
 
-  public void setChainId(String chainId) {
+  public ChainstatusDto setChainId(String chainId) {
     this.chainId = chainId;
+    return this;
   }
 
   public HashMap<String, Long> getBranches() {
     return branches;
   }
 
-  public void setBranches(HashMap<String, Long> branches) {
+  public ChainstatusDto setBranches(HashMap<String, Long> branches) {
     this.branches = branches;
+    return this;
   }
 
   public HashMap<String, String> getNotLinkedBlocks() {
     return notLinkedBlocks;
   }
 
-  public void setNotLinkedBlocks(HashMap<String, String> notLinkedBlocks) {
+  public ChainstatusDto setNotLinkedBlocks(HashMap<String, String> notLinkedBlocks) {
     this.notLinkedBlocks = notLinkedBlocks;
+    return this;
   }
 
   public long getLongestChainHeight() {
     return longestChainHeight;
   }
 
-  public void setLongestChainHeight(long longestChainHeight) {
+  public ChainstatusDto setLongestChainHeight(long longestChainHeight) {
     this.longestChainHeight = longestChainHeight;
+    return this;
   }
 
   public String getLongestChainHash() {
     return longestChainHash;
   }
 
-  public void setLongestChainHash(String longestChainHash) {
+  public ChainstatusDto setLongestChainHash(String longestChainHash) {
     this.longestChainHash = longestChainHash;
+    return this;
   }
 
   public String getGenesisBlockHash() {
     return genesisBlockHash;
   }
 
-  public void setGenesisBlockHash(String genesisBlockHash) {
+  public ChainstatusDto setGenesisBlockHash(String genesisBlockHash) {
     this.genesisBlockHash = genesisBlockHash;
+    return this;
   }
 
   public String getGenesisContractAddress() {
     return genesisContractAddress;
   }
 
-  public void setGenesisContractAddress(String genesisContractAddress) {
+  public ChainstatusDto setGenesisContractAddress(String genesisContractAddress) {
     this.genesisContractAddress = genesisContractAddress;
+    return this;
   }
 
   public String getLastIrreversibleBlockHash() {
     return lastIrreversibleBlockHash;
   }
 
-  public void setLastIrreversibleBlockHash(String lastIrreversibleBlockHash) {
+  public ChainstatusDto setLastIrreversibleBlockHash(String lastIrreversibleBlockHash) {
     this.lastIrreversibleBlockHash = lastIrreversibleBlockHash;
+    return this;
   }
 
   public long getLastIrreversibleBlockHeight() {
     return lastIrreversibleBlockHeight;
   }
 
-  public void setLastIrreversibleBlockHeight(long lastIrreversibleBlockHeight) {
+  public ChainstatusDto setLastIrreversibleBlockHeight(long lastIrreversibleBlockHeight) {
     this.lastIrreversibleBlockHeight = lastIrreversibleBlockHeight;
+    return this;
   }
 
   public String getBestChainHash() {
     return bestChainHash;
   }
 
-  public void setBestChainHash(String bestChainHash) {
+  public ChainstatusDto setBestChainHash(String bestChainHash) {
     this.bestChainHash = bestChainHash;
+    return this;
   }
 
   public long getBestChainHeight() {
     return bestChainHeight;
   }
 
-  public void setBestChainHeight(long bestChainHeight) {
+  public ChainstatusDto setBestChainHeight(long bestChainHeight) {
     this.bestChainHeight = bestChainHeight;
+    return this;
   }
 }

@@ -21,8 +21,9 @@ public class NetworkInfoOutput {
   /**
    * node version.
    */
-  public void setVersion(String version) {
+  public NetworkInfoOutput setVersion(String version) {
     this.version = version;
+    return this;
   }
 
   /**
@@ -35,8 +36,9 @@ public class NetworkInfoOutput {
   /**
    * network protocol version.
    */
-  public void setProtocolVersion(int protocolVersion) {
+  public NetworkInfoOutput setProtocolVersion(int protocolVersion) {
     this.protocolVersion = protocolVersion;
+    return this;
   }
 
   /**
@@ -49,7 +51,8 @@ public class NetworkInfoOutput {
   /**
    * total number of open connections between this node and other nodes.
    */
-  public void setConnections(int connections) {
+  public NetworkInfoOutput setConnections(int connections) {
     this.connections = connections;
+    return this;
   }
 }
