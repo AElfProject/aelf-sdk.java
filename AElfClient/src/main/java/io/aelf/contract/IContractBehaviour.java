@@ -1,6 +1,5 @@
 package io.aelf.contract;
 
-import com.google.gson.JsonObject;
 import io.aelf.schemas.TransactionDto;
 import io.aelf.utils.AElfException;
 import org.jetbrains.annotations.NotNull;
@@ -39,13 +38,17 @@ public interface IContractBehaviour {
                               @Nonnull String methodName, @Nonnull String privateKey,
                               boolean isViewMethod, @Nullable String optionalParams) throws AElfException;
 
-    String callContractMethod(@Nonnull String contractName,
-                              @Nonnull String methodName, @Nonnull String privateKey,
-                              boolean isViewMethod, @NotNull JsonObject optionalParams) throws AElfException;
-
     String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
                               @Nonnull String privateKey, boolean isViewMethod, byte[] bytes) throws AElfException;
 
     String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
                               @Nonnull String privateKey, boolean isViewMethod) throws AElfException;
+
+    String callContractMethodWithAddress(@Nonnull String contractAddress,
+                                         @NotNull String methodName, @NotNull String privateKey,
+                                         boolean isViewMethod, @NotNull String params) throws AElfException;
+
+    String callContractMethodWithAddress(@Nonnull String contractAddress,
+                                         @NotNull String methodName, @NotNull String privateKey,
+                                         boolean isViewMethod, byte @NotNull [] params) throws AElfException;
 }

@@ -6,8 +6,8 @@
     <groupId>io.aelf</groupId>
     <artifactId>aelf-sdk</artifactId>
     <name>AElfClient</name>
-    <version>0.2.0-SNAPSHOT</version>
-    <description>This is a Java client library, used to communicate with the [AElf](https://github.com/AElfProject/AElf)  API.</description>
+    <version>1.3.0-SNAPSHOT</version>
+    <description>This is a Java client library, used to communicate with the [AElf](https://github.com/AElfProject/AElf) API.</description>
     <url>https://github.com/AElfProject/aelf-sdk.java</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

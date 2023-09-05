@@ -1,17 +1,16 @@
 package io.aelf.sdk;
 
-import com.google.gson.JsonObject;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.StringValue;
 import io.aelf.contract.GlobalContract;
 import io.aelf.contract.IContractBehaviour;
-import io.aelf.network.interceptor.CommonHeaderInterceptor;
+import io.aelf.internal.sdkv2.AElfClientV2;
 import io.aelf.network.factories.RetrofitFactory;
+import io.aelf.network.interceptor.CommonHeaderInterceptor;
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
 import io.aelf.response.ResultCode;
 import io.aelf.schemas.*;
-import io.aelf.internal.sdkv2.AElfClientV2;
 import io.aelf.utils.*;
 import org.apache.http.util.TextUtils;
 import org.bitcoinj.core.Base58;
@@ -555,23 +554,6 @@ public class AElfClient implements IContractBehaviour {
         return callContractMethod(contractName, methodName, privateKey, isViewMethod, "");
     }
 
-    /**
-     * See its overload method
-     * {@link AElfClient#callContractMethod(String, String, String, boolean, String)}
-     * for more information.
-     */
-    @Override
-    public String callContractMethod(@Nonnull String contractName, @Nonnull String methodName,
-                                     @Nonnull String privateKey, boolean isViewMethod, @NotNull JsonObject optionalParams) throws AElfException {
-        return callContractMethod(
-                contractName,
-                methodName,
-                privateKey,
-                isViewMethod,
-                optionalParams.toString()
-        );
-    }
-
 
     /**
      * Call a VIEW/SEND method in the particular contract
@@ -623,6 +605,40 @@ public class AElfClient implements IContractBehaviour {
                     isViewMethod);
         } catch (IOException e) {
             throw new AElfException(ResultCode.NETWORK_DISCONNECTED);
+        } catch (Exception e) {
+            throw new AElfException(e);
+        }
+    }
+
+    @Override
+    public String callContractMethodWithAddress(
+            @NotNull String contractAddress,
+            @NotNull String methodName,
+            @NotNull String privateKey,
+            boolean isViewMethod,
+            @NotNull String params) throws AElfException {
+        return callContractMethodWithAddress(contractAddress, methodName, privateKey, isViewMethod, Sha256.getBytesSha256(params));
+    }
+
+    @Override
+    public String callContractMethodWithAddress(
+            @NotNull String contractAddress,
+            @NotNull String methodName,
+            @NotNull String privateKey,
+            boolean isViewMethod,
+            byte @NotNull [] params
+    ) throws AElfException {
+        try {
+            String fromAddress = this.getAddressFromPrivateKey(privateKey);
+            return innerCallContract(
+                    fromAddress,
+                    contractAddress,
+                    methodName,
+                    params,
+                    privateKey,
+                    isViewMethod);
+        } catch (IOException e) {
+            throw new AElfException(e, ResultCode.NETWORK_DISCONNECTED);
         } catch (Exception e) {
             throw new AElfException(e);
         }
