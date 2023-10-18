@@ -129,6 +129,10 @@ public final class Core {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -236,7 +240,7 @@ public final class Core {
   /**
    * Protobuf type {@code Transaction}
    */
-  public  static final class Transaction extends
+  public static final class Transaction extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:Transaction)
       TransactionOrBuilder {
@@ -264,95 +268,6 @@ public final class Core {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Transaction(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (from_ != null) {
-                subBuilder = from_.toBuilder();
-              }
-              from_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(from_);
-                from_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (to_ != null) {
-                subBuilder = to_.toBuilder();
-              }
-              to_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(to_);
-                to_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 24: {
-
-              refBlockNumber_ = input.readInt64();
-              break;
-            }
-            case 34: {
-
-              refBlockPrefix_ = input.readBytes();
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              methodName_ = s;
-              break;
-            }
-            case 50: {
-
-              params_ = input.readBytes();
-              break;
-            }
-            case 80002: {
-
-              signature_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.Core.internal_static_Transaction_descriptor;
@@ -372,6 +287,7 @@ public final class Core {
      * <code>.Address from = 1;</code>
      * @return Whether the from field is set.
      */
+    @java.lang.Override
     public boolean hasFrom() {
       return from_ != null;
     }
@@ -379,14 +295,16 @@ public final class Core {
      * <code>.Address from = 1;</code>
      * @return The from.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getFrom() {
       return from_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : from_;
     }
     /**
      * <code>.Address from = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getFromOrBuilder() {
-      return getFrom();
+      return from_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : from_;
     }
 
     public static final int TO_FIELD_NUMBER = 2;
@@ -395,6 +313,7 @@ public final class Core {
      * <code>.Address to = 2;</code>
      * @return Whether the to field is set.
      */
+    @java.lang.Override
     public boolean hasTo() {
       return to_ != null;
     }
@@ -402,42 +321,48 @@ public final class Core {
      * <code>.Address to = 2;</code>
      * @return The to.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getTo() {
       return to_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
     }
     /**
      * <code>.Address to = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getToOrBuilder() {
-      return getTo();
+      return to_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : to_;
     }
 
     public static final int REF_BLOCK_NUMBER_FIELD_NUMBER = 3;
-    private long refBlockNumber_;
+    private long refBlockNumber_ = 0L;
     /**
      * <code>int64 ref_block_number = 3;</code>
      * @return The refBlockNumber.
      */
+    @java.lang.Override
     public long getRefBlockNumber() {
       return refBlockNumber_;
     }
 
     public static final int REF_BLOCK_PREFIX_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString refBlockPrefix_;
+    private com.google.protobuf.ByteString refBlockPrefix_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes ref_block_prefix = 4;</code>
      * @return The refBlockPrefix.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getRefBlockPrefix() {
       return refBlockPrefix_;
     }
 
     public static final int METHOD_NAME_FIELD_NUMBER = 5;
-    private volatile java.lang.Object methodName_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object methodName_ = "";
     /**
      * <code>string method_name = 5;</code>
      * @return The methodName.
      */
+    @java.lang.Override
     public java.lang.String getMethodName() {
       java.lang.Object ref = methodName_;
       if (ref instanceof java.lang.String) {
@@ -454,6 +379,7 @@ public final class Core {
      * <code>string method_name = 5;</code>
      * @return The bytes for methodName.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMethodNameBytes() {
       java.lang.Object ref = methodName_;
@@ -469,21 +395,23 @@ public final class Core {
     }
 
     public static final int PARAMS_FIELD_NUMBER = 6;
-    private com.google.protobuf.ByteString params_;
+    private com.google.protobuf.ByteString params_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes params = 6;</code>
      * @return The params.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getParams() {
       return params_;
     }
 
     public static final int SIGNATURE_FIELD_NUMBER = 10000;
-    private com.google.protobuf.ByteString signature_;
+    private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes signature = 10000;</code>
      * @return The signature.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getSignature() {
       return signature_;
     }
@@ -514,7 +442,7 @@ public final class Core {
       if (!refBlockPrefix_.isEmpty()) {
         output.writeBytes(4, refBlockPrefix_);
       }
-      if (!getMethodNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(methodName_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, methodName_);
       }
       if (!params_.isEmpty()) {
@@ -523,7 +451,7 @@ public final class Core {
       if (!signature_.isEmpty()) {
         output.writeBytes(10000, signature_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -548,7 +476,7 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, refBlockPrefix_);
       }
-      if (!getMethodNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(methodName_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, methodName_);
       }
       if (!params_.isEmpty()) {
@@ -559,7 +487,7 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(10000, signature_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -594,7 +522,7 @@ public final class Core {
           .equals(other.getParams())) return false;
       if (!getSignature()
           .equals(other.getSignature())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -624,7 +552,7 @@ public final class Core {
       hash = (53 * hash) + getParams().hashCode();
       hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
       hash = (53 * hash) + getSignature().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -741,44 +669,33 @@ public final class Core {
 
       // Construct using io.aelf.protobuf.generated.Core.Transaction.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (fromBuilder_ == null) {
-          from_ = null;
-        } else {
-          from_ = null;
+        bitField0_ = 0;
+        from_ = null;
+        if (fromBuilder_ != null) {
+          fromBuilder_.dispose();
           fromBuilder_ = null;
         }
-        if (toBuilder_ == null) {
-          to_ = null;
-        } else {
-          to_ = null;
+        to_ = null;
+        if (toBuilder_ != null) {
+          toBuilder_.dispose();
           toBuilder_ = null;
         }
         refBlockNumber_ = 0L;
-
         refBlockPrefix_ = com.google.protobuf.ByteString.EMPTY;
-
         methodName_ = "";
-
         params_ = com.google.protobuf.ByteString.EMPTY;
-
         signature_ = com.google.protobuf.ByteString.EMPTY;
-
         return this;
       }
 
@@ -805,23 +722,38 @@ public final class Core {
       @java.lang.Override
       public io.aelf.protobuf.generated.Core.Transaction buildPartial() {
         io.aelf.protobuf.generated.Core.Transaction result = new io.aelf.protobuf.generated.Core.Transaction(this);
-        if (fromBuilder_ == null) {
-          result.from_ = from_;
-        } else {
-          result.from_ = fromBuilder_.build();
-        }
-        if (toBuilder_ == null) {
-          result.to_ = to_;
-        } else {
-          result.to_ = toBuilder_.build();
-        }
-        result.refBlockNumber_ = refBlockNumber_;
-        result.refBlockPrefix_ = refBlockPrefix_;
-        result.methodName_ = methodName_;
-        result.params_ = params_;
-        result.signature_ = signature_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.Core.Transaction result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.from_ = fromBuilder_ == null
+              ? from_
+              : fromBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.to_ = toBuilder_ == null
+              ? to_
+              : toBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.refBlockNumber_ = refBlockNumber_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.refBlockPrefix_ = refBlockPrefix_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.methodName_ = methodName_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.params_ = params_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.signature_ = signature_;
+        }
       }
 
       @java.lang.Override
@@ -882,6 +814,7 @@ public final class Core {
         }
         if (!other.getMethodName().isEmpty()) {
           methodName_ = other.methodName_;
+          bitField0_ |= 0x00000010;
           onChanged();
         }
         if (other.getParams() != com.google.protobuf.ByteString.EMPTY) {
@@ -890,7 +823,7 @@ public final class Core {
         if (other.getSignature() != com.google.protobuf.ByteString.EMPTY) {
           setSignature(other.getSignature());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -905,19 +838,72 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.Core.Transaction parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getFromFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getToFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                refBlockNumber_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 34: {
+                refBlockPrefix_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                methodName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                params_ = input.readBytes();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 80002: {
+                signature_ = input.readBytes();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 80002
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Core.Transaction) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Address from_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -927,7 +913,7 @@ public final class Core {
        * @return Whether the from field is set.
        */
       public boolean hasFrom() {
-        return fromBuilder_ != null || from_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>.Address from = 1;</code>
@@ -949,11 +935,11 @@ public final class Core {
             throw new NullPointerException();
           }
           from_ = value;
-          onChanged();
         } else {
           fromBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -963,11 +949,11 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (fromBuilder_ == null) {
           from_ = builderForValue.build();
-          onChanged();
         } else {
           fromBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -975,38 +961,38 @@ public final class Core {
        */
       public Builder mergeFrom(io.aelf.protobuf.generated.Client.Address value) {
         if (fromBuilder_ == null) {
-          if (from_ != null) {
-            from_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(from_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            from_ != null &&
+            from_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getFromBuilder().mergeFrom(value);
           } else {
             from_ = value;
           }
-          onChanged();
         } else {
           fromBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
        * <code>.Address from = 1;</code>
        */
       public Builder clearFrom() {
-        if (fromBuilder_ == null) {
-          from_ = null;
-          onChanged();
-        } else {
-          from_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        from_ = null;
+        if (fromBuilder_ != null) {
+          fromBuilder_.dispose();
           fromBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
        * <code>.Address from = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getFromBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getFromFieldBuilder().getBuilder();
       }
@@ -1046,7 +1032,7 @@ public final class Core {
        * @return Whether the to field is set.
        */
       public boolean hasTo() {
-        return toBuilder_ != null || to_ != null;
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <code>.Address to = 2;</code>
@@ -1068,11 +1054,11 @@ public final class Core {
             throw new NullPointerException();
           }
           to_ = value;
-          onChanged();
         } else {
           toBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1082,11 +1068,11 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (toBuilder_ == null) {
           to_ = builderForValue.build();
-          onChanged();
         } else {
           toBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1094,38 +1080,38 @@ public final class Core {
        */
       public Builder mergeTo(io.aelf.protobuf.generated.Client.Address value) {
         if (toBuilder_ == null) {
-          if (to_ != null) {
-            to_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(to_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000002) != 0) &&
+            to_ != null &&
+            to_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getToBuilder().mergeFrom(value);
           } else {
             to_ = value;
           }
-          onChanged();
         } else {
           toBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
        * <code>.Address to = 2;</code>
        */
       public Builder clearTo() {
-        if (toBuilder_ == null) {
-          to_ = null;
-          onChanged();
-        } else {
-          to_ = null;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        to_ = null;
+        if (toBuilder_ != null) {
+          toBuilder_.dispose();
           toBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
        * <code>.Address to = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getToBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getToFieldBuilder().getBuilder();
       }
@@ -1162,6 +1148,7 @@ public final class Core {
        * <code>int64 ref_block_number = 3;</code>
        * @return The refBlockNumber.
        */
+      @java.lang.Override
       public long getRefBlockNumber() {
         return refBlockNumber_;
       }
@@ -1173,6 +1160,7 @@ public final class Core {
       public Builder setRefBlockNumber(long value) {
         
         refBlockNumber_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1181,7 +1169,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearRefBlockNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         refBlockNumber_ = 0L;
         onChanged();
         return this;
@@ -1192,6 +1180,7 @@ public final class Core {
        * <code>bytes ref_block_prefix = 4;</code>
        * @return The refBlockPrefix.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getRefBlockPrefix() {
         return refBlockPrefix_;
       }
@@ -1201,11 +1190,9 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder setRefBlockPrefix(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         refBlockPrefix_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1214,7 +1201,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearRefBlockPrefix() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         refBlockPrefix_ = getDefaultInstance().getRefBlockPrefix();
         onChanged();
         return this;
@@ -1261,11 +1248,9 @@ public final class Core {
        */
       public Builder setMethodName(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         methodName_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1274,8 +1259,8 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearMethodName() {
-        
         methodName_ = getDefaultInstance().getMethodName();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -1286,12 +1271,10 @@ public final class Core {
        */
       public Builder setMethodNameBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         methodName_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1301,6 +1284,7 @@ public final class Core {
        * <code>bytes params = 6;</code>
        * @return The params.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getParams() {
         return params_;
       }
@@ -1310,11 +1294,9 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder setParams(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         params_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1323,7 +1305,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearParams() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         params_ = getDefaultInstance().getParams();
         onChanged();
         return this;
@@ -1334,6 +1316,7 @@ public final class Core {
        * <code>bytes signature = 10000;</code>
        * @return The signature.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getSignature() {
         return signature_;
       }
@@ -1343,11 +1326,9 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder setSignature(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         signature_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1356,7 +1337,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearSignature() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
@@ -1394,7 +1375,18 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Transaction(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1516,7 +1508,7 @@ public final class Core {
   /**
    * Protobuf type {@code TransactionResult}
    */
-  public  static final class TransactionResult extends
+  public static final class TransactionResult extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:TransactionResult)
       TransactionResultOrBuilder {
@@ -1545,109 +1537,6 @@ public final class Core {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private TransactionResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (transactionId_ != null) {
-                subBuilder = transactionId_.toBuilder();
-              }
-              transactionId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(transactionId_);
-                transactionId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                logs_ = new java.util.ArrayList<io.aelf.protobuf.generated.Core.LogEvent>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              logs_.add(
-                  input.readMessage(io.aelf.protobuf.generated.Core.LogEvent.parser(), extensionRegistry));
-              break;
-            }
-            case 34: {
-
-              bloom_ = input.readBytes();
-              break;
-            }
-            case 42: {
-
-              returnValue_ = input.readBytes();
-              break;
-            }
-            case 48: {
-
-              blockNumber_ = input.readInt64();
-              break;
-            }
-            case 58: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (blockHash_ != null) {
-                subBuilder = blockHash_.toBuilder();
-              }
-              blockHash_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(blockHash_);
-                blockHash_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              error_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          logs_ = java.util.Collections.unmodifiableList(logs_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.Core.internal_static_TransactionResult_descriptor;
@@ -1667,6 +1556,7 @@ public final class Core {
      * <code>.Hash transaction_id = 1;</code>
      * @return Whether the transactionId field is set.
      */
+    @java.lang.Override
     public boolean hasTransactionId() {
       return transactionId_ != null;
     }
@@ -1674,46 +1564,50 @@ public final class Core {
      * <code>.Hash transaction_id = 1;</code>
      * @return The transactionId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getTransactionId() {
       return transactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionId_;
     }
     /**
      * <code>.Hash transaction_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionIdOrBuilder() {
-      return getTransactionId();
+      return transactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionId_;
     }
 
     public static final int STATUS_FIELD_NUMBER = 2;
-    private int status_;
+    private int status_ = 0;
     /**
      * <code>.TransactionResultStatus status = 2;</code>
      * @return The enum numeric value on the wire for status.
      */
-    public int getStatusValue() {
+    @java.lang.Override public int getStatusValue() {
       return status_;
     }
     /**
      * <code>.TransactionResultStatus status = 2;</code>
      * @return The status.
      */
-    public io.aelf.protobuf.generated.Core.TransactionResultStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      io.aelf.protobuf.generated.Core.TransactionResultStatus result = io.aelf.protobuf.generated.Core.TransactionResultStatus.valueOf(status_);
+    @java.lang.Override public io.aelf.protobuf.generated.Core.TransactionResultStatus getStatus() {
+      io.aelf.protobuf.generated.Core.TransactionResultStatus result = io.aelf.protobuf.generated.Core.TransactionResultStatus.forNumber(status_);
       return result == null ? io.aelf.protobuf.generated.Core.TransactionResultStatus.UNRECOGNIZED : result;
     }
 
     public static final int LOGS_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.Core.LogEvent> logs_;
     /**
      * <code>repeated .LogEvent logs = 3;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.Core.LogEvent> getLogsList() {
       return logs_;
     }
     /**
      * <code>repeated .LogEvent logs = 3;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.Core.LogEventOrBuilder> 
         getLogsOrBuilderList() {
       return logs_;
@@ -1721,49 +1615,55 @@ public final class Core {
     /**
      * <code>repeated .LogEvent logs = 3;</code>
      */
+    @java.lang.Override
     public int getLogsCount() {
       return logs_.size();
     }
     /**
      * <code>repeated .LogEvent logs = 3;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Core.LogEvent getLogs(int index) {
       return logs_.get(index);
     }
     /**
      * <code>repeated .LogEvent logs = 3;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Core.LogEventOrBuilder getLogsOrBuilder(
         int index) {
       return logs_.get(index);
     }
 
     public static final int BLOOM_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString bloom_;
+    private com.google.protobuf.ByteString bloom_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes bloom = 4;</code>
      * @return The bloom.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getBloom() {
       return bloom_;
     }
 
     public static final int RETURN_VALUE_FIELD_NUMBER = 5;
-    private com.google.protobuf.ByteString returnValue_;
+    private com.google.protobuf.ByteString returnValue_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes return_value = 5;</code>
      * @return The returnValue.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getReturnValue() {
       return returnValue_;
     }
 
     public static final int BLOCK_NUMBER_FIELD_NUMBER = 6;
-    private long blockNumber_;
+    private long blockNumber_ = 0L;
     /**
      * <code>int64 block_number = 6;</code>
      * @return The blockNumber.
      */
+    @java.lang.Override
     public long getBlockNumber() {
       return blockNumber_;
     }
@@ -1774,6 +1674,7 @@ public final class Core {
      * <code>.Hash block_hash = 7;</code>
      * @return Whether the blockHash field is set.
      */
+    @java.lang.Override
     public boolean hasBlockHash() {
       return blockHash_ != null;
     }
@@ -1781,22 +1682,26 @@ public final class Core {
      * <code>.Hash block_hash = 7;</code>
      * @return The blockHash.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getBlockHash() {
       return blockHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : blockHash_;
     }
     /**
      * <code>.Hash block_hash = 7;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getBlockHashOrBuilder() {
-      return getBlockHash();
+      return blockHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : blockHash_;
     }
 
     public static final int ERROR_FIELD_NUMBER = 10;
-    private volatile java.lang.Object error_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object error_ = "";
     /**
      * <code>string error = 10;</code>
      * @return The error.
      */
+    @java.lang.Override
     public java.lang.String getError() {
       java.lang.Object ref = error_;
       if (ref instanceof java.lang.String) {
@@ -1813,6 +1718,7 @@ public final class Core {
      * <code>string error = 10;</code>
      * @return The bytes for error.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getErrorBytes() {
       java.lang.Object ref = error_;
@@ -1862,10 +1768,10 @@ public final class Core {
       if (blockHash_ != null) {
         output.writeMessage(7, getBlockHash());
       }
-      if (!getErrorBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(error_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, error_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1902,10 +1808,10 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, getBlockHash());
       }
-      if (!getErrorBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(error_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, error_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1941,7 +1847,7 @@ public final class Core {
       }
       if (!getError()
           .equals(other.getError())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1975,7 +1881,7 @@ public final class Core {
       }
       hash = (37 * hash) + ERROR_FIELD_NUMBER;
       hash = (53 * hash) + getError().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2092,51 +1998,40 @@ public final class Core {
 
       // Construct using io.aelf.protobuf.generated.Core.TransactionResult.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getLogsFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (transactionIdBuilder_ == null) {
-          transactionId_ = null;
-        } else {
-          transactionId_ = null;
+        bitField0_ = 0;
+        transactionId_ = null;
+        if (transactionIdBuilder_ != null) {
+          transactionIdBuilder_.dispose();
           transactionIdBuilder_ = null;
         }
         status_ = 0;
-
         if (logsBuilder_ == null) {
           logs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          logs_ = null;
           logsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000004);
         bloom_ = com.google.protobuf.ByteString.EMPTY;
-
         returnValue_ = com.google.protobuf.ByteString.EMPTY;
-
         blockNumber_ = 0L;
-
-        if (blockHashBuilder_ == null) {
-          blockHash_ = null;
-        } else {
-          blockHash_ = null;
+        blockHash_ = null;
+        if (blockHashBuilder_ != null) {
+          blockHashBuilder_.dispose();
           blockHashBuilder_ = null;
         }
         error_ = "";
-
         return this;
       }
 
@@ -2163,33 +2058,51 @@ public final class Core {
       @java.lang.Override
       public io.aelf.protobuf.generated.Core.TransactionResult buildPartial() {
         io.aelf.protobuf.generated.Core.TransactionResult result = new io.aelf.protobuf.generated.Core.TransactionResult(this);
-        int from_bitField0_ = bitField0_;
-        if (transactionIdBuilder_ == null) {
-          result.transactionId_ = transactionId_;
-        } else {
-          result.transactionId_ = transactionIdBuilder_.build();
-        }
-        result.status_ = status_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.Core.TransactionResult result) {
         if (logsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             logs_ = java.util.Collections.unmodifiableList(logs_);
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.logs_ = logs_;
         } else {
           result.logs_ = logsBuilder_.build();
         }
-        result.bloom_ = bloom_;
-        result.returnValue_ = returnValue_;
-        result.blockNumber_ = blockNumber_;
-        if (blockHashBuilder_ == null) {
-          result.blockHash_ = blockHash_;
-        } else {
-          result.blockHash_ = blockHashBuilder_.build();
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.Core.TransactionResult result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.transactionId_ = transactionIdBuilder_ == null
+              ? transactionId_
+              : transactionIdBuilder_.build();
         }
-        result.error_ = error_;
-        onBuilt();
-        return result;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.status_ = status_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.bloom_ = bloom_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.returnValue_ = returnValue_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.blockNumber_ = blockNumber_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.blockHash_ = blockHashBuilder_ == null
+              ? blockHash_
+              : blockHashBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.error_ = error_;
+        }
       }
 
       @java.lang.Override
@@ -2246,7 +2159,7 @@ public final class Core {
           if (!other.logs_.isEmpty()) {
             if (logs_.isEmpty()) {
               logs_ = other.logs_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureLogsIsMutable();
               logs_.addAll(other.logs_);
@@ -2259,7 +2172,7 @@ public final class Core {
               logsBuilder_.dispose();
               logsBuilder_ = null;
               logs_ = other.logs_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000004);
               logsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getLogsFieldBuilder() : null;
@@ -2282,9 +2195,10 @@ public final class Core {
         }
         if (!other.getError().isEmpty()) {
           error_ = other.error_;
+          bitField0_ |= 0x00000080;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2299,17 +2213,82 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.Core.TransactionResult parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getTransactionIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                status_ = input.readEnum();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                io.aelf.protobuf.generated.Core.LogEvent m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.Core.LogEvent.parser(),
+                        extensionRegistry);
+                if (logsBuilder_ == null) {
+                  ensureLogsIsMutable();
+                  logs_.add(m);
+                } else {
+                  logsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 26
+              case 34: {
+                bloom_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                returnValue_ = input.readBytes();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 48: {
+                blockNumber_ = input.readInt64();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
+              case 58: {
+                input.readMessage(
+                    getBlockHashFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
+              case 82: {
+                error_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 82
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Core.TransactionResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -2322,7 +2301,7 @@ public final class Core {
        * @return Whether the transactionId field is set.
        */
       public boolean hasTransactionId() {
-        return transactionIdBuilder_ != null || transactionId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>.Hash transaction_id = 1;</code>
@@ -2344,11 +2323,11 @@ public final class Core {
             throw new NullPointerException();
           }
           transactionId_ = value;
-          onChanged();
         } else {
           transactionIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -2358,11 +2337,11 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (transactionIdBuilder_ == null) {
           transactionId_ = builderForValue.build();
-          onChanged();
         } else {
           transactionIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -2370,38 +2349,38 @@ public final class Core {
        */
       public Builder mergeTransactionId(io.aelf.protobuf.generated.Client.Hash value) {
         if (transactionIdBuilder_ == null) {
-          if (transactionId_ != null) {
-            transactionId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(transactionId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            transactionId_ != null &&
+            transactionId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getTransactionIdBuilder().mergeFrom(value);
           } else {
             transactionId_ = value;
           }
-          onChanged();
         } else {
           transactionIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
        * <code>.Hash transaction_id = 1;</code>
        */
       public Builder clearTransactionId() {
-        if (transactionIdBuilder_ == null) {
-          transactionId_ = null;
-          onChanged();
-        } else {
-          transactionId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        transactionId_ = null;
+        if (transactionIdBuilder_ != null) {
+          transactionIdBuilder_.dispose();
           transactionIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
        * <code>.Hash transaction_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getTransactionIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getTransactionIdFieldBuilder().getBuilder();
       }
@@ -2438,7 +2417,7 @@ public final class Core {
        * <code>.TransactionResultStatus status = 2;</code>
        * @return The enum numeric value on the wire for status.
        */
-      public int getStatusValue() {
+      @java.lang.Override public int getStatusValue() {
         return status_;
       }
       /**
@@ -2448,6 +2427,7 @@ public final class Core {
        */
       public Builder setStatusValue(int value) {
         status_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2455,9 +2435,9 @@ public final class Core {
        * <code>.TransactionResultStatus status = 2;</code>
        * @return The status.
        */
+      @java.lang.Override
       public io.aelf.protobuf.generated.Core.TransactionResultStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        io.aelf.protobuf.generated.Core.TransactionResultStatus result = io.aelf.protobuf.generated.Core.TransactionResultStatus.valueOf(status_);
+        io.aelf.protobuf.generated.Core.TransactionResultStatus result = io.aelf.protobuf.generated.Core.TransactionResultStatus.forNumber(status_);
         return result == null ? io.aelf.protobuf.generated.Core.TransactionResultStatus.UNRECOGNIZED : result;
       }
       /**
@@ -2469,7 +2449,7 @@ public final class Core {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+        bitField0_ |= 0x00000002;
         status_ = value.getNumber();
         onChanged();
         return this;
@@ -2479,7 +2459,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearStatus() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         status_ = 0;
         onChanged();
         return this;
@@ -2488,9 +2468,9 @@ public final class Core {
       private java.util.List<io.aelf.protobuf.generated.Core.LogEvent> logs_ =
         java.util.Collections.emptyList();
       private void ensureLogsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           logs_ = new java.util.ArrayList<io.aelf.protobuf.generated.Core.LogEvent>(logs_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -2640,7 +2620,7 @@ public final class Core {
       public Builder clearLogs() {
         if (logsBuilder_ == null) {
           logs_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           logsBuilder_.clear();
@@ -2717,7 +2697,7 @@ public final class Core {
           logsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.Core.LogEvent, io.aelf.protobuf.generated.Core.LogEvent.Builder, io.aelf.protobuf.generated.Core.LogEventOrBuilder>(
                   logs_,
-                  ((bitField0_ & 0x00000001) != 0),
+                  ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
                   isClean());
           logs_ = null;
@@ -2730,6 +2710,7 @@ public final class Core {
        * <code>bytes bloom = 4;</code>
        * @return The bloom.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getBloom() {
         return bloom_;
       }
@@ -2739,11 +2720,9 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder setBloom(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         bloom_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -2752,7 +2731,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearBloom() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         bloom_ = getDefaultInstance().getBloom();
         onChanged();
         return this;
@@ -2763,6 +2742,7 @@ public final class Core {
        * <code>bytes return_value = 5;</code>
        * @return The returnValue.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getReturnValue() {
         return returnValue_;
       }
@@ -2772,11 +2752,9 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder setReturnValue(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         returnValue_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -2785,7 +2763,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearReturnValue() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         returnValue_ = getDefaultInstance().getReturnValue();
         onChanged();
         return this;
@@ -2796,6 +2774,7 @@ public final class Core {
        * <code>int64 block_number = 6;</code>
        * @return The blockNumber.
        */
+      @java.lang.Override
       public long getBlockNumber() {
         return blockNumber_;
       }
@@ -2807,6 +2786,7 @@ public final class Core {
       public Builder setBlockNumber(long value) {
         
         blockNumber_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -2815,7 +2795,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearBlockNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         blockNumber_ = 0L;
         onChanged();
         return this;
@@ -2829,7 +2809,7 @@ public final class Core {
        * @return Whether the blockHash field is set.
        */
       public boolean hasBlockHash() {
-        return blockHashBuilder_ != null || blockHash_ != null;
+        return ((bitField0_ & 0x00000040) != 0);
       }
       /**
        * <code>.Hash block_hash = 7;</code>
@@ -2851,11 +2831,11 @@ public final class Core {
             throw new NullPointerException();
           }
           blockHash_ = value;
-          onChanged();
         } else {
           blockHashBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000040;
+        onChanged();
         return this;
       }
       /**
@@ -2865,11 +2845,11 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (blockHashBuilder_ == null) {
           blockHash_ = builderForValue.build();
-          onChanged();
         } else {
           blockHashBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000040;
+        onChanged();
         return this;
       }
       /**
@@ -2877,38 +2857,38 @@ public final class Core {
        */
       public Builder mergeBlockHash(io.aelf.protobuf.generated.Client.Hash value) {
         if (blockHashBuilder_ == null) {
-          if (blockHash_ != null) {
-            blockHash_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(blockHash_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000040) != 0) &&
+            blockHash_ != null &&
+            blockHash_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getBlockHashBuilder().mergeFrom(value);
           } else {
             blockHash_ = value;
           }
-          onChanged();
         } else {
           blockHashBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000040;
+        onChanged();
         return this;
       }
       /**
        * <code>.Hash block_hash = 7;</code>
        */
       public Builder clearBlockHash() {
-        if (blockHashBuilder_ == null) {
-          blockHash_ = null;
-          onChanged();
-        } else {
-          blockHash_ = null;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        blockHash_ = null;
+        if (blockHashBuilder_ != null) {
+          blockHashBuilder_.dispose();
           blockHashBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
        * <code>.Hash block_hash = 7;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getBlockHashBuilder() {
-        
+        bitField0_ |= 0x00000040;
         onChanged();
         return getBlockHashFieldBuilder().getBuilder();
       }
@@ -2981,11 +2961,9 @@ public final class Core {
        */
       public Builder setError(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         error_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -2994,8 +2972,8 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearError() {
-        
         error_ = getDefaultInstance().getError();
+        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
@@ -3006,12 +2984,10 @@ public final class Core {
        */
       public Builder setErrorBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         error_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -3048,7 +3024,18 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TransactionResult(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -3125,7 +3112,7 @@ public final class Core {
   /**
    * Protobuf type {@code LogEvent}
    */
-  public  static final class LogEvent extends
+  public static final class LogEvent extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:LogEvent)
       LogEventOrBuilder {
@@ -3152,79 +3139,6 @@ public final class Core {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private LogEvent(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (address_ != null) {
-                subBuilder = address_.toBuilder();
-              }
-              address_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(address_);
-                address_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                indexed_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              indexed_.add(input.readBytes());
-              break;
-            }
-            case 34: {
-
-              nonIndexed_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          indexed_ = java.util.Collections.unmodifiableList(indexed_); // C
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.Core.internal_static_LogEvent_descriptor;
@@ -3244,6 +3158,7 @@ public final class Core {
      * <code>.Address address = 1;</code>
      * @return Whether the address field is set.
      */
+    @java.lang.Override
     public boolean hasAddress() {
       return address_ != null;
     }
@@ -3251,22 +3166,26 @@ public final class Core {
      * <code>.Address address = 1;</code>
      * @return The address.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getAddress() {
       return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
     }
     /**
      * <code>.Address address = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getAddressOrBuilder() {
-      return getAddress();
+      return address_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : address_;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object name_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object name_ = "";
     /**
      * <code>string name = 2;</code>
      * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -3283,6 +3202,7 @@ public final class Core {
      * <code>string name = 2;</code>
      * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -3298,11 +3218,13 @@ public final class Core {
     }
 
     public static final int INDEXED_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
     private java.util.List<com.google.protobuf.ByteString> indexed_;
     /**
      * <code>repeated bytes indexed = 3;</code>
      * @return A list containing the indexed.
      */
+    @java.lang.Override
     public java.util.List<com.google.protobuf.ByteString>
         getIndexedList() {
       return indexed_;
@@ -3324,11 +3246,12 @@ public final class Core {
     }
 
     public static final int NON_INDEXED_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString nonIndexed_;
+    private com.google.protobuf.ByteString nonIndexed_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes non_indexed = 4;</code>
      * @return The nonIndexed.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getNonIndexed() {
       return nonIndexed_;
     }
@@ -3350,7 +3273,7 @@ public final class Core {
       if (address_ != null) {
         output.writeMessage(1, getAddress());
       }
-      if (!getNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       for (int i = 0; i < indexed_.size(); i++) {
@@ -3359,7 +3282,7 @@ public final class Core {
       if (!nonIndexed_.isEmpty()) {
         output.writeBytes(4, nonIndexed_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -3372,7 +3295,7 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getAddress());
       }
-      if (!getNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       {
@@ -3388,7 +3311,7 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, nonIndexed_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3414,7 +3337,7 @@ public final class Core {
           .equals(other.getIndexedList())) return false;
       if (!getNonIndexed()
           .equals(other.getNonIndexed())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -3437,7 +3360,7 @@ public final class Core {
       }
       hash = (37 * hash) + NON_INDEXED_FIELD_NUMBER;
       hash = (53 * hash) + getNonIndexed().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3554,34 +3477,26 @@ public final class Core {
 
       // Construct using io.aelf.protobuf.generated.Core.LogEvent.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (addressBuilder_ == null) {
-          address_ = null;
-        } else {
-          address_ = null;
+        bitField0_ = 0;
+        address_ = null;
+        if (addressBuilder_ != null) {
+          addressBuilder_.dispose();
           addressBuilder_ = null;
         }
         name_ = "";
-
         indexed_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
         nonIndexed_ = com.google.protobuf.ByteString.EMPTY;
-
         return this;
       }
 
@@ -3608,21 +3523,33 @@ public final class Core {
       @java.lang.Override
       public io.aelf.protobuf.generated.Core.LogEvent buildPartial() {
         io.aelf.protobuf.generated.Core.LogEvent result = new io.aelf.protobuf.generated.Core.LogEvent(this);
-        int from_bitField0_ = bitField0_;
-        if (addressBuilder_ == null) {
-          result.address_ = address_;
-        } else {
-          result.address_ = addressBuilder_.build();
-        }
-        result.name_ = name_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          indexed_ = java.util.Collections.unmodifiableList(indexed_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.indexed_ = indexed_;
-        result.nonIndexed_ = nonIndexed_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.Core.LogEvent result) {
+        if (((bitField0_ & 0x00000004) != 0)) {
+          indexed_ = java.util.Collections.unmodifiableList(indexed_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.indexed_ = indexed_;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.Core.LogEvent result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.address_ = addressBuilder_ == null
+              ? address_
+              : addressBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.name_ = name_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.nonIndexed_ = nonIndexed_;
+        }
       }
 
       @java.lang.Override
@@ -3674,12 +3601,13 @@ public final class Core {
         }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (!other.indexed_.isEmpty()) {
           if (indexed_.isEmpty()) {
             indexed_ = other.indexed_;
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000004);
           } else {
             ensureIndexedIsMutable();
             indexed_.addAll(other.indexed_);
@@ -3689,7 +3617,7 @@ public final class Core {
         if (other.getNonIndexed() != com.google.protobuf.ByteString.EMPTY) {
           setNonIndexed(other.getNonIndexed());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -3704,17 +3632,53 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.Core.LogEvent parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getAddressFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                name_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensureIndexedIsMutable();
+                indexed_.add(v);
+                break;
+              } // case 26
+              case 34: {
+                nonIndexed_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Core.LogEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -3727,7 +3691,7 @@ public final class Core {
        * @return Whether the address field is set.
        */
       public boolean hasAddress() {
-        return addressBuilder_ != null || address_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>.Address address = 1;</code>
@@ -3749,11 +3713,11 @@ public final class Core {
             throw new NullPointerException();
           }
           address_ = value;
-          onChanged();
         } else {
           addressBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3763,11 +3727,11 @@ public final class Core {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (addressBuilder_ == null) {
           address_ = builderForValue.build();
-          onChanged();
         } else {
           addressBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3775,38 +3739,38 @@ public final class Core {
        */
       public Builder mergeAddress(io.aelf.protobuf.generated.Client.Address value) {
         if (addressBuilder_ == null) {
-          if (address_ != null) {
-            address_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(address_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            address_ != null &&
+            address_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getAddressBuilder().mergeFrom(value);
           } else {
             address_ = value;
           }
-          onChanged();
         } else {
           addressBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
        * <code>.Address address = 1;</code>
        */
       public Builder clearAddress() {
-        if (addressBuilder_ == null) {
-          address_ = null;
-          onChanged();
-        } else {
-          address_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        address_ = null;
+        if (addressBuilder_ != null) {
+          addressBuilder_.dispose();
           addressBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
        * <code>.Address address = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getAddressBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getAddressFieldBuilder().getBuilder();
       }
@@ -3879,11 +3843,9 @@ public final class Core {
        */
       public Builder setName(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         name_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3892,8 +3854,8 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearName() {
-        
         name_ = getDefaultInstance().getName();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -3904,22 +3866,20 @@ public final class Core {
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         name_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
 
       private java.util.List<com.google.protobuf.ByteString> indexed_ = java.util.Collections.emptyList();
       private void ensureIndexedIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           indexed_ = new java.util.ArrayList<com.google.protobuf.ByteString>(indexed_);
-          bitField0_ |= 0x00000001;
-         }
+          bitField0_ |= 0x00000004;
+        }
       }
       /**
        * <code>repeated bytes indexed = 3;</code>
@@ -3927,7 +3887,7 @@ public final class Core {
        */
       public java.util.List<com.google.protobuf.ByteString>
           getIndexedList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
+        return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(indexed_) : indexed_;
       }
       /**
@@ -3953,10 +3913,8 @@ public final class Core {
        */
       public Builder setIndexed(
           int index, com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureIndexedIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureIndexedIsMutable();
         indexed_.set(index, value);
         onChanged();
         return this;
@@ -3967,10 +3925,8 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder addIndexed(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureIndexedIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureIndexedIsMutable();
         indexed_.add(value);
         onChanged();
         return this;
@@ -3994,7 +3950,7 @@ public final class Core {
        */
       public Builder clearIndexed() {
         indexed_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -4004,6 +3960,7 @@ public final class Core {
        * <code>bytes non_indexed = 4;</code>
        * @return The nonIndexed.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getNonIndexed() {
         return nonIndexed_;
       }
@@ -4013,11 +3970,9 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder setNonIndexed(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         nonIndexed_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -4026,7 +3981,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearNonIndexed() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         nonIndexed_ = getDefaultInstance().getNonIndexed();
         onChanged();
         return this;
@@ -4064,7 +4019,18 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new LogEvent(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -4111,14 +4077,14 @@ public final class Core {
     /**
      * <code>map&lt;string, bytes&gt; writes = 1;</code>
      */
-
-    com.google.protobuf.ByteString getWritesOrDefault(
+    /* nullable */
+com.google.protobuf.ByteString getWritesOrDefault(
         java.lang.String key,
-        com.google.protobuf.ByteString defaultValue);
+        /* nullable */
+com.google.protobuf.ByteString defaultValue);
     /**
      * <code>map&lt;string, bytes&gt; writes = 1;</code>
      */
-
     com.google.protobuf.ByteString getWritesOrThrow(
         java.lang.String key);
 
@@ -4145,14 +4111,12 @@ public final class Core {
     /**
      * <code>map&lt;string, bool&gt; reads = 2;</code>
      */
-
     boolean getReadsOrDefault(
         java.lang.String key,
         boolean defaultValue);
     /**
      * <code>map&lt;string, bool&gt; reads = 2;</code>
      */
-
     boolean getReadsOrThrow(
         java.lang.String key);
 
@@ -4179,21 +4143,19 @@ public final class Core {
     /**
      * <code>map&lt;string, bool&gt; deletes = 3;</code>
      */
-
     boolean getDeletesOrDefault(
         java.lang.String key,
         boolean defaultValue);
     /**
      * <code>map&lt;string, bool&gt; deletes = 3;</code>
      */
-
     boolean getDeletesOrThrow(
         java.lang.String key);
   }
   /**
    * Protobuf type {@code TransactionExecutingStateSet}
    */
-  public  static final class TransactionExecutingStateSet extends
+  public static final class TransactionExecutingStateSet extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:TransactionExecutingStateSet)
       TransactionExecutingStateSetOrBuilder {
@@ -4216,83 +4178,6 @@ public final class Core {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private TransactionExecutingStateSet(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                writes_ = com.google.protobuf.MapField.newMapField(
-                    WritesDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
-              }
-              com.google.protobuf.MapEntry<java.lang.String, com.google.protobuf.ByteString>
-              writes__ = input.readMessage(
-                  WritesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              writes_.getMutableMap().put(
-                  writes__.getKey(), writes__.getValue());
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                reads_ = com.google.protobuf.MapField.newMapField(
-                    ReadsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
-              }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
-              reads__ = input.readMessage(
-                  ReadsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              reads_.getMutableMap().put(
-                  reads__.getKey(), reads__.getValue());
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                deletes_ = com.google.protobuf.MapField.newMapField(
-                    DeletesDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000004;
-              }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
-              deletes__ = input.readMessage(
-                  DeletesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              deletes_.getMutableMap().put(
-                  deletes__.getKey(), deletes__.getValue());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -4335,6 +4220,7 @@ public final class Core {
                   com.google.protobuf.WireFormat.FieldType.BYTES,
                   com.google.protobuf.ByteString.EMPTY);
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, com.google.protobuf.ByteString> writes_;
     private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.ByteString>
@@ -4345,22 +4231,22 @@ public final class Core {
       }
       return writes_;
     }
-
     public int getWritesCount() {
       return internalGetWrites().getMap().size();
     }
     /**
      * <code>map&lt;string, bytes&gt; writes = 1;</code>
      */
-
+    @java.lang.Override
     public boolean containsWrites(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetWrites().getMap().containsKey(key);
     }
     /**
      * Use {@link #getWritesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getWrites() {
       return getWritesMap();
@@ -4368,18 +4254,20 @@ public final class Core {
     /**
      * <code>map&lt;string, bytes&gt; writes = 1;</code>
      */
-
+    @java.lang.Override
     public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getWritesMap() {
       return internalGetWrites().getMap();
     }
     /**
      * <code>map&lt;string, bytes&gt; writes = 1;</code>
      */
-
-    public com.google.protobuf.ByteString getWritesOrDefault(
+    @java.lang.Override
+    public /* nullable */
+com.google.protobuf.ByteString getWritesOrDefault(
         java.lang.String key,
-        com.google.protobuf.ByteString defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+        /* nullable */
+com.google.protobuf.ByteString defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
           internalGetWrites().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -4387,10 +4275,10 @@ public final class Core {
     /**
      * <code>map&lt;string, bytes&gt; writes = 1;</code>
      */
-
+    @java.lang.Override
     public com.google.protobuf.ByteString getWritesOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
           internalGetWrites().getMap();
       if (!map.containsKey(key)) {
@@ -4411,6 +4299,7 @@ public final class Core {
                   com.google.protobuf.WireFormat.FieldType.BOOL,
                   false);
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.Boolean> reads_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
@@ -4421,22 +4310,22 @@ public final class Core {
       }
       return reads_;
     }
-
     public int getReadsCount() {
       return internalGetReads().getMap().size();
     }
     /**
      * <code>map&lt;string, bool&gt; reads = 2;</code>
      */
-
+    @java.lang.Override
     public boolean containsReads(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetReads().getMap().containsKey(key);
     }
     /**
      * Use {@link #getReadsMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.Boolean> getReads() {
       return getReadsMap();
@@ -4444,18 +4333,18 @@ public final class Core {
     /**
      * <code>map&lt;string, bool&gt; reads = 2;</code>
      */
-
+    @java.lang.Override
     public java.util.Map<java.lang.String, java.lang.Boolean> getReadsMap() {
       return internalGetReads().getMap();
     }
     /**
      * <code>map&lt;string, bool&gt; reads = 2;</code>
      */
-
+    @java.lang.Override
     public boolean getReadsOrDefault(
         java.lang.String key,
         boolean defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Boolean> map =
           internalGetReads().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -4463,10 +4352,10 @@ public final class Core {
     /**
      * <code>map&lt;string, bool&gt; reads = 2;</code>
      */
-
+    @java.lang.Override
     public boolean getReadsOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Boolean> map =
           internalGetReads().getMap();
       if (!map.containsKey(key)) {
@@ -4487,6 +4376,7 @@ public final class Core {
                   com.google.protobuf.WireFormat.FieldType.BOOL,
                   false);
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.Boolean> deletes_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
@@ -4497,22 +4387,22 @@ public final class Core {
       }
       return deletes_;
     }
-
     public int getDeletesCount() {
       return internalGetDeletes().getMap().size();
     }
     /**
      * <code>map&lt;string, bool&gt; deletes = 3;</code>
      */
-
+    @java.lang.Override
     public boolean containsDeletes(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetDeletes().getMap().containsKey(key);
     }
     /**
      * Use {@link #getDeletesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.Boolean> getDeletes() {
       return getDeletesMap();
@@ -4520,18 +4410,18 @@ public final class Core {
     /**
      * <code>map&lt;string, bool&gt; deletes = 3;</code>
      */
-
+    @java.lang.Override
     public java.util.Map<java.lang.String, java.lang.Boolean> getDeletesMap() {
       return internalGetDeletes().getMap();
     }
     /**
      * <code>map&lt;string, bool&gt; deletes = 3;</code>
      */
-
+    @java.lang.Override
     public boolean getDeletesOrDefault(
         java.lang.String key,
         boolean defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Boolean> map =
           internalGetDeletes().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -4539,10 +4429,10 @@ public final class Core {
     /**
      * <code>map&lt;string, bool&gt; deletes = 3;</code>
      */
-
+    @java.lang.Override
     public boolean getDeletesOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Boolean> map =
           internalGetDeletes().getMap();
       if (!map.containsKey(key)) {
@@ -4583,7 +4473,7 @@ public final class Core {
           internalGetDeletes(),
           DeletesDefaultEntryHolder.defaultEntry,
           3);
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -4622,7 +4512,7 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(3, deletes__);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -4643,7 +4533,7 @@ public final class Core {
           other.internalGetReads())) return false;
       if (!internalGetDeletes().equals(
           other.internalGetDeletes())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -4666,7 +4556,7 @@ public final class Core {
         hash = (37 * hash) + DELETES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetDeletes().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -4813,22 +4703,18 @@ public final class Core {
 
       // Construct using io.aelf.protobuf.generated.Core.TransactionExecutingStateSet.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         internalGetMutableWrites().clear();
         internalGetMutableReads().clear();
         internalGetMutableDeletes().clear();
@@ -4858,15 +4744,25 @@ public final class Core {
       @java.lang.Override
       public io.aelf.protobuf.generated.Core.TransactionExecutingStateSet buildPartial() {
         io.aelf.protobuf.generated.Core.TransactionExecutingStateSet result = new io.aelf.protobuf.generated.Core.TransactionExecutingStateSet(this);
-        int from_bitField0_ = bitField0_;
-        result.writes_ = internalGetWrites();
-        result.writes_.makeImmutable();
-        result.reads_ = internalGetReads();
-        result.reads_.makeImmutable();
-        result.deletes_ = internalGetDeletes();
-        result.deletes_.makeImmutable();
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.Core.TransactionExecutingStateSet result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.writes_ = internalGetWrites();
+          result.writes_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.reads_ = internalGetReads();
+          result.reads_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.deletes_ = internalGetDeletes();
+          result.deletes_.makeImmutable();
+        }
       }
 
       @java.lang.Override
@@ -4915,11 +4811,14 @@ public final class Core {
         if (other == io.aelf.protobuf.generated.Core.TransactionExecutingStateSet.getDefaultInstance()) return this;
         internalGetMutableWrites().mergeFrom(
             other.internalGetWrites());
+        bitField0_ |= 0x00000001;
         internalGetMutableReads().mergeFrom(
             other.internalGetReads());
+        bitField0_ |= 0x00000002;
         internalGetMutableDeletes().mergeFrom(
             other.internalGetDeletes());
-        this.mergeUnknownFields(other.unknownFields);
+        bitField0_ |= 0x00000004;
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -4934,17 +4833,57 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.Core.TransactionExecutingStateSet parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.MapEntry<java.lang.String, com.google.protobuf.ByteString>
+                writes__ = input.readMessage(
+                    WritesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableWrites().getMutableMap().put(
+                    writes__.getKey(), writes__.getValue());
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
+                reads__ = input.readMessage(
+                    ReadsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableReads().getMutableMap().put(
+                    reads__.getKey(), reads__.getValue());
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Boolean>
+                deletes__ = input.readMessage(
+                    DeletesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableDeletes().getMutableMap().put(
+                    deletes__.getKey(), deletes__.getValue());
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Core.TransactionExecutingStateSet) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -4952,7 +4891,7 @@ public final class Core {
       private com.google.protobuf.MapField<
           java.lang.String, com.google.protobuf.ByteString> writes_;
       private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.ByteString>
-      internalGetWrites() {
+          internalGetWrites() {
         if (writes_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               WritesDefaultEntryHolder.defaultEntry);
@@ -4960,8 +4899,7 @@ public final class Core {
         return writes_;
       }
       private com.google.protobuf.MapField<java.lang.String, com.google.protobuf.ByteString>
-      internalGetMutableWrites() {
-        onChanged();;
+          internalGetMutableWrites() {
         if (writes_ == null) {
           writes_ = com.google.protobuf.MapField.newMapField(
               WritesDefaultEntryHolder.defaultEntry);
@@ -4969,24 +4907,26 @@ public final class Core {
         if (!writes_.isMutable()) {
           writes_ = writes_.copy();
         }
+        bitField0_ |= 0x00000001;
+        onChanged();
         return writes_;
       }
-
       public int getWritesCount() {
         return internalGetWrites().getMap().size();
       }
       /**
        * <code>map&lt;string, bytes&gt; writes = 1;</code>
        */
-
+      @java.lang.Override
       public boolean containsWrites(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         return internalGetWrites().getMap().containsKey(key);
       }
       /**
        * Use {@link #getWritesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getWrites() {
         return getWritesMap();
@@ -4994,18 +4934,20 @@ public final class Core {
       /**
        * <code>map&lt;string, bytes&gt; writes = 1;</code>
        */
-
+      @java.lang.Override
       public java.util.Map<java.lang.String, com.google.protobuf.ByteString> getWritesMap() {
         return internalGetWrites().getMap();
       }
       /**
        * <code>map&lt;string, bytes&gt; writes = 1;</code>
        */
-
-      public com.google.protobuf.ByteString getWritesOrDefault(
+      @java.lang.Override
+      public /* nullable */
+com.google.protobuf.ByteString getWritesOrDefault(
           java.lang.String key,
-          com.google.protobuf.ByteString defaultValue) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+          /* nullable */
+com.google.protobuf.ByteString defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
             internalGetWrites().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -5013,10 +4955,10 @@ public final class Core {
       /**
        * <code>map&lt;string, bytes&gt; writes = 1;</code>
        */
-
+      @java.lang.Override
       public com.google.protobuf.ByteString getWritesOrThrow(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, com.google.protobuf.ByteString> map =
             internalGetWrites().getMap();
         if (!map.containsKey(key)) {
@@ -5024,8 +4966,8 @@ public final class Core {
         }
         return map.get(key);
       }
-
       public Builder clearWrites() {
+        bitField0_ = (bitField0_ & ~0x00000001);
         internalGetMutableWrites().getMutableMap()
             .clear();
         return this;
@@ -5033,10 +4975,9 @@ public final class Core {
       /**
        * <code>map&lt;string, bytes&gt; writes = 1;</code>
        */
-
       public Builder removeWrites(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableWrites().getMutableMap()
             .remove(key);
         return this;
@@ -5046,7 +4987,8 @@ public final class Core {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, com.google.protobuf.ByteString>
-      getMutableWrites() {
+          getMutableWrites() {
+        bitField0_ |= 0x00000001;
         return internalGetMutableWrites().getMutableMap();
       }
       /**
@@ -5055,27 +4997,28 @@ public final class Core {
       public Builder putWrites(
           java.lang.String key,
           com.google.protobuf.ByteString value) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
-        if (value == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
+        if (value == null) { throw new NullPointerException("map value"); }
         internalGetMutableWrites().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
        * <code>map&lt;string, bytes&gt; writes = 1;</code>
        */
-
       public Builder putAllWrites(
           java.util.Map<java.lang.String, com.google.protobuf.ByteString> values) {
         internalGetMutableWrites().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000001;
         return this;
       }
 
       private com.google.protobuf.MapField<
           java.lang.String, java.lang.Boolean> reads_;
       private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
-      internalGetReads() {
+          internalGetReads() {
         if (reads_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               ReadsDefaultEntryHolder.defaultEntry);
@@ -5083,8 +5026,7 @@ public final class Core {
         return reads_;
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
-      internalGetMutableReads() {
-        onChanged();;
+          internalGetMutableReads() {
         if (reads_ == null) {
           reads_ = com.google.protobuf.MapField.newMapField(
               ReadsDefaultEntryHolder.defaultEntry);
@@ -5092,24 +5034,26 @@ public final class Core {
         if (!reads_.isMutable()) {
           reads_ = reads_.copy();
         }
+        bitField0_ |= 0x00000002;
+        onChanged();
         return reads_;
       }
-
       public int getReadsCount() {
         return internalGetReads().getMap().size();
       }
       /**
        * <code>map&lt;string, bool&gt; reads = 2;</code>
        */
-
+      @java.lang.Override
       public boolean containsReads(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         return internalGetReads().getMap().containsKey(key);
       }
       /**
        * Use {@link #getReadsMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Boolean> getReads() {
         return getReadsMap();
@@ -5117,18 +5061,18 @@ public final class Core {
       /**
        * <code>map&lt;string, bool&gt; reads = 2;</code>
        */
-
+      @java.lang.Override
       public java.util.Map<java.lang.String, java.lang.Boolean> getReadsMap() {
         return internalGetReads().getMap();
       }
       /**
        * <code>map&lt;string, bool&gt; reads = 2;</code>
        */
-
+      @java.lang.Override
       public boolean getReadsOrDefault(
           java.lang.String key,
           boolean defaultValue) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Boolean> map =
             internalGetReads().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -5136,10 +5080,10 @@ public final class Core {
       /**
        * <code>map&lt;string, bool&gt; reads = 2;</code>
        */
-
+      @java.lang.Override
       public boolean getReadsOrThrow(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Boolean> map =
             internalGetReads().getMap();
         if (!map.containsKey(key)) {
@@ -5147,8 +5091,8 @@ public final class Core {
         }
         return map.get(key);
       }
-
       public Builder clearReads() {
+        bitField0_ = (bitField0_ & ~0x00000002);
         internalGetMutableReads().getMutableMap()
             .clear();
         return this;
@@ -5156,10 +5100,9 @@ public final class Core {
       /**
        * <code>map&lt;string, bool&gt; reads = 2;</code>
        */
-
       public Builder removeReads(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableReads().getMutableMap()
             .remove(key);
         return this;
@@ -5169,7 +5112,8 @@ public final class Core {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Boolean>
-      getMutableReads() {
+          getMutableReads() {
+        bitField0_ |= 0x00000002;
         return internalGetMutableReads().getMutableMap();
       }
       /**
@@ -5178,27 +5122,28 @@ public final class Core {
       public Builder putReads(
           java.lang.String key,
           boolean value) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         
         internalGetMutableReads().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
        * <code>map&lt;string, bool&gt; reads = 2;</code>
        */
-
       public Builder putAllReads(
           java.util.Map<java.lang.String, java.lang.Boolean> values) {
         internalGetMutableReads().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000002;
         return this;
       }
 
       private com.google.protobuf.MapField<
           java.lang.String, java.lang.Boolean> deletes_;
       private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
-      internalGetDeletes() {
+          internalGetDeletes() {
         if (deletes_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               DeletesDefaultEntryHolder.defaultEntry);
@@ -5206,8 +5151,7 @@ public final class Core {
         return deletes_;
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.Boolean>
-      internalGetMutableDeletes() {
-        onChanged();;
+          internalGetMutableDeletes() {
         if (deletes_ == null) {
           deletes_ = com.google.protobuf.MapField.newMapField(
               DeletesDefaultEntryHolder.defaultEntry);
@@ -5215,24 +5159,26 @@ public final class Core {
         if (!deletes_.isMutable()) {
           deletes_ = deletes_.copy();
         }
+        bitField0_ |= 0x00000004;
+        onChanged();
         return deletes_;
       }
-
       public int getDeletesCount() {
         return internalGetDeletes().getMap().size();
       }
       /**
        * <code>map&lt;string, bool&gt; deletes = 3;</code>
        */
-
+      @java.lang.Override
       public boolean containsDeletes(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         return internalGetDeletes().getMap().containsKey(key);
       }
       /**
        * Use {@link #getDeletesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Boolean> getDeletes() {
         return getDeletesMap();
@@ -5240,18 +5186,18 @@ public final class Core {
       /**
        * <code>map&lt;string, bool&gt; deletes = 3;</code>
        */
-
+      @java.lang.Override
       public java.util.Map<java.lang.String, java.lang.Boolean> getDeletesMap() {
         return internalGetDeletes().getMap();
       }
       /**
        * <code>map&lt;string, bool&gt; deletes = 3;</code>
        */
-
+      @java.lang.Override
       public boolean getDeletesOrDefault(
           java.lang.String key,
           boolean defaultValue) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Boolean> map =
             internalGetDeletes().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -5259,10 +5205,10 @@ public final class Core {
       /**
        * <code>map&lt;string, bool&gt; deletes = 3;</code>
        */
-
+      @java.lang.Override
       public boolean getDeletesOrThrow(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Boolean> map =
             internalGetDeletes().getMap();
         if (!map.containsKey(key)) {
@@ -5270,8 +5216,8 @@ public final class Core {
         }
         return map.get(key);
       }
-
       public Builder clearDeletes() {
+        bitField0_ = (bitField0_ & ~0x00000004);
         internalGetMutableDeletes().getMutableMap()
             .clear();
         return this;
@@ -5279,10 +5225,9 @@ public final class Core {
       /**
        * <code>map&lt;string, bool&gt; deletes = 3;</code>
        */
-
       public Builder removeDeletes(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableDeletes().getMutableMap()
             .remove(key);
         return this;
@@ -5292,7 +5237,8 @@ public final class Core {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Boolean>
-      getMutableDeletes() {
+          getMutableDeletes() {
+        bitField0_ |= 0x00000004;
         return internalGetMutableDeletes().getMutableMap();
       }
       /**
@@ -5301,20 +5247,21 @@ public final class Core {
       public Builder putDeletes(
           java.lang.String key,
           boolean value) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         
         internalGetMutableDeletes().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
        * <code>map&lt;string, bool&gt; deletes = 3;</code>
        */
-
       public Builder putAllDeletes(
           java.util.Map<java.lang.String, java.lang.Boolean> values) {
         internalGetMutableDeletes().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000004;
         return this;
       }
       @java.lang.Override
@@ -5350,7 +5297,18 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TransactionExecutingStateSet(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5383,7 +5341,7 @@ public final class Core {
   /**
    * Protobuf type {@code SInt32Value}
    */
-  public  static final class SInt32Value extends
+  public static final class SInt32Value extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SInt32Value)
       SInt32ValueOrBuilder {
@@ -5407,48 +5365,6 @@ public final class Core {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SInt32Value(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              value_ = input.readSInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.Core.internal_static_SInt32Value_descriptor;
@@ -5463,11 +5379,12 @@ public final class Core {
     }
 
     public static final int VALUE_FIELD_NUMBER = 1;
-    private int value_;
+    private int value_ = 0;
     /**
      * <code>sint32 value = 1;</code>
      * @return The value.
      */
+    @java.lang.Override
     public int getValue() {
       return value_;
     }
@@ -5489,7 +5406,7 @@ public final class Core {
       if (value_ != 0) {
         output.writeSInt32(1, value_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -5502,7 +5419,7 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
           .computeSInt32Size(1, value_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -5519,7 +5436,7 @@ public final class Core {
 
       if (getValue()
           != other.getValue()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -5532,7 +5449,7 @@ public final class Core {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
       hash = (53 * hash) + getValue();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -5649,24 +5566,19 @@ public final class Core {
 
       // Construct using io.aelf.protobuf.generated.Core.SInt32Value.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         value_ = 0;
-
         return this;
       }
 
@@ -5693,9 +5605,16 @@ public final class Core {
       @java.lang.Override
       public io.aelf.protobuf.generated.Core.SInt32Value buildPartial() {
         io.aelf.protobuf.generated.Core.SInt32Value result = new io.aelf.protobuf.generated.Core.SInt32Value(this);
-        result.value_ = value_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.Core.SInt32Value result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.value_ = value_;
+        }
       }
 
       @java.lang.Override
@@ -5745,7 +5664,7 @@ public final class Core {
         if (other.getValue() != 0) {
           setValue(other.getValue());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -5760,25 +5679,45 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.Core.SInt32Value parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                value_ = input.readSInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Core.SInt32Value) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private int value_ ;
       /**
        * <code>sint32 value = 1;</code>
        * @return The value.
        */
+      @java.lang.Override
       public int getValue() {
         return value_;
       }
@@ -5790,6 +5729,7 @@ public final class Core {
       public Builder setValue(int value) {
         
         value_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -5798,7 +5738,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearValue() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         value_ = 0;
         onChanged();
         return this;
@@ -5836,7 +5776,18 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SInt32Value(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5869,7 +5820,7 @@ public final class Core {
   /**
    * Protobuf type {@code SInt64Value}
    */
-  public  static final class SInt64Value extends
+  public static final class SInt64Value extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SInt64Value)
       SInt64ValueOrBuilder {
@@ -5893,48 +5844,6 @@ public final class Core {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SInt64Value(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              value_ = input.readSInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.Core.internal_static_SInt64Value_descriptor;
@@ -5949,11 +5858,12 @@ public final class Core {
     }
 
     public static final int VALUE_FIELD_NUMBER = 1;
-    private long value_;
+    private long value_ = 0L;
     /**
      * <code>sint64 value = 1;</code>
      * @return The value.
      */
+    @java.lang.Override
     public long getValue() {
       return value_;
     }
@@ -5975,7 +5885,7 @@ public final class Core {
       if (value_ != 0L) {
         output.writeSInt64(1, value_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -5988,7 +5898,7 @@ public final class Core {
         size += com.google.protobuf.CodedOutputStream
           .computeSInt64Size(1, value_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -6005,7 +5915,7 @@ public final class Core {
 
       if (getValue()
           != other.getValue()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -6019,7 +5929,7 @@ public final class Core {
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getValue());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -6136,24 +6046,19 @@ public final class Core {
 
       // Construct using io.aelf.protobuf.generated.Core.SInt64Value.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         value_ = 0L;
-
         return this;
       }
 
@@ -6180,9 +6085,16 @@ public final class Core {
       @java.lang.Override
       public io.aelf.protobuf.generated.Core.SInt64Value buildPartial() {
         io.aelf.protobuf.generated.Core.SInt64Value result = new io.aelf.protobuf.generated.Core.SInt64Value(this);
-        result.value_ = value_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.Core.SInt64Value result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.value_ = value_;
+        }
       }
 
       @java.lang.Override
@@ -6232,7 +6144,7 @@ public final class Core {
         if (other.getValue() != 0L) {
           setValue(other.getValue());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -6247,25 +6159,45 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.Core.SInt64Value parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                value_ = input.readSInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.Core.SInt64Value) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private long value_ ;
       /**
        * <code>sint64 value = 1;</code>
        * @return The value.
        */
+      @java.lang.Override
       public long getValue() {
         return value_;
       }
@@ -6277,6 +6209,7 @@ public final class Core {
       public Builder setValue(long value) {
         
         value_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -6285,7 +6218,7 @@ public final class Core {
        * @return This builder for chaining.
        */
       public Builder clearValue() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         value_ = 0L;
         onChanged();
         return this;
@@ -6323,7 +6256,18 @@ public final class Core {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SInt64Value(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

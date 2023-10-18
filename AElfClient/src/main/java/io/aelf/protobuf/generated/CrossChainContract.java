@@ -99,7 +99,7 @@ public final class CrossChainContract {
    *
    * Protobuf type {@code VerifyTransactionInput}
    */
-  public  static final class VerifyTransactionInput extends
+  public static final class VerifyTransactionInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:VerifyTransactionInput)
       VerifyTransactionInputOrBuilder {
@@ -122,79 +122,6 @@ public final class CrossChainContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private VerifyTransactionInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (transactionId_ != null) {
-                subBuilder = transactionId_.toBuilder();
-              }
-              transactionId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(transactionId_);
-                transactionId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              io.aelf.protobuf.generated.Client.MerklePath.Builder subBuilder = null;
-              if (path_ != null) {
-                subBuilder = path_.toBuilder();
-              }
-              path_ = input.readMessage(io.aelf.protobuf.generated.Client.MerklePath.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(path_);
-                path_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 24: {
-
-              parentChainHeight_ = input.readInt64();
-              break;
-            }
-            case 32: {
-
-              verifiedChainId_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -219,6 +146,7 @@ public final class CrossChainContract {
      * <code>.Hash transaction_id = 1;</code>
      * @return Whether the transactionId field is set.
      */
+    @java.lang.Override
     public boolean hasTransactionId() {
       return transactionId_ != null;
     }
@@ -230,6 +158,7 @@ public final class CrossChainContract {
      * <code>.Hash transaction_id = 1;</code>
      * @return The transactionId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getTransactionId() {
       return transactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionId_;
     }
@@ -240,8 +169,9 @@ public final class CrossChainContract {
      *
      * <code>.Hash transaction_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getTransactionIdOrBuilder() {
-      return getTransactionId();
+      return transactionId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : transactionId_;
     }
 
     public static final int PATH_FIELD_NUMBER = 2;
@@ -254,6 +184,7 @@ public final class CrossChainContract {
      * <code>.MerklePath path = 2;</code>
      * @return Whether the path field is set.
      */
+    @java.lang.Override
     public boolean hasPath() {
       return path_ != null;
     }
@@ -265,6 +196,7 @@ public final class CrossChainContract {
      * <code>.MerklePath path = 2;</code>
      * @return The path.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.MerklePath getPath() {
       return path_ == null ? io.aelf.protobuf.generated.Client.MerklePath.getDefaultInstance() : path_;
     }
@@ -275,12 +207,13 @@ public final class CrossChainContract {
      *
      * <code>.MerklePath path = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.MerklePathOrBuilder getPathOrBuilder() {
-      return getPath();
+      return path_ == null ? io.aelf.protobuf.generated.Client.MerklePath.getDefaultInstance() : path_;
     }
 
     public static final int PARENT_CHAIN_HEIGHT_FIELD_NUMBER = 3;
-    private long parentChainHeight_;
+    private long parentChainHeight_ = 0L;
     /**
      * <pre>
      * The height of parent chain that indexing this transaction.
@@ -289,12 +222,13 @@ public final class CrossChainContract {
      * <code>int64 parent_chain_height = 3;</code>
      * @return The parentChainHeight.
      */
+    @java.lang.Override
     public long getParentChainHeight() {
       return parentChainHeight_;
     }
 
     public static final int VERIFIED_CHAIN_ID_FIELD_NUMBER = 4;
-    private int verifiedChainId_;
+    private int verifiedChainId_ = 0;
     /**
      * <pre>
      * The chain if to verify.
@@ -303,6 +237,7 @@ public final class CrossChainContract {
      * <code>int32 verified_chain_id = 4;</code>
      * @return The verifiedChainId.
      */
+    @java.lang.Override
     public int getVerifiedChainId() {
       return verifiedChainId_;
     }
@@ -333,7 +268,7 @@ public final class CrossChainContract {
       if (verifiedChainId_ != 0) {
         output.writeInt32(4, verifiedChainId_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -358,7 +293,7 @@ public final class CrossChainContract {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, verifiedChainId_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -387,7 +322,7 @@ public final class CrossChainContract {
           != other.getParentChainHeight()) return false;
       if (getVerifiedChainId()
           != other.getVerifiedChainId()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -411,7 +346,7 @@ public final class CrossChainContract {
           getParentChainHeight());
       hash = (37 * hash) + VERIFIED_CHAIN_ID_FIELD_NUMBER;
       hash = (53 * hash) + getVerifiedChainId();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -532,38 +467,30 @@ public final class CrossChainContract {
 
       // Construct using io.aelf.protobuf.generated.CrossChainContract.VerifyTransactionInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (transactionIdBuilder_ == null) {
-          transactionId_ = null;
-        } else {
-          transactionId_ = null;
+        bitField0_ = 0;
+        transactionId_ = null;
+        if (transactionIdBuilder_ != null) {
+          transactionIdBuilder_.dispose();
           transactionIdBuilder_ = null;
         }
-        if (pathBuilder_ == null) {
-          path_ = null;
-        } else {
-          path_ = null;
+        path_ = null;
+        if (pathBuilder_ != null) {
+          pathBuilder_.dispose();
           pathBuilder_ = null;
         }
         parentChainHeight_ = 0L;
-
         verifiedChainId_ = 0;
-
         return this;
       }
 
@@ -590,20 +517,29 @@ public final class CrossChainContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.CrossChainContract.VerifyTransactionInput buildPartial() {
         io.aelf.protobuf.generated.CrossChainContract.VerifyTransactionInput result = new io.aelf.protobuf.generated.CrossChainContract.VerifyTransactionInput(this);
-        if (transactionIdBuilder_ == null) {
-          result.transactionId_ = transactionId_;
-        } else {
-          result.transactionId_ = transactionIdBuilder_.build();
-        }
-        if (pathBuilder_ == null) {
-          result.path_ = path_;
-        } else {
-          result.path_ = pathBuilder_.build();
-        }
-        result.parentChainHeight_ = parentChainHeight_;
-        result.verifiedChainId_ = verifiedChainId_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.CrossChainContract.VerifyTransactionInput result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.transactionId_ = transactionIdBuilder_ == null
+              ? transactionId_
+              : transactionIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.path_ = pathBuilder_ == null
+              ? path_
+              : pathBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.parentChainHeight_ = parentChainHeight_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.verifiedChainId_ = verifiedChainId_;
+        }
       }
 
       @java.lang.Override
@@ -662,7 +598,7 @@ public final class CrossChainContract {
         if (other.getVerifiedChainId() != 0) {
           setVerifiedChainId(other.getVerifiedChainId());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -677,19 +613,57 @@ public final class CrossChainContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.CrossChainContract.VerifyTransactionInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getTransactionIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getPathFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                parentChainHeight_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                verifiedChainId_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.CrossChainContract.VerifyTransactionInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash transactionId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -703,7 +677,7 @@ public final class CrossChainContract {
        * @return Whether the transactionId field is set.
        */
       public boolean hasTransactionId() {
-        return transactionIdBuilder_ != null || transactionId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -733,11 +707,11 @@ public final class CrossChainContract {
             throw new NullPointerException();
           }
           transactionId_ = value;
-          onChanged();
         } else {
           transactionIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -751,11 +725,11 @@ public final class CrossChainContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (transactionIdBuilder_ == null) {
           transactionId_ = builderForValue.build();
-          onChanged();
         } else {
           transactionIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -767,17 +741,18 @@ public final class CrossChainContract {
        */
       public Builder mergeTransactionId(io.aelf.protobuf.generated.Client.Hash value) {
         if (transactionIdBuilder_ == null) {
-          if (transactionId_ != null) {
-            transactionId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(transactionId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            transactionId_ != null &&
+            transactionId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getTransactionIdBuilder().mergeFrom(value);
           } else {
             transactionId_ = value;
           }
-          onChanged();
         } else {
           transactionIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -788,14 +763,13 @@ public final class CrossChainContract {
        * <code>.Hash transaction_id = 1;</code>
        */
       public Builder clearTransactionId() {
-        if (transactionIdBuilder_ == null) {
-          transactionId_ = null;
-          onChanged();
-        } else {
-          transactionId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        transactionId_ = null;
+        if (transactionIdBuilder_ != null) {
+          transactionIdBuilder_.dispose();
           transactionIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -806,7 +780,7 @@ public final class CrossChainContract {
        * <code>.Hash transaction_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getTransactionIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getTransactionIdFieldBuilder().getBuilder();
       }
@@ -858,7 +832,7 @@ public final class CrossChainContract {
        * @return Whether the path field is set.
        */
       public boolean hasPath() {
-        return pathBuilder_ != null || path_ != null;
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -888,11 +862,11 @@ public final class CrossChainContract {
             throw new NullPointerException();
           }
           path_ = value;
-          onChanged();
         } else {
           pathBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -906,11 +880,11 @@ public final class CrossChainContract {
           io.aelf.protobuf.generated.Client.MerklePath.Builder builderForValue) {
         if (pathBuilder_ == null) {
           path_ = builderForValue.build();
-          onChanged();
         } else {
           pathBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -922,17 +896,18 @@ public final class CrossChainContract {
        */
       public Builder mergePath(io.aelf.protobuf.generated.Client.MerklePath value) {
         if (pathBuilder_ == null) {
-          if (path_ != null) {
-            path_ =
-              io.aelf.protobuf.generated.Client.MerklePath.newBuilder(path_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000002) != 0) &&
+            path_ != null &&
+            path_ != io.aelf.protobuf.generated.Client.MerklePath.getDefaultInstance()) {
+            getPathBuilder().mergeFrom(value);
           } else {
             path_ = value;
           }
-          onChanged();
         } else {
           pathBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -943,14 +918,13 @@ public final class CrossChainContract {
        * <code>.MerklePath path = 2;</code>
        */
       public Builder clearPath() {
-        if (pathBuilder_ == null) {
-          path_ = null;
-          onChanged();
-        } else {
-          path_ = null;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        path_ = null;
+        if (pathBuilder_ != null) {
+          pathBuilder_.dispose();
           pathBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -961,7 +935,7 @@ public final class CrossChainContract {
        * <code>.MerklePath path = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.MerklePath.Builder getPathBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getPathFieldBuilder().getBuilder();
       }
@@ -1010,6 +984,7 @@ public final class CrossChainContract {
        * <code>int64 parent_chain_height = 3;</code>
        * @return The parentChainHeight.
        */
+      @java.lang.Override
       public long getParentChainHeight() {
         return parentChainHeight_;
       }
@@ -1025,6 +1000,7 @@ public final class CrossChainContract {
       public Builder setParentChainHeight(long value) {
         
         parentChainHeight_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1037,7 +1013,7 @@ public final class CrossChainContract {
        * @return This builder for chaining.
        */
       public Builder clearParentChainHeight() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         parentChainHeight_ = 0L;
         onChanged();
         return this;
@@ -1052,6 +1028,7 @@ public final class CrossChainContract {
        * <code>int32 verified_chain_id = 4;</code>
        * @return The verifiedChainId.
        */
+      @java.lang.Override
       public int getVerifiedChainId() {
         return verifiedChainId_;
       }
@@ -1067,6 +1044,7 @@ public final class CrossChainContract {
       public Builder setVerifiedChainId(int value) {
         
         verifiedChainId_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1079,7 +1057,7 @@ public final class CrossChainContract {
        * @return This builder for chaining.
        */
       public Builder clearVerifiedChainId() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         verifiedChainId_ = 0;
         onChanged();
         return this;
@@ -1117,7 +1095,18 @@ public final class CrossChainContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyTransactionInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

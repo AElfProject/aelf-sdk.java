@@ -48,7 +48,7 @@ public final class VoteContract {
   /**
    * Protobuf type {@code GetVotingItemInput}
    */
-  public  static final class GetVotingItemInput extends
+  public static final class GetVotingItemInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetVotingItemInput)
       GetVotingItemInputOrBuilder {
@@ -71,56 +71,6 @@ public final class VoteContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private GetVotingItemInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (votingItemId_ != null) {
-                subBuilder = votingItemId_.toBuilder();
-              }
-              votingItemId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(votingItemId_);
-                votingItemId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -145,6 +95,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
+    @java.lang.Override
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
@@ -156,6 +107,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
@@ -166,8 +118,9 @@ public final class VoteContract {
      *
      * <code>.Hash voting_item_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
-      return getVotingItemId();
+      return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -187,7 +140,7 @@ public final class VoteContract {
       if (votingItemId_ != null) {
         output.writeMessage(1, getVotingItemId());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -200,7 +153,7 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getVotingItemId());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -220,7 +173,7 @@ public final class VoteContract {
         if (!getVotingItemId()
             .equals(other.getVotingItemId())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -235,7 +188,7 @@ public final class VoteContract {
         hash = (37 * hash) + VOTING_ITEM_ID_FIELD_NUMBER;
         hash = (53 * hash) + getVotingItemId().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -352,26 +305,21 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.GetVotingItemInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-        } else {
-          votingItemId_ = null;
+        bitField0_ = 0;
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
         return this;
@@ -400,13 +348,18 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.GetVotingItemInput buildPartial() {
         io.aelf.protobuf.generated.VoteContract.GetVotingItemInput result = new io.aelf.protobuf.generated.VoteContract.GetVotingItemInput(this);
-        if (votingItemIdBuilder_ == null) {
-          result.votingItemId_ = votingItemId_;
-        } else {
-          result.votingItemId_ = votingItemIdBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.GetVotingItemInput result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.votingItemId_ = votingItemIdBuilder_ == null
+              ? votingItemId_
+              : votingItemIdBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -456,7 +409,7 @@ public final class VoteContract {
         if (other.hasVotingItemId()) {
           mergeVotingItemId(other.getVotingItemId());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -471,19 +424,40 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.GetVotingItemInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getVotingItemIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.GetVotingItemInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash votingItemId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -497,7 +471,7 @@ public final class VoteContract {
        * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
-        return votingItemIdBuilder_ != null || votingItemId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -527,11 +501,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           votingItemId_ = value;
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -545,11 +519,11 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (votingItemIdBuilder_ == null) {
           votingItemId_ = builderForValue.build();
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -561,17 +535,18 @@ public final class VoteContract {
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
         if (votingItemIdBuilder_ == null) {
-          if (votingItemId_ != null) {
-            votingItemId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(votingItemId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            votingItemId_ != null &&
+            votingItemId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getVotingItemIdBuilder().mergeFrom(value);
           } else {
             votingItemId_ = value;
           }
-          onChanged();
         } else {
           votingItemIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -582,14 +557,13 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-          onChanged();
-        } else {
-          votingItemId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -600,7 +574,7 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getVotingItemIdFieldBuilder().getBuilder();
       }
@@ -672,7 +646,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetVotingItemInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -735,10 +720,11 @@ public final class VoteContract {
      *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
-
-    io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrDefault(
+    /* nullable */
+io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrDefault(
         java.lang.String key,
-        io.aelf.protobuf.generated.VoteContract.VotedIds defaultValue);
+        /* nullable */
+io.aelf.protobuf.generated.VoteContract.VotedIds defaultValue);
     /**
      * <pre>
      * The voted ids.
@@ -746,14 +732,13 @@ public final class VoteContract {
      *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
-
     io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrThrow(
         java.lang.String key);
   }
   /**
    * Protobuf type {@code VotedItems}
    */
-  public  static final class VotedItems extends
+  public static final class VotedItems extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:VotedItems)
       VotedItemsOrBuilder {
@@ -776,57 +761,6 @@ public final class VoteContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private VotedItems(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                votedItemVoteIds_ = com.google.protobuf.MapField.newMapField(
-                    VotedItemVoteIdsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
-              }
-              com.google.protobuf.MapEntry<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
-              votedItemVoteIds__ = input.readMessage(
-                  VotedItemVoteIdsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              votedItemVoteIds_.getMutableMap().put(
-                  votedItemVoteIds__.getKey(), votedItemVoteIds__.getValue());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -865,6 +799,7 @@ public final class VoteContract {
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
                   io.aelf.protobuf.generated.VoteContract.VotedIds.getDefaultInstance());
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> votedItemVoteIds_;
     private com.google.protobuf.MapField<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
@@ -875,7 +810,6 @@ public final class VoteContract {
       }
       return votedItemVoteIds_;
     }
-
     public int getVotedItemVoteIdsCount() {
       return internalGetVotedItemVoteIds().getMap().size();
     }
@@ -886,15 +820,16 @@ public final class VoteContract {
      *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
-
+    @java.lang.Override
     public boolean containsVotedItemVoteIds(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetVotedItemVoteIds().getMap().containsKey(key);
     }
     /**
      * Use {@link #getVotedItemVoteIdsMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> getVotedItemVoteIds() {
       return getVotedItemVoteIdsMap();
@@ -906,7 +841,7 @@ public final class VoteContract {
      *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
-
+    @java.lang.Override
     public java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> getVotedItemVoteIdsMap() {
       return internalGetVotedItemVoteIds().getMap();
     }
@@ -917,11 +852,13 @@ public final class VoteContract {
      *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
-
-    public io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrDefault(
+    @java.lang.Override
+    public /* nullable */
+io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrDefault(
         java.lang.String key,
-        io.aelf.protobuf.generated.VoteContract.VotedIds defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+        /* nullable */
+io.aelf.protobuf.generated.VoteContract.VotedIds defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> map =
           internalGetVotedItemVoteIds().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -933,10 +870,10 @@ public final class VoteContract {
      *
      * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
      */
-
+    @java.lang.Override
     public io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> map =
           internalGetVotedItemVoteIds().getMap();
       if (!map.containsKey(key)) {
@@ -965,7 +902,7 @@ public final class VoteContract {
           internalGetVotedItemVoteIds(),
           VotedItemVoteIdsDefaultEntryHolder.defaultEntry,
           1);
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -984,7 +921,7 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, votedItemVoteIds__);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1001,7 +938,7 @@ public final class VoteContract {
 
       if (!internalGetVotedItemVoteIds().equals(
           other.internalGetVotedItemVoteIds())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1016,7 +953,7 @@ public final class VoteContract {
         hash = (37 * hash) + VOTED_ITEM_VOTE_IDS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetVotedItemVoteIds().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1155,22 +1092,18 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.VotedItems.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         internalGetMutableVotedItemVoteIds().clear();
         return this;
       }
@@ -1198,11 +1131,17 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.VotedItems buildPartial() {
         io.aelf.protobuf.generated.VoteContract.VotedItems result = new io.aelf.protobuf.generated.VoteContract.VotedItems(this);
-        int from_bitField0_ = bitField0_;
-        result.votedItemVoteIds_ = internalGetVotedItemVoteIds();
-        result.votedItemVoteIds_.makeImmutable();
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.VotedItems result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.votedItemVoteIds_ = internalGetVotedItemVoteIds();
+          result.votedItemVoteIds_.makeImmutable();
+        }
       }
 
       @java.lang.Override
@@ -1251,7 +1190,8 @@ public final class VoteContract {
         if (other == io.aelf.protobuf.generated.VoteContract.VotedItems.getDefaultInstance()) return this;
         internalGetMutableVotedItemVoteIds().mergeFrom(
             other.internalGetVotedItemVoteIds());
-        this.mergeUnknownFields(other.unknownFields);
+        bitField0_ |= 0x00000001;
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1266,17 +1206,39 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.VotedItems parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.MapEntry<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
+                votedItemVoteIds__ = input.readMessage(
+                    VotedItemVoteIdsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableVotedItemVoteIds().getMutableMap().put(
+                    votedItemVoteIds__.getKey(), votedItemVoteIds__.getValue());
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.VotedItems) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -1284,7 +1246,7 @@ public final class VoteContract {
       private com.google.protobuf.MapField<
           java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> votedItemVoteIds_;
       private com.google.protobuf.MapField<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
-      internalGetVotedItemVoteIds() {
+          internalGetVotedItemVoteIds() {
         if (votedItemVoteIds_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               VotedItemVoteIdsDefaultEntryHolder.defaultEntry);
@@ -1292,8 +1254,7 @@ public final class VoteContract {
         return votedItemVoteIds_;
       }
       private com.google.protobuf.MapField<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
-      internalGetMutableVotedItemVoteIds() {
-        onChanged();;
+          internalGetMutableVotedItemVoteIds() {
         if (votedItemVoteIds_ == null) {
           votedItemVoteIds_ = com.google.protobuf.MapField.newMapField(
               VotedItemVoteIdsDefaultEntryHolder.defaultEntry);
@@ -1301,9 +1262,10 @@ public final class VoteContract {
         if (!votedItemVoteIds_.isMutable()) {
           votedItemVoteIds_ = votedItemVoteIds_.copy();
         }
+        bitField0_ |= 0x00000001;
+        onChanged();
         return votedItemVoteIds_;
       }
-
       public int getVotedItemVoteIdsCount() {
         return internalGetVotedItemVoteIds().getMap().size();
       }
@@ -1314,15 +1276,16 @@ public final class VoteContract {
        *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
-
+      @java.lang.Override
       public boolean containsVotedItemVoteIds(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         return internalGetVotedItemVoteIds().getMap().containsKey(key);
       }
       /**
        * Use {@link #getVotedItemVoteIdsMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> getVotedItemVoteIds() {
         return getVotedItemVoteIdsMap();
@@ -1334,7 +1297,7 @@ public final class VoteContract {
        *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
-
+      @java.lang.Override
       public java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> getVotedItemVoteIdsMap() {
         return internalGetVotedItemVoteIds().getMap();
       }
@@ -1345,11 +1308,13 @@ public final class VoteContract {
        *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
-
-      public io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrDefault(
+      @java.lang.Override
+      public /* nullable */
+io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrDefault(
           java.lang.String key,
-          io.aelf.protobuf.generated.VoteContract.VotedIds defaultValue) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+          /* nullable */
+io.aelf.protobuf.generated.VoteContract.VotedIds defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> map =
             internalGetVotedItemVoteIds().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -1361,10 +1326,10 @@ public final class VoteContract {
        *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
-
+      @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.VotedIds getVotedItemVoteIdsOrThrow(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> map =
             internalGetVotedItemVoteIds().getMap();
         if (!map.containsKey(key)) {
@@ -1372,8 +1337,8 @@ public final class VoteContract {
         }
         return map.get(key);
       }
-
       public Builder clearVotedItemVoteIds() {
+        bitField0_ = (bitField0_ & ~0x00000001);
         internalGetMutableVotedItemVoteIds().getMutableMap()
             .clear();
         return this;
@@ -1385,10 +1350,9 @@ public final class VoteContract {
        *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
-
       public Builder removeVotedItemVoteIds(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableVotedItemVoteIds().getMutableMap()
             .remove(key);
         return this;
@@ -1398,7 +1362,8 @@ public final class VoteContract {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds>
-      getMutableVotedItemVoteIds() {
+          getMutableVotedItemVoteIds() {
+        bitField0_ |= 0x00000001;
         return internalGetMutableVotedItemVoteIds().getMutableMap();
       }
       /**
@@ -1411,10 +1376,11 @@ public final class VoteContract {
       public Builder putVotedItemVoteIds(
           java.lang.String key,
           io.aelf.protobuf.generated.VoteContract.VotedIds value) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
-        if (value == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
+        if (value == null) { throw new NullPointerException("map value"); }
         internalGetMutableVotedItemVoteIds().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
@@ -1424,11 +1390,11 @@ public final class VoteContract {
        *
        * <code>map&lt;string, .VotedIds&gt; voted_item_vote_ids = 1;</code>
        */
-
       public Builder putAllVotedItemVoteIds(
           java.util.Map<java.lang.String, io.aelf.protobuf.generated.VoteContract.VotedIds> values) {
         internalGetMutableVotedItemVoteIds().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000001;
         return this;
       }
       @java.lang.Override
@@ -1464,7 +1430,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VotedItems(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1579,7 +1556,7 @@ public final class VoteContract {
   /**
    * Protobuf type {@code VotedIds}
    */
-  public  static final class VotedIds extends
+  public static final class VotedIds extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:VotedIds)
       VotedIdsOrBuilder {
@@ -1605,68 +1582,6 @@ public final class VoteContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private VotedIds(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                activeVotes_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Hash>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              activeVotes_.add(
-                  input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry));
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                withdrawnVotes_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Hash>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              withdrawnVotes_.add(
-                  input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          activeVotes_ = java.util.Collections.unmodifiableList(activeVotes_);
-        }
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          withdrawnVotes_ = java.util.Collections.unmodifiableList(withdrawnVotes_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.VoteContract.internal_static_VotedIds_descriptor;
@@ -1681,6 +1596,7 @@ public final class VoteContract {
     }
 
     public static final int ACTIVE_VOTES_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> activeVotes_;
     /**
      * <pre>
@@ -1689,6 +1605,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash active_votes = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getActiveVotesList() {
       return activeVotes_;
     }
@@ -1699,6 +1616,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash active_votes = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getActiveVotesOrBuilderList() {
       return activeVotes_;
@@ -1710,6 +1628,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash active_votes = 1;</code>
      */
+    @java.lang.Override
     public int getActiveVotesCount() {
       return activeVotes_.size();
     }
@@ -1720,6 +1639,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash active_votes = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getActiveVotes(int index) {
       return activeVotes_.get(index);
     }
@@ -1730,12 +1650,14 @@ public final class VoteContract {
      *
      * <code>repeated .Hash active_votes = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getActiveVotesOrBuilder(
         int index) {
       return activeVotes_.get(index);
     }
 
     public static final int WITHDRAWN_VOTES_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> withdrawnVotes_;
     /**
      * <pre>
@@ -1744,6 +1666,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getWithdrawnVotesList() {
       return withdrawnVotes_;
     }
@@ -1754,6 +1677,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getWithdrawnVotesOrBuilderList() {
       return withdrawnVotes_;
@@ -1765,6 +1689,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
+    @java.lang.Override
     public int getWithdrawnVotesCount() {
       return withdrawnVotes_.size();
     }
@@ -1775,6 +1700,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getWithdrawnVotes(int index) {
       return withdrawnVotes_.get(index);
     }
@@ -1785,6 +1711,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash withdrawn_votes = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getWithdrawnVotesOrBuilder(
         int index) {
       return withdrawnVotes_.get(index);
@@ -1810,7 +1737,7 @@ public final class VoteContract {
       for (int i = 0; i < withdrawnVotes_.size(); i++) {
         output.writeMessage(2, withdrawnVotes_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1827,7 +1754,7 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, withdrawnVotes_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1846,7 +1773,7 @@ public final class VoteContract {
           .equals(other.getActiveVotesList())) return false;
       if (!getWithdrawnVotesList()
           .equals(other.getWithdrawnVotesList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1865,7 +1792,7 @@ public final class VoteContract {
         hash = (37 * hash) + WITHDRAWN_VOTES_FIELD_NUMBER;
         hash = (53 * hash) + getWithdrawnVotesList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1982,36 +1909,32 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.VotedIds.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getActiveVotesFieldBuilder();
-          getWithdrawnVotesFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (activeVotesBuilder_ == null) {
           activeVotes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          activeVotes_ = null;
           activeVotesBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (withdrawnVotesBuilder_ == null) {
           withdrawnVotes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
+          withdrawnVotes_ = null;
           withdrawnVotesBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -2038,7 +1961,13 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.VotedIds buildPartial() {
         io.aelf.protobuf.generated.VoteContract.VotedIds result = new io.aelf.protobuf.generated.VoteContract.VotedIds(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.VoteContract.VotedIds result) {
         if (activeVotesBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             activeVotes_ = java.util.Collections.unmodifiableList(activeVotes_);
@@ -2057,8 +1986,10 @@ public final class VoteContract {
         } else {
           result.withdrawnVotes_ = withdrawnVotesBuilder_.build();
         }
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.VotedIds result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -2157,7 +2088,7 @@ public final class VoteContract {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2172,17 +2103,56 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.VotedIds parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                io.aelf.protobuf.generated.Client.Hash m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.Client.Hash.parser(),
+                        extensionRegistry);
+                if (activeVotesBuilder_ == null) {
+                  ensureActiveVotesIsMutable();
+                  activeVotes_.add(m);
+                } else {
+                  activeVotesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              case 18: {
+                io.aelf.protobuf.generated.Client.Hash m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.Client.Hash.parser(),
+                        extensionRegistry);
+                if (withdrawnVotesBuilder_ == null) {
+                  ensureWithdrawnVotesIsMutable();
+                  withdrawnVotes_.add(m);
+                } else {
+                  withdrawnVotesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.VotedIds) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -2843,7 +2813,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VotedIds(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -2907,7 +2888,7 @@ public final class VoteContract {
   /**
    * Protobuf type {@code GetVotingResultInput}
    */
-  public  static final class GetVotingResultInput extends
+  public static final class GetVotingResultInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetVotingResultInput)
       GetVotingResultInputOrBuilder {
@@ -2930,61 +2911,6 @@ public final class VoteContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private GetVotingResultInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (votingItemId_ != null) {
-                subBuilder = votingItemId_.toBuilder();
-              }
-              votingItemId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(votingItemId_);
-                votingItemId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-
-              snapshotNumber_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -3009,6 +2935,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
+    @java.lang.Override
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
@@ -3020,6 +2947,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
@@ -3030,12 +2958,13 @@ public final class VoteContract {
      *
      * <code>.Hash voting_item_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
-      return getVotingItemId();
+      return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
 
     public static final int SNAPSHOT_NUMBER_FIELD_NUMBER = 2;
-    private long snapshotNumber_;
+    private long snapshotNumber_ = 0L;
     /**
      * <pre>
      * The snapshot number.
@@ -3044,6 +2973,7 @@ public final class VoteContract {
      * <code>int64 snapshot_number = 2;</code>
      * @return The snapshotNumber.
      */
+    @java.lang.Override
     public long getSnapshotNumber() {
       return snapshotNumber_;
     }
@@ -3068,7 +2998,7 @@ public final class VoteContract {
       if (snapshotNumber_ != 0L) {
         output.writeInt64(2, snapshotNumber_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -3085,7 +3015,7 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, snapshotNumber_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3107,7 +3037,7 @@ public final class VoteContract {
       }
       if (getSnapshotNumber()
           != other.getSnapshotNumber()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -3125,7 +3055,7 @@ public final class VoteContract {
       hash = (37 * hash) + SNAPSHOT_NUMBER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getSnapshotNumber());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3242,30 +3172,24 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.GetVotingResultInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-        } else {
-          votingItemId_ = null;
+        bitField0_ = 0;
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
         snapshotNumber_ = 0L;
-
         return this;
       }
 
@@ -3292,14 +3216,21 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.GetVotingResultInput buildPartial() {
         io.aelf.protobuf.generated.VoteContract.GetVotingResultInput result = new io.aelf.protobuf.generated.VoteContract.GetVotingResultInput(this);
-        if (votingItemIdBuilder_ == null) {
-          result.votingItemId_ = votingItemId_;
-        } else {
-          result.votingItemId_ = votingItemIdBuilder_.build();
-        }
-        result.snapshotNumber_ = snapshotNumber_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.GetVotingResultInput result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.votingItemId_ = votingItemIdBuilder_ == null
+              ? votingItemId_
+              : votingItemIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.snapshotNumber_ = snapshotNumber_;
+        }
       }
 
       @java.lang.Override
@@ -3352,7 +3283,7 @@ public final class VoteContract {
         if (other.getSnapshotNumber() != 0L) {
           setSnapshotNumber(other.getSnapshotNumber());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -3367,19 +3298,45 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.GetVotingResultInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getVotingItemIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                snapshotNumber_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.GetVotingResultInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash votingItemId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3393,7 +3350,7 @@ public final class VoteContract {
        * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
-        return votingItemIdBuilder_ != null || votingItemId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -3423,11 +3380,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           votingItemId_ = value;
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3441,11 +3398,11 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (votingItemIdBuilder_ == null) {
           votingItemId_ = builderForValue.build();
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3457,17 +3414,18 @@ public final class VoteContract {
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
         if (votingItemIdBuilder_ == null) {
-          if (votingItemId_ != null) {
-            votingItemId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(votingItemId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            votingItemId_ != null &&
+            votingItemId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getVotingItemIdBuilder().mergeFrom(value);
           } else {
             votingItemId_ = value;
           }
-          onChanged();
         } else {
           votingItemIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3478,14 +3436,13 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-          onChanged();
-        } else {
-          votingItemId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -3496,7 +3453,7 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getVotingItemIdFieldBuilder().getBuilder();
       }
@@ -3545,6 +3502,7 @@ public final class VoteContract {
        * <code>int64 snapshot_number = 2;</code>
        * @return The snapshotNumber.
        */
+      @java.lang.Override
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
@@ -3560,6 +3518,7 @@ public final class VoteContract {
       public Builder setSnapshotNumber(long value) {
         
         snapshotNumber_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3572,7 +3531,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         snapshotNumber_ = 0L;
         onChanged();
         return this;
@@ -3610,7 +3569,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetVotingResultInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -3700,7 +3670,6 @@ public final class VoteContract {
      *
      * <code>map&lt;string, int64&gt; results = 2;</code>
      */
-
     long getResultsOrDefault(
         java.lang.String key,
         long defaultValue);
@@ -3711,7 +3680,6 @@ public final class VoteContract {
      *
      * <code>map&lt;string, int64&gt; results = 2;</code>
      */
-
     long getResultsOrThrow(
         java.lang.String key);
 
@@ -3802,7 +3770,7 @@ public final class VoteContract {
   /**
    * Protobuf type {@code VotingResult}
    */
-  public  static final class VotingResult extends
+  public static final class VotingResult extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:VotingResult)
       VotingResultOrBuilder {
@@ -3825,111 +3793,6 @@ public final class VoteContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private VotingResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (votingItemId_ != null) {
-                subBuilder = votingItemId_.toBuilder();
-              }
-              votingItemId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(votingItemId_);
-                votingItemId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                results_ = com.google.protobuf.MapField.newMapField(
-                    ResultsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
-              }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
-              results__ = input.readMessage(
-                  ResultsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              results_.getMutableMap().put(
-                  results__.getKey(), results__.getValue());
-              break;
-            }
-            case 24: {
-
-              snapshotNumber_ = input.readInt64();
-              break;
-            }
-            case 32: {
-
-              votersCount_ = input.readInt64();
-              break;
-            }
-            case 42: {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (snapshotStartTimestamp_ != null) {
-                subBuilder = snapshotStartTimestamp_.toBuilder();
-              }
-              snapshotStartTimestamp_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(snapshotStartTimestamp_);
-                snapshotStartTimestamp_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 50: {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (snapshotEndTimestamp_ != null) {
-                subBuilder = snapshotEndTimestamp_.toBuilder();
-              }
-              snapshotEndTimestamp_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(snapshotEndTimestamp_);
-                snapshotEndTimestamp_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 56: {
-
-              votesAmount_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -3966,6 +3829,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
+    @java.lang.Override
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
@@ -3977,6 +3841,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
@@ -3987,8 +3852,9 @@ public final class VoteContract {
      *
      * <code>.Hash voting_item_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
-      return getVotingItemId();
+      return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
 
     public static final int RESULTS_FIELD_NUMBER = 2;
@@ -4003,6 +3869,7 @@ public final class VoteContract {
                   com.google.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.Long> results_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
@@ -4013,7 +3880,6 @@ public final class VoteContract {
       }
       return results_;
     }
-
     public int getResultsCount() {
       return internalGetResults().getMap().size();
     }
@@ -4024,15 +3890,16 @@ public final class VoteContract {
      *
      * <code>map&lt;string, int64&gt; results = 2;</code>
      */
-
+    @java.lang.Override
     public boolean containsResults(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetResults().getMap().containsKey(key);
     }
     /**
      * Use {@link #getResultsMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.Long> getResults() {
       return getResultsMap();
@@ -4044,7 +3911,7 @@ public final class VoteContract {
      *
      * <code>map&lt;string, int64&gt; results = 2;</code>
      */
-
+    @java.lang.Override
     public java.util.Map<java.lang.String, java.lang.Long> getResultsMap() {
       return internalGetResults().getMap();
     }
@@ -4055,11 +3922,11 @@ public final class VoteContract {
      *
      * <code>map&lt;string, int64&gt; results = 2;</code>
      */
-
+    @java.lang.Override
     public long getResultsOrDefault(
         java.lang.String key,
         long defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Long> map =
           internalGetResults().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -4071,10 +3938,10 @@ public final class VoteContract {
      *
      * <code>map&lt;string, int64&gt; results = 2;</code>
      */
-
+    @java.lang.Override
     public long getResultsOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Long> map =
           internalGetResults().getMap();
       if (!map.containsKey(key)) {
@@ -4084,7 +3951,7 @@ public final class VoteContract {
     }
 
     public static final int SNAPSHOT_NUMBER_FIELD_NUMBER = 3;
-    private long snapshotNumber_;
+    private long snapshotNumber_ = 0L;
     /**
      * <pre>
      * The snapshot number.
@@ -4093,12 +3960,13 @@ public final class VoteContract {
      * <code>int64 snapshot_number = 3;</code>
      * @return The snapshotNumber.
      */
+    @java.lang.Override
     public long getSnapshotNumber() {
       return snapshotNumber_;
     }
 
     public static final int VOTERS_COUNT_FIELD_NUMBER = 4;
-    private long votersCount_;
+    private long votersCount_ = 0L;
     /**
      * <pre>
      * The total number of voters.
@@ -4107,6 +3975,7 @@ public final class VoteContract {
      * <code>int64 voters_count = 4;</code>
      * @return The votersCount.
      */
+    @java.lang.Override
     public long getVotersCount() {
       return votersCount_;
     }
@@ -4121,6 +3990,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      * @return Whether the snapshotStartTimestamp field is set.
      */
+    @java.lang.Override
     public boolean hasSnapshotStartTimestamp() {
       return snapshotStartTimestamp_ != null;
     }
@@ -4132,6 +4002,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      * @return The snapshotStartTimestamp.
      */
+    @java.lang.Override
     public com.google.protobuf.Timestamp getSnapshotStartTimestamp() {
       return snapshotStartTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotStartTimestamp_;
     }
@@ -4142,8 +4013,9 @@ public final class VoteContract {
      *
      * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getSnapshotStartTimestampOrBuilder() {
-      return getSnapshotStartTimestamp();
+      return snapshotStartTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotStartTimestamp_;
     }
 
     public static final int SNAPSHOT_END_TIMESTAMP_FIELD_NUMBER = 6;
@@ -4156,6 +4028,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      * @return Whether the snapshotEndTimestamp field is set.
      */
+    @java.lang.Override
     public boolean hasSnapshotEndTimestamp() {
       return snapshotEndTimestamp_ != null;
     }
@@ -4167,6 +4040,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      * @return The snapshotEndTimestamp.
      */
+    @java.lang.Override
     public com.google.protobuf.Timestamp getSnapshotEndTimestamp() {
       return snapshotEndTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotEndTimestamp_;
     }
@@ -4177,12 +4051,13 @@ public final class VoteContract {
      *
      * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getSnapshotEndTimestampOrBuilder() {
-      return getSnapshotEndTimestamp();
+      return snapshotEndTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : snapshotEndTimestamp_;
     }
 
     public static final int VOTES_AMOUNT_FIELD_NUMBER = 7;
-    private long votesAmount_;
+    private long votesAmount_ = 0L;
     /**
      * <pre>
      * Total votes received during the process of this snapshot.
@@ -4191,6 +4066,7 @@ public final class VoteContract {
      * <code>int64 votes_amount = 7;</code>
      * @return The votesAmount.
      */
+    @java.lang.Override
     public long getVotesAmount() {
       return votesAmount_;
     }
@@ -4233,7 +4109,7 @@ public final class VoteContract {
       if (votesAmount_ != 0L) {
         output.writeInt64(7, votesAmount_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -4276,7 +4152,7 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(7, votesAmount_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -4314,7 +4190,7 @@ public final class VoteContract {
       }
       if (getVotesAmount()
           != other.getVotesAmount()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -4350,7 +4226,7 @@ public final class VoteContract {
       hash = (37 * hash) + VOTES_AMOUNT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getVotesAmount());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -4489,47 +4365,37 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.VotingResult.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-        } else {
-          votingItemId_ = null;
+        bitField0_ = 0;
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
         internalGetMutableResults().clear();
         snapshotNumber_ = 0L;
-
         votersCount_ = 0L;
-
-        if (snapshotStartTimestampBuilder_ == null) {
-          snapshotStartTimestamp_ = null;
-        } else {
-          snapshotStartTimestamp_ = null;
+        snapshotStartTimestamp_ = null;
+        if (snapshotStartTimestampBuilder_ != null) {
+          snapshotStartTimestampBuilder_.dispose();
           snapshotStartTimestampBuilder_ = null;
         }
-        if (snapshotEndTimestampBuilder_ == null) {
-          snapshotEndTimestamp_ = null;
-        } else {
-          snapshotEndTimestamp_ = null;
+        snapshotEndTimestamp_ = null;
+        if (snapshotEndTimestampBuilder_ != null) {
+          snapshotEndTimestampBuilder_.dispose();
           snapshotEndTimestampBuilder_ = null;
         }
         votesAmount_ = 0L;
-
         return this;
       }
 
@@ -4556,29 +4422,41 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.VotingResult buildPartial() {
         io.aelf.protobuf.generated.VoteContract.VotingResult result = new io.aelf.protobuf.generated.VoteContract.VotingResult(this);
-        int from_bitField0_ = bitField0_;
-        if (votingItemIdBuilder_ == null) {
-          result.votingItemId_ = votingItemId_;
-        } else {
-          result.votingItemId_ = votingItemIdBuilder_.build();
-        }
-        result.results_ = internalGetResults();
-        result.results_.makeImmutable();
-        result.snapshotNumber_ = snapshotNumber_;
-        result.votersCount_ = votersCount_;
-        if (snapshotStartTimestampBuilder_ == null) {
-          result.snapshotStartTimestamp_ = snapshotStartTimestamp_;
-        } else {
-          result.snapshotStartTimestamp_ = snapshotStartTimestampBuilder_.build();
-        }
-        if (snapshotEndTimestampBuilder_ == null) {
-          result.snapshotEndTimestamp_ = snapshotEndTimestamp_;
-        } else {
-          result.snapshotEndTimestamp_ = snapshotEndTimestampBuilder_.build();
-        }
-        result.votesAmount_ = votesAmount_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.VotingResult result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.votingItemId_ = votingItemIdBuilder_ == null
+              ? votingItemId_
+              : votingItemIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.results_ = internalGetResults();
+          result.results_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.snapshotNumber_ = snapshotNumber_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.votersCount_ = votersCount_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.snapshotStartTimestamp_ = snapshotStartTimestampBuilder_ == null
+              ? snapshotStartTimestamp_
+              : snapshotStartTimestampBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.snapshotEndTimestamp_ = snapshotEndTimestampBuilder_ == null
+              ? snapshotEndTimestamp_
+              : snapshotEndTimestampBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.votesAmount_ = votesAmount_;
+        }
       }
 
       @java.lang.Override
@@ -4630,6 +4508,7 @@ public final class VoteContract {
         }
         internalGetMutableResults().mergeFrom(
             other.internalGetResults());
+        bitField0_ |= 0x00000002;
         if (other.getSnapshotNumber() != 0L) {
           setSnapshotNumber(other.getSnapshotNumber());
         }
@@ -4645,7 +4524,7 @@ public final class VoteContract {
         if (other.getVotesAmount() != 0L) {
           setVotesAmount(other.getVotesAmount());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -4660,17 +4539,75 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.VotingResult parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getVotingItemIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
+                results__ = input.readMessage(
+                    ResultsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableResults().getMutableMap().put(
+                    results__.getKey(), results__.getValue());
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                snapshotNumber_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                votersCount_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 42: {
+                input.readMessage(
+                    getSnapshotStartTimestampFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                input.readMessage(
+                    getSnapshotEndTimestampFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 56: {
+                votesAmount_ = input.readInt64();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 56
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.VotingResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -4687,7 +4624,7 @@ public final class VoteContract {
        * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
-        return votingItemIdBuilder_ != null || votingItemId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -4717,11 +4654,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           votingItemId_ = value;
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -4735,11 +4672,11 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (votingItemIdBuilder_ == null) {
           votingItemId_ = builderForValue.build();
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -4751,17 +4688,18 @@ public final class VoteContract {
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
         if (votingItemIdBuilder_ == null) {
-          if (votingItemId_ != null) {
-            votingItemId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(votingItemId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            votingItemId_ != null &&
+            votingItemId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getVotingItemIdBuilder().mergeFrom(value);
           } else {
             votingItemId_ = value;
           }
-          onChanged();
         } else {
           votingItemIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -4772,14 +4710,13 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-          onChanged();
-        } else {
-          votingItemId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -4790,7 +4727,7 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getVotingItemIdFieldBuilder().getBuilder();
       }
@@ -4833,7 +4770,7 @@ public final class VoteContract {
       private com.google.protobuf.MapField<
           java.lang.String, java.lang.Long> results_;
       private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
-      internalGetResults() {
+          internalGetResults() {
         if (results_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               ResultsDefaultEntryHolder.defaultEntry);
@@ -4841,8 +4778,7 @@ public final class VoteContract {
         return results_;
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
-      internalGetMutableResults() {
-        onChanged();;
+          internalGetMutableResults() {
         if (results_ == null) {
           results_ = com.google.protobuf.MapField.newMapField(
               ResultsDefaultEntryHolder.defaultEntry);
@@ -4850,9 +4786,10 @@ public final class VoteContract {
         if (!results_.isMutable()) {
           results_ = results_.copy();
         }
+        bitField0_ |= 0x00000002;
+        onChanged();
         return results_;
       }
-
       public int getResultsCount() {
         return internalGetResults().getMap().size();
       }
@@ -4863,15 +4800,16 @@ public final class VoteContract {
        *
        * <code>map&lt;string, int64&gt; results = 2;</code>
        */
-
+      @java.lang.Override
       public boolean containsResults(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         return internalGetResults().getMap().containsKey(key);
       }
       /**
        * Use {@link #getResultsMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Long> getResults() {
         return getResultsMap();
@@ -4883,7 +4821,7 @@ public final class VoteContract {
        *
        * <code>map&lt;string, int64&gt; results = 2;</code>
        */
-
+      @java.lang.Override
       public java.util.Map<java.lang.String, java.lang.Long> getResultsMap() {
         return internalGetResults().getMap();
       }
@@ -4894,11 +4832,11 @@ public final class VoteContract {
        *
        * <code>map&lt;string, int64&gt; results = 2;</code>
        */
-
+      @java.lang.Override
       public long getResultsOrDefault(
           java.lang.String key,
           long defaultValue) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Long> map =
             internalGetResults().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -4910,10 +4848,10 @@ public final class VoteContract {
        *
        * <code>map&lt;string, int64&gt; results = 2;</code>
        */
-
+      @java.lang.Override
       public long getResultsOrThrow(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Long> map =
             internalGetResults().getMap();
         if (!map.containsKey(key)) {
@@ -4921,8 +4859,8 @@ public final class VoteContract {
         }
         return map.get(key);
       }
-
       public Builder clearResults() {
+        bitField0_ = (bitField0_ & ~0x00000002);
         internalGetMutableResults().getMutableMap()
             .clear();
         return this;
@@ -4934,10 +4872,9 @@ public final class VoteContract {
        *
        * <code>map&lt;string, int64&gt; results = 2;</code>
        */
-
       public Builder removeResults(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableResults().getMutableMap()
             .remove(key);
         return this;
@@ -4947,7 +4884,8 @@ public final class VoteContract {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Long>
-      getMutableResults() {
+          getMutableResults() {
+        bitField0_ |= 0x00000002;
         return internalGetMutableResults().getMutableMap();
       }
       /**
@@ -4960,10 +4898,11 @@ public final class VoteContract {
       public Builder putResults(
           java.lang.String key,
           long value) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         
         internalGetMutableResults().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -4973,11 +4912,11 @@ public final class VoteContract {
        *
        * <code>map&lt;string, int64&gt; results = 2;</code>
        */
-
       public Builder putAllResults(
           java.util.Map<java.lang.String, java.lang.Long> values) {
         internalGetMutableResults().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000002;
         return this;
       }
 
@@ -4990,6 +4929,7 @@ public final class VoteContract {
        * <code>int64 snapshot_number = 3;</code>
        * @return The snapshotNumber.
        */
+      @java.lang.Override
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
@@ -5005,6 +4945,7 @@ public final class VoteContract {
       public Builder setSnapshotNumber(long value) {
         
         snapshotNumber_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -5017,7 +4958,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         snapshotNumber_ = 0L;
         onChanged();
         return this;
@@ -5032,6 +4973,7 @@ public final class VoteContract {
        * <code>int64 voters_count = 4;</code>
        * @return The votersCount.
        */
+      @java.lang.Override
       public long getVotersCount() {
         return votersCount_;
       }
@@ -5047,6 +4989,7 @@ public final class VoteContract {
       public Builder setVotersCount(long value) {
         
         votersCount_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -5059,7 +5002,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearVotersCount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         votersCount_ = 0L;
         onChanged();
         return this;
@@ -5077,7 +5020,7 @@ public final class VoteContract {
        * @return Whether the snapshotStartTimestamp field is set.
        */
       public boolean hasSnapshotStartTimestamp() {
-        return snapshotStartTimestampBuilder_ != null || snapshotStartTimestamp_ != null;
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
        * <pre>
@@ -5107,11 +5050,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           snapshotStartTimestamp_ = value;
-          onChanged();
         } else {
           snapshotStartTimestampBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -5125,11 +5068,11 @@ public final class VoteContract {
           com.google.protobuf.Timestamp.Builder builderForValue) {
         if (snapshotStartTimestampBuilder_ == null) {
           snapshotStartTimestamp_ = builderForValue.build();
-          onChanged();
         } else {
           snapshotStartTimestampBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -5141,17 +5084,18 @@ public final class VoteContract {
        */
       public Builder mergeSnapshotStartTimestamp(com.google.protobuf.Timestamp value) {
         if (snapshotStartTimestampBuilder_ == null) {
-          if (snapshotStartTimestamp_ != null) {
-            snapshotStartTimestamp_ =
-              com.google.protobuf.Timestamp.newBuilder(snapshotStartTimestamp_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000010) != 0) &&
+            snapshotStartTimestamp_ != null &&
+            snapshotStartTimestamp_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getSnapshotStartTimestampBuilder().mergeFrom(value);
           } else {
             snapshotStartTimestamp_ = value;
           }
-          onChanged();
         } else {
           snapshotStartTimestampBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -5162,14 +5106,13 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public Builder clearSnapshotStartTimestamp() {
-        if (snapshotStartTimestampBuilder_ == null) {
-          snapshotStartTimestamp_ = null;
-          onChanged();
-        } else {
-          snapshotStartTimestamp_ = null;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        snapshotStartTimestamp_ = null;
+        if (snapshotStartTimestampBuilder_ != null) {
+          snapshotStartTimestampBuilder_.dispose();
           snapshotStartTimestampBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -5180,7 +5123,7 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp snapshot_start_timestamp = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getSnapshotStartTimestampBuilder() {
-        
+        bitField0_ |= 0x00000010;
         onChanged();
         return getSnapshotStartTimestampFieldBuilder().getBuilder();
       }
@@ -5232,7 +5175,7 @@ public final class VoteContract {
        * @return Whether the snapshotEndTimestamp field is set.
        */
       public boolean hasSnapshotEndTimestamp() {
-        return snapshotEndTimestampBuilder_ != null || snapshotEndTimestamp_ != null;
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -5262,11 +5205,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           snapshotEndTimestamp_ = value;
-          onChanged();
         } else {
           snapshotEndTimestampBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -5280,11 +5223,11 @@ public final class VoteContract {
           com.google.protobuf.Timestamp.Builder builderForValue) {
         if (snapshotEndTimestampBuilder_ == null) {
           snapshotEndTimestamp_ = builderForValue.build();
-          onChanged();
         } else {
           snapshotEndTimestampBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -5296,17 +5239,18 @@ public final class VoteContract {
        */
       public Builder mergeSnapshotEndTimestamp(com.google.protobuf.Timestamp value) {
         if (snapshotEndTimestampBuilder_ == null) {
-          if (snapshotEndTimestamp_ != null) {
-            snapshotEndTimestamp_ =
-              com.google.protobuf.Timestamp.newBuilder(snapshotEndTimestamp_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000020) != 0) &&
+            snapshotEndTimestamp_ != null &&
+            snapshotEndTimestamp_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getSnapshotEndTimestampBuilder().mergeFrom(value);
           } else {
             snapshotEndTimestamp_ = value;
           }
-          onChanged();
         } else {
           snapshotEndTimestampBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -5317,14 +5261,13 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public Builder clearSnapshotEndTimestamp() {
-        if (snapshotEndTimestampBuilder_ == null) {
-          snapshotEndTimestamp_ = null;
-          onChanged();
-        } else {
-          snapshotEndTimestamp_ = null;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        snapshotEndTimestamp_ = null;
+        if (snapshotEndTimestampBuilder_ != null) {
+          snapshotEndTimestampBuilder_.dispose();
           snapshotEndTimestampBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -5335,7 +5278,7 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp snapshot_end_timestamp = 6;</code>
        */
       public com.google.protobuf.Timestamp.Builder getSnapshotEndTimestampBuilder() {
-        
+        bitField0_ |= 0x00000020;
         onChanged();
         return getSnapshotEndTimestampFieldBuilder().getBuilder();
       }
@@ -5384,6 +5327,7 @@ public final class VoteContract {
        * <code>int64 votes_amount = 7;</code>
        * @return The votesAmount.
        */
+      @java.lang.Override
       public long getVotesAmount() {
         return votesAmount_;
       }
@@ -5399,6 +5343,7 @@ public final class VoteContract {
       public Builder setVotesAmount(long value) {
         
         votesAmount_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -5411,7 +5356,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearVotesAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         votesAmount_ = 0L;
         onChanged();
         return this;
@@ -5449,7 +5394,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VotingResult(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5644,7 +5600,7 @@ public final class VoteContract {
   /**
    * Protobuf type {@code VotingRecord}
    */
-  public  static final class VotingRecord extends
+  public static final class VotingRecord extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:VotingRecord)
       VotingRecordOrBuilder {
@@ -5669,121 +5625,6 @@ public final class VoteContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private VotingRecord(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (votingItemId_ != null) {
-                subBuilder = votingItemId_.toBuilder();
-              }
-              votingItemId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(votingItemId_);
-                votingItemId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (voter_ != null) {
-                subBuilder = voter_.toBuilder();
-              }
-              voter_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(voter_);
-                voter_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 24: {
-
-              snapshotNumber_ = input.readInt64();
-              break;
-            }
-            case 32: {
-
-              amount_ = input.readInt64();
-              break;
-            }
-            case 42: {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (withdrawTimestamp_ != null) {
-                subBuilder = withdrawTimestamp_.toBuilder();
-              }
-              withdrawTimestamp_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(withdrawTimestamp_);
-                withdrawTimestamp_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 50: {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (voteTimestamp_ != null) {
-                subBuilder = voteTimestamp_.toBuilder();
-              }
-              voteTimestamp_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(voteTimestamp_);
-                voteTimestamp_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 56: {
-
-              isWithdrawn_ = input.readBool();
-              break;
-            }
-            case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              option_ = s;
-              break;
-            }
-            case 72: {
-
-              isChangeTarget_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.VoteContract.internal_static_VotingRecord_descriptor;
@@ -5807,6 +5648,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return Whether the votingItemId field is set.
      */
+    @java.lang.Override
     public boolean hasVotingItemId() {
       return votingItemId_ != null;
     }
@@ -5818,6 +5660,7 @@ public final class VoteContract {
      * <code>.Hash voting_item_id = 1;</code>
      * @return The votingItemId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getVotingItemId() {
       return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
@@ -5828,8 +5671,9 @@ public final class VoteContract {
      *
      * <code>.Hash voting_item_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getVotingItemIdOrBuilder() {
-      return getVotingItemId();
+      return votingItemId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : votingItemId_;
     }
 
     public static final int VOTER_FIELD_NUMBER = 2;
@@ -5842,6 +5686,7 @@ public final class VoteContract {
      * <code>.Address voter = 2;</code>
      * @return Whether the voter field is set.
      */
+    @java.lang.Override
     public boolean hasVoter() {
       return voter_ != null;
     }
@@ -5853,6 +5698,7 @@ public final class VoteContract {
      * <code>.Address voter = 2;</code>
      * @return The voter.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getVoter() {
       return voter_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : voter_;
     }
@@ -5863,12 +5709,13 @@ public final class VoteContract {
      *
      * <code>.Address voter = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getVoterOrBuilder() {
-      return getVoter();
+      return voter_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : voter_;
     }
 
     public static final int SNAPSHOT_NUMBER_FIELD_NUMBER = 3;
-    private long snapshotNumber_;
+    private long snapshotNumber_ = 0L;
     /**
      * <pre>
      * The snapshot number.
@@ -5877,12 +5724,13 @@ public final class VoteContract {
      * <code>int64 snapshot_number = 3;</code>
      * @return The snapshotNumber.
      */
+    @java.lang.Override
     public long getSnapshotNumber() {
       return snapshotNumber_;
     }
 
     public static final int AMOUNT_FIELD_NUMBER = 4;
-    private long amount_;
+    private long amount_ = 0L;
     /**
      * <pre>
      * The amount of vote.
@@ -5891,6 +5739,7 @@ public final class VoteContract {
      * <code>int64 amount = 4;</code>
      * @return The amount.
      */
+    @java.lang.Override
     public long getAmount() {
       return amount_;
     }
@@ -5905,6 +5754,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      * @return Whether the withdrawTimestamp field is set.
      */
+    @java.lang.Override
     public boolean hasWithdrawTimestamp() {
       return withdrawTimestamp_ != null;
     }
@@ -5916,6 +5766,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      * @return The withdrawTimestamp.
      */
+    @java.lang.Override
     public com.google.protobuf.Timestamp getWithdrawTimestamp() {
       return withdrawTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : withdrawTimestamp_;
     }
@@ -5926,8 +5777,9 @@ public final class VoteContract {
      *
      * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getWithdrawTimestampOrBuilder() {
-      return getWithdrawTimestamp();
+      return withdrawTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : withdrawTimestamp_;
     }
 
     public static final int VOTE_TIMESTAMP_FIELD_NUMBER = 6;
@@ -5940,6 +5792,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      * @return Whether the voteTimestamp field is set.
      */
+    @java.lang.Override
     public boolean hasVoteTimestamp() {
       return voteTimestamp_ != null;
     }
@@ -5951,6 +5804,7 @@ public final class VoteContract {
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      * @return The voteTimestamp.
      */
+    @java.lang.Override
     public com.google.protobuf.Timestamp getVoteTimestamp() {
       return voteTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : voteTimestamp_;
     }
@@ -5961,12 +5815,13 @@ public final class VoteContract {
      *
      * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getVoteTimestampOrBuilder() {
-      return getVoteTimestamp();
+      return voteTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : voteTimestamp_;
     }
 
     public static final int IS_WITHDRAWN_FIELD_NUMBER = 7;
-    private boolean isWithdrawn_;
+    private boolean isWithdrawn_ = false;
     /**
      * <pre>
      * Whether the vote had been withdrawn.
@@ -5975,12 +5830,14 @@ public final class VoteContract {
      * <code>bool is_withdrawn = 7;</code>
      * @return The isWithdrawn.
      */
+    @java.lang.Override
     public boolean getIsWithdrawn() {
       return isWithdrawn_;
     }
 
     public static final int OPTION_FIELD_NUMBER = 8;
-    private volatile java.lang.Object option_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object option_ = "";
     /**
      * <pre>
      * The option voted.
@@ -5989,6 +5846,7 @@ public final class VoteContract {
      * <code>string option = 8;</code>
      * @return The option.
      */
+    @java.lang.Override
     public java.lang.String getOption() {
       java.lang.Object ref = option_;
       if (ref instanceof java.lang.String) {
@@ -6009,6 +5867,7 @@ public final class VoteContract {
      * <code>string option = 8;</code>
      * @return The bytes for option.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getOptionBytes() {
       java.lang.Object ref = option_;
@@ -6024,7 +5883,7 @@ public final class VoteContract {
     }
 
     public static final int IS_CHANGE_TARGET_FIELD_NUMBER = 9;
-    private boolean isChangeTarget_;
+    private boolean isChangeTarget_ = false;
     /**
      * <pre>
      * Whether vote others.
@@ -6033,6 +5892,7 @@ public final class VoteContract {
      * <code>bool is_change_target = 9;</code>
      * @return The isChangeTarget.
      */
+    @java.lang.Override
     public boolean getIsChangeTarget() {
       return isChangeTarget_;
     }
@@ -6072,13 +5932,13 @@ public final class VoteContract {
       if (isWithdrawn_ != false) {
         output.writeBool(7, isWithdrawn_);
       }
-      if (!getOptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(option_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, option_);
       }
       if (isChangeTarget_ != false) {
         output.writeBool(9, isChangeTarget_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -6115,14 +5975,14 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(7, isWithdrawn_);
       }
-      if (!getOptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(option_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, option_);
       }
       if (isChangeTarget_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(9, isChangeTarget_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -6167,7 +6027,7 @@ public final class VoteContract {
           .equals(other.getOption())) return false;
       if (getIsChangeTarget()
           != other.getIsChangeTarget()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -6208,7 +6068,7 @@ public final class VoteContract {
       hash = (37 * hash) + IS_CHANGE_TARGET_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsChangeTarget());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -6325,56 +6185,43 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.VotingRecord.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-        } else {
-          votingItemId_ = null;
+        bitField0_ = 0;
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
-        if (voterBuilder_ == null) {
-          voter_ = null;
-        } else {
-          voter_ = null;
+        voter_ = null;
+        if (voterBuilder_ != null) {
+          voterBuilder_.dispose();
           voterBuilder_ = null;
         }
         snapshotNumber_ = 0L;
-
         amount_ = 0L;
-
-        if (withdrawTimestampBuilder_ == null) {
-          withdrawTimestamp_ = null;
-        } else {
-          withdrawTimestamp_ = null;
+        withdrawTimestamp_ = null;
+        if (withdrawTimestampBuilder_ != null) {
+          withdrawTimestampBuilder_.dispose();
           withdrawTimestampBuilder_ = null;
         }
-        if (voteTimestampBuilder_ == null) {
-          voteTimestamp_ = null;
-        } else {
-          voteTimestamp_ = null;
+        voteTimestamp_ = null;
+        if (voteTimestampBuilder_ != null) {
+          voteTimestampBuilder_.dispose();
           voteTimestampBuilder_ = null;
         }
         isWithdrawn_ = false;
-
         option_ = "";
-
         isChangeTarget_ = false;
-
         return this;
       }
 
@@ -6401,33 +6248,48 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.VotingRecord buildPartial() {
         io.aelf.protobuf.generated.VoteContract.VotingRecord result = new io.aelf.protobuf.generated.VoteContract.VotingRecord(this);
-        if (votingItemIdBuilder_ == null) {
-          result.votingItemId_ = votingItemId_;
-        } else {
-          result.votingItemId_ = votingItemIdBuilder_.build();
-        }
-        if (voterBuilder_ == null) {
-          result.voter_ = voter_;
-        } else {
-          result.voter_ = voterBuilder_.build();
-        }
-        result.snapshotNumber_ = snapshotNumber_;
-        result.amount_ = amount_;
-        if (withdrawTimestampBuilder_ == null) {
-          result.withdrawTimestamp_ = withdrawTimestamp_;
-        } else {
-          result.withdrawTimestamp_ = withdrawTimestampBuilder_.build();
-        }
-        if (voteTimestampBuilder_ == null) {
-          result.voteTimestamp_ = voteTimestamp_;
-        } else {
-          result.voteTimestamp_ = voteTimestampBuilder_.build();
-        }
-        result.isWithdrawn_ = isWithdrawn_;
-        result.option_ = option_;
-        result.isChangeTarget_ = isChangeTarget_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.VotingRecord result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.votingItemId_ = votingItemIdBuilder_ == null
+              ? votingItemId_
+              : votingItemIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.voter_ = voterBuilder_ == null
+              ? voter_
+              : voterBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.snapshotNumber_ = snapshotNumber_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.amount_ = amount_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.withdrawTimestamp_ = withdrawTimestampBuilder_ == null
+              ? withdrawTimestamp_
+              : withdrawTimestampBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.voteTimestamp_ = voteTimestampBuilder_ == null
+              ? voteTimestamp_
+              : voteTimestampBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.isWithdrawn_ = isWithdrawn_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.option_ = option_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.isChangeTarget_ = isChangeTarget_;
+        }
       }
 
       @java.lang.Override
@@ -6497,12 +6359,13 @@ public final class VoteContract {
         }
         if (!other.getOption().isEmpty()) {
           option_ = other.option_;
+          bitField0_ |= 0x00000080;
           onChanged();
         }
         if (other.getIsChangeTarget() != false) {
           setIsChangeTarget(other.getIsChangeTarget());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -6517,19 +6380,86 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.VotingRecord parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getVotingItemIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getVoterFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                snapshotNumber_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                amount_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 42: {
+                input.readMessage(
+                    getWithdrawTimestampFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                input.readMessage(
+                    getVoteTimestampFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 56: {
+                isWithdrawn_ = input.readBool();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 56
+              case 66: {
+                option_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 66
+              case 72: {
+                isChangeTarget_ = input.readBool();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 72
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.VotingRecord) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash votingItemId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -6543,7 +6473,7 @@ public final class VoteContract {
        * @return Whether the votingItemId field is set.
        */
       public boolean hasVotingItemId() {
-        return votingItemIdBuilder_ != null || votingItemId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -6573,11 +6503,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           votingItemId_ = value;
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -6591,11 +6521,11 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (votingItemIdBuilder_ == null) {
           votingItemId_ = builderForValue.build();
-          onChanged();
         } else {
           votingItemIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -6607,17 +6537,18 @@ public final class VoteContract {
        */
       public Builder mergeVotingItemId(io.aelf.protobuf.generated.Client.Hash value) {
         if (votingItemIdBuilder_ == null) {
-          if (votingItemId_ != null) {
-            votingItemId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(votingItemId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            votingItemId_ != null &&
+            votingItemId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getVotingItemIdBuilder().mergeFrom(value);
           } else {
             votingItemId_ = value;
           }
-          onChanged();
         } else {
           votingItemIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -6628,14 +6559,13 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public Builder clearVotingItemId() {
-        if (votingItemIdBuilder_ == null) {
-          votingItemId_ = null;
-          onChanged();
-        } else {
-          votingItemId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        votingItemId_ = null;
+        if (votingItemIdBuilder_ != null) {
+          votingItemIdBuilder_.dispose();
           votingItemIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -6646,7 +6576,7 @@ public final class VoteContract {
        * <code>.Hash voting_item_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getVotingItemIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getVotingItemIdFieldBuilder().getBuilder();
       }
@@ -6698,7 +6628,7 @@ public final class VoteContract {
        * @return Whether the voter field is set.
        */
       public boolean hasVoter() {
-        return voterBuilder_ != null || voter_ != null;
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -6728,11 +6658,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           voter_ = value;
-          onChanged();
         } else {
           voterBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -6746,11 +6676,11 @@ public final class VoteContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (voterBuilder_ == null) {
           voter_ = builderForValue.build();
-          onChanged();
         } else {
           voterBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -6762,17 +6692,18 @@ public final class VoteContract {
        */
       public Builder mergeVoter(io.aelf.protobuf.generated.Client.Address value) {
         if (voterBuilder_ == null) {
-          if (voter_ != null) {
-            voter_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(voter_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000002) != 0) &&
+            voter_ != null &&
+            voter_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getVoterBuilder().mergeFrom(value);
           } else {
             voter_ = value;
           }
-          onChanged();
         } else {
           voterBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -6783,14 +6714,13 @@ public final class VoteContract {
        * <code>.Address voter = 2;</code>
        */
       public Builder clearVoter() {
-        if (voterBuilder_ == null) {
-          voter_ = null;
-          onChanged();
-        } else {
-          voter_ = null;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        voter_ = null;
+        if (voterBuilder_ != null) {
+          voterBuilder_.dispose();
           voterBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -6801,7 +6731,7 @@ public final class VoteContract {
        * <code>.Address voter = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getVoterBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getVoterFieldBuilder().getBuilder();
       }
@@ -6850,6 +6780,7 @@ public final class VoteContract {
        * <code>int64 snapshot_number = 3;</code>
        * @return The snapshotNumber.
        */
+      @java.lang.Override
       public long getSnapshotNumber() {
         return snapshotNumber_;
       }
@@ -6865,6 +6796,7 @@ public final class VoteContract {
       public Builder setSnapshotNumber(long value) {
         
         snapshotNumber_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -6877,7 +6809,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearSnapshotNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         snapshotNumber_ = 0L;
         onChanged();
         return this;
@@ -6892,6 +6824,7 @@ public final class VoteContract {
        * <code>int64 amount = 4;</code>
        * @return The amount.
        */
+      @java.lang.Override
       public long getAmount() {
         return amount_;
       }
@@ -6907,6 +6840,7 @@ public final class VoteContract {
       public Builder setAmount(long value) {
         
         amount_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -6919,7 +6853,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         amount_ = 0L;
         onChanged();
         return this;
@@ -6937,7 +6871,7 @@ public final class VoteContract {
        * @return Whether the withdrawTimestamp field is set.
        */
       public boolean hasWithdrawTimestamp() {
-        return withdrawTimestampBuilder_ != null || withdrawTimestamp_ != null;
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
        * <pre>
@@ -6967,11 +6901,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           withdrawTimestamp_ = value;
-          onChanged();
         } else {
           withdrawTimestampBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -6985,11 +6919,11 @@ public final class VoteContract {
           com.google.protobuf.Timestamp.Builder builderForValue) {
         if (withdrawTimestampBuilder_ == null) {
           withdrawTimestamp_ = builderForValue.build();
-          onChanged();
         } else {
           withdrawTimestampBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -7001,17 +6935,18 @@ public final class VoteContract {
        */
       public Builder mergeWithdrawTimestamp(com.google.protobuf.Timestamp value) {
         if (withdrawTimestampBuilder_ == null) {
-          if (withdrawTimestamp_ != null) {
-            withdrawTimestamp_ =
-              com.google.protobuf.Timestamp.newBuilder(withdrawTimestamp_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000010) != 0) &&
+            withdrawTimestamp_ != null &&
+            withdrawTimestamp_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getWithdrawTimestampBuilder().mergeFrom(value);
           } else {
             withdrawTimestamp_ = value;
           }
-          onChanged();
         } else {
           withdrawTimestampBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -7022,14 +6957,13 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public Builder clearWithdrawTimestamp() {
-        if (withdrawTimestampBuilder_ == null) {
-          withdrawTimestamp_ = null;
-          onChanged();
-        } else {
-          withdrawTimestamp_ = null;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        withdrawTimestamp_ = null;
+        if (withdrawTimestampBuilder_ != null) {
+          withdrawTimestampBuilder_.dispose();
           withdrawTimestampBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -7040,7 +6974,7 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp withdraw_timestamp = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getWithdrawTimestampBuilder() {
-        
+        bitField0_ |= 0x00000010;
         onChanged();
         return getWithdrawTimestampFieldBuilder().getBuilder();
       }
@@ -7092,7 +7026,7 @@ public final class VoteContract {
        * @return Whether the voteTimestamp field is set.
        */
       public boolean hasVoteTimestamp() {
-        return voteTimestampBuilder_ != null || voteTimestamp_ != null;
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -7122,11 +7056,11 @@ public final class VoteContract {
             throw new NullPointerException();
           }
           voteTimestamp_ = value;
-          onChanged();
         } else {
           voteTimestampBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -7140,11 +7074,11 @@ public final class VoteContract {
           com.google.protobuf.Timestamp.Builder builderForValue) {
         if (voteTimestampBuilder_ == null) {
           voteTimestamp_ = builderForValue.build();
-          onChanged();
         } else {
           voteTimestampBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -7156,17 +7090,18 @@ public final class VoteContract {
        */
       public Builder mergeVoteTimestamp(com.google.protobuf.Timestamp value) {
         if (voteTimestampBuilder_ == null) {
-          if (voteTimestamp_ != null) {
-            voteTimestamp_ =
-              com.google.protobuf.Timestamp.newBuilder(voteTimestamp_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000020) != 0) &&
+            voteTimestamp_ != null &&
+            voteTimestamp_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getVoteTimestampBuilder().mergeFrom(value);
           } else {
             voteTimestamp_ = value;
           }
-          onChanged();
         } else {
           voteTimestampBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -7177,14 +7112,13 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public Builder clearVoteTimestamp() {
-        if (voteTimestampBuilder_ == null) {
-          voteTimestamp_ = null;
-          onChanged();
-        } else {
-          voteTimestamp_ = null;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        voteTimestamp_ = null;
+        if (voteTimestampBuilder_ != null) {
+          voteTimestampBuilder_.dispose();
           voteTimestampBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -7195,7 +7129,7 @@ public final class VoteContract {
        * <code>.google.protobuf.Timestamp vote_timestamp = 6;</code>
        */
       public com.google.protobuf.Timestamp.Builder getVoteTimestampBuilder() {
-        
+        bitField0_ |= 0x00000020;
         onChanged();
         return getVoteTimestampFieldBuilder().getBuilder();
       }
@@ -7244,6 +7178,7 @@ public final class VoteContract {
        * <code>bool is_withdrawn = 7;</code>
        * @return The isWithdrawn.
        */
+      @java.lang.Override
       public boolean getIsWithdrawn() {
         return isWithdrawn_;
       }
@@ -7259,6 +7194,7 @@ public final class VoteContract {
       public Builder setIsWithdrawn(boolean value) {
         
         isWithdrawn_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -7271,7 +7207,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearIsWithdrawn() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         isWithdrawn_ = false;
         onChanged();
         return this;
@@ -7330,11 +7266,9 @@ public final class VoteContract {
        */
       public Builder setOption(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         option_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -7347,8 +7281,8 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearOption() {
-        
         option_ = getDefaultInstance().getOption();
+        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
@@ -7363,12 +7297,10 @@ public final class VoteContract {
        */
       public Builder setOptionBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         option_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -7382,6 +7314,7 @@ public final class VoteContract {
        * <code>bool is_change_target = 9;</code>
        * @return The isChangeTarget.
        */
+      @java.lang.Override
       public boolean getIsChangeTarget() {
         return isChangeTarget_;
       }
@@ -7397,6 +7330,7 @@ public final class VoteContract {
       public Builder setIsChangeTarget(boolean value) {
         
         isChangeTarget_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -7409,7 +7343,7 @@ public final class VoteContract {
        * @return This builder for chaining.
        */
       public Builder clearIsChangeTarget() {
-        
+        bitField0_ = (bitField0_ & ~0x00000100);
         isChangeTarget_ = false;
         onChanged();
         return this;
@@ -7447,7 +7381,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VotingRecord(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -7518,7 +7463,7 @@ public final class VoteContract {
   /**
    * Protobuf type {@code GetVotingRecordsInput}
    */
-  public  static final class GetVotingRecordsInput extends
+  public static final class GetVotingRecordsInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetVotingRecordsInput)
       GetVotingRecordsInputOrBuilder {
@@ -7543,56 +7488,6 @@ public final class VoteContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private GetVotingRecordsInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                ids_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Hash>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              ids_.add(
-                  input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          ids_ = java.util.Collections.unmodifiableList(ids_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.VoteContract.internal_static_GetVotingRecordsInput_descriptor;
@@ -7607,6 +7502,7 @@ public final class VoteContract {
     }
 
     public static final int IDS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> ids_;
     /**
      * <pre>
@@ -7615,6 +7511,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash ids = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getIdsList() {
       return ids_;
     }
@@ -7625,6 +7522,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash ids = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getIdsOrBuilderList() {
       return ids_;
@@ -7636,6 +7534,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash ids = 1;</code>
      */
+    @java.lang.Override
     public int getIdsCount() {
       return ids_.size();
     }
@@ -7646,6 +7545,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash ids = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getIds(int index) {
       return ids_.get(index);
     }
@@ -7656,6 +7556,7 @@ public final class VoteContract {
      *
      * <code>repeated .Hash ids = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getIdsOrBuilder(
         int index) {
       return ids_.get(index);
@@ -7678,7 +7579,7 @@ public final class VoteContract {
       for (int i = 0; i < ids_.size(); i++) {
         output.writeMessage(1, ids_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -7691,7 +7592,7 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, ids_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -7708,7 +7609,7 @@ public final class VoteContract {
 
       if (!getIdsList()
           .equals(other.getIdsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -7723,7 +7624,7 @@ public final class VoteContract {
         hash = (37 * hash) + IDS_FIELD_NUMBER;
         hash = (53 * hash) + getIdsList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -7840,29 +7741,25 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getIdsFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (idsBuilder_ == null) {
           ids_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          ids_ = null;
           idsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -7889,7 +7786,13 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput buildPartial() {
         io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput result = new io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput result) {
         if (idsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             ids_ = java.util.Collections.unmodifiableList(ids_);
@@ -7899,8 +7802,10 @@ public final class VoteContract {
         } else {
           result.ids_ = idsBuilder_.build();
         }
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -7973,7 +7878,7 @@ public final class VoteContract {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -7988,17 +7893,43 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                io.aelf.protobuf.generated.Client.Hash m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.Client.Hash.parser(),
+                        extensionRegistry);
+                if (idsBuilder_ == null) {
+                  ensureIdsIsMutable();
+                  ids_.add(m);
+                } else {
+                  idsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.GetVotingRecordsInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -8347,7 +8278,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetVotingRecordsInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -8418,7 +8360,7 @@ public final class VoteContract {
   /**
    * Protobuf type {@code VotingRecords}
    */
-  public  static final class VotingRecords extends
+  public static final class VotingRecords extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:VotingRecords)
       VotingRecordsOrBuilder {
@@ -8443,56 +8385,6 @@ public final class VoteContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private VotingRecords(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                records_ = new java.util.ArrayList<io.aelf.protobuf.generated.VoteContract.VotingRecord>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              records_.add(
-                  input.readMessage(io.aelf.protobuf.generated.VoteContract.VotingRecord.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          records_ = java.util.Collections.unmodifiableList(records_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.VoteContract.internal_static_VotingRecords_descriptor;
@@ -8507,6 +8399,7 @@ public final class VoteContract {
     }
 
     public static final int RECORDS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.VoteContract.VotingRecord> records_;
     /**
      * <pre>
@@ -8515,6 +8408,7 @@ public final class VoteContract {
      *
      * <code>repeated .VotingRecord records = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.VoteContract.VotingRecord> getRecordsList() {
       return records_;
     }
@@ -8525,6 +8419,7 @@ public final class VoteContract {
      *
      * <code>repeated .VotingRecord records = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder> 
         getRecordsOrBuilderList() {
       return records_;
@@ -8536,6 +8431,7 @@ public final class VoteContract {
      *
      * <code>repeated .VotingRecord records = 1;</code>
      */
+    @java.lang.Override
     public int getRecordsCount() {
       return records_.size();
     }
@@ -8546,6 +8442,7 @@ public final class VoteContract {
      *
      * <code>repeated .VotingRecord records = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.VoteContract.VotingRecord getRecords(int index) {
       return records_.get(index);
     }
@@ -8556,6 +8453,7 @@ public final class VoteContract {
      *
      * <code>repeated .VotingRecord records = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.VoteContract.VotingRecordOrBuilder getRecordsOrBuilder(
         int index) {
       return records_.get(index);
@@ -8578,7 +8476,7 @@ public final class VoteContract {
       for (int i = 0; i < records_.size(); i++) {
         output.writeMessage(1, records_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -8591,7 +8489,7 @@ public final class VoteContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, records_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -8608,7 +8506,7 @@ public final class VoteContract {
 
       if (!getRecordsList()
           .equals(other.getRecordsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -8623,7 +8521,7 @@ public final class VoteContract {
         hash = (37 * hash) + RECORDS_FIELD_NUMBER;
         hash = (53 * hash) + getRecordsList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -8740,29 +8638,25 @@ public final class VoteContract {
 
       // Construct using io.aelf.protobuf.generated.VoteContract.VotingRecords.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getRecordsFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (recordsBuilder_ == null) {
           records_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          records_ = null;
           recordsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -8789,7 +8683,13 @@ public final class VoteContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.VoteContract.VotingRecords buildPartial() {
         io.aelf.protobuf.generated.VoteContract.VotingRecords result = new io.aelf.protobuf.generated.VoteContract.VotingRecords(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.VoteContract.VotingRecords result) {
         if (recordsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             records_ = java.util.Collections.unmodifiableList(records_);
@@ -8799,8 +8699,10 @@ public final class VoteContract {
         } else {
           result.records_ = recordsBuilder_.build();
         }
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.VoteContract.VotingRecords result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -8873,7 +8775,7 @@ public final class VoteContract {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -8888,17 +8790,43 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.VoteContract.VotingRecords parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                io.aelf.protobuf.generated.VoteContract.VotingRecord m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.VoteContract.VotingRecord.parser(),
+                        extensionRegistry);
+                if (recordsBuilder_ == null) {
+                  ensureRecordsIsMutable();
+                  records_.add(m);
+                } else {
+                  recordsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.VoteContract.VotingRecords) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -9247,7 +9175,18 @@ public final class VoteContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VotingRecords(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

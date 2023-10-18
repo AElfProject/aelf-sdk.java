@@ -45,7 +45,7 @@ public final class TransactionFee {
   /**
    * Protobuf type {@code TransactionSizeFeeSymbols}
    */
-  public  static final class TransactionSizeFeeSymbols extends
+  public static final class TransactionSizeFeeSymbols extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:TransactionSizeFeeSymbols)
       TransactionSizeFeeSymbolsOrBuilder {
@@ -70,56 +70,6 @@ public final class TransactionFee {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private TransactionSizeFeeSymbols(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                transactionSizeFeeSymbolList_ = new java.util.ArrayList<io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              transactionSizeFeeSymbolList_.add(
-                  input.readMessage(io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          transactionSizeFeeSymbolList_ = java.util.Collections.unmodifiableList(transactionSizeFeeSymbolList_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.TransactionFee.internal_static_TransactionSizeFeeSymbols_descriptor;
@@ -134,16 +84,19 @@ public final class TransactionFee {
     }
 
     public static final int TRANSACTION_SIZE_FEE_SYMBOL_LIST_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol> transactionSizeFeeSymbolList_;
     /**
      * <code>repeated .TransactionSizeFeeSymbol transaction_size_fee_symbol_list = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol> getTransactionSizeFeeSymbolListList() {
       return transactionSizeFeeSymbolList_;
     }
     /**
      * <code>repeated .TransactionSizeFeeSymbol transaction_size_fee_symbol_list = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbolOrBuilder> 
         getTransactionSizeFeeSymbolListOrBuilderList() {
       return transactionSizeFeeSymbolList_;
@@ -151,18 +104,21 @@ public final class TransactionFee {
     /**
      * <code>repeated .TransactionSizeFeeSymbol transaction_size_fee_symbol_list = 1;</code>
      */
+    @java.lang.Override
     public int getTransactionSizeFeeSymbolListCount() {
       return transactionSizeFeeSymbolList_.size();
     }
     /**
      * <code>repeated .TransactionSizeFeeSymbol transaction_size_fee_symbol_list = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol getTransactionSizeFeeSymbolList(int index) {
       return transactionSizeFeeSymbolList_.get(index);
     }
     /**
      * <code>repeated .TransactionSizeFeeSymbol transaction_size_fee_symbol_list = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbolOrBuilder getTransactionSizeFeeSymbolListOrBuilder(
         int index) {
       return transactionSizeFeeSymbolList_.get(index);
@@ -185,7 +141,7 @@ public final class TransactionFee {
       for (int i = 0; i < transactionSizeFeeSymbolList_.size(); i++) {
         output.writeMessage(1, transactionSizeFeeSymbolList_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -198,7 +154,7 @@ public final class TransactionFee {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, transactionSizeFeeSymbolList_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -215,7 +171,7 @@ public final class TransactionFee {
 
       if (!getTransactionSizeFeeSymbolListList()
           .equals(other.getTransactionSizeFeeSymbolListList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -230,7 +186,7 @@ public final class TransactionFee {
         hash = (37 * hash) + TRANSACTION_SIZE_FEE_SYMBOL_LIST_FIELD_NUMBER;
         hash = (53 * hash) + getTransactionSizeFeeSymbolListList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -347,29 +303,25 @@ public final class TransactionFee {
 
       // Construct using io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getTransactionSizeFeeSymbolListFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (transactionSizeFeeSymbolListBuilder_ == null) {
           transactionSizeFeeSymbolList_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          transactionSizeFeeSymbolList_ = null;
           transactionSizeFeeSymbolListBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -396,7 +348,13 @@ public final class TransactionFee {
       @java.lang.Override
       public io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols buildPartial() {
         io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols result = new io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols result) {
         if (transactionSizeFeeSymbolListBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             transactionSizeFeeSymbolList_ = java.util.Collections.unmodifiableList(transactionSizeFeeSymbolList_);
@@ -406,8 +364,10 @@ public final class TransactionFee {
         } else {
           result.transactionSizeFeeSymbolList_ = transactionSizeFeeSymbolListBuilder_.build();
         }
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -480,7 +440,7 @@ public final class TransactionFee {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -495,17 +455,43 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol.parser(),
+                        extensionRegistry);
+                if (transactionSizeFeeSymbolListBuilder_ == null) {
+                  ensureTransactionSizeFeeSymbolListIsMutable();
+                  transactionSizeFeeSymbolList_.add(m);
+                } else {
+                  transactionSizeFeeSymbolListBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbols) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -782,7 +768,18 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TransactionSizeFeeSymbols(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -833,7 +830,7 @@ public final class TransactionFee {
   /**
    * Protobuf type {@code TransactionSizeFeeSymbol}
    */
-  public  static final class TransactionSizeFeeSymbol extends
+  public static final class TransactionSizeFeeSymbol extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:TransactionSizeFeeSymbol)
       TransactionSizeFeeSymbolOrBuilder {
@@ -858,59 +855,6 @@ public final class TransactionFee {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private TransactionSizeFeeSymbol(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              tokenSymbol_ = s;
-              break;
-            }
-            case 16: {
-
-              baseTokenWeight_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              addedTokenWeight_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.TransactionFee.internal_static_TransactionSizeFeeSymbol_descriptor;
@@ -925,11 +869,13 @@ public final class TransactionFee {
     }
 
     public static final int TOKEN_SYMBOL_FIELD_NUMBER = 1;
-    private volatile java.lang.Object tokenSymbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object tokenSymbol_ = "";
     /**
      * <code>string token_symbol = 1;</code>
      * @return The tokenSymbol.
      */
+    @java.lang.Override
     public java.lang.String getTokenSymbol() {
       java.lang.Object ref = tokenSymbol_;
       if (ref instanceof java.lang.String) {
@@ -946,6 +892,7 @@ public final class TransactionFee {
      * <code>string token_symbol = 1;</code>
      * @return The bytes for tokenSymbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTokenSymbolBytes() {
       java.lang.Object ref = tokenSymbol_;
@@ -961,21 +908,23 @@ public final class TransactionFee {
     }
 
     public static final int BASE_TOKEN_WEIGHT_FIELD_NUMBER = 2;
-    private int baseTokenWeight_;
+    private int baseTokenWeight_ = 0;
     /**
      * <code>int32 base_token_weight = 2;</code>
      * @return The baseTokenWeight.
      */
+    @java.lang.Override
     public int getBaseTokenWeight() {
       return baseTokenWeight_;
     }
 
     public static final int ADDED_TOKEN_WEIGHT_FIELD_NUMBER = 3;
-    private int addedTokenWeight_;
+    private int addedTokenWeight_ = 0;
     /**
      * <code>int32 added_token_weight = 3;</code>
      * @return The addedTokenWeight.
      */
+    @java.lang.Override
     public int getAddedTokenWeight() {
       return addedTokenWeight_;
     }
@@ -994,7 +943,7 @@ public final class TransactionFee {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getTokenSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tokenSymbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tokenSymbol_);
       }
       if (baseTokenWeight_ != 0) {
@@ -1003,7 +952,7 @@ public final class TransactionFee {
       if (addedTokenWeight_ != 0) {
         output.writeInt32(3, addedTokenWeight_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1012,7 +961,7 @@ public final class TransactionFee {
       if (size != -1) return size;
 
       size = 0;
-      if (!getTokenSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tokenSymbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tokenSymbol_);
       }
       if (baseTokenWeight_ != 0) {
@@ -1023,7 +972,7 @@ public final class TransactionFee {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, addedTokenWeight_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1044,7 +993,7 @@ public final class TransactionFee {
           != other.getBaseTokenWeight()) return false;
       if (getAddedTokenWeight()
           != other.getAddedTokenWeight()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1061,7 +1010,7 @@ public final class TransactionFee {
       hash = (53 * hash) + getBaseTokenWeight();
       hash = (37 * hash) + ADDED_TOKEN_WEIGHT_FIELD_NUMBER;
       hash = (53 * hash) + getAddedTokenWeight();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1178,28 +1127,21 @@ public final class TransactionFee {
 
       // Construct using io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         tokenSymbol_ = "";
-
         baseTokenWeight_ = 0;
-
         addedTokenWeight_ = 0;
-
         return this;
       }
 
@@ -1226,11 +1168,22 @@ public final class TransactionFee {
       @java.lang.Override
       public io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol buildPartial() {
         io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol result = new io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol(this);
-        result.tokenSymbol_ = tokenSymbol_;
-        result.baseTokenWeight_ = baseTokenWeight_;
-        result.addedTokenWeight_ = addedTokenWeight_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.tokenSymbol_ = tokenSymbol_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.baseTokenWeight_ = baseTokenWeight_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.addedTokenWeight_ = addedTokenWeight_;
+        }
       }
 
       @java.lang.Override
@@ -1279,6 +1232,7 @@ public final class TransactionFee {
         if (other == io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol.getDefaultInstance()) return this;
         if (!other.getTokenSymbol().isEmpty()) {
           tokenSymbol_ = other.tokenSymbol_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getBaseTokenWeight() != 0) {
@@ -1287,7 +1241,7 @@ public final class TransactionFee {
         if (other.getAddedTokenWeight() != 0) {
           setAddedTokenWeight(other.getAddedTokenWeight());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1302,19 +1256,48 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                tokenSymbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                baseTokenWeight_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                addedTokenWeight_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.TransactionFee.TransactionSizeFeeSymbol) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object tokenSymbol_ = "";
       /**
@@ -1357,11 +1340,9 @@ public final class TransactionFee {
        */
       public Builder setTokenSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         tokenSymbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1370,8 +1351,8 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearTokenSymbol() {
-        
         tokenSymbol_ = getDefaultInstance().getTokenSymbol();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -1382,12 +1363,10 @@ public final class TransactionFee {
        */
       public Builder setTokenSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         tokenSymbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1397,6 +1376,7 @@ public final class TransactionFee {
        * <code>int32 base_token_weight = 2;</code>
        * @return The baseTokenWeight.
        */
+      @java.lang.Override
       public int getBaseTokenWeight() {
         return baseTokenWeight_;
       }
@@ -1408,6 +1388,7 @@ public final class TransactionFee {
       public Builder setBaseTokenWeight(int value) {
         
         baseTokenWeight_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1416,7 +1397,7 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearBaseTokenWeight() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         baseTokenWeight_ = 0;
         onChanged();
         return this;
@@ -1427,6 +1408,7 @@ public final class TransactionFee {
        * <code>int32 added_token_weight = 3;</code>
        * @return The addedTokenWeight.
        */
+      @java.lang.Override
       public int getAddedTokenWeight() {
         return addedTokenWeight_;
       }
@@ -1438,6 +1420,7 @@ public final class TransactionFee {
       public Builder setAddedTokenWeight(int value) {
         
         addedTokenWeight_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1446,7 +1429,7 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearAddedTokenWeight() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         addedTokenWeight_ = 0;
         onChanged();
         return this;
@@ -1484,7 +1467,18 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TransactionSizeFeeSymbol(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1529,7 +1523,7 @@ public final class TransactionFee {
   /**
    * Protobuf type {@code TransactionFeeCharged}
    */
-  public  static final class TransactionFeeCharged extends
+  public static final class TransactionFeeCharged extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:TransactionFeeCharged)
       TransactionFeeChargedOrBuilder {
@@ -1554,54 +1548,6 @@ public final class TransactionFee {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private TransactionFeeCharged(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              symbol_ = s;
-              break;
-            }
-            case 16: {
-
-              amount_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.TransactionFee.internal_static_TransactionFeeCharged_descriptor;
@@ -1616,11 +1562,13 @@ public final class TransactionFee {
     }
 
     public static final int SYMBOL_FIELD_NUMBER = 1;
-    private volatile java.lang.Object symbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object symbol_ = "";
     /**
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
+    @java.lang.Override
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
       if (ref instanceof java.lang.String) {
@@ -1637,6 +1585,7 @@ public final class TransactionFee {
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSymbolBytes() {
       java.lang.Object ref = symbol_;
@@ -1652,11 +1601,12 @@ public final class TransactionFee {
     }
 
     public static final int AMOUNT_FIELD_NUMBER = 2;
-    private long amount_;
+    private long amount_ = 0L;
     /**
      * <code>int64 amount = 2;</code>
      * @return The amount.
      */
+    @java.lang.Override
     public long getAmount() {
       return amount_;
     }
@@ -1675,13 +1625,13 @@ public final class TransactionFee {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (amount_ != 0L) {
         output.writeInt64(2, amount_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1690,14 +1640,14 @@ public final class TransactionFee {
       if (size != -1) return size;
 
       size = 0;
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, symbol_);
       }
       if (amount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, amount_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1716,7 +1666,7 @@ public final class TransactionFee {
           .equals(other.getSymbol())) return false;
       if (getAmount()
           != other.getAmount()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1732,7 +1682,7 @@ public final class TransactionFee {
       hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getAmount());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1849,26 +1799,20 @@ public final class TransactionFee {
 
       // Construct using io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         symbol_ = "";
-
         amount_ = 0L;
-
         return this;
       }
 
@@ -1895,10 +1839,19 @@ public final class TransactionFee {
       @java.lang.Override
       public io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged buildPartial() {
         io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged result = new io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged(this);
-        result.symbol_ = symbol_;
-        result.amount_ = amount_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.symbol_ = symbol_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.amount_ = amount_;
+        }
       }
 
       @java.lang.Override
@@ -1947,12 +1900,13 @@ public final class TransactionFee {
         if (other == io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged.getDefaultInstance()) return this;
         if (!other.getSymbol().isEmpty()) {
           symbol_ = other.symbol_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getAmount() != 0L) {
           setAmount(other.getAmount());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1967,19 +1921,43 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                symbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                amount_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object symbol_ = "";
       /**
@@ -2022,11 +2000,9 @@ public final class TransactionFee {
        */
       public Builder setSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2035,8 +2011,8 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearSymbol() {
-        
         symbol_ = getDefaultInstance().getSymbol();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -2047,12 +2023,10 @@ public final class TransactionFee {
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2062,6 +2036,7 @@ public final class TransactionFee {
        * <code>int64 amount = 2;</code>
        * @return The amount.
        */
+      @java.lang.Override
       public long getAmount() {
         return amount_;
       }
@@ -2073,6 +2048,7 @@ public final class TransactionFee {
       public Builder setAmount(long value) {
         
         amount_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2081,7 +2057,7 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         amount_ = 0L;
         onChanged();
         return this;
@@ -2119,7 +2095,18 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TransactionFeeCharged(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -2179,7 +2166,7 @@ public final class TransactionFee {
   /**
    * Protobuf type {@code ResourceTokenCharged}
    */
-  public  static final class ResourceTokenCharged extends
+  public static final class ResourceTokenCharged extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ResourceTokenCharged)
       ResourceTokenChargedOrBuilder {
@@ -2204,67 +2191,6 @@ public final class TransactionFee {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ResourceTokenCharged(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              symbol_ = s;
-              break;
-            }
-            case 16: {
-
-              amount_ = input.readInt64();
-              break;
-            }
-            case 26: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (contractAddress_ != null) {
-                subBuilder = contractAddress_.toBuilder();
-              }
-              contractAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(contractAddress_);
-                contractAddress_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.TransactionFee.internal_static_ResourceTokenCharged_descriptor;
@@ -2279,11 +2205,13 @@ public final class TransactionFee {
     }
 
     public static final int SYMBOL_FIELD_NUMBER = 1;
-    private volatile java.lang.Object symbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object symbol_ = "";
     /**
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
+    @java.lang.Override
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
       if (ref instanceof java.lang.String) {
@@ -2300,6 +2228,7 @@ public final class TransactionFee {
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSymbolBytes() {
       java.lang.Object ref = symbol_;
@@ -2315,11 +2244,12 @@ public final class TransactionFee {
     }
 
     public static final int AMOUNT_FIELD_NUMBER = 2;
-    private long amount_;
+    private long amount_ = 0L;
     /**
      * <code>int64 amount = 2;</code>
      * @return The amount.
      */
+    @java.lang.Override
     public long getAmount() {
       return amount_;
     }
@@ -2330,6 +2260,7 @@ public final class TransactionFee {
      * <code>.Address contract_address = 3;</code>
      * @return Whether the contractAddress field is set.
      */
+    @java.lang.Override
     public boolean hasContractAddress() {
       return contractAddress_ != null;
     }
@@ -2337,14 +2268,16 @@ public final class TransactionFee {
      * <code>.Address contract_address = 3;</code>
      * @return The contractAddress.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getContractAddress() {
       return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
     }
     /**
      * <code>.Address contract_address = 3;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder() {
-      return getContractAddress();
+      return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2361,7 +2294,7 @@ public final class TransactionFee {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (amount_ != 0L) {
@@ -2370,7 +2303,7 @@ public final class TransactionFee {
       if (contractAddress_ != null) {
         output.writeMessage(3, getContractAddress());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -2379,7 +2312,7 @@ public final class TransactionFee {
       if (size != -1) return size;
 
       size = 0;
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, symbol_);
       }
       if (amount_ != 0L) {
@@ -2390,7 +2323,7 @@ public final class TransactionFee {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getContractAddress());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -2414,7 +2347,7 @@ public final class TransactionFee {
         if (!getContractAddress()
             .equals(other.getContractAddress())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -2434,7 +2367,7 @@ public final class TransactionFee {
         hash = (37 * hash) + CONTRACT_ADDRESS_FIELD_NUMBER;
         hash = (53 * hash) + getContractAddress().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2551,30 +2484,23 @@ public final class TransactionFee {
 
       // Construct using io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         symbol_ = "";
-
         amount_ = 0L;
-
-        if (contractAddressBuilder_ == null) {
-          contractAddress_ = null;
-        } else {
-          contractAddress_ = null;
+        contractAddress_ = null;
+        if (contractAddressBuilder_ != null) {
+          contractAddressBuilder_.dispose();
           contractAddressBuilder_ = null;
         }
         return this;
@@ -2603,15 +2529,24 @@ public final class TransactionFee {
       @java.lang.Override
       public io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged buildPartial() {
         io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged result = new io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged(this);
-        result.symbol_ = symbol_;
-        result.amount_ = amount_;
-        if (contractAddressBuilder_ == null) {
-          result.contractAddress_ = contractAddress_;
-        } else {
-          result.contractAddress_ = contractAddressBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.symbol_ = symbol_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.amount_ = amount_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.contractAddress_ = contractAddressBuilder_ == null
+              ? contractAddress_
+              : contractAddressBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -2660,6 +2595,7 @@ public final class TransactionFee {
         if (other == io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged.getDefaultInstance()) return this;
         if (!other.getSymbol().isEmpty()) {
           symbol_ = other.symbol_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getAmount() != 0L) {
@@ -2668,7 +2604,7 @@ public final class TransactionFee {
         if (other.hasContractAddress()) {
           mergeContractAddress(other.getContractAddress());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2683,19 +2619,50 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                symbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                amount_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                input.readMessage(
+                    getContractAddressFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object symbol_ = "";
       /**
@@ -2738,11 +2705,9 @@ public final class TransactionFee {
        */
       public Builder setSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2751,8 +2716,8 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearSymbol() {
-        
         symbol_ = getDefaultInstance().getSymbol();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -2763,12 +2728,10 @@ public final class TransactionFee {
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2778,6 +2741,7 @@ public final class TransactionFee {
        * <code>int64 amount = 2;</code>
        * @return The amount.
        */
+      @java.lang.Override
       public long getAmount() {
         return amount_;
       }
@@ -2789,6 +2753,7 @@ public final class TransactionFee {
       public Builder setAmount(long value) {
         
         amount_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2797,7 +2762,7 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         amount_ = 0L;
         onChanged();
         return this;
@@ -2811,7 +2776,7 @@ public final class TransactionFee {
        * @return Whether the contractAddress field is set.
        */
       public boolean hasContractAddress() {
-        return contractAddressBuilder_ != null || contractAddress_ != null;
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <code>.Address contract_address = 3;</code>
@@ -2833,11 +2798,11 @@ public final class TransactionFee {
             throw new NullPointerException();
           }
           contractAddress_ = value;
-          onChanged();
         } else {
           contractAddressBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2847,11 +2812,11 @@ public final class TransactionFee {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (contractAddressBuilder_ == null) {
           contractAddress_ = builderForValue.build();
-          onChanged();
         } else {
           contractAddressBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2859,38 +2824,38 @@ public final class TransactionFee {
        */
       public Builder mergeContractAddress(io.aelf.protobuf.generated.Client.Address value) {
         if (contractAddressBuilder_ == null) {
-          if (contractAddress_ != null) {
-            contractAddress_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(contractAddress_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000004) != 0) &&
+            contractAddress_ != null &&
+            contractAddress_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getContractAddressBuilder().mergeFrom(value);
           } else {
             contractAddress_ = value;
           }
-          onChanged();
         } else {
           contractAddressBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
        * <code>.Address contract_address = 3;</code>
        */
       public Builder clearContractAddress() {
-        if (contractAddressBuilder_ == null) {
-          contractAddress_ = null;
-          onChanged();
-        } else {
-          contractAddress_ = null;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        contractAddress_ = null;
+        if (contractAddressBuilder_ != null) {
+          contractAddressBuilder_.dispose();
           contractAddressBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
        * <code>.Address contract_address = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getContractAddressBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getContractAddressFieldBuilder().getBuilder();
       }
@@ -2954,7 +2919,18 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ResourceTokenCharged(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -3014,7 +2990,7 @@ public final class TransactionFee {
   /**
    * Protobuf type {@code ResourceTokenOwned}
    */
-  public  static final class ResourceTokenOwned extends
+  public static final class ResourceTokenOwned extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ResourceTokenOwned)
       ResourceTokenOwnedOrBuilder {
@@ -3039,67 +3015,6 @@ public final class TransactionFee {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ResourceTokenOwned(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              symbol_ = s;
-              break;
-            }
-            case 16: {
-
-              amount_ = input.readInt64();
-              break;
-            }
-            case 26: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (contractAddress_ != null) {
-                subBuilder = contractAddress_.toBuilder();
-              }
-              contractAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(contractAddress_);
-                contractAddress_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.TransactionFee.internal_static_ResourceTokenOwned_descriptor;
@@ -3114,11 +3029,13 @@ public final class TransactionFee {
     }
 
     public static final int SYMBOL_FIELD_NUMBER = 1;
-    private volatile java.lang.Object symbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object symbol_ = "";
     /**
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
+    @java.lang.Override
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
       if (ref instanceof java.lang.String) {
@@ -3135,6 +3052,7 @@ public final class TransactionFee {
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSymbolBytes() {
       java.lang.Object ref = symbol_;
@@ -3150,11 +3068,12 @@ public final class TransactionFee {
     }
 
     public static final int AMOUNT_FIELD_NUMBER = 2;
-    private long amount_;
+    private long amount_ = 0L;
     /**
      * <code>int64 amount = 2;</code>
      * @return The amount.
      */
+    @java.lang.Override
     public long getAmount() {
       return amount_;
     }
@@ -3165,6 +3084,7 @@ public final class TransactionFee {
      * <code>.Address contract_address = 3;</code>
      * @return Whether the contractAddress field is set.
      */
+    @java.lang.Override
     public boolean hasContractAddress() {
       return contractAddress_ != null;
     }
@@ -3172,14 +3092,16 @@ public final class TransactionFee {
      * <code>.Address contract_address = 3;</code>
      * @return The contractAddress.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getContractAddress() {
       return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
     }
     /**
      * <code>.Address contract_address = 3;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getContractAddressOrBuilder() {
-      return getContractAddress();
+      return contractAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : contractAddress_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3196,7 +3118,7 @@ public final class TransactionFee {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (amount_ != 0L) {
@@ -3205,7 +3127,7 @@ public final class TransactionFee {
       if (contractAddress_ != null) {
         output.writeMessage(3, getContractAddress());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -3214,7 +3136,7 @@ public final class TransactionFee {
       if (size != -1) return size;
 
       size = 0;
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, symbol_);
       }
       if (amount_ != 0L) {
@@ -3225,7 +3147,7 @@ public final class TransactionFee {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getContractAddress());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3249,7 +3171,7 @@ public final class TransactionFee {
         if (!getContractAddress()
             .equals(other.getContractAddress())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -3269,7 +3191,7 @@ public final class TransactionFee {
         hash = (37 * hash) + CONTRACT_ADDRESS_FIELD_NUMBER;
         hash = (53 * hash) + getContractAddress().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3386,30 +3308,23 @@ public final class TransactionFee {
 
       // Construct using io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         symbol_ = "";
-
         amount_ = 0L;
-
-        if (contractAddressBuilder_ == null) {
-          contractAddress_ = null;
-        } else {
-          contractAddress_ = null;
+        contractAddress_ = null;
+        if (contractAddressBuilder_ != null) {
+          contractAddressBuilder_.dispose();
           contractAddressBuilder_ = null;
         }
         return this;
@@ -3438,15 +3353,24 @@ public final class TransactionFee {
       @java.lang.Override
       public io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned buildPartial() {
         io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned result = new io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned(this);
-        result.symbol_ = symbol_;
-        result.amount_ = amount_;
-        if (contractAddressBuilder_ == null) {
-          result.contractAddress_ = contractAddress_;
-        } else {
-          result.contractAddress_ = contractAddressBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.symbol_ = symbol_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.amount_ = amount_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.contractAddress_ = contractAddressBuilder_ == null
+              ? contractAddress_
+              : contractAddressBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -3495,6 +3419,7 @@ public final class TransactionFee {
         if (other == io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned.getDefaultInstance()) return this;
         if (!other.getSymbol().isEmpty()) {
           symbol_ = other.symbol_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getAmount() != 0L) {
@@ -3503,7 +3428,7 @@ public final class TransactionFee {
         if (other.hasContractAddress()) {
           mergeContractAddress(other.getContractAddress());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -3518,19 +3443,50 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                symbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                amount_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                input.readMessage(
+                    getContractAddressFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.TransactionFee.ResourceTokenOwned) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object symbol_ = "";
       /**
@@ -3573,11 +3529,9 @@ public final class TransactionFee {
        */
       public Builder setSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -3586,8 +3540,8 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearSymbol() {
-        
         symbol_ = getDefaultInstance().getSymbol();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -3598,12 +3552,10 @@ public final class TransactionFee {
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -3613,6 +3565,7 @@ public final class TransactionFee {
        * <code>int64 amount = 2;</code>
        * @return The amount.
        */
+      @java.lang.Override
       public long getAmount() {
         return amount_;
       }
@@ -3624,6 +3577,7 @@ public final class TransactionFee {
       public Builder setAmount(long value) {
         
         amount_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -3632,7 +3586,7 @@ public final class TransactionFee {
        * @return This builder for chaining.
        */
       public Builder clearAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         amount_ = 0L;
         onChanged();
         return this;
@@ -3646,7 +3600,7 @@ public final class TransactionFee {
        * @return Whether the contractAddress field is set.
        */
       public boolean hasContractAddress() {
-        return contractAddressBuilder_ != null || contractAddress_ != null;
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <code>.Address contract_address = 3;</code>
@@ -3668,11 +3622,11 @@ public final class TransactionFee {
             throw new NullPointerException();
           }
           contractAddress_ = value;
-          onChanged();
         } else {
           contractAddressBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -3682,11 +3636,11 @@ public final class TransactionFee {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (contractAddressBuilder_ == null) {
           contractAddress_ = builderForValue.build();
-          onChanged();
         } else {
           contractAddressBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -3694,38 +3648,38 @@ public final class TransactionFee {
        */
       public Builder mergeContractAddress(io.aelf.protobuf.generated.Client.Address value) {
         if (contractAddressBuilder_ == null) {
-          if (contractAddress_ != null) {
-            contractAddress_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(contractAddress_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000004) != 0) &&
+            contractAddress_ != null &&
+            contractAddress_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getContractAddressBuilder().mergeFrom(value);
           } else {
             contractAddress_ = value;
           }
-          onChanged();
         } else {
           contractAddressBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
        * <code>.Address contract_address = 3;</code>
        */
       public Builder clearContractAddress() {
-        if (contractAddressBuilder_ == null) {
-          contractAddress_ = null;
-          onChanged();
-        } else {
-          contractAddress_ = null;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        contractAddress_ = null;
+        if (contractAddressBuilder_ != null) {
+          contractAddressBuilder_.dispose();
           contractAddressBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
        * <code>.Address contract_address = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getContractAddressBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getContractAddressFieldBuilder().getBuilder();
       }
@@ -3789,7 +3743,18 @@ public final class TransactionFee {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ResourceTokenOwned(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

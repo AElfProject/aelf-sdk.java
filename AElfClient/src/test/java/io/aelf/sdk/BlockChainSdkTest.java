@@ -4,9 +4,7 @@ import com.google.protobuf.ByteString;
 
 import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.Core;
-import io.aelf.protobuf.generated.Core.Transaction;
-import io.aelf.protobuf.generated.Core.TransactionResultStatus;
-import io.aelf.protobuf.generated.TokenContract.GetBalanceOutput;
+import io.aelf.protobuf.generated.TokenContract;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged.Builder;
 import io.aelf.schemas.*;
@@ -24,7 +22,6 @@ import io.aelf.schemas.SendTransactionOutput;
 import io.aelf.schemas.SendTransactionsInput;
 import io.aelf.schemas.TaskQueueInfoDto;
 import io.aelf.schemas.TransactionResultDto;
-import io.aelf.sdk.AElfClient;
 import io.aelf.utils.AddressHelper;
 import io.aelf.utils.Base58Ext;
 import io.aelf.utils.ByteArrayHelper;
@@ -40,19 +37,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
-import org.bitcoinj.core.Base58;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import io.aelf.protobuf.generated.TokenContract;
-import io.aelf.protobuf.generated.Client.Address;
 
 public class BlockChainSdkTest {
 
     static final String HTTPURL = "http://127.0.0.1:8000";
     AElfClient client = null;
-    String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
+    //String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
+    String privateKey = "230e883d97546e93cbd7665b4898a06601dd10141e295b70f844338cae5fac5c";
     String address = "";
 
     /**
@@ -335,28 +330,28 @@ public class BlockChainSdkTest {
         client.sendTransaction(sendTransactionInputObj);
     }
 
-  @Test
-  public void sendTransactionsTest() throws Exception {
-    String toAddress = client.getGenesisContractAddress();
-    byte[] param1 = Sha256.getBytesSha256("AElf.ContractNames.Token");
-    byte[] param2 = Sha256.getBytesSha256("AElf.ContractNames.Vote");
-    String methodName = "GetContractAddressByName";
-    List<byte[]> parameters = new ArrayList<byte[]>();
-    parameters.add(param1);
-    parameters.add(param2);
-    for (byte[] tmp : parameters) {
-      Client.Hash.Builder hash = Client.Hash.newBuilder();
-      hash.setValue(ByteString.copyFrom(tmp));
-      Client.Hash hashObj = hash.build();
-      Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
-      SendTransactionsInput sendTransactionsInputs = new SendTransactionsInput();
-      String rawTransactions = Hex.toHexString(transactionObj.toByteArray());
-      sendTransactionsInputs.setRawTransactions(rawTransactions);
-      List<String> listString = client
-          .sendTransactions(sendTransactionsInputs);
-      Assert.assertTrue(listString.size() > 0);
+    @Test
+    public void sendTransactionsTest() throws Exception {
+        String toAddress = client.getGenesisContractAddress();
+        byte[] param1 = Sha256.getBytesSha256("AElf.ContractNames.Token");
+        byte[] param2 = Sha256.getBytesSha256("AElf.ContractNames.Vote");
+        String methodName = "GetContractAddressByName";
+        List<byte[]> parameters = new ArrayList<byte[]>();
+        parameters.add(param1);
+        parameters.add(param2);
+        for (byte[] tmp : parameters) {
+            Client.Hash.Builder hash = Client.Hash.newBuilder();
+            hash.setValue(ByteString.copyFrom(tmp));
+            Client.Hash hashObj = hash.build();
+            Core.Transaction transactionObj = buildTransaction(toAddress, methodName, hashObj.toByteArray());
+            SendTransactionsInput sendTransactionsInputs = new SendTransactionsInput();
+            String rawTransactions = Hex.toHexString(transactionObj.toByteArray());
+            sendTransactionsInputs.setRawTransactions(rawTransactions);
+            List<String> listString = client
+                    .sendTransactions(sendTransactionsInputs);
+            Assert.assertTrue(listString.size() > 0);
+        }
     }
-  }
 
 
     @Test
@@ -438,67 +433,70 @@ public class BlockChainSdkTest {
         input.setRawTransaction(out.getRawTransaction());
         CalculateTransactionFeeOutput output = client.calculateTransactionFee(input);
         System.out.println(JsonUtil.toJsonString(output));
-        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")>18000000),true);
-        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF")<19000000),true);
+        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF") > 18000000), true);
+        Assert.assertTrue(String.valueOf(output.getTransactionFee().get("ELF") < 19000000), true);
 
     }
-  @Test
-  public void sendTransferTransactionTest() throws Exception {
-    String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
-    KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
-    Core.Transaction transaction = createTransferTransaction(keyPairInfo.getAddress());
 
-    SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
-    sendTransactionInputObj.setRawTransaction(Hex.toHexString(transaction.toByteArray()));
-    SendTransactionOutput sendResult = client.sendTransaction(sendTransactionInputObj);
-    Assert.assertFalse(sendResult.getTransactionId().isEmpty());
+    @Test
+    public void sendTransferTransactionTest() throws Exception {
+        String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
+        KeyPairInfo keyPairInfo = client.generateKeyPairInfo();
+        Core.Transaction transaction = createTransferTransaction(keyPairInfo.getAddress());
 
-    Thread.sleep(4000);
+        SendTransactionInput sendTransactionInputObj = new SendTransactionInput();
+        sendTransactionInputObj.setRawTransaction(Hex.toHexString(transaction.toByteArray()));
+        SendTransactionOutput sendResult = client.sendTransaction(sendTransactionInputObj);
+        Assert.assertFalse(sendResult.getTransactionId().isEmpty());
 
-    TransactionResultDto transactionResult = client.getTransactionResult(sendResult.getTransactionId());
-    Assert.assertEquals("MINED",transactionResult.getStatus());
-    Assert.assertEquals(sendResult.getTransactionId(),transactionResult.getTransactionId());
-    Assert.assertTrue(transactionResult.getError().isEmpty());
+        Thread.sleep(4000);
 
-    Assert.assertTrue(transactionResult.getLogs().size() == 2);
+        TransactionResultDto transactionResult = client.getTransactionResult(sendResult.getTransactionId());
+        Assert.assertEquals("MINED", transactionResult.getStatus());
+        Assert.assertEquals(sendResult.getTransactionId(), transactionResult.getTransactionId());
+        Assert.assertTrue(transactionResult.getError().isEmpty());
 
-    Assert.assertEquals(tokenContractAddress, transactionResult.getLogs().get(0).getAddress());
-    Assert.assertEquals("TransactionFeeCharged", transactionResult.getLogs().get(0).getName());
-    byte[] nonIndexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(0).getNonIndexed());
-    TransactionFeeCharged feeCharged=TransactionFeeCharged.getDefaultInstance().parseFrom(nonIndexedBytes);
-	  Assert.assertEquals("ELF", feeCharged.getSymbol());
-	  Assert.assertTrue(feeCharged.getAmount() > 0);
+        Assert.assertTrue(transactionResult.getLogs().size() == 2);
 
-    TokenContract.Transferred transferred = TransactionResultDtoExtension.getTransferredEvent(tokenContractAddress,transactionResult);
+        Assert.assertEquals(tokenContractAddress, transactionResult.getLogs().get(0).getAddress());
+        Assert.assertEquals("TransactionFeeCharged", transactionResult.getLogs().get(0).getName());
+        byte[] nonIndexedBytes = Base64.decodeBase64(transactionResult.getLogs().get(0).getNonIndexed());
+        TransactionFeeCharged feeCharged = TransactionFeeCharged.getDefaultInstance().parseFrom(nonIndexedBytes);
+        Assert.assertEquals("ELF", feeCharged.getSymbol());
+        Assert.assertTrue(feeCharged.getAmount() > 0);
 
-	  Assert.assertEquals(address, AddressHelper.addressToBase58(transferred.getFrom()));
-	  Assert.assertEquals(keyPairInfo.getAddress(), AddressHelper.addressToBase58(transferred.getTo()));
-	  Assert.assertEquals("ELF", transferred.getSymbol());
-	  Assert.assertEquals(1000000000, transferred.getAmount());
-    Assert.assertEquals("transfer in test", transferred.getMemo());
-  }
+        List<TokenContract.Transferred> transferreds = client.getTransferred(transactionResult.getTransactionId(), privateKey);
+        //List<TokenContract.Transferred> transferreds = TransactionResultDtoExtension.getTransferredEvent(tokenContractAddress, transactionResult);
+        TokenContract.Transferred transferred = transferreds.get(0);
 
-  private Core.Transaction createTransferTransaction(String toAddress) throws Exception {
-    String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
+        Assert.assertEquals(address, AddressHelper.addressToBase58(transferred.getFrom()));
+        Assert.assertEquals(keyPairInfo.getAddress(), AddressHelper.addressToBase58(transferred.getTo()));
+        Assert.assertEquals("ELF", transferred.getSymbol());
+        Assert.assertEquals(1000000000, transferred.getAmount());
+        Assert.assertEquals("transfer in test", transferred.getMemo());
+    }
 
-    Client.Address to = AddressHelper.base58ToAddress(toAddress);
+    private Core.Transaction createTransferTransaction(String toAddress) throws Exception {
+        String tokenContractAddress = client.getContractAddressByName(privateKey, Sha256.getBytesSha256("AElf.ContractNames.Token"));
 
-    TokenContract.TransferInput.Builder paramTransfer = TokenContract.TransferInput.newBuilder();
-    paramTransfer.setTo(to);
-    paramTransfer.setSymbol("ELF");
-    paramTransfer.setAmount(1000000000);
-    paramTransfer.setMemo("transfer in test");
-    TokenContract.TransferInput paramTransferObj = paramTransfer.build();
+        Client.Address to = AddressHelper.base58ToAddress(toAddress);
 
-    String ownerAddress = client.getAddressFromPrivateKey(privateKey);
+        TokenContract.TransferInput.Builder paramTransfer = TokenContract.TransferInput.newBuilder();
+        paramTransfer.setTo(to);
+        paramTransfer.setSymbol("ELF");
+        paramTransfer.setAmount(1000000000);
+        paramTransfer.setMemo("transfer in test");
+        TokenContract.TransferInput paramTransferObj = paramTransfer.build();
 
-    Core.Transaction.Builder transactionTransfer = client.generateTransaction(ownerAddress, tokenContractAddress, "Transfer", paramTransferObj.toByteArray());
-    Core.Transaction transactionTransferObj = transactionTransfer.build();
-    transactionTransfer.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(client.signTransaction(privateKey, transactionTransferObj))));
-    transactionTransferObj = transactionTransfer.build();
+        String ownerAddress = client.getAddressFromPrivateKey(privateKey);
 
-    return transactionTransferObj;
-  }
+        Core.Transaction.Builder transactionTransfer = client.generateTransaction(ownerAddress, tokenContractAddress, "Transfer", paramTransferObj.toByteArray());
+        Core.Transaction transactionTransferObj = transactionTransfer.build();
+        transactionTransfer.setSignature(ByteString.copyFrom(ByteArrayHelper.hexToByteArray(client.signTransaction(privateKey, transactionTransferObj))));
+        transactionTransferObj = transactionTransfer.build();
+
+        return transactionTransferObj;
+    }
 
 
     private Core.Transaction buildTransaction(String toAddress, String methodName, byte[] tmp)
@@ -523,25 +521,14 @@ public class BlockChainSdkTest {
         createRawTransactionInputObj.setRefBlockHash(blockHash);
         return createRawTransactionInputObj;
     }
-  private CreateRawTransactionInput createRowBuild(String toAddress, String methodName,
-      String param, long height, String blockHash) {
-    CreateRawTransactionInput createRawTransactionInputObj = new CreateRawTransactionInput();
-    createRawTransactionInputObj.setFrom(address);
-    createRawTransactionInputObj.setTo(toAddress);
-    createRawTransactionInputObj.setMethodName(methodName);
-    createRawTransactionInputObj.setParams(param);
-    createRawTransactionInputObj.setRefBlockNumber(height);
-    createRawTransactionInputObj.setRefBlockHash(blockHash);
-    return createRawTransactionInputObj;
-  }
 
-  @Test
-  public void checksumTest() throws Exception {
-    boolean checkResult = Base58Ext.verifyChecksum(address);
-    Assert.assertTrue(checkResult);
+    @Test
+    public void checksumTest() throws Exception {
+        boolean checkResult = Base58Ext.verifyChecksum(address);
+        Assert.assertTrue(checkResult);
 
-    address = address+"EE";
-    checkResult = Base58Ext.verifyChecksum(address);
-    Assert.assertFalse(checkResult);
-  }
+        address = address + "EE";
+        checkResult = Base58Ext.verifyChecksum(address);
+        Assert.assertFalse(checkResult);
+    }
 }

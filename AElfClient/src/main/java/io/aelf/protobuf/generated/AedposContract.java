@@ -54,7 +54,7 @@ public final class AedposContract {
    *
    * Protobuf type {@code MinerList}
    */
-  public  static final class MinerList extends
+  public static final class MinerList extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:MinerList)
       MinerListOrBuilder {
@@ -79,55 +79,6 @@ public final class AedposContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private MinerList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                pubkeys_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              pubkeys_.add(input.readBytes());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          pubkeys_ = java.util.Collections.unmodifiableList(pubkeys_); // C
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.AedposContract.internal_static_MinerList_descriptor;
@@ -142,6 +93,7 @@ public final class AedposContract {
     }
 
     public static final int PUBKEYS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<com.google.protobuf.ByteString> pubkeys_;
     /**
      * <pre>
@@ -151,6 +103,7 @@ public final class AedposContract {
      * <code>repeated bytes pubkeys = 1;</code>
      * @return A list containing the pubkeys.
      */
+    @java.lang.Override
     public java.util.List<com.google.protobuf.ByteString>
         getPubkeysList() {
       return pubkeys_;
@@ -196,7 +149,7 @@ public final class AedposContract {
       for (int i = 0; i < pubkeys_.size(); i++) {
         output.writeBytes(1, pubkeys_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -214,7 +167,7 @@ public final class AedposContract {
         size += dataSize;
         size += 1 * getPubkeysList().size();
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -231,7 +184,7 @@ public final class AedposContract {
 
       if (!getPubkeysList()
           .equals(other.getPubkeysList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -246,7 +199,7 @@ public final class AedposContract {
         hash = (37 * hash) + PUBKEYS_FIELD_NUMBER;
         hash = (53 * hash) + getPubkeysList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -367,24 +320,19 @@ public final class AedposContract {
 
       // Construct using io.aelf.protobuf.generated.AedposContract.MinerList.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         pubkeys_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -411,14 +359,22 @@ public final class AedposContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.AedposContract.MinerList buildPartial() {
         io.aelf.protobuf.generated.AedposContract.MinerList result = new io.aelf.protobuf.generated.AedposContract.MinerList(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.AedposContract.MinerList result) {
         if (((bitField0_ & 0x00000001) != 0)) {
           pubkeys_ = java.util.Collections.unmodifiableList(pubkeys_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.pubkeys_ = pubkeys_;
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.AedposContract.MinerList result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -475,7 +431,7 @@ public final class AedposContract {
           }
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -490,17 +446,36 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.AedposContract.MinerList parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensurePubkeysIsMutable();
+                pubkeys_.add(v);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.AedposContract.MinerList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -510,7 +485,7 @@ public final class AedposContract {
         if (!((bitField0_ & 0x00000001) != 0)) {
           pubkeys_ = new java.util.ArrayList<com.google.protobuf.ByteString>(pubkeys_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
       /**
        * <pre>
@@ -560,10 +535,8 @@ public final class AedposContract {
        */
       public Builder setPubkeys(
           int index, com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensurePubkeysIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensurePubkeysIsMutable();
         pubkeys_.set(index, value);
         onChanged();
         return this;
@@ -578,10 +551,8 @@ public final class AedposContract {
        * @return This builder for chaining.
        */
       public Builder addPubkeys(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensurePubkeysIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensurePubkeysIsMutable();
         pubkeys_.add(value);
         onChanged();
         return this;
@@ -650,7 +621,18 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new MinerList(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -718,7 +700,7 @@ public final class AedposContract {
   /**
    * Protobuf type {@code PubkeyList}
    */
-  public  static final class PubkeyList extends
+  public static final class PubkeyList extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:PubkeyList)
       PubkeyListOrBuilder {
@@ -743,56 +725,6 @@ public final class AedposContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private PubkeyList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                pubkeys_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              pubkeys_.add(s);
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          pubkeys_ = pubkeys_.getUnmodifiableView();
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.AedposContract.internal_static_PubkeyList_descriptor;
@@ -807,6 +739,7 @@ public final class AedposContract {
     }
 
     public static final int PUBKEYS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private com.google.protobuf.LazyStringList pubkeys_;
     /**
      * <pre>
@@ -874,7 +807,7 @@ public final class AedposContract {
       for (int i = 0; i < pubkeys_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, pubkeys_.getRaw(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -891,7 +824,7 @@ public final class AedposContract {
         size += dataSize;
         size += 1 * getPubkeysList().size();
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -908,7 +841,7 @@ public final class AedposContract {
 
       if (!getPubkeysList()
           .equals(other.getPubkeysList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -923,7 +856,7 @@ public final class AedposContract {
         hash = (37 * hash) + PUBKEYS_FIELD_NUMBER;
         hash = (53 * hash) + getPubkeysList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1040,22 +973,18 @@ public final class AedposContract {
 
       // Construct using io.aelf.protobuf.generated.AedposContract.PubkeyList.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         pubkeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
@@ -1084,14 +1013,22 @@ public final class AedposContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.AedposContract.PubkeyList buildPartial() {
         io.aelf.protobuf.generated.AedposContract.PubkeyList result = new io.aelf.protobuf.generated.AedposContract.PubkeyList(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.AedposContract.PubkeyList result) {
         if (((bitField0_ & 0x00000001) != 0)) {
           pubkeys_ = pubkeys_.getUnmodifiableView();
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.pubkeys_ = pubkeys_;
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.AedposContract.PubkeyList result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -1148,7 +1085,7 @@ public final class AedposContract {
           }
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1163,17 +1100,36 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.AedposContract.PubkeyList parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensurePubkeysIsMutable();
+                pubkeys_.add(s);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.AedposContract.PubkeyList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -1245,10 +1201,8 @@ public final class AedposContract {
        */
       public Builder setPubkeys(
           int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensurePubkeysIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensurePubkeysIsMutable();
         pubkeys_.set(index, value);
         onChanged();
         return this;
@@ -1264,10 +1218,8 @@ public final class AedposContract {
        */
       public Builder addPubkeys(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensurePubkeysIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensurePubkeysIsMutable();
         pubkeys_.add(value);
         onChanged();
         return this;
@@ -1314,10 +1266,8 @@ public final class AedposContract {
        */
       public Builder addPubkeysBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         ensurePubkeysIsMutable();
         pubkeys_.add(value);
         onChanged();
@@ -1356,7 +1306,18 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PubkeyList(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1420,7 +1381,7 @@ public final class AedposContract {
   /**
    * Protobuf type {@code MinerListWithRoundNumber}
    */
-  public  static final class MinerListWithRoundNumber extends
+  public static final class MinerListWithRoundNumber extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:MinerListWithRoundNumber)
       MinerListWithRoundNumberOrBuilder {
@@ -1443,61 +1404,6 @@ public final class AedposContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private MinerListWithRoundNumber(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.AedposContract.MinerList.Builder subBuilder = null;
-              if (minerList_ != null) {
-                subBuilder = minerList_.toBuilder();
-              }
-              minerList_ = input.readMessage(io.aelf.protobuf.generated.AedposContract.MinerList.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(minerList_);
-                minerList_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-
-              roundNumber_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -1522,6 +1428,7 @@ public final class AedposContract {
      * <code>.MinerList miner_list = 1;</code>
      * @return Whether the minerList field is set.
      */
+    @java.lang.Override
     public boolean hasMinerList() {
       return minerList_ != null;
     }
@@ -1533,6 +1440,7 @@ public final class AedposContract {
      * <code>.MinerList miner_list = 1;</code>
      * @return The minerList.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.AedposContract.MinerList getMinerList() {
       return minerList_ == null ? io.aelf.protobuf.generated.AedposContract.MinerList.getDefaultInstance() : minerList_;
     }
@@ -1543,12 +1451,13 @@ public final class AedposContract {
      *
      * <code>.MinerList miner_list = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.AedposContract.MinerListOrBuilder getMinerListOrBuilder() {
-      return getMinerList();
+      return minerList_ == null ? io.aelf.protobuf.generated.AedposContract.MinerList.getDefaultInstance() : minerList_;
     }
 
     public static final int ROUND_NUMBER_FIELD_NUMBER = 2;
-    private long roundNumber_;
+    private long roundNumber_ = 0L;
     /**
      * <pre>
      * The round number.
@@ -1557,6 +1466,7 @@ public final class AedposContract {
      * <code>int64 round_number = 2;</code>
      * @return The roundNumber.
      */
+    @java.lang.Override
     public long getRoundNumber() {
       return roundNumber_;
     }
@@ -1581,7 +1491,7 @@ public final class AedposContract {
       if (roundNumber_ != 0L) {
         output.writeInt64(2, roundNumber_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1598,7 +1508,7 @@ public final class AedposContract {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, roundNumber_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1620,7 +1530,7 @@ public final class AedposContract {
       }
       if (getRoundNumber()
           != other.getRoundNumber()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1638,7 +1548,7 @@ public final class AedposContract {
       hash = (37 * hash) + ROUND_NUMBER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getRoundNumber());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1755,30 +1665,24 @@ public final class AedposContract {
 
       // Construct using io.aelf.protobuf.generated.AedposContract.MinerListWithRoundNumber.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (minerListBuilder_ == null) {
-          minerList_ = null;
-        } else {
-          minerList_ = null;
+        bitField0_ = 0;
+        minerList_ = null;
+        if (minerListBuilder_ != null) {
+          minerListBuilder_.dispose();
           minerListBuilder_ = null;
         }
         roundNumber_ = 0L;
-
         return this;
       }
 
@@ -1805,14 +1709,21 @@ public final class AedposContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.AedposContract.MinerListWithRoundNumber buildPartial() {
         io.aelf.protobuf.generated.AedposContract.MinerListWithRoundNumber result = new io.aelf.protobuf.generated.AedposContract.MinerListWithRoundNumber(this);
-        if (minerListBuilder_ == null) {
-          result.minerList_ = minerList_;
-        } else {
-          result.minerList_ = minerListBuilder_.build();
-        }
-        result.roundNumber_ = roundNumber_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.AedposContract.MinerListWithRoundNumber result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.minerList_ = minerListBuilder_ == null
+              ? minerList_
+              : minerListBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.roundNumber_ = roundNumber_;
+        }
       }
 
       @java.lang.Override
@@ -1865,7 +1776,7 @@ public final class AedposContract {
         if (other.getRoundNumber() != 0L) {
           setRoundNumber(other.getRoundNumber());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1880,19 +1791,45 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.AedposContract.MinerListWithRoundNumber parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getMinerListFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                roundNumber_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.AedposContract.MinerListWithRoundNumber) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.AedposContract.MinerList minerList_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1906,7 +1843,7 @@ public final class AedposContract {
        * @return Whether the minerList field is set.
        */
       public boolean hasMinerList() {
-        return minerListBuilder_ != null || minerList_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -1936,11 +1873,11 @@ public final class AedposContract {
             throw new NullPointerException();
           }
           minerList_ = value;
-          onChanged();
         } else {
           minerListBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1954,11 +1891,11 @@ public final class AedposContract {
           io.aelf.protobuf.generated.AedposContract.MinerList.Builder builderForValue) {
         if (minerListBuilder_ == null) {
           minerList_ = builderForValue.build();
-          onChanged();
         } else {
           minerListBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1970,17 +1907,18 @@ public final class AedposContract {
        */
       public Builder mergeMinerList(io.aelf.protobuf.generated.AedposContract.MinerList value) {
         if (minerListBuilder_ == null) {
-          if (minerList_ != null) {
-            minerList_ =
-              io.aelf.protobuf.generated.AedposContract.MinerList.newBuilder(minerList_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            minerList_ != null &&
+            minerList_ != io.aelf.protobuf.generated.AedposContract.MinerList.getDefaultInstance()) {
+            getMinerListBuilder().mergeFrom(value);
           } else {
             minerList_ = value;
           }
-          onChanged();
         } else {
           minerListBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1991,14 +1929,13 @@ public final class AedposContract {
        * <code>.MinerList miner_list = 1;</code>
        */
       public Builder clearMinerList() {
-        if (minerListBuilder_ == null) {
-          minerList_ = null;
-          onChanged();
-        } else {
-          minerList_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        minerList_ = null;
+        if (minerListBuilder_ != null) {
+          minerListBuilder_.dispose();
           minerListBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -2009,7 +1946,7 @@ public final class AedposContract {
        * <code>.MinerList miner_list = 1;</code>
        */
       public io.aelf.protobuf.generated.AedposContract.MinerList.Builder getMinerListBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getMinerListFieldBuilder().getBuilder();
       }
@@ -2058,6 +1995,7 @@ public final class AedposContract {
        * <code>int64 round_number = 2;</code>
        * @return The roundNumber.
        */
+      @java.lang.Override
       public long getRoundNumber() {
         return roundNumber_;
       }
@@ -2073,6 +2011,7 @@ public final class AedposContract {
       public Builder setRoundNumber(long value) {
         
         roundNumber_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2085,7 +2024,7 @@ public final class AedposContract {
        * @return This builder for chaining.
        */
       public Builder clearRoundNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         roundNumber_ = 0L;
         onChanged();
         return this;
@@ -2123,7 +2062,18 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new MinerListWithRoundNumber(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -2160,7 +2110,7 @@ public final class AedposContract {
   /**
    * Protobuf type {@code GetMinerListInput}
    */
-  public  static final class GetMinerListInput extends
+  public static final class GetMinerListInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetMinerListInput)
       GetMinerListInputOrBuilder {
@@ -2184,48 +2134,6 @@ public final class AedposContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private GetMinerListInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              termNumber_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.AedposContract.internal_static_GetMinerListInput_descriptor;
@@ -2240,7 +2148,7 @@ public final class AedposContract {
     }
 
     public static final int TERM_NUMBER_FIELD_NUMBER = 1;
-    private long termNumber_;
+    private long termNumber_ = 0L;
     /**
      * <pre>
      * The term number.
@@ -2249,6 +2157,7 @@ public final class AedposContract {
      * <code>int64 term_number = 1;</code>
      * @return The termNumber.
      */
+    @java.lang.Override
     public long getTermNumber() {
       return termNumber_;
     }
@@ -2270,7 +2179,7 @@ public final class AedposContract {
       if (termNumber_ != 0L) {
         output.writeInt64(1, termNumber_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -2283,7 +2192,7 @@ public final class AedposContract {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, termNumber_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -2300,7 +2209,7 @@ public final class AedposContract {
 
       if (getTermNumber()
           != other.getTermNumber()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -2314,7 +2223,7 @@ public final class AedposContract {
       hash = (37 * hash) + TERM_NUMBER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTermNumber());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2431,24 +2340,19 @@ public final class AedposContract {
 
       // Construct using io.aelf.protobuf.generated.AedposContract.GetMinerListInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         termNumber_ = 0L;
-
         return this;
       }
 
@@ -2475,9 +2379,16 @@ public final class AedposContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.AedposContract.GetMinerListInput buildPartial() {
         io.aelf.protobuf.generated.AedposContract.GetMinerListInput result = new io.aelf.protobuf.generated.AedposContract.GetMinerListInput(this);
-        result.termNumber_ = termNumber_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.AedposContract.GetMinerListInput result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.termNumber_ = termNumber_;
+        }
       }
 
       @java.lang.Override
@@ -2527,7 +2438,7 @@ public final class AedposContract {
         if (other.getTermNumber() != 0L) {
           setTermNumber(other.getTermNumber());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2542,19 +2453,38 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.AedposContract.GetMinerListInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                termNumber_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.AedposContract.GetMinerListInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private long termNumber_ ;
       /**
@@ -2565,6 +2495,7 @@ public final class AedposContract {
        * <code>int64 term_number = 1;</code>
        * @return The termNumber.
        */
+      @java.lang.Override
       public long getTermNumber() {
         return termNumber_;
       }
@@ -2580,6 +2511,7 @@ public final class AedposContract {
       public Builder setTermNumber(long value) {
         
         termNumber_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2592,7 +2524,7 @@ public final class AedposContract {
        * @return This builder for chaining.
        */
       public Builder clearTermNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         termNumber_ = 0L;
         onChanged();
         return this;
@@ -2630,7 +2562,18 @@ public final class AedposContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetMinerListInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
