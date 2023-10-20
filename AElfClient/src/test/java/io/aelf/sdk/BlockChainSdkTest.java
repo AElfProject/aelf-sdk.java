@@ -46,8 +46,8 @@ public class BlockChainSdkTest {
 
     static final String HTTPURL = "http://127.0.0.1:8000";
     AElfClient client = null;
-    //String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
-    String privateKey = "230e883d97546e93cbd7665b4898a06601dd10141e295b70f844338cae5fac5c";
+    String privateKey = "cd86ab6347d8e52bbbe8532141fc59ce596268143a308d1d40fedf385528b458";
+    //String privateKey = "230e883d97546e93cbd7665b4898a06601dd10141e295b70f844338cae5fac5c";
     String address = "";
 
     /**
@@ -449,7 +449,7 @@ public class BlockChainSdkTest {
         SendTransactionOutput sendResult = client.sendTransaction(sendTransactionInputObj);
         Assert.assertFalse(sendResult.getTransactionId().isEmpty());
 
-        Thread.sleep(4000);
+        Thread.sleep(8000);
 
         TransactionResultDto transactionResult = client.getTransactionResult(sendResult.getTransactionId());
         Assert.assertEquals("MINED", transactionResult.getStatus());
