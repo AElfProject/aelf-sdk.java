@@ -4,6 +4,7 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 import io.aelf.enums.TransferredEnum;
+import io.aelf.protobuf.generated.Client;
 import io.aelf.protobuf.generated.TokenContract;
 import io.aelf.protobuf.generated.TransactionFee.ResourceTokenCharged;
 import io.aelf.protobuf.generated.TransactionFee.TransactionFeeCharged;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.binary.Base64;
+import org.bitcoinj.core.Base58;
 
 /**
  * @author linhui linhui@tydic.com
@@ -64,18 +66,28 @@ public class TransactionResultDtoExtension {
         for (LogEventDto log : logEventDtos) {
 
             TokenContract.Transferred.Builder result = TokenContract.Transferred.getDefaultInstance().toBuilder();
-            byte[] indexedBytes = Base64.decodeBase64(log.getIndexed().get(0));
-            result.setFrom(TokenContract.Transferred.getDefaultInstance().parseFrom(indexedBytes).getFrom());
-
-            indexedBytes = Base64.decodeBase64(log.getIndexed().get(1));
-            result.setTo(TokenContract.Transferred.getDefaultInstance().parseFrom(indexedBytes).getTo());
-
-            indexedBytes = Base64.decodeBase64(log.getIndexed().get(2));
-            result.setSymbol(TokenContract.Transferred.getDefaultInstance().parseFrom(indexedBytes).getSymbol());
 
             byte[] nonIndexedBytes = Base64.decodeBase64(log.getNonIndexed());
             TokenContract.Transferred nonIndexed = TokenContract.Transferred.getDefaultInstance().parseFrom(nonIndexedBytes);
             result.setAmount(nonIndexed.getAmount()).setMemo(nonIndexed.getMemo());
+
+
+            byte[] symbolBytes = Base64.decodeBase64(log.getIndexed().get(2));
+            result.setSymbol(TokenContract.Transferred.getDefaultInstance().parseFrom(symbolBytes).getSymbol());
+
+            byte[] fromBytes = Base64.decodeBase64(log.getIndexed().get(0));
+            result.setFrom(TokenContract.Transferred.getDefaultInstance().parseFrom(fromBytes).getFrom());
+            byte[] bytes = result.getFrom().getValue().toByteArray();
+            String fromAddressStr = Base58Ext.encodeChecked(bytes);
+            result.setFrom(AddressHelper.base58ToAddress(fromAddressStr));
+
+
+            byte[] toBytes = Base64.decodeBase64(log.getIndexed().get(1));
+            result.setTo(TokenContract.Transferred.getDefaultInstance().parseFrom(toBytes).getTo());
+            byte[] bytes1 = result.getTo().getValue().toByteArray();
+            String toAddress = Base58Ext.encodeChecked(bytes1);
+            result.setTo(AddressHelper.base58ToAddress(toAddress));
+
             transferreds.add(result.build());
         }
 

@@ -466,13 +466,12 @@ public class BlockChainSdkTest {
         Assert.assertTrue(feeCharged.getAmount() > 0);
 
         List<TokenContract.Transferred> transferreds = client.getTransferred(transactionResult.getTransactionId(), privateKey);
-        //List<TokenContract.Transferred> transferreds = TransactionResultDtoExtension.getTransferredEvent(tokenContractAddress, transactionResult);
         TokenContract.Transferred transferred = transferreds.get(0);
 
         Assert.assertEquals(address, AddressHelper.addressToBase58(transferred.getFrom()));
         Assert.assertEquals(keyPairInfo.getAddress(), AddressHelper.addressToBase58(transferred.getTo()));
         Assert.assertEquals("ELF", transferred.getSymbol());
-        Assert.assertEquals(1000000000, transferred.getAmount());
+        Assert.assertEquals(1, transferred.getAmount());
         Assert.assertEquals("transfer in test", transferred.getMemo());
     }
 
@@ -484,7 +483,7 @@ public class BlockChainSdkTest {
         TokenContract.TransferInput.Builder paramTransfer = TokenContract.TransferInput.newBuilder();
         paramTransfer.setTo(to);
         paramTransfer.setSymbol("ELF");
-        paramTransfer.setAmount(1000000000);
+        paramTransfer.setAmount(1);
         paramTransfer.setMemo("transfer in test");
         TokenContract.TransferInput paramTransferObj = paramTransfer.build();
 
