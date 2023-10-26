@@ -64,33 +64,24 @@ public class TransactionResultDtoExtension {
         List<LogEventDto> logEventDtos = getLogsEventDto(TransferredEnum.TRANSFERRED, transactionResultDto, contractAddress);
         List<TokenContract.Transferred> transferreds = new ArrayList<>();
         for (LogEventDto log : logEventDtos) {
-
             TokenContract.Transferred.Builder result = TokenContract.Transferred.getDefaultInstance().toBuilder();
-
             byte[] nonIndexedBytes = Base64.decodeBase64(log.getNonIndexed());
             TokenContract.Transferred nonIndexed = TokenContract.Transferred.parseFrom(nonIndexedBytes);
             result.setAmount(nonIndexed.getAmount()).setMemo(nonIndexed.getMemo());
-
-
             byte[] symbolBytes = Base64.decodeBase64(log.getIndexed().get(2));
             result.setSymbol(TokenContract.Transferred.parseFrom(symbolBytes).getSymbol());
-
             byte[] fromBytes = Base64.decodeBase64(log.getIndexed().get(0));
             result.setFrom(TokenContract.Transferred.parseFrom(fromBytes).getFrom());
             byte[] bytes = result.getFrom().getValue().toByteArray();
             String fromAddressStr = Base58Ext.encodeChecked(bytes);
             result.setFrom(AddressHelper.base58ToAddress(fromAddressStr));
-
-
             byte[] toBytes = Base64.decodeBase64(log.getIndexed().get(1));
             result.setTo(TokenContract.Transferred.parseFrom(toBytes).getTo());
             byte[] bytes1 = result.getTo().getValue().toByteArray();
             String toAddress = Base58Ext.encodeChecked(bytes1);
             result.setTo(AddressHelper.base58ToAddress(toAddress));
-
             transferreds.add(result.build());
         }
-
         return transferreds;
     }
 
@@ -107,7 +98,7 @@ public class TransactionResultDtoExtension {
             TokenContract.CrossChainReceived nonIndexed = TokenContract.CrossChainReceived.parseFrom(nonIndexedBytes);
             Client.Address from = AddressHelper.base58ToAddress(Base58Ext.encodeChecked(nonIndexed.getFrom().getValue().toByteArray()));
             Client.Address to = AddressHelper.base58ToAddress(Base58Ext.encodeChecked(nonIndexed.getTo().getValue().toByteArray()));
-                    builder.setAmount(nonIndexed.getAmount())
+            builder.setAmount(nonIndexed.getAmount())
                     .setMemo(nonIndexed.getMemo())
                     .setFrom(from)
                     .setTo(to)
