@@ -20,7 +20,7 @@
         <web3j.version>3.3.1</web3j.version>
         <jdk15on.version>1.60</jdk15on.version>
         <bitcoinj-core.version>0.14.3</bitcoinj-core.version>
-        <protobuf-java.version>3.11.1</protobuf-java.version>
+        <protobuf-java.version>3.19.6</protobuf-java.version>
         <junit.version>4.12</junit.version>
     </properties>
     <dependencies>

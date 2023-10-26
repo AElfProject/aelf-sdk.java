@@ -45,7 +45,7 @@ public final class ToeknConverterContract {
    *
    * Protobuf type {@code TokenSymbol}
    */
-  public  static final class TokenSymbol extends
+  public static final class TokenSymbol extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:TokenSymbol)
       TokenSymbolOrBuilder {
@@ -70,49 +70,6 @@ public final class ToeknConverterContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private TokenSymbol(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              symbol_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ToeknConverterContract.internal_static_TokenSymbol_descriptor;
@@ -127,7 +84,8 @@ public final class ToeknConverterContract {
     }
 
     public static final int SYMBOL_FIELD_NUMBER = 1;
-    private volatile java.lang.Object symbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object symbol_ = "";
     /**
      * <pre>
      * The token symbol.
@@ -136,6 +94,7 @@ public final class ToeknConverterContract {
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
+    @java.lang.Override
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
       if (ref instanceof java.lang.String) {
@@ -156,6 +115,7 @@ public final class ToeknConverterContract {
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSymbolBytes() {
       java.lang.Object ref = symbol_;
@@ -184,10 +144,10 @@ public final class ToeknConverterContract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -196,10 +156,10 @@ public final class ToeknConverterContract {
       if (size != -1) return size;
 
       size = 0;
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, symbol_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -216,7 +176,7 @@ public final class ToeknConverterContract {
 
       if (!getSymbol()
           .equals(other.getSymbol())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -229,7 +189,7 @@ public final class ToeknConverterContract {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SYMBOL_FIELD_NUMBER;
       hash = (53 * hash) + getSymbol().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -350,24 +310,19 @@ public final class ToeknConverterContract {
 
       // Construct using io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         symbol_ = "";
-
         return this;
       }
 
@@ -394,9 +349,16 @@ public final class ToeknConverterContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol buildPartial() {
         io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol result = new io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol(this);
-        result.symbol_ = symbol_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.symbol_ = symbol_;
+        }
       }
 
       @java.lang.Override
@@ -445,9 +407,10 @@ public final class ToeknConverterContract {
         if (other == io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol.getDefaultInstance()) return this;
         if (!other.getSymbol().isEmpty()) {
           symbol_ = other.symbol_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -462,19 +425,38 @@ public final class ToeknConverterContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                symbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ToeknConverterContract.TokenSymbol) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object symbol_ = "";
       /**
@@ -529,11 +511,9 @@ public final class ToeknConverterContract {
        */
       public Builder setSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -546,8 +526,8 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearSymbol() {
-        
         symbol_ = getDefaultInstance().getSymbol();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -562,12 +542,10 @@ public final class ToeknConverterContract {
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -604,7 +582,18 @@ public final class ToeknConverterContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TokenSymbol(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -731,7 +720,7 @@ public final class ToeknConverterContract {
   /**
    * Protobuf type {@code Connector}
    */
-  public  static final class Connector extends
+  public static final class Connector extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:Connector)
       ConnectorOrBuilder {
@@ -758,81 +747,6 @@ public final class ToeknConverterContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Connector(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              symbol_ = s;
-              break;
-            }
-            case 16: {
-
-              virtualBalance_ = input.readInt64();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              weight_ = s;
-              break;
-            }
-            case 32: {
-
-              isVirtualBalanceEnabled_ = input.readBool();
-              break;
-            }
-            case 40: {
-
-              isPurchaseEnabled_ = input.readBool();
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              relatedSymbol_ = s;
-              break;
-            }
-            case 56: {
-
-              isDepositAccount_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ToeknConverterContract.internal_static_Connector_descriptor;
@@ -847,7 +761,8 @@ public final class ToeknConverterContract {
     }
 
     public static final int SYMBOL_FIELD_NUMBER = 1;
-    private volatile java.lang.Object symbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object symbol_ = "";
     /**
      * <pre>
      * The token symbol.
@@ -856,6 +771,7 @@ public final class ToeknConverterContract {
      * <code>string symbol = 1;</code>
      * @return The symbol.
      */
+    @java.lang.Override
     public java.lang.String getSymbol() {
       java.lang.Object ref = symbol_;
       if (ref instanceof java.lang.String) {
@@ -876,6 +792,7 @@ public final class ToeknConverterContract {
      * <code>string symbol = 1;</code>
      * @return The bytes for symbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSymbolBytes() {
       java.lang.Object ref = symbol_;
@@ -891,7 +808,7 @@ public final class ToeknConverterContract {
     }
 
     public static final int VIRTUAL_BALANCE_FIELD_NUMBER = 2;
-    private long virtualBalance_;
+    private long virtualBalance_ = 0L;
     /**
      * <pre>
      * The virtual balance for base token.
@@ -900,12 +817,14 @@ public final class ToeknConverterContract {
      * <code>int64 virtual_balance = 2;</code>
      * @return The virtualBalance.
      */
+    @java.lang.Override
     public long getVirtualBalance() {
       return virtualBalance_;
     }
 
     public static final int WEIGHT_FIELD_NUMBER = 3;
-    private volatile java.lang.Object weight_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object weight_ = "";
     /**
      * <pre>
      * The calculated weight value for this Connector.
@@ -914,6 +833,7 @@ public final class ToeknConverterContract {
      * <code>string weight = 3;</code>
      * @return The weight.
      */
+    @java.lang.Override
     public java.lang.String getWeight() {
       java.lang.Object ref = weight_;
       if (ref instanceof java.lang.String) {
@@ -934,6 +854,7 @@ public final class ToeknConverterContract {
      * <code>string weight = 3;</code>
      * @return The bytes for weight.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getWeightBytes() {
       java.lang.Object ref = weight_;
@@ -949,7 +870,7 @@ public final class ToeknConverterContract {
     }
 
     public static final int IS_VIRTUAL_BALANCE_ENABLED_FIELD_NUMBER = 4;
-    private boolean isVirtualBalanceEnabled_;
+    private boolean isVirtualBalanceEnabled_ = false;
     /**
      * <pre>
      * Whether to use Virtual Balance.
@@ -958,12 +879,13 @@ public final class ToeknConverterContract {
      * <code>bool is_virtual_balance_enabled = 4;</code>
      * @return The isVirtualBalanceEnabled.
      */
+    @java.lang.Override
     public boolean getIsVirtualBalanceEnabled() {
       return isVirtualBalanceEnabled_;
     }
 
     public static final int IS_PURCHASE_ENABLED_FIELD_NUMBER = 5;
-    private boolean isPurchaseEnabled_;
+    private boolean isPurchaseEnabled_ = false;
     /**
      * <pre>
      * Whether the connector is enabled.
@@ -972,12 +894,14 @@ public final class ToeknConverterContract {
      * <code>bool is_purchase_enabled = 5;</code>
      * @return The isPurchaseEnabled.
      */
+    @java.lang.Override
     public boolean getIsPurchaseEnabled() {
       return isPurchaseEnabled_;
     }
 
     public static final int RELATED_SYMBOL_FIELD_NUMBER = 6;
-    private volatile java.lang.Object relatedSymbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object relatedSymbol_ = "";
     /**
      * <pre>
      * Indicates its related connector, the pair connector includes a new created token connector and the base token connector.
@@ -986,6 +910,7 @@ public final class ToeknConverterContract {
      * <code>string related_symbol = 6;</code>
      * @return The relatedSymbol.
      */
+    @java.lang.Override
     public java.lang.String getRelatedSymbol() {
       java.lang.Object ref = relatedSymbol_;
       if (ref instanceof java.lang.String) {
@@ -1006,6 +931,7 @@ public final class ToeknConverterContract {
      * <code>string related_symbol = 6;</code>
      * @return The bytes for relatedSymbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getRelatedSymbolBytes() {
       java.lang.Object ref = relatedSymbol_;
@@ -1021,7 +947,7 @@ public final class ToeknConverterContract {
     }
 
     public static final int IS_DEPOSIT_ACCOUNT_FIELD_NUMBER = 7;
-    private boolean isDepositAccount_;
+    private boolean isDepositAccount_ = false;
     /**
      * <pre>
      * Indicates if the connector is base token connector.
@@ -1030,6 +956,7 @@ public final class ToeknConverterContract {
      * <code>bool is_deposit_account = 7;</code>
      * @return The isDepositAccount.
      */
+    @java.lang.Override
     public boolean getIsDepositAccount() {
       return isDepositAccount_;
     }
@@ -1048,13 +975,13 @@ public final class ToeknConverterContract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, symbol_);
       }
       if (virtualBalance_ != 0L) {
         output.writeInt64(2, virtualBalance_);
       }
-      if (!getWeightBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(weight_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, weight_);
       }
       if (isVirtualBalanceEnabled_ != false) {
@@ -1063,13 +990,13 @@ public final class ToeknConverterContract {
       if (isPurchaseEnabled_ != false) {
         output.writeBool(5, isPurchaseEnabled_);
       }
-      if (!getRelatedSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(relatedSymbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, relatedSymbol_);
       }
       if (isDepositAccount_ != false) {
         output.writeBool(7, isDepositAccount_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1078,14 +1005,14 @@ public final class ToeknConverterContract {
       if (size != -1) return size;
 
       size = 0;
-      if (!getSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, symbol_);
       }
       if (virtualBalance_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, virtualBalance_);
       }
-      if (!getWeightBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(weight_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, weight_);
       }
       if (isVirtualBalanceEnabled_ != false) {
@@ -1096,14 +1023,14 @@ public final class ToeknConverterContract {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, isPurchaseEnabled_);
       }
-      if (!getRelatedSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(relatedSymbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, relatedSymbol_);
       }
       if (isDepositAccount_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(7, isDepositAccount_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1132,7 +1059,7 @@ public final class ToeknConverterContract {
           .equals(other.getRelatedSymbol())) return false;
       if (getIsDepositAccount()
           != other.getIsDepositAccount()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1161,7 +1088,7 @@ public final class ToeknConverterContract {
       hash = (37 * hash) + IS_DEPOSIT_ACCOUNT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsDepositAccount());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1278,36 +1205,25 @@ public final class ToeknConverterContract {
 
       // Construct using io.aelf.protobuf.generated.ToeknConverterContract.Connector.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         symbol_ = "";
-
         virtualBalance_ = 0L;
-
         weight_ = "";
-
         isVirtualBalanceEnabled_ = false;
-
         isPurchaseEnabled_ = false;
-
         relatedSymbol_ = "";
-
         isDepositAccount_ = false;
-
         return this;
       }
 
@@ -1334,15 +1250,34 @@ public final class ToeknConverterContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ToeknConverterContract.Connector buildPartial() {
         io.aelf.protobuf.generated.ToeknConverterContract.Connector result = new io.aelf.protobuf.generated.ToeknConverterContract.Connector(this);
-        result.symbol_ = symbol_;
-        result.virtualBalance_ = virtualBalance_;
-        result.weight_ = weight_;
-        result.isVirtualBalanceEnabled_ = isVirtualBalanceEnabled_;
-        result.isPurchaseEnabled_ = isPurchaseEnabled_;
-        result.relatedSymbol_ = relatedSymbol_;
-        result.isDepositAccount_ = isDepositAccount_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ToeknConverterContract.Connector result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.symbol_ = symbol_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.virtualBalance_ = virtualBalance_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.weight_ = weight_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.isVirtualBalanceEnabled_ = isVirtualBalanceEnabled_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.isPurchaseEnabled_ = isPurchaseEnabled_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.relatedSymbol_ = relatedSymbol_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.isDepositAccount_ = isDepositAccount_;
+        }
       }
 
       @java.lang.Override
@@ -1391,6 +1326,7 @@ public final class ToeknConverterContract {
         if (other == io.aelf.protobuf.generated.ToeknConverterContract.Connector.getDefaultInstance()) return this;
         if (!other.getSymbol().isEmpty()) {
           symbol_ = other.symbol_;
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         if (other.getVirtualBalance() != 0L) {
@@ -1398,6 +1334,7 @@ public final class ToeknConverterContract {
         }
         if (!other.getWeight().isEmpty()) {
           weight_ = other.weight_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (other.getIsVirtualBalanceEnabled() != false) {
@@ -1408,12 +1345,13 @@ public final class ToeknConverterContract {
         }
         if (!other.getRelatedSymbol().isEmpty()) {
           relatedSymbol_ = other.relatedSymbol_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         if (other.getIsDepositAccount() != false) {
           setIsDepositAccount(other.getIsDepositAccount());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1428,19 +1366,68 @@ public final class ToeknConverterContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ToeknConverterContract.Connector parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                symbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                virtualBalance_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                weight_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                isVirtualBalanceEnabled_ = input.readBool();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                isPurchaseEnabled_ = input.readBool();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              case 50: {
+                relatedSymbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 56: {
+                isDepositAccount_ = input.readBool();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 56
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ToeknConverterContract.Connector) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object symbol_ = "";
       /**
@@ -1495,11 +1482,9 @@ public final class ToeknConverterContract {
        */
       public Builder setSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1512,8 +1497,8 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearSymbol() {
-        
         symbol_ = getDefaultInstance().getSymbol();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -1528,12 +1513,10 @@ public final class ToeknConverterContract {
        */
       public Builder setSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         symbol_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1547,6 +1530,7 @@ public final class ToeknConverterContract {
        * <code>int64 virtual_balance = 2;</code>
        * @return The virtualBalance.
        */
+      @java.lang.Override
       public long getVirtualBalance() {
         return virtualBalance_;
       }
@@ -1562,6 +1546,7 @@ public final class ToeknConverterContract {
       public Builder setVirtualBalance(long value) {
         
         virtualBalance_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1574,7 +1559,7 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearVirtualBalance() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         virtualBalance_ = 0L;
         onChanged();
         return this;
@@ -1633,11 +1618,9 @@ public final class ToeknConverterContract {
        */
       public Builder setWeight(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         weight_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1650,8 +1633,8 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearWeight() {
-        
         weight_ = getDefaultInstance().getWeight();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -1666,12 +1649,10 @@ public final class ToeknConverterContract {
        */
       public Builder setWeightBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         weight_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -1685,6 +1666,7 @@ public final class ToeknConverterContract {
        * <code>bool is_virtual_balance_enabled = 4;</code>
        * @return The isVirtualBalanceEnabled.
        */
+      @java.lang.Override
       public boolean getIsVirtualBalanceEnabled() {
         return isVirtualBalanceEnabled_;
       }
@@ -1700,6 +1682,7 @@ public final class ToeknConverterContract {
       public Builder setIsVirtualBalanceEnabled(boolean value) {
         
         isVirtualBalanceEnabled_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1712,7 +1695,7 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearIsVirtualBalanceEnabled() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         isVirtualBalanceEnabled_ = false;
         onChanged();
         return this;
@@ -1727,6 +1710,7 @@ public final class ToeknConverterContract {
        * <code>bool is_purchase_enabled = 5;</code>
        * @return The isPurchaseEnabled.
        */
+      @java.lang.Override
       public boolean getIsPurchaseEnabled() {
         return isPurchaseEnabled_;
       }
@@ -1742,6 +1726,7 @@ public final class ToeknConverterContract {
       public Builder setIsPurchaseEnabled(boolean value) {
         
         isPurchaseEnabled_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1754,7 +1739,7 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearIsPurchaseEnabled() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         isPurchaseEnabled_ = false;
         onChanged();
         return this;
@@ -1813,11 +1798,9 @@ public final class ToeknConverterContract {
        */
       public Builder setRelatedSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         relatedSymbol_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1830,8 +1813,8 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearRelatedSymbol() {
-        
         relatedSymbol_ = getDefaultInstance().getRelatedSymbol();
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -1846,12 +1829,10 @@ public final class ToeknConverterContract {
        */
       public Builder setRelatedSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         relatedSymbol_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1865,6 +1846,7 @@ public final class ToeknConverterContract {
        * <code>bool is_deposit_account = 7;</code>
        * @return The isDepositAccount.
        */
+      @java.lang.Override
       public boolean getIsDepositAccount() {
         return isDepositAccount_;
       }
@@ -1880,6 +1862,7 @@ public final class ToeknConverterContract {
       public Builder setIsDepositAccount(boolean value) {
         
         isDepositAccount_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1892,7 +1875,7 @@ public final class ToeknConverterContract {
        * @return This builder for chaining.
        */
       public Builder clearIsDepositAccount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         isDepositAccount_ = false;
         onChanged();
         return this;
@@ -1930,7 +1913,18 @@ public final class ToeknConverterContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Connector(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

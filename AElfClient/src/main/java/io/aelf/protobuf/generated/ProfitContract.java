@@ -69,7 +69,7 @@ public final class ProfitContract {
    *
    * Protobuf type {@code CreatedSchemeIds}
    */
-  public  static final class CreatedSchemeIds extends
+  public static final class CreatedSchemeIds extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:CreatedSchemeIds)
       CreatedSchemeIdsOrBuilder {
@@ -94,56 +94,6 @@ public final class ProfitContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CreatedSchemeIds(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                schemeIds_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Hash>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              schemeIds_.add(
-                  input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          schemeIds_ = java.util.Collections.unmodifiableList(schemeIds_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ProfitContract.internal_static_CreatedSchemeIds_descriptor;
@@ -158,6 +108,7 @@ public final class ProfitContract {
     }
 
     public static final int SCHEME_IDS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> schemeIds_;
     /**
      * <pre>
@@ -166,6 +117,7 @@ public final class ProfitContract {
      *
      * <code>repeated .Hash scheme_ids = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getSchemeIdsList() {
       return schemeIds_;
     }
@@ -176,6 +128,7 @@ public final class ProfitContract {
      *
      * <code>repeated .Hash scheme_ids = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getSchemeIdsOrBuilderList() {
       return schemeIds_;
@@ -187,6 +140,7 @@ public final class ProfitContract {
      *
      * <code>repeated .Hash scheme_ids = 1;</code>
      */
+    @java.lang.Override
     public int getSchemeIdsCount() {
       return schemeIds_.size();
     }
@@ -197,6 +151,7 @@ public final class ProfitContract {
      *
      * <code>repeated .Hash scheme_ids = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getSchemeIds(int index) {
       return schemeIds_.get(index);
     }
@@ -207,6 +162,7 @@ public final class ProfitContract {
      *
      * <code>repeated .Hash scheme_ids = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getSchemeIdsOrBuilder(
         int index) {
       return schemeIds_.get(index);
@@ -229,7 +185,7 @@ public final class ProfitContract {
       for (int i = 0; i < schemeIds_.size(); i++) {
         output.writeMessage(1, schemeIds_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -242,7 +198,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, schemeIds_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -259,7 +215,7 @@ public final class ProfitContract {
 
       if (!getSchemeIdsList()
           .equals(other.getSchemeIdsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -274,7 +230,7 @@ public final class ProfitContract {
         hash = (37 * hash) + SCHEME_IDS_FIELD_NUMBER;
         hash = (53 * hash) + getSchemeIdsList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -395,29 +351,25 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getSchemeIdsFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (schemeIdsBuilder_ == null) {
           schemeIds_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          schemeIds_ = null;
           schemeIdsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -444,7 +396,13 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds result = new io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds result) {
         if (schemeIdsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             schemeIds_ = java.util.Collections.unmodifiableList(schemeIds_);
@@ -454,8 +412,10 @@ public final class ProfitContract {
         } else {
           result.schemeIds_ = schemeIdsBuilder_.build();
         }
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -528,7 +488,7 @@ public final class ProfitContract {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -543,17 +503,43 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                io.aelf.protobuf.generated.Client.Hash m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.Client.Hash.parser(),
+                        extensionRegistry);
+                if (schemeIdsBuilder_ == null) {
+                  ensureSchemeIdsIsMutable();
+                  schemeIds_.add(m);
+                } else {
+                  schemeIdsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.CreatedSchemeIds) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -902,7 +888,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreatedSchemeIds(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -956,7 +953,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code GetManagingSchemeIdsInput}
    */
-  public  static final class GetManagingSchemeIdsInput extends
+  public static final class GetManagingSchemeIdsInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetManagingSchemeIdsInput)
       GetManagingSchemeIdsInputOrBuilder {
@@ -979,56 +976,6 @@ public final class ProfitContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private GetManagingSchemeIdsInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (manager_ != null) {
-                subBuilder = manager_.toBuilder();
-              }
-              manager_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(manager_);
-                manager_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -1053,6 +1000,7 @@ public final class ProfitContract {
      * <code>.Address manager = 1;</code>
      * @return Whether the manager field is set.
      */
+    @java.lang.Override
     public boolean hasManager() {
       return manager_ != null;
     }
@@ -1064,6 +1012,7 @@ public final class ProfitContract {
      * <code>.Address manager = 1;</code>
      * @return The manager.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getManager() {
       return manager_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : manager_;
     }
@@ -1074,8 +1023,9 @@ public final class ProfitContract {
      *
      * <code>.Address manager = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getManagerOrBuilder() {
-      return getManager();
+      return manager_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : manager_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1095,7 +1045,7 @@ public final class ProfitContract {
       if (manager_ != null) {
         output.writeMessage(1, getManager());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1108,7 +1058,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getManager());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1128,7 +1078,7 @@ public final class ProfitContract {
         if (!getManager()
             .equals(other.getManager())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1143,7 +1093,7 @@ public final class ProfitContract {
         hash = (37 * hash) + MANAGER_FIELD_NUMBER;
         hash = (53 * hash) + getManager().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1260,26 +1210,21 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.GetManagingSchemeIdsInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (managerBuilder_ == null) {
-          manager_ = null;
-        } else {
-          manager_ = null;
+        bitField0_ = 0;
+        manager_ = null;
+        if (managerBuilder_ != null) {
+          managerBuilder_.dispose();
           managerBuilder_ = null;
         }
         return this;
@@ -1308,13 +1253,18 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.GetManagingSchemeIdsInput buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.GetManagingSchemeIdsInput result = new io.aelf.protobuf.generated.ProfitContract.GetManagingSchemeIdsInput(this);
-        if (managerBuilder_ == null) {
-          result.manager_ = manager_;
-        } else {
-          result.manager_ = managerBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.GetManagingSchemeIdsInput result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.manager_ = managerBuilder_ == null
+              ? manager_
+              : managerBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -1364,7 +1314,7 @@ public final class ProfitContract {
         if (other.hasManager()) {
           mergeManager(other.getManager());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1379,19 +1329,40 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.GetManagingSchemeIdsInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getManagerFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.GetManagingSchemeIdsInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Address manager_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1405,7 +1376,7 @@ public final class ProfitContract {
        * @return Whether the manager field is set.
        */
       public boolean hasManager() {
-        return managerBuilder_ != null || manager_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -1435,11 +1406,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           manager_ = value;
-          onChanged();
         } else {
           managerBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1453,11 +1424,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (managerBuilder_ == null) {
           manager_ = builderForValue.build();
-          onChanged();
         } else {
           managerBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1469,17 +1440,18 @@ public final class ProfitContract {
        */
       public Builder mergeManager(io.aelf.protobuf.generated.Client.Address value) {
         if (managerBuilder_ == null) {
-          if (manager_ != null) {
-            manager_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(manager_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            manager_ != null &&
+            manager_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getManagerBuilder().mergeFrom(value);
           } else {
             manager_ = value;
           }
-          onChanged();
         } else {
           managerBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1490,14 +1462,13 @@ public final class ProfitContract {
        * <code>.Address manager = 1;</code>
        */
       public Builder clearManager() {
-        if (managerBuilder_ == null) {
-          manager_ = null;
-          onChanged();
-        } else {
-          manager_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        manager_ = null;
+        if (managerBuilder_ != null) {
+          managerBuilder_.dispose();
           managerBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -1508,7 +1479,7 @@ public final class ProfitContract {
        * <code>.Address manager = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getManagerBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getManagerFieldBuilder().getBuilder();
       }
@@ -1580,7 +1551,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetManagingSchemeIdsInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1644,7 +1626,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code SchemeBeneficiaryShare}
    */
-  public  static final class SchemeBeneficiaryShare extends
+  public static final class SchemeBeneficiaryShare extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SchemeBeneficiaryShare)
       SchemeBeneficiaryShareOrBuilder {
@@ -1667,61 +1649,6 @@ public final class ProfitContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private SchemeBeneficiaryShare(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (schemeId_ != null) {
-                subBuilder = schemeId_.toBuilder();
-              }
-              schemeId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(schemeId_);
-                schemeId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-
-              shares_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -1746,6 +1673,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return Whether the schemeId field is set.
      */
+    @java.lang.Override
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
@@ -1757,6 +1685,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return The schemeId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
@@ -1767,12 +1696,13 @@ public final class ProfitContract {
      *
      * <code>.Hash scheme_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getSchemeIdOrBuilder() {
-      return getSchemeId();
+      return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
 
     public static final int SHARES_FIELD_NUMBER = 2;
-    private long shares_;
+    private long shares_ = 0L;
     /**
      * <pre>
      * The weight of the sub scheme. 
@@ -1781,6 +1711,7 @@ public final class ProfitContract {
      * <code>int64 shares = 2;</code>
      * @return The shares.
      */
+    @java.lang.Override
     public long getShares() {
       return shares_;
     }
@@ -1805,7 +1736,7 @@ public final class ProfitContract {
       if (shares_ != 0L) {
         output.writeInt64(2, shares_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1822,7 +1753,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, shares_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1844,7 +1775,7 @@ public final class ProfitContract {
       }
       if (getShares()
           != other.getShares()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1862,7 +1793,7 @@ public final class ProfitContract {
       hash = (37 * hash) + SHARES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getShares());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1979,30 +1910,24 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-        } else {
-          schemeId_ = null;
+        bitField0_ = 0;
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
         shares_ = 0L;
-
         return this;
       }
 
@@ -2029,14 +1954,21 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare result = new io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare(this);
-        if (schemeIdBuilder_ == null) {
-          result.schemeId_ = schemeId_;
-        } else {
-          result.schemeId_ = schemeIdBuilder_.build();
-        }
-        result.shares_ = shares_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.schemeId_ = schemeIdBuilder_ == null
+              ? schemeId_
+              : schemeIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.shares_ = shares_;
+        }
       }
 
       @java.lang.Override
@@ -2089,7 +2021,7 @@ public final class ProfitContract {
         if (other.getShares() != 0L) {
           setShares(other.getShares());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -2104,19 +2036,45 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getSchemeIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                shares_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash schemeId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -2130,7 +2088,7 @@ public final class ProfitContract {
        * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
-        return schemeIdBuilder_ != null || schemeId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -2160,11 +2118,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           schemeId_ = value;
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -2178,11 +2136,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (schemeIdBuilder_ == null) {
           schemeId_ = builderForValue.build();
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -2194,17 +2152,18 @@ public final class ProfitContract {
        */
       public Builder mergeSchemeId(io.aelf.protobuf.generated.Client.Hash value) {
         if (schemeIdBuilder_ == null) {
-          if (schemeId_ != null) {
-            schemeId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(schemeId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            schemeId_ != null &&
+            schemeId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getSchemeIdBuilder().mergeFrom(value);
           } else {
             schemeId_ = value;
           }
-          onChanged();
         } else {
           schemeIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -2215,14 +2174,13 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public Builder clearSchemeId() {
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-          onChanged();
-        } else {
-          schemeId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -2233,7 +2191,7 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getSchemeIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getSchemeIdFieldBuilder().getBuilder();
       }
@@ -2282,6 +2240,7 @@ public final class ProfitContract {
        * <code>int64 shares = 2;</code>
        * @return The shares.
        */
+      @java.lang.Override
       public long getShares() {
         return shares_;
       }
@@ -2297,6 +2256,7 @@ public final class ProfitContract {
       public Builder setShares(long value) {
         
         shares_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2309,7 +2269,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearShares() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         shares_ = 0L;
         onChanged();
         return this;
@@ -2347,7 +2307,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SchemeBeneficiaryShare(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -2595,7 +2566,6 @@ public final class ProfitContract {
      *
      * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
      */
-
     long getCachedDelayTotalSharesOrDefault(
         long key,
         long defaultValue);
@@ -2606,7 +2576,6 @@ public final class ProfitContract {
      *
      * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
      */
-
     long getCachedDelayTotalSharesOrThrow(
         long key);
 
@@ -2654,7 +2623,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code Scheme}
    */
-  public  static final class Scheme extends
+  public static final class Scheme extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:Scheme)
       SchemeOrBuilder {
@@ -2679,150 +2648,6 @@ public final class ProfitContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private Scheme(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (virtualAddress_ != null) {
-                subBuilder = virtualAddress_.toBuilder();
-              }
-              virtualAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(virtualAddress_);
-                virtualAddress_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-
-              totalShares_ = input.readInt64();
-              break;
-            }
-            case 26: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (manager_ != null) {
-                subBuilder = manager_.toBuilder();
-              }
-              manager_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(manager_);
-                manager_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 32: {
-
-              currentPeriod_ = input.readInt64();
-              break;
-            }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                subSchemes_ = new java.util.ArrayList<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              subSchemes_.add(
-                  input.readMessage(io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare.parser(), extensionRegistry));
-              break;
-            }
-            case 48: {
-
-              canRemoveBeneficiaryDirectly_ = input.readBool();
-              break;
-            }
-            case 56: {
-
-              profitReceivingDuePeriodCount_ = input.readInt64();
-              break;
-            }
-            case 64: {
-
-              isReleaseAllBalanceEveryTimeByDefault_ = input.readBool();
-              break;
-            }
-            case 74: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (schemeId_ != null) {
-                subBuilder = schemeId_.toBuilder();
-              }
-              schemeId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(schemeId_);
-                schemeId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 80: {
-
-              delayDistributePeriodCount_ = input.readInt32();
-              break;
-            }
-            case 90: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                cachedDelayTotalShares_ = com.google.protobuf.MapField.newMapField(
-                    CachedDelayTotalSharesDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
-              }
-              com.google.protobuf.MapEntry<java.lang.Long, java.lang.Long>
-              cachedDelayTotalShares__ = input.readMessage(
-                  CachedDelayTotalSharesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              cachedDelayTotalShares_.getMutableMap().put(
-                  cachedDelayTotalShares__.getKey(), cachedDelayTotalShares__.getValue());
-              break;
-            }
-            case 98: {
-              java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                receivedTokenSymbols_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              receivedTokenSymbols_.add(s);
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          subSchemes_ = java.util.Collections.unmodifiableList(subSchemes_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
-          receivedTokenSymbols_ = receivedTokenSymbols_.getUnmodifiableView();
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -2859,6 +2684,7 @@ public final class ProfitContract {
      * <code>.Address virtual_address = 1;</code>
      * @return Whether the virtualAddress field is set.
      */
+    @java.lang.Override
     public boolean hasVirtualAddress() {
       return virtualAddress_ != null;
     }
@@ -2870,6 +2696,7 @@ public final class ProfitContract {
      * <code>.Address virtual_address = 1;</code>
      * @return The virtualAddress.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getVirtualAddress() {
       return virtualAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : virtualAddress_;
     }
@@ -2880,12 +2707,13 @@ public final class ProfitContract {
      *
      * <code>.Address virtual_address = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getVirtualAddressOrBuilder() {
-      return getVirtualAddress();
+      return virtualAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : virtualAddress_;
     }
 
     public static final int TOTAL_SHARES_FIELD_NUMBER = 2;
-    private long totalShares_;
+    private long totalShares_ = 0L;
     /**
      * <pre>
      * The total weight of the scheme.
@@ -2894,6 +2722,7 @@ public final class ProfitContract {
      * <code>int64 total_shares = 2;</code>
      * @return The totalShares.
      */
+    @java.lang.Override
     public long getTotalShares() {
       return totalShares_;
     }
@@ -2908,6 +2737,7 @@ public final class ProfitContract {
      * <code>.Address manager = 3;</code>
      * @return Whether the manager field is set.
      */
+    @java.lang.Override
     public boolean hasManager() {
       return manager_ != null;
     }
@@ -2919,6 +2749,7 @@ public final class ProfitContract {
      * <code>.Address manager = 3;</code>
      * @return The manager.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getManager() {
       return manager_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : manager_;
     }
@@ -2929,12 +2760,13 @@ public final class ProfitContract {
      *
      * <code>.Address manager = 3;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getManagerOrBuilder() {
-      return getManager();
+      return manager_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : manager_;
     }
 
     public static final int CURRENT_PERIOD_FIELD_NUMBER = 4;
-    private long currentPeriod_;
+    private long currentPeriod_ = 0L;
     /**
      * <pre>
      * The current period.
@@ -2943,11 +2775,13 @@ public final class ProfitContract {
      * <code>int64 current_period = 4;</code>
      * @return The currentPeriod.
      */
+    @java.lang.Override
     public long getCurrentPeriod() {
       return currentPeriod_;
     }
 
     public static final int SUB_SCHEMES_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare> subSchemes_;
     /**
      * <pre>
@@ -2956,6 +2790,7 @@ public final class ProfitContract {
      *
      * <code>repeated .SchemeBeneficiaryShare sub_schemes = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare> getSubSchemesList() {
       return subSchemes_;
     }
@@ -2966,6 +2801,7 @@ public final class ProfitContract {
      *
      * <code>repeated .SchemeBeneficiaryShare sub_schemes = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShareOrBuilder> 
         getSubSchemesOrBuilderList() {
       return subSchemes_;
@@ -2977,6 +2813,7 @@ public final class ProfitContract {
      *
      * <code>repeated .SchemeBeneficiaryShare sub_schemes = 5;</code>
      */
+    @java.lang.Override
     public int getSubSchemesCount() {
       return subSchemes_.size();
     }
@@ -2987,6 +2824,7 @@ public final class ProfitContract {
      *
      * <code>repeated .SchemeBeneficiaryShare sub_schemes = 5;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare getSubSchemes(int index) {
       return subSchemes_.get(index);
     }
@@ -2997,13 +2835,14 @@ public final class ProfitContract {
      *
      * <code>repeated .SchemeBeneficiaryShare sub_schemes = 5;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShareOrBuilder getSubSchemesOrBuilder(
         int index) {
       return subSchemes_.get(index);
     }
 
     public static final int CAN_REMOVE_BENEFICIARY_DIRECTLY_FIELD_NUMBER = 6;
-    private boolean canRemoveBeneficiaryDirectly_;
+    private boolean canRemoveBeneficiaryDirectly_ = false;
     /**
      * <pre>
      * Whether you can directly remove the beneficiary.
@@ -3012,12 +2851,13 @@ public final class ProfitContract {
      * <code>bool can_remove_beneficiary_directly = 6;</code>
      * @return The canRemoveBeneficiaryDirectly.
      */
+    @java.lang.Override
     public boolean getCanRemoveBeneficiaryDirectly() {
       return canRemoveBeneficiaryDirectly_;
     }
 
     public static final int PROFIT_RECEIVING_DUE_PERIOD_COUNT_FIELD_NUMBER = 7;
-    private long profitReceivingDuePeriodCount_;
+    private long profitReceivingDuePeriodCount_ = 0L;
     /**
      * <pre>
      * Period of profit distribution.
@@ -3026,12 +2866,13 @@ public final class ProfitContract {
      * <code>int64 profit_receiving_due_period_count = 7;</code>
      * @return The profitReceivingDuePeriodCount.
      */
+    @java.lang.Override
     public long getProfitReceivingDuePeriodCount() {
       return profitReceivingDuePeriodCount_;
     }
 
     public static final int IS_RELEASE_ALL_BALANCE_EVERY_TIME_BY_DEFAULT_FIELD_NUMBER = 8;
-    private boolean isReleaseAllBalanceEveryTimeByDefault_;
+    private boolean isReleaseAllBalanceEveryTimeByDefault_ = false;
     /**
      * <pre>
      * Whether all the schemes balance will be distributed during distribution each period.
@@ -3040,6 +2881,7 @@ public final class ProfitContract {
      * <code>bool is_release_all_balance_every_time_by_default = 8;</code>
      * @return The isReleaseAllBalanceEveryTimeByDefault.
      */
+    @java.lang.Override
     public boolean getIsReleaseAllBalanceEveryTimeByDefault() {
       return isReleaseAllBalanceEveryTimeByDefault_;
     }
@@ -3054,6 +2896,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 9;</code>
      * @return Whether the schemeId field is set.
      */
+    @java.lang.Override
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
@@ -3065,6 +2908,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 9;</code>
      * @return The schemeId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
@@ -3075,12 +2919,13 @@ public final class ProfitContract {
      *
      * <code>.Hash scheme_id = 9;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getSchemeIdOrBuilder() {
-      return getSchemeId();
+      return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
 
     public static final int DELAY_DISTRIBUTE_PERIOD_COUNT_FIELD_NUMBER = 10;
-    private int delayDistributePeriodCount_;
+    private int delayDistributePeriodCount_ = 0;
     /**
      * <pre>
      * Delay distribute period.
@@ -3089,6 +2934,7 @@ public final class ProfitContract {
      * <code>int32 delay_distribute_period_count = 10;</code>
      * @return The delayDistributePeriodCount.
      */
+    @java.lang.Override
     public int getDelayDistributePeriodCount() {
       return delayDistributePeriodCount_;
     }
@@ -3105,6 +2951,7 @@ public final class ProfitContract {
                   com.google.protobuf.WireFormat.FieldType.INT64,
                   0L);
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.Long, java.lang.Long> cachedDelayTotalShares_;
     private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
@@ -3115,7 +2962,6 @@ public final class ProfitContract {
       }
       return cachedDelayTotalShares_;
     }
-
     public int getCachedDelayTotalSharesCount() {
       return internalGetCachedDelayTotalShares().getMap().size();
     }
@@ -3126,7 +2972,7 @@ public final class ProfitContract {
      *
      * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
      */
-
+    @java.lang.Override
     public boolean containsCachedDelayTotalShares(
         long key) {
       
@@ -3135,6 +2981,7 @@ public final class ProfitContract {
     /**
      * Use {@link #getCachedDelayTotalSharesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.Long, java.lang.Long> getCachedDelayTotalShares() {
       return getCachedDelayTotalSharesMap();
@@ -3146,7 +2993,7 @@ public final class ProfitContract {
      *
      * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
      */
-
+    @java.lang.Override
     public java.util.Map<java.lang.Long, java.lang.Long> getCachedDelayTotalSharesMap() {
       return internalGetCachedDelayTotalShares().getMap();
     }
@@ -3157,7 +3004,7 @@ public final class ProfitContract {
      *
      * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
      */
-
+    @java.lang.Override
     public long getCachedDelayTotalSharesOrDefault(
         long key,
         long defaultValue) {
@@ -3173,7 +3020,7 @@ public final class ProfitContract {
      *
      * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
      */
-
+    @java.lang.Override
     public long getCachedDelayTotalSharesOrThrow(
         long key) {
       
@@ -3186,6 +3033,7 @@ public final class ProfitContract {
     }
 
     public static final int RECEIVED_TOKEN_SYMBOLS_FIELD_NUMBER = 12;
+    @SuppressWarnings("serial")
     private com.google.protobuf.LazyStringList receivedTokenSymbols_;
     /**
      * <pre>
@@ -3289,7 +3137,7 @@ public final class ProfitContract {
       for (int i = 0; i < receivedTokenSymbols_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 12, receivedTokenSymbols_.getRaw(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -3356,7 +3204,7 @@ public final class ProfitContract {
         size += dataSize;
         size += 1 * getReceivedTokenSymbolsList().size();
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3404,7 +3252,7 @@ public final class ProfitContract {
           other.internalGetCachedDelayTotalShares())) return false;
       if (!getReceivedTokenSymbolsList()
           .equals(other.getReceivedTokenSymbolsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -3456,7 +3304,7 @@ public final class ProfitContract {
         hash = (37 * hash) + RECEIVED_TOKEN_SYMBOLS_FIELD_NUMBER;
         hash = (53 * hash) + getReceivedTokenSymbolsList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3595,62 +3443,49 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.Scheme.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getSubSchemesFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (virtualAddressBuilder_ == null) {
-          virtualAddress_ = null;
-        } else {
-          virtualAddress_ = null;
+        bitField0_ = 0;
+        virtualAddress_ = null;
+        if (virtualAddressBuilder_ != null) {
+          virtualAddressBuilder_.dispose();
           virtualAddressBuilder_ = null;
         }
         totalShares_ = 0L;
-
-        if (managerBuilder_ == null) {
-          manager_ = null;
-        } else {
-          manager_ = null;
+        manager_ = null;
+        if (managerBuilder_ != null) {
+          managerBuilder_.dispose();
           managerBuilder_ = null;
         }
         currentPeriod_ = 0L;
-
         if (subSchemesBuilder_ == null) {
           subSchemes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          subSchemes_ = null;
           subSchemesBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000010);
         canRemoveBeneficiaryDirectly_ = false;
-
         profitReceivingDuePeriodCount_ = 0L;
-
         isReleaseAllBalanceEveryTimeByDefault_ = false;
-
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-        } else {
-          schemeId_ = null;
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
         delayDistributePeriodCount_ = 0;
-
         internalGetMutableCachedDelayTotalShares().clear();
         receivedTokenSymbols_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -3677,46 +3512,68 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.Scheme buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.Scheme result = new io.aelf.protobuf.generated.ProfitContract.Scheme(this);
-        int from_bitField0_ = bitField0_;
-        if (virtualAddressBuilder_ == null) {
-          result.virtualAddress_ = virtualAddress_;
-        } else {
-          result.virtualAddress_ = virtualAddressBuilder_.build();
-        }
-        result.totalShares_ = totalShares_;
-        if (managerBuilder_ == null) {
-          result.manager_ = manager_;
-        } else {
-          result.manager_ = managerBuilder_.build();
-        }
-        result.currentPeriod_ = currentPeriod_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.ProfitContract.Scheme result) {
         if (subSchemesBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
+          if (((bitField0_ & 0x00000010) != 0)) {
             subSchemes_ = java.util.Collections.unmodifiableList(subSchemes_);
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.subSchemes_ = subSchemes_;
         } else {
           result.subSchemes_ = subSchemesBuilder_.build();
         }
-        result.canRemoveBeneficiaryDirectly_ = canRemoveBeneficiaryDirectly_;
-        result.profitReceivingDuePeriodCount_ = profitReceivingDuePeriodCount_;
-        result.isReleaseAllBalanceEveryTimeByDefault_ = isReleaseAllBalanceEveryTimeByDefault_;
-        if (schemeIdBuilder_ == null) {
-          result.schemeId_ = schemeId_;
-        } else {
-          result.schemeId_ = schemeIdBuilder_.build();
-        }
-        result.delayDistributePeriodCount_ = delayDistributePeriodCount_;
-        result.cachedDelayTotalShares_ = internalGetCachedDelayTotalShares();
-        result.cachedDelayTotalShares_.makeImmutable();
-        if (((bitField0_ & 0x00000004) != 0)) {
+        if (((bitField0_ & 0x00000800) != 0)) {
           receivedTokenSymbols_ = receivedTokenSymbols_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000800);
         }
         result.receivedTokenSymbols_ = receivedTokenSymbols_;
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.Scheme result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.virtualAddress_ = virtualAddressBuilder_ == null
+              ? virtualAddress_
+              : virtualAddressBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.totalShares_ = totalShares_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.manager_ = managerBuilder_ == null
+              ? manager_
+              : managerBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.currentPeriod_ = currentPeriod_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.canRemoveBeneficiaryDirectly_ = canRemoveBeneficiaryDirectly_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.profitReceivingDuePeriodCount_ = profitReceivingDuePeriodCount_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.isReleaseAllBalanceEveryTimeByDefault_ = isReleaseAllBalanceEveryTimeByDefault_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.schemeId_ = schemeIdBuilder_ == null
+              ? schemeId_
+              : schemeIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.delayDistributePeriodCount_ = delayDistributePeriodCount_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.cachedDelayTotalShares_ = internalGetCachedDelayTotalShares();
+          result.cachedDelayTotalShares_.makeImmutable();
+        }
       }
 
       @java.lang.Override
@@ -3779,7 +3636,7 @@ public final class ProfitContract {
           if (!other.subSchemes_.isEmpty()) {
             if (subSchemes_.isEmpty()) {
               subSchemes_ = other.subSchemes_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureSubSchemesIsMutable();
               subSchemes_.addAll(other.subSchemes_);
@@ -3792,7 +3649,7 @@ public final class ProfitContract {
               subSchemesBuilder_.dispose();
               subSchemesBuilder_ = null;
               subSchemes_ = other.subSchemes_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000010);
               subSchemesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getSubSchemesFieldBuilder() : null;
@@ -3818,17 +3675,18 @@ public final class ProfitContract {
         }
         internalGetMutableCachedDelayTotalShares().mergeFrom(
             other.internalGetCachedDelayTotalShares());
+        bitField0_ |= 0x00000400;
         if (!other.receivedTokenSymbols_.isEmpty()) {
           if (receivedTokenSymbols_.isEmpty()) {
             receivedTokenSymbols_ = other.receivedTokenSymbols_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000800);
           } else {
             ensureReceivedTokenSymbolsIsMutable();
             receivedTokenSymbols_.addAll(other.receivedTokenSymbols_);
           }
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -3843,17 +3701,109 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.Scheme parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getVirtualAddressFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                totalShares_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                input.readMessage(
+                    getManagerFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                currentPeriod_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 42: {
+                io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare.parser(),
+                        extensionRegistry);
+                if (subSchemesBuilder_ == null) {
+                  ensureSubSchemesIsMutable();
+                  subSchemes_.add(m);
+                } else {
+                  subSchemesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 42
+              case 48: {
+                canRemoveBeneficiaryDirectly_ = input.readBool();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
+              case 56: {
+                profitReceivingDuePeriodCount_ = input.readInt64();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 56
+              case 64: {
+                isReleaseAllBalanceEveryTimeByDefault_ = input.readBool();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 64
+              case 74: {
+                input.readMessage(
+                    getSchemeIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 74
+              case 80: {
+                delayDistributePeriodCount_ = input.readInt32();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 80
+              case 90: {
+                com.google.protobuf.MapEntry<java.lang.Long, java.lang.Long>
+                cachedDelayTotalShares__ = input.readMessage(
+                    CachedDelayTotalSharesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableCachedDelayTotalShares().getMutableMap().put(
+                    cachedDelayTotalShares__.getKey(), cachedDelayTotalShares__.getValue());
+                bitField0_ |= 0x00000400;
+                break;
+              } // case 90
+              case 98: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureReceivedTokenSymbolsIsMutable();
+                receivedTokenSymbols_.add(s);
+                break;
+              } // case 98
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.Scheme) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -3870,7 +3820,7 @@ public final class ProfitContract {
        * @return Whether the virtualAddress field is set.
        */
       public boolean hasVirtualAddress() {
-        return virtualAddressBuilder_ != null || virtualAddress_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -3900,11 +3850,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           virtualAddress_ = value;
-          onChanged();
         } else {
           virtualAddressBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3918,11 +3868,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (virtualAddressBuilder_ == null) {
           virtualAddress_ = builderForValue.build();
-          onChanged();
         } else {
           virtualAddressBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3934,17 +3884,18 @@ public final class ProfitContract {
        */
       public Builder mergeVirtualAddress(io.aelf.protobuf.generated.Client.Address value) {
         if (virtualAddressBuilder_ == null) {
-          if (virtualAddress_ != null) {
-            virtualAddress_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(virtualAddress_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            virtualAddress_ != null &&
+            virtualAddress_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getVirtualAddressBuilder().mergeFrom(value);
           } else {
             virtualAddress_ = value;
           }
-          onChanged();
         } else {
           virtualAddressBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -3955,14 +3906,13 @@ public final class ProfitContract {
        * <code>.Address virtual_address = 1;</code>
        */
       public Builder clearVirtualAddress() {
-        if (virtualAddressBuilder_ == null) {
-          virtualAddress_ = null;
-          onChanged();
-        } else {
-          virtualAddress_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        virtualAddress_ = null;
+        if (virtualAddressBuilder_ != null) {
+          virtualAddressBuilder_.dispose();
           virtualAddressBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -3973,7 +3923,7 @@ public final class ProfitContract {
        * <code>.Address virtual_address = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getVirtualAddressBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getVirtualAddressFieldBuilder().getBuilder();
       }
@@ -4022,6 +3972,7 @@ public final class ProfitContract {
        * <code>int64 total_shares = 2;</code>
        * @return The totalShares.
        */
+      @java.lang.Override
       public long getTotalShares() {
         return totalShares_;
       }
@@ -4037,6 +3988,7 @@ public final class ProfitContract {
       public Builder setTotalShares(long value) {
         
         totalShares_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -4049,7 +4001,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearTotalShares() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         totalShares_ = 0L;
         onChanged();
         return this;
@@ -4067,7 +4019,7 @@ public final class ProfitContract {
        * @return Whether the manager field is set.
        */
       public boolean hasManager() {
-        return managerBuilder_ != null || manager_ != null;
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <pre>
@@ -4097,11 +4049,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           manager_ = value;
-          onChanged();
         } else {
           managerBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -4115,11 +4067,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (managerBuilder_ == null) {
           manager_ = builderForValue.build();
-          onChanged();
         } else {
           managerBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -4131,17 +4083,18 @@ public final class ProfitContract {
        */
       public Builder mergeManager(io.aelf.protobuf.generated.Client.Address value) {
         if (managerBuilder_ == null) {
-          if (manager_ != null) {
-            manager_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(manager_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000004) != 0) &&
+            manager_ != null &&
+            manager_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getManagerBuilder().mergeFrom(value);
           } else {
             manager_ = value;
           }
-          onChanged();
         } else {
           managerBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -4152,14 +4105,13 @@ public final class ProfitContract {
        * <code>.Address manager = 3;</code>
        */
       public Builder clearManager() {
-        if (managerBuilder_ == null) {
-          manager_ = null;
-          onChanged();
-        } else {
-          manager_ = null;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        manager_ = null;
+        if (managerBuilder_ != null) {
+          managerBuilder_.dispose();
           managerBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -4170,7 +4122,7 @@ public final class ProfitContract {
        * <code>.Address manager = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getManagerBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getManagerFieldBuilder().getBuilder();
       }
@@ -4219,6 +4171,7 @@ public final class ProfitContract {
        * <code>int64 current_period = 4;</code>
        * @return The currentPeriod.
        */
+      @java.lang.Override
       public long getCurrentPeriod() {
         return currentPeriod_;
       }
@@ -4234,6 +4187,7 @@ public final class ProfitContract {
       public Builder setCurrentPeriod(long value) {
         
         currentPeriod_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -4246,7 +4200,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearCurrentPeriod() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         currentPeriod_ = 0L;
         onChanged();
         return this;
@@ -4255,9 +4209,9 @@ public final class ProfitContract {
       private java.util.List<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare> subSchemes_ =
         java.util.Collections.emptyList();
       private void ensureSubSchemesIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
+        if (!((bitField0_ & 0x00000010) != 0)) {
           subSchemes_ = new java.util.ArrayList<io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare>(subSchemes_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -4451,7 +4405,7 @@ public final class ProfitContract {
       public Builder clearSubSchemes() {
         if (subSchemesBuilder_ == null) {
           subSchemes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           subSchemesBuilder_.clear();
@@ -4556,7 +4510,7 @@ public final class ProfitContract {
           subSchemesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare, io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShare.Builder, io.aelf.protobuf.generated.ProfitContract.SchemeBeneficiaryShareOrBuilder>(
                   subSchemes_,
-                  ((bitField0_ & 0x00000001) != 0),
+                  ((bitField0_ & 0x00000010) != 0),
                   getParentForChildren(),
                   isClean());
           subSchemes_ = null;
@@ -4573,6 +4527,7 @@ public final class ProfitContract {
        * <code>bool can_remove_beneficiary_directly = 6;</code>
        * @return The canRemoveBeneficiaryDirectly.
        */
+      @java.lang.Override
       public boolean getCanRemoveBeneficiaryDirectly() {
         return canRemoveBeneficiaryDirectly_;
       }
@@ -4588,6 +4543,7 @@ public final class ProfitContract {
       public Builder setCanRemoveBeneficiaryDirectly(boolean value) {
         
         canRemoveBeneficiaryDirectly_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -4600,7 +4556,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearCanRemoveBeneficiaryDirectly() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         canRemoveBeneficiaryDirectly_ = false;
         onChanged();
         return this;
@@ -4615,6 +4571,7 @@ public final class ProfitContract {
        * <code>int64 profit_receiving_due_period_count = 7;</code>
        * @return The profitReceivingDuePeriodCount.
        */
+      @java.lang.Override
       public long getProfitReceivingDuePeriodCount() {
         return profitReceivingDuePeriodCount_;
       }
@@ -4630,6 +4587,7 @@ public final class ProfitContract {
       public Builder setProfitReceivingDuePeriodCount(long value) {
         
         profitReceivingDuePeriodCount_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -4642,7 +4600,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearProfitReceivingDuePeriodCount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         profitReceivingDuePeriodCount_ = 0L;
         onChanged();
         return this;
@@ -4657,6 +4615,7 @@ public final class ProfitContract {
        * <code>bool is_release_all_balance_every_time_by_default = 8;</code>
        * @return The isReleaseAllBalanceEveryTimeByDefault.
        */
+      @java.lang.Override
       public boolean getIsReleaseAllBalanceEveryTimeByDefault() {
         return isReleaseAllBalanceEveryTimeByDefault_;
       }
@@ -4672,6 +4631,7 @@ public final class ProfitContract {
       public Builder setIsReleaseAllBalanceEveryTimeByDefault(boolean value) {
         
         isReleaseAllBalanceEveryTimeByDefault_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -4684,7 +4644,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearIsReleaseAllBalanceEveryTimeByDefault() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         isReleaseAllBalanceEveryTimeByDefault_ = false;
         onChanged();
         return this;
@@ -4702,7 +4662,7 @@ public final class ProfitContract {
        * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
-        return schemeIdBuilder_ != null || schemeId_ != null;
+        return ((bitField0_ & 0x00000100) != 0);
       }
       /**
        * <pre>
@@ -4732,11 +4692,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           schemeId_ = value;
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000100;
+        onChanged();
         return this;
       }
       /**
@@ -4750,11 +4710,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (schemeIdBuilder_ == null) {
           schemeId_ = builderForValue.build();
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000100;
+        onChanged();
         return this;
       }
       /**
@@ -4766,17 +4726,18 @@ public final class ProfitContract {
        */
       public Builder mergeSchemeId(io.aelf.protobuf.generated.Client.Hash value) {
         if (schemeIdBuilder_ == null) {
-          if (schemeId_ != null) {
-            schemeId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(schemeId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000100) != 0) &&
+            schemeId_ != null &&
+            schemeId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getSchemeIdBuilder().mergeFrom(value);
           } else {
             schemeId_ = value;
           }
-          onChanged();
         } else {
           schemeIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000100;
+        onChanged();
         return this;
       }
       /**
@@ -4787,14 +4748,13 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 9;</code>
        */
       public Builder clearSchemeId() {
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-          onChanged();
-        } else {
-          schemeId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -4805,7 +4765,7 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 9;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getSchemeIdBuilder() {
-        
+        bitField0_ |= 0x00000100;
         onChanged();
         return getSchemeIdFieldBuilder().getBuilder();
       }
@@ -4854,6 +4814,7 @@ public final class ProfitContract {
        * <code>int32 delay_distribute_period_count = 10;</code>
        * @return The delayDistributePeriodCount.
        */
+      @java.lang.Override
       public int getDelayDistributePeriodCount() {
         return delayDistributePeriodCount_;
       }
@@ -4869,6 +4830,7 @@ public final class ProfitContract {
       public Builder setDelayDistributePeriodCount(int value) {
         
         delayDistributePeriodCount_ = value;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -4881,7 +4843,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearDelayDistributePeriodCount() {
-        
+        bitField0_ = (bitField0_ & ~0x00000200);
         delayDistributePeriodCount_ = 0;
         onChanged();
         return this;
@@ -4890,7 +4852,7 @@ public final class ProfitContract {
       private com.google.protobuf.MapField<
           java.lang.Long, java.lang.Long> cachedDelayTotalShares_;
       private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
-      internalGetCachedDelayTotalShares() {
+          internalGetCachedDelayTotalShares() {
         if (cachedDelayTotalShares_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               CachedDelayTotalSharesDefaultEntryHolder.defaultEntry);
@@ -4898,8 +4860,7 @@ public final class ProfitContract {
         return cachedDelayTotalShares_;
       }
       private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
-      internalGetMutableCachedDelayTotalShares() {
-        onChanged();;
+          internalGetMutableCachedDelayTotalShares() {
         if (cachedDelayTotalShares_ == null) {
           cachedDelayTotalShares_ = com.google.protobuf.MapField.newMapField(
               CachedDelayTotalSharesDefaultEntryHolder.defaultEntry);
@@ -4907,9 +4868,10 @@ public final class ProfitContract {
         if (!cachedDelayTotalShares_.isMutable()) {
           cachedDelayTotalShares_ = cachedDelayTotalShares_.copy();
         }
+        bitField0_ |= 0x00000400;
+        onChanged();
         return cachedDelayTotalShares_;
       }
-
       public int getCachedDelayTotalSharesCount() {
         return internalGetCachedDelayTotalShares().getMap().size();
       }
@@ -4920,7 +4882,7 @@ public final class ProfitContract {
        *
        * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
        */
-
+      @java.lang.Override
       public boolean containsCachedDelayTotalShares(
           long key) {
         
@@ -4929,6 +4891,7 @@ public final class ProfitContract {
       /**
        * Use {@link #getCachedDelayTotalSharesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.Long, java.lang.Long> getCachedDelayTotalShares() {
         return getCachedDelayTotalSharesMap();
@@ -4940,7 +4903,7 @@ public final class ProfitContract {
        *
        * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
        */
-
+      @java.lang.Override
       public java.util.Map<java.lang.Long, java.lang.Long> getCachedDelayTotalSharesMap() {
         return internalGetCachedDelayTotalShares().getMap();
       }
@@ -4951,7 +4914,7 @@ public final class ProfitContract {
        *
        * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
        */
-
+      @java.lang.Override
       public long getCachedDelayTotalSharesOrDefault(
           long key,
           long defaultValue) {
@@ -4967,7 +4930,7 @@ public final class ProfitContract {
        *
        * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
        */
-
+      @java.lang.Override
       public long getCachedDelayTotalSharesOrThrow(
           long key) {
         
@@ -4978,8 +4941,8 @@ public final class ProfitContract {
         }
         return map.get(key);
       }
-
       public Builder clearCachedDelayTotalShares() {
+        bitField0_ = (bitField0_ & ~0x00000400);
         internalGetMutableCachedDelayTotalShares().getMutableMap()
             .clear();
         return this;
@@ -4991,7 +4954,6 @@ public final class ProfitContract {
        *
        * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
        */
-
       public Builder removeCachedDelayTotalShares(
           long key) {
         
@@ -5004,7 +4966,8 @@ public final class ProfitContract {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.Long, java.lang.Long>
-      getMutableCachedDelayTotalShares() {
+          getMutableCachedDelayTotalShares() {
+        bitField0_ |= 0x00000400;
         return internalGetMutableCachedDelayTotalShares().getMutableMap();
       }
       /**
@@ -5021,6 +4984,7 @@ public final class ProfitContract {
         
         internalGetMutableCachedDelayTotalShares().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
@@ -5030,19 +4994,19 @@ public final class ProfitContract {
        *
        * <code>map&lt;int64, int64&gt; cached_delay_total_shares = 11;</code>
        */
-
       public Builder putAllCachedDelayTotalShares(
           java.util.Map<java.lang.Long, java.lang.Long> values) {
         internalGetMutableCachedDelayTotalShares().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000400;
         return this;
       }
 
       private com.google.protobuf.LazyStringList receivedTokenSymbols_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureReceivedTokenSymbolsIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
+        if (!((bitField0_ & 0x00000800) != 0)) {
           receivedTokenSymbols_ = new com.google.protobuf.LazyStringArrayList(receivedTokenSymbols_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000800;
          }
       }
       /**
@@ -5105,10 +5069,8 @@ public final class ProfitContract {
        */
       public Builder setReceivedTokenSymbols(
           int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureReceivedTokenSymbolsIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureReceivedTokenSymbolsIsMutable();
         receivedTokenSymbols_.set(index, value);
         onChanged();
         return this;
@@ -5124,10 +5086,8 @@ public final class ProfitContract {
        */
       public Builder addReceivedTokenSymbols(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureReceivedTokenSymbolsIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureReceivedTokenSymbolsIsMutable();
         receivedTokenSymbols_.add(value);
         onChanged();
         return this;
@@ -5159,7 +5119,7 @@ public final class ProfitContract {
        */
       public Builder clearReceivedTokenSymbols() {
         receivedTokenSymbols_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000800);
         onChanged();
         return this;
       }
@@ -5174,10 +5134,8 @@ public final class ProfitContract {
        */
       public Builder addReceivedTokenSymbolsBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         ensureReceivedTokenSymbolsIsMutable();
         receivedTokenSymbols_.add(value);
         onChanged();
@@ -5216,7 +5174,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Scheme(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -5280,7 +5249,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code SchemePeriod}
    */
-  public  static final class SchemePeriod extends
+  public static final class SchemePeriod extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:SchemePeriod)
       SchemePeriodOrBuilder {
@@ -5303,61 +5272,6 @@ public final class ProfitContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private SchemePeriod(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (schemeId_ != null) {
-                subBuilder = schemeId_.toBuilder();
-              }
-              schemeId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(schemeId_);
-                schemeId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 16: {
-
-              period_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -5382,6 +5296,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return Whether the schemeId field is set.
      */
+    @java.lang.Override
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
@@ -5393,6 +5308,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return The schemeId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
@@ -5403,12 +5319,13 @@ public final class ProfitContract {
      *
      * <code>.Hash scheme_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getSchemeIdOrBuilder() {
-      return getSchemeId();
+      return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
 
     public static final int PERIOD_FIELD_NUMBER = 2;
-    private long period_;
+    private long period_ = 0L;
     /**
      * <pre>
      * The period number.
@@ -5417,6 +5334,7 @@ public final class ProfitContract {
      * <code>int64 period = 2;</code>
      * @return The period.
      */
+    @java.lang.Override
     public long getPeriod() {
       return period_;
     }
@@ -5441,7 +5359,7 @@ public final class ProfitContract {
       if (period_ != 0L) {
         output.writeInt64(2, period_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -5458,7 +5376,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, period_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -5480,7 +5398,7 @@ public final class ProfitContract {
       }
       if (getPeriod()
           != other.getPeriod()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -5498,7 +5416,7 @@ public final class ProfitContract {
       hash = (37 * hash) + PERIOD_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getPeriod());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -5615,30 +5533,24 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.SchemePeriod.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-        } else {
-          schemeId_ = null;
+        bitField0_ = 0;
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
         period_ = 0L;
-
         return this;
       }
 
@@ -5665,14 +5577,21 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.SchemePeriod buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.SchemePeriod result = new io.aelf.protobuf.generated.ProfitContract.SchemePeriod(this);
-        if (schemeIdBuilder_ == null) {
-          result.schemeId_ = schemeId_;
-        } else {
-          result.schemeId_ = schemeIdBuilder_.build();
-        }
-        result.period_ = period_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.SchemePeriod result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.schemeId_ = schemeIdBuilder_ == null
+              ? schemeId_
+              : schemeIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.period_ = period_;
+        }
       }
 
       @java.lang.Override
@@ -5725,7 +5644,7 @@ public final class ProfitContract {
         if (other.getPeriod() != 0L) {
           setPeriod(other.getPeriod());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -5740,19 +5659,45 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.SchemePeriod parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getSchemeIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                period_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.SchemePeriod) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash schemeId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -5766,7 +5711,7 @@ public final class ProfitContract {
        * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
-        return schemeIdBuilder_ != null || schemeId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -5796,11 +5741,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           schemeId_ = value;
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -5814,11 +5759,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (schemeIdBuilder_ == null) {
           schemeId_ = builderForValue.build();
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -5830,17 +5775,18 @@ public final class ProfitContract {
        */
       public Builder mergeSchemeId(io.aelf.protobuf.generated.Client.Hash value) {
         if (schemeIdBuilder_ == null) {
-          if (schemeId_ != null) {
-            schemeId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(schemeId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            schemeId_ != null &&
+            schemeId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getSchemeIdBuilder().mergeFrom(value);
           } else {
             schemeId_ = value;
           }
-          onChanged();
         } else {
           schemeIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -5851,14 +5797,13 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public Builder clearSchemeId() {
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-          onChanged();
-        } else {
-          schemeId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -5869,7 +5814,7 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getSchemeIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getSchemeIdFieldBuilder().getBuilder();
       }
@@ -5918,6 +5863,7 @@ public final class ProfitContract {
        * <code>int64 period = 2;</code>
        * @return The period.
        */
+      @java.lang.Override
       public long getPeriod() {
         return period_;
       }
@@ -5933,6 +5879,7 @@ public final class ProfitContract {
       public Builder setPeriod(long value) {
         
         period_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -5945,7 +5892,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearPeriod() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         period_ = 0L;
         onChanged();
         return this;
@@ -5983,7 +5930,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SchemePeriod(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -6056,7 +6014,6 @@ public final class ProfitContract {
      *
      * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
      */
-
     long getAmountsMapOrDefault(
         java.lang.String key,
         long defaultValue);
@@ -6067,7 +6024,6 @@ public final class ProfitContract {
      *
      * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
      */
-
     long getAmountsMapOrThrow(
         java.lang.String key);
 
@@ -6084,7 +6040,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code DistributedProfitsInfo}
    */
-  public  static final class DistributedProfitsInfo extends
+  public static final class DistributedProfitsInfo extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:DistributedProfitsInfo)
       DistributedProfitsInfoOrBuilder {
@@ -6107,67 +6063,6 @@ public final class ProfitContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private DistributedProfitsInfo(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              totalShares_ = input.readInt64();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                amountsMap_ = com.google.protobuf.MapField.newMapField(
-                    AmountsMapDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
-              }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
-              amountsMap__ = input.readMessage(
-                  AmountsMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              amountsMap_.getMutableMap().put(
-                  amountsMap__.getKey(), amountsMap__.getValue());
-              break;
-            }
-            case 24: {
-
-              isReleased_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -6195,7 +6090,7 @@ public final class ProfitContract {
     }
 
     public static final int TOTAL_SHARES_FIELD_NUMBER = 1;
-    private long totalShares_;
+    private long totalShares_ = 0L;
     /**
      * <pre>
      * The total amount of shares in this scheme at the current period.
@@ -6204,6 +6099,7 @@ public final class ProfitContract {
      * <code>int64 total_shares = 1;</code>
      * @return The totalShares.
      */
+    @java.lang.Override
     public long getTotalShares() {
       return totalShares_;
     }
@@ -6220,6 +6116,7 @@ public final class ProfitContract {
                   com.google.protobuf.WireFormat.FieldType.SINT64,
                   0L);
     }
+    @SuppressWarnings("serial")
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.Long> amountsMap_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
@@ -6230,7 +6127,6 @@ public final class ProfitContract {
       }
       return amountsMap_;
     }
-
     public int getAmountsMapCount() {
       return internalGetAmountsMap().getMap().size();
     }
@@ -6241,15 +6137,16 @@ public final class ProfitContract {
      *
      * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
      */
-
+    @java.lang.Override
     public boolean containsAmountsMap(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetAmountsMap().getMap().containsKey(key);
     }
     /**
      * Use {@link #getAmountsMapMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.Long> getAmountsMap() {
       return getAmountsMapMap();
@@ -6261,7 +6158,7 @@ public final class ProfitContract {
      *
      * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
      */
-
+    @java.lang.Override
     public java.util.Map<java.lang.String, java.lang.Long> getAmountsMapMap() {
       return internalGetAmountsMap().getMap();
     }
@@ -6272,11 +6169,11 @@ public final class ProfitContract {
      *
      * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
      */
-
+    @java.lang.Override
     public long getAmountsMapOrDefault(
         java.lang.String key,
         long defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Long> map =
           internalGetAmountsMap().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -6288,10 +6185,10 @@ public final class ProfitContract {
      *
      * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
      */
-
+    @java.lang.Override
     public long getAmountsMapOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.Long> map =
           internalGetAmountsMap().getMap();
       if (!map.containsKey(key)) {
@@ -6301,7 +6198,7 @@ public final class ProfitContract {
     }
 
     public static final int IS_RELEASED_FIELD_NUMBER = 3;
-    private boolean isReleased_;
+    private boolean isReleased_ = false;
     /**
      * <pre>
      * Whether released.
@@ -6310,6 +6207,7 @@ public final class ProfitContract {
      * <code>bool is_released = 3;</code>
      * @return The isReleased.
      */
+    @java.lang.Override
     public boolean getIsReleased() {
       return isReleased_;
     }
@@ -6340,7 +6238,7 @@ public final class ProfitContract {
       if (isReleased_ != false) {
         output.writeBool(3, isReleased_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -6367,7 +6265,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(3, isReleased_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -6388,7 +6286,7 @@ public final class ProfitContract {
           other.internalGetAmountsMap())) return false;
       if (getIsReleased()
           != other.getIsReleased()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -6409,7 +6307,7 @@ public final class ProfitContract {
       hash = (37 * hash) + IS_RELEASED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsReleased());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -6548,27 +6446,21 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         totalShares_ = 0L;
-
         internalGetMutableAmountsMap().clear();
         isReleased_ = false;
-
         return this;
       }
 
@@ -6595,13 +6487,23 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo result = new io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo(this);
-        int from_bitField0_ = bitField0_;
-        result.totalShares_ = totalShares_;
-        result.amountsMap_ = internalGetAmountsMap();
-        result.amountsMap_.makeImmutable();
-        result.isReleased_ = isReleased_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.totalShares_ = totalShares_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.amountsMap_ = internalGetAmountsMap();
+          result.amountsMap_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.isReleased_ = isReleased_;
+        }
       }
 
       @java.lang.Override
@@ -6653,10 +6555,11 @@ public final class ProfitContract {
         }
         internalGetMutableAmountsMap().mergeFrom(
             other.internalGetAmountsMap());
+        bitField0_ |= 0x00000002;
         if (other.getIsReleased() != false) {
           setIsReleased(other.getIsReleased());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -6671,17 +6574,49 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                totalShares_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Long>
+                amountsMap__ = input.readMessage(
+                    AmountsMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableAmountsMap().getMutableMap().put(
+                    amountsMap__.getKey(), amountsMap__.getValue());
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                isReleased_ = input.readBool();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.DistributedProfitsInfo) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -6695,6 +6630,7 @@ public final class ProfitContract {
        * <code>int64 total_shares = 1;</code>
        * @return The totalShares.
        */
+      @java.lang.Override
       public long getTotalShares() {
         return totalShares_;
       }
@@ -6710,6 +6646,7 @@ public final class ProfitContract {
       public Builder setTotalShares(long value) {
         
         totalShares_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -6722,7 +6659,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearTotalShares() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         totalShares_ = 0L;
         onChanged();
         return this;
@@ -6731,7 +6668,7 @@ public final class ProfitContract {
       private com.google.protobuf.MapField<
           java.lang.String, java.lang.Long> amountsMap_;
       private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
-      internalGetAmountsMap() {
+          internalGetAmountsMap() {
         if (amountsMap_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
               AmountsMapDefaultEntryHolder.defaultEntry);
@@ -6739,8 +6676,7 @@ public final class ProfitContract {
         return amountsMap_;
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.Long>
-      internalGetMutableAmountsMap() {
-        onChanged();;
+          internalGetMutableAmountsMap() {
         if (amountsMap_ == null) {
           amountsMap_ = com.google.protobuf.MapField.newMapField(
               AmountsMapDefaultEntryHolder.defaultEntry);
@@ -6748,9 +6684,10 @@ public final class ProfitContract {
         if (!amountsMap_.isMutable()) {
           amountsMap_ = amountsMap_.copy();
         }
+        bitField0_ |= 0x00000002;
+        onChanged();
         return amountsMap_;
       }
-
       public int getAmountsMapCount() {
         return internalGetAmountsMap().getMap().size();
       }
@@ -6761,15 +6698,16 @@ public final class ProfitContract {
        *
        * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
        */
-
+      @java.lang.Override
       public boolean containsAmountsMap(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         return internalGetAmountsMap().getMap().containsKey(key);
       }
       /**
        * Use {@link #getAmountsMapMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Long> getAmountsMap() {
         return getAmountsMapMap();
@@ -6781,7 +6719,7 @@ public final class ProfitContract {
        *
        * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
        */
-
+      @java.lang.Override
       public java.util.Map<java.lang.String, java.lang.Long> getAmountsMapMap() {
         return internalGetAmountsMap().getMap();
       }
@@ -6792,11 +6730,11 @@ public final class ProfitContract {
        *
        * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
        */
-
+      @java.lang.Override
       public long getAmountsMapOrDefault(
           java.lang.String key,
           long defaultValue) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Long> map =
             internalGetAmountsMap().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -6808,10 +6746,10 @@ public final class ProfitContract {
        *
        * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
        */
-
+      @java.lang.Override
       public long getAmountsMapOrThrow(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         java.util.Map<java.lang.String, java.lang.Long> map =
             internalGetAmountsMap().getMap();
         if (!map.containsKey(key)) {
@@ -6819,8 +6757,8 @@ public final class ProfitContract {
         }
         return map.get(key);
       }
-
       public Builder clearAmountsMap() {
+        bitField0_ = (bitField0_ & ~0x00000002);
         internalGetMutableAmountsMap().getMutableMap()
             .clear();
         return this;
@@ -6832,10 +6770,9 @@ public final class ProfitContract {
        *
        * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
        */
-
       public Builder removeAmountsMap(
           java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         internalGetMutableAmountsMap().getMutableMap()
             .remove(key);
         return this;
@@ -6845,7 +6782,8 @@ public final class ProfitContract {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Long>
-      getMutableAmountsMap() {
+          getMutableAmountsMap() {
+        bitField0_ |= 0x00000002;
         return internalGetMutableAmountsMap().getMutableMap();
       }
       /**
@@ -6858,10 +6796,11 @@ public final class ProfitContract {
       public Builder putAmountsMap(
           java.lang.String key,
           long value) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (key == null) { throw new NullPointerException("map key"); }
         
         internalGetMutableAmountsMap().getMutableMap()
             .put(key, value);
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -6871,11 +6810,11 @@ public final class ProfitContract {
        *
        * <code>map&lt;string, sint64&gt; amounts_map = 2;</code>
        */
-
       public Builder putAllAmountsMap(
           java.util.Map<java.lang.String, java.lang.Long> values) {
         internalGetMutableAmountsMap().getMutableMap()
             .putAll(values);
+        bitField0_ |= 0x00000002;
         return this;
       }
 
@@ -6888,6 +6827,7 @@ public final class ProfitContract {
        * <code>bool is_released = 3;</code>
        * @return The isReleased.
        */
+      @java.lang.Override
       public boolean getIsReleased() {
         return isReleased_;
       }
@@ -6903,6 +6843,7 @@ public final class ProfitContract {
       public Builder setIsReleased(boolean value) {
         
         isReleased_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -6915,7 +6856,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearIsReleased() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         isReleased_ = false;
         onChanged();
         return this;
@@ -6953,7 +6894,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new DistributedProfitsInfo(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -7034,7 +6986,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code GetProfitDetailsInput}
    */
-  public  static final class GetProfitDetailsInput extends
+  public static final class GetProfitDetailsInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:GetProfitDetailsInput)
       GetProfitDetailsInputOrBuilder {
@@ -7057,69 +7009,6 @@ public final class ProfitContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private GetProfitDetailsInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (schemeId_ != null) {
-                subBuilder = schemeId_.toBuilder();
-              }
-              schemeId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(schemeId_);
-                schemeId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (beneficiary_ != null) {
-                subBuilder = beneficiary_.toBuilder();
-              }
-              beneficiary_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(beneficiary_);
-                beneficiary_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -7144,6 +7033,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return Whether the schemeId field is set.
      */
+    @java.lang.Override
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
@@ -7155,6 +7045,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return The schemeId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
@@ -7165,8 +7056,9 @@ public final class ProfitContract {
      *
      * <code>.Hash scheme_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getSchemeIdOrBuilder() {
-      return getSchemeId();
+      return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
 
     public static final int BENEFICIARY_FIELD_NUMBER = 2;
@@ -7179,6 +7071,7 @@ public final class ProfitContract {
      * <code>.Address beneficiary = 2;</code>
      * @return Whether the beneficiary field is set.
      */
+    @java.lang.Override
     public boolean hasBeneficiary() {
       return beneficiary_ != null;
     }
@@ -7190,6 +7083,7 @@ public final class ProfitContract {
      * <code>.Address beneficiary = 2;</code>
      * @return The beneficiary.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getBeneficiary() {
       return beneficiary_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : beneficiary_;
     }
@@ -7200,8 +7094,9 @@ public final class ProfitContract {
      *
      * <code>.Address beneficiary = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getBeneficiaryOrBuilder() {
-      return getBeneficiary();
+      return beneficiary_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : beneficiary_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7224,7 +7119,7 @@ public final class ProfitContract {
       if (beneficiary_ != null) {
         output.writeMessage(2, getBeneficiary());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -7241,7 +7136,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getBeneficiary());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -7266,7 +7161,7 @@ public final class ProfitContract {
         if (!getBeneficiary()
             .equals(other.getBeneficiary())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -7285,7 +7180,7 @@ public final class ProfitContract {
         hash = (37 * hash) + BENEFICIARY_FIELD_NUMBER;
         hash = (53 * hash) + getBeneficiary().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -7402,32 +7297,26 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.GetProfitDetailsInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-        } else {
-          schemeId_ = null;
+        bitField0_ = 0;
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
-        if (beneficiaryBuilder_ == null) {
-          beneficiary_ = null;
-        } else {
-          beneficiary_ = null;
+        beneficiary_ = null;
+        if (beneficiaryBuilder_ != null) {
+          beneficiaryBuilder_.dispose();
           beneficiaryBuilder_ = null;
         }
         return this;
@@ -7456,18 +7345,23 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.GetProfitDetailsInput buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.GetProfitDetailsInput result = new io.aelf.protobuf.generated.ProfitContract.GetProfitDetailsInput(this);
-        if (schemeIdBuilder_ == null) {
-          result.schemeId_ = schemeId_;
-        } else {
-          result.schemeId_ = schemeIdBuilder_.build();
-        }
-        if (beneficiaryBuilder_ == null) {
-          result.beneficiary_ = beneficiary_;
-        } else {
-          result.beneficiary_ = beneficiaryBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.GetProfitDetailsInput result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.schemeId_ = schemeIdBuilder_ == null
+              ? schemeId_
+              : schemeIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.beneficiary_ = beneficiaryBuilder_ == null
+              ? beneficiary_
+              : beneficiaryBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -7520,7 +7414,7 @@ public final class ProfitContract {
         if (other.hasBeneficiary()) {
           mergeBeneficiary(other.getBeneficiary());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -7535,19 +7429,47 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.GetProfitDetailsInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getSchemeIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getBeneficiaryFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.GetProfitDetailsInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash schemeId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -7561,7 +7483,7 @@ public final class ProfitContract {
        * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
-        return schemeIdBuilder_ != null || schemeId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -7591,11 +7513,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           schemeId_ = value;
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -7609,11 +7531,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (schemeIdBuilder_ == null) {
           schemeId_ = builderForValue.build();
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -7625,17 +7547,18 @@ public final class ProfitContract {
        */
       public Builder mergeSchemeId(io.aelf.protobuf.generated.Client.Hash value) {
         if (schemeIdBuilder_ == null) {
-          if (schemeId_ != null) {
-            schemeId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(schemeId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            schemeId_ != null &&
+            schemeId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getSchemeIdBuilder().mergeFrom(value);
           } else {
             schemeId_ = value;
           }
-          onChanged();
         } else {
           schemeIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -7646,14 +7569,13 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public Builder clearSchemeId() {
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-          onChanged();
-        } else {
-          schemeId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -7664,7 +7586,7 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getSchemeIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getSchemeIdFieldBuilder().getBuilder();
       }
@@ -7716,7 +7638,7 @@ public final class ProfitContract {
        * @return Whether the beneficiary field is set.
        */
       public boolean hasBeneficiary() {
-        return beneficiaryBuilder_ != null || beneficiary_ != null;
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -7746,11 +7668,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           beneficiary_ = value;
-          onChanged();
         } else {
           beneficiaryBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -7764,11 +7686,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (beneficiaryBuilder_ == null) {
           beneficiary_ = builderForValue.build();
-          onChanged();
         } else {
           beneficiaryBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -7780,17 +7702,18 @@ public final class ProfitContract {
        */
       public Builder mergeBeneficiary(io.aelf.protobuf.generated.Client.Address value) {
         if (beneficiaryBuilder_ == null) {
-          if (beneficiary_ != null) {
-            beneficiary_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(beneficiary_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000002) != 0) &&
+            beneficiary_ != null &&
+            beneficiary_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getBeneficiaryBuilder().mergeFrom(value);
           } else {
             beneficiary_ = value;
           }
-          onChanged();
         } else {
           beneficiaryBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -7801,14 +7724,13 @@ public final class ProfitContract {
        * <code>.Address beneficiary = 2;</code>
        */
       public Builder clearBeneficiary() {
-        if (beneficiaryBuilder_ == null) {
-          beneficiary_ = null;
-          onChanged();
-        } else {
-          beneficiary_ = null;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        beneficiary_ = null;
+        if (beneficiaryBuilder_ != null) {
+          beneficiaryBuilder_.dispose();
           beneficiaryBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -7819,7 +7741,7 @@ public final class ProfitContract {
        * <code>.Address beneficiary = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getBeneficiaryBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getBeneficiaryFieldBuilder().getBuilder();
       }
@@ -7891,7 +7813,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetProfitDetailsInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -7962,7 +7895,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code ProfitDetails}
    */
-  public  static final class ProfitDetails extends
+  public static final class ProfitDetails extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ProfitDetails)
       ProfitDetailsOrBuilder {
@@ -7987,56 +7920,6 @@ public final class ProfitContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ProfitDetails(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                details_ = new java.util.ArrayList<io.aelf.protobuf.generated.ProfitContract.ProfitDetail>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              details_.add(
-                  input.readMessage(io.aelf.protobuf.generated.ProfitContract.ProfitDetail.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          details_ = java.util.Collections.unmodifiableList(details_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ProfitContract.internal_static_ProfitDetails_descriptor;
@@ -8051,6 +7934,7 @@ public final class ProfitContract {
     }
 
     public static final int DETAILS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.ProfitContract.ProfitDetail> details_;
     /**
      * <pre>
@@ -8059,6 +7943,7 @@ public final class ProfitContract {
      *
      * <code>repeated .ProfitDetail details = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.ProfitContract.ProfitDetail> getDetailsList() {
       return details_;
     }
@@ -8069,6 +7954,7 @@ public final class ProfitContract {
      *
      * <code>repeated .ProfitDetail details = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.ProfitContract.ProfitDetailOrBuilder> 
         getDetailsOrBuilderList() {
       return details_;
@@ -8080,6 +7966,7 @@ public final class ProfitContract {
      *
      * <code>repeated .ProfitDetail details = 1;</code>
      */
+    @java.lang.Override
     public int getDetailsCount() {
       return details_.size();
     }
@@ -8090,6 +7977,7 @@ public final class ProfitContract {
      *
      * <code>repeated .ProfitDetail details = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.ProfitContract.ProfitDetail getDetails(int index) {
       return details_.get(index);
     }
@@ -8100,6 +7988,7 @@ public final class ProfitContract {
      *
      * <code>repeated .ProfitDetail details = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.ProfitContract.ProfitDetailOrBuilder getDetailsOrBuilder(
         int index) {
       return details_.get(index);
@@ -8122,7 +8011,7 @@ public final class ProfitContract {
       for (int i = 0; i < details_.size(); i++) {
         output.writeMessage(1, details_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -8135,7 +8024,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, details_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -8152,7 +8041,7 @@ public final class ProfitContract {
 
       if (!getDetailsList()
           .equals(other.getDetailsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -8167,7 +8056,7 @@ public final class ProfitContract {
         hash = (37 * hash) + DETAILS_FIELD_NUMBER;
         hash = (53 * hash) + getDetailsList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -8284,29 +8173,25 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.ProfitDetails.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getDetailsFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (detailsBuilder_ == null) {
           details_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          details_ = null;
           detailsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -8333,7 +8218,13 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.ProfitDetails buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.ProfitDetails result = new io.aelf.protobuf.generated.ProfitContract.ProfitDetails(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.ProfitContract.ProfitDetails result) {
         if (detailsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             details_ = java.util.Collections.unmodifiableList(details_);
@@ -8343,8 +8234,10 @@ public final class ProfitContract {
         } else {
           result.details_ = detailsBuilder_.build();
         }
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.ProfitDetails result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -8417,7 +8310,7 @@ public final class ProfitContract {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -8432,17 +8325,43 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.ProfitDetails parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                io.aelf.protobuf.generated.ProfitContract.ProfitDetail m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.ProfitContract.ProfitDetail.parser(),
+                        extensionRegistry);
+                if (detailsBuilder_ == null) {
+                  ensureDetailsIsMutable();
+                  details_.add(m);
+                } else {
+                  detailsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.ProfitDetails) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -8791,7 +8710,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProfitDetails(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -8868,7 +8798,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code ProfitDetail}
    */
-  public  static final class ProfitDetail extends
+  public static final class ProfitDetail extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ProfitDetail)
       ProfitDetailOrBuilder {
@@ -8892,68 +8822,6 @@ public final class ProfitContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ProfitDetail(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              startPeriod_ = input.readInt64();
-              break;
-            }
-            case 16: {
-
-              endPeriod_ = input.readInt64();
-              break;
-            }
-            case 24: {
-
-              shares_ = input.readInt64();
-              break;
-            }
-            case 32: {
-
-              lastProfitPeriod_ = input.readInt64();
-              break;
-            }
-            case 40: {
-
-              isWeightRemoved_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ProfitContract.internal_static_ProfitDetail_descriptor;
@@ -8968,7 +8836,7 @@ public final class ProfitContract {
     }
 
     public static final int START_PERIOD_FIELD_NUMBER = 1;
-    private long startPeriod_;
+    private long startPeriod_ = 0L;
     /**
      * <pre>
      * The start period number.
@@ -8977,12 +8845,13 @@ public final class ProfitContract {
      * <code>int64 start_period = 1;</code>
      * @return The startPeriod.
      */
+    @java.lang.Override
     public long getStartPeriod() {
       return startPeriod_;
     }
 
     public static final int END_PERIOD_FIELD_NUMBER = 2;
-    private long endPeriod_;
+    private long endPeriod_ = 0L;
     /**
      * <pre>
      * The end period number.
@@ -8991,12 +8860,13 @@ public final class ProfitContract {
      * <code>int64 end_period = 2;</code>
      * @return The endPeriod.
      */
+    @java.lang.Override
     public long getEndPeriod() {
       return endPeriod_;
     }
 
     public static final int SHARES_FIELD_NUMBER = 3;
-    private long shares_;
+    private long shares_ = 0L;
     /**
      * <pre>
      * The weight of the proceeds on the current period of the scheme.
@@ -9005,12 +8875,13 @@ public final class ProfitContract {
      * <code>int64 shares = 3;</code>
      * @return The shares.
      */
+    @java.lang.Override
     public long getShares() {
       return shares_;
     }
 
     public static final int LAST_PROFIT_PERIOD_FIELD_NUMBER = 4;
-    private long lastProfitPeriod_;
+    private long lastProfitPeriod_ = 0L;
     /**
      * <pre>
      * The last period number that the beneficiary received the profit.
@@ -9019,12 +8890,13 @@ public final class ProfitContract {
      * <code>int64 last_profit_period = 4;</code>
      * @return The lastProfitPeriod.
      */
+    @java.lang.Override
     public long getLastProfitPeriod() {
       return lastProfitPeriod_;
     }
 
     public static final int IS_WEIGHT_REMOVED_FIELD_NUMBER = 5;
-    private boolean isWeightRemoved_;
+    private boolean isWeightRemoved_ = false;
     /**
      * <pre>
      * Whether the weight  has been removed.
@@ -9033,6 +8905,7 @@ public final class ProfitContract {
      * <code>bool is_weight_removed = 5;</code>
      * @return The isWeightRemoved.
      */
+    @java.lang.Override
     public boolean getIsWeightRemoved() {
       return isWeightRemoved_;
     }
@@ -9066,7 +8939,7 @@ public final class ProfitContract {
       if (isWeightRemoved_ != false) {
         output.writeBool(5, isWeightRemoved_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -9095,7 +8968,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, isWeightRemoved_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -9120,7 +8993,7 @@ public final class ProfitContract {
           != other.getLastProfitPeriod()) return false;
       if (getIsWeightRemoved()
           != other.getIsWeightRemoved()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -9146,7 +9019,7 @@ public final class ProfitContract {
       hash = (37 * hash) + IS_WEIGHT_REMOVED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsWeightRemoved());
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -9263,32 +9136,23 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.ProfitDetail.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         startPeriod_ = 0L;
-
         endPeriod_ = 0L;
-
         shares_ = 0L;
-
         lastProfitPeriod_ = 0L;
-
         isWeightRemoved_ = false;
-
         return this;
       }
 
@@ -9315,13 +9179,28 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.ProfitDetail buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.ProfitDetail result = new io.aelf.protobuf.generated.ProfitContract.ProfitDetail(this);
-        result.startPeriod_ = startPeriod_;
-        result.endPeriod_ = endPeriod_;
-        result.shares_ = shares_;
-        result.lastProfitPeriod_ = lastProfitPeriod_;
-        result.isWeightRemoved_ = isWeightRemoved_;
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.ProfitDetail result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.startPeriod_ = startPeriod_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.endPeriod_ = endPeriod_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.shares_ = shares_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.lastProfitPeriod_ = lastProfitPeriod_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.isWeightRemoved_ = isWeightRemoved_;
+        }
       }
 
       @java.lang.Override
@@ -9383,7 +9262,7 @@ public final class ProfitContract {
         if (other.getIsWeightRemoved() != false) {
           setIsWeightRemoved(other.getIsWeightRemoved());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -9398,19 +9277,58 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.ProfitDetail parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                startPeriod_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                endPeriod_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                shares_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                lastProfitPeriod_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                isWeightRemoved_ = input.readBool();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.ProfitDetail) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private long startPeriod_ ;
       /**
@@ -9421,6 +9339,7 @@ public final class ProfitContract {
        * <code>int64 start_period = 1;</code>
        * @return The startPeriod.
        */
+      @java.lang.Override
       public long getStartPeriod() {
         return startPeriod_;
       }
@@ -9436,6 +9355,7 @@ public final class ProfitContract {
       public Builder setStartPeriod(long value) {
         
         startPeriod_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -9448,7 +9368,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearStartPeriod() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         startPeriod_ = 0L;
         onChanged();
         return this;
@@ -9463,6 +9383,7 @@ public final class ProfitContract {
        * <code>int64 end_period = 2;</code>
        * @return The endPeriod.
        */
+      @java.lang.Override
       public long getEndPeriod() {
         return endPeriod_;
       }
@@ -9478,6 +9399,7 @@ public final class ProfitContract {
       public Builder setEndPeriod(long value) {
         
         endPeriod_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -9490,7 +9412,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearEndPeriod() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         endPeriod_ = 0L;
         onChanged();
         return this;
@@ -9505,6 +9427,7 @@ public final class ProfitContract {
        * <code>int64 shares = 3;</code>
        * @return The shares.
        */
+      @java.lang.Override
       public long getShares() {
         return shares_;
       }
@@ -9520,6 +9443,7 @@ public final class ProfitContract {
       public Builder setShares(long value) {
         
         shares_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -9532,7 +9456,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearShares() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         shares_ = 0L;
         onChanged();
         return this;
@@ -9547,6 +9471,7 @@ public final class ProfitContract {
        * <code>int64 last_profit_period = 4;</code>
        * @return The lastProfitPeriod.
        */
+      @java.lang.Override
       public long getLastProfitPeriod() {
         return lastProfitPeriod_;
       }
@@ -9562,6 +9487,7 @@ public final class ProfitContract {
       public Builder setLastProfitPeriod(long value) {
         
         lastProfitPeriod_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -9574,7 +9500,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearLastProfitPeriod() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         lastProfitPeriod_ = 0L;
         onChanged();
         return this;
@@ -9589,6 +9515,7 @@ public final class ProfitContract {
        * <code>bool is_weight_removed = 5;</code>
        * @return The isWeightRemoved.
        */
+      @java.lang.Override
       public boolean getIsWeightRemoved() {
         return isWeightRemoved_;
       }
@@ -9604,6 +9531,7 @@ public final class ProfitContract {
       public Builder setIsWeightRemoved(boolean value) {
         
         isWeightRemoved_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -9616,7 +9544,7 @@ public final class ProfitContract {
        * @return This builder for chaining.
        */
       public Builder clearIsWeightRemoved() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         isWeightRemoved_ = false;
         onChanged();
         return this;
@@ -9654,7 +9582,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProfitDetail(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -9735,7 +9674,7 @@ public final class ProfitContract {
   /**
    * Protobuf type {@code ClaimProfitsInput}
    */
-  public  static final class ClaimProfitsInput extends
+  public static final class ClaimProfitsInput extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ClaimProfitsInput)
       ClaimProfitsInputOrBuilder {
@@ -9758,69 +9697,6 @@ public final class ProfitContract {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
-    }
-    private ClaimProfitsInput(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (schemeId_ != null) {
-                subBuilder = schemeId_.toBuilder();
-              }
-              schemeId_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(schemeId_);
-                schemeId_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (beneficiary_ != null) {
-                subBuilder = beneficiary_.toBuilder();
-              }
-              beneficiary_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(beneficiary_);
-                beneficiary_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -9845,6 +9721,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return Whether the schemeId field is set.
      */
+    @java.lang.Override
     public boolean hasSchemeId() {
       return schemeId_ != null;
     }
@@ -9856,6 +9733,7 @@ public final class ProfitContract {
      * <code>.Hash scheme_id = 1;</code>
      * @return The schemeId.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getSchemeId() {
       return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
@@ -9866,8 +9744,9 @@ public final class ProfitContract {
      *
      * <code>.Hash scheme_id = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getSchemeIdOrBuilder() {
-      return getSchemeId();
+      return schemeId_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : schemeId_;
     }
 
     public static final int BENEFICIARY_FIELD_NUMBER = 2;
@@ -9880,6 +9759,7 @@ public final class ProfitContract {
      * <code>.Address beneficiary = 2;</code>
      * @return Whether the beneficiary field is set.
      */
+    @java.lang.Override
     public boolean hasBeneficiary() {
       return beneficiary_ != null;
     }
@@ -9891,6 +9771,7 @@ public final class ProfitContract {
      * <code>.Address beneficiary = 2;</code>
      * @return The beneficiary.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getBeneficiary() {
       return beneficiary_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : beneficiary_;
     }
@@ -9901,8 +9782,9 @@ public final class ProfitContract {
      *
      * <code>.Address beneficiary = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getBeneficiaryOrBuilder() {
-      return getBeneficiary();
+      return beneficiary_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : beneficiary_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9925,7 +9807,7 @@ public final class ProfitContract {
       if (beneficiary_ != null) {
         output.writeMessage(2, getBeneficiary());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -9942,7 +9824,7 @@ public final class ProfitContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getBeneficiary());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -9967,7 +9849,7 @@ public final class ProfitContract {
         if (!getBeneficiary()
             .equals(other.getBeneficiary())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -9986,7 +9868,7 @@ public final class ProfitContract {
         hash = (37 * hash) + BENEFICIARY_FIELD_NUMBER;
         hash = (53 * hash) + getBeneficiary().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -10103,32 +9985,26 @@ public final class ProfitContract {
 
       // Construct using io.aelf.protobuf.generated.ProfitContract.ClaimProfitsInput.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-        } else {
-          schemeId_ = null;
+        bitField0_ = 0;
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
-        if (beneficiaryBuilder_ == null) {
-          beneficiary_ = null;
-        } else {
-          beneficiary_ = null;
+        beneficiary_ = null;
+        if (beneficiaryBuilder_ != null) {
+          beneficiaryBuilder_.dispose();
           beneficiaryBuilder_ = null;
         }
         return this;
@@ -10157,18 +10033,23 @@ public final class ProfitContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ProfitContract.ClaimProfitsInput buildPartial() {
         io.aelf.protobuf.generated.ProfitContract.ClaimProfitsInput result = new io.aelf.protobuf.generated.ProfitContract.ClaimProfitsInput(this);
-        if (schemeIdBuilder_ == null) {
-          result.schemeId_ = schemeId_;
-        } else {
-          result.schemeId_ = schemeIdBuilder_.build();
-        }
-        if (beneficiaryBuilder_ == null) {
-          result.beneficiary_ = beneficiary_;
-        } else {
-          result.beneficiary_ = beneficiaryBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ProfitContract.ClaimProfitsInput result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.schemeId_ = schemeIdBuilder_ == null
+              ? schemeId_
+              : schemeIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.beneficiary_ = beneficiaryBuilder_ == null
+              ? beneficiary_
+              : beneficiaryBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -10221,7 +10102,7 @@ public final class ProfitContract {
         if (other.hasBeneficiary()) {
           mergeBeneficiary(other.getBeneficiary());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -10236,19 +10117,47 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ProfitContract.ClaimProfitsInput parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getSchemeIdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getBeneficiaryFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ProfitContract.ClaimProfitsInput) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.Hash schemeId_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -10262,7 +10171,7 @@ public final class ProfitContract {
        * @return Whether the schemeId field is set.
        */
       public boolean hasSchemeId() {
-        return schemeIdBuilder_ != null || schemeId_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -10292,11 +10201,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           schemeId_ = value;
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -10310,11 +10219,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (schemeIdBuilder_ == null) {
           schemeId_ = builderForValue.build();
-          onChanged();
         } else {
           schemeIdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -10326,17 +10235,18 @@ public final class ProfitContract {
        */
       public Builder mergeSchemeId(io.aelf.protobuf.generated.Client.Hash value) {
         if (schemeIdBuilder_ == null) {
-          if (schemeId_ != null) {
-            schemeId_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(schemeId_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            schemeId_ != null &&
+            schemeId_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getSchemeIdBuilder().mergeFrom(value);
           } else {
             schemeId_ = value;
           }
-          onChanged();
         } else {
           schemeIdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -10347,14 +10257,13 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public Builder clearSchemeId() {
-        if (schemeIdBuilder_ == null) {
-          schemeId_ = null;
-          onChanged();
-        } else {
-          schemeId_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        schemeId_ = null;
+        if (schemeIdBuilder_ != null) {
+          schemeIdBuilder_.dispose();
           schemeIdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -10365,7 +10274,7 @@ public final class ProfitContract {
        * <code>.Hash scheme_id = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getSchemeIdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getSchemeIdFieldBuilder().getBuilder();
       }
@@ -10417,7 +10326,7 @@ public final class ProfitContract {
        * @return Whether the beneficiary field is set.
        */
       public boolean hasBeneficiary() {
-        return beneficiaryBuilder_ != null || beneficiary_ != null;
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -10447,11 +10356,11 @@ public final class ProfitContract {
             throw new NullPointerException();
           }
           beneficiary_ = value;
-          onChanged();
         } else {
           beneficiaryBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -10465,11 +10374,11 @@ public final class ProfitContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (beneficiaryBuilder_ == null) {
           beneficiary_ = builderForValue.build();
-          onChanged();
         } else {
           beneficiaryBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -10481,17 +10390,18 @@ public final class ProfitContract {
        */
       public Builder mergeBeneficiary(io.aelf.protobuf.generated.Client.Address value) {
         if (beneficiaryBuilder_ == null) {
-          if (beneficiary_ != null) {
-            beneficiary_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(beneficiary_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000002) != 0) &&
+            beneficiary_ != null &&
+            beneficiary_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getBeneficiaryBuilder().mergeFrom(value);
           } else {
             beneficiary_ = value;
           }
-          onChanged();
         } else {
           beneficiaryBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -10502,14 +10412,13 @@ public final class ProfitContract {
        * <code>.Address beneficiary = 2;</code>
        */
       public Builder clearBeneficiary() {
-        if (beneficiaryBuilder_ == null) {
-          beneficiary_ = null;
-          onChanged();
-        } else {
-          beneficiary_ = null;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        beneficiary_ = null;
+        if (beneficiaryBuilder_ != null) {
+          beneficiaryBuilder_.dispose();
           beneficiaryBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -10520,7 +10429,7 @@ public final class ProfitContract {
        * <code>.Address beneficiary = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getBeneficiaryBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getBeneficiaryFieldBuilder().getBuilder();
       }
@@ -10592,7 +10501,18 @@ public final class ProfitContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClaimProfitsInput(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

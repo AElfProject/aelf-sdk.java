@@ -69,7 +69,7 @@ public final class ParliamentAuthContract {
    *
    * Protobuf type {@code ProposalIdList}
    */
-  public  static final class ProposalIdList extends
+  public static final class ProposalIdList extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:ProposalIdList)
       ProposalIdListOrBuilder {
@@ -94,56 +94,6 @@ public final class ParliamentAuthContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ProposalIdList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                proposalIds_ = new java.util.ArrayList<io.aelf.protobuf.generated.Client.Hash>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              proposalIds_.add(
-                  input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          proposalIds_ = java.util.Collections.unmodifiableList(proposalIds_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ParliamentAuthContract.internal_static_ProposalIdList_descriptor;
@@ -158,6 +108,7 @@ public final class ParliamentAuthContract {
     }
 
     public static final int PROPOSAL_IDS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<io.aelf.protobuf.generated.Client.Hash> proposalIds_;
     /**
      * <pre>
@@ -166,6 +117,7 @@ public final class ParliamentAuthContract {
      *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.aelf.protobuf.generated.Client.Hash> getProposalIdsList() {
       return proposalIds_;
     }
@@ -176,6 +128,7 @@ public final class ParliamentAuthContract {
      *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.aelf.protobuf.generated.Client.HashOrBuilder> 
         getProposalIdsOrBuilderList() {
       return proposalIds_;
@@ -187,6 +140,7 @@ public final class ParliamentAuthContract {
      *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
+    @java.lang.Override
     public int getProposalIdsCount() {
       return proposalIds_.size();
     }
@@ -197,6 +151,7 @@ public final class ParliamentAuthContract {
      *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getProposalIds(int index) {
       return proposalIds_.get(index);
     }
@@ -207,6 +162,7 @@ public final class ParliamentAuthContract {
      *
      * <code>repeated .Hash proposal_ids = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getProposalIdsOrBuilder(
         int index) {
       return proposalIds_.get(index);
@@ -229,7 +185,7 @@ public final class ParliamentAuthContract {
       for (int i = 0; i < proposalIds_.size(); i++) {
         output.writeMessage(1, proposalIds_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -242,7 +198,7 @@ public final class ParliamentAuthContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, proposalIds_.get(i));
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -259,7 +215,7 @@ public final class ParliamentAuthContract {
 
       if (!getProposalIdsList()
           .equals(other.getProposalIdsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -274,7 +230,7 @@ public final class ParliamentAuthContract {
         hash = (37 * hash) + PROPOSAL_IDS_FIELD_NUMBER;
         hash = (53 * hash) + getProposalIdsList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -395,29 +351,25 @@ public final class ParliamentAuthContract {
 
       // Construct using io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getProposalIdsFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         if (proposalIdsBuilder_ == null) {
           proposalIds_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
+          proposalIds_ = null;
           proposalIdsBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -444,7 +396,13 @@ public final class ParliamentAuthContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList buildPartial() {
         io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList result = new io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList result) {
         if (proposalIdsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             proposalIds_ = java.util.Collections.unmodifiableList(proposalIds_);
@@ -454,8 +412,10 @@ public final class ParliamentAuthContract {
         } else {
           result.proposalIds_ = proposalIdsBuilder_.build();
         }
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -528,7 +488,7 @@ public final class ParliamentAuthContract {
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -543,17 +503,43 @@ public final class ParliamentAuthContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                io.aelf.protobuf.generated.Client.Hash m =
+                    input.readMessage(
+                        io.aelf.protobuf.generated.Client.Hash.parser(),
+                        extensionRegistry);
+                if (proposalIdsBuilder_ == null) {
+                  ensureProposalIdsIsMutable();
+                  proposalIds_.add(m);
+                } else {
+                  proposalIdsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ParliamentAuthContract.ProposalIdList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -902,7 +888,18 @@ public final class ParliamentAuthContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProposalIdList(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -1057,7 +1054,7 @@ public final class ParliamentAuthContract {
   /**
    * Protobuf type {@code Organization}
    */
-  public  static final class Organization extends
+  public static final class Organization extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:Organization)
       OrganizationOrBuilder {
@@ -1081,105 +1078,6 @@ public final class ParliamentAuthContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Organization(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              proposerAuthorityRequired_ = input.readBool();
-              break;
-            }
-            case 18: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (organizationAddress_ != null) {
-                subBuilder = organizationAddress_.toBuilder();
-              }
-              organizationAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(organizationAddress_);
-                organizationAddress_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 26: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (organizationHash_ != null) {
-                subBuilder = organizationHash_.toBuilder();
-              }
-              organizationHash_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(organizationHash_);
-                organizationHash_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 34: {
-              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder subBuilder = null;
-              if (proposalReleaseThreshold_ != null) {
-                subBuilder = proposalReleaseThreshold_.toBuilder();
-              }
-              proposalReleaseThreshold_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(proposalReleaseThreshold_);
-                proposalReleaseThreshold_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 40: {
-
-              parliamentMemberProposingAllowed_ = input.readBool();
-              break;
-            }
-            case 50: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (creationToken_ != null) {
-                subBuilder = creationToken_.toBuilder();
-              }
-              creationToken_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(creationToken_);
-                creationToken_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ParliamentAuthContract.internal_static_Organization_descriptor;
@@ -1194,7 +1092,7 @@ public final class ParliamentAuthContract {
     }
 
     public static final int PROPOSER_AUTHORITY_REQUIRED_FIELD_NUMBER = 1;
-    private boolean proposerAuthorityRequired_;
+    private boolean proposerAuthorityRequired_ = false;
     /**
      * <pre>
      * Indicates if proposals need authority to be created.
@@ -1203,6 +1101,7 @@ public final class ParliamentAuthContract {
      * <code>bool proposer_authority_required = 1;</code>
      * @return The proposerAuthorityRequired.
      */
+    @java.lang.Override
     public boolean getProposerAuthorityRequired() {
       return proposerAuthorityRequired_;
     }
@@ -1217,6 +1116,7 @@ public final class ParliamentAuthContract {
      * <code>.Address organization_address = 2;</code>
      * @return Whether the organizationAddress field is set.
      */
+    @java.lang.Override
     public boolean hasOrganizationAddress() {
       return organizationAddress_ != null;
     }
@@ -1228,6 +1128,7 @@ public final class ParliamentAuthContract {
      * <code>.Address organization_address = 2;</code>
      * @return The organizationAddress.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getOrganizationAddress() {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
@@ -1238,8 +1139,9 @@ public final class ParliamentAuthContract {
      *
      * <code>.Address organization_address = 2;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
-      return getOrganizationAddress();
+      return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
 
     public static final int ORGANIZATION_HASH_FIELD_NUMBER = 3;
@@ -1252,6 +1154,7 @@ public final class ParliamentAuthContract {
      * <code>.Hash organization_hash = 3;</code>
      * @return Whether the organizationHash field is set.
      */
+    @java.lang.Override
     public boolean hasOrganizationHash() {
       return organizationHash_ != null;
     }
@@ -1263,6 +1166,7 @@ public final class ParliamentAuthContract {
      * <code>.Hash organization_hash = 3;</code>
      * @return The organizationHash.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getOrganizationHash() {
       return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
     }
@@ -1273,8 +1177,9 @@ public final class ParliamentAuthContract {
      *
      * <code>.Hash organization_hash = 3;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
-      return getOrganizationHash();
+      return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
     }
 
     public static final int PROPOSAL_RELEASE_THRESHOLD_FIELD_NUMBER = 4;
@@ -1287,6 +1192,7 @@ public final class ParliamentAuthContract {
      * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
      * @return Whether the proposalReleaseThreshold field is set.
      */
+    @java.lang.Override
     public boolean hasProposalReleaseThreshold() {
       return proposalReleaseThreshold_ != null;
     }
@@ -1298,6 +1204,7 @@ public final class ParliamentAuthContract {
      * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
      * @return The proposalReleaseThreshold.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
       return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
     }
@@ -1308,12 +1215,13 @@ public final class ParliamentAuthContract {
      *
      * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
-      return getProposalReleaseThreshold();
+      return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
     }
 
     public static final int PARLIAMENT_MEMBER_PROPOSING_ALLOWED_FIELD_NUMBER = 5;
-    private boolean parliamentMemberProposingAllowed_;
+    private boolean parliamentMemberProposingAllowed_ = false;
     /**
      * <pre>
      * Indicates if parliament member can propose to this organization.
@@ -1322,6 +1230,7 @@ public final class ParliamentAuthContract {
      * <code>bool parliament_member_proposing_allowed = 5;</code>
      * @return The parliamentMemberProposingAllowed.
      */
+    @java.lang.Override
     public boolean getParliamentMemberProposingAllowed() {
       return parliamentMemberProposingAllowed_;
     }
@@ -1336,6 +1245,7 @@ public final class ParliamentAuthContract {
      * <code>.Hash creation_token = 6;</code>
      * @return Whether the creationToken field is set.
      */
+    @java.lang.Override
     public boolean hasCreationToken() {
       return creationToken_ != null;
     }
@@ -1347,6 +1257,7 @@ public final class ParliamentAuthContract {
      * <code>.Hash creation_token = 6;</code>
      * @return The creationToken.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
       return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
     }
@@ -1357,8 +1268,9 @@ public final class ParliamentAuthContract {
      *
      * <code>.Hash creation_token = 6;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
-      return getCreationToken();
+      return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1393,7 +1305,7 @@ public final class ParliamentAuthContract {
       if (creationToken_ != null) {
         output.writeMessage(6, getCreationToken());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -1426,7 +1338,7 @@ public final class ParliamentAuthContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getCreationToken());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1465,7 +1377,7 @@ public final class ParliamentAuthContract {
         if (!getCreationToken()
             .equals(other.getCreationToken())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -1498,7 +1410,7 @@ public final class ParliamentAuthContract {
         hash = (37 * hash) + CREATION_TOKEN_FIELD_NUMBER;
         hash = (53 * hash) + getCreationToken().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1615,48 +1527,38 @@ public final class ParliamentAuthContract {
 
       // Construct using io.aelf.protobuf.generated.ParliamentAuthContract.Organization.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         proposerAuthorityRequired_ = false;
-
-        if (organizationAddressBuilder_ == null) {
-          organizationAddress_ = null;
-        } else {
-          organizationAddress_ = null;
+        organizationAddress_ = null;
+        if (organizationAddressBuilder_ != null) {
+          organizationAddressBuilder_.dispose();
           organizationAddressBuilder_ = null;
         }
-        if (organizationHashBuilder_ == null) {
-          organizationHash_ = null;
-        } else {
-          organizationHash_ = null;
+        organizationHash_ = null;
+        if (organizationHashBuilder_ != null) {
+          organizationHashBuilder_.dispose();
           organizationHashBuilder_ = null;
         }
-        if (proposalReleaseThresholdBuilder_ == null) {
-          proposalReleaseThreshold_ = null;
-        } else {
-          proposalReleaseThreshold_ = null;
+        proposalReleaseThreshold_ = null;
+        if (proposalReleaseThresholdBuilder_ != null) {
+          proposalReleaseThresholdBuilder_.dispose();
           proposalReleaseThresholdBuilder_ = null;
         }
         parliamentMemberProposingAllowed_ = false;
-
-        if (creationTokenBuilder_ == null) {
-          creationToken_ = null;
-        } else {
-          creationToken_ = null;
+        creationToken_ = null;
+        if (creationTokenBuilder_ != null) {
+          creationTokenBuilder_.dispose();
           creationTokenBuilder_ = null;
         }
         return this;
@@ -1685,30 +1587,39 @@ public final class ParliamentAuthContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ParliamentAuthContract.Organization buildPartial() {
         io.aelf.protobuf.generated.ParliamentAuthContract.Organization result = new io.aelf.protobuf.generated.ParliamentAuthContract.Organization(this);
-        result.proposerAuthorityRequired_ = proposerAuthorityRequired_;
-        if (organizationAddressBuilder_ == null) {
-          result.organizationAddress_ = organizationAddress_;
-        } else {
-          result.organizationAddress_ = organizationAddressBuilder_.build();
-        }
-        if (organizationHashBuilder_ == null) {
-          result.organizationHash_ = organizationHash_;
-        } else {
-          result.organizationHash_ = organizationHashBuilder_.build();
-        }
-        if (proposalReleaseThresholdBuilder_ == null) {
-          result.proposalReleaseThreshold_ = proposalReleaseThreshold_;
-        } else {
-          result.proposalReleaseThreshold_ = proposalReleaseThresholdBuilder_.build();
-        }
-        result.parliamentMemberProposingAllowed_ = parliamentMemberProposingAllowed_;
-        if (creationTokenBuilder_ == null) {
-          result.creationToken_ = creationToken_;
-        } else {
-          result.creationToken_ = creationTokenBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ParliamentAuthContract.Organization result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.proposerAuthorityRequired_ = proposerAuthorityRequired_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.organizationAddress_ = organizationAddressBuilder_ == null
+              ? organizationAddress_
+              : organizationAddressBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.organizationHash_ = organizationHashBuilder_ == null
+              ? organizationHash_
+              : organizationHashBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.proposalReleaseThreshold_ = proposalReleaseThresholdBuilder_ == null
+              ? proposalReleaseThreshold_
+              : proposalReleaseThresholdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.parliamentMemberProposingAllowed_ = parliamentMemberProposingAllowed_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.creationToken_ = creationTokenBuilder_ == null
+              ? creationToken_
+              : creationTokenBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -1773,7 +1684,7 @@ public final class ParliamentAuthContract {
         if (other.hasCreationToken()) {
           mergeCreationToken(other.getCreationToken());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -1788,19 +1699,71 @@ public final class ParliamentAuthContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ParliamentAuthContract.Organization parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                proposerAuthorityRequired_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                input.readMessage(
+                    getOrganizationAddressFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    getOrganizationHashFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                input.readMessage(
+                    getProposalReleaseThresholdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 40: {
+                parliamentMemberProposingAllowed_ = input.readBool();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              case 50: {
+                input.readMessage(
+                    getCreationTokenFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ParliamentAuthContract.Organization) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private boolean proposerAuthorityRequired_ ;
       /**
@@ -1811,6 +1774,7 @@ public final class ParliamentAuthContract {
        * <code>bool proposer_authority_required = 1;</code>
        * @return The proposerAuthorityRequired.
        */
+      @java.lang.Override
       public boolean getProposerAuthorityRequired() {
         return proposerAuthorityRequired_;
       }
@@ -1826,6 +1790,7 @@ public final class ParliamentAuthContract {
       public Builder setProposerAuthorityRequired(boolean value) {
         
         proposerAuthorityRequired_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -1838,7 +1803,7 @@ public final class ParliamentAuthContract {
        * @return This builder for chaining.
        */
       public Builder clearProposerAuthorityRequired() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         proposerAuthorityRequired_ = false;
         onChanged();
         return this;
@@ -1856,7 +1821,7 @@ public final class ParliamentAuthContract {
        * @return Whether the organizationAddress field is set.
        */
       public boolean hasOrganizationAddress() {
-        return organizationAddressBuilder_ != null || organizationAddress_ != null;
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -1886,11 +1851,11 @@ public final class ParliamentAuthContract {
             throw new NullPointerException();
           }
           organizationAddress_ = value;
-          onChanged();
         } else {
           organizationAddressBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1904,11 +1869,11 @@ public final class ParliamentAuthContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (organizationAddressBuilder_ == null) {
           organizationAddress_ = builderForValue.build();
-          onChanged();
         } else {
           organizationAddressBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1920,17 +1885,18 @@ public final class ParliamentAuthContract {
        */
       public Builder mergeOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
         if (organizationAddressBuilder_ == null) {
-          if (organizationAddress_ != null) {
-            organizationAddress_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(organizationAddress_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000002) != 0) &&
+            organizationAddress_ != null &&
+            organizationAddress_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getOrganizationAddressBuilder().mergeFrom(value);
           } else {
             organizationAddress_ = value;
           }
-          onChanged();
         } else {
           organizationAddressBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1941,14 +1907,13 @@ public final class ParliamentAuthContract {
        * <code>.Address organization_address = 2;</code>
        */
       public Builder clearOrganizationAddress() {
-        if (organizationAddressBuilder_ == null) {
-          organizationAddress_ = null;
-          onChanged();
-        } else {
-          organizationAddress_ = null;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        organizationAddress_ = null;
+        if (organizationAddressBuilder_ != null) {
+          organizationAddressBuilder_.dispose();
           organizationAddressBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -1959,7 +1924,7 @@ public final class ParliamentAuthContract {
        * <code>.Address organization_address = 2;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getOrganizationAddressBuilder() {
-        
+        bitField0_ |= 0x00000002;
         onChanged();
         return getOrganizationAddressFieldBuilder().getBuilder();
       }
@@ -2011,7 +1976,7 @@ public final class ParliamentAuthContract {
        * @return Whether the organizationHash field is set.
        */
       public boolean hasOrganizationHash() {
-        return organizationHashBuilder_ != null || organizationHash_ != null;
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <pre>
@@ -2041,11 +2006,11 @@ public final class ParliamentAuthContract {
             throw new NullPointerException();
           }
           organizationHash_ = value;
-          onChanged();
         } else {
           organizationHashBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2059,11 +2024,11 @@ public final class ParliamentAuthContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (organizationHashBuilder_ == null) {
           organizationHash_ = builderForValue.build();
-          onChanged();
         } else {
           organizationHashBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2075,17 +2040,18 @@ public final class ParliamentAuthContract {
        */
       public Builder mergeOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
         if (organizationHashBuilder_ == null) {
-          if (organizationHash_ != null) {
-            organizationHash_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(organizationHash_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000004) != 0) &&
+            organizationHash_ != null &&
+            organizationHash_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getOrganizationHashBuilder().mergeFrom(value);
           } else {
             organizationHash_ = value;
           }
-          onChanged();
         } else {
           organizationHashBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -2096,14 +2062,13 @@ public final class ParliamentAuthContract {
        * <code>.Hash organization_hash = 3;</code>
        */
       public Builder clearOrganizationHash() {
-        if (organizationHashBuilder_ == null) {
-          organizationHash_ = null;
-          onChanged();
-        } else {
-          organizationHash_ = null;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        organizationHash_ = null;
+        if (organizationHashBuilder_ != null) {
+          organizationHashBuilder_.dispose();
           organizationHashBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -2114,7 +2079,7 @@ public final class ParliamentAuthContract {
        * <code>.Hash organization_hash = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getOrganizationHashBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getOrganizationHashFieldBuilder().getBuilder();
       }
@@ -2166,7 +2131,7 @@ public final class ParliamentAuthContract {
        * @return Whether the proposalReleaseThreshold field is set.
        */
       public boolean hasProposalReleaseThreshold() {
-        return proposalReleaseThresholdBuilder_ != null || proposalReleaseThreshold_ != null;
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
        * <pre>
@@ -2196,11 +2161,11 @@ public final class ParliamentAuthContract {
             throw new NullPointerException();
           }
           proposalReleaseThreshold_ = value;
-          onChanged();
         } else {
           proposalReleaseThresholdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -2214,11 +2179,11 @@ public final class ParliamentAuthContract {
           io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder builderForValue) {
         if (proposalReleaseThresholdBuilder_ == null) {
           proposalReleaseThreshold_ = builderForValue.build();
-          onChanged();
         } else {
           proposalReleaseThresholdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -2230,17 +2195,18 @@ public final class ParliamentAuthContract {
        */
       public Builder mergeProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
         if (proposalReleaseThresholdBuilder_ == null) {
-          if (proposalReleaseThreshold_ != null) {
-            proposalReleaseThreshold_ =
-              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.newBuilder(proposalReleaseThreshold_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000008) != 0) &&
+            proposalReleaseThreshold_ != null &&
+            proposalReleaseThreshold_ != io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance()) {
+            getProposalReleaseThresholdBuilder().mergeFrom(value);
           } else {
             proposalReleaseThreshold_ = value;
           }
-          onChanged();
         } else {
           proposalReleaseThresholdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -2251,14 +2217,13 @@ public final class ParliamentAuthContract {
        * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
        */
       public Builder clearProposalReleaseThreshold() {
-        if (proposalReleaseThresholdBuilder_ == null) {
-          proposalReleaseThreshold_ = null;
-          onChanged();
-        } else {
-          proposalReleaseThreshold_ = null;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        proposalReleaseThreshold_ = null;
+        if (proposalReleaseThresholdBuilder_ != null) {
+          proposalReleaseThresholdBuilder_.dispose();
           proposalReleaseThresholdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -2269,7 +2234,7 @@ public final class ParliamentAuthContract {
        * <code>.ProposalReleaseThreshold proposal_release_threshold = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder getProposalReleaseThresholdBuilder() {
-        
+        bitField0_ |= 0x00000008;
         onChanged();
         return getProposalReleaseThresholdFieldBuilder().getBuilder();
       }
@@ -2318,6 +2283,7 @@ public final class ParliamentAuthContract {
        * <code>bool parliament_member_proposing_allowed = 5;</code>
        * @return The parliamentMemberProposingAllowed.
        */
+      @java.lang.Override
       public boolean getParliamentMemberProposingAllowed() {
         return parliamentMemberProposingAllowed_;
       }
@@ -2333,6 +2299,7 @@ public final class ParliamentAuthContract {
       public Builder setParliamentMemberProposingAllowed(boolean value) {
         
         parliamentMemberProposingAllowed_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -2345,7 +2312,7 @@ public final class ParliamentAuthContract {
        * @return This builder for chaining.
        */
       public Builder clearParliamentMemberProposingAllowed() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         parliamentMemberProposingAllowed_ = false;
         onChanged();
         return this;
@@ -2363,7 +2330,7 @@ public final class ParliamentAuthContract {
        * @return Whether the creationToken field is set.
        */
       public boolean hasCreationToken() {
-        return creationTokenBuilder_ != null || creationToken_ != null;
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -2393,11 +2360,11 @@ public final class ParliamentAuthContract {
             throw new NullPointerException();
           }
           creationToken_ = value;
-          onChanged();
         } else {
           creationTokenBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -2411,11 +2378,11 @@ public final class ParliamentAuthContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (creationTokenBuilder_ == null) {
           creationToken_ = builderForValue.build();
-          onChanged();
         } else {
           creationTokenBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -2427,17 +2394,18 @@ public final class ParliamentAuthContract {
        */
       public Builder mergeCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
         if (creationTokenBuilder_ == null) {
-          if (creationToken_ != null) {
-            creationToken_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(creationToken_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000020) != 0) &&
+            creationToken_ != null &&
+            creationToken_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getCreationTokenBuilder().mergeFrom(value);
           } else {
             creationToken_ = value;
           }
-          onChanged();
         } else {
           creationTokenBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -2448,14 +2416,13 @@ public final class ParliamentAuthContract {
        * <code>.Hash creation_token = 6;</code>
        */
       public Builder clearCreationToken() {
-        if (creationTokenBuilder_ == null) {
-          creationToken_ = null;
-          onChanged();
-        } else {
-          creationToken_ = null;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        creationToken_ = null;
+        if (creationTokenBuilder_ != null) {
+          creationTokenBuilder_.dispose();
           creationTokenBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -2466,7 +2433,7 @@ public final class ParliamentAuthContract {
        * <code>.Hash creation_token = 6;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getCreationTokenBuilder() {
-        
+        bitField0_ |= 0x00000020;
         onChanged();
         return getCreationTokenFieldBuilder().getBuilder();
       }
@@ -2538,7 +2505,18 @@ public final class ParliamentAuthContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Organization(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

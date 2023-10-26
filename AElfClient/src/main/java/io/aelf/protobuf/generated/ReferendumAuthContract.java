@@ -176,7 +176,7 @@ public final class ReferendumAuthContract {
   /**
    * Protobuf type {@code Organization}
    */
-  public  static final class Organization extends
+  public static final class Organization extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:Organization)
       OrganizationOrBuilder {
@@ -201,114 +201,6 @@ public final class ReferendumAuthContract {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Organization(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder subBuilder = null;
-              if (proposalReleaseThreshold_ != null) {
-                subBuilder = proposalReleaseThreshold_.toBuilder();
-              }
-              proposalReleaseThreshold_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(proposalReleaseThreshold_);
-                proposalReleaseThreshold_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              tokenSymbol_ = s;
-              break;
-            }
-            case 26: {
-              io.aelf.protobuf.generated.Client.Address.Builder subBuilder = null;
-              if (organizationAddress_ != null) {
-                subBuilder = organizationAddress_.toBuilder();
-              }
-              organizationAddress_ = input.readMessage(io.aelf.protobuf.generated.Client.Address.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(organizationAddress_);
-                organizationAddress_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 34: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (organizationHash_ != null) {
-                subBuilder = organizationHash_.toBuilder();
-              }
-              organizationHash_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(organizationHash_);
-                organizationHash_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 42: {
-              io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder subBuilder = null;
-              if (proposerWhiteList_ != null) {
-                subBuilder = proposerWhiteList_.toBuilder();
-              }
-              proposerWhiteList_ = input.readMessage(io.aelf.protobuf.generated.Client.ProposerWhiteList.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(proposerWhiteList_);
-                proposerWhiteList_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 50: {
-              io.aelf.protobuf.generated.Client.Hash.Builder subBuilder = null;
-              if (creationToken_ != null) {
-                subBuilder = creationToken_.toBuilder();
-              }
-              creationToken_ = input.readMessage(io.aelf.protobuf.generated.Client.Hash.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(creationToken_);
-                creationToken_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.ReferendumAuthContract.internal_static_Organization_descriptor;
@@ -332,6 +224,7 @@ public final class ReferendumAuthContract {
      * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
      * @return Whether the proposalReleaseThreshold field is set.
      */
+    @java.lang.Override
     public boolean hasProposalReleaseThreshold() {
       return proposalReleaseThreshold_ != null;
     }
@@ -343,6 +236,7 @@ public final class ReferendumAuthContract {
      * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
      * @return The proposalReleaseThreshold.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold getProposalReleaseThreshold() {
       return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
     }
@@ -353,12 +247,14 @@ public final class ReferendumAuthContract {
      *
      * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.ProposalReleaseThresholdOrBuilder getProposalReleaseThresholdOrBuilder() {
-      return getProposalReleaseThreshold();
+      return proposalReleaseThreshold_ == null ? io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance() : proposalReleaseThreshold_;
     }
 
     public static final int TOKEN_SYMBOL_FIELD_NUMBER = 2;
-    private volatile java.lang.Object tokenSymbol_;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object tokenSymbol_ = "";
     /**
      * <pre>
      * The token used during proposal operations.
@@ -367,6 +263,7 @@ public final class ReferendumAuthContract {
      * <code>string token_symbol = 2;</code>
      * @return The tokenSymbol.
      */
+    @java.lang.Override
     public java.lang.String getTokenSymbol() {
       java.lang.Object ref = tokenSymbol_;
       if (ref instanceof java.lang.String) {
@@ -387,6 +284,7 @@ public final class ReferendumAuthContract {
      * <code>string token_symbol = 2;</code>
      * @return The bytes for tokenSymbol.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTokenSymbolBytes() {
       java.lang.Object ref = tokenSymbol_;
@@ -411,6 +309,7 @@ public final class ReferendumAuthContract {
      * <code>.Address organization_address = 3;</code>
      * @return Whether the organizationAddress field is set.
      */
+    @java.lang.Override
     public boolean hasOrganizationAddress() {
       return organizationAddress_ != null;
     }
@@ -422,6 +321,7 @@ public final class ReferendumAuthContract {
      * <code>.Address organization_address = 3;</code>
      * @return The organizationAddress.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Address getOrganizationAddress() {
       return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
@@ -432,8 +332,9 @@ public final class ReferendumAuthContract {
      *
      * <code>.Address organization_address = 3;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.AddressOrBuilder getOrganizationAddressOrBuilder() {
-      return getOrganizationAddress();
+      return organizationAddress_ == null ? io.aelf.protobuf.generated.Client.Address.getDefaultInstance() : organizationAddress_;
     }
 
     public static final int ORGANIZATION_HASH_FIELD_NUMBER = 4;
@@ -446,6 +347,7 @@ public final class ReferendumAuthContract {
      * <code>.Hash organization_hash = 4;</code>
      * @return Whether the organizationHash field is set.
      */
+    @java.lang.Override
     public boolean hasOrganizationHash() {
       return organizationHash_ != null;
     }
@@ -457,6 +359,7 @@ public final class ReferendumAuthContract {
      * <code>.Hash organization_hash = 4;</code>
      * @return The organizationHash.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getOrganizationHash() {
       return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
     }
@@ -467,8 +370,9 @@ public final class ReferendumAuthContract {
      *
      * <code>.Hash organization_hash = 4;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getOrganizationHashOrBuilder() {
-      return getOrganizationHash();
+      return organizationHash_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : organizationHash_;
     }
 
     public static final int PROPOSER_WHITE_LIST_FIELD_NUMBER = 5;
@@ -481,6 +385,7 @@ public final class ReferendumAuthContract {
      * <code>.ProposerWhiteList proposer_white_list = 5;</code>
      * @return Whether the proposerWhiteList field is set.
      */
+    @java.lang.Override
     public boolean hasProposerWhiteList() {
       return proposerWhiteList_ != null;
     }
@@ -492,6 +397,7 @@ public final class ReferendumAuthContract {
      * <code>.ProposerWhiteList proposer_white_list = 5;</code>
      * @return The proposerWhiteList.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.ProposerWhiteList getProposerWhiteList() {
       return proposerWhiteList_ == null ? io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
     }
@@ -502,8 +408,9 @@ public final class ReferendumAuthContract {
      *
      * <code>.ProposerWhiteList proposer_white_list = 5;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.ProposerWhiteListOrBuilder getProposerWhiteListOrBuilder() {
-      return getProposerWhiteList();
+      return proposerWhiteList_ == null ? io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance() : proposerWhiteList_;
     }
 
     public static final int CREATION_TOKEN_FIELD_NUMBER = 6;
@@ -516,6 +423,7 @@ public final class ReferendumAuthContract {
      * <code>.Hash creation_token = 6;</code>
      * @return Whether the creationToken field is set.
      */
+    @java.lang.Override
     public boolean hasCreationToken() {
       return creationToken_ != null;
     }
@@ -527,6 +435,7 @@ public final class ReferendumAuthContract {
      * <code>.Hash creation_token = 6;</code>
      * @return The creationToken.
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.Hash getCreationToken() {
       return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
     }
@@ -537,8 +446,9 @@ public final class ReferendumAuthContract {
      *
      * <code>.Hash creation_token = 6;</code>
      */
+    @java.lang.Override
     public io.aelf.protobuf.generated.Client.HashOrBuilder getCreationTokenOrBuilder() {
-      return getCreationToken();
+      return creationToken_ == null ? io.aelf.protobuf.generated.Client.Hash.getDefaultInstance() : creationToken_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -558,7 +468,7 @@ public final class ReferendumAuthContract {
       if (proposalReleaseThreshold_ != null) {
         output.writeMessage(1, getProposalReleaseThreshold());
       }
-      if (!getTokenSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tokenSymbol_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tokenSymbol_);
       }
       if (organizationAddress_ != null) {
@@ -573,7 +483,7 @@ public final class ReferendumAuthContract {
       if (creationToken_ != null) {
         output.writeMessage(6, getCreationToken());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -586,7 +496,7 @@ public final class ReferendumAuthContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getProposalReleaseThreshold());
       }
-      if (!getTokenSymbolBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tokenSymbol_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tokenSymbol_);
       }
       if (organizationAddress_ != null) {
@@ -605,7 +515,7 @@ public final class ReferendumAuthContract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getCreationToken());
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -647,7 +557,7 @@ public final class ReferendumAuthContract {
         if (!getCreationToken()
             .equals(other.getCreationToken())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -680,7 +590,7 @@ public final class ReferendumAuthContract {
         hash = (37 * hash) + CREATION_TOKEN_FIELD_NUMBER;
         hash = (53 * hash) + getCreationToken().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -797,52 +707,42 @@ public final class ReferendumAuthContract {
 
       // Construct using io.aelf.protobuf.generated.ReferendumAuthContract.Organization.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (proposalReleaseThresholdBuilder_ == null) {
-          proposalReleaseThreshold_ = null;
-        } else {
-          proposalReleaseThreshold_ = null;
+        bitField0_ = 0;
+        proposalReleaseThreshold_ = null;
+        if (proposalReleaseThresholdBuilder_ != null) {
+          proposalReleaseThresholdBuilder_.dispose();
           proposalReleaseThresholdBuilder_ = null;
         }
         tokenSymbol_ = "";
-
-        if (organizationAddressBuilder_ == null) {
-          organizationAddress_ = null;
-        } else {
-          organizationAddress_ = null;
+        organizationAddress_ = null;
+        if (organizationAddressBuilder_ != null) {
+          organizationAddressBuilder_.dispose();
           organizationAddressBuilder_ = null;
         }
-        if (organizationHashBuilder_ == null) {
-          organizationHash_ = null;
-        } else {
-          organizationHash_ = null;
+        organizationHash_ = null;
+        if (organizationHashBuilder_ != null) {
+          organizationHashBuilder_.dispose();
           organizationHashBuilder_ = null;
         }
-        if (proposerWhiteListBuilder_ == null) {
-          proposerWhiteList_ = null;
-        } else {
-          proposerWhiteList_ = null;
+        proposerWhiteList_ = null;
+        if (proposerWhiteListBuilder_ != null) {
+          proposerWhiteListBuilder_.dispose();
           proposerWhiteListBuilder_ = null;
         }
-        if (creationTokenBuilder_ == null) {
-          creationToken_ = null;
-        } else {
-          creationToken_ = null;
+        creationToken_ = null;
+        if (creationTokenBuilder_ != null) {
+          creationTokenBuilder_.dispose();
           creationTokenBuilder_ = null;
         }
         return this;
@@ -871,34 +771,41 @@ public final class ReferendumAuthContract {
       @java.lang.Override
       public io.aelf.protobuf.generated.ReferendumAuthContract.Organization buildPartial() {
         io.aelf.protobuf.generated.ReferendumAuthContract.Organization result = new io.aelf.protobuf.generated.ReferendumAuthContract.Organization(this);
-        if (proposalReleaseThresholdBuilder_ == null) {
-          result.proposalReleaseThreshold_ = proposalReleaseThreshold_;
-        } else {
-          result.proposalReleaseThreshold_ = proposalReleaseThresholdBuilder_.build();
-        }
-        result.tokenSymbol_ = tokenSymbol_;
-        if (organizationAddressBuilder_ == null) {
-          result.organizationAddress_ = organizationAddress_;
-        } else {
-          result.organizationAddress_ = organizationAddressBuilder_.build();
-        }
-        if (organizationHashBuilder_ == null) {
-          result.organizationHash_ = organizationHash_;
-        } else {
-          result.organizationHash_ = organizationHashBuilder_.build();
-        }
-        if (proposerWhiteListBuilder_ == null) {
-          result.proposerWhiteList_ = proposerWhiteList_;
-        } else {
-          result.proposerWhiteList_ = proposerWhiteListBuilder_.build();
-        }
-        if (creationTokenBuilder_ == null) {
-          result.creationToken_ = creationToken_;
-        } else {
-          result.creationToken_ = creationTokenBuilder_.build();
-        }
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.ReferendumAuthContract.Organization result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.proposalReleaseThreshold_ = proposalReleaseThresholdBuilder_ == null
+              ? proposalReleaseThreshold_
+              : proposalReleaseThresholdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.tokenSymbol_ = tokenSymbol_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.organizationAddress_ = organizationAddressBuilder_ == null
+              ? organizationAddress_
+              : organizationAddressBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.organizationHash_ = organizationHashBuilder_ == null
+              ? organizationHash_
+              : organizationHashBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.proposerWhiteList_ = proposerWhiteListBuilder_ == null
+              ? proposerWhiteList_
+              : proposerWhiteListBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.creationToken_ = creationTokenBuilder_ == null
+              ? creationToken_
+              : creationTokenBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -950,6 +857,7 @@ public final class ReferendumAuthContract {
         }
         if (!other.getTokenSymbol().isEmpty()) {
           tokenSymbol_ = other.tokenSymbol_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (other.hasOrganizationAddress()) {
@@ -964,7 +872,7 @@ public final class ReferendumAuthContract {
         if (other.hasCreationToken()) {
           mergeCreationToken(other.getCreationToken());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -979,19 +887,73 @@ public final class ReferendumAuthContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.ReferendumAuthContract.Organization parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getProposalReleaseThresholdFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                tokenSymbol_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    getOrganizationAddressFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                input.readMessage(
+                    getOrganizationHashFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                input.readMessage(
+                    getProposerWhiteListFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                input.readMessage(
+                    getCreationTokenFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.ReferendumAuthContract.Organization) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
+      private int bitField0_;
 
       private io.aelf.protobuf.generated.Client.ProposalReleaseThreshold proposalReleaseThreshold_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1005,7 +967,7 @@ public final class ReferendumAuthContract {
        * @return Whether the proposalReleaseThreshold field is set.
        */
       public boolean hasProposalReleaseThreshold() {
-        return proposalReleaseThresholdBuilder_ != null || proposalReleaseThreshold_ != null;
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -1035,11 +997,11 @@ public final class ReferendumAuthContract {
             throw new NullPointerException();
           }
           proposalReleaseThreshold_ = value;
-          onChanged();
         } else {
           proposalReleaseThresholdBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1053,11 +1015,11 @@ public final class ReferendumAuthContract {
           io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder builderForValue) {
         if (proposalReleaseThresholdBuilder_ == null) {
           proposalReleaseThreshold_ = builderForValue.build();
-          onChanged();
         } else {
           proposalReleaseThresholdBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1069,17 +1031,18 @@ public final class ReferendumAuthContract {
        */
       public Builder mergeProposalReleaseThreshold(io.aelf.protobuf.generated.Client.ProposalReleaseThreshold value) {
         if (proposalReleaseThresholdBuilder_ == null) {
-          if (proposalReleaseThreshold_ != null) {
-            proposalReleaseThreshold_ =
-              io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.newBuilder(proposalReleaseThreshold_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000001) != 0) &&
+            proposalReleaseThreshold_ != null &&
+            proposalReleaseThreshold_ != io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.getDefaultInstance()) {
+            getProposalReleaseThresholdBuilder().mergeFrom(value);
           } else {
             proposalReleaseThreshold_ = value;
           }
-          onChanged();
         } else {
           proposalReleaseThresholdBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -1090,14 +1053,13 @@ public final class ReferendumAuthContract {
        * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
        */
       public Builder clearProposalReleaseThreshold() {
-        if (proposalReleaseThresholdBuilder_ == null) {
-          proposalReleaseThreshold_ = null;
-          onChanged();
-        } else {
-          proposalReleaseThreshold_ = null;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        proposalReleaseThreshold_ = null;
+        if (proposalReleaseThresholdBuilder_ != null) {
+          proposalReleaseThresholdBuilder_.dispose();
           proposalReleaseThresholdBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -1108,7 +1070,7 @@ public final class ReferendumAuthContract {
        * <code>.ProposalReleaseThreshold proposal_release_threshold = 1;</code>
        */
       public io.aelf.protobuf.generated.Client.ProposalReleaseThreshold.Builder getProposalReleaseThresholdBuilder() {
-        
+        bitField0_ |= 0x00000001;
         onChanged();
         return getProposalReleaseThresholdFieldBuilder().getBuilder();
       }
@@ -1201,11 +1163,9 @@ public final class ReferendumAuthContract {
        */
       public Builder setTokenSymbol(
           java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        if (value == null) { throw new NullPointerException(); }
         tokenSymbol_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1218,8 +1178,8 @@ public final class ReferendumAuthContract {
        * @return This builder for chaining.
        */
       public Builder clearTokenSymbol() {
-        
         tokenSymbol_ = getDefaultInstance().getTokenSymbol();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -1234,12 +1194,10 @@ public final class ReferendumAuthContract {
        */
       public Builder setTokenSymbolBytes(
           com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
         tokenSymbol_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1256,7 +1214,7 @@ public final class ReferendumAuthContract {
        * @return Whether the organizationAddress field is set.
        */
       public boolean hasOrganizationAddress() {
-        return organizationAddressBuilder_ != null || organizationAddress_ != null;
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <pre>
@@ -1286,11 +1244,11 @@ public final class ReferendumAuthContract {
             throw new NullPointerException();
           }
           organizationAddress_ = value;
-          onChanged();
         } else {
           organizationAddressBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -1304,11 +1262,11 @@ public final class ReferendumAuthContract {
           io.aelf.protobuf.generated.Client.Address.Builder builderForValue) {
         if (organizationAddressBuilder_ == null) {
           organizationAddress_ = builderForValue.build();
-          onChanged();
         } else {
           organizationAddressBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -1320,17 +1278,18 @@ public final class ReferendumAuthContract {
        */
       public Builder mergeOrganizationAddress(io.aelf.protobuf.generated.Client.Address value) {
         if (organizationAddressBuilder_ == null) {
-          if (organizationAddress_ != null) {
-            organizationAddress_ =
-              io.aelf.protobuf.generated.Client.Address.newBuilder(organizationAddress_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000004) != 0) &&
+            organizationAddress_ != null &&
+            organizationAddress_ != io.aelf.protobuf.generated.Client.Address.getDefaultInstance()) {
+            getOrganizationAddressBuilder().mergeFrom(value);
           } else {
             organizationAddress_ = value;
           }
-          onChanged();
         } else {
           organizationAddressBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -1341,14 +1300,13 @@ public final class ReferendumAuthContract {
        * <code>.Address organization_address = 3;</code>
        */
       public Builder clearOrganizationAddress() {
-        if (organizationAddressBuilder_ == null) {
-          organizationAddress_ = null;
-          onChanged();
-        } else {
-          organizationAddress_ = null;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        organizationAddress_ = null;
+        if (organizationAddressBuilder_ != null) {
+          organizationAddressBuilder_.dispose();
           organizationAddressBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -1359,7 +1317,7 @@ public final class ReferendumAuthContract {
        * <code>.Address organization_address = 3;</code>
        */
       public io.aelf.protobuf.generated.Client.Address.Builder getOrganizationAddressBuilder() {
-        
+        bitField0_ |= 0x00000004;
         onChanged();
         return getOrganizationAddressFieldBuilder().getBuilder();
       }
@@ -1411,7 +1369,7 @@ public final class ReferendumAuthContract {
        * @return Whether the organizationHash field is set.
        */
       public boolean hasOrganizationHash() {
-        return organizationHashBuilder_ != null || organizationHash_ != null;
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
        * <pre>
@@ -1441,11 +1399,11 @@ public final class ReferendumAuthContract {
             throw new NullPointerException();
           }
           organizationHash_ = value;
-          onChanged();
         } else {
           organizationHashBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -1459,11 +1417,11 @@ public final class ReferendumAuthContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (organizationHashBuilder_ == null) {
           organizationHash_ = builderForValue.build();
-          onChanged();
         } else {
           organizationHashBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -1475,17 +1433,18 @@ public final class ReferendumAuthContract {
        */
       public Builder mergeOrganizationHash(io.aelf.protobuf.generated.Client.Hash value) {
         if (organizationHashBuilder_ == null) {
-          if (organizationHash_ != null) {
-            organizationHash_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(organizationHash_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000008) != 0) &&
+            organizationHash_ != null &&
+            organizationHash_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getOrganizationHashBuilder().mergeFrom(value);
           } else {
             organizationHash_ = value;
           }
-          onChanged();
         } else {
           organizationHashBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -1496,14 +1455,13 @@ public final class ReferendumAuthContract {
        * <code>.Hash organization_hash = 4;</code>
        */
       public Builder clearOrganizationHash() {
-        if (organizationHashBuilder_ == null) {
-          organizationHash_ = null;
-          onChanged();
-        } else {
-          organizationHash_ = null;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        organizationHash_ = null;
+        if (organizationHashBuilder_ != null) {
+          organizationHashBuilder_.dispose();
           organizationHashBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -1514,7 +1472,7 @@ public final class ReferendumAuthContract {
        * <code>.Hash organization_hash = 4;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getOrganizationHashBuilder() {
-        
+        bitField0_ |= 0x00000008;
         onChanged();
         return getOrganizationHashFieldBuilder().getBuilder();
       }
@@ -1566,7 +1524,7 @@ public final class ReferendumAuthContract {
        * @return Whether the proposerWhiteList field is set.
        */
       public boolean hasProposerWhiteList() {
-        return proposerWhiteListBuilder_ != null || proposerWhiteList_ != null;
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
        * <pre>
@@ -1596,11 +1554,11 @@ public final class ReferendumAuthContract {
             throw new NullPointerException();
           }
           proposerWhiteList_ = value;
-          onChanged();
         } else {
           proposerWhiteListBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -1614,11 +1572,11 @@ public final class ReferendumAuthContract {
           io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder builderForValue) {
         if (proposerWhiteListBuilder_ == null) {
           proposerWhiteList_ = builderForValue.build();
-          onChanged();
         } else {
           proposerWhiteListBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -1630,17 +1588,18 @@ public final class ReferendumAuthContract {
        */
       public Builder mergeProposerWhiteList(io.aelf.protobuf.generated.Client.ProposerWhiteList value) {
         if (proposerWhiteListBuilder_ == null) {
-          if (proposerWhiteList_ != null) {
-            proposerWhiteList_ =
-              io.aelf.protobuf.generated.Client.ProposerWhiteList.newBuilder(proposerWhiteList_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000010) != 0) &&
+            proposerWhiteList_ != null &&
+            proposerWhiteList_ != io.aelf.protobuf.generated.Client.ProposerWhiteList.getDefaultInstance()) {
+            getProposerWhiteListBuilder().mergeFrom(value);
           } else {
             proposerWhiteList_ = value;
           }
-          onChanged();
         } else {
           proposerWhiteListBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000010;
+        onChanged();
         return this;
       }
       /**
@@ -1651,14 +1610,13 @@ public final class ReferendumAuthContract {
        * <code>.ProposerWhiteList proposer_white_list = 5;</code>
        */
       public Builder clearProposerWhiteList() {
-        if (proposerWhiteListBuilder_ == null) {
-          proposerWhiteList_ = null;
-          onChanged();
-        } else {
-          proposerWhiteList_ = null;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        proposerWhiteList_ = null;
+        if (proposerWhiteListBuilder_ != null) {
+          proposerWhiteListBuilder_.dispose();
           proposerWhiteListBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -1669,7 +1627,7 @@ public final class ReferendumAuthContract {
        * <code>.ProposerWhiteList proposer_white_list = 5;</code>
        */
       public io.aelf.protobuf.generated.Client.ProposerWhiteList.Builder getProposerWhiteListBuilder() {
-        
+        bitField0_ |= 0x00000010;
         onChanged();
         return getProposerWhiteListFieldBuilder().getBuilder();
       }
@@ -1721,7 +1679,7 @@ public final class ReferendumAuthContract {
        * @return Whether the creationToken field is set.
        */
       public boolean hasCreationToken() {
-        return creationTokenBuilder_ != null || creationToken_ != null;
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -1751,11 +1709,11 @@ public final class ReferendumAuthContract {
             throw new NullPointerException();
           }
           creationToken_ = value;
-          onChanged();
         } else {
           creationTokenBuilder_.setMessage(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -1769,11 +1727,11 @@ public final class ReferendumAuthContract {
           io.aelf.protobuf.generated.Client.Hash.Builder builderForValue) {
         if (creationTokenBuilder_ == null) {
           creationToken_ = builderForValue.build();
-          onChanged();
         } else {
           creationTokenBuilder_.setMessage(builderForValue.build());
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -1785,17 +1743,18 @@ public final class ReferendumAuthContract {
        */
       public Builder mergeCreationToken(io.aelf.protobuf.generated.Client.Hash value) {
         if (creationTokenBuilder_ == null) {
-          if (creationToken_ != null) {
-            creationToken_ =
-              io.aelf.protobuf.generated.Client.Hash.newBuilder(creationToken_).mergeFrom(value).buildPartial();
+          if (((bitField0_ & 0x00000020) != 0) &&
+            creationToken_ != null &&
+            creationToken_ != io.aelf.protobuf.generated.Client.Hash.getDefaultInstance()) {
+            getCreationTokenBuilder().mergeFrom(value);
           } else {
             creationToken_ = value;
           }
-          onChanged();
         } else {
           creationTokenBuilder_.mergeFrom(value);
         }
-
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -1806,14 +1765,13 @@ public final class ReferendumAuthContract {
        * <code>.Hash creation_token = 6;</code>
        */
       public Builder clearCreationToken() {
-        if (creationTokenBuilder_ == null) {
-          creationToken_ = null;
-          onChanged();
-        } else {
-          creationToken_ = null;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        creationToken_ = null;
+        if (creationTokenBuilder_ != null) {
+          creationTokenBuilder_.dispose();
           creationTokenBuilder_ = null;
         }
-
+        onChanged();
         return this;
       }
       /**
@@ -1824,7 +1782,7 @@ public final class ReferendumAuthContract {
        * <code>.Hash creation_token = 6;</code>
        */
       public io.aelf.protobuf.generated.Client.Hash.Builder getCreationTokenBuilder() {
-        
+        bitField0_ |= 0x00000020;
         onChanged();
         return getCreationTokenFieldBuilder().getBuilder();
       }
@@ -1896,7 +1854,18 @@ public final class ReferendumAuthContract {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Organization(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 

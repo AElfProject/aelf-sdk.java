@@ -42,7 +42,7 @@ public final class DescriptorEquivalent {
    *
    * Protobuf type {@code FileDescriptorSet}
    */
-  public  static final class FileDescriptorSet extends
+  public static final class FileDescriptorSet extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:FileDescriptorSet)
       FileDescriptorSetOrBuilder {
@@ -67,55 +67,6 @@ public final class DescriptorEquivalent {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FileDescriptorSet(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                file_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              file_.add(input.readBytes());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          file_ = java.util.Collections.unmodifiableList(file_); // C
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return io.aelf.protobuf.generated.DescriptorEquivalent.internal_static_FileDescriptorSet_descriptor;
@@ -130,11 +81,13 @@ public final class DescriptorEquivalent {
     }
 
     public static final int FILE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
     private java.util.List<com.google.protobuf.ByteString> file_;
     /**
      * <code>repeated bytes file = 1;</code>
      * @return A list containing the file.
      */
+    @java.lang.Override
     public java.util.List<com.google.protobuf.ByteString>
         getFileList() {
       return file_;
@@ -172,7 +125,7 @@ public final class DescriptorEquivalent {
       for (int i = 0; i < file_.size(); i++) {
         output.writeBytes(1, file_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
     @java.lang.Override
@@ -190,7 +143,7 @@ public final class DescriptorEquivalent {
         size += dataSize;
         size += 1 * getFileList().size();
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -207,7 +160,7 @@ public final class DescriptorEquivalent {
 
       if (!getFileList()
           .equals(other.getFileList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
@@ -222,7 +175,7 @@ public final class DescriptorEquivalent {
         hash = (37 * hash) + FILE_FIELD_NUMBER;
         hash = (53 * hash) + getFileList().hashCode();
       }
-      hash = (29 * hash) + unknownFields.hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -343,24 +296,19 @@ public final class DescriptorEquivalent {
 
       // Construct using io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
         file_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -387,14 +335,22 @@ public final class DescriptorEquivalent {
       @java.lang.Override
       public io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet buildPartial() {
         io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet result = new io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet(this);
-        int from_bitField0_ = bitField0_;
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet result) {
         if (((bitField0_ & 0x00000001) != 0)) {
           file_ = java.util.Collections.unmodifiableList(file_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.file_ = file_;
-        onBuilt();
-        return result;
+      }
+
+      private void buildPartial0(io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
@@ -451,7 +407,7 @@ public final class DescriptorEquivalent {
           }
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
+        this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
@@ -466,17 +422,36 @@ public final class DescriptorEquivalent {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet parsedMessage = null;
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensureFileIsMutable();
+                file_.add(v);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (io.aelf.protobuf.generated.DescriptorEquivalent.FileDescriptorSet) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
+          onChanged();
+        } // finally
         return this;
       }
       private int bitField0_;
@@ -486,7 +461,7 @@ public final class DescriptorEquivalent {
         if (!((bitField0_ & 0x00000001) != 0)) {
           file_ = new java.util.ArrayList<com.google.protobuf.ByteString>(file_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
       /**
        * <code>repeated bytes file = 1;</code>
@@ -520,10 +495,8 @@ public final class DescriptorEquivalent {
        */
       public Builder setFile(
           int index, com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureFileIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureFileIsMutable();
         file_.set(index, value);
         onChanged();
         return this;
@@ -534,10 +507,8 @@ public final class DescriptorEquivalent {
        * @return This builder for chaining.
        */
       public Builder addFile(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureFileIsMutable();
+        if (value == null) { throw new NullPointerException(); }
+        ensureFileIsMutable();
         file_.add(value);
         onChanged();
         return this;
@@ -598,7 +569,18 @@ public final class DescriptorEquivalent {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FileDescriptorSet(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
