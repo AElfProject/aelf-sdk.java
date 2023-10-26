@@ -68,22 +68,22 @@ public class TransactionResultDtoExtension {
             TokenContract.Transferred.Builder result = TokenContract.Transferred.getDefaultInstance().toBuilder();
 
             byte[] nonIndexedBytes = Base64.decodeBase64(log.getNonIndexed());
-            TokenContract.Transferred nonIndexed = TokenContract.Transferred.getDefaultInstance().parseFrom(nonIndexedBytes);
+            TokenContract.Transferred nonIndexed = TokenContract.Transferred.parseFrom(nonIndexedBytes);
             result.setAmount(nonIndexed.getAmount()).setMemo(nonIndexed.getMemo());
 
 
             byte[] symbolBytes = Base64.decodeBase64(log.getIndexed().get(2));
-            result.setSymbol(TokenContract.Transferred.getDefaultInstance().parseFrom(symbolBytes).getSymbol());
+            result.setSymbol(TokenContract.Transferred.parseFrom(symbolBytes).getSymbol());
 
             byte[] fromBytes = Base64.decodeBase64(log.getIndexed().get(0));
-            result.setFrom(TokenContract.Transferred.getDefaultInstance().parseFrom(fromBytes).getFrom());
+            result.setFrom(TokenContract.Transferred.parseFrom(fromBytes).getFrom());
             byte[] bytes = result.getFrom().getValue().toByteArray();
             String fromAddressStr = Base58Ext.encodeChecked(bytes);
             result.setFrom(AddressHelper.base58ToAddress(fromAddressStr));
 
 
             byte[] toBytes = Base64.decodeBase64(log.getIndexed().get(1));
-            result.setTo(TokenContract.Transferred.getDefaultInstance().parseFrom(toBytes).getTo());
+            result.setTo(TokenContract.Transferred.parseFrom(toBytes).getTo());
             byte[] bytes1 = result.getTo().getValue().toByteArray();
             String toAddress = Base58Ext.encodeChecked(bytes1);
             result.setTo(AddressHelper.base58ToAddress(toAddress));
@@ -104,11 +104,13 @@ public class TransactionResultDtoExtension {
         for (LogEventDto log : logEventDtos) {
             TokenContract.CrossChainReceived.Builder builder = TokenContract.CrossChainReceived.getDefaultInstance().toBuilder();
             byte[] nonIndexedBytes = Base64.decodeBase64(log.getNonIndexed());
-            TokenContract.CrossChainReceived nonIndexed = TokenContract.CrossChainReceived.getDefaultInstance().parseFrom(nonIndexedBytes);
-            builder.setAmount(nonIndexed.getAmount())
+            TokenContract.CrossChainReceived nonIndexed = TokenContract.CrossChainReceived.parseFrom(nonIndexedBytes);
+            Client.Address from = AddressHelper.base58ToAddress(Base58Ext.encodeChecked(nonIndexed.getFrom().getValue().toByteArray()));
+            Client.Address to = AddressHelper.base58ToAddress(Base58Ext.encodeChecked(nonIndexed.getTo().getValue().toByteArray()));
+                    builder.setAmount(nonIndexed.getAmount())
                     .setMemo(nonIndexed.getMemo())
-                    .setFrom(nonIndexed.getFrom())
-                    .setTo(nonIndexed.getTo())
+                    .setFrom(from)
+                    .setTo(to)
                     .setSymbol(nonIndexed.getSymbol())
                     .setIssueChainId(nonIndexed.getIssueChainId())
                     .setFromChainId(nonIndexed.getFromChainId())
@@ -129,11 +131,13 @@ public class TransactionResultDtoExtension {
         for (LogEventDto log : logEventDtos) {
             TokenContract.CrossChainTransferred.Builder builder = TokenContract.CrossChainTransferred.getDefaultInstance().toBuilder();
             byte[] nonIndexedBytes = Base64.decodeBase64(log.getNonIndexed());
-            TokenContract.CrossChainTransferred nonIndexed = TokenContract.CrossChainTransferred.getDefaultInstance().parseFrom(nonIndexedBytes);
+            TokenContract.CrossChainTransferred nonIndexed = TokenContract.CrossChainTransferred.parseFrom(nonIndexedBytes);
+            Client.Address from = AddressHelper.base58ToAddress(Base58Ext.encodeChecked(nonIndexed.getFrom().getValue().toByteArray()));
+            Client.Address to = AddressHelper.base58ToAddress(Base58Ext.encodeChecked(nonIndexed.getTo().getValue().toByteArray()));
             builder.setAmount(nonIndexed.getAmount())
                     .setMemo(nonIndexed.getMemo())
-                    .setFrom(nonIndexed.getFrom())
-                    .setTo(nonIndexed.getTo())
+                    .setFrom(from)
+                    .setTo(to)
                     .setSymbol(nonIndexed.getSymbol())
                     .setIssueChainId(nonIndexed.getIssueChainId())
                     .setToChainId(nonIndexed.getToChainId());
