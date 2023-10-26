@@ -17,7 +17,7 @@ public class NetSdkTest {
     static final String HTTPURL = "http://127.0.0.1:8000";
     static final String OPREATIONADDRESS = "127.0.0.1:7003";
 
-    static final String VERSION = "1.2.3.0";
+    static final String VERSION = "1.6.0.0";
 
     AElfClient client = null;
 
